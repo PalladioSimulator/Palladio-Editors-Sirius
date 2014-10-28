@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="architecturaltemplates" nsURI="http://scaledl.org/ArchitecturalTemplates/1.0"
+    nsPrefix="org.scaledl">
+  <eSubpackages name="type" nsURI="http://scaledl.org/ArchitecturalTemplates/Type/1.0"
+      nsPrefix="org.scaledl.architecturaltemplates">
+    <eClassifiers xsi:type="ecore:EClass" name="AT" eSuperTypes="../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="repository" lowerBound="1"
+          eType="#//type/Repository" eOpposite="#//type/Repository/ATs"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="roles" upperBound="-1"
+          eType="#//type/Role" containment="true" eOpposite="#//type/Role/AT"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
+          eType="#//type/Constraint" containment="true" eOpposite="#//type/Constraint/AT"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="completion" lowerBound="1"
+          eType="#//type/Completion" containment="true" eOpposite="#//type/Completion/AT"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Constraint" abstract="true" eSuperTypes="../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="AT" lowerBound="1" eType="#//type/AT"
+          eOpposite="#//type/AT/constraints"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="roles" upperBound="-1"
+          eType="#//type/Role" eOpposite="#//type/Role/constraints"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="role" lowerBound="1"
+          eType="#//type/Role" eOpposite="#//type/Role/parameters"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="dataType" lowerBound="1"
+          eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Repository" eSuperTypes="../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ATs" upperBound="-1"
+          eType="#//type/AT" containment="true" eOpposite="#//type/AT/repository"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Role" eSuperTypes="../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+          eType="#//type/Parameter" containment="true" eOpposite="#//type/Parameter/role"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="AT" lowerBound="1" eType="#//type/AT"
+          eOpposite="#//type/AT/roles"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
+          eType="#//type/Constraint" eOpposite="#//type/Constraint/roles"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="stereotype" lowerBound="1"
+          eType="ecore:EClass ../../org.modelversioning.emfprofile/model/emfprofiles.ecore#//Stereotype"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="OCLConstraint" eSuperTypes="#//type/Constraint">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="constraint" lowerBound="1">
+        <eGenericType eClassifier="ecore:EClass ../../org.eclipse.ocl/model/OCL.ecore#//expressions/OCLExpression">
+          <eTypeArguments/>
+        </eGenericType>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="QVTOCompletion" eSuperTypes="#//type/Completion">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="qvtoFileURI" lowerBound="1"
+          eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Completion" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="AT" lowerBound="1" eType="#//type/AT"
+          eOpposite="#//type/AT/completion"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" lowerBound="1"
+          upperBound="-1" eType="#//type/CompletionParameter" containment="true" eOpposite="#//type/CompletionParameter/completion"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CompletionParameter" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="completion" lowerBound="1"
+          eType="#//type/Completion" eOpposite="#//type/Completion/parameters"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="GenericTemplateCompletionParameter"
+        eSuperTypes="#//type/GenericBlackboardCompletionParameter #//type/TemplateProvidingEntity"/>
+    <eClassifiers xsi:type="ecore:EClass" name="GenericBlackboardCompletionParameter"
+        eSuperTypes="#//type/CompletionParameter">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileExtension" lowerBound="1"
+          eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PCMBlackboardCompletionParameter"
+        eSuperTypes="#//type/CompletionParameter">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileExtension" lowerBound="1"
+          eType="#//type/PCMFileExtensions"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="PCMFileExtensions">
+      <eLiterals name="SYSTEM" literal="system"/>
+      <eLiterals name="ALLOCATION" value="1" literal="allocation"/>
+      <eLiterals name="RESOURCEENVIRONMENT" value="2" literal="resourceenvironment"/>
+      <eLiterals name="REPOSITORY" value="3" literal="repository"/>
+      <eLiterals name="USAGEMODEL" value="4" literal="usagemodel"/>
+      <eLiterals name="RESOURCETYPE" value="5" literal="resourcetype"/>
+      <eLiterals name="PMS" value="6" literal="pms"/>
+      <eLiterals name="PCMMEASURINGPOINT" value="7" literal="pcmmeasuringpoint"/>
+      <eLiterals name="SERVICELEVELOBJECTIVE" value="8" literal="slo"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PCMTemplateCompletionParameter" eSuperTypes="#//type/PCMBlackboardCompletionParameter #//type/TemplateProvidingEntity"/>
+    <eClassifiers xsi:type="ecore:EClass" name="TemplateProvidingEntity" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="templateFileURI" lowerBound="1"
+          eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PCMOutputCompletionParameter" eSuperTypes="#//type/CompletionParameter">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileExtension" lowerBound="1"
+          eType="#//type/PCMFileExtensions"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="GenericOutputCompletionParameter"
+        eSuperTypes="#//type/CompletionParameter">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileExtension" lowerBound="1"
+          eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="instance" nsURI="http://scaledl.org/ArchitecturalTemplates/Instance/1.0"
+      nsPrefix="org.scaledl.architecturaltemplates">
+    <eClassifiers xsi:type="ecore:EClass" name="ATInstance" eSuperTypes="../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="role2components" upperBound="-1"
+          eType="#//instance/Role2Component" containment="true" eOpposite="#//instance/Role2Component/ATInstance"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="component2roles" upperBound="-1"
+          eType="#//instance/Component2Role" containment="true" eOpposite="#//instance/Component2Role/ATInstance"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="AT2Components" lowerBound="1"
+          eType="#//instance/Role2Component"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1"
+          eType="#//type/AT"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="parameterValues" upperBound="-1"
+          eType="#//instance/ParameterValue" containment="true" eOpposite="#//instance/ParameterValue/architecturalTemplateInstance"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="role2resources" upperBound="-1"
+          eType="#//instance/Role2Resource" containment="true" eOpposite="#//instance/Role2Resource/ATInstance"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Component2Role">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="component" lowerBound="1"
+          eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/composition/AssemblyContext"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="roles" upperBound="-1"
+          eType="#//type/Role"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ATInstance" lowerBound="1"
+          eType="#//instance/ATInstance" eOpposite="#//instance/ATInstance/component2roles"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Role2Component">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="component" lowerBound="1"
+          eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/composition/AssemblyContext"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="role" lowerBound="1"
+          eType="#//type/Role"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ATInstance" lowerBound="1"
+          eType="#//instance/ATInstance" eOpposite="#//instance/ATInstance/role2components"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ParameterValue" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1"
+          eType="#//type/Parameter"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="architecturalTemplateInstance"
+          lowerBound="1" eType="#//instance/ATInstance" eOpposite="#//instance/ATInstance/parameterValues"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EnumParameter" eSuperTypes="#//instance/ParameterValue"/>
+    <eClassifiers xsi:type="ecore:EClass" name="IntegerParameter" eSuperTypes="#//instance/ParameterValue"/>
+    <eClassifiers xsi:type="ecore:EClass" name="FloatParameter" eSuperTypes="#//instance/ParameterValue"/>
+    <eClassifiers xsi:type="ecore:EClass" name="StringParameter" eSuperTypes="#//instance/ParameterValue">
+      <eTypeParameters name="T"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Role2Resource">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ATInstance" lowerBound="1"
+          eType="#//instance/ATInstance" eOpposite="#//instance/ATInstance/role2resources"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="resource" lowerBound="1"
+          eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//resourceenvironment/ResourceContainer"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="role" lowerBound="1"
+          eType="#//type/Role"/>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>

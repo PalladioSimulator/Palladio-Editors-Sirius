@@ -1,0 +1,121 @@
+import profilesblackboxlibrary.ProfilesLib;
+import threelayerblackboxlibrary.ThreeLayerLib;
+
+
+modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
+modeltype PCM_REP uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0';
+modeltype PCM_SYS uses 'http://sdq.ipd.uka.de/PalladioComponentModel/System/5.0';
+modeltype PCM_USE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/UsageModel/5.0';
+modeltype PCM_RES_ENV uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0';
+modeltype PCM_CORE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Core/5.0';
+modeltype EMF_PROFILE_APPLICATION uses 'http://www.modelversioning.org/emfprofile/application/1.1';
+modeltype EMF_PROFILE uses 'http://www.modelversioning.org/emfprofile/1.1';
+modeltype PCM_RES_TYPE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceType/5.0';
+modeltype PCMCore uses pcm::core('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
+modeltype PCMEntity uses pcm::core::entity('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
+modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
+modeltype PCM_MEASURINGPOINT uses 'http://palladiosimulator.org/PCM/MeasuringPoint/1.0';
+modeltype PCM_PMS uses 'http://simulizar.palladiosimulator.org/PalladioMonitoringSpecification/1.0';
+modeltype PCM_EDP2MEASURINGPOINT uses 'http://palladiosimulator.org/EDP2/MeasuringPoint/0.9.1';
+
+/**
+ * Transforms a 3-layer PCM instance (System annotated with 3-layer AT roles) to a PCM instance
+ * fitting to a given 3-tier resource environment. Each layer is assigned to the corresponding
+ * tier in the resulting Allocation.
+ *
+ * @author Sebastian Lehrig
+ * @author Daria Giacinto
+ **/
+transformation ThreeLayer( inout pcmSystem : PCM_SYS,
+						   inout pcmResourceEnvironment : PCM_RES_ENV,
+						   inout pcmUsage: PCM_USE,
+						   out pcmAllocation : PCM_ALLOC, 
+						   out pcmUsageScenarioMeasuringPoint : PCM_MEASURINGPOINT,
+						   out pms : PCM_PMS);
+						   
+
+property threshold : Real;
+property interval : Real;
+
+main() {	
+	log ('Architectural Template Transformation "ThreeLayer" started!');
+	
+	var system : System := pcmSystem.rootObjects()![System];
+	var usageModel : UsageModel := pcmUsage.rootObjects()![UsageModel];
+	var usageScenario : UsageScenario := usageModel.usageScenario_UsageModel![UsageScenario];
+	assert fatal(hasAppliedStereotype(system,"ThreeLayerSystem"))
+		with log ("The system is not a three layer system!");
+	var assemblyContexts : Set(AssemblyContext) := system.assemblyContexts__ComposedStructure;	
+
+	var resourceEnvironment : ResourceEnvironment := pcmResourceEnvironment.rootObjects()![ResourceEnvironment];
+	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;	
+	
+	var allocation : Allocation := system.map createAllocation(resourceEnvironment);
+	allocateAssemblyContextsToResourceContainer(assemblyContexts,resourceContainers,allocation);
+	
+	var measuringPoint : UsageScenarioMeasuringPoint := usageScenario.map createPcmMeasuringPoint();	
+	var pmsModel : PMSModel := measuringPoint.map createPmsModel();
+	log ('Architectural Template Transformation "ThreeLayer" finished!');
+}
+helper allocateAssemblyContextsToResourceContainer(assemblyContexts : Set(AssemblyContext),resourceContainers : Set(ResourceContainer), allocation : Allocation){
+	assemblyContexts -> forEach(assemblyContext){
+		var resourceContainer : ResourceContainer;
+		if(hasAppliedStereotype(assemblyContext,"PresentationLayerAssembly")){
+			resourceContainer := resourceContainers -> any(rc|rc.id = "_ETFqQCPIEeSwPfc4EJw-WA");
+		}
+		else if(hasAppliedStereotype(assemblyContext,"MiddleLayerAssembly")){
+			resourceContainer := resourceContainers -> any(rc|rc.id = "_Fg46ICPIEeSwPfc4EJw-WA");
+			applyStereotype(resourceContainer,"Replicable");
+			threshold := getResponseTimeThreshold(assemblyContext,"responseTimeThreshold","MiddleLayerAssembly");
+			log ('The responseTimeThreshold is ' + threshold.toString());
+			interval := getResponseTimeInterval(assemblyContext,"responseTimeInterval","MiddleLayerAssembly");
+			log ('The responseTimeInterval is ' + interval.toString());
+		}
+		else if(hasAppliedStereotype(assemblyContext,"DataLayerAssembly")){
+			resourceContainer := resourceContainers -> any(rc|rc.id = "_HAQbICPIEeSwPfc4EJw-WA");
+		};
+		new AllocationContext(assemblyContext, resourceContainer, allocation);
+	}
+};
+mapping UsageScenarioMeasuringPoint :: createPmsModel() : PMSModel@pms{
+	//guid := "PmsModelID";
+	performanceMeasurements := new PerformanceMeasurement(self);
+}
+
+constructor PerformanceMeasurement :: PerformanceMeasurement(usageScenarioMeasuringPoint : UsageScenarioMeasuringPoint){
+	measuringPoint := usageScenarioMeasuringPoint;
+	measurementSpecification := new MeasurementSpecification();
+	//guid := "PerformanceMeasurementID"
+}
+
+constructor MeasurementSpecification :: MeasurementSpecification(){
+	performanceMetric := PerformanceMetricEnum::ResponseTime;
+	statisticalCharacterization := StatisticalCharacterizationEnum::ArithmeticMean;
+	temporalRestriction := new Intervall(interval);
+}
+constructor Intervall::Intervall(interval:Real){
+	intervall := interval;
+}
+
+mapping UsageScenario::createPcmMeasuringPoint() : UsageScenarioMeasuringPoint@pcmUsageScenarioMeasuringPoint{
+	usageScenario := self;
+}
+
+mapping System::createAllocation(resourceEnvironment:ResourceEnvironment) : Allocation@pcmAllocation{
+	id := self.id + "_ThreeLayerAllocation";
+	entityName := "ThreeLayerAllocation";
+	system_Allocation := self;
+	targetResourceEnvironment_Allocation := resourceEnvironment;
+}
+constructor AllocationContext :: AllocationContext (ac : AssemblyContext, rc: ResourceContainer, allocation : Allocation){
+	id := ac.id + "_" + ac.entityName +  "_AllocationContext";
+	entityName := "Allocation_" + ac.entityName;
+	assemblyContext_AllocationContext := ac;
+	resourceContainer_AllocationContext := rc;
+	allocation_AllocationContext := allocation;
+}
+
+//blackbox helper hasAppliedStereotype(system:Entity, stereotype : String):Boolean;
+//blackbox helper applyStereotype(pcmEntity:Entity, stereotype:String):Void;
+//blackbox helper getResponseTimeThreshold(assemblyContext:AssemblyContext, taggedValueName:String, stereotypeName: String):Real;
+//blackbox helper getResponseTimeInterval(assemblyContext:AssemblyContext, taggedValueName:String, stereotypeName: String):Real;
