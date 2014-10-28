@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rm:rmap xmlns:rm="http://www.eclipse.org/buckminster/RMap-1.0"
+    xmlns:bc="http://www.eclipse.org/buckminster/Common-1.0">
+ 
+    <rm:property key="projects.location" value="${workspace.root}" />
+ 
+   <rm:searchPath name="buildsvn">
+    <rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster" readerType="svn" source="true">
+      <rm:uri format="https://cloudscale:CloudScale123@dev.xlab.si/svn-pub/cloudscale/trunk/wp3-integration/eclipse/{0}">
+      	<bc:propertyRef key="buckminster.component" />
+      </rm:uri>
+    </rm:provider>
+  </rm:searchPath>
+  
+    <rm:searchPath name="epp">
+        <rm:provider componentTypes="osgi.bundle,eclipse.feature"
+            readerType="p2" source="false" mutable="false">
+            <rm:uri format="http://download.eclipse.org/technology/epp/packages/luna" />
+        </rm:provider>
+    </rm:searchPath>
+    <rm:searchPath name="luna-releases">
+        <rm:provider componentTypes="osgi.bundle,eclipse.feature"
+            readerType="p2" source="false" mutable="false">
+            <rm:uri format="http://download.eclipse.org/releases/luna" />
+        </rm:provider>
+    </rm:searchPath>
+    <rm:searchPath name="luna-updates">
+        <rm:provider componentTypes="osgi.bundle,eclipse.feature"
+            readerType="p2" source="false" mutable="false">
+            <rm:uri format="http://download.eclipse.org/eclipse/updates/4.4" />
+        </rm:provider>
+    </rm:searchPath>
+
+    <rm:locator searchPathRef="buildsvn" failOnError="false" />
+    <rm:locator searchPathRef="epp" failOnError="false" />
+    <rm:locator searchPathRef="luna-releases" failOnError="false" />
+    <rm:locator searchPathRef="luna-updates" failOnError="true" />
+</rm:rmap>
