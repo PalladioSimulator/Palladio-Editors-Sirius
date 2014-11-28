@@ -1,5 +1,6 @@
 import profilesblackboxlibrary.ProfilesLib;
 
+modeltype PRM uses 'http://simulizar.palladiosimulator.org/PalladioRuntimeMonitoring/1.0';
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
 modeltype PCM_REP uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0';
 modeltype PCM_SYS uses 'http://sdq.ipd.uka.de/PalladioComponentModel/System/5.0';
@@ -12,15 +13,21 @@ modeltype PCMCore uses pcm::core('http://sdq.ipd.uka.de/PalladioComponentModel/5
 modeltype PCMEntity uses pcm::core::entity('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
 modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
 modeltype PCMStoex uses stoex('http://sdq.ipd.uka.de/StochasticExpressions/2.2');
-	
+modeltype SEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0');
 
-transformation ReplicableTransformation(inout pcmAllocation : PCM_ALLOC,
-										inout pcmSystem : PCM_SYS,
-										inout pcmRepository : PCM_REP,
-										inout pcmResourceEnvironment : PCM_RES_ENV);
+transformation ReplicableTransformation(in prm : PRM, inout pcmAllocation : PCM_ALLOC);
+
+property threshold : Real = 3.0;
 
 main() {
 	log ('Main: Hello, here starts the Transformation!');	
+	
+	assert fatal(prm.rootObjects()[PCMModelElementMeasurement]->size() > 0)
+			with log ("No Measurements found!");
+			
+	assert fatal(pcmAllocation.rootObjects()[Allocation]->size() > 0)
+		with log ("Allocation Model is empty!");
+			
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var resourceEnvironment : ResourceEnvironment := allocation.targetResourceEnvironment_Allocation;
 	var resourceContainer : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
@@ -34,8 +41,22 @@ main() {
 //blackbox helper hasAppliedStereotype(resourceContainer:Entity, stereotypeName:String):Boolean;
 //blackbox helper appliedStereotypesEqualsOne(resourceContainerSet:Set(Entity),stereotypeName:String):Boolean;
 
+helper Set(PCMModelElementMeasurement) :: checkCondition() : Boolean {
+	
+		self->forEach(measurement) {
+		log('Measured value is ' + measurement.measurementValue.toString());
+		
+			if (measurement.measurementValue > threshold) {
+				return true;
+			};
+		};
+		
+		log('No measurements match the condition. Number of measurements is ' + self->size().toString());
+		return false;
+	}
+	
 mapping ResourceContainer::duplicateReplicableResourceContainer():ResourceContainer 
-	when{hasAppliedStereotype(self,"Replicable");}
+	when{hasAppliedStereotype(self,"Replicable") and prm.rootObjects()[PCMModelElementMeasurement]->checkCondition()}
 {
 	log ('Start of ResourceContainer duplication of '+self.entityName);
 	
@@ -192,6 +213,8 @@ constructor PCMRandomVariable :: PCMRandomVariable(pcmRandomVariable:PCMRandomVa
 	specification := pcmRandomVariable.specification;
 }
 
+-- FIXME Generally, BasicComponents can have several provided roles
+-- FIXME SEFFs do not support variables
 constructor BasicComponent :: BasicComponent (pr : ProvidedRole, ac:AssemblyContext){
 log ('Start of LoadBalancer Constructor');
 	var repository := ac.encapsulatedComponent__AssemblyContext.repository__RepositoryComponent;
@@ -200,8 +223,56 @@ log ('Start of LoadBalancer Constructor');
 	//id := providingEntity.id + "_LoadBalancer";
 	entityName := "LoadBalancer_"+ providingEntity.entityName;
 	repository__RepositoryComponent := repository;
-	providedRoles_InterfaceProvidingEntity := new OperationProvidedRole(operationProvidedRole);
-	requiredRoles_InterfaceRequiringEntity := Set{new OperationRequiredRole(operationProvidedRole,1), new OperationRequiredRole(operationProvidedRole,2)};
+	var operationProvidedRoleLB : OperationProvidedRole := new OperationProvidedRole(operationProvidedRole);
+	providedRoles_InterfaceProvidingEntity := operationProvidedRoleLB;
+	var operationInterface : OperationInterface := operationProvidedRoleLB.providedInterface__OperationProvidedRole;
+	var operationRequiredRole1 : OperationRequiredRole := new OperationRequiredRole(operationProvidedRole,1);
+	var operationRequiredRole2 : OperationRequiredRole := new OperationRequiredRole(operationProvidedRole,2);
+	var requiredRoles : Set(OperationRequiredRole) := Set{operationRequiredRole1, operationRequiredRole2};
+	requiredRoles_InterfaceRequiringEntity := requiredRoles;
+	operationInterface.signatures__OperationInterface->forEach(operationSignature){
+	  serviceEffectSpecifications__BasicComponent += new ResourceDemandingSEFF(operationSignature, requiredRoles);
+	};
+}	
+
+constructor ResourceDemandingSEFF :: ResourceDemandingSEFF (operationSignature : OperationSignature, requiredRoles : Set(OperationRequiredRole)){
+log ('Start of LoadBalancer ServiceEffectSpecification Constructor');
+	describedService__SEFF := operationSignature;
+	var startAction : StartAction := object StartAction{};
+	var branchAction : BranchAction := object BranchAction{
+		entityName := "LoadBalancer Branch";
+		predecessor_AbstractAction := startAction;
+		
+		requiredRoles->forEach(requiredRole){
+		    var probability : Real := 1.0 / requiredRoles->size();
+			branches_Branch += object ProbabilisticBranchTransition{
+			    entityName := "Branch for "+requiredRole.entityName;
+			    branchProbability := probability;
+			    branchBehaviour_BranchTransition := object ResourceDemandingBehaviour{
+			    	var innerStartAction : StartAction := object StartAction{};
+			    	var externalCallAction : ExternalCallAction := object ExternalCallAction{
+			    		predecessor_AbstractAction := innerStartAction;
+			    		entityName := "Call "+operationSignature.entityName;
+			    		role_ExternalService := requiredRole;
+			    		calledService_ExternalService := operationSignature;
+			    	};
+			    	var innerStopAction : StopAction := object StopAction{
+						predecessor_AbstractAction := externalCallAction;
+					};
+					
+					steps_Behaviour += innerStartAction;
+					steps_Behaviour += externalCallAction;
+					steps_Behaviour += innerStopAction;
+			    };
+			};
+		};
+	};
+	var stopAction : StopAction := object StopAction{
+		predecessor_AbstractAction := branchAction;
+	};
+	steps_Behaviour += startAction;
+	steps_Behaviour += branchAction;
+	steps_Behaviour += stopAction;
 }	
 
 constructor OperationProvidedRole :: OperationProvidedRole(pr:OperationProvidedRole){
