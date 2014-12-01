@@ -24,7 +24,7 @@
       <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_Ji4FgCOfEeSubfGVEKswQQ" predecessor_AbstractAction="_Ns4n0COfEeSubfGVEKswQQ" successor_AbstractAction="_hDP1ASOeEeSubfGVEKswQQ" calledService_ExternalService="_YrpQ4COeEeSubfGVEKswQQ" role_ExternalService="_9X1hcCOdEeSubfGVEKswQQ"/>
       <steps_Behaviour xsi:type="seff:InternalAction" id="_Ns4n0COfEeSubfGVEKswQQ" entityName="CheckValidity" predecessor_AbstractAction="_hDP1ACOeEeSubfGVEKswQQ" successor_AbstractAction="_Ji4FgCOfEeSubfGVEKswQQ">
         <resourceDemand_Action>
-          <specification_ParametericResourceDemand specification="10"/>
+          <specification_ParametericResourceDemand specification="20"/>
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
