@@ -29,15 +29,15 @@
         <element xmi:type="usagemodel:ScenarioBehaviour" href="threeLayer.usagemodel#_WGr5cCOhEeSubfGVEKswQQ"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WJiZISOhEeSubfGVEKswQQ" x="2" y="13" width="416" height="427"/>
       </children>
-      <children xmi:type="notation:Node" xmi:id="_aTO88COiEeSubfGVEKswQQ" type="3015">
-        <children xmi:type="notation:DecorationNode" xmi:id="_aTO89SOiEeSubfGVEKswQQ" type="5013"/>
-        <children xmi:type="notation:DecorationNode" xmi:id="_aTO89iOiEeSubfGVEKswQQ" type="5014"/>
-        <children xmi:type="notation:DecorationNode" xmi:id="_aTO89yOiEeSubfGVEKswQQ" type="5015"/>
-        <styles xmi:type="notation:DescriptionStyle" xmi:id="_aTO88SOiEeSubfGVEKswQQ"/>
-        <styles xmi:type="notation:FontStyle" xmi:id="_aTO88iOiEeSubfGVEKswQQ" fontName="Segoe UI"/>
-        <styles xmi:type="notation:LineStyle" xmi:id="_aTO88yOiEeSubfGVEKswQQ"/>
+      <children xmi:type="notation:Node" xmi:id="_l7reoHYTEeS_wvtZBu3H0g" type="3015">
+        <children xmi:type="notation:DecorationNode" xmi:id="_l7sFsHYTEeS_wvtZBu3H0g" type="5013"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_l7sFsXYTEeS_wvtZBu3H0g" type="5014"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_l7sFsnYTEeS_wvtZBu3H0g" type="5015"/>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_l7reoXYTEeS_wvtZBu3H0g"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_l7reonYTEeS_wvtZBu3H0g" fontName=".Helvetica Neue DeskInterface"/>
+        <styles xmi:type="notation:LineStyle" xmi:id="_l7reo3YTEeS_wvtZBu3H0g"/>
         <element xmi:type="usagemodel:ClosedWorkload" href="threeLayer.usagemodel#//@usageScenario_UsageModel.0/@workload_UsageScenario"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aTO89COiEeSubfGVEKswQQ" x="450" y="31"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_l7repHYTEeS_wvtZBu3H0g" x="486" y="57"/>
       </children>
     </children>
     <styles xmi:type="notation:DescriptionStyle" xmi:id="_WJZPMSOhEeSubfGVEKswQQ"/>
