@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <usagemodel:UsageModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stoex="http://sdq.ipd.uka.de/StochasticExpressions/2.2" xmlns:usagemodel="http://sdq.ipd.uka.de/PalladioComponentModel/UsageModel/5.0">
-  <usageScenario_UsageModel id="_urp1sMRhEeKhtIcOUnTHaw" entityName="homeInteraction">
+  <usageScenario_UsageModel id="_urp1sMRhEeKhtIcOUnTHaw" entityName="HomeInteraction">
     <scenarioBehaviour_UsageScenario id="_urp1scRhEeKhtIcOUnTHaw" entityName="defaultUsageScenarioBehaviour">
       <actions_ScenarioBehaviour xsi:type="usagemodel:Start" id="_urp1ssRhEeKhtIcOUnTHaw" successor="_Q6ircMRjEeKhtIcOUnTHaw"/>
       <actions_ScenarioBehaviour xsi:type="usagemodel:Stop" id="_urp1s8RhEeKhtIcOUnTHaw" predecessor="_Q6ircMRjEeKhtIcOUnTHaw"/>
