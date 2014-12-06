@@ -27,15 +27,15 @@ import org.scaledl.architecturaltemplates.type.util.TypeAdapterFactory;
  * {@link #fireNotifyChanged fireNotifyChanged}. The adapters also support Eclipse property sheets.
  * Note that most of the adapters are shared among multiple instances. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class TypeItemProviderAdapterFactory extends TypeAdapterFactory implements ComposeableAdapterFactory,
-IChangeNotifier, IDisposable {
+        IChangeNotifier, IDisposable {
     /**
      * This keeps track of the root adapter factory that delegates to this adapter factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -43,7 +43,7 @@ IChangeNotifier, IDisposable {
     /**
      * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -51,14 +51,14 @@ IChangeNotifier, IDisposable {
     /**
      * This keeps track of all the supported types checked by {@link #isFactoryForType
      * isFactoryForType}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public TypeItemProviderAdapterFactory() {
@@ -73,7 +73,7 @@ IChangeNotifier, IDisposable {
      * This keeps track of the one adapter used for all
      * {@link org.scaledl.architecturaltemplates.type.AT} instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ATItemProvider atItemProvider;
@@ -81,7 +81,7 @@ IChangeNotifier, IDisposable {
     /**
      * This creates an adapter for a {@link org.scaledl.architecturaltemplates.type.AT}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ IChangeNotifier, IDisposable {
      * This keeps track of the one adapter used for all
      * {@link org.scaledl.architecturaltemplates.type.Parameter} instances. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ParameterItemProvider parameterItemProvider;
@@ -105,7 +105,7 @@ IChangeNotifier, IDisposable {
     /**
      * This creates an adapter for a {@link org.scaledl.architecturaltemplates.type.Parameter}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -121,7 +121,7 @@ IChangeNotifier, IDisposable {
      * This keeps track of the one adapter used for all
      * {@link org.scaledl.architecturaltemplates.type.Repository} instances. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected RepositoryItemProvider repositoryItemProvider;
@@ -129,7 +129,7 @@ IChangeNotifier, IDisposable {
     /**
      * This creates an adapter for a {@link org.scaledl.architecturaltemplates.type.Repository}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -145,7 +145,7 @@ IChangeNotifier, IDisposable {
      * This keeps track of the one adapter used for all
      * {@link org.scaledl.architecturaltemplates.type.Role} instances. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected RoleItemProvider roleItemProvider;
@@ -153,7 +153,7 @@ IChangeNotifier, IDisposable {
     /**
      * This creates an adapter for a {@link org.scaledl.architecturaltemplates.type.Role}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -169,7 +169,7 @@ IChangeNotifier, IDisposable {
      * This keeps track of the one adapter used for all
      * {@link org.scaledl.architecturaltemplates.type.OCLConstraint} instances. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected OCLConstraintItemProvider oclConstraintItemProvider;
@@ -177,7 +177,7 @@ IChangeNotifier, IDisposable {
     /**
      * This creates an adapter for a {@link org.scaledl.architecturaltemplates.type.OCLConstraint}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -193,7 +193,7 @@ IChangeNotifier, IDisposable {
      * This keeps track of the one adapter used for all
      * {@link org.scaledl.architecturaltemplates.type.QVTOCompletion} instances. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected QVTOCompletionItemProvider qvtoCompletionItemProvider;
@@ -201,7 +201,7 @@ IChangeNotifier, IDisposable {
     /**
      * This creates an adapter for a {@link org.scaledl.architecturaltemplates.type.QVTOCompletion}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -217,7 +217,7 @@ IChangeNotifier, IDisposable {
      * This keeps track of the one adapter used for all
      * {@link org.scaledl.architecturaltemplates.type.GenericTemplateCompletionParameter} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected GenericTemplateCompletionParameterItemProvider genericTemplateCompletionParameterItemProvider;
@@ -226,7 +226,7 @@ IChangeNotifier, IDisposable {
      * This creates an adapter for a
      * {@link org.scaledl.architecturaltemplates.type.GenericTemplateCompletionParameter}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -243,7 +243,7 @@ IChangeNotifier, IDisposable {
      * This keeps track of the one adapter used for all
      * {@link org.scaledl.architecturaltemplates.type.GenericBlackboardCompletionParameter}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected GenericBlackboardCompletionParameterItemProvider genericBlackboardCompletionParameterItemProvider;
@@ -252,7 +252,7 @@ IChangeNotifier, IDisposable {
      * This creates an adapter for a
      * {@link org.scaledl.architecturaltemplates.type.GenericBlackboardCompletionParameter}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -269,7 +269,7 @@ IChangeNotifier, IDisposable {
      * This keeps track of the one adapter used for all
      * {@link org.scaledl.architecturaltemplates.type.PCMBlackboardCompletionParameter} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected PCMBlackboardCompletionParameterItemProvider pcmBlackboardCompletionParameterItemProvider;
@@ -278,7 +278,7 @@ IChangeNotifier, IDisposable {
      * This creates an adapter for a
      * {@link org.scaledl.architecturaltemplates.type.PCMBlackboardCompletionParameter}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -294,7 +294,7 @@ IChangeNotifier, IDisposable {
      * This keeps track of the one adapter used for all
      * {@link org.scaledl.architecturaltemplates.type.PCMTemplateCompletionParameter} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected PCMTemplateCompletionParameterItemProvider pcmTemplateCompletionParameterItemProvider;
@@ -303,7 +303,7 @@ IChangeNotifier, IDisposable {
      * This creates an adapter for a
      * {@link org.scaledl.architecturaltemplates.type.PCMTemplateCompletionParameter}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -319,7 +319,7 @@ IChangeNotifier, IDisposable {
      * This keeps track of the one adapter used for all
      * {@link org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected PCMOutputCompletionParameterItemProvider pcmOutputCompletionParameterItemProvider;
@@ -328,7 +328,7 @@ IChangeNotifier, IDisposable {
      * This creates an adapter for a
      * {@link org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -344,7 +344,7 @@ IChangeNotifier, IDisposable {
      * This keeps track of the one adapter used for all
      * {@link org.scaledl.architecturaltemplates.type.GenericOutputCompletionParameter} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected GenericOutputCompletionParameterItemProvider genericOutputCompletionParameterItemProvider;
@@ -353,7 +353,7 @@ IChangeNotifier, IDisposable {
      * This creates an adapter for a
      * {@link org.scaledl.architecturaltemplates.type.GenericOutputCompletionParameter}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -368,7 +368,7 @@ IChangeNotifier, IDisposable {
     /**
      * This returns the root adapter factory that contains this factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -379,7 +379,7 @@ IChangeNotifier, IDisposable {
     /**
      * This sets the composed adapter factory that contains this factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -389,7 +389,7 @@ IChangeNotifier, IDisposable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -400,7 +400,7 @@ IChangeNotifier, IDisposable {
     /**
      * This implementation substitutes the factory itself as the key for the adapter. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -410,7 +410,7 @@ IChangeNotifier, IDisposable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -427,7 +427,7 @@ IChangeNotifier, IDisposable {
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -437,7 +437,7 @@ IChangeNotifier, IDisposable {
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -448,7 +448,7 @@ IChangeNotifier, IDisposable {
     /**
      * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -463,7 +463,7 @@ IChangeNotifier, IDisposable {
     /**
      * This disposes all of the item providers created by this factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

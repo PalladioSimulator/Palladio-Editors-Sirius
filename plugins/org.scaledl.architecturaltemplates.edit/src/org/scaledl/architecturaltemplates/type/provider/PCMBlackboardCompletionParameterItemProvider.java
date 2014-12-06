@@ -19,14 +19,14 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  * This is the item provider adapter for a
  * {@link org.scaledl.architecturaltemplates.type.PCMBlackboardCompletionParameter} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class PCMBlackboardCompletionParameterItemProvider extends CompletionParameterItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public PCMBlackboardCompletionParameterItemProvider(final AdapterFactory adapterFactory) {
@@ -36,7 +36,7 @@ public class PCMBlackboardCompletionParameterItemProvider extends CompletionPara
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -52,7 +52,7 @@ public class PCMBlackboardCompletionParameterItemProvider extends CompletionPara
     /**
      * This adds a property descriptor for the File Extension feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addFileExtensionPropertyDescriptor(final Object object) {
@@ -62,14 +62,14 @@ public class PCMBlackboardCompletionParameterItemProvider extends CompletionPara
                         "_UI_PropertyDescriptor_description",
                         "_UI_PCMBlackboardCompletionParameter_fileExtension_feature",
                         "_UI_PCMBlackboardCompletionParameter_type"),
-                        TypePackage.Literals.PCM_BLACKBOARD_COMPLETION_PARAMETER__FILE_EXTENSION, true, false, false,
-                        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                TypePackage.Literals.PCM_BLACKBOARD_COMPLETION_PARAMETER__FILE_EXTENSION, true, false, false,
+                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
      * This returns PCMBlackboardCompletionParameter.gif. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -81,7 +81,7 @@ public class PCMBlackboardCompletionParameterItemProvider extends CompletionPara
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -96,7 +96,7 @@ public class PCMBlackboardCompletionParameterItemProvider extends CompletionPara
      * This handles model notifications by calling {@link #updateChildren} to update any cached
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -114,7 +114,7 @@ public class PCMBlackboardCompletionParameterItemProvider extends CompletionPara
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that
      * can be created under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

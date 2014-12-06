@@ -27,15 +27,15 @@ import org.scaledl.architecturaltemplates.instance.util.InstanceAdapterFactory;
  * {@link #fireNotifyChanged fireNotifyChanged}. The adapters also support Eclipse property sheets.
  * Note that most of the adapters are shared among multiple instances. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public class InstanceItemProviderAdapterFactory extends InstanceAdapterFactory implements ComposeableAdapterFactory,
-IChangeNotifier, IDisposable {
+        IChangeNotifier, IDisposable {
     /**
      * This keeps track of the root adapter factory that delegates to this adapter factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ComposedAdapterFactory parentAdapterFactory;
@@ -43,7 +43,7 @@ IChangeNotifier, IDisposable {
     /**
      * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IChangeNotifier changeNotifier = new ChangeNotifier();
@@ -51,14 +51,14 @@ IChangeNotifier, IDisposable {
     /**
      * This keeps track of all the supported types checked by {@link #isFactoryForType
      * isFactoryForType}. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     public InstanceItemProviderAdapterFactory() {
@@ -73,7 +73,7 @@ IChangeNotifier, IDisposable {
      * This keeps track of the one adapter used for all
      * {@link org.scaledl.architecturaltemplates.instance.ATInstance} instances. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected ATInstanceItemProvider atInstanceItemProvider;
@@ -81,7 +81,7 @@ IChangeNotifier, IDisposable {
     /**
      * This creates an adapter for a {@link org.scaledl.architecturaltemplates.instance.ATInstance}.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ IChangeNotifier, IDisposable {
      * This keeps track of the one adapter used for all
      * {@link org.scaledl.architecturaltemplates.instance.Component2Role} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Component2RoleItemProvider component2RoleItemProvider;
@@ -106,7 +106,7 @@ IChangeNotifier, IDisposable {
      * This creates an adapter for a
      * {@link org.scaledl.architecturaltemplates.instance.Component2Role}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -122,7 +122,7 @@ IChangeNotifier, IDisposable {
      * This keeps track of the one adapter used for all
      * {@link org.scaledl.architecturaltemplates.instance.Role2Component} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Role2ComponentItemProvider role2ComponentItemProvider;
@@ -131,7 +131,7 @@ IChangeNotifier, IDisposable {
      * This creates an adapter for a
      * {@link org.scaledl.architecturaltemplates.instance.Role2Component}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -147,7 +147,7 @@ IChangeNotifier, IDisposable {
      * This keeps track of the one adapter used for all
      * {@link org.scaledl.architecturaltemplates.instance.EnumParameter} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected EnumParameterItemProvider enumParameterItemProvider;
@@ -156,7 +156,7 @@ IChangeNotifier, IDisposable {
      * This creates an adapter for a
      * {@link org.scaledl.architecturaltemplates.instance.EnumParameter}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -172,7 +172,7 @@ IChangeNotifier, IDisposable {
      * This keeps track of the one adapter used for all
      * {@link org.scaledl.architecturaltemplates.instance.IntegerParameter} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected IntegerParameterItemProvider integerParameterItemProvider;
@@ -181,7 +181,7 @@ IChangeNotifier, IDisposable {
      * This creates an adapter for a
      * {@link org.scaledl.architecturaltemplates.instance.IntegerParameter}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -197,7 +197,7 @@ IChangeNotifier, IDisposable {
      * This keeps track of the one adapter used for all
      * {@link org.scaledl.architecturaltemplates.instance.FloatParameter} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected FloatParameterItemProvider floatParameterItemProvider;
@@ -206,7 +206,7 @@ IChangeNotifier, IDisposable {
      * This creates an adapter for a
      * {@link org.scaledl.architecturaltemplates.instance.FloatParameter}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -222,7 +222,7 @@ IChangeNotifier, IDisposable {
      * This keeps track of the one adapter used for all
      * {@link org.scaledl.architecturaltemplates.instance.StringParameter} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected StringParameterItemProvider stringParameterItemProvider;
@@ -231,7 +231,7 @@ IChangeNotifier, IDisposable {
      * This creates an adapter for a
      * {@link org.scaledl.architecturaltemplates.instance.StringParameter}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -247,7 +247,7 @@ IChangeNotifier, IDisposable {
      * This keeps track of the one adapter used for all
      * {@link org.scaledl.architecturaltemplates.instance.Role2Resource} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected Role2ResourceItemProvider role2ResourceItemProvider;
@@ -256,7 +256,7 @@ IChangeNotifier, IDisposable {
      * This creates an adapter for a
      * {@link org.scaledl.architecturaltemplates.instance.Role2Resource}. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -271,7 +271,7 @@ IChangeNotifier, IDisposable {
     /**
      * This returns the root adapter factory that contains this factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -282,7 +282,7 @@ IChangeNotifier, IDisposable {
     /**
      * This sets the composed adapter factory that contains this factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -292,7 +292,7 @@ IChangeNotifier, IDisposable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -303,7 +303,7 @@ IChangeNotifier, IDisposable {
     /**
      * This implementation substitutes the factory itself as the key for the adapter. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -313,7 +313,7 @@ IChangeNotifier, IDisposable {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -330,7 +330,7 @@ IChangeNotifier, IDisposable {
 
     /**
      * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -340,7 +340,7 @@ IChangeNotifier, IDisposable {
 
     /**
      * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -351,7 +351,7 @@ IChangeNotifier, IDisposable {
     /**
      * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -366,7 +366,7 @@ IChangeNotifier, IDisposable {
     /**
      * This disposes all of the item providers created by this factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

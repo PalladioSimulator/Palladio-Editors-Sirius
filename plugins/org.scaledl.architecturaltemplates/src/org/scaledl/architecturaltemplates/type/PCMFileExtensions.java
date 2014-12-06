@@ -247,10 +247,8 @@ public enum PCMFileExtensions implements Enumerator {
      *
      * @generated
      */
-    private static final PCMFileExtensions[] VALUES_ARRAY = new PCMFileExtensions[] {
-        SYSTEM, ALLOCATION, RESOURCEENVIRONMENT, REPOSITORY, USAGEMODEL, RESOURCETYPE, PMS, PCMMEASURINGPOINT,
-        SERVICELEVELOBJECTIVE,
-    };
+    private static final PCMFileExtensions[] VALUES_ARRAY = new PCMFileExtensions[] { SYSTEM, ALLOCATION,
+        RESOURCEENVIRONMENT, REPOSITORY, USAGEMODEL, RESOURCETYPE, PMS, PCMMEASURINGPOINT, SERVICELEVELOBJECTIVE, };
 
     /**
      * A public read-only list of all the '<em><b>PCM File Extensions</b></em>' enumerators. <!--
