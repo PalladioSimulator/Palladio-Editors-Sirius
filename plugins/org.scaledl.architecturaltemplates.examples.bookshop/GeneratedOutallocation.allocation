@@ -2,13 +2,13 @@
 <allocation:Allocation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:allocation="http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0" id="_6h150COfEeSubfGVEKswQQ_ThreeLayerAllocation" entityName="ThreeLayerAllocation">
   <targetResourceEnvironment_Allocation href="../org.scaledl.architecturaltemplates.repositories.cloudscale/template/ThreeTier.resourceenvironment#/"/>
   <system_Allocation href="threeLayer.system#_6h150COfEeSubfGVEKswQQ"/>
-  <allocationContexts_Allocation id="_keXmICOgEeSubfGVEKswQQ_Assembly_BookDatabase &lt;BookDatabase>_AllocationContext" entityName="Allocation_Assembly_BookDatabase &lt;BookDatabase>">
-    <resourceContainer_AllocationContext href="../org.scaledl.architecturaltemplates.repositories.cloudscale/template/ThreeTier.resourceenvironment#_HAQbICPIEeSwPfc4EJw-WA"/>
-    <assemblyContext_AllocationContext href="threeLayer.system#_keXmICOgEeSubfGVEKswQQ"/>
-  </allocationContexts_Allocation>
   <allocationContexts_Allocation id="_hSPoYCOgEeSubfGVEKswQQ_Assembly_BookManagement &lt;BookManagement>_AllocationContext" entityName="Allocation_Assembly_BookManagement &lt;BookManagement>">
     <resourceContainer_AllocationContext href="../org.scaledl.architecturaltemplates.repositories.cloudscale/template/ThreeTier.resourceenvironment#_Fg46ICPIEeSwPfc4EJw-WA"/>
     <assemblyContext_AllocationContext href="threeLayer.system#_hSPoYCOgEeSubfGVEKswQQ"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_keXmICOgEeSubfGVEKswQQ_Assembly_BookDatabase &lt;BookDatabase>_AllocationContext" entityName="Allocation_Assembly_BookDatabase &lt;BookDatabase>">
+    <resourceContainer_AllocationContext href="../org.scaledl.architecturaltemplates.repositories.cloudscale/template/ThreeTier.resourceenvironment#_HAQbICPIEeSwPfc4EJw-WA"/>
+    <assemblyContext_AllocationContext href="threeLayer.system#_keXmICOgEeSubfGVEKswQQ"/>
   </allocationContexts_Allocation>
   <allocationContexts_Allocation id="_c4HmcCOgEeSubfGVEKswQQ_Assembly_BookShopFrontend &lt;BookShopFrontend>_AllocationContext" entityName="Allocation_Assembly_BookShopFrontend &lt;BookShopFrontend>">
     <resourceContainer_AllocationContext href="../org.scaledl.architecturaltemplates.repositories.cloudscale/template/ThreeTier.resourceenvironment#_ETFqQCPIEeSwPfc4EJw-WA"/>
