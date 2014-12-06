@@ -55,317 +55,280 @@ import de.uka.ipd.sdq.workflow.pcm.blackboard.PCMResourceSetPartition;
 import de.uka.ipd.sdq.workflow.pcm.jobs.LoadPCMModelsIntoBlackboardJob;
 
 /**
- * Recursively applies AT completions until no AT completion is left anymore.
- * Therefore, AT completions have to remove stereotype applications that
- * reference these. Results are directly stored within the blackboard.
+ * Recursively applies AT completions until no AT completion is left anymore. Therefore, AT
+ * completions have to remove stereotype applications that reference these. Results are directly
+ * stored within the blackboard.
  * 
  * @author Sebastian Lehrig
  */
-public class RunATCompletionJob extends
-		SequentialBlackboardInteractingJob<MDSDBlackboard> {
+public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDBlackboard> {
 
-	/** Folder with traces as created by the QVT-O engine */
-	private static final String TRACESFOLDER = "traces";
+    /** Folder with traces as created by the QVT-O engine */
+    private static final String TRACESFOLDER = "traces";
 
-	public RunATCompletionJob(final ATConfiguration configuration) {
-	}
+    public RunATCompletionJob(final ATConfiguration configuration) {
+    }
 
-	@Override
-	public void execute(final IProgressMonitor monitor)
-			throws JobFailedException, UserCanceledException {
-		super.execute(monitor);
+    @Override
+    public void execute(final IProgressMonitor monitor) throws JobFailedException, UserCanceledException {
+        super.execute(monitor);
 
-		final AT architecturalTemplate = this.getATFromSystem();
-		if (architecturalTemplate != null) {
-			// get QVT-O completion
-			final QVTOCompletion completion;
-			if (architecturalTemplate.getCompletion() instanceof QVTOCompletion) {
-				completion = (QVTOCompletion) architecturalTemplate
-						.getCompletion();
-			} else {
-				throw new RuntimeException("This jobs assumes a QVTOCompletion");
-			}
+        final AT architecturalTemplate = this.getATFromSystem();
+        if (architecturalTemplate != null) {
+            // get QVT-O completion
+            final QVTOCompletion completion;
+            if (architecturalTemplate.getCompletion() instanceof QVTOCompletion) {
+                completion = (QVTOCompletion) architecturalTemplate.getCompletion();
+            } else {
+                throw new RuntimeException("This jobs assumes a QVTOCompletion");
+            }
 
-			// load templates
-			final URI rootATUri = architecturalTemplate.eResource().getURI()
-					.trimFragment().trimSegments(2);
-			this.loadTemplatesIntoBlackboard(
-					rootATUri.appendSegment("template"),
-					completion.getParameters());
-			
-			// create model instances for out parameter and load them into
-			// blackboard
-			final URI systemModelFolderURI = getSystemModelFolderURI();
-			final List<URI> outParameterURIs = this.createOutParameterModels(
-					systemModelFolderURI, completion.getParameters());
-			this.loadOutParameterModelsIntoBlackboard(outParameterURIs);
-			// build file paths for trace and transformation files
-			final URI traceFileURI = URI.createURI(TRACESFOLDER);
-			final URI scriptFileURI = rootATUri.appendSegment("transformation")
-					.appendSegment(completion.getQvtoFileURI());
+            // load templates
+            final URI rootATUri = architecturalTemplate.eResource().getURI().trimFragment().trimSegments(1);
+            this.loadTemplatesIntoBlackboard(
+                    rootATUri.appendSegment("templates").appendSegment(architecturalTemplate.getEntityName()),
+                    completion.getParameters());
 
-			// configure the QVTO Job
-			final QVTOTransformationJobConfiguration qvtoConfig = new QVTOTransformationJobConfiguration();
-			qvtoConfig.setInoutModels(getRequiredModels(completion
-					.getParameters()));
-			qvtoConfig.setTraceFileURI(traceFileURI);
-			qvtoConfig.setScriptFileURI(scriptFileURI);
-			qvtoConfig.setOptions(new HashMap<String, Object>());
+            // create model instances for out parameter and load them into
+            // blackboard
+            final URI systemModelFolderURI = getSystemModelFolderURI();
+            final List<URI> outParameterURIs = this.createOutParameterModels(systemModelFolderURI,
+                    completion.getParameters());
+            this.loadOutParameterModelsIntoBlackboard(outParameterURIs);
+            // build file paths for trace and transformation files
+            final URI traceFileURI = URI.createURI(TRACESFOLDER);
+            final URI scriptFileURI = rootATUri.appendSegment("completions").appendSegment(completion.getQvtoFileURI());
 
-			// create and add the qvto job
-			final QVTOTransformationJob job = new QVTOTransformationJob(
-					qvtoConfig);
-			job.setBlackboard(getBlackboard());
+            // configure the QVTO Job
+            final QVTOTransformationJobConfiguration qvtoConfig = new QVTOTransformationJobConfiguration();
+            qvtoConfig.setInoutModels(getRequiredModels(completion.getParameters()));
+            qvtoConfig.setTraceFileURI(traceFileURI);
+            qvtoConfig.setScriptFileURI(scriptFileURI);
+            qvtoConfig.setOptions(new HashMap<String, Object>());
 
-			// execute transformation job
-			try {
-				job.execute(new NullProgressMonitor());
-			} catch (JobFailedException e) {
-				if (logger.isEnabledFor(Level.ERROR)) {
-					logger.error("Failed to perform Architectural Template completion: "
-							+ e.getMessage());
-				}
-				if (logger.isEnabledFor(Level.INFO)) {
-					logger.info("Trying to continue Architectural Template completion even though an internal failure occured");
-				}
-			}
+            // create and add the qvto job
+            final QVTOTransformationJob job = new QVTOTransformationJob(qvtoConfig);
+            job.setBlackboard(getBlackboard());
 
-			// save the modified model
-			final SavePartitionToDiskJob savePartitionJob = new SavePartitionToDiskJob(
-					LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
-			savePartitionJob.setBlackboard(getBlackboard());
-			savePartitionJob.execute(monitor);
-		}
-		// If no AT was found, let's hope the PCM model is complete...
-	}
+            // execute transformation job
+            try {
+                job.execute(new NullProgressMonitor());
+            } catch (JobFailedException e) {
+                if (logger.isEnabledFor(Level.ERROR)) {
+                    logger.error("Failed to perform Architectural Template completion: " + e.getMessage());
+                }
+                if (logger.isEnabledFor(Level.INFO)) {
+                    logger.info("Trying to continue Architectural Template completion even though an internal failure occured");
+                }
+            }
 
-	/**
-	 * Loads AT template parameters into the blackboard.
-	 * 
-	 * @param templateURI
-	 * @param completion
-	 */
-	private void loadTemplatesIntoBlackboard(final URI templateURI,
-			final EList<CompletionParameter> completionParameters) {
-		final ResourceSetPartition resourceSetPartition = this.getBlackboard()
-				.getPartition(
-						LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
+            // save the modified model
+            final SavePartitionToDiskJob savePartitionJob = new SavePartitionToDiskJob(
+                    LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
+            savePartitionJob.setBlackboard(getBlackboard());
+            savePartitionJob.execute(monitor);
+        }
+        // If no AT was found, let's hope the PCM model is complete...
+    }
 
-		for (final CompletionParameter completionParameter : completionParameters) {
+    /**
+     * Loads AT template parameters into the blackboard.
+     * 
+     * @param templateURI
+     * @param completion
+     */
+    private void loadTemplatesIntoBlackboard(final URI templateURI,
+            final EList<CompletionParameter> completionParameters) {
+        final ResourceSetPartition resourceSetPartition = this.getBlackboard().getPartition(
+                LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
 
-			final String templateFileUri = new TypeSwitch<String>() {
-				@Override
-				public String caseTemplateProvidingEntity(
-						TemplateProvidingEntity object) {
-					return object.getTemplateFileURI();
-				}
-			}.doSwitch(completionParameter);
+        for (final CompletionParameter completionParameter : completionParameters) {
 
-			if (templateFileUri != null) {
-				resourceSetPartition.loadModel(templateURI
-						.appendSegment(templateFileUri));
-				resourceSetPartition.resolveAllProxies();
-			}
-		}
-	}
+            final String templateFileUri = new TypeSwitch<String>() {
+                @Override
+                public String caseTemplateProvidingEntity(TemplateProvidingEntity object) {
+                    return object.getTemplateFileURI();
+                }
+            }.doSwitch(completionParameter);
 
-	private void loadOutParameterModelsIntoBlackboard(
-			final List<URI> outParameterModelURIList) {
-		final ResourceSetPartition resourceSetPartition = this.getBlackboard()
-				.getPartition(
-						LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
+            if (templateFileUri != null) {
+                resourceSetPartition.loadModel(templateURI.appendSegment(templateFileUri));
+                resourceSetPartition.resolveAllProxies();
+            }
+        }
+    }
 
-		for (final URI outParameterModelURI : outParameterModelURIList) {
+    private void loadOutParameterModelsIntoBlackboard(final List<URI> outParameterModelURIList) {
+        final ResourceSetPartition resourceSetPartition = this.getBlackboard().getPartition(
+                LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
 
-			if (outParameterModelURI != null) {
-				resourceSetPartition.loadModel(outParameterModelURI);
-				resourceSetPartition.resolveAllProxies();
-			}
-		}
-	}
+        for (final URI outParameterModelURI : outParameterModelURIList) {
 
-	/**
-	 * Receives the architectural template attached to a system. Such an
-	 * attachment is realized via a stereotype with "roleURI" as a tagged value.
-	 * The tagged value references the concrete AT role the system acts. If no
-	 * such tagged value can be found, <code>null</code> is returned.
-	 * 
-	 * @return the architectural template applied to this system;
-	 *         <code>null</code> if no such template can be found.
-	 */
-	private AT getATFromSystem() {
-		final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) this.myBlackboard
-				.getPartition(LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
+            if (outParameterModelURI != null) {
+                resourceSetPartition.loadModel(outParameterModelURI);
+                resourceSetPartition.resolveAllProxies();
+            }
+        }
+    }
 
-		de.uka.ipd.sdq.pcm.system.System system = null;
-		try {
-			system = pcmRepositoryPartition.getSystem();
-		} catch (final IndexOutOfBoundsException e) {
-		}
+    /**
+     * Receives the architectural template attached to a system. Such an attachment is realized via
+     * a stereotype with "roleURI" as a tagged value. The tagged value references the concrete AT
+     * role the system acts. If no such tagged value can be found, <code>null</code> is returned.
+     * 
+     * @return the architectural template applied to this system; <code>null</code> if no such
+     *         template can be found.
+     */
+    private AT getATFromSystem() {
+        final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) this.myBlackboard
+                .getPartition(LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
 
-		if (system != null) {
-			for (final Stereotype stereotype : system.getAppliedStereotypes()) {
-				final EStructuralFeature roleURI = stereotype
-						.getTaggedValue("roleURI");
-				if (roleURI != null) {
-					final EObject eObject = EMFLoadHelper.loadModel(roleURI
-							.getDefaultValueLiteral());
-					final Role atRole = (Role) eObject;
-					return atRole.getAT();
-				}
-			}
-		}
+        de.uka.ipd.sdq.pcm.system.System system = null;
+        try {
+            system = pcmRepositoryPartition.getSystem();
+        } catch (final IndexOutOfBoundsException e) {
+        }
 
-		return null;
-	}
+        if (system != null) {
+            for (final Stereotype stereotype : system.getAppliedStereotypes()) {
+                final EStructuralFeature roleURI = stereotype.getTaggedValue("roleURI");
+                if (roleURI != null) {
+                    final EObject eObject = EMFLoadHelper.loadModel(roleURI.getDefaultValueLiteral());
+                    final Role atRole = (Role) eObject;
+                    return atRole.getAT();
+                }
+            }
+        }
 
-	/**
-	 * Builds the location objects out of the blackboards PCM model partition.
-	 * 
-	 * @return The prepared model locations for the PCM models.
-	 */
-	private ModelLocation[] getRequiredModels(
-			EList<CompletionParameter> completionParameters) {
-		final ModelLocation[] result = new ModelLocation[completionParameters
-				.size()];
+        return null;
+    }
 
-		// find the models in the blackboard
-		final String pcmModelPartitionId = LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID;
-		final ResourceSetPartition partition = this.getBlackboard()
-				.getPartition(pcmModelPartitionId);
-		partition.resolveAllProxies();
-		for (final Resource r : partition.getResourceSet().getResources()) {
-			final URI modelURI = r.getURI();
-			final String fileExtension = modelURI.fileExtension();
+    /**
+     * Builds the location objects out of the blackboards PCM model partition.
+     * 
+     * @return The prepared model locations for the PCM models.
+     */
+    private ModelLocation[] getRequiredModels(EList<CompletionParameter> completionParameters) {
+        final ModelLocation[] result = new ModelLocation[completionParameters.size()];
 
-			int parameterCounter = 0;
-			for (final CompletionParameter completionParameter : completionParameters) {
+        // find the models in the blackboard
+        final String pcmModelPartitionId = LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID;
+        final ResourceSetPartition partition = this.getBlackboard().getPartition(pcmModelPartitionId);
+        partition.resolveAllProxies();
+        for (final Resource r : partition.getResourceSet().getResources()) {
+            final URI modelURI = r.getURI();
+            final String fileExtension = modelURI.fileExtension();
 
-				final String parameterFileExtension = new TypeSwitch<String>() {
-					@Override
-					public String casePCMBlackboardCompletionParameter(
-							PCMBlackboardCompletionParameter object) {
-						return object.getFileExtension().getLiteral();
-					}
+            int parameterCounter = 0;
+            for (final CompletionParameter completionParameter : completionParameters) {
 
-					@Override
-					public String caseGenericBlackboardCompletionParameter(
-							GenericBlackboardCompletionParameter object) {
-						return object.getFileExtension();
-					}
+                final String parameterFileExtension = new TypeSwitch<String>() {
+                    @Override
+                    public String casePCMBlackboardCompletionParameter(PCMBlackboardCompletionParameter object) {
+                        return object.getFileExtension().getLiteral();
+                    }
 
-					@Override
-					public String casePCMOutputCompletionParameter(
-							PCMOutputCompletionParameter object) {
-						return object.getFileExtension().getLiteral();
-					}
+                    @Override
+                    public String caseGenericBlackboardCompletionParameter(GenericBlackboardCompletionParameter object) {
+                        return object.getFileExtension();
+                    }
 
-					@Override
-					public String caseGenericOutputCompletionParameter(
-							GenericOutputCompletionParameter object) {
-						return object.getFileExtension();
-					}
-				}.doSwitch(completionParameter);
+                    @Override
+                    public String casePCMOutputCompletionParameter(PCMOutputCompletionParameter object) {
+                        return object.getFileExtension().getLiteral();
+                    }
 
-				if (parameterFileExtension != null
-						&& fileExtension.equals(parameterFileExtension)
-						&& !modelURI.toString().startsWith("pathmap://")
-						&& !modelURI.toString().contains(
-								"PrimitiveTypes.repository")) {
-					result[parameterCounter] = new ModelLocation(
-							pcmModelPartitionId, modelURI);
-				}
+                    @Override
+                    public String caseGenericOutputCompletionParameter(GenericOutputCompletionParameter object) {
+                        return object.getFileExtension();
+                    }
+                }.doSwitch(completionParameter);
 
-				parameterCounter++;
-			}
+                if (parameterFileExtension != null && fileExtension.equals(parameterFileExtension)
+                        && !modelURI.toString().startsWith("pathmap://")
+                        && !modelURI.toString().contains("PrimitiveTypes.repository")) {
+                    result[parameterCounter] = new ModelLocation(pcmModelPartitionId, modelURI);
+                }
 
-		}
+                parameterCounter++;
+            }
 
-		return result;
-	}
+        }
 
-	private URI getSystemModelFolderURI() {
-		final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) this.myBlackboard
-				.getPartition(LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
+        return result;
+    }
 
-		de.uka.ipd.sdq.pcm.system.System system = null;
-		try {
-			system = pcmRepositoryPartition.getSystem();
-		} catch (final IndexOutOfBoundsException e) {
-		}
+    private URI getSystemModelFolderURI() {
+        final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) this.myBlackboard
+                .getPartition(LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
 
-		return system.eResource().getURI().trimFragment().trimSegments(1);
-	}
+        de.uka.ipd.sdq.pcm.system.System system = null;
+        try {
+            system = pcmRepositoryPartition.getSystem();
+        } catch (final IndexOutOfBoundsException e) {
+        }
 
-	private List<URI> createOutParameterModels(URI systemFolderURI,
-			EList<CompletionParameter> completionParameters) {
-		final List<URI> outParameterURIs = new ArrayList<URI>();
-		for (final CompletionParameter completionParameter : completionParameters) {
+        return system.eResource().getURI().trimFragment().trimSegments(1);
+    }
 
-			final String parameterFileExtension = new TypeSwitch<String>() {
+    private List<URI> createOutParameterModels(URI systemFolderURI, EList<CompletionParameter> completionParameters) {
+        final List<URI> outParameterURIs = new ArrayList<URI>();
+        for (final CompletionParameter completionParameter : completionParameters) {
 
-				@Override
-				public String casePCMOutputCompletionParameter(
-						PCMOutputCompletionParameter object) {
-					return object.getFileExtension().getLiteral();
-				}
+            final String parameterFileExtension = new TypeSwitch<String>() {
 
-				@Override
-				public String caseGenericOutputCompletionParameter(
-						GenericOutputCompletionParameter object) {
-					return object.getFileExtension();
-				}
-			}.doSwitch(completionParameter);
-			final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) this.myBlackboard
-					.getPartition(LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
-			if (parameterFileExtension != null) {
-				ResourceSet resourceSet = new ResourceSetImpl();
-				Resource outResource = resourceSet.createResource(URI
-						.createURI(systemFolderURI + "/GeneratedOut"
-								+ parameterFileExtension + "."
-								+ parameterFileExtension));
-				outParameterURIs.add(outResource.getURI());
-				if (outResource instanceof AllocationResourceImpl) {
+                @Override
+                public String casePCMOutputCompletionParameter(PCMOutputCompletionParameter object) {
+                    return object.getFileExtension().getLiteral();
+                }
 
-					ResourceEnvironment resourceEnvironment = null;
-					try {
-						resourceEnvironment = pcmRepositoryPartition
-								.getResourceEnvironment();
-						Allocation allocation = AllocationFactory.eINSTANCE
-								.createAllocation();
-						allocation
-								.setTargetResourceEnvironment_Allocation(resourceEnvironment);
-						outResource.getContents().add(allocation);
-					} catch (final IndexOutOfBoundsException e) {
-					}
-				} else if (outResource instanceof PmsResourceImpl) {
-					PmsFactoryImpl pmsFactory = new PmsFactoryImpl();
-					PMSModel pmsModel = pmsFactory.createPMSModel();
-					outResource.getContents().add(pmsModel);
-				} else if (outResource instanceof PcmmeasuringpointResourceImpl) {
+                @Override
+                public String caseGenericOutputCompletionParameter(GenericOutputCompletionParameter object) {
+                    return object.getFileExtension();
+                }
+            }.doSwitch(completionParameter);
+            final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) this.myBlackboard
+                    .getPartition(LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
+            if (parameterFileExtension != null) {
+                ResourceSet resourceSet = new ResourceSetImpl();
+                Resource outResource = resourceSet.createResource(URI.createURI(systemFolderURI + "/GeneratedOut"
+                        + parameterFileExtension + "." + parameterFileExtension));
+                outParameterURIs.add(outResource.getURI());
+                if (outResource instanceof AllocationResourceImpl) {
 
-					UsageModel usageModel = null;
-					try {
-						usageModel = pcmRepositoryPartition.getUsageModel();
-						EList<UsageScenario> usageSzenarios = usageModel
-								.getUsageScenario_UsageModel();
-						UsageScenarioMeasuringPoint usageScenarioMeasuringPoint = PcmmeasuringpointFactoryImpl.eINSTANCE
-								.createUsageScenarioMeasuringPoint();
-						usageScenarioMeasuringPoint
-								.setUsageScenario(usageSzenarios.get(0));
-						outResource.getContents().add(
-								usageScenarioMeasuringPoint);
-					} catch (final IndexOutOfBoundsException e) {
-					}
-				}
-				try {
-					outResource.save(Collections.emptyMap());
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		return outParameterURIs;
-	}
+                    ResourceEnvironment resourceEnvironment = null;
+                    try {
+                        resourceEnvironment = pcmRepositoryPartition.getResourceEnvironment();
+                        Allocation allocation = AllocationFactory.eINSTANCE.createAllocation();
+                        allocation.setTargetResourceEnvironment_Allocation(resourceEnvironment);
+                        outResource.getContents().add(allocation);
+                    } catch (final IndexOutOfBoundsException e) {
+                    }
+                } else if (outResource instanceof PmsResourceImpl) {
+                    PmsFactoryImpl pmsFactory = new PmsFactoryImpl();
+                    PMSModel pmsModel = pmsFactory.createPMSModel();
+                    outResource.getContents().add(pmsModel);
+                } else if (outResource instanceof PcmmeasuringpointResourceImpl) {
+
+                    UsageModel usageModel = null;
+                    try {
+                        usageModel = pcmRepositoryPartition.getUsageModel();
+                        EList<UsageScenario> usageSzenarios = usageModel.getUsageScenario_UsageModel();
+                        UsageScenarioMeasuringPoint usageScenarioMeasuringPoint = PcmmeasuringpointFactoryImpl.eINSTANCE
+                                .createUsageScenarioMeasuringPoint();
+                        usageScenarioMeasuringPoint.setUsageScenario(usageSzenarios.get(0));
+                        outResource.getContents().add(usageScenarioMeasuringPoint);
+                    } catch (final IndexOutOfBoundsException e) {
+                    }
+                }
+                try {
+                    outResource.save(Collections.emptyMap());
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }
+        return outParameterURIs;
+    }
 }
