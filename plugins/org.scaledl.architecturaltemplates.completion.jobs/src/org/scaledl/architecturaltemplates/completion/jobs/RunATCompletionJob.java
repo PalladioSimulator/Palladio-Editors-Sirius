@@ -95,6 +95,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
             final List<URI> outParameterURIs = this.createOutParameterModels(systemModelFolderURI,
                     completion.getParameters());
             this.loadOutParameterModelsIntoBlackboard(outParameterURIs);
+
             // build file paths for trace and transformation files
             final URI traceFileURI = URI.createURI(TRACESFOLDER);
             final URI scriptFileURI = rootATUri.appendSegment("completions").appendSegment(completion.getQvtoFileURI());
