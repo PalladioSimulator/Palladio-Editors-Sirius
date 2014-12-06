@@ -23,14 +23,14 @@ import de.uka.ipd.sdq.pcm.core.entity.provider.EntityItemProvider;
  * This is the item provider adapter for a
  * {@link org.scaledl.architecturaltemplates.instance.ATInstance} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class ATInstanceItemProvider extends EntityItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public ATInstanceItemProvider(final AdapterFactory adapterFactory) {
@@ -40,7 +40,7 @@ public class ATInstanceItemProvider extends EntityItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -57,7 +57,7 @@ public class ATInstanceItemProvider extends EntityItemProvider {
     /**
      * This adds a property descriptor for the AT2 Components feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addAT2ComponentsPropertyDescriptor(final Object object) {
@@ -66,13 +66,13 @@ public class ATInstanceItemProvider extends EntityItemProvider {
                 this.getString("_UI_ATInstance_AT2Components_feature"), this.getString(
                         "_UI_PropertyDescriptor_description", "_UI_ATInstance_AT2Components_feature",
                         "_UI_ATInstance_type"), InstancePackage.Literals.AT_INSTANCE__AT2_COMPONENTS, true, false,
-                        true, null, null, null));
+                true, null, null, null));
     }
 
     /**
      * This adds a property descriptor for the Type feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addTypePropertyDescriptor(final Object object) {
@@ -80,7 +80,7 @@ public class ATInstanceItemProvider extends EntityItemProvider {
                 ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
                 this.getString("_UI_ATInstance_type_feature"), this.getString("_UI_PropertyDescriptor_description",
                         "_UI_ATInstance_type_feature", "_UI_ATInstance_type"),
-                InstancePackage.Literals.AT_INSTANCE__TYPE, true, false, true, null, null, null));
+                        InstancePackage.Literals.AT_INSTANCE__TYPE, true, false, true, null, null, null));
     }
 
     /**
@@ -89,7 +89,7 @@ public class ATInstanceItemProvider extends EntityItemProvider {
      * {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -106,7 +106,7 @@ public class ATInstanceItemProvider extends EntityItemProvider {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -119,7 +119,7 @@ public class ATInstanceItemProvider extends EntityItemProvider {
 
     /**
      * This returns ATInstance.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -130,7 +130,7 @@ public class ATInstanceItemProvider extends EntityItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -144,7 +144,7 @@ public class ATInstanceItemProvider extends EntityItemProvider {
      * This handles model notifications by calling {@link #updateChildren} to update any cached
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -165,7 +165,7 @@ public class ATInstanceItemProvider extends EntityItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that
      * can be created under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -197,7 +197,7 @@ public class ATInstanceItemProvider extends EntityItemProvider {
     /**
      * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

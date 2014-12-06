@@ -16,14 +16,14 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  * This is the item provider adapter for a
  * {@link org.scaledl.architecturaltemplates.type.OCLConstraint} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class OCLConstraintItemProvider extends ConstraintItemProvider {
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     public OCLConstraintItemProvider(final AdapterFactory adapterFactory) {
@@ -33,7 +33,7 @@ public class OCLConstraintItemProvider extends ConstraintItemProvider {
     /**
      * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -49,7 +49,7 @@ public class OCLConstraintItemProvider extends ConstraintItemProvider {
     /**
      * This adds a property descriptor for the Constraint feature. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
      * @generated
      */
     protected void addConstraintPropertyDescriptor(final Object object) {
@@ -58,12 +58,12 @@ public class OCLConstraintItemProvider extends ConstraintItemProvider {
                 this.getString("_UI_OCLConstraint_constraint_feature"), this.getString(
                         "_UI_PropertyDescriptor_description", "_UI_OCLConstraint_constraint_feature",
                         "_UI_OCLConstraint_type"), TypePackage.Literals.OCL_CONSTRAINT__CONSTRAINT, true, false, true,
-                        null, null, null));
+                null, null, null));
     }
 
     /**
      * This returns OCLConstraint.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -74,7 +74,7 @@ public class OCLConstraintItemProvider extends ConstraintItemProvider {
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -88,7 +88,7 @@ public class OCLConstraintItemProvider extends ConstraintItemProvider {
      * This handles model notifications by calling {@link #updateChildren} to update any cached
      * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override
@@ -100,7 +100,7 @@ public class OCLConstraintItemProvider extends ConstraintItemProvider {
     /**
      * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that
      * can be created under this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
      * @generated
      */
     @Override

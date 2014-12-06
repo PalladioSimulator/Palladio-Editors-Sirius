@@ -298,9 +298,8 @@ public class InstanceModelWizard extends Wizard implements INewWizard {
                 if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
                     final String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions"
                             : "_WARN_FilenameExtension";
-                    this.setErrorMessage(ArchitecturaltemplatesEditorPlugin.INSTANCE.getString(key, new Object[] {
-                            FORMATTED_FILE_EXTENSIONS
-                    }));
+                    this.setErrorMessage(ArchitecturaltemplatesEditorPlugin.INSTANCE.getString(key,
+                            new Object[] { FORMATTED_FILE_EXTENSIONS }));
                     return false;
                 }
                 return true;
