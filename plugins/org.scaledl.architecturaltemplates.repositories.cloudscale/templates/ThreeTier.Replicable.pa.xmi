@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ASCII"?>
+<emfprofileapplication:ProfileApplication xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:emfprofileapplication="http://www.modelversioning.org/emfprofile/application/1.1" xmlns:myprofile="replicableNS" xsi:schemaLocation="replicableNS platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/profile/Replicable.emfprofile_diagram#_89ZP4A2eEeS7GNGEpRYHew">
+  <stereotypeApplications xsi:type="myprofile:Replicable">
+    <appliedTo href="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/template/ThreeTier.resourceenvironment#_Fg46ICPIEeSwPfc4EJw-WA"/>
+    <extension href="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/profile/Replicable.emfprofile_diagram#_I_fv0A2fEeS7GNGEpRYHew"/>
+  </stereotypeApplications>
+  <importedProfiles nsURI="replicableNS" location="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/profile/Replicable.emfprofile_diagram"/>
+</emfprofileapplication:ProfileApplication>

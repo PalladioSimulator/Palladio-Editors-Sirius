@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <org.scaledl.architecturaltemplates:Repository xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:identifier="http://sdq.ipd.uka.de/Identifier/2.1" xmlns:org.scaledl.architecturaltemplates="http://scaledl.org/ArchitecturalTemplates/Type/1.0" identifier:id="_2eRmoCOzEeSLXszsY50NUA" entityName="CloudScaleATRepository">
   <ATs identifier:id="_64sjgCOzEeSLXszsY50NUA" entityName="ThreeLayer">
-    <roles identifier:id="_BIH6MCO0EeSLXszsY50NUA" entityName="PresentationLayerAssembly" stereotype="../profile/ThreeLayer.emfprofile_diagram#_ud6-gCOrEeSubfGVEKswQQ"/>
-    <roles identifier:id="_SBBJ8SO0EeSLXszsY50NUA" entityName="MiddleLayerAssembly" stereotype="../profile/ThreeLayer.emfprofile_diagram#_zWM8ECOrEeSubfGVEKswQQ"/>
-    <roles identifier:id="_T8ZRgSO0EeSLXszsY50NUA" entityName="DataLayerAssembly" stereotype="../profile/ThreeLayer.emfprofile_diagram#_08e9YCOrEeSubfGVEKswQQ"/>
-    <roles identifier:id="_RtHOICPCEeSVlNuoLyDfdw" entityName="ThreeLayerSystem" stereotype="../profile/ThreeLayer.emfprofile_diagram#_paph0CO_EeSbfv_s0ToTIw"/>
+    <roles identifier:id="_BIH6MCO0EeSLXszsY50NUA" entityName="PresentationLayerAssembly" stereotype="profiles/ThreeLayer.emfprofile_diagram#_ud6-gCOrEeSubfGVEKswQQ"/>
+    <roles identifier:id="_SBBJ8SO0EeSLXszsY50NUA" entityName="MiddleLayerAssembly" stereotype="profiles/ThreeLayer.emfprofile_diagram#_zWM8ECOrEeSubfGVEKswQQ"/>
+    <roles identifier:id="_T8ZRgSO0EeSLXszsY50NUA" entityName="DataLayerAssembly" stereotype="profiles/ThreeLayer.emfprofile_diagram#_08e9YCOrEeSubfGVEKswQQ"/>
+    <roles identifier:id="_RtHOICPCEeSVlNuoLyDfdw" entityName="ThreeLayerSystem" stereotype="profiles/ThreeLayer.emfprofile_diagram#_paph0CO_EeSbfv_s0ToTIw"/>
     <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion" qvtoFileURI="ThreeLayer.qvto">
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter"/>
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMTemplateCompletionParameter" fileExtension="resourceenvironment" templateFileURI="ThreeTier.resourceenvironment"/>
