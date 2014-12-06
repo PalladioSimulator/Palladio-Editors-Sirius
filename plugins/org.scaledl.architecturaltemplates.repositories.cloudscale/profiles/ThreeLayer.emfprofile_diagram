@@ -3,7 +3,7 @@
   <emfprofile:Profile xmi:id="_W1LLkCOrEeSubfGVEKswQQ" name="ThreeLayerProfile" nsURI="ThreeLayerProfile" nsPrefix="myprofile">
     <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_ud6-gCOrEeSubfGVEKswQQ" name="PresentationLayerAssembly" iconPath="">
       <eSuperTypes xmi:type="ecore:EClass" href="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication"/>
-      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_WcXawCxCEeSowrNUHLWjKA" name="presentationTierURI" changeable="false" defaultValueLiteral="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/templates/ThreeTier.resourceenvironment#_ETFqQCPIEeSwPfc4EJw-WA">
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_WcXawCxCEeSowrNUHLWjKA" name="presentationTierURI" changeable="false" defaultValueLiteral="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/templates/ThreeLayer/ThreeTier.resourceenvironment#_ETFqQCPIEeSwPfc4EJw-WA">
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eStructuralFeatures>
       <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_QlFqMEDOEeStM_n5R_Fc_g" name="roleURI" lowerBound="1" changeable="false" defaultValueLiteral="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_BIH6MCO0EeSLXszsY50NUA">
@@ -15,7 +15,7 @@
     </eClassifiers>
     <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_zWM8ECOrEeSubfGVEKswQQ" name="MiddleLayerAssembly">
       <eSuperTypes xmi:type="ecore:EClass" href="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication"/>
-      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_57PuMCxCEeSowrNUHLWjKA" name="middleTierURI" changeable="false" defaultValueLiteral="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/templates/ThreeTier.resourceenvironment#_Fg46ICPIEeSwPfc4EJw-WA">
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_57PuMCxCEeSowrNUHLWjKA" name="middleTierURI" changeable="false" defaultValueLiteral="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/templates/ThreeLayer/ThreeTier.resourceenvironment#_Fg46ICPIEeSwPfc4EJw-WA">
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eStructuralFeatures>
       <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_AK2HADhXEeSPmr3EMdQ-0w" name="responseTimeThreshold" lowerBound="1" defaultValueLiteral="3">
@@ -33,7 +33,7 @@
     </eClassifiers>
     <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_08e9YCOrEeSubfGVEKswQQ" name="DataLayerAssembly">
       <eSuperTypes xmi:type="ecore:EClass" href="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication"/>
-      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="__IZvkCxCEeSowrNUHLWjKA" name="dataLayerTierURI" changeable="false" defaultValueLiteral="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/templates/ThreeTier.resourceenvironment#_HAQbICPIEeSwPfc4EJw-WA">
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="__IZvkCxCEeSowrNUHLWjKA" name="dataLayerTierURI" changeable="false" defaultValueLiteral="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/templates/ThreeLayer/ThreeTier.resourceenvironment#_HAQbICPIEeSwPfc4EJw-WA">
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eStructuralFeatures>
       <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_gCqLcEDOEeStM_n5R_Fc_g" name="roleURI" lowerBound="1" changeable="false" defaultValueLiteral="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_T8ZRgSO0EeSLXszsY50NUA">
