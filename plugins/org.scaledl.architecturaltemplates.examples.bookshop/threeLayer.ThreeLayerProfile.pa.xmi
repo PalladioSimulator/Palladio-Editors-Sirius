@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<emfprofileapplication:ProfileApplication xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:emfprofileapplication="http://www.modelversioning.org/emfprofile/application/1.1" xmlns:myprofile="ThreeLayerProfile" xsi:schemaLocation="ThreeLayerProfile platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/profile/ThreeLayer.emfprofile_diagram#_W1LLkCOrEeSubfGVEKswQQ">
+<emfprofileapplication:ProfileApplication xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:emfprofileapplication="http://www.modelversioning.org/emfprofile/application/1.1" xmlns:myprofile="ThreeLayerProfile" xsi:schemaLocation="ThreeLayerProfile platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/ThreeLayer.emfprofile_diagram#_W1LLkCOrEeSubfGVEKswQQ">
   <stereotypeApplications xsi:type="myprofile:PresentationLayerAssembly">
     <appliedTo href="platform:/resource/org.scaledl.architecturaltemplates.examples.bookshop/threeLayer.system#_c4HmcCOgEeSubfGVEKswQQ"/>
     <extension href="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/ThreeLayer.emfprofile_diagram#_3EaTMCOrEeSubfGVEKswQQ"/>
