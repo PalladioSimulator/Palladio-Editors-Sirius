@@ -1,8 +1,6 @@
 package org.scaledl.architecturaltemplates.completion.jobs;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -219,18 +217,20 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                     } catch (final IndexOutOfBoundsException e) {
                     }
                 }
-                try {
-                    outResource.save(Collections.emptyMap());
-                } catch (IOException e) {
-                    logger.error("Unable to save output resource for QVTo transformation");
-                }
+
+                /**
+                 * For debugging, generated files might be saved...
+                 * 
+                 * try { outResource.save(Collections.emptyMap()); } catch (IOException e) {
+                 * logger.error("Unable to save output resource for QVTo transformation"); }
+                 */
 
                 if (uri.lastSegment().endsWith("pms")) {
-                    pmsPartition.loadModel(uri);
+                    pmsPartition.setContents(uri, outResource.getContents());
                     pmsPartition.resolveAllProxies();
                     return new ModelLocation(LoadPMSModelIntoBlackboardJob.PMS_MODEL_PARTITION_ID, uri);
                 } else {
-                    pcmPartition.loadModel(uri);
+                    pcmPartition.setContents(uri, outResource.getContents());
                     pcmPartition.resolveAllProxies();
                     return new ModelLocation(LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID, uri);
                 }
