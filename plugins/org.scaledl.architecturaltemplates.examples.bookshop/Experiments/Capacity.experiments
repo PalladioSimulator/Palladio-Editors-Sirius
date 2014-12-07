@@ -18,7 +18,6 @@
       <usageModel href="../threeLayer.usagemodel#/"/>
       <middlewareRepository href="pathmap://PCM_MODELS/Glassfish.repository#_yQk9oIX1EdyWta7nHuXiHQ"/>
       <eventMiddleWareRepository href="pathmap://PCM_MODELS/default_event_middleware.repository#_Onc7cMALEd-LKvNtxXAQbQ"/>
-      <platformMonitoringSpecification href="../GeneratedOutpms.pms#/"/>
       <serviceLevelObjectives href="../threeLayer.slo#/"/>
     </initialModel>
   </experiments>
