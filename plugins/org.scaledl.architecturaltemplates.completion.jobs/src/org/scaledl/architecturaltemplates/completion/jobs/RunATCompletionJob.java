@@ -248,47 +248,49 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
         final List<URI> outParameterURIs = new ArrayList<URI>();
         for (final CompletionParameter completionParameter : completionParameters) {
             final String parameterFileExtension = getParameterFileExtensionForOut(completionParameter);
-            if (parameterFileExtension != null) {
-                final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) this.myBlackboard
-                        .getPartition(LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
+            if (parameterFileExtension == null) {
+                throw new IllegalArgumentException("No file extension for completion parameter found ("
+                        + completionParameter + ")");
+            }
 
-                ResourceSet resourceSet = new ResourceSetImpl();
-                Resource outResource = resourceSet.createResource(URI.createURI(systemFolderURI + "/GeneratedOut"
-                        + parameterFileExtension + "." + parameterFileExtension));
-                outParameterURIs.add(outResource.getURI());
-                if (outResource instanceof AllocationResourceImpl) {
+            final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) this.myBlackboard
+                    .getPartition(LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
+            final ResourceSet resourceSet = new ResourceSetImpl();
+            final Resource outResource = resourceSet.createResource(URI.createURI(systemFolderURI + "/GeneratedOut"
+                    + parameterFileExtension + "." + parameterFileExtension));
+            outParameterURIs.add(outResource.getURI());
+            if (outResource instanceof AllocationResourceImpl) {
 
-                    ResourceEnvironment resourceEnvironment = null;
-                    try {
-                        resourceEnvironment = pcmRepositoryPartition.getResourceEnvironment();
-                        Allocation allocation = AllocationFactory.eINSTANCE.createAllocation();
-                        allocation.setTargetResourceEnvironment_Allocation(resourceEnvironment);
-                        outResource.getContents().add(allocation);
-                    } catch (final IndexOutOfBoundsException e) {
-                    }
-                } else if (outResource instanceof PmsResourceImpl) {
-                    PmsFactoryImpl pmsFactory = new PmsFactoryImpl();
-                    PMSModel pmsModel = pmsFactory.createPMSModel();
-                    outResource.getContents().add(pmsModel);
-                } else if (outResource instanceof PcmmeasuringpointResourceImpl) {
-
-                    UsageModel usageModel = null;
-                    try {
-                        usageModel = pcmRepositoryPartition.getUsageModel();
-                        EList<UsageScenario> usageSzenarios = usageModel.getUsageScenario_UsageModel();
-                        UsageScenarioMeasuringPoint usageScenarioMeasuringPoint = PcmmeasuringpointFactoryImpl.eINSTANCE
-                                .createUsageScenarioMeasuringPoint();
-                        usageScenarioMeasuringPoint.setUsageScenario(usageSzenarios.get(0));
-                        outResource.getContents().add(usageScenarioMeasuringPoint);
-                    } catch (final IndexOutOfBoundsException e) {
-                    }
-                }
+                ResourceEnvironment resourceEnvironment = null;
                 try {
-                    outResource.save(Collections.emptyMap());
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                    resourceEnvironment = pcmRepositoryPartition.getResourceEnvironment();
+                    Allocation allocation = AllocationFactory.eINSTANCE.createAllocation();
+                    allocation.setTargetResourceEnvironment_Allocation(resourceEnvironment);
+                    outResource.getContents().add(allocation);
+                } catch (final IndexOutOfBoundsException e) {
                 }
+            } else if (outResource instanceof PmsResourceImpl) {
+                PmsFactoryImpl pmsFactory = new PmsFactoryImpl();
+                PMSModel pmsModel = pmsFactory.createPMSModel();
+                outResource.getContents().add(pmsModel);
+            } else if (outResource instanceof PcmmeasuringpointResourceImpl) {
+
+                UsageModel usageModel = null;
+                try {
+                    usageModel = pcmRepositoryPartition.getUsageModel();
+                    EList<UsageScenario> usageSzenarios = usageModel.getUsageScenario_UsageModel();
+                    UsageScenarioMeasuringPoint usageScenarioMeasuringPoint = PcmmeasuringpointFactoryImpl.eINSTANCE
+                            .createUsageScenarioMeasuringPoint();
+                    usageScenarioMeasuringPoint.setUsageScenario(usageSzenarios.get(0));
+                    outResource.getContents().add(usageScenarioMeasuringPoint);
+                } catch (final IndexOutOfBoundsException e) {
+                }
+            }
+            try {
+                outResource.save(Collections.emptyMap());
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
         }
         return outParameterURIs;
