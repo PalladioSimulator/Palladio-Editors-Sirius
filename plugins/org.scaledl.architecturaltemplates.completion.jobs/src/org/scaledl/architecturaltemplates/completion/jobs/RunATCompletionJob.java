@@ -48,7 +48,6 @@ import de.uka.ipd.sdq.workflow.jobs.UserCanceledException;
 import de.uka.ipd.sdq.workflow.mdsd.blackboard.MDSDBlackboard;
 import de.uka.ipd.sdq.workflow.mdsd.blackboard.ModelLocation;
 import de.uka.ipd.sdq.workflow.mdsd.blackboard.ResourceSetPartition;
-import de.uka.ipd.sdq.workflow.mdsd.blackboard.SavePartitionToDiskJob;
 import de.uka.ipd.sdq.workflow.mdsd.emf.qvto.QVTOTransformationJob;
 import de.uka.ipd.sdq.workflow.mdsd.emf.qvto.QVTOTransformationJobConfiguration;
 import de.uka.ipd.sdq.workflow.pcm.blackboard.PCMResourceSetPartition;
@@ -89,8 +88,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                     rootATUri.appendSegment("templates").appendSegment(architecturalTemplate.getEntityName()),
                     completion.getParameters());
 
-            // create model instances for out parameter and load them into
-            // blackboard
+            // create model instances for out parameter and load them into blackboard
             final URI systemModelFolderURI = getSystemModelFolderURI();
             final List<URI> outParameterURIs = this.createOutParameterModels(systemModelFolderURI,
                     completion.getParameters());
@@ -122,12 +120,6 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                     logger.info("Trying to continue Architectural Template completion even though an internal failure occured");
                 }
             }
-
-            // save the modified model
-            final SavePartitionToDiskJob savePartitionJob = new SavePartitionToDiskJob(
-                    LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
-            savePartitionJob.setBlackboard(getBlackboard());
-            savePartitionJob.execute(monitor);
         }
         // If no AT was found, let's hope the PCM model is complete...
     }
@@ -223,27 +215,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
             int parameterCounter = 0;
             for (final CompletionParameter completionParameter : completionParameters) {
 
-                final String parameterFileExtension = new TypeSwitch<String>() {
-                    @Override
-                    public String casePCMBlackboardCompletionParameter(PCMBlackboardCompletionParameter object) {
-                        return object.getFileExtension().getLiteral();
-                    }
-
-                    @Override
-                    public String caseGenericBlackboardCompletionParameter(GenericBlackboardCompletionParameter object) {
-                        return object.getFileExtension();
-                    }
-
-                    @Override
-                    public String casePCMOutputCompletionParameter(PCMOutputCompletionParameter object) {
-                        return object.getFileExtension().getLiteral();
-                    }
-
-                    @Override
-                    public String caseGenericOutputCompletionParameter(GenericOutputCompletionParameter object) {
-                        return object.getFileExtension();
-                    }
-                }.doSwitch(completionParameter);
+                final String parameterFileExtension = getParameterFileExtensionForIn(completionParameter);
 
                 if (parameterFileExtension != null && fileExtension.equals(parameterFileExtension)
                         && !modelURI.toString().startsWith("pathmap://")
@@ -275,22 +247,11 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
     private List<URI> createOutParameterModels(URI systemFolderURI, EList<CompletionParameter> completionParameters) {
         final List<URI> outParameterURIs = new ArrayList<URI>();
         for (final CompletionParameter completionParameter : completionParameters) {
-
-            final String parameterFileExtension = new TypeSwitch<String>() {
-
-                @Override
-                public String casePCMOutputCompletionParameter(PCMOutputCompletionParameter object) {
-                    return object.getFileExtension().getLiteral();
-                }
-
-                @Override
-                public String caseGenericOutputCompletionParameter(GenericOutputCompletionParameter object) {
-                    return object.getFileExtension();
-                }
-            }.doSwitch(completionParameter);
-            final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) this.myBlackboard
-                    .getPartition(LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
+            final String parameterFileExtension = getParameterFileExtensionForOut(completionParameter);
             if (parameterFileExtension != null) {
+                final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) this.myBlackboard
+                        .getPartition(LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
+
                 ResourceSet resourceSet = new ResourceSetImpl();
                 Resource outResource = resourceSet.createResource(URI.createURI(systemFolderURI + "/GeneratedOut"
                         + parameterFileExtension + "." + parameterFileExtension));
@@ -331,5 +292,47 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
             }
         }
         return outParameterURIs;
+    }
+
+    private String getParameterFileExtensionForOut(final CompletionParameter completionParameter) {
+        return new TypeSwitch<String>() {
+
+            @Override
+            public String casePCMOutputCompletionParameter(PCMOutputCompletionParameter object) {
+                return object.getFileExtension().getLiteral();
+            }
+
+            @Override
+            public String caseGenericOutputCompletionParameter(GenericOutputCompletionParameter object) {
+                return object.getFileExtension();
+            }
+
+        }.doSwitch(completionParameter);
+    }
+
+    private String getParameterFileExtensionForIn(final CompletionParameter completionParameter) {
+        return new TypeSwitch<String>() {
+
+            @Override
+            public String casePCMBlackboardCompletionParameter(PCMBlackboardCompletionParameter object) {
+                return object.getFileExtension().getLiteral();
+            }
+
+            @Override
+            public String caseGenericBlackboardCompletionParameter(GenericBlackboardCompletionParameter object) {
+                return object.getFileExtension();
+            }
+
+            @Override
+            public String casePCMOutputCompletionParameter(PCMOutputCompletionParameter object) {
+                return object.getFileExtension().getLiteral();
+            }
+
+            @Override
+            public String caseGenericOutputCompletionParameter(GenericOutputCompletionParameter object) {
+                return object.getFileExtension();
+            }
+
+        }.doSwitch(completionParameter);
     }
 }
