@@ -21,6 +21,7 @@ import org.palladiosimulator.commons.emfutils.EMFLoadHelper;
 import org.palladiosimulator.pcmmeasuringpoint.UsageScenarioMeasuringPoint;
 import org.palladiosimulator.pcmmeasuringpoint.impl.PcmmeasuringpointFactoryImpl;
 import org.palladiosimulator.pcmmeasuringpoint.util.PcmmeasuringpointResourceImpl;
+import org.palladiosimulator.simulizar.launcher.jobs.LoadPMSModelIntoBlackboardJob;
 import org.palladiosimulator.simulizar.pms.PMSModel;
 import org.palladiosimulator.simulizar.pms.impl.PmsFactoryImpl;
 import org.palladiosimulator.simulizar.pms.util.PmsResourceImpl;
@@ -48,6 +49,7 @@ import de.uka.ipd.sdq.workflow.jobs.UserCanceledException;
 import de.uka.ipd.sdq.workflow.mdsd.blackboard.MDSDBlackboard;
 import de.uka.ipd.sdq.workflow.mdsd.blackboard.ModelLocation;
 import de.uka.ipd.sdq.workflow.mdsd.blackboard.ResourceSetPartition;
+import de.uka.ipd.sdq.workflow.mdsd.blackboard.SavePartitionToDiskJob;
 import de.uka.ipd.sdq.workflow.mdsd.emf.qvto.QVTOTransformationJob;
 import de.uka.ipd.sdq.workflow.mdsd.emf.qvto.QVTOTransformationJobConfiguration;
 import de.uka.ipd.sdq.workflow.pcm.blackboard.PCMResourceSetPartition;
@@ -120,6 +122,19 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                     logger.info("Trying to continue Architectural Template completion even though an internal failure occured");
                 }
             }
+
+            // save the modified model
+            SavePartitionToDiskJob savePartitionJob = new SavePartitionToDiskJob(
+                    LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
+            savePartitionJob.setBlackboard(getBlackboard());
+            savePartitionJob.execute(monitor);
+
+            // FIXME Load PMS to blackboard - currently hacked
+            final ResourceSetPartition partition = this.getBlackboard().getPartition(
+                    LoadPMSModelIntoBlackboardJob.PMS_MODEL_PARTITION_ID);
+            // FIXME Evil hack (2 is not the general case)
+            partition.loadModel(outParameterURIs.get(2));
+            partition.resolveAllProxies();
         }
         // If no AT was found, let's hope the PCM model is complete...
     }
@@ -151,7 +166,6 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                 LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
 
         for (final URI outParameterModelURI : outParameterModelURIList) {
-
             if (outParameterModelURI != null) {
                 resourceSetPartition.loadModel(outParameterModelURI);
                 resourceSetPartition.resolveAllProxies();

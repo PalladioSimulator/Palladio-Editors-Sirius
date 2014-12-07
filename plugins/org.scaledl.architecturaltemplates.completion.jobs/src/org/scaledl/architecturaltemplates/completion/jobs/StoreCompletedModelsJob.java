@@ -16,13 +16,6 @@ public class StoreCompletedModelsJob extends SequentialBlackboardInteractingJob<
     @Override
     public void execute(IProgressMonitor monitor) throws JobFailedException, UserCanceledException {
         super.execute(monitor);
-
-        // save the modified model
-        /*
-         * final SavePartitionToDiskJob savePartitionJob = new SavePartitionToDiskJob(
-         * LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
-         * savePartitionJob.setBlackboard(getBlackboard()); savePartitionJob.execute(monitor);
-         */
     }
 
 }
