@@ -11,7 +11,7 @@
     <activeResourceSpecifications_ResourceContainer id="_CSl3AKDqEeKjDcfkNgs1Gg" numberOfReplicas="2">
       <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
       <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
-      <processingRate_ProcessingResourceSpecification specification="0.68*2.67E+9"/>
+      <processingRate_ProcessingResourceSpecification specification="2.67E+10"/>
     </activeResourceSpecifications_ResourceContainer>
     <activeResourceSpecifications_ResourceContainer id="_EaA2gKDqEeKjDcfkNgs1Gg">
       <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#FCFS"/>
@@ -23,7 +23,7 @@
     <activeResourceSpecifications_ResourceContainer id="_-OfvcKDpEeKjDcfkNgs1Gg" numberOfReplicas="2">
       <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
       <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
-      <processingRate_ProcessingResourceSpecification specification="0.68*2.67E+9"/>
+      <processingRate_ProcessingResourceSpecification specification="2.67E+10"/>
     </activeResourceSpecifications_ResourceContainer>
     <activeResourceSpecifications_ResourceContainer id="_AkCDcKDqEeKjDcfkNgs1Gg">
       <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#FCFS"/>
@@ -35,7 +35,7 @@
     <activeResourceSpecifications_ResourceContainer id="_rieCQKD2EeKjDcfkNgs1Gg" numberOfReplicas="2">
       <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
       <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
-      <processingRate_ProcessingResourceSpecification specification="0.68*2.67E+9"/>
+      <processingRate_ProcessingResourceSpecification specification="2.67E+10"/>
     </activeResourceSpecifications_ResourceContainer>
     <activeResourceSpecifications_ResourceContainer id="_tMn28KD2EeKjDcfkNgs1Gg">
       <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#FCFS"/>
