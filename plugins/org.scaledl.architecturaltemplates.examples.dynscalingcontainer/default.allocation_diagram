@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:allocation="http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:resourceenvironment="http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0" xsi:schemaLocation="http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0 http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//allocation http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0 http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//resourceenvironment" xmi:id="_QIUbwH4xEeSqFvs4kqVd7Q" type="allocation" name="default.allocation_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_QKMrEH4xEeSqFvs4kqVd7Q" type="2003" fontName=".Helvetica Neue DeskInterface">
+    <children xmi:type="notation:DecorationNode" xmi:id="_QKMrEn4xEeSqFvs4kqVd7Q" type="5008"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_QKMrE34xEeSqFvs4kqVd7Q" type="7003">
+      <children xmi:type="notation:Shape" xmi:id="_RVic0H4xEeSqFvs4kqVd7Q" type="3002" fontName=".Helvetica Neue DeskInterface">
+        <children xmi:type="notation:DecorationNode" xmi:id="_RVic0n4xEeSqFvs4kqVd7Q" type="5006"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_RVic034xEeSqFvs4kqVd7Q" type="5007"/>
+        <element xmi:type="allocation:AllocationContext" href="default.allocation#_Qx_q4H4xEeSqFvs4kqVd7Q"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RVic0X4xEeSqFvs4kqVd7Q" x="11"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_UkfsIH4xEeSqFvs4kqVd7Q" type="3002" fontName=".Helvetica Neue DeskInterface">
+        <children xmi:type="notation:DecorationNode" xmi:id="_UkfsIn4xEeSqFvs4kqVd7Q" type="5006"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_UkfsI34xEeSqFvs4kqVd7Q" type="5007"/>
+        <element xmi:type="allocation:AllocationContext" href="default.allocation#_T0d9YH4xEeSqFvs4kqVd7Q"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_UkfsIX4xEeSqFvs4kqVd7Q" x="7" y="113"/>
+      </children>
+    </children>
+    <element xmi:type="resourceenvironment:ResourceContainer" href="default.resourceenvironment#_vHW8QH4wEeSqFvs4kqVd7Q"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QKMrEX4xEeSqFvs4kqVd7Q" height="321"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_QKMrFH4xEeSqFvs4kqVd7Q" type="2003" fontName=".Helvetica Neue DeskInterface">
+    <children xmi:type="notation:DecorationNode" xmi:id="_QKMrFn4xEeSqFvs4kqVd7Q" type="5008"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_QKMrF34xEeSqFvs4kqVd7Q" type="7003">
+      <children xmi:type="notation:Shape" xmi:id="_WfDUUH4xEeSqFvs4kqVd7Q" type="3002" fontName=".Helvetica Neue DeskInterface">
+        <children xmi:type="notation:DecorationNode" xmi:id="_WfDUUn4xEeSqFvs4kqVd7Q" type="5006"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_WfDUU34xEeSqFvs4kqVd7Q" type="5007"/>
+        <element xmi:type="allocation:AllocationContext" href="default.allocation#_WNK6IH4xEeSqFvs4kqVd7Q"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WfDUUX4xEeSqFvs4kqVd7Q" x="14" y="17"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_XLuNEH4xEeSqFvs4kqVd7Q" type="3002" fontName=".Helvetica Neue DeskInterface">
+        <children xmi:type="notation:DecorationNode" xmi:id="_XLuNEn4xEeSqFvs4kqVd7Q" type="5006"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_XLuNE34xEeSqFvs4kqVd7Q" type="5007"/>
+        <element xmi:type="allocation:AllocationContext" href="default.allocation#_W4YaUH4xEeSqFvs4kqVd7Q"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XLuNEX4xEeSqFvs4kqVd7Q" x="18" y="117"/>
+      </children>
+    </children>
+    <element xmi:type="resourceenvironment:ResourceContainer" href="default.resourceenvironment#_xnmEYH4wEeSqFvs4kqVd7Q"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QKMrFX4xEeSqFvs4kqVd7Q" x="304" y="8" width="229" height="321"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_QIUbwX4xEeSqFvs4kqVd7Q"/>
+  <element xmi:type="allocation:Allocation" href="default.allocation#_QISmkH4xEeSqFvs4kqVd7Q"/>
+</notation:Diagram>
