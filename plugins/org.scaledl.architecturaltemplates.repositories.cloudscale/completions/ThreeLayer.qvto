@@ -29,9 +29,9 @@ modeltype PCM_EDP2MEASURINGPOINT uses 'http://palladiosimulator.org/EDP2/Measuri
 transformation ThreeLayer( inout pcmSystem : PCM_SYS,
 						   inout pcmResourceEnvironment : PCM_RES_ENV,
 						   inout pcmUsage: PCM_USE,
+						   inout pms : PCM_PMS,
 						   out pcmAllocation : PCM_ALLOC, 
-						   out pcmUsageScenarioMeasuringPoint : PCM_MEASURINGPOINT,
-						   out pms : PCM_PMS);
+						   out pcmUsageScenarioMeasuringPoint : PCM_MEASURINGPOINT);
 						   
 
 property threshold : Real;
@@ -53,11 +53,13 @@ main() {
 	var allocation : Allocation := system.map createAllocation(resourceEnvironment);
 	allocateAssemblyContextsToResourceContainer(assemblyContexts,resourceContainers,allocation);
 	
-	var measuringPoint : UsageScenarioMeasuringPoint := usageScenario.map createPcmMeasuringPoint();	
-	var pmsModel : PMSModel := measuringPoint.map createPmsModel();
+	var pmsModel : PMSModel := pms.rootObjects()![PMSModel];
+	var measuringPoint : UsageScenarioMeasuringPoint := usageScenario.map createPcmMeasuringPoint();
+	addPerformanceMeasurementsToPmsModel(pmsModel, measuringPoint);
 	log ('Architectural Template Transformation "ThreeLayer" finished!');
 }
-helper allocateAssemblyContextsToResourceContainer(assemblyContexts : Set(AssemblyContext),resourceContainers : Set(ResourceContainer), allocation : Allocation){
+
+helper allocateAssemblyContextsToResourceContainer(assemblyContexts : Set(AssemblyContext), resourceContainers : Set(ResourceContainer), allocation : Allocation) {
 	assemblyContexts -> forEach(assemblyContext){
 		var resourceContainer : ResourceContainer;
 		if(hasAppliedStereotype(assemblyContext,"PresentationLayerAssembly")){
@@ -77,13 +79,13 @@ helper allocateAssemblyContextsToResourceContainer(assemblyContexts : Set(Assemb
 		new AllocationContext(assemblyContext, resourceContainer, allocation);
 	}
 };
-mapping UsageScenarioMeasuringPoint :: createPmsModel() : PMSModel@pms{
-	//guid := "PmsModelID";
-	performanceMeasurements := new PerformanceMeasurement(self);
+
+helper addPerformanceMeasurementsToPmsModel(inout pmsModel : PMSModel, in measuringPoint : MeasuringPoint){
+	pmsModel.performanceMeasurements += new PerformanceMeasurement(measuringPoint);
 }
 
-constructor PerformanceMeasurement :: PerformanceMeasurement(usageScenarioMeasuringPoint : UsageScenarioMeasuringPoint){
-	measuringPoint := usageScenarioMeasuringPoint;
+constructor PerformanceMeasurement :: PerformanceMeasurement(mp : MeasuringPoint){
+	measuringPoint := mp;
 	measurementSpecification := new MeasurementSpecification();
 	//guid := "PerformanceMeasurementID"
 }
@@ -93,6 +95,7 @@ constructor MeasurementSpecification :: MeasurementSpecification(){
 	statisticalCharacterization := StatisticalCharacterizationEnum::ArithmeticMean;
 	temporalRestriction := new Intervall(interval);
 }
+
 constructor Intervall::Intervall(interval:Real){
 	intervall := interval;
 }
@@ -107,6 +110,7 @@ mapping System::createAllocation(resourceEnvironment:ResourceEnvironment) : Allo
 	system_Allocation := self;
 	targetResourceEnvironment_Allocation := resourceEnvironment;
 }
+
 constructor AllocationContext :: AllocationContext (ac : AssemblyContext, rc: ResourceContainer, allocation : Allocation){
 	id := ac.id + "_" + ac.entityName +  "_AllocationContext";
 	entityName := "Allocation_" + ac.entityName;

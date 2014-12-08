@@ -29,9 +29,7 @@ modeltype PCM_EDP2MEASURINGPOINT uses 'http://palladiosimulator.org/EDP2/Measuri
  * Such thresholds related to average active resource utilization taken at the container
  * in intervals. Intervals and thresholds can externally be set via properties.
  *
- * TODO Implement scaling-in
  * TODO How can properties be externally set?
- * FIXME Copied from the original ThreeLayer completion; did not start further implementation yet :(
  *
  * @see http://cloudscale.xlab.si/wiki/index.php/Dynamic_Horizontal_Scaling_CAT
  *
@@ -39,8 +37,8 @@ modeltype PCM_EDP2MEASURINGPOINT uses 'http://palladiosimulator.org/EDP2/Measuri
  **/
 transformation DynamicHorizontalScalingResourceContainer(
                            inout pcmResourceEnvironment : PCM_RES_ENV,
-						   out pcmActiveResourceMeasuringPoint : PCM_MEASURINGPOINT,
-						   out pms : PCM_PMS);
+						   inout pms : PCM_PMS,
+						   out pcmActiveResourceMeasuringPoint : PCM_MEASURINGPOINT);
 						   
 
 property threshold : Real;
@@ -51,6 +49,7 @@ main() {
 	
 	var resourceEnvironment : ResourceEnvironment := pcmResourceEnvironment.rootObjects()![ResourceEnvironment];		
 	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
+	var pmsModel : PMSModel := pms.rootObjects()![PMSModel];
 	resourceContainers->forEach(resourceContainer) {
 		if(hasAppliedStereotype(resourceContainer,"Replicable Resource Container")){
 			var processingResources : Set(ProcessingResourceSpecification) := 
@@ -62,7 +61,7 @@ main() {
 				    // FIXME actually, we need to aggregate measuring points in a repository and use several performance measurements
 					var measuringPoint : ActiveResourceMeasuringPoint :=
 						resourceContainer.map createActiveResourceMeasuringPoint(processingResource, replica);
-					var pmsModel : PMSModel := measuringPoint.map createPmsModel();
+					addPerformanceMeasurementsToPmsModel(pmsModel, measuringPoint);
 					
 					replica := replica+1;
 				}
@@ -81,8 +80,8 @@ mapping ResourceContainer::createActiveResourceMeasuringPoint(processingResource
 	replicaID := replica;
 }
 
-mapping MeasuringPoint :: createPmsModel() : PMSModel@pms{
-	performanceMeasurements := new PerformanceMeasurement(self);
+helper addPerformanceMeasurementsToPmsModel(inout pmsModel : PMSModel, in measuringPoint : MeasuringPoint){
+	pmsModel.performanceMeasurements += new PerformanceMeasurement(measuringPoint);
 }
 
 constructor PerformanceMeasurement :: PerformanceMeasurement(mp : MeasuringPoint){

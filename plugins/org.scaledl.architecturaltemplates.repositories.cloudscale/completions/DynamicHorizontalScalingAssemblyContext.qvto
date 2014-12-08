@@ -29,7 +29,6 @@ modeltype PCM_EDP2MEASURINGPOINT uses 'http://palladiosimulator.org/EDP2/Measuri
  * Such thresholds stick to average response times taken at the component in intervals.
  * Intervals and thresholds can externally be set via properties.
  *
- * TODO Implement scaling-in
  * TODO How can properties be externally set?
  * FIXME Copied from the original ThreeLayer completion; did not start further implementation yet :(
  *
@@ -41,9 +40,9 @@ modeltype PCM_EDP2MEASURINGPOINT uses 'http://palladiosimulator.org/EDP2/Measuri
 transformation DynamicHorizontalScalingAssemblyContext( inout pcmSystem : PCM_SYS,
 						   inout pcmResourceEnvironment : PCM_RES_ENV,
 						   inout pcmUsage: PCM_USE,
+						   inout pms : PCM_PMS,
 						   out pcmAllocation : PCM_ALLOC, 
-						   out pcmUsageScenarioMeasuringPoint : PCM_MEASURINGPOINT,
-						   out pms : PCM_PMS);
+						   out pcmUsageScenarioMeasuringPoint : PCM_MEASURINGPOINT);
 						   
 
 property threshold : Real;
@@ -66,8 +65,9 @@ main() {
 	
 	allocateAssemblyContextsToResourceContainer(assemblyContexts,resourceContainers,allocation);
 	
+	var pmsModel : PMSModel := pms.rootObjects()![PMSModel];
 	var measuringPoint : UsageScenarioMeasuringPoint := usageScenario.map createPcmMeasuringPoint();	
-	var pmsModel : PMSModel := measuringPoint.map createPmsModel();
+	addPerformanceMeasurementsToPmsModel(pmsModel, measuringPoint);
 	
 	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Assembly Context" finished');
 }
@@ -91,13 +91,13 @@ helper allocateAssemblyContextsToResourceContainer(assemblyContexts : Set(Assemb
 		new AllocationContext(assemblyContext, resourceContainer, allocation);
 	}
 };
-mapping UsageScenarioMeasuringPoint :: createPmsModel() : PMSModel@pms{
-	//guid := "PmsModelID";
-	performanceMeasurements := new PerformanceMeasurement(self);
+
+helper addPerformanceMeasurementsToPmsModel(inout pmsModel : PMSModel, in measuringPoint : MeasuringPoint){
+	pmsModel.performanceMeasurements += new PerformanceMeasurement(measuringPoint);
 }
 
-constructor PerformanceMeasurement :: PerformanceMeasurement(usageScenarioMeasuringPoint : UsageScenarioMeasuringPoint){
-	measuringPoint := usageScenarioMeasuringPoint;
+constructor PerformanceMeasurement :: PerformanceMeasurement(mp : MeasuringPoint){
+	measuringPoint := mp;
 	measurementSpecification := new MeasurementSpecification();
 	//guid := "PerformanceMeasurementID"
 }
