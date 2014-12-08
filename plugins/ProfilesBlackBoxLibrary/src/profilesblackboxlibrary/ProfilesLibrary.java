@@ -46,4 +46,12 @@ public class ProfilesLibrary {
 		pcmEntity.saveContainingProfileApplication();
 	}
 	
+	public static void removeStereotypeApplications(Entity pcmEntity, String stereotypeName) {
+		final Stereotype stereotype = pcmEntity.getAppliedStereotype(stereotypeName);
+		if(stereotype != null) {
+			pcmEntity.removeAllStereotypeApplications(stereotype);
+			//pcmEntity.saveContainingProfileApplication();
+		}
+	}
+	
 }
