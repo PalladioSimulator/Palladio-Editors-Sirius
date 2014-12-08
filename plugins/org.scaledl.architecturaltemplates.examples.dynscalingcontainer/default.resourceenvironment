@@ -11,14 +11,14 @@
     <activeResourceSpecifications_ResourceContainer id="_05cPoH4wEeSqFvs4kqVd7Q">
       <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
       <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
-      <processingRate_ProcessingResourceSpecification specification="100"/>
+      <processingRate_ProcessingResourceSpecification specification="150"/>
     </activeResourceSpecifications_ResourceContainer>
   </resourceContainer_ResourceEnvironment>
   <resourceContainer_ResourceEnvironment id="_xnmEYH4wEeSqFvs4kqVd7Q" entityName="Normal Resource Container">
     <activeResourceSpecifications_ResourceContainer id="_5_aD4H4wEeSqFvs4kqVd7Q">
       <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
       <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
-      <processingRate_ProcessingResourceSpecification specification="1000"/>
+      <processingRate_ProcessingResourceSpecification specification="2000"/>
     </activeResourceSpecifications_ResourceContainer>
   </resourceContainer_ResourceEnvironment>
 </resourceenvironment:ResourceEnvironment>
