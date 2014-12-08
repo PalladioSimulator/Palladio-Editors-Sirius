@@ -214,12 +214,8 @@
     <children xmi:type="notation:Shape" xmi:id="_WGFvQAXKEeOk2t-0hHhTJg" type="2006" fontName="Segoe UI">
       <children xmi:type="notation:DecorationNode" xmi:id="_WGFvQgXKEeOk2t-0hHhTJg" type="5012"/>
       <children xmi:type="notation:BasicCompartment" xmi:id="_WGFvQwXKEeOk2t-0hHhTJg" type="7012">
-        <children xmi:type="notation:Node" xmi:id="_lYZbsAXKEeOk2t-0hHhTJg" type="3051">
-          <element xmi:type="seff_performance:ParametricResourceDemand" href="AliceAndBob.repository#//@components__Repository.0/@serviceEffectSpecifications__BasicComponent.0/@steps_Behaviour.2/@resourceDemand_Action.0"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_lYZbsQXKEeOk2t-0hHhTJg"/>
-        </children>
         <children xmi:type="notation:Node" xmi:id="_rLNu4AXKEeOk2t-0hHhTJg" type="3051">
-          <element xmi:type="seff_performance:ParametricResourceDemand" href="AliceAndBob.repository#//@components__Repository.0/@serviceEffectSpecifications__BasicComponent.0/@steps_Behaviour.2/@resourceDemand_Action.1"/>
+          <element xmi:type="seff_performance:ParametricResourceDemand" href="AliceAndBob.repository#//@components__Repository.0/@serviceEffectSpecifications__BasicComponent.0/@steps_Behaviour.2/@resourceDemand_Action.0"/>
           <layoutConstraint xmi:type="notation:Location" xmi:id="_rLNu4QXKEeOk2t-0hHhTJg"/>
         </children>
         <styles xmi:type="notation:TitleStyle" xmi:id="_WGFvRAXKEeOk2t-0hHhTJg" showTitle="true"/>
@@ -289,12 +285,8 @@
     <children xmi:type="notation:Shape" xmi:id="_t_J2IAXKEeOk2t-0hHhTJg" type="2006" fontName="Segoe UI">
       <children xmi:type="notation:DecorationNode" xmi:id="_t_KdMAXKEeOk2t-0hHhTJg" type="5012"/>
       <children xmi:type="notation:BasicCompartment" xmi:id="_t_KdMQXKEeOk2t-0hHhTJg" type="7012">
-        <children xmi:type="notation:Node" xmi:id="_wDXwoAXKEeOk2t-0hHhTJg" type="3051">
-          <element xmi:type="seff_performance:ParametricResourceDemand" href="AliceAndBob.repository#//@components__Repository.1/@serviceEffectSpecifications__BasicComponent.0/@steps_Behaviour.2/@resourceDemand_Action.0"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_wDXwoQXKEeOk2t-0hHhTJg"/>
-        </children>
         <children xmi:type="notation:Node" xmi:id="_w7JGIAXKEeOk2t-0hHhTJg" type="3051">
-          <element xmi:type="seff_performance:ParametricResourceDemand" href="AliceAndBob.repository#//@components__Repository.1/@serviceEffectSpecifications__BasicComponent.0/@steps_Behaviour.2/@resourceDemand_Action.1"/>
+          <element xmi:type="seff_performance:ParametricResourceDemand" href="AliceAndBob.repository#//@components__Repository.1/@serviceEffectSpecifications__BasicComponent.0/@steps_Behaviour.2/@resourceDemand_Action.0"/>
           <layoutConstraint xmi:type="notation:Location" xmi:id="_w7JGIQXKEeOk2t-0hHhTJg"/>
         </children>
         <styles xmi:type="notation:TitleStyle" xmi:id="_t_KdMgXKEeOk2t-0hHhTJg" showTitle="true"/>
