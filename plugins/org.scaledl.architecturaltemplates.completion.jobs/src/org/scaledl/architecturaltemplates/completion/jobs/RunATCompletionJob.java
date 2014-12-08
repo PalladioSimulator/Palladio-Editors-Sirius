@@ -161,14 +161,12 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
 
             /**
              * Find the models in blackboard
-             * 
-             * FIXME works only with pcm partition
              */
             @Override
             public ModelLocation casePCMBlackboardCompletionParameter(PCMBlackboardCompletionParameter object) {
                 final String parameterFileExtension = object.getFileExtension().getLiteral();
 
-                // find the models in the blackboard
+                // find the models in PCM partition
                 for (final Resource r : pcmPartition.getResourceSet().getResources()) {
                     final URI modelURI = r.getURI();
                     final String fileExtension = modelURI.fileExtension();
@@ -178,6 +176,18 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                         return new ModelLocation(LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID, modelURI);
                     }
                 }
+
+                // find the models in PMS partition
+                for (final Resource r : pmsPartition.getResourceSet().getResources()) {
+                    final URI modelURI = r.getURI();
+                    final String fileExtension = modelURI.fileExtension();
+
+                    if (fileExtension.equals(parameterFileExtension) && !modelURI.toString().startsWith("pathmap://")
+                            && !modelURI.toString().contains("PrimitiveTypes.repository")) {
+                        return new ModelLocation(LoadPMSModelIntoBlackboardJob.PMS_MODEL_PARTITION_ID, modelURI);
+                    }
+                }
+
                 return null;
             };
 
