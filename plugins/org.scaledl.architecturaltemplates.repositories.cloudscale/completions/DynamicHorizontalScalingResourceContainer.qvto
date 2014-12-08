@@ -1,0 +1,101 @@
+import profilesblackboxlibrary.ProfilesLib;
+import threelayerblackboxlibrary.ThreeLayerLib;
+
+
+modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
+modeltype PCM_REP uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0';
+modeltype PCM_SYS uses 'http://sdq.ipd.uka.de/PalladioComponentModel/System/5.0';
+modeltype PCM_USE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/UsageModel/5.0';
+modeltype PCM_RES_ENV uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0';
+modeltype PCM_CORE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Core/5.0';
+modeltype EMF_PROFILE_APPLICATION uses 'http://www.modelversioning.org/emfprofile/application/1.1';
+modeltype EMF_PROFILE uses 'http://www.modelversioning.org/emfprofile/1.1';
+modeltype PCM_RES_TYPE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceType/5.0';
+modeltype PCMCore uses pcm::core('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
+modeltype PCMEntity uses pcm::core::entity('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
+modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
+modeltype PCM_MEASURINGPOINT uses 'http://palladiosimulator.org/PCM/MeasuringPoint/1.0';
+modeltype PCM_PMS uses 'http://simulizar.palladiosimulator.org/PalladioMonitoringSpecification/1.0';
+modeltype PCM_EDP2MEASURINGPOINT uses 'http://palladiosimulator.org/EDP2/MeasuringPoint/0.9.1';
+
+/**
+ * Transforms a resource environment where resource containers are annotated with the
+ * "Replicable Resource Container" AT roles to a PCM instance where each such container
+ * can be dynamically horizontal scaled. Each replicated container has all assembly context
+ * allocated to itself as the original one. Furthermore, the replicated resource container
+ * has the same specification as the original container.
+ *
+ * Replication is based on upper and lower thresholds for scaling out and in, respectively.
+ * Such thresholds related to average active resource utilization taken at the container
+ * in intervals. Intervals and thresholds can externally be set via properties.
+ *
+ * TODO Implement scaling-in
+ * TODO How can properties be externally set?
+ * FIXME Copied from the original ThreeLayer completion; did not start further implementation yet :(
+ *
+ * @see http://cloudscale.xlab.si/wiki/index.php/Dynamic_Horizontal_Scaling_CAT
+ *
+ * @author Sebastian Lehrig
+ **/
+transformation DynamicHorizontalScalingResourceContainer(
+                           inout pcmResourceEnvironment : PCM_RES_ENV,
+						   out pcmActiveResourceMeasuringPoint : PCM_MEASURINGPOINT,
+						   out pms : PCM_PMS);
+						   
+
+property threshold : Real;
+property interval : Real;
+
+main() {	
+	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Resource Container" started');
+	
+	var resourceEnvironment : ResourceEnvironment := pcmResourceEnvironment.rootObjects()![ResourceEnvironment];		
+	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
+	resourceContainers->forEach(resourceContainer) {
+		if(hasAppliedStereotype(resourceContainer,"Replicable Resource Container")){
+			var processingResources : Set(ProcessingResourceSpecification) := 
+				resourceContainer.activeResourceSpecifications_ResourceContainer;
+				
+			processingResources->forEach(processingResource) {
+				var replica : Integer := 0;
+				while(replica < processingResource.numberOfReplicas) {
+				    // FIXME actually, we need to aggregate measuring points in a repository and use several performance measurements
+					var measuringPoint : ActiveResourceMeasuringPoint :=
+						resourceContainer.map createActiveResourceMeasuringPoint(processingResource, replica);
+					var pmsModel : PMSModel := measuringPoint.map createPmsModel();
+					
+					replica := replica+1;
+				}
+			};
+			
+			removeStereotypeApplications(resourceContainer, "Replicable Resource Container");
+			applyStereotype(resourceContainer, "Replicable");
+		};
+	};
+	
+	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Resource Container" finished');
+}
+
+mapping ResourceContainer::createActiveResourceMeasuringPoint(processingResource : ProcessingResourceSpecification, replica : Integer) : ActiveResourceMeasuringPoint@pcmActiveResourceMeasuringPoint{
+	activeResource := processingResource;
+	replicaID := replica;
+}
+
+mapping MeasuringPoint :: createPmsModel() : PMSModel@pms{
+	performanceMeasurements := new PerformanceMeasurement(self);
+}
+
+constructor PerformanceMeasurement :: PerformanceMeasurement(mp : MeasuringPoint){
+	measuringPoint := mp;
+	measurementSpecification := new MeasurementSpecification();
+}
+
+constructor MeasurementSpecification :: MeasurementSpecification(){
+	performanceMetric := PerformanceMetricEnum::Utilization;
+	statisticalCharacterization := StatisticalCharacterizationEnum::ArithmeticMean;
+	temporalRestriction := new Intervall(interval);
+}
+
+constructor Intervall::Intervall(interval:Real){
+	intervall := interval;
+}

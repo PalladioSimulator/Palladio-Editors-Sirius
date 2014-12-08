@@ -1,0 +1,135 @@
+import profilesblackboxlibrary.ProfilesLib;
+import threelayerblackboxlibrary.ThreeLayerLib;
+
+
+modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
+modeltype PCM_REP uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0';
+modeltype PCM_SYS uses 'http://sdq.ipd.uka.de/PalladioComponentModel/System/5.0';
+modeltype PCM_USE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/UsageModel/5.0';
+modeltype PCM_RES_ENV uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0';
+modeltype PCM_CORE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Core/5.0';
+modeltype EMF_PROFILE_APPLICATION uses 'http://www.modelversioning.org/emfprofile/application/1.1';
+modeltype EMF_PROFILE uses 'http://www.modelversioning.org/emfprofile/1.1';
+modeltype PCM_RES_TYPE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceType/5.0';
+modeltype PCMCore uses pcm::core('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
+modeltype PCMEntity uses pcm::core::entity('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
+modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
+modeltype PCM_MEASURINGPOINT uses 'http://palladiosimulator.org/PCM/MeasuringPoint/1.0';
+modeltype PCM_PMS uses 'http://simulizar.palladiosimulator.org/PalladioMonitoringSpecification/1.0';
+modeltype PCM_EDP2MEASURINGPOINT uses 'http://palladiosimulator.org/EDP2/MeasuringPoint/0.9.1';
+
+/**
+ * Transforms a system where assembly context are annotated with the "Replicable Assembly
+ * Context" AT roles to a PCM instance where each such assembly context can dynamically
+ * horizontal scale. Each replicated assembly context is allocated to a crorrespond
+ * replicated resource container. This resource container has the same specification as
+ * the original container.
+ *
+ * Replication is based on upper and lower thresholds for scaling out and in, respectively.
+ * Such thresholds stick to average response times taken at the component in intervals.
+ * Intervals and thresholds can externally be set via properties.
+ *
+ * TODO Implement scaling-in
+ * TODO How can properties be externally set?
+ * FIXME Copied from the original ThreeLayer completion; did not start further implementation yet :(
+ *
+ * @see http://cloudscale.xlab.si/wiki/index.php/Dynamic_Horizontal_Scaling_CAT
+ *
+ * @author Sebastian Lehrig
+ * @author Daria Giacinto
+ **/
+transformation DynamicHorizontalScalingAssemblyContext( inout pcmSystem : PCM_SYS,
+						   inout pcmResourceEnvironment : PCM_RES_ENV,
+						   inout pcmUsage: PCM_USE,
+						   out pcmAllocation : PCM_ALLOC, 
+						   out pcmUsageScenarioMeasuringPoint : PCM_MEASURINGPOINT,
+						   out pms : PCM_PMS);
+						   
+
+property threshold : Real;
+property interval : Real;
+
+main() {	
+	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Assembly Context" started');
+	
+	// Get relevant PCM model elements
+	var system : System := pcmSystem.rootObjects()![System];
+	assert fatal(hasAppliedStereotype(system, "Dynamic Horizontal Scaling Assembly Context"))
+		with log ("The system is not a three layer system!");
+	var assemblyContexts : Set(AssemblyContext) := system.assemblyContexts__ComposedStructure;	
+	var usageModel : UsageModel := pcmUsage.rootObjects()![UsageModel];
+	var usageScenario : UsageScenario := usageModel.usageScenario_UsageModel![UsageScenario];
+	var resourceEnvironment : ResourceEnvironment := pcmResourceEnvironment.rootObjects()![ResourceEnvironment];
+	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;	
+	var allocation : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;	
+	
+	
+	allocateAssemblyContextsToResourceContainer(assemblyContexts,resourceContainers,allocation);
+	
+	var measuringPoint : UsageScenarioMeasuringPoint := usageScenario.map createPcmMeasuringPoint();	
+	var pmsModel : PMSModel := measuringPoint.map createPmsModel();
+	
+	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Assembly Context" finished');
+}
+helper allocateAssemblyContextsToResourceContainer(assemblyContexts : Set(AssemblyContext),resourceContainers : Set(ResourceContainer), allocation : Allocation){
+	assemblyContexts -> forEach(assemblyContext){
+		var resourceContainer : ResourceContainer;
+		if(hasAppliedStereotype(assemblyContext,"PresentationLayerAssembly")){
+			resourceContainer := resourceContainers -> any(rc|rc.id = "_ETFqQCPIEeSwPfc4EJw-WA");
+		}
+		else if(hasAppliedStereotype(assemblyContext,"MiddleLayerAssembly")){
+			resourceContainer := resourceContainers -> any(rc|rc.id = "_Fg46ICPIEeSwPfc4EJw-WA");
+			applyStereotype(resourceContainer,"Replicable");
+			threshold := getResponseTimeThreshold(assemblyContext,"responseTimeThreshold","MiddleLayerAssembly");
+			log ('The responseTimeThreshold is ' + threshold.toString());
+			interval := getResponseTimeInterval(assemblyContext,"responseTimeInterval","MiddleLayerAssembly");
+			log ('The responseTimeInterval is ' + interval.toString());
+		}
+		else if(hasAppliedStereotype(assemblyContext,"DataLayerAssembly")){
+			resourceContainer := resourceContainers -> any(rc|rc.id = "_HAQbICPIEeSwPfc4EJw-WA");
+		};
+		new AllocationContext(assemblyContext, resourceContainer, allocation);
+	}
+};
+mapping UsageScenarioMeasuringPoint :: createPmsModel() : PMSModel@pms{
+	//guid := "PmsModelID";
+	performanceMeasurements := new PerformanceMeasurement(self);
+}
+
+constructor PerformanceMeasurement :: PerformanceMeasurement(usageScenarioMeasuringPoint : UsageScenarioMeasuringPoint){
+	measuringPoint := usageScenarioMeasuringPoint;
+	measurementSpecification := new MeasurementSpecification();
+	//guid := "PerformanceMeasurementID"
+}
+
+constructor MeasurementSpecification :: MeasurementSpecification(){
+	performanceMetric := PerformanceMetricEnum::ResponseTime;
+	statisticalCharacterization := StatisticalCharacterizationEnum::ArithmeticMean;
+	temporalRestriction := new Intervall(interval);
+}
+constructor Intervall::Intervall(interval:Real){
+	intervall := interval;
+}
+
+mapping UsageScenario::createPcmMeasuringPoint() : UsageScenarioMeasuringPoint@pcmUsageScenarioMeasuringPoint{
+	usageScenario := self;
+}
+
+mapping System::createAllocation(resourceEnvironment:ResourceEnvironment) : Allocation@pcmAllocation{
+	id := self.id + "_ThreeLayerAllocation";
+	entityName := "ThreeLayerAllocation";
+	system_Allocation := self;
+	targetResourceEnvironment_Allocation := resourceEnvironment;
+}
+constructor AllocationContext :: AllocationContext (ac : AssemblyContext, rc: ResourceContainer, allocation : Allocation){
+	id := ac.id + "_" + ac.entityName +  "_AllocationContext";
+	entityName := "Allocation_" + ac.entityName;
+	assemblyContext_AllocationContext := ac;
+	resourceContainer_AllocationContext := rc;
+	allocation_AllocationContext := allocation;
+}
+
+//blackbox helper hasAppliedStereotype(system:Entity, stereotype : String):Boolean;
+//blackbox helper applyStereotype(pcmEntity:Entity, stereotype:String):Void;
+//blackbox helper getResponseTimeThreshold(assemblyContext:AssemblyContext, taggedValueName:String, stereotypeName: String):Real;
+//blackbox helper getResponseTimeInterval(assemblyContext:AssemblyContext, taggedValueName:String, stereotypeName: String):Real;
