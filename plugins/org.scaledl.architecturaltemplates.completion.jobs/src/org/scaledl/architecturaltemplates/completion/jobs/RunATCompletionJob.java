@@ -100,7 +100,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
 
             // create and add the qvto job
             final QVTOTransformationJob job = new QVTOTransformationJob(qvtoConfig);
-            job.setBlackboard(getBlackboard());
+            job.setBlackboard(this.getBlackboard());
 
             // execute transformation job
             try {
@@ -134,8 +134,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
         final ResourceSetPartition pmsPartition = this.getBlackboard().getPartition(
                 LoadPMSModelIntoBlackboardJob.PMS_MODEL_PARTITION_ID);
 
-        final URI templateFolderURI = rootATUri.appendSegment("templates").appendSegment(
-                architecturalTemplate.getEntityName());
+        final URI templateFolderURI = rootATUri.appendSegment("templates");
         final URI systemModelFolderURI = getSystemModelFolderURI();
 
         return new TypeSwitch<ModelLocation>() {
@@ -146,7 +145,9 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
             @Override
             public ModelLocation casePCMTemplateCompletionParameter(
                     org.scaledl.architecturaltemplates.type.PCMTemplateCompletionParameter object) {
-                final URI templateURI = templateFolderURI.appendSegment(object.getTemplateFileURI());
+
+                final String[] segments = URI.createURI(object.getTemplateFileURI()).segments();
+                final URI templateURI = templateFolderURI.appendSegments(segments);
                 if (templateURI.lastSegment().endsWith("pms")) {
                     pmsPartition.loadModel(templateURI);
                     pmsPartition.resolveAllProxies();
