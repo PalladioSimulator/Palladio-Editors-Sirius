@@ -51,7 +51,7 @@ main() {
 	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
 	var pmsModel : PMSModel := pms.rootObjects()![PMSModel];
 	resourceContainers->forEach(resourceContainer) {
-		if(hasAppliedStereotype(resourceContainer,"Replicable Resource Container")){
+		if(hasAppliedStereotype(resourceContainer,"ReplicableResourceContainer")){
 			var processingResources : Set(ProcessingResourceSpecification) := 
 				resourceContainer.activeResourceSpecifications_ResourceContainer;
 				
@@ -67,7 +67,7 @@ main() {
 				}
 			};
 			
-			removeStereotypeApplications(resourceContainer, "Replicable Resource Container");
+			//removeStereotypeApplications(resourceContainer, "ReplicableResourceContainer");
 			applyStereotype(resourceContainer, "Replicable");
 		};
 	};
@@ -80,7 +80,7 @@ mapping ResourceContainer::createActiveResourceMeasuringPoint(processingResource
 	replicaID := replica;
 }
 
-helper addPerformanceMeasurementsToPmsModel(inout pmsModel : PMSModel, in measuringPoint : MeasuringPoint){
+helper addPerformanceMeasurementsToPmsModel(inout pmsModel : PMSModel, inout measuringPoint : MeasuringPoint){
 	pmsModel.performanceMeasurements += new PerformanceMeasurement(measuringPoint);
 }
 

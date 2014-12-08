@@ -17,7 +17,7 @@ modeltype SEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/SEFF
 
 transformation ReplicableTransformation(in prm : PRM, inout pcmAllocation : PCM_ALLOC);
 
-property threshold : Real = 0.8;
+property threshold : Real = 1.5;
 
 main() {
 	log ('AT Completion "Replicable" started');	
