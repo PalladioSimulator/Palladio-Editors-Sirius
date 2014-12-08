@@ -23,7 +23,7 @@ main() {
 	log ('AT Completion "Replicable" started');	
 	
 	assert fatal(prm.rootObjects()[PCMModelElementMeasurement]->size() > 0)
-			with log ("No Measurements found!");
+		with log ("No Measurements found!");
 			
 	assert fatal(pcmAllocation.rootObjects()[Allocation]->size() > 0)
 		with log ("Allocation Model is empty!");
