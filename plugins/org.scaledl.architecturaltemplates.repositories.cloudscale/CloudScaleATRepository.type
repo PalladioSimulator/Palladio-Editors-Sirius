@@ -46,6 +46,8 @@
     <roles id="_v2XZUH4aEeS81uv5CnTOEw" entityName="Virtualized Resource Container">
       <stereotype href="profiles/DynamicVerticalScalingResourceContainer.emfprofile_diagram#_2M_hMH47EeSqFvs4kqVd7Q"/>
     </roles>
-    <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion" qvtoFileURI="DynamicVerticalScalingResourceContainer.qvto"/>
+    <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion" qvtoFileURI="DynamicVerticalScalingResourceContainer.qvto">
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="resourceenvironment"/>
+    </completion>
   </ATs>
 </org.scaledl.architecturaltemplates:Repository>
