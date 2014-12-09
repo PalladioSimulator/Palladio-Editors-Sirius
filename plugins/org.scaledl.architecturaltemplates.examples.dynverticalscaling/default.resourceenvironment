@@ -7,7 +7,7 @@
       <throughput_CommunicationLinkResourceSpecification specification="99999"/>
     </communicationLinkResourceSpecifications_LinkingResource>
   </linkingResources__ResourceEnvironment>
-  <resourceContainer_ResourceEnvironment id="_vHW8QH4wEeSqFvs4kqVd7Q" entityName="Replicable Resource Container">
+  <resourceContainer_ResourceEnvironment id="_vHW8QH4wEeSqFvs4kqVd7Q" entityName="Virtualized Resource Container">
     <activeResourceSpecifications_ResourceContainer id="_05cPoH4wEeSqFvs4kqVd7Q">
       <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
       <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
