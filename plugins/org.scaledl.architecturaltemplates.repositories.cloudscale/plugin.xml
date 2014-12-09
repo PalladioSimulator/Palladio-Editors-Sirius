@@ -5,9 +5,15 @@
      <profile profile_resource="profiles/Replicable.emfprofile_diagram"/>
    </extension>
    <extension point="org.modelversioning.emfprofile.profile">
+     <profile profile_resource="profiles/Virtualized.emfprofile_diagram"/>
+   </extension>
+   <extension point="org.modelversioning.emfprofile.profile">
      <profile profile_resource="profiles/ThreeLayer.emfprofile_diagram"/>
    </extension>
    <extension point="org.modelversioning.emfprofile.profile">
      <profile profile_resource="profiles/DynamicHorizontalScalingResourceContainer.emfprofile_diagram"/>
+   </extension>
+   <extension point="org.modelversioning.emfprofile.profile">
+     <profile profile_resource="profiles/DynamicVerticalScalingResourceContainer.emfprofile_diagram"/>
    </extension>
 </plugin>
