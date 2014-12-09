@@ -3,11 +3,11 @@
   <experiments id="EXP_AUTOM_EXAMPLE" name="Run CloudStore BrowsingMix Elasticity Analysis" description="Executes a simple SimuLizar run using EDP2 and a 100 measurements stop condition" repetitions="1">
     <toolConfiguration xsi:type="simulizartooladapter:SimuLizarConfiguration" name="EDP2 SimuLizar Configuration">
       <stopConditions xsi:type="ExperimentAutomation.Experiments.AbstractSimulation:MeasurementCountStopCondition" measurementCount="-1"/>
-      <stopConditions xsi:type="ExperimentAutomation.Experiments.AbstractSimulation:SimTimeStopCondition" simulationTime="36"/>
+      <stopConditions xsi:type="ExperimentAutomation.Experiments.AbstractSimulation:SimTimeStopCondition" simulationTime="190"/>
       <datasource xsi:type="ExperimentAutomation.Experiments.AbstractSimulation:FileDatasource" location="/Users/lehrig/data"/>
     </toolConfiguration>
     <stopConditions xsi:type="ExperimentAutomation.Experiments.AbstractSimulation:MeasurementCountStopCondition" measurementCount="-1"/>
-    <stopConditions xsi:type="ExperimentAutomation.Experiments.AbstractSimulation:SimTimeStopCondition" simulationTime="36"/>
+    <stopConditions xsi:type="ExperimentAutomation.Experiments.AbstractSimulation:SimTimeStopCondition" simulationTime="190"/>
     <experimentDesign xsi:type="ExperimentAutomation.Experiments:FullFactorialDesign"/>
     <responseMeasurement xsi:type="ExperimentAutomation.Experiments:SimulationDurationMeasurement"/>
     <initialModel>
@@ -15,6 +15,7 @@
       <allocation href="../Allocations/On-Premises.allocation#_ZOoU8KDqEeKjDcfkNgs1Gg"/>
       <middlewareRepository href="pathmap://PCM_MODELS/Glassfish.repository#_yQk9oIX1EdyWta7nHuXiHQ"/>
       <eventMiddleWareRepository href="pathmap://PCM_MODELS/default_event_middleware.repository#_Onc7cMALEd-LKvNtxXAQbQ"/>
+      <reconfigurationRules href="ReconfigurationRules.experiments#/"/>
       <platformMonitoringSpecification href="../UsageScenarios/BrowsingMix.pms#/"/>
       <serviceLevelObjectives href="../UsageScenarios/BrowsingMix.slo#/"/>
       <usageEvolution href="../UsageEvolution/BrowsingMixOneYearTrend.usageevolution#_i-2QoHWQEeSn05EdHZE9fg"/>

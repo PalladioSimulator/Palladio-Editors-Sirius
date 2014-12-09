@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ExperimentAutomation.Experiments:ReconfigurationRulesFolder xmlns:ExperimentAutomation.Experiments="http://palladiosimulator.org/ExperimentAutomation/Experiments/1.0" folderUri="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/templates/ThreeLayer/ReconfigurationRules"/>
+<ExperimentAutomation.Experiments:ReconfigurationRulesFolder xmlns:ExperimentAutomation.Experiments="http://palladiosimulator.org/ExperimentAutomation/Experiments/1.0" folderUri="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/templates/DynamicVerticalScalingResourceContainer/ReconfigurationRules"/>
