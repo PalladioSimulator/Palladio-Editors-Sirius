@@ -2,8 +2,8 @@
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:emfprofile="http://www.modelversioning.org/emfprofile/1.1"
     xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
-  <emfprofile:Profile xmi:id="_89ZP4A2eEeS7GNGEpRYHew" name="Replicable" nsURI="replicableNS"
-      nsPrefix="myprofile">
+  <emfprofile:Profile xmi:id="_89ZP4A2eEeS7GNGEpRYHew" name="Replicable" nsURI="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.replicable"
+      nsPrefix="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles">
     <eClassifiers xsi:type="emfprofile:Stereotype" xmi:id="_GwBnkA2fEeS7GNGEpRYHew"
         name="Replicable" eSuperTypes="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication">
       <eStructuralFeatures xsi:type="ecore:EAttribute" xmi:id="_J7IRoA2fEeS7GNGEpRYHew"
