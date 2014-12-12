@@ -11,14 +11,14 @@
     <activeResourceSpecifications_ResourceContainer id="_W5TXcCPIEeSwPfc4EJw-WA">
       <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
       <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
-      <processingRate_ProcessingResourceSpecification specification="100"/>
+      <processingRate_ProcessingResourceSpecification specification="300"/>
     </activeResourceSpecifications_ResourceContainer>
   </resourceContainer_ResourceEnvironment>
   <resourceContainer_ResourceEnvironment id="_Fg46ICPIEeSwPfc4EJw-WA" entityName="Middle Tier">
     <activeResourceSpecifications_ResourceContainer id="_ZLp0kCPIEeSwPfc4EJw-WA">
       <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
       <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
-      <processingRate_ProcessingResourceSpecification specification="100"/>
+      <processingRate_ProcessingResourceSpecification specification="300"/>
     </activeResourceSpecifications_ResourceContainer>
   </resourceContainer_ResourceEnvironment>
   <resourceContainer_ResourceEnvironment id="_HAQbICPIEeSwPfc4EJw-WA" entityName="Data Tier">
