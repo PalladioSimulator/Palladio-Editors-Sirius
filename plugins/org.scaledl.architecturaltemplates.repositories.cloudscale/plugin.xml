@@ -16,4 +16,7 @@
    <extension point="org.modelversioning.emfprofile.profile">
      <profile profile_resource="profiles/DynamicVerticalScalingResourceContainer.emfprofile_diagram"/>
    </extension>
+   <extension point="org.modelversioning.emfprofile.profile">
+     <profile profile_resource="Loadbalancing.emfprofile_diagram"/>
+  </extension>
 </plugin>
