@@ -50,4 +50,18 @@
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="resourceenvironment"/>
     </completion>
   </ATs>
+  <ATs id="_i-ghUIHkEeSeK9JYh8VNzw" entityName="Loadbalancing">
+    <roles id="_rotRUYHkEeSeK9JYh8VNzw" entityName="Loadbalanced System">
+      <stereotype href="profiles/Loadbalancing.emfprofile_diagram#_xHyTsIHlEeSeK9JYh8VNzw"/>
+    </roles>
+    <roles id="_kk1l8IHkEeSeK9JYh8VNzw" entityName="Loadbalanced Assembly Context">
+      <stereotype href="profiles/Loadbalancing.emfprofile_diagram#_qIdwYH7gEeSPVbICnJBAhw"/>
+    </roles>
+    <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion" qvtoFileURI="Loadbalancing.qvto">
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter"/>
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="allocation"/>
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="repository"/>
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="resourceenvironment"/>
+    </completion>
+  </ATs>
 </org.scaledl.architecturaltemplates:Repository>
