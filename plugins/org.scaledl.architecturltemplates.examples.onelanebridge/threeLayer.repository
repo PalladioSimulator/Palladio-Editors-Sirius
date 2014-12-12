@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repository:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:repository="http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0" xmlns:seff="http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0" id="_k2pDkCOdEeSubfGVEKswQQ" entityName="defaultRepository">
+  <components__Repository xsi:type="repository:BasicComponent" id="_wGTZ8COdEeSubfGVEKswQQ" entityName="BookShopFrontend">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_7UxdgCOdEeSubfGVEKswQQ" entityName="Provided_IBookShopFrontend_BookShopFrontend" providedInterface__OperationProvidedRole="_1oyLECOdEeSubfGVEKswQQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_8Q2EMCOdEeSubfGVEKswQQ" entityName="Required_IBookManagement_BookManagement" requiredInterface__OperationRequiredRole="_5Ux7sCOdEeSubfGVEKswQQ"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_jFjrACOeEeSubfGVEKswQQ" describedService__SEFF="_TTqfkCOeEeSubfGVEKswQQ">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_jf_kQCOeEeSubfGVEKswQQ" entityName="start" successor_AbstractAction="_nK0QMCOeEeSubfGVEKswQQ"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_jgALUCOeEeSubfGVEKswQQ" entityName="stop" predecessor_AbstractAction="_yZuYoCOeEeSubfGVEKswQQ"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_nK0QMCOeEeSubfGVEKswQQ" predecessor_AbstractAction="_jf_kQCOeEeSubfGVEKswQQ" successor_AbstractAction="_yZuYoCOeEeSubfGVEKswQQ" calledService_ExternalService="_OyMfgCOeEeSubfGVEKswQQ" role_ExternalService="_8Q2EMCOdEeSubfGVEKswQQ"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_yZuYoCOeEeSubfGVEKswQQ" entityName="CreateHTMLPage" predecessor_AbstractAction="_nK0QMCOeEeSubfGVEKswQQ" successor_AbstractAction="_jgALUCOeEeSubfGVEKswQQ">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="10"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_xNhgsCOdEeSubfGVEKswQQ" entityName="BookManagement">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_9DTb4COdEeSubfGVEKswQQ" entityName="Provided_IBookManagement_BookManagement" providedInterface__OperationProvidedRole="_5Ux7sCOdEeSubfGVEKswQQ"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_9X1hcCOdEeSubfGVEKswQQ" entityName="Required_IBookDatabase_BookDatabase" requiredInterface__OperationRequiredRole="_6OiOMCOdEeSubfGVEKswQQ"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_gSXxsCOeEeSubfGVEKswQQ" describedService__SEFF="_OyMfgCOeEeSubfGVEKswQQ">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_hDP1ACOeEeSubfGVEKswQQ" entityName="start" successor_AbstractAction="_Ns4n0COfEeSubfGVEKswQQ"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_hDP1ASOeEeSubfGVEKswQQ" entityName="stop" predecessor_AbstractAction="_z-iLcIHyEeSmZPUvJd7mYg"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_Ji4FgCOfEeSubfGVEKswQQ" predecessor_AbstractAction="_wXxgIIHyEeSmZPUvJd7mYg" successor_AbstractAction="_z-iLcIHyEeSmZPUvJd7mYg" calledService_ExternalService="_YrpQ4COeEeSubfGVEKswQQ" role_ExternalService="_9X1hcCOdEeSubfGVEKswQQ"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_Ns4n0COfEeSubfGVEKswQQ" entityName="CheckValidity" predecessor_AbstractAction="_hDP1ACOeEeSubfGVEKswQQ" successor_AbstractAction="_wXxgIIHyEeSmZPUvJd7mYg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="10"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:AcquireAction" id="_wXxgIIHyEeSmZPUvJd7mYg" entityName="startTransaction" predecessor_AbstractAction="_Ns4n0COfEeSubfGVEKswQQ" successor_AbstractAction="_Ji4FgCOfEeSubfGVEKswQQ" passiveresource_AcquireAction="_q4soUIHyEeSmZPUvJd7mYg"/>
+      <steps_Behaviour xsi:type="seff:ReleaseAction" id="_z-iLcIHyEeSmZPUvJd7mYg" entityName="finishTransaction" predecessor_AbstractAction="_Ji4FgCOfEeSubfGVEKswQQ" successor_AbstractAction="_hDP1ASOeEeSubfGVEKswQQ" passiveResource_ReleaseAction="_q4soUIHyEeSmZPUvJd7mYg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <passiveResource_BasicComponent id="_q4soUIHyEeSmZPUvJd7mYg" entityName="transaction">
+      <capacity_PassiveResource specification="1"/>
+    </passiveResource_BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_znpZwCOdEeSubfGVEKswQQ" entityName="BookDatabase">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_9uyB0COdEeSubfGVEKswQQ" entityName="Provided_IBookDatabase_BookDatabase" providedInterface__OperationProvidedRole="_6OiOMCOdEeSubfGVEKswQQ"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_iNmvUCOeEeSubfGVEKswQQ" describedService__SEFF="_YrpQ4COeEeSubfGVEKswQQ">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_ip3NgCOeEeSubfGVEKswQQ" entityName="start" successor_AbstractAction="_dCT5sCOfEeSubfGVEKswQQ"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_ip3NgSOeEeSubfGVEKswQQ" entityName="stop" predecessor_AbstractAction="_dCT5sCOfEeSubfGVEKswQQ"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_dCT5sCOfEeSubfGVEKswQQ" entityName="RecordBookOrder" predecessor_AbstractAction="_ip3NgCOeEeSubfGVEKswQQ" successor_AbstractAction="_ip3NgSOeEeSubfGVEKswQQ">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="10"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_1oyLECOdEeSubfGVEKswQQ" entityName="IBookShopFrontend">
+    <signatures__OperationInterface id="_TTqfkCOeEeSubfGVEKswQQ" entityName="orderBook"/>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_5Ux7sCOdEeSubfGVEKswQQ" entityName="IBookManagement">
+    <signatures__OperationInterface id="_OyMfgCOeEeSubfGVEKswQQ" entityName="orderBook"/>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_6OiOMCOdEeSubfGVEKswQQ" entityName="IBookDatabase">
+    <signatures__OperationInterface id="_YrpQ4COeEeSubfGVEKswQQ" entityName="recordBookOrdering"/>
+  </interfaces__Repository>
+</repository:Repository>
