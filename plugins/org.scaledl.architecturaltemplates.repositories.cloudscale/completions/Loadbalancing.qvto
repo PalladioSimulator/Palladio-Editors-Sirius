@@ -1,3 +1,5 @@
+import loadbalancingblackboxlibrary.LoadbalancingLib;
+
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
 modeltype PCM_REP uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0';
 modeltype PCM_SYS uses 'http://sdq.ipd.uka.de/PalladioComponentModel/System/5.0';
@@ -404,6 +406,6 @@ log ('Start of RequiredRole Constructor');
 	requiredInterface__OperationRequiredRole := rr.providedInterface__OperationProvidedRole;
 }
 
-blackbox helper appliedStereotypesEqualsOne(repositoryComponentSet:Set(Entity),stereotypeName:String):Boolean;
-blackbox helper hasAppliedStereotype(assemblyContext:Entity, stereotypeName:String):Boolean;
-blackbox helper getNumberOfReplicas(assemblyContext:AssemblyContext, taggedValueName:String,stereotypeName:String):Integer;
+//blackbox helper appliedStereotypesEqualsOne(repositoryComponentSet:Set(Entity),stereotypeName:String):Boolean;
+//blackbox helper hasAppliedStereotype(assemblyContext:Entity, stereotypeName:String):Boolean;
+//blackbox helper getNumberOfReplicas(assemblyContext:AssemblyContext, taggedValueName:String,stereotypeName:String):Integer;
