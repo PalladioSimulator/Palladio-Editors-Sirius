@@ -15,7 +15,7 @@
       <allocation href="../threeLayer.allocation#_W4Gm0IH9EeSqaJ_9kwD6FA"/>
       <middlewareRepository href="pathmap://PCM_MODELS/Glassfish.repository#_yQk9oIX1EdyWta7nHuXiHQ"/>
       <eventMiddleWareRepository href="pathmap://PCM_MODELS/default_event_middleware.repository#_Onc7cMALEd-LKvNtxXAQbQ"/>
-      <platformMonitoringSpecification href="../My.pms#/"/>
+      <platformMonitoringSpecification href="../UsageScenario.pms#/"/>
       <serviceLevelObjectives href="../threeLayer.slo#/"/>
       <usageEvolution href="../UsageEvolution/OneYearTrend.usageevolution#_i-2QoHWQEeSn05EdHZE9fg"/>
     </initialModel>
