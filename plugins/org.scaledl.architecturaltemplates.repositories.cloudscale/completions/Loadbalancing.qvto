@@ -126,11 +126,6 @@ helper connectLoadBalancerAndAssemblyContexts(loadBalancedAssemblyContext : Asse
 				assemblyConnector.providingAssemblyContext_AssemblyConnector := loadBalancerAssemblyContext;
 				assemblyConnector.providedRole_AssemblyConnector := commonProvidedRoleOfAssemblyConnectorAndLoadbalancer;
 				createAssemblyConnectorsBetweenLoadbalancerAndLoadbalancedAssemblyContexts(oldAssemblyConnectorProvidedInterface,loadBalancerAssemblyContext,loadBalancerNeededRequiredRoles,duplicatedAssemblyContextsAndLoadBalancedAssemblyContext);
-				//Connect the duplicated AssemblyContext with required AssemblyContexts 
-				if (loadBalancedAssemblyContext.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity != null){
-					addRequiredRolesAssemblyConnectors(loadBalancedAssemblyContext,duplicatedAssemblyContextSet);
-					addRequiredRolesSystemDelegationConnectors(loadBalancedAssemblyContext,duplicatedAssemblyContextSet);
-				};
 			}
 		}
 		else if (connector.oclIsTypeOf(ProvidedDelegationConnector)) {
@@ -148,14 +143,14 @@ helper connectLoadBalancerAndAssemblyContexts(loadBalancedAssemblyContext : Asse
 				delegationConnector.innerProvidedRole_ProvidedDelegationConnector := commonProvidedRoleOfDelegationConnectorAndLoadbalancer;
 				delegationConnector.assemblyContext_ProvidedDelegationConnector := loadBalancerAssemblyContext;
 				createAssemblyConnectorsBetweenLoadbalancerAndLoadbalancedAssemblyContexts(delegationConnectorProvidedInterface,loadBalancerAssemblyContext,loadBalancerNeededRequiredRoles,duplicatedAssemblyContextsAndLoadBalancedAssemblyContext);
-				//Connect the duplicated AssemblyContext with required AssemblyContexts 
-				if (providingAssemblyContext.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity != null){
-					addRequiredRolesAssemblyConnectors(providingAssemblyContext,duplicatedAssemblyContextSet);
-					addRequiredRolesSystemDelegationConnectors(providingAssemblyContext,duplicatedAssemblyContextSet);
-				};
 			}
 		}
-	}
+	};
+	//Connect the duplicated AssemblyContext with required AssemblyContexts 
+	if (loadBalancedAssemblyContext.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity != null){
+					addRequiredRolesAssemblyConnectors(loadBalancedAssemblyContext,duplicatedAssemblyContextSet);
+					addRequiredRolesSystemDelegationConnectors(loadBalancedAssemblyContext,duplicatedAssemblyContextSet);
+	};
 }
 
 helper createAssemblyConnectorsBetweenLoadbalancerAndLoadbalancedAssemblyContexts(operationInterface:OperationInterface,loadBalancerAssemblyContext : AssemblyContext,loadBalancerNeededRequiredRoles : Bag(OperationRequiredRole),duplicatedAssemblyContextsAndLoadBalancedAssemblyContext : OrderedSet(AssemblyContext)){
