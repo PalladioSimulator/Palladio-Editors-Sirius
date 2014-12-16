@@ -18,7 +18,7 @@
       <workflow_extension
             name="org.scaledl.architecturaltemplates.completion.jobs.tab_extension"
             runconfig_tab="org.scaledl.architecturaltemplates.completion.config.ATExtensionTab"
-            workflow_id="workflow.extension.experimentautomation.before.experimentrun">
+            workflow_id="workflow.extension.experimentautomation.tabs">
       </workflow_extension>
    </extension>
 
