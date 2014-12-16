@@ -8,7 +8,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.palladiosimulator.commons.emfutils.EMFCopyHelper;
 import org.palladiosimulator.simulizar.launcher.jobs.LoadPMSModelIntoBlackboardJob;
-import org.scaledl.architecturaltemplates.completion.config.ATConfiguration;
+import org.scaledl.architecturaltemplates.completion.config.ATExtensionJobConfiguration;
 
 import de.uka.ipd.sdq.workflow.jobs.JobFailedException;
 import de.uka.ipd.sdq.workflow.jobs.SequentialBlackboardInteractingJob;
@@ -26,7 +26,7 @@ public class StoreCompletedModelsJob extends SequentialBlackboardInteractingJob<
     final static String[] PARTITION_IDs = new String[] { LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID,
             LoadPMSModelIntoBlackboardJob.PMS_MODEL_PARTITION_ID };
 
-    public StoreCompletedModelsJob(final ATConfiguration configuration) {
+    public StoreCompletedModelsJob(final ATExtensionJobConfiguration configuration) {
     }
 
     @Override
