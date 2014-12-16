@@ -64,7 +64,7 @@ public class StoreCompletedModelsJob extends SequentialBlackboardInteractingJob<
                     r.getURI().lastSegment());
             final Resource resourceCopy = partitionCopy.getResourceSet().createResource(targetURI);
 
-            for (int i = 0; i <= r.getContents().size(); i++) {
+            for (int i = 0; i < r.getContents().size(); i++) {
                 resourceCopy.getContents().add(elementsCopy.get(elementCounter));
                 elementCounter++;
             }
