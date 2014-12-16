@@ -17,5 +17,5 @@
   </stereotypeApplications>
   <importedProfiles
       nsURI="replicableNS"
-      location="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/Replicable.emfprofile_diagram"/>
+      location="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/Replicable.emfprofile_diagram"/>
 </emfprofileapplication:ProfileApplication>

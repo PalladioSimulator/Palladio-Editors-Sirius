@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="ASCII"?>
-<emfprofileapplication:ProfileApplication xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:emfprofileapplication="http://www.modelversioning.org/emfprofile/application/1.1" xmlns:myprofile="ThreeLayerProfile" xsi:schemaLocation="ThreeLayerProfile platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/ThreeLayer.emfprofile_diagram#_W1LLkCOrEeSubfGVEKswQQ">
+<emfprofileapplication:ProfileApplication xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:emfprofileapplication="http://www.modelversioning.org/emfprofile/application/1.1" xmlns:myprofile="ThreeLayerProfile" xsi:schemaLocation="ThreeLayerProfile platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/ThreeLayer.emfprofile_diagram#_W1LLkCOrEeSubfGVEKswQQ">
   <stereotypeApplications xsi:type="myprofile:PresentationLayerAssembly">
     <appliedTo href="platform:/resource/org.scaledl.architecturaltemplates.examples.bookshop/threeLayer.system#_c4HmcCOgEeSubfGVEKswQQ"/>
-    <extension href="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/ThreeLayer.emfprofile_diagram#_3EaTMCOrEeSubfGVEKswQQ"/>
+    <extension href="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/ThreeLayer.emfprofile_diagram#_3EaTMCOrEeSubfGVEKswQQ"/>
   </stereotypeApplications>
   <stereotypeApplications xsi:type="myprofile:MiddleLayerAssembly">
     <appliedTo href="platform:/resource/org.scaledl.architecturaltemplates.examples.bookshop/threeLayer.system#_hSPoYCOgEeSubfGVEKswQQ"/>
-    <extension href="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/ThreeLayer.emfprofile_diagram#_4Qx_sCOrEeSubfGVEKswQQ"/>
+    <extension href="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/ThreeLayer.emfprofile_diagram#_4Qx_sCOrEeSubfGVEKswQQ"/>
   </stereotypeApplications>
   <stereotypeApplications xsi:type="myprofile:DataLayerAssembly">
     <appliedTo href="platform:/resource/org.scaledl.architecturaltemplates.examples.bookshop/threeLayer.system#_keXmICOgEeSubfGVEKswQQ"/>
-    <extension href="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/ThreeLayer.emfprofile_diagram#_44Kv0COrEeSubfGVEKswQQ"/>
+    <extension href="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/ThreeLayer.emfprofile_diagram#_44Kv0COrEeSubfGVEKswQQ"/>
   </stereotypeApplications>
   <stereotypeApplications xsi:type="myprofile:ThreeLayerSystem">
     <appliedTo href="platform:/resource/org.scaledl.architecturaltemplates.examples.bookshop/threeLayer.system#_6h150COfEeSubfGVEKswQQ"/>
-    <extension href="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/ThreeLayer.emfprofile_diagram#_Xr9AkCPBEeSbfv_s0ToTIw"/>
+    <extension href="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/ThreeLayer.emfprofile_diagram#_Xr9AkCPBEeSbfv_s0ToTIw"/>
   </stereotypeApplications>
-  <importedProfiles nsURI="ThreeLayerProfile" location="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/ThreeLayer.emfprofile_diagram"/>
+  <importedProfiles nsURI="ThreeLayerProfile" location="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/ThreeLayer.emfprofile_diagram"/>
 </emfprofileapplication:ProfileApplication>

@@ -9,7 +9,7 @@
         name="DynamicHorizontalScalingResourceContainerSystem" eSuperTypes="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication">
       <eStructuralFeatures xsi:type="ecore:EAttribute" xmi:id="_hfcSgEDOEeStM_n5R_Fc_g"
           name="roleURI" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-          changeable="false" defaultValueLiteral="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_c9Rl4H46EeSqFvs4kqVd7Q"/>
+          changeable="false" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_c9Rl4H46EeSqFvs4kqVd7Q"/>
       <extensions xmi:id="_Xr9AkCPBEeSbfv_s0ToTIw" target="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//system/System"
           lowerBound="1" upperBound="1"/>
     </eClassifiers>
@@ -17,7 +17,7 @@
         name="ReplicableResourceContainer" eSuperTypes="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication">
       <eStructuralFeatures xsi:type="ecore:EAttribute" xmi:id="_9lagQH47EeSqFvs4kqVd7Q"
           name="roleURI" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-          changeable="false" defaultValueLiteral="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_TuvAQH4aEeS81uv5CnTOEw"/>
+          changeable="false" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_TuvAQH4aEeS81uv5CnTOEw"/>
       <extensions xmi:id="_7MhWQH47EeSqFvs4kqVd7Q" target="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//resourceenvironment/ResourceContainer"/>
     </eClassifiers>
   </emfprofile:Profile>
