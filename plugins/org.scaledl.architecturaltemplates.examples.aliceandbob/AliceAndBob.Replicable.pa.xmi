@@ -5,7 +5,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:emfprofileapplication="http://www.modelversioning.org/emfprofile/application/1.1"
     xmlns:myprofile="replicableNS"
-    xsi:schemaLocation="replicableNS platform:plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/Replicable.emfprofile_diagram#_89ZP4A2eEeS7GNGEpRYHew">
+    xsi:schemaLocation="replicableNS platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/Replicable.emfprofile_diagram#_89ZP4A2eEeS7GNGEpRYHew">
   <stereotypeApplications
       xsi:type="myprofile:Replicable"
       utilizationThreshold="3"
@@ -13,7 +13,7 @@
     <appliedTo
         href="AliceAndBob.resourceenvironment#_t_95AAXLEeOk2t-0hHhTJg"/>
     <extension
-        href="platform:plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/Replicable.emfprofile_diagram#_I_fv0A2fEeS7GNGEpRYHew"/>
+        href="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/Replicable.emfprofile_diagram#_I_fv0A2fEeS7GNGEpRYHew"/>
   </stereotypeApplications>
   <importedProfiles
       nsURI="replicableNS"
