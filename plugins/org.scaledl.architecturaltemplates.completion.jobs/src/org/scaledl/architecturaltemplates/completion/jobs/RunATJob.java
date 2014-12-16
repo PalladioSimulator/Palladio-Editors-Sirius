@@ -1,15 +1,19 @@
 package org.scaledl.architecturaltemplates.completion.jobs;
 
-import org.scaledl.architecturaltemplates.completion.config.ATConfiguration;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.scaledl.architecturaltemplates.completion.config.ATExtensionJobConfiguration;
 
-import de.uka.ipd.sdq.codegen.simucontroller.debug.IDebugListener;
-import de.uka.ipd.sdq.workflow.jobs.SequentialBlackboardInteractingJob;
+import de.uka.ipd.sdq.workflow.extension.AbstractExtensionJobConfiguration;
+import de.uka.ipd.sdq.workflow.extension.AbstractWorkflowExtensionJob;
+import de.uka.ipd.sdq.workflow.jobs.JobFailedException;
+import de.uka.ipd.sdq.workflow.jobs.UserCanceledException;
 import de.uka.ipd.sdq.workflow.mdsd.blackboard.MDSDBlackboard;
 
 /**
  * Conducts a complete AT Job:
  * 
- * 1) Load source models (uncompleted PCM models; stereotypes may reference AT models) into the blackboard.
+ * 1) Load source models (uncompleted PCM models; stereotypes may reference AT models) into the
+ * blackboard.
  * 
  * 2) Validate these models according to AT constraints.
  * 
@@ -24,36 +28,32 @@ import de.uka.ipd.sdq.workflow.mdsd.blackboard.MDSDBlackboard;
  * 
  * @author Sebastian Lehrig
  */
-public class RunATJob extends SequentialBlackboardInteractingJob<MDSDBlackboard> {
-
-    /**
-     * Convenience constructor.
-     * 
-     * @param configuration
-     *            Configuration for AT runs.
-     */
-    public RunATJob(ATConfiguration configuration) {
-        this(configuration, null);
-    }
+public class RunATJob extends AbstractWorkflowExtensionJob<MDSDBlackboard> {
 
     /**
      * Default constructor.
-     * 
-     * @param configuration
-     *            Configuration for AT runs.
-     * @param listener
-     *            DebugListener for simulations.
      */
-    public RunATJob(ATConfiguration configuration, IDebugListener listener) {
-        super(false);
+    public RunATJob() {
+        super();
+    }
 
-        if (listener == null && configuration.isDebug()) {
-            throw new IllegalArgumentException("Debug listener has to be non-null for debug runs");
-        }
+    /**
+     * Cannot add jobs earlier as extension jobs get configured after instantiation.
+     */
+    @Override
+    public void setJobConfiguration(AbstractExtensionJobConfiguration jobConfiguration) {
+        super.setJobConfiguration(jobConfiguration);
 
+        final ATExtensionJobConfiguration configuration = (ATExtensionJobConfiguration) jobConfiguration;
         this.addJob(new ValidateModelsJob(configuration));
         this.addJob(new RunATCompletionJob(configuration));
         this.addJob(new StoreCompletedModelsJob(configuration));
+    }
+
+    @Override
+    public void execute(IProgressMonitor monitor) throws JobFailedException, UserCanceledException {
+        // TODO Auto-generated method stub
+        super.execute(monitor);
     }
 
 }

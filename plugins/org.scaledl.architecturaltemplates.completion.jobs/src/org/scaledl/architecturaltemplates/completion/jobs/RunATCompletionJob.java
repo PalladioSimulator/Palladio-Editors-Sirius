@@ -23,7 +23,7 @@ import org.palladiosimulator.simulizar.launcher.jobs.LoadPMSModelIntoBlackboardJ
 import org.palladiosimulator.simulizar.pms.PMSModel;
 import org.palladiosimulator.simulizar.pms.impl.PmsFactoryImpl;
 import org.palladiosimulator.simulizar.pms.util.PmsResourceImpl;
-import org.scaledl.architecturaltemplates.completion.config.ATConfiguration;
+import org.scaledl.architecturaltemplates.completion.config.ATExtensionJobConfiguration;
 import org.scaledl.architecturaltemplates.type.AT;
 import org.scaledl.architecturaltemplates.type.CompletionParameter;
 import org.scaledl.architecturaltemplates.type.PCMBlackboardCompletionParameter;
@@ -61,7 +61,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
     /** Folder with traces as created by the QVT-O engine */
     private static final String TRACESFOLDER = "traces";
 
-    public RunATCompletionJob(final ATConfiguration configuration) {
+    public RunATCompletionJob(final ATExtensionJobConfiguration configuration) {
     }
 
     @Override

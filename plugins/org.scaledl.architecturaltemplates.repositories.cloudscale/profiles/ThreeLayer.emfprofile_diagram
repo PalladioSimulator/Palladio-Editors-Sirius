@@ -9,10 +9,10 @@
         iconPath="">
       <eStructuralFeatures xsi:type="ecore:EAttribute" xmi:id="_WcXawCxCEeSowrNUHLWjKA"
           name="presentationTierURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-          changeable="false" defaultValueLiteral="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/templates/ThreeLayer/ThreeTier.resourceenvironment#_ETFqQCPIEeSwPfc4EJw-WA"/>
+          changeable="false" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/templates/ThreeLayer/ThreeTier.resourceenvironment#_ETFqQCPIEeSwPfc4EJw-WA"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" xmi:id="_QlFqMEDOEeStM_n5R_Fc_g"
           name="roleURI" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-          changeable="false" defaultValueLiteral="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_BIH6MCO0EeSLXszsY50NUA"/>
+          changeable="false" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_BIH6MCO0EeSLXszsY50NUA"/>
       <extensions xmi:id="_3EaTMCOrEeSubfGVEKswQQ" target="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//core/composition/AssemblyContext"
           upperBound="1"/>
     </eClassifiers>
@@ -20,7 +20,7 @@
         name="MiddleLayerAssembly" eSuperTypes="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication">
       <eStructuralFeatures xsi:type="ecore:EAttribute" xmi:id="_57PuMCxCEeSowrNUHLWjKA"
           name="middleTierURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-          changeable="false" defaultValueLiteral="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/templates/ThreeLayer/ThreeTier.resourceenvironment#_Fg46ICPIEeSwPfc4EJw-WA"/>
+          changeable="false" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/templates/ThreeLayer/ThreeTier.resourceenvironment#_Fg46ICPIEeSwPfc4EJw-WA"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" xmi:id="_AK2HADhXEeSPmr3EMdQ-0w"
           name="responseTimeThreshold" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
           defaultValueLiteral="3"/>
@@ -29,7 +29,7 @@
           defaultValueLiteral="10"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" xmi:id="_er3-sEDOEeStM_n5R_Fc_g"
           name="roleURI" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-          changeable="false" defaultValueLiteral="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_SBBJ8SO0EeSLXszsY50NUA"/>
+          changeable="false" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_SBBJ8SO0EeSLXszsY50NUA"/>
       <extensions xmi:id="_4Qx_sCOrEeSubfGVEKswQQ" target="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//core/composition/AssemblyContext"
           upperBound="1"/>
     </eClassifiers>
@@ -37,10 +37,10 @@
         name="DataLayerAssembly" eSuperTypes="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication">
       <eStructuralFeatures xsi:type="ecore:EAttribute" xmi:id="__IZvkCxCEeSowrNUHLWjKA"
           name="dataLayerTierURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-          changeable="false" defaultValueLiteral="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/templates/ThreeLayer/ThreeTier.resourceenvironment#_HAQbICPIEeSwPfc4EJw-WA"/>
+          changeable="false" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/templates/ThreeLayer/ThreeTier.resourceenvironment#_HAQbICPIEeSwPfc4EJw-WA"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" xmi:id="_gCqLcEDOEeStM_n5R_Fc_g"
           name="roleURI" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-          changeable="false" defaultValueLiteral="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_T8ZRgSO0EeSLXszsY50NUA"/>
+          changeable="false" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_T8ZRgSO0EeSLXszsY50NUA"/>
       <extensions xmi:id="_44Kv0COrEeSubfGVEKswQQ" target="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//core/composition/AssemblyContext"
           upperBound="1"/>
     </eClassifiers>
@@ -48,7 +48,7 @@
         name="ThreeLayerSystem" eSuperTypes="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication">
       <eStructuralFeatures xsi:type="ecore:EAttribute" xmi:id="_hfcSgEDOEeStM_n5R_Fc_g"
           name="roleURI" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-          changeable="false" defaultValueLiteral="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_RtHOICPCEeSVlNuoLyDfdw"/>
+          changeable="false" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_RtHOICPCEeSVlNuoLyDfdw"/>
       <extensions xmi:id="_Xr9AkCPBEeSbfv_s0ToTIw" target="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//system/System"
           lowerBound="1" upperBound="1"/>
     </eClassifiers>

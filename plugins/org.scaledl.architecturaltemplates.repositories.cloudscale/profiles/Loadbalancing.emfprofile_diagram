@@ -6,7 +6,7 @@
       <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_stAwwH7gEeSPVbICnJBAhw" name="numberOfReplicas" defaultValueLiteral="1">
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       </eStructuralFeatures>
-      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_JuJksH7hEeSPVbICnJBAhw" name="roleURI" lowerBound="1" changeable="false" defaultValueLiteral="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_kk1l8IHkEeSeK9JYh8VNzw">
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_JuJksH7hEeSPVbICnJBAhw" name="roleURI" lowerBound="1" changeable="false" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_kk1l8IHkEeSeK9JYh8VNzw">
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eStructuralFeatures>
       <extensions xmi:type="emfprofile:Extension" xmi:id="_3n_3oH7gEeSPVbICnJBAhw" upperBound="1">
@@ -15,7 +15,7 @@
     </eClassifiers>
     <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_xHyTsIHlEeSeK9JYh8VNzw" name="LoadbalancingSystem">
       <eSuperTypes xmi:type="ecore:EClass" href="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication"/>
-      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_JIghwIHmEeSeK9JYh8VNzw" name="roleURI" lowerBound="1" changeable="false" defaultValueLiteral="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_rotRUYHkEeSeK9JYh8VNzw">
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_JIghwIHmEeSeK9JYh8VNzw" name="roleURI" lowerBound="1" changeable="false" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_rotRUYHkEeSeK9JYh8VNzw">
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eStructuralFeatures>
       <extensions xmi:type="emfprofile:Extension" xmi:id="_IPgdMIHmEeSeK9JYh8VNzw" upperBound="1">
