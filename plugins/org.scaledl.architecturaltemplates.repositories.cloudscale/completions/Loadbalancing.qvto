@@ -58,7 +58,7 @@ main() {
 	var duplicatedComponentResourceContainer : OrderedSet(ResourceContainer) := createDuplicatedResourceContainer(loadBalancedResourceContainer,loadBalancedAllocationContext.entityName,duplicatedAssemblyContexts);
 	
 	//create the AllocationContexts for the LoadBalancer and the duplicated AssemblyContexts
-	new AllocationContext(loadBalancedAssemblyContext,loadBalancerResourceContainer);
+	new AllocationContext(loadBalancerAssemblyContext,loadBalancerResourceContainer);
 	duplicatedAssemblyContexts -> map createDuplicatedAllocationContexts(duplicatedComponentResourceContainer);
 }
 
