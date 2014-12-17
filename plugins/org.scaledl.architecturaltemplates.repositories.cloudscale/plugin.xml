@@ -67,5 +67,14 @@
             </metamodel>
          </library>
       </unit>
+         <unit name="LoadbalancingLibrary" namespace="org.scaledl.architecturaltemplates.repositories.cloudscale.black">
+    		<library name="LoadbalancingLibrary" class="org.scaledl.architecturaltemplates.repositories.cloudscale.black.LoadbalancingLibrary">
+    			<metamodel nsURI="http://www.eclipse.org/emf/2002/Ecore"/>
+    			<metamodel nsURI="http://www.modelversioning.org/emfprofile/1.1"/>
+    			<metamodel nsURI="http://www.modelversioning.org/emfprofile/application/1.1"/>
+    			<metamodel nsURI="http://sdq.ipd.uka.de/PalladioComponentModel/Core/Entity/5.0"/>
+    			<metamodel nsURI="http://sdq.ipd.uka.de/PalladioComponentModel/Core/Composition/5.0"/>
+    		</library>
+		</unit>
    </extension>
 </plugin>
