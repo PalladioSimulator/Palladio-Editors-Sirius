@@ -1,4 +1,5 @@
-import loadbalancingblackboxlibrary.LoadbalancingLib;
+import org.scaledl.architecturaltemplates.repositories.cloudscale.black.LoadbalancingLibrary;
+import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
 
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
 modeltype PCM_REP uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0';
@@ -10,14 +11,13 @@ modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/Pall
 modeltype PCMSEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0');
 
 
-transformation LoadBalancedAssemblyContextTransformation(inout pcmAllocation : PCM_ALLOC,
+transformation Loadbalancing(inout pcmAllocation : PCM_ALLOC,
 										inout pcmSystem : PCM_SYS,
 										inout pcmRepository : PCM_REP,
 										inout pcmResourceEnvironment : PCM_RES_ENV);
 property numberOfReplicas : Integer;
 main() {
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
-	var resEnvironment : ResourceEnvironment := allocation.targetResourceEnvironment_Allocation;
 	var allocationContexts : Set(AllocationContext) := allocation.allocationContexts_Allocation;
 	var assemblyContexts : Set(AssemblyContext);
 	allocationContexts -> forEach(allocationContext){assemblyContexts += allocationContext.assemblyContext_AllocationContext;};
@@ -31,7 +31,10 @@ main() {
 					
 	assert fatal(loadBalancedAssemblyContext != null)
 		with log ("There is no LoadbalancedAssemblyContext Stereotype Application!");	
-	
+		
+	//apply Stereotype OriginalAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
+	applyStereotype(loadBalancedAssemblyContext,"OriginalAssemblyContext");
+					
 	numberOfReplicas := getNumberOfReplicas(loadBalancedAssemblyContext,"numberOfReplicas","LoadbalancedAssemblyContext");
 	
 	var loadBalancedAllocationContext : AllocationContext := allocationContexts ->selectOne(allocationContext : AllocationContext | allocationContext.assemblyContext_AllocationContext = loadBalancedAssemblyContext and hasAppliedStereotype(allocationContext.assemblyContext_AllocationContext,"LoadbalancedAssemblyContext"));
@@ -40,6 +43,9 @@ main() {
 	//create the LoadBalancer BasicComponent and AssemblyContext
 	var loadBalancerComponent : RepositoryComponent := new BasicComponent(loadBalancedAssemblyContext.encapsulatedComponent__AssemblyContext);
 	var loadBalancerAssemblyContext : AssemblyContext := new AssemblyContext(loadBalancerComponent);
+	
+	//apply Stereotype LoadbalancerAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
+	applyStereotype(loadBalancerAssemblyContext,"LoadbalancerAssemblyContext");
 	
 	//duplicate the stereotyped AssemblyContext
 	var duplicatedAssemblyContexts : OrderedSet(AssemblyContext) := createDuplicatedAssemblyContexts(loadBalancedAssemblyContext,numberOfReplicas);
@@ -88,8 +94,12 @@ mapping OrderedSet(AssemblyContext) :: createDuplicatedAllocationContexts(resour
 helper createDuplicatedAssemblyContexts(loadbalancedAssemblyContext : AssemblyContext,replicasNumber : Integer) : OrderedSet(AssemblyContext){
 	var counter : Integer := 1;
 	var duplicatedAssemblyContextSet : OrderedSet(AssemblyContext);
+	var duplicateAssemblyContext : AssemblyContext;
 	while(counter <= replicasNumber){
-		duplicatedAssemblyContextSet += new AssemblyContext(loadbalancedAssemblyContext.encapsulatedComponent__AssemblyContext);
+		duplicateAssemblyContext := new AssemblyContext(loadbalancedAssemblyContext.encapsulatedComponent__AssemblyContext);
+		//apply Stereotype LoadbalancerAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
+		applyStereotype(duplicateAssemblyContext,"DuplicateAssemblyContext");
+		duplicatedAssemblyContextSet +=duplicateAssemblyContext;
 		counter := counter+1;
 	};
 	return duplicatedAssemblyContextSet;
