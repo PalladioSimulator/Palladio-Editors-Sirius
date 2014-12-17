@@ -1,0 +1,67 @@
+import org.scaledl.architecturaltemplates.repositories.cloudscale.black.LoadbalancingLibrary;
+import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
+
+modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
+modeltype PCM_REP uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0';
+modeltype PCM_SYS uses 'http://sdq.ipd.uka.de/PalladioComponentModel/System/5.0';
+modeltype PCM_RES_ENV uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0';
+modeltype PCM_CORE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Core/5.0';
+modeltype PCMEntity uses pcm::core::entity('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
+modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
+modeltype PCMSEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0');
+
+
+transformation ReverseLoadbalancing(inout pcmAllocation : PCM_ALLOC,
+										inout pcmSystem : PCM_SYS,
+										inout pcmRepository : PCM_REP,
+										inout pcmResourceEnvironment : PCM_RES_ENV);
+main() {
+	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
+	var allocationContexts : Set(AllocationContext) := allocation.allocationContexts_Allocation;
+	var assemblyContexts : Set(AssemblyContext);
+	allocationContexts -> forEach(allocationContext){assemblyContexts += allocationContext.assemblyContext_AllocationContext;};
+	
+	assert fatal(appliedStereotypesEqualsOne(assemblyContexts,"LoadbalancerAssemblyContext"))
+		with log ("There is more than one LoadbalancerAssemblyContext Stereotype Application!");		
+		
+	//get the stereotyped AssemblyContext
+	var loadBalancerAssemblyContext : AssemblyContext := assemblyContexts -> selectOne(assemblyContext : AssemblyContext |
+					hasAppliedStereotype(assemblyContext,"LoadbalancerAssemblyContext"));
+					
+	assert fatal(loadBalancerAssemblyContext != null)
+		with log ("There is no LoadbalancerAssemblyContext Stereotype Application!");	
+	
+	var duplicateAssemblyContexts : Set(AssemblyContext);
+	var originalAssemblyContext : AssemblyContext;
+	var resourceContainer : ResourceContainer;
+	allocationContexts -> forEach(allocationContext){
+		if(hasAppliedStereotype(allocationContext.assemblyContext_AllocationContext,"DuplicateAssemblyContext")){
+			duplicateAssemblyContexts += allocationContext.assemblyContext_AllocationContext;
+			resourceContainer := allocationContext.resourceContainer_AllocationContext;
+			removeAllocationContext(allocationContext);
+		}
+		else if(hasAppliedStereotype(allocationContext.assemblyContext_AllocationContext,"OriginalAssemblyContext")){
+			originalAssemblyContext := allocationContext.assemblyContext_AllocationContext;
+		}
+		else if(hasAppliedStereotype(allocationContext.assemblyContext_AllocationContext,"LoadbalancerAssemblyContext")){
+			resourceContainer := allocationContext.resourceContainer_AllocationContext;
+			removeResourceContainer(resourceContainer);
+			removeAllocationContext(allocationContext);
+		}
+	};
+}
+
+/**
+ * Remove the AllocationContext of the Allocation Model
+ */
+helper removeAllocationContext(allocationContext : AllocationContext){
+	pcmAllocation.removeElement(allocationContext);
+}
+
+
+/**
+ * Remove the AllocationContext of the ResourceEnvironment Model
+ */
+helper removeResourceContainer(resourceContainer : ResourceContainer){
+	pcmResourceEnvironment.removeElement(resourceContainer);
+}
