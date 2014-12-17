@@ -16,15 +16,20 @@
       [Enter License Description here.]
    </license>
 
-   <plugin
-         id="org.scaledl.architecturaltemplates.repositories.cloudscale"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <requires>
+      <import plugin="org.eclipse.core.runtime" version="3.10.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.m2m.qvt.oml" version="3.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.m2m.qvt.oml.project" version="3.4.0" match="greaterOrEqual"/>
+      <import plugin="org.modelversioning.emfprofile" version="1.1.0" match="greaterOrEqual"/>
+      <import plugin="org.modelversioning.emfprofile.registry" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="edu.kit.ipd.sdq.mdsd.profiles" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf" version="2.6.0" match="greaterOrEqual"/>
+      <import plugin="de.uka.ipd.sdq.identifier" version="2.1.0" match="greaterOrEqual"/>
+      <import plugin="de.uka.ipd.sdq.pcm" version="3.6.0" match="greaterOrEqual"/>
+   </requires>
 
    <plugin
-         id="ThreeLayerBlackboxLibrary"
+         id="org.scaledl.architecturaltemplates.repositories.cloudscale"
          download-size="0"
          install-size="0"
          version="0.0.0"

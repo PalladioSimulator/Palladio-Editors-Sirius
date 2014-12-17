@@ -1,4 +1,4 @@
-import profilesblackboxlibrary.ProfilesLib;
+import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
 
 modeltype PRM uses 'http://simulizar.palladiosimulator.org/PalladioRuntimeMonitoring/1.0';
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
