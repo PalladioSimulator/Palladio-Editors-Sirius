@@ -9,6 +9,7 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -17,6 +18,8 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import de.uka.ipd.sdq.workflow.launchconfig.ImageRegistryHelper;
+
 /**
  * This class defines a tab with AT-specific configuration options.
  * 
@@ -24,14 +27,13 @@ import org.eclipse.swt.widgets.Text;
  */
 public class ATExtensionTab extends AbstractLaunchConfigurationTab {
 
-    /**
-     * Name of configuration attribute for storing blackboard partition models after AT completion.
-     */
+    /** The ID of this plug-in. */
+    public static final String PLUGIN_ID = "org.scaledl.architecturaltemplates.completion.jobs";
+
+    /** Name of configuration attribute for storing blackboard partition models after AT completion. */
     public static final String STORE_COMPLETED_MODELS = "org.scaledl.architecturaltemplates.completion.config.storeCompletedModels";
 
-    /**
-     * Default configuration for storage of completed models.
-     */
+    /** Default configuration for storage of completed models. */
     public static final Boolean DEFAULT_STORE_COMPLETED_MODELS = true;
 
     /**
@@ -40,29 +42,22 @@ public class ATExtensionTab extends AbstractLaunchConfigurationTab {
      */
     public static final String STORE_RECONFIGURED_MODELS = "org.scaledl.architecturaltemplates.completion.config.storeReconfiguredModels";
 
-    /**
-     * Default configuration for storage of reconfigured models.
-     */
+    /** Default configuration for storage of reconfigured models. */
     public static final Boolean DEFAULT_STORE_RECONFIGURED_MODELS = false;
 
-    /**
-     * Name of configuration attribute for the model storage location.
-     */
+    /** Name of configuration attribute for the model storage location. */
     public static final String MODEL_STORAGE_LOCATION = "org.scaledl.architecturaltemplates.completion.config.modelStorageLocation";
 
-    /**
-     * Default model storage location.
-     */
+    /** Default model storage location. */
     public static final String DEFAULT_MODEL_STORAGE_LOCATION = "org.scaledl.architecturaltemplates.temporary";
 
-    /**
-     * Button for control enabling storage of completed models.
-     */
+    /** The path to the image file for the tab icon. */
+    public static final String CONFIGURATION_TAB_IMAGE_PATH = "icons/ATLogo15x15.png";
+
+    /** Button for control enabling storage of completed models. */
     private Button storeCompletedModelsButton;
 
-    /**
-     * Button for control enabling storage of reconfigured models.
-     */
+    /** Button for control enabling storage of reconfigured models. */
     private Button storeReconfiguredModelsButton;
 
     /** Text field for name of the plug-in project for storing data. */
@@ -205,5 +200,10 @@ public class ATExtensionTab extends AbstractLaunchConfigurationTab {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public Image getImage() {
+        return ImageRegistryHelper.getTabImage(PLUGIN_ID, CONFIGURATION_TAB_IMAGE_PATH);
     }
 }
