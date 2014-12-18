@@ -46,10 +46,11 @@ public class StoreCompletedModelsJob extends SequentialBlackboardInteractingJob<
     private final ATExtensionJobConfiguration configuration;
 
     /**
-     * Default constructor.
+     * Default constructor. Adds an inner job for creating the project for model storage.
      * 
      * @param configuration
-     *            the configuration object, including the storage location for copied resources
+     *            the configuration object, including the storage project location for copied
+     *            resources
      */
     public StoreCompletedModelsJob(final ATExtensionJobConfiguration configuration) {
         this.configuration = configuration;
@@ -58,6 +59,13 @@ public class StoreCompletedModelsJob extends SequentialBlackboardInteractingJob<
         this.add(new CreatePluginProjectJob(PLUGIN_CONFIGURATION));
     }
 
+    /**
+     * For each partition of PARTITION_IDS, copies resources to a dedicated a temporary partition
+     * for storage and stores all resources to disk.
+     * 
+     * @param monitor
+     *            for monitoring the progress of copy and storage.
+     */
     @Override
     public void execute(final IProgressMonitor monitor) throws JobFailedException, UserCanceledException {
         super.execute(monitor);
@@ -107,6 +115,18 @@ public class StoreCompletedModelsJob extends SequentialBlackboardInteractingJob<
         return partitionCopy;
     }
 
+    /**
+     * Stores the given partition to disk.
+     * 
+     * @param monitor
+     *            for monitoring the progress of storage.
+     * @param partitionID
+     *            the partition to be stored to disk.
+     * @throws JobFailedException
+     *             the job failed, e.g., due to a disk write error.
+     * @throws UserCanceledException
+     *             the user has chosen to abort.
+     */
     private void storePartition(final IProgressMonitor monitor, final String partitionID) throws JobFailedException,
             UserCanceledException {
         final SavePartitionToDiskJob savePartitionJob = new SavePartitionToDiskJob(partitionID);
