@@ -24,7 +24,7 @@ main() {
 	assert fatal(appliedStereotypesEqualsOne(assemblyContexts,"LoadbalancerAssemblyContext"))
 		with log ("There is more than one LoadbalancerAssemblyContext Stereotype Application!");		
 		
-	//get the stereotyped AssemblyContext
+	//get the LoadbalancerAssemblyContext stereotyped AssemblyContext
 	var loadBalancerAssemblyContext : AssemblyContext := assemblyContexts -> selectOne(assemblyContext : AssemblyContext |
 					hasAppliedStereotype(assemblyContext,"LoadbalancerAssemblyContext"));
 					
@@ -55,6 +55,10 @@ main() {
 	reverseSystem(duplicateAssemblyContexts, originalAssemblyContext, loadBalancerAssemblyContext);
 	reverseRepository(loadbalancerRepositoryComponent);
 }
+
+/**
+ * Remove all Provided and RequiredRoles from the Loadbalancer RepositoryComponent and then remove the component
+ */
 helper reverseRepository(loadbalancerRepositoryComponent : RepositoryComponent){
 	var requiredRoles : Set(RequiredRole) := loadbalancerRepositoryComponent.requiredRoles_InterfaceRequiringEntity;
 	var providedRoles : Set(ProvidedRole) := loadbalancerRepositoryComponent.providedRoles_InterfaceProvidingEntity;
@@ -69,6 +73,10 @@ helper reverseRepository(loadbalancerRepositoryComponent : RepositoryComponent){
 	removeRepositoryComponent(loadbalancerRepositoryComponent);
 }
 
+/**
+ * Remove the Loadbalancer AssemblyContext and all replicated AssemblyContexts from the System,update the Assembly 
+ * and ProvidedDelegation or remove them, respectively
+ */
 helper reverseSystem(duplicateAssemblyContexts:Set(AssemblyContext), originalAssemblyContext : AssemblyContext, loadbalancerAssemblyContext : AssemblyContext){
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var system : System := allocation.system_Allocation;
@@ -175,26 +183,29 @@ helper removeResourceContainer(resourceContainer : ResourceContainer){
 }
 
 /**
- * Returns the requiring component of a given connector.
+ * Returns the requiring component of a given AssemblyConnector.
  */
 query getRequiringAssemblyContext(assemblyConnector : AssemblyConnector) : AssemblyContext {
 	return assemblyConnector.requiringAssemblyContext_AssemblyConnector;
 }
 
 /**
- * Returns the providing component of a given connector.
+ * Returns the providing component of a given AssemblyConnector.
  */
 query getProvidingAssemblyContext(assemblyConnector : AssemblyConnector) : AssemblyContext {
 	return assemblyConnector.providingAssemblyContext_AssemblyConnector;
 }
 
 /**
- * Returns the providing component of a given connector.
+ * Returns the providing component of a given ProvidedDelegationConnector.
  */
 query getProvidingAssemblyContext(providedDelegationConnector : ProvidedDelegationConnector) : AssemblyContext {
 	return providedDelegationConnector.assemblyContext_ProvidedDelegationConnector;
 }
 
+/**
+ * Returns the providing component of a given RequiredDelegationConnector.
+ */
 query getRequiringAssemblyContext(requiredDelegationConnector : RequiredDelegationConnector) : AssemblyContext{
 	return requiredDelegationConnector.assemblyContext_RequiredDelegationConnector;	
 }
