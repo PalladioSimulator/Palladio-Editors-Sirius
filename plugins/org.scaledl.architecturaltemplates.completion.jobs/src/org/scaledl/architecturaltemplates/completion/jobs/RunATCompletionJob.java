@@ -19,11 +19,12 @@ import org.palladiosimulator.commons.emfutils.EMFLoadHelper;
 import org.palladiosimulator.pcmmeasuringpoint.UsageScenarioMeasuringPoint;
 import org.palladiosimulator.pcmmeasuringpoint.impl.PcmmeasuringpointFactoryImpl;
 import org.palladiosimulator.pcmmeasuringpoint.util.PcmmeasuringpointResourceImpl;
-import org.palladiosimulator.simulizar.launcher.jobs.LoadPMSModelIntoBlackboardJob;
 import org.palladiosimulator.simulizar.pms.PMSModel;
 import org.palladiosimulator.simulizar.pms.impl.PmsFactoryImpl;
 import org.palladiosimulator.simulizar.pms.util.PmsResourceImpl;
 import org.scaledl.architecturaltemplates.completion.config.ATExtensionJobConfiguration;
+import org.scaledl.architecturaltemplates.completion.constants.ATPartitionConstants;
+import org.scaledl.architecturaltemplates.completion.constants.ATPartitionConstants.Partition;
 import org.scaledl.architecturaltemplates.type.AT;
 import org.scaledl.architecturaltemplates.type.CompletionParameter;
 import org.scaledl.architecturaltemplates.type.PCMBlackboardCompletionParameter;
@@ -47,7 +48,6 @@ import de.uka.ipd.sdq.workflow.mdsd.blackboard.ResourceSetPartition;
 import de.uka.ipd.sdq.workflow.mdsd.emf.qvto.QVTOTransformationJob;
 import de.uka.ipd.sdq.workflow.mdsd.emf.qvto.QVTOTransformationJobConfiguration;
 import de.uka.ipd.sdq.workflow.pcm.blackboard.PCMResourceSetPartition;
-import de.uka.ipd.sdq.workflow.pcm.jobs.LoadPCMModelsIntoBlackboardJob;
 
 /**
  * Recursively applies AT completions until no AT completion is left anymore. Therefore, AT
@@ -113,16 +113,6 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                     logger.info("Trying to continue Architectural Template completion even though an internal failure occured");
                 }
             }
-
-            /*
-             * // save the modified model SavePartitionToDiskJob savePartitionJob = new
-             * SavePartitionToDiskJob( LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
-             * savePartitionJob.setBlackboard(getBlackboard()); savePartitionJob.execute(monitor);
-             * 
-             * // save the modified model SavePartitionToDiskJob savePartitionJob2 = new
-             * SavePartitionToDiskJob( LoadPMSModelIntoBlackboardJob.PMS_MODEL_PARTITION_ID);
-             * savePartitionJob2.setBlackboard(getBlackboard()); savePartitionJob2.execute(monitor);
-             */
         }
         // If no AT was found, let's hope the PCM model is complete...
     }
@@ -130,9 +120,9 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
     private ModelLocation getModelLocation(final AT architecturalTemplate, final URI rootATUri,
             final CompletionParameter parameter) {
         final ResourceSetPartition pcmPartition = this.getBlackboard().getPartition(
-                LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
+                ATPartitionConstants.Partition.PCM.getPartitionId());
         final ResourceSetPartition pmsPartition = this.getBlackboard().getPartition(
-                LoadPMSModelIntoBlackboardJob.PMS_MODEL_PARTITION_ID);
+                ATPartitionConstants.Partition.PMS.getPartitionId());
 
         final URI templateFolderURI = rootATUri.appendSegment("templates");
         final URI systemModelFolderURI = getSystemModelFolderURI();
@@ -148,15 +138,22 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
 
                 final String[] segments = URI.createURI(object.getTemplateFileURI()).segments();
                 final URI templateURI = templateFolderURI.appendSegments(segments);
-                if (templateURI.lastSegment().endsWith("pms")) {
-                    pmsPartition.loadModel(templateURI);
-                    pmsPartition.resolveAllProxies();
-                    return new ModelLocation(LoadPMSModelIntoBlackboardJob.PMS_MODEL_PARTITION_ID, templateURI);
-                } else {
-                    pcmPartition.loadModel(templateURI);
-                    pcmPartition.resolveAllProxies();
-                    return new ModelLocation(LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID, templateURI);
+                final String lastSegment = templateURI.lastSegment();
+
+                for (final Partition partition : ATPartitionConstants.Partition.values()) {
+                    for (final String fileName : partition.getFileNames()) {
+                        if (lastSegment.endsWith(fileName)) {
+                            final ResourceSetPartition resourceSetPartition = getBlackboard().getPartition(
+                                    partition.getPartitionId());
+                            resourceSetPartition.loadModel(templateURI);
+                            resourceSetPartition.resolveAllProxies();
+                            return new ModelLocation(partition.getPartitionId(), templateURI);
+                        }
+                    }
                 }
+
+                throw new IllegalArgumentException("PCM Template Completion Parameter \"" + templateURI
+                        + "\" not found");
             };
 
             /**
@@ -166,25 +163,19 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
             public ModelLocation casePCMBlackboardCompletionParameter(PCMBlackboardCompletionParameter object) {
                 final String parameterFileExtension = object.getFileExtension().getLiteral();
 
-                // find the models in PCM partition
-                for (final Resource r : pcmPartition.getResourceSet().getResources()) {
-                    final URI modelURI = r.getURI();
-                    final String fileExtension = modelURI.fileExtension();
+                for (final Partition partition : ATPartitionConstants.Partition.values()) {
+                    final ResourceSetPartition resourceSetPartition = getBlackboard().getPartition(
+                            partition.getPartitionId());
 
-                    if (fileExtension.equals(parameterFileExtension) && !modelURI.toString().startsWith("pathmap://")
-                            && !modelURI.toString().contains("PrimitiveTypes.repository")) {
-                        return new ModelLocation(LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID, modelURI);
-                    }
-                }
+                    for (final Resource r : resourceSetPartition.getResourceSet().getResources()) {
+                        final URI modelURI = r.getURI();
+                        final String fileExtension = modelURI.fileExtension();
 
-                // find the models in PMS partition
-                for (final Resource r : pmsPartition.getResourceSet().getResources()) {
-                    final URI modelURI = r.getURI();
-                    final String fileExtension = modelURI.fileExtension();
-
-                    if (fileExtension.equals(parameterFileExtension) && !modelURI.toString().startsWith("pathmap://")
-                            && !modelURI.toString().contains("PrimitiveTypes.repository")) {
-                        return new ModelLocation(LoadPMSModelIntoBlackboardJob.PMS_MODEL_PARTITION_ID, modelURI);
+                        if (fileExtension.equals(parameterFileExtension)
+                                && !modelURI.toString().startsWith("pathmap://")
+                                && !modelURI.toString().contains("PrimitiveTypes.repository")) {
+                            return new ModelLocation(partition.getPartitionId(), modelURI);
+                        }
                     }
                 }
 
@@ -220,30 +211,23 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                     UsageModel usageModel = null;
                     try {
                         usageModel = pcmRepositoryPartition.getUsageModel();
-                        EList<UsageScenario> usageSzenarios = usageModel.getUsageScenario_UsageModel();
+                        EList<UsageScenario> usageScenarios = usageModel.getUsageScenario_UsageModel();
                         UsageScenarioMeasuringPoint usageScenarioMeasuringPoint = PcmmeasuringpointFactoryImpl.eINSTANCE
                                 .createUsageScenarioMeasuringPoint();
-                        usageScenarioMeasuringPoint.setUsageScenario(usageSzenarios.get(0));
+                        usageScenarioMeasuringPoint.setUsageScenario(usageScenarios.get(0));
                         outResource.getContents().add(usageScenarioMeasuringPoint);
                     } catch (final IndexOutOfBoundsException e) {
                     }
                 }
 
-                /**
-                 * For debugging, generated files might be saved...
-                 * 
-                 * try { outResource.save(Collections.emptyMap()); } catch (IOException e) {
-                 * logger.error("Unable to save output resource for QVTo transformation"); }
-                 */
-
                 if (uri.lastSegment().endsWith("pms")) {
                     pmsPartition.setContents(uri, outResource.getContents());
                     pmsPartition.resolveAllProxies();
-                    return new ModelLocation(LoadPMSModelIntoBlackboardJob.PMS_MODEL_PARTITION_ID, uri);
+                    return new ModelLocation(ATPartitionConstants.Partition.PMS.getPartitionId(), uri);
                 } else {
                     pcmPartition.setContents(uri, outResource.getContents());
                     pcmPartition.resolveAllProxies();
-                    return new ModelLocation(LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID, uri);
+                    return new ModelLocation(ATPartitionConstants.Partition.PCM.getPartitionId(), uri);
                 }
             };
 
@@ -260,7 +244,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
      */
     private AT getATFromSystem() {
         final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) this.myBlackboard
-                .getPartition(LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
+                .getPartition(ATPartitionConstants.Partition.PCM.getPartitionId());
 
         de.uka.ipd.sdq.pcm.system.System system = null;
         try {
@@ -284,7 +268,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
 
     private URI getSystemModelFolderURI() {
         final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) this.myBlackboard
-                .getPartition(LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
+                .getPartition(ATPartitionConstants.Partition.PCM.getPartitionId());
 
         de.uka.ipd.sdq.pcm.system.System system = null;
         try {
