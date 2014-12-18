@@ -38,6 +38,7 @@ main() {
 		if(hasAppliedStereotype(allocationContext.assemblyContext_AllocationContext,"DuplicateAssemblyContext")){
 			duplicateAssemblyContexts += allocationContext.assemblyContext_AllocationContext;
 			resourceContainer := allocationContext.resourceContainer_AllocationContext;
+			removeResourceContainer(resourceContainer);
 			removeAllocationContext(allocationContext);
 		}
 		else if(hasAppliedStereotype(allocationContext.assemblyContext_AllocationContext,"OriginalAssemblyContext")){
@@ -49,6 +50,77 @@ main() {
 			removeAllocationContext(allocationContext);
 		}
 	};
+	
+	reverseSystem(duplicateAssemblyContexts, originalAssemblyContext, loadBalancerAssemblyContext);
+}
+
+helper reverseSystem(duplicateAssemblyContexts:Set(AssemblyContext), originalAssemblyContext : AssemblyContext, loadbalancerAssemblyContext : AssemblyContext){
+	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
+	var system : System := allocation.system_Allocation;
+	var connectors : Set(Connector) := system.connectors__ComposedStructure;
+	var providingAssemblyContext : AssemblyContext;
+	var originalAssemblyContextOperationProvidedRole : OperationProvidedRole;
+	connectors->forEach(connector) {
+		if(connector.oclIsTypeOf(AssemblyConnector)){
+			var assemblyConnector : AssemblyConnector := connector.oclAsType(AssemblyConnector);
+			var requiringAssemblyContext : AssemblyContext := getRequiringAssemblyContext(assemblyConnector);
+			providingAssemblyContext := getProvidingAssemblyContext(assemblyConnector);
+			if(duplicateAssemblyContexts ->includes(providingAssemblyContext) or 
+				duplicateAssemblyContexts -> includes(requiringAssemblyContext) or 
+				requiringAssemblyContext.id = loadbalancerAssemblyContext.id){
+				removeAssemblyConnector(assemblyConnector);
+			}
+			else if(assemblyConnector.providingAssemblyContext_AssemblyConnector.id = loadbalancerAssemblyContext.id){
+				originalAssemblyContextOperationProvidedRole := originalAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity 
+					->selectOne(providedRole : ProvidedRole | providedRole.id = assemblyConnector.providedRole_AssemblyConnector.id).oclAsType(OperationProvidedRole);
+				assemblyConnector.providingAssemblyContext_AssemblyConnector := originalAssemblyContext;
+				assemblyConnector.providedRole_AssemblyConnector := originalAssemblyContextOperationProvidedRole;
+			}
+		}
+		else if(connector.oclIsTypeOf(ProvidedDelegationConnector)){
+			var providedDelegationConnector : ProvidedDelegationConnector := connector.oclAsType(ProvidedDelegationConnector);
+			providingAssemblyContext := getProvidingAssemblyContext(providedDelegationConnector);
+			if(providingAssemblyContext.id = loadbalancerAssemblyContext.id){
+				originalAssemblyContextOperationProvidedRole := originalAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity 
+					->selectOne(providedRole : ProvidedRole | providedRole.id = providedDelegationConnector.innerProvidedRole_ProvidedDelegationConnector.id).oclAsType(OperationProvidedRole);
+				providedDelegationConnector.assemblyContext_ProvidedDelegationConnector := originalAssemblyContext;
+				providedDelegationConnector.innerProvidedRole_ProvidedDelegationConnector := originalAssemblyContextOperationProvidedRole;
+			}
+		}
+		else if(connector.oclAsType(RequiredDelegationConnector)){
+			var requiredDelegationConnector : RequiredDelegationConnector := connector.oclAsType(RequiredDelegationConnector);
+			var requiredAssemblyContext : AssemblyContext := getRequiringAssemblyContext(requiredDelegationConnector);
+			if(duplicateAssemblyContexts ->includes(requiredAssemblyContext)){
+				removeRequiredDelegationConnector(requiredDelegationConnector);
+			}
+		}	
+	};
+	removeAssemblyContext(loadbalancerAssemblyContext);
+	duplicateAssemblyContexts -> forEach(duplicateAssembylContext){
+		removeAssemblyContext(duplicateAssembylContext);
+	}
+	
+};
+
+/**
+ * Remove the AssemblyContext of the System Model
+ */
+helper removeRequiredDelegationConnector(requiredDelegationConnector: RequiredDelegationConnector){
+	pcmSystem.removeElement(requiredDelegationConnector);
+}
+
+/**
+ * Remove the AssemblyContext of the System Model
+ */
+helper removeAssemblyContext(assemblyContext: AssemblyContext){
+	pcmSystem.removeElement(assemblyContext);
+}
+
+/**
+ * Remove the AssemblyConnector of the System Model
+ */
+helper removeAssemblyConnector(assemblyConnector: AssemblyConnector){
+	pcmSystem.removeElement(assemblyConnector);
 }
 
 /**
@@ -64,4 +136,29 @@ helper removeAllocationContext(allocationContext : AllocationContext){
  */
 helper removeResourceContainer(resourceContainer : ResourceContainer){
 	pcmResourceEnvironment.removeElement(resourceContainer);
+}
+
+/**
+ * Returns the requiring component of a given connector.
+ */
+query getRequiringAssemblyContext(assemblyConnector : AssemblyConnector) : AssemblyContext {
+	return assemblyConnector.requiringAssemblyContext_AssemblyConnector;
+}
+
+/**
+ * Returns the providing component of a given connector.
+ */
+query getProvidingAssemblyContext(assemblyConnector : AssemblyConnector) : AssemblyContext {
+	return assemblyConnector.providingAssemblyContext_AssemblyConnector;
+}
+
+/**
+ * Returns the providing component of a given connector.
+ */
+query getProvidingAssemblyContext(providedDelegationConnector : ProvidedDelegationConnector) : AssemblyContext {
+	return providedDelegationConnector.assemblyContext_ProvidedDelegationConnector;
+}
+
+query getRequiringAssemblyContext(requiredDelegationConnector : RequiredDelegationConnector) : AssemblyContext{
+	return requiredDelegationConnector.assemblyContext_RequiredDelegationConnector;	
 }
