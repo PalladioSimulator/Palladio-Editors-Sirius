@@ -1,0 +1,211 @@
+import org.scaledl.architecturaltemplates.repositories.cloudscale.black.LoadbalancingLibrary;
+import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
+
+modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
+modeltype PCM_REP uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0';
+modeltype PCM_SYS uses 'http://sdq.ipd.uka.de/PalladioComponentModel/System/5.0';
+modeltype PCM_RES_ENV uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0';
+modeltype PCM_CORE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Core/5.0';
+modeltype PCMEntity uses pcm::core::entity('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
+modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
+modeltype PCMSEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0');
+
+
+transformation ReverseLoadbalancing(inout pcmAllocation : PCM_ALLOC,
+										inout pcmSystem : PCM_SYS,
+										inout pcmRepository : PCM_REP,
+										inout pcmResourceEnvironment : PCM_RES_ENV);
+main() {
+	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
+	var allocationContexts : Set(AllocationContext) := allocation.allocationContexts_Allocation;
+	var assemblyContexts : Set(AssemblyContext);
+	allocationContexts -> forEach(allocationContext){assemblyContexts += allocationContext.assemblyContext_AllocationContext;};
+	
+	assert fatal(appliedStereotypesEqualsOne(assemblyContexts,"LoadbalancerAssemblyContext"))
+		with log ("There is more than one LoadbalancerAssemblyContext Stereotype Application!");		
+		
+	//get the LoadbalancerAssemblyContext stereotyped AssemblyContext
+	var loadBalancerAssemblyContext : AssemblyContext := assemblyContexts -> selectOne(assemblyContext : AssemblyContext |
+					hasAppliedStereotype(assemblyContext,"LoadbalancerAssemblyContext"));
+					
+	assert fatal(loadBalancerAssemblyContext != null)
+		with log ("There is no LoadbalancerAssemblyContext Stereotype Application!");	
+		
+	var loadbalancerRepositoryComponent : RepositoryComponent := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext;
+	var duplicateAssemblyContexts : Set(AssemblyContext);
+	var originalAssemblyContext : AssemblyContext;
+	var resourceContainer : ResourceContainer;
+	allocationContexts -> forEach(allocationContext){
+		if(hasAppliedStereotype(allocationContext.assemblyContext_AllocationContext,"DuplicateAssemblyContext")){
+			duplicateAssemblyContexts += allocationContext.assemblyContext_AllocationContext;
+			resourceContainer := allocationContext.resourceContainer_AllocationContext;
+			removeResourceContainer(resourceContainer);
+			removeAllocationContext(allocationContext);
+		}
+		else if(hasAppliedStereotype(allocationContext.assemblyContext_AllocationContext,"OriginalAssemblyContext")){
+			originalAssemblyContext := allocationContext.assemblyContext_AllocationContext;
+		}
+		else if(hasAppliedStereotype(allocationContext.assemblyContext_AllocationContext,"LoadbalancerAssemblyContext")){
+			resourceContainer := allocationContext.resourceContainer_AllocationContext;
+			removeResourceContainer(resourceContainer);
+			removeAllocationContext(allocationContext);
+		}
+	};
+	
+	reverseSystem(duplicateAssemblyContexts, originalAssemblyContext, loadBalancerAssemblyContext);
+	reverseRepository(loadbalancerRepositoryComponent);
+}
+
+/**
+ * Remove all Provided and RequiredRoles from the Loadbalancer RepositoryComponent and then remove the component
+ */
+helper reverseRepository(loadbalancerRepositoryComponent : RepositoryComponent){
+	var requiredRoles : Set(RequiredRole) := loadbalancerRepositoryComponent.requiredRoles_InterfaceRequiringEntity;
+	var providedRoles : Set(ProvidedRole) := loadbalancerRepositoryComponent.providedRoles_InterfaceProvidingEntity;
+	
+	requiredRoles->forEach(requiredRole){
+		removeRequiredRole(requiredRole);
+	};
+	
+	providedRoles->forEach(providedRole){
+		removeProvideddRole(providedRole);
+	};
+	removeRepositoryComponent(loadbalancerRepositoryComponent);
+}
+
+/**
+ * Remove the Loadbalancer AssemblyContext and all replicated AssemblyContexts from the System,update the Assembly 
+ * and ProvidedDelegation or remove them, respectively
+ */
+helper reverseSystem(duplicateAssemblyContexts:Set(AssemblyContext), originalAssemblyContext : AssemblyContext, loadbalancerAssemblyContext : AssemblyContext){
+	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
+	var system : System := allocation.system_Allocation;
+	var connectors : Set(Connector) := system.connectors__ComposedStructure;
+	var providingAssemblyContext : AssemblyContext;
+	var originalAssemblyContextOperationProvidedRole : OperationProvidedRole;
+	connectors->forEach(connector) {
+		if(connector.oclIsTypeOf(AssemblyConnector)){
+			var assemblyConnector : AssemblyConnector := connector.oclAsType(AssemblyConnector);
+			var requiringAssemblyContext : AssemblyContext := getRequiringAssemblyContext(assemblyConnector);
+			providingAssemblyContext := getProvidingAssemblyContext(assemblyConnector);
+			if(duplicateAssemblyContexts ->includes(providingAssemblyContext) or 
+				duplicateAssemblyContexts -> includes(requiringAssemblyContext) or 
+				requiringAssemblyContext.id = loadbalancerAssemblyContext.id){
+				removeAssemblyConnector(assemblyConnector);
+			}
+			else if(assemblyConnector.providingAssemblyContext_AssemblyConnector.id = loadbalancerAssemblyContext.id){
+				originalAssemblyContextOperationProvidedRole := originalAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity 
+					->selectOne(providedRole : ProvidedRole | providedRole.id = assemblyConnector.providedRole_AssemblyConnector.id).oclAsType(OperationProvidedRole);
+				assemblyConnector.providingAssemblyContext_AssemblyConnector := originalAssemblyContext;
+				assemblyConnector.providedRole_AssemblyConnector := originalAssemblyContextOperationProvidedRole;
+			}
+		}
+		else if(connector.oclIsTypeOf(ProvidedDelegationConnector)){
+			var providedDelegationConnector : ProvidedDelegationConnector := connector.oclAsType(ProvidedDelegationConnector);
+			providingAssemblyContext := getProvidingAssemblyContext(providedDelegationConnector);
+			if(providingAssemblyContext.id = loadbalancerAssemblyContext.id){
+				originalAssemblyContextOperationProvidedRole := originalAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity 
+					->selectOne(providedRole : ProvidedRole | providedRole.id = providedDelegationConnector.innerProvidedRole_ProvidedDelegationConnector.id).oclAsType(OperationProvidedRole);
+				providedDelegationConnector.assemblyContext_ProvidedDelegationConnector := originalAssemblyContext;
+				providedDelegationConnector.innerProvidedRole_ProvidedDelegationConnector := originalAssemblyContextOperationProvidedRole;
+			}
+		}
+		else if(connector.oclAsType(RequiredDelegationConnector)){
+			var requiredDelegationConnector : RequiredDelegationConnector := connector.oclAsType(RequiredDelegationConnector);
+			var requiredAssemblyContext : AssemblyContext := getRequiringAssemblyContext(requiredDelegationConnector);
+			if(duplicateAssemblyContexts ->includes(requiredAssemblyContext)){
+				removeRequiredDelegationConnector(requiredDelegationConnector);
+			}
+		}	
+	};
+	removeAssemblyContext(loadbalancerAssemblyContext);
+	duplicateAssemblyContexts -> forEach(duplicateAssembylContext){
+		removeAssemblyContext(duplicateAssembylContext);
+	}
+	
+};
+
+/**
+ * Remove the RepositoryComponent of the Repository Model
+ */
+helper removeRepositoryComponent(repositoryComponent: RepositoryComponent){
+	pcmRepository.removeElement(repositoryComponent);
+}
+
+/**
+ * Remove the ProvidedRole of the Repository Model
+ */
+helper removeProvideddRole(providedRole: ProvidedRole){
+	pcmRepository.removeElement(providedRole);
+}
+
+/**
+ * Remove the RequiredRole of the Repository Model
+ */
+helper removeRequiredRole(requiredRole: RequiredRole){
+	pcmRepository.removeElement(requiredRole);
+}
+
+/**
+ * Remove the RequiredDelegationConnector of the System Model
+ */
+helper removeRequiredDelegationConnector(requiredDelegationConnector: RequiredDelegationConnector){
+	pcmSystem.removeElement(requiredDelegationConnector);
+}
+
+/**
+ * Remove the AssemblyContext of the System Model
+ */
+helper removeAssemblyContext(assemblyContext: AssemblyContext){
+	pcmSystem.removeElement(assemblyContext);
+}
+
+/**
+ * Remove the AssemblyConnector of the System Model
+ */
+helper removeAssemblyConnector(assemblyConnector: AssemblyConnector){
+	pcmSystem.removeElement(assemblyConnector);
+}
+
+/**
+ * Remove the AllocationContext of the Allocation Model
+ */
+helper removeAllocationContext(allocationContext : AllocationContext){
+	pcmAllocation.removeElement(allocationContext);
+}
+
+
+/**
+ * Remove the AllocationContext of the ResourceEnvironment Model
+ */
+helper removeResourceContainer(resourceContainer : ResourceContainer){
+	pcmResourceEnvironment.removeElement(resourceContainer);
+}
+
+/**
+ * Returns the requiring component of a given AssemblyConnector.
+ */
+query getRequiringAssemblyContext(assemblyConnector : AssemblyConnector) : AssemblyContext {
+	return assemblyConnector.requiringAssemblyContext_AssemblyConnector;
+}
+
+/**
+ * Returns the providing component of a given AssemblyConnector.
+ */
+query getProvidingAssemblyContext(assemblyConnector : AssemblyConnector) : AssemblyContext {
+	return assemblyConnector.providingAssemblyContext_AssemblyConnector;
+}
+
+/**
+ * Returns the providing component of a given ProvidedDelegationConnector.
+ */
+query getProvidingAssemblyContext(providedDelegationConnector : ProvidedDelegationConnector) : AssemblyContext {
+	return providedDelegationConnector.assemblyContext_ProvidedDelegationConnector;
+}
+
+/**
+ * Returns the providing component of a given RequiredDelegationConnector.
+ */
+query getRequiringAssemblyContext(requiredDelegationConnector : RequiredDelegationConnector) : AssemblyContext{
+	return requiredDelegationConnector.assemblyContext_RequiredDelegationConnector;	
+}
