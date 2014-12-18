@@ -30,7 +30,8 @@ main() {
 					
 	assert fatal(loadBalancerAssemblyContext != null)
 		with log ("There is no LoadbalancerAssemblyContext Stereotype Application!");	
-	
+		
+	var loadbalancerRepositoryComponent : RepositoryComponent := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext;
 	var duplicateAssemblyContexts : Set(AssemblyContext);
 	var originalAssemblyContext : AssemblyContext;
 	var resourceContainer : ResourceContainer;
@@ -52,6 +53,20 @@ main() {
 	};
 	
 	reverseSystem(duplicateAssemblyContexts, originalAssemblyContext, loadBalancerAssemblyContext);
+	reverseRepository(loadbalancerRepositoryComponent);
+}
+helper reverseRepository(loadbalancerRepositoryComponent : RepositoryComponent){
+	var requiredRoles : Set(RequiredRole) := loadbalancerRepositoryComponent.requiredRoles_InterfaceRequiringEntity;
+	var providedRoles : Set(ProvidedRole) := loadbalancerRepositoryComponent.providedRoles_InterfaceProvidingEntity;
+	
+	requiredRoles->forEach(requiredRole){
+		removeRequiredRole(requiredRole);
+	};
+	
+	providedRoles->forEach(providedRole){
+		removeProvideddRole(providedRole);
+	};
+	removeRepositoryComponent(loadbalancerRepositoryComponent);
 }
 
 helper reverseSystem(duplicateAssemblyContexts:Set(AssemblyContext), originalAssemblyContext : AssemblyContext, loadbalancerAssemblyContext : AssemblyContext){
@@ -103,7 +118,28 @@ helper reverseSystem(duplicateAssemblyContexts:Set(AssemblyContext), originalAss
 };
 
 /**
- * Remove the AssemblyContext of the System Model
+ * Remove the RepositoryComponent of the Repository Model
+ */
+helper removeRepositoryComponent(repositoryComponent: RepositoryComponent){
+	pcmRepository.removeElement(repositoryComponent);
+}
+
+/**
+ * Remove the ProvidedRole of the Repository Model
+ */
+helper removeProvideddRole(providedRole: ProvidedRole){
+	pcmRepository.removeElement(providedRole);
+}
+
+/**
+ * Remove the RequiredRole of the Repository Model
+ */
+helper removeRequiredRole(requiredRole: RequiredRole){
+	pcmRepository.removeElement(requiredRole);
+}
+
+/**
+ * Remove the RequiredDelegationConnector of the System Model
  */
 helper removeRequiredDelegationConnector(requiredDelegationConnector: RequiredDelegationConnector){
 	pcmSystem.removeElement(requiredDelegationConnector);
