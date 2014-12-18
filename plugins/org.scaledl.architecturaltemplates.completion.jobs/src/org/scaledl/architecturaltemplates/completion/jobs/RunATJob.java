@@ -21,6 +21,8 @@ import de.uka.ipd.sdq.workflow.mdsd.blackboard.MDSDBlackboard;
  */
 public class RunATJob extends AbstractWorkflowExtensionJob<MDSDBlackboard> {
 
+    private static final String COMPLETION = "completion";
+
     /**
      * Cannot add jobs earlier as extension jobs get configured after instantiation.
      */
@@ -31,7 +33,10 @@ public class RunATJob extends AbstractWorkflowExtensionJob<MDSDBlackboard> {
         final ATExtensionJobConfiguration configuration = (ATExtensionJobConfiguration) jobConfiguration;
         this.addJob(new ValidateModelsJob(configuration));
         this.addJob(new RunATCompletionJob(configuration));
-        this.addJob(new StoreCompletedModelsJob(configuration));
+
+        if (configuration.isStoreCompletedModels()) {
+            this.addJob(new StoreCompletedModelsJob(configuration, COMPLETION));
+        }
     }
 
 }

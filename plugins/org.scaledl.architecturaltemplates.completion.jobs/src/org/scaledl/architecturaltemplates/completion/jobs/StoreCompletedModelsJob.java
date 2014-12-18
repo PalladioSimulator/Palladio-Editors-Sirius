@@ -41,6 +41,7 @@ public class StoreCompletedModelsJob extends SequentialBlackboardInteractingJob<
     }
 
     private final ATExtensionJobConfiguration configuration;
+    private final String folderName;
 
     /**
      * Default constructor. Adds an inner job for creating the project for model storage.
@@ -48,9 +49,13 @@ public class StoreCompletedModelsJob extends SequentialBlackboardInteractingJob<
      * @param configuration
      *            the configuration object, including the storage project location for copied
      *            resources
+     * @param folderName
+     *            name for folder after the MODEL_GEN_FOLDER_NAME folder, e.g.,
+     *            "model-gen/completion/".
      */
-    public StoreCompletedModelsJob(final ATExtensionJobConfiguration configuration) {
+    public StoreCompletedModelsJob(final ATExtensionJobConfiguration configuration, final String folderName) {
         this.configuration = configuration;
+        this.folderName = folderName;
 
         PLUGIN_CONFIGURATION.setStoragePluginID(configuration.getModelStorageLocation());
         this.add(new CreatePluginProjectJob(PLUGIN_CONFIGURATION));
@@ -100,8 +105,8 @@ public class StoreCompletedModelsJob extends SequentialBlackboardInteractingJob<
         // re-traverse
         int elementCounter = 0;
         for (final Resource r : partitionOriginal.getResourceSet().getResources()) {
-            final URI targetURI = storageURI.appendSegment(MODEL_GEN_FOLDER_NAME).appendSegment(partition.getName())
-                    .appendSegment(r.getURI().lastSegment());
+            final URI targetURI = storageURI.appendSegment(MODEL_GEN_FOLDER_NAME).appendSegment(this.folderName)
+                    .appendSegment(partition.getName()).appendSegment(r.getURI().lastSegment());
             final Resource resourceCopy = partitionCopy.getResourceSet().createResource(targetURI);
 
             for (int i = 0; i < r.getContents().size(); i++) {
