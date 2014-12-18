@@ -13,6 +13,12 @@ public class ATExtensionJobConfiguration extends AbstractExtensionJobConfigurati
 
     private AT architecturalTemplate;
 
+    private boolean storeCompletedModels;
+
+    private boolean storeReconfiguredModels;
+
+    private String modelStorageLocation;
+
     @Override
     public String getErrorMessage() {
         // must be null; otherwise a non-empty error message will result in
@@ -32,4 +38,29 @@ public class ATExtensionJobConfiguration extends AbstractExtensionJobConfigurati
     public AT getArchitecturalTemplate() {
         return this.architecturalTemplate;
     }
+
+    public boolean isStoreCompletedModels() {
+        return storeCompletedModels;
+    }
+
+    public void setStoreCompletedModels(boolean storeCompletedModels) {
+        this.storeCompletedModels = storeCompletedModels;
+    }
+
+    public boolean isStoreReconfiguredModels() {
+        return storeReconfiguredModels;
+    }
+
+    public void setStoreReconfiguredModels(boolean storeReconfiguredModels) {
+        this.storeReconfiguredModels = storeReconfiguredModels;
+    }
+
+    public String getModelStorageLocation() {
+        return modelStorageLocation;
+    }
+
+    public void setModelStorageLocation(String modelStorageLocation) {
+        this.modelStorageLocation = modelStorageLocation;
+    }
+
 }
