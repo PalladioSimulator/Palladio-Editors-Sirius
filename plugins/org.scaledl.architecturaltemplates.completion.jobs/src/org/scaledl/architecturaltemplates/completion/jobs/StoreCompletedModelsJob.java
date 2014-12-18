@@ -22,22 +22,35 @@ import de.uka.ipd.sdq.workflow.pcm.configurations.AbstractPCMWorkflowRunConfigur
 import de.uka.ipd.sdq.workflow.pcm.jobs.CreatePluginProjectJob;
 import de.uka.ipd.sdq.workflow.pcm.jobs.LoadPCMModelsIntoBlackboardJob;
 
+/**
+ * Copies all resources of the partitions defined in the PARTITION_IDS constant to a given model
+ * storage location. The latter is a property of this jobs' configuration.
+ * 
+ * @author Sebastian Lehrig
+ */
 public class StoreCompletedModelsJob extends SequentialBlackboardInteractingJob<MDSDBlackboard> {
 
     private final static String MODEL_GEN_FOLDER_NAME = "model-gen";
     private final static String AT_COPY_PARTITION = "AT_COPY";
-    private final static String[] PARTITION_IDs = new String[] {
+    private final static String[] PARTITION_IDS = new String[] {
             LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID,
             LoadPMSModelIntoBlackboardJob.PMS_MODEL_PARTITION_ID };
     private final static AbstractPCMWorkflowRunConfiguration PLUGIN_CONFIGURATION = new SimuComWorkflowConfiguration(
             Collections.<String, Object> emptyMap());
+
     static {
         PLUGIN_CONFIGURATION.setDeleteTemporaryDataAfterAnalysis(false);
         PLUGIN_CONFIGURATION.setOverwriteWithoutAsking(true);
     }
 
-    final ATExtensionJobConfiguration configuration;
+    private final ATExtensionJobConfiguration configuration;
 
+    /**
+     * Default constructor.
+     * 
+     * @param configuration
+     *            the configuration object, including the storage location for copied resources
+     */
     public StoreCompletedModelsJob(final ATExtensionJobConfiguration configuration) {
         this.configuration = configuration;
 
@@ -50,7 +63,7 @@ public class StoreCompletedModelsJob extends SequentialBlackboardInteractingJob<
         super.execute(monitor);
 
         final URI storageURI = URI.createPlatformResourceURI(configuration.getModelStorageLocation(), false);
-        for (final String partitionID : PARTITION_IDs) {
+        for (final String partitionID : PARTITION_IDS) {
             final ResourceSetPartition copy = copyPartition(this.getBlackboard().getPartition(partitionID), storageURI);
             this.getBlackboard().addPartition(AT_COPY_PARTITION, copy);
             storePartition(monitor, AT_COPY_PARTITION);
@@ -58,13 +71,27 @@ public class StoreCompletedModelsJob extends SequentialBlackboardInteractingJob<
     }
 
     /**
+     * Copies all resources of a given partition to the given storage URI. Ensures that all model
+     * links point to corresponding copies.
+     * 
+     * The copy-traversal sadly removes the resource information of EObjects, most important the
+     * resource URI. However, we want to use the last segment of the resource URI to determine the
+     * filename of the resource to be stored. The current implementation therefore re-traverses the
+     * original resources to assign the copied ones this filename.
+     * 
+     * TODO The above described solution is not nice. We may provide an improved copy method.
+     * 
+     * @param partition
+     *            the partition from with resources shall be copied
      * @param storageURI
+     *            the URI where the copied resources shall be stored
      * @return a copy of the given partition
      */
     private ResourceSetPartition copyPartition(final ResourceSetPartition partition, final URI storageURI) {
         final ResourceSetPartition partitionCopy = new ResourceSetPartition();
         final List<EObject> elementsCopy = EMFCopyHelper.deepCopyToEObjectList(partition.getResourceSet());
 
+        // re-traverse
         int elementCounter = 0;
         for (final Resource r : partition.getResourceSet().getResources()) {
             final URI targetURI = storageURI.appendSegment(MODEL_GEN_FOLDER_NAME).appendSegment(
