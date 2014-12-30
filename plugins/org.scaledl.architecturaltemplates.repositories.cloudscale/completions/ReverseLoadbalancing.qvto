@@ -105,7 +105,7 @@ helper reverseSystem(duplicateAssemblyContexts:Set(AssemblyContext), originalAss
 			providingAssemblyContext := getProvidingAssemblyContext(providedDelegationConnector);
 			if(providingAssemblyContext.id = loadbalancerAssemblyContext.id){
 				originalAssemblyContextOperationProvidedRole := originalAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity 
-					->selectOne(providedRole : ProvidedRole | providedRole.id = providedDelegationConnector.innerProvidedRole_ProvidedDelegationConnector.id).oclAsType(OperationProvidedRole);
+					->selectOne(providedRole : ProvidedRole | providedRole.oclAsType(OperationProvidedRole).providedInterface__OperationProvidedRole.id = providedDelegationConnector.innerProvidedRole_ProvidedDelegationConnector.providedInterface__OperationProvidedRole.id).oclAsType(OperationProvidedRole);
 				providedDelegationConnector.assemblyContext_ProvidedDelegationConnector := originalAssemblyContext;
 				providedDelegationConnector.innerProvidedRole_ProvidedDelegationConnector := originalAssemblyContextOperationProvidedRole;
 			}
