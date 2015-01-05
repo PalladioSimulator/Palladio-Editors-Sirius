@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" type="CompositeModel" name="default.system_diagram" measurementUnit="Pixel">
+  <children xsi:type="notation:Shape" type="2002" fontName="Segoe UI">
+    <children xsi:type="notation:DecorationNode" type="5012"/>
+    <children xsi:type="notation:DecorationNode" type="7002">
+      <children xsi:type="notation:Shape" type="3006" fontName="Segoe UI">
+        <children xsi:type="notation:DecorationNode" type="5009"/>
+        <children xsi:type="notation:Shape" type="3007" fontName="Segoe UI">
+          <children xsi:type="notation:DecorationNode" type="5007">
+            <layoutConstraint xsi:type="notation:Location" x="-57" y="-14"/>
+          </children>
+          <element href="../org.scaledl.architecturaltemplates.examples.aliceandbob/AliceAndBob.repository#_CrA2oAXKEeOk2t-0hHhTJg"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <children xsi:type="notation:Shape" type="3008" fontName="Segoe UI">
+          <children xsi:type="notation:DecorationNode" type="5008">
+            <layoutConstraint xsi:type="notation:Location" x="60" y="49"/>
+          </children>
+          <element href="../org.scaledl.architecturaltemplates.examples.aliceandbob/AliceAndBob.repository#_DjO4EAXKEeOk2t-0hHhTJg"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <element href="default.system#_cHVVAJHFEeSlOJ_fcL68bQ"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="219" y="181"/>
+      </children>
+      <children xsi:type="notation:Shape" type="3006" fontName="Segoe UI">
+        <children xsi:type="notation:DecorationNode" type="5009"/>
+        <children xsi:type="notation:Shape" type="3007" fontName="Segoe UI">
+          <children xsi:type="notation:DecorationNode" type="5007">
+            <layoutConstraint xsi:type="notation:Location" x="-55" y="-7"/>
+          </children>
+          <element href="../org.scaledl.architecturaltemplates.examples.aliceandbob/AliceAndBob.repository#_DNt7EAXKEeOk2t-0hHhTJg"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <element href="default.system#_kRWwIJHFEeSlOJ_fcL68bQ"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="632" y="174"/>
+      </children>
+    </children>
+    <children xsi:type="notation:Shape" type="3011" fontName="Segoe UI">
+      <children xsi:type="notation:DecorationNode" type="5013">
+        <layoutConstraint xsi:type="notation:Location" x="108" y="47"/>
+      </children>
+      <element href="default.system#_ocAysJHFEeSlOJ_fcL68bQ"/>
+      <layoutConstraint xsi:type="notation:Bounds"/>
+    </children>
+    <element href="default.system#_bl-UYJHFEeSlOJ_fcL68bQ"/>
+    <layoutConstraint xsi:type="notation:Bounds" x="140" y="7" width="1058" height="561"/>
+  </children>
+  <styles xsi:type="notation:DiagramStyle"/>
+  <element href="default.system#_bl-UYJHFEeSlOJ_fcL68bQ"/>
+  <edges xsi:type="notation:Connector" type="4006" source="//@children.0/@children.2" target="//@children.0/@children.1/@children.0/@children.1">
+    <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+    <element href="default.system#_p6bRcJHFEeSlOJ_fcL68bQ"/>
+    <bendpoints xsi:type="notation:RelativeBendpoints" points="[30, 0, -88, 36]$[115, -32, -3, 4]"/>
+  </edges>
+  <edges xsi:type="notation:Connector" type="4004" source="//@children.0/@children.1/@children.0/@children.2" target="//@children.0/@children.1/@children.1/@children.1">
+    <styles xsi:type="notation:FontStyle" fontName="Segoe UI"/>
+    <element href="default.system#_uMQ6EJHFEeSlOJ_fcL68bQ"/>
+    <bendpoints xsi:type="notation:RelativeBendpoints" points="[7, 0, -244, 15]$[244, -16, -7, -1]"/>
+    <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.23333333333333334,0.4666666666666667)"/>
+  </edges>
+</notation:Diagram>

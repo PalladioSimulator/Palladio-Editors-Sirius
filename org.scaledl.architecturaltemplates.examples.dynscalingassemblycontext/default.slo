@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<slo:ServiceLevelObjectiveRepository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metricspec="http://palladiosimulator.org/MetricSpec/1.0" xmlns:pcmmeasuringpoint="http://palladiosimulator.org/PCM/MeasuringPoint/1.0" xmlns:slo="http://palladiosimulator.org/ServiceLevelObjective/1.0">
+  <servicelevelobjectives id="_UN9qYJHYEeS1-vvwk2qBWw" name="Two Seconds Response Time SLO" description="Response Time SLO of two Seconds">
+    <upperThreshold xsi:type="slo:HardThreshold" id="_TnywUpHaEeS1-vvwk2qBWw" thresholdLimit="2 s"/>
+    <metricDescription xsi:type="metricspec:NumericalBaseMetricDescription" href="pathmap://METRIC_SPEC_MODELS/models/commonMetrics.metricspec#_6rYmYs7nEeOX_4BzImuHbA"/>
+    <measuringPoint xsi:type="pcmmeasuringpoint:UsageScenarioMeasuringPoint" href="UsageScenario.pcmmeasuringpoint#/"/>
+  </servicelevelobjectives>
+</slo:ServiceLevelObjectiveRepository>

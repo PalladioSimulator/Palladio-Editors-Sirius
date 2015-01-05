@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system:System xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:composition="http://sdq.ipd.uka.de/PalladioComponentModel/Core/Composition/5.0" xmlns:repository="http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0" xmlns:system="http://sdq.ipd.uka.de/PalladioComponentModel/System/5.0" id="_bl-UYJHFEeSlOJ_fcL68bQ" entityName="defaultSystem">
+  <assemblyContexts__ComposedStructure id="_cHVVAJHFEeSlOJ_fcL68bQ" entityName="Assembly_Alice &lt;Alice>">
+    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="../org.scaledl.architecturaltemplates.examples.aliceandbob/AliceAndBob.repository#__CpuUPqQEeKForNjxJiaVQ"/>
+  </assemblyContexts__ComposedStructure>
+  <assemblyContexts__ComposedStructure id="_kRWwIJHFEeSlOJ_fcL68bQ" entityName="Assembly_Bob &lt;Bob>">
+    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="../org.scaledl.architecturaltemplates.examples.aliceandbob/AliceAndBob.repository#_AC5DUPqREeKForNjxJiaVQ"/>
+  </assemblyContexts__ComposedStructure>
+  <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_p6bRcJHFEeSlOJ_fcL68bQ" entityName="ProvDelegation Provided_IAlice -> Provided_IAlice_Alice" outerProvidedRole_ProvidedDelegationConnector="_ocAysJHFEeSlOJ_fcL68bQ" assemblyContext_ProvidedDelegationConnector="_cHVVAJHFEeSlOJ_fcL68bQ">
+    <innerProvidedRole_ProvidedDelegationConnector href="../org.scaledl.architecturaltemplates.examples.aliceandbob/AliceAndBob.repository#_CrA2oAXKEeOk2t-0hHhTJg"/>
+  </connectors__ComposedStructure>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_uMQ6EJHFEeSlOJ_fcL68bQ" entityName="Connector Assembly_Alice &lt;Alice> -> Assembly_Bob &lt;Bob>" requiringAssemblyContext_AssemblyConnector="_cHVVAJHFEeSlOJ_fcL68bQ" providingAssemblyContext_AssemblyConnector="_kRWwIJHFEeSlOJ_fcL68bQ">
+    <providedRole_AssemblyConnector href="../org.scaledl.architecturaltemplates.examples.aliceandbob/AliceAndBob.repository#_DNt7EAXKEeOk2t-0hHhTJg"/>
+    <requiredRole_AssemblyConnector href="../org.scaledl.architecturaltemplates.examples.aliceandbob/AliceAndBob.repository#_DjO4EAXKEeOk2t-0hHhTJg"/>
+  </connectors__ComposedStructure>
+  <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_ocAysJHFEeSlOJ_fcL68bQ" entityName="Provided_IAlice">
+    <providedInterface__OperationProvidedRole href="../org.scaledl.architecturaltemplates.examples.aliceandbob/AliceAndBob.repository#_H8VEwPqREeKForNjxJiaVQ"/>
+  </providedRoles_InterfaceProvidingEntity>
+</system:System>

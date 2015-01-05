@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>org.scaledl.architecturaltemplates.examples.dynscalingassemblycontext</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>edu.kit.ipd.sdq.mdsd.profiles.builder.profileprojectbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>edu.kit.ipd.sdq.mdsd.profiles.nature.profileprojectnature</nature>
+	</natures>
+</projectDescription>
