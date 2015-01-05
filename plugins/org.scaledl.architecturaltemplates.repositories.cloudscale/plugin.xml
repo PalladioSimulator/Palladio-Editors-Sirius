@@ -22,6 +22,9 @@
      <extension point="org.modelversioning.emfprofile.profile">
      <profile profile_resource="profiles/Loadbalanced.emfprofile_diagram"/>
   </extension>
+     <extension point="org.modelversioning.emfprofile.profile">
+     <profile profile_resource="profiles/DynamicHorizontalScalingAssemblyContext.emfprofile_diagram"/>
+  </extension>
    <extension
          point="org.eclipse.m2m.qvt.oml.javaBlackboxUnits">
       <unit

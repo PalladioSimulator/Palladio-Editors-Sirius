@@ -1,6 +1,6 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ThreeLayerLibrary;
-
+import org.scaledl.architecturaltemplates.repositories.cloudscale.black.LoadbalancingLibrary;
 
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
 modeltype PCM_REP uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0';
@@ -41,7 +41,7 @@ transformation DynamicHorizontalScalingAssemblyContext( inout pcmSystem : PCM_SY
 						   inout pcmResourceEnvironment : PCM_RES_ENV,
 						   inout pcmUsage: PCM_USE,
 						   inout pms : PCM_PMS,
-						   out pcmAllocation : PCM_ALLOC, 
+						  // out pcmAllocation : PCM_ALLOC, 
 						   out pcmUsageScenarioMeasuringPoint : PCM_MEASURINGPOINT);
 						   
 
@@ -53,17 +53,24 @@ main() {
 	
 	// Get relevant PCM model elements
 	var system : System := pcmSystem.rootObjects()![System];
-	assert fatal(hasAppliedStereotype(system, "Dynamic Horizontal Scaling Assembly Context"))
-		with log ("The system is not a three layer system!");
+	assert fatal(hasAppliedStereotype(system, "DynamicHorizontalScalingAssemblyContext"))
+		with log ("The system is not a dynamical horizontal scaling assembly context system!");
 	var assemblyContexts : Set(AssemblyContext) := system.assemblyContexts__ComposedStructure;	
 	var usageModel : UsageModel := pcmUsage.rootObjects()![UsageModel];
 	var usageScenario : UsageScenario := usageModel.usageScenario_UsageModel![UsageScenario];
 	var resourceEnvironment : ResourceEnvironment := pcmResourceEnvironment.rootObjects()![ResourceEnvironment];
 	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;	
-	var allocation : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;	
+//	var allocation : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;	
+	assemblyContexts -> forEach(assemblyContext){
+		if(hasAppliedStereotype(assemblyContext,"ReplicableAssemblyContext")){
+			applyStereotype(assemblyContext, "LoadbalancedAssemblyContext");
+			var numberOfReplicas : Integer := getNumberOfReplicas(assemblyContext,"ReplicableAssemblyContext","numberOfReplicas");
+			setIntTaggedValue(assemblyContext, numberOfReplicas, "LoadbalancedAssemblyContext", "numberOfReplicas");
+			
+		};
+	};
 	
-	
-	allocateAssemblyContextsToResourceContainer(assemblyContexts,resourceContainers,allocation);
+	//allocateAssemblyContextsToResourceContainer(assemblyContexts,resourceContainers,allocation);
 	
 	var pmsModel : PMSModel := pms.rootObjects()![PMSModel];
 	var measuringPoint : UsageScenarioMeasuringPoint := usageScenario.map createPcmMeasuringPoint();	
@@ -71,7 +78,7 @@ main() {
 	
 	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Assembly Context" finished');
 }
-helper allocateAssemblyContextsToResourceContainer(assemblyContexts : Set(AssemblyContext),resourceContainers : Set(ResourceContainer), allocation : Allocation){
+/**helper allocateAssemblyContextsToResourceContainer(assemblyContexts : Set(AssemblyContext),resourceContainers : Set(ResourceContainer), allocation : Allocation){
 	assemblyContexts -> forEach(assemblyContext){
 		var resourceContainer : ResourceContainer;
 		if(hasAppliedStereotype(assemblyContext,"PresentationLayerAssembly")){
@@ -90,7 +97,7 @@ helper allocateAssemblyContextsToResourceContainer(assemblyContexts : Set(Assemb
 		};
 		new AllocationContext(assemblyContext, resourceContainer, allocation);
 	}
-};
+};*/
 
 helper addPerformanceMeasurementsToPmsModel(inout pmsModel : PMSModel, in measuringPoint : MeasuringPoint){
 	pmsModel.performanceMeasurements += new PerformanceMeasurement(measuringPoint);
@@ -115,12 +122,13 @@ mapping UsageScenario::createPcmMeasuringPoint() : UsageScenarioMeasuringPoint@p
 	usageScenario := self;
 }
 
-mapping System::createAllocation(resourceEnvironment:ResourceEnvironment) : Allocation@pcmAllocation{
+/**mapping System::createAllocation(resourceEnvironment:ResourceEnvironment) : Allocation@pcmAllocation{
 	id := self.id + "_ThreeLayerAllocation";
 	entityName := "ThreeLayerAllocation";
 	system_Allocation := self;
 	targetResourceEnvironment_Allocation := resourceEnvironment;
-}
+}*/
+
 constructor AllocationContext :: AllocationContext (ac : AssemblyContext, rc: ResourceContainer, allocation : Allocation){
 	id := ac.id + "_" + ac.entityName +  "_AllocationContext";
 	entityName := "Allocation_" + ac.entityName;
