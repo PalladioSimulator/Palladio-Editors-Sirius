@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<usageevolution:UsageEvolution xmlns:usageevolution="http://usageevolution/1.0" id="_pYbPQJHTEeS1-vvwk2qBWw" entityName="Monthly Usage Evolution">
-  <usages id="_vHN-EJHTEeS1-vvwk2qBWw" entityName="CallingBob">
-    <loadEvolution href="OneMonthTrend.dlim#/"/>
-    <scenario href="../default.usagemodel#_Z4YUsJHGEeSlOJ_fcL68bQ"/>
-  </usages>
-</usageevolution:UsageEvolution>
