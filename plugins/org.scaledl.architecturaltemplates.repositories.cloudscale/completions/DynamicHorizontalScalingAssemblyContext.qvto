@@ -63,7 +63,7 @@ main() {
 //	var allocation : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;	
 	assemblyContexts -> forEach(assemblyContext){
 		if(hasAppliedStereotype(assemblyContext,"ReplicableAssemblyContext")){
-			var numberOfReplicas : Integer := getNumberOfReplicas(assemblyContext,"ReplicableAssemblyContext","numberOfReplicas");
+			var numberOfReplicas : Integer := getNumberOfReplicas(assemblyContext,"numberOfReplicas","ReplicableAssemblyContext");
 			applyStereotype(assemblyContext, "LoadbalancedAssemblyContext");
 			setIntTaggedValue(assemblyContext, numberOfReplicas, "LoadbalancedAssemblyContext", "numberOfReplicas");
 			
