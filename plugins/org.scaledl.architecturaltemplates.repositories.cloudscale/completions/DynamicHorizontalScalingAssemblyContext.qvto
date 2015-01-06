@@ -41,7 +41,7 @@ transformation DynamicHorizontalScalingAssemblyContext( inout pcmSystem : PCM_SY
 						   inout pcmResourceEnvironment : PCM_RES_ENV,
 						   inout pcmUsage: PCM_USE,
 						   inout pms : PCM_PMS,
-						  // out pcmAllocation : PCM_ALLOC, 
+						 	//inout pcmAllocation : PCM_ALLOC, 
 						   out pcmUsageScenarioMeasuringPoint : PCM_MEASURINGPOINT);
 						   
 
@@ -53,7 +53,7 @@ main() {
 	
 	// Get relevant PCM model elements
 	var system : System := pcmSystem.rootObjects()![System];
-	assert fatal(hasAppliedStereotype(system, "DynamicHorizontalScalingAssemblyContext"))
+	assert fatal(hasAppliedStereotype(system, "DynamicHorizontalScalingAssemblyContextSystem"))
 		with log ("The system is not a dynamical horizontal scaling assembly context system!");
 	var assemblyContexts : Set(AssemblyContext) := system.assemblyContexts__ComposedStructure;	
 	var usageModel : UsageModel := pcmUsage.rootObjects()![UsageModel];
@@ -63,8 +63,8 @@ main() {
 //	var allocation : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;	
 	assemblyContexts -> forEach(assemblyContext){
 		if(hasAppliedStereotype(assemblyContext,"ReplicableAssemblyContext")){
-			applyStereotype(assemblyContext, "LoadbalancedAssemblyContext");
 			var numberOfReplicas : Integer := getNumberOfReplicas(assemblyContext,"ReplicableAssemblyContext","numberOfReplicas");
+			applyStereotype(assemblyContext, "LoadbalancedAssemblyContext");
 			setIntTaggedValue(assemblyContext, numberOfReplicas, "LoadbalancedAssemblyContext", "numberOfReplicas");
 			
 		};
