@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<usagemodel:UsageModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:usagemodel="http://sdq.ipd.uka.de/PalladioComponentModel/UsageModel/5.0">
+  <usageScenario_UsageModel id="_NcFyEJUGEeSkwMoUcKTtwg" entityName="defaultUsageScenario">
+    <scenarioBehaviour_UsageScenario id="_NcFyEZUGEeSkwMoUcKTtwg" entityName="defaultUsageScenarioBehaviour">
+      <actions_ScenarioBehaviour xsi:type="usagemodel:Start" id="_NcFyEpUGEeSkwMoUcKTtwg" successor="_RZliYJUGEeSkwMoUcKTtwg"/>
+      <actions_ScenarioBehaviour xsi:type="usagemodel:Stop" id="_NcFyE5UGEeSkwMoUcKTtwg" predecessor="_RZliYJUGEeSkwMoUcKTtwg"/>
+      <actions_ScenarioBehaviour xsi:type="usagemodel:EntryLevelSystemCall" id="_RZliYJUGEeSkwMoUcKTtwg" successor="_NcFyE5UGEeSkwMoUcKTtwg" predecessor="_NcFyEpUGEeSkwMoUcKTtwg">
+        <providedRole_EntryLevelSystemCall href="videoStreaming.system#_dfh18JUFEeSkwMoUcKTtwg"/>
+        <operationSignature__EntryLevelSystemCall href="videoStreaming.repository#_Iq7loJUFEeSkwMoUcKTtwg"/>
+      </actions_ScenarioBehaviour>
+    </scenarioBehaviour_UsageScenario>
+    <workload_UsageScenario xsi:type="usagemodel:ClosedWorkload" population="20">
+      <thinkTime_ClosedWorkload specification="3.0"/>
+    </workload_UsageScenario>
+  </usageScenario_UsageModel>
+</usagemodel:UsageModel>

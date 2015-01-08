@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:usagemodel="http://sdq.ipd.uka.de/PalladioComponentModel/UsageModel/5.0" xsi:schemaLocation="http://sdq.ipd.uka.de/PalladioComponentModel/UsageModel/5.0 http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//usagemodel" xmi:id="_NcHnQJUGEeSkwMoUcKTtwg" type="PCM Usage Model" name="videoStreaming.usagemodel_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_NedJkJUGEeSkwMoUcKTtwg" type="2004">
+    <children xmi:type="notation:DecorationNode" xmi:id="_NedwoJUGEeSkwMoUcKTtwg" type="5017"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_NedwoZUGEeSkwMoUcKTtwg" type="7012">
+      <children xmi:type="notation:Shape" xmi:id="_Nee-wJUGEeSkwMoUcKTtwg" type="3014" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_Nee-wpUGEeSkwMoUcKTtwg" type="7013">
+          <children xmi:type="notation:Node" xmi:id="_NegM4JUGEeSkwMoUcKTtwg" type="3001">
+            <styles xmi:type="notation:DescriptionStyle" xmi:id="_NegM4ZUGEeSkwMoUcKTtwg"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_NegM4pUGEeSkwMoUcKTtwg" fontName="Segoe UI"/>
+            <styles xmi:type="notation:LineStyle" xmi:id="_NegM45UGEeSkwMoUcKTtwg"/>
+            <element xmi:type="usagemodel:Start" href="videoStreaming.usagemodel#_NcFyEpUGEeSkwMoUcKTtwg"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NegM5JUGEeSkwMoUcKTtwg"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_NegM5ZUGEeSkwMoUcKTtwg" type="3002" fontName="Segoe UI">
+            <element xmi:type="usagemodel:Stop" href="videoStreaming.usagemodel#_NcFyE5UGEeSkwMoUcKTtwg"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NegM5pUGEeSkwMoUcKTtwg" x="325" y="74"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_T80UIJUGEeSkwMoUcKTtwg" type="3003" fontName="Segoe UI">
+            <children xmi:type="notation:DecorationNode" xmi:id="_T807MJUGEeSkwMoUcKTtwg" type="5004"/>
+            <children xmi:type="notation:DecorationNode" xmi:id="_T807MZUGEeSkwMoUcKTtwg" type="7002">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_T807MpUGEeSkwMoUcKTtwg"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_T807M5UGEeSkwMoUcKTtwg"/>
+            </children>
+            <element xmi:type="usagemodel:EntryLevelSystemCall" href="videoStreaming.usagemodel#_RZliYJUGEeSkwMoUcKTtwg"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T80UIZUGEeSkwMoUcKTtwg" x="30" y="84"/>
+          </children>
+        </children>
+        <element xmi:type="usagemodel:ScenarioBehaviour" href="videoStreaming.usagemodel#_NcFyEZUGEeSkwMoUcKTtwg"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Nee-wZUGEeSkwMoUcKTtwg" x="3" y="126"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_ORSUsJUGEeSkwMoUcKTtwg" type="3015">
+        <children xmi:type="notation:DecorationNode" xmi:id="_ORSUtZUGEeSkwMoUcKTtwg" type="5013"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_ORSUtpUGEeSkwMoUcKTtwg" type="5014"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_ORSUt5UGEeSkwMoUcKTtwg" type="5015"/>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_ORSUsZUGEeSkwMoUcKTtwg"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_ORSUspUGEeSkwMoUcKTtwg" fontName="Segoe UI"/>
+        <styles xmi:type="notation:LineStyle" xmi:id="_ORSUs5UGEeSkwMoUcKTtwg"/>
+        <element xmi:type="usagemodel:ClosedWorkload" href="videoStreaming.usagemodel#//@usageScenario_UsageModel.0/@workload_UsageScenario"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ORSUtJUGEeSkwMoUcKTtwg" x="288" y="21"/>
+      </children>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_NedJkZUGEeSkwMoUcKTtwg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_NedJkpUGEeSkwMoUcKTtwg" fontName="Segoe UI"/>
+    <styles xmi:type="notation:FillStyle" xmi:id="_NedJk5UGEeSkwMoUcKTtwg"/>
+    <element xmi:type="usagemodel:UsageScenario" href="videoStreaming.usagemodel#_NcFyEJUGEeSkwMoUcKTtwg"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NedJlJUGEeSkwMoUcKTtwg" x="135" y="65" width="451" height="431"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_NcHnQZUGEeSkwMoUcKTtwg"/>
+  <element xmi:type="usagemodel:UsageModel" href="videoStreaming.usagemodel#/"/>
+  <edges xmi:type="notation:Connector" xmi:id="_VkAUYJUGEeSkwMoUcKTtwg" type="4002" source="_NegM4JUGEeSkwMoUcKTtwg" target="_T80UIJUGEeSkwMoUcKTtwg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_VkAUYZUGEeSkwMoUcKTtwg" fontName="Segoe UI"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_VkAUYpUGEeSkwMoUcKTtwg" points="[8, 10, -59, -72]$[37, 74, -30, -8]"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_VkBigJUGEeSkwMoUcKTtwg" id="(0.20982142857142858,0.1568627450980392)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_V2hAsJUGEeSkwMoUcKTtwg" type="4002" source="_T80UIJUGEeSkwMoUcKTtwg" target="_NegM5ZUGEeSkwMoUcKTtwg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_V2hAsZUGEeSkwMoUcKTtwg" fontName="Segoe UI"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_V2hAspUGEeSkwMoUcKTtwg" points="[49, -3, -86, 1]$[134, 11, -1, 15]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_V2iO0JUGEeSkwMoUcKTtwg" id="(0.78125,0.17647058823529413)"/>
+  </edges>
+</notation:Diagram>

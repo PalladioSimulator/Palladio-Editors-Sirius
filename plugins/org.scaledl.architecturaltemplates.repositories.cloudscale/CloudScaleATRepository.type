@@ -23,8 +23,19 @@
     </completion>
   </ATs>
   <ATs id="_7SshcH4UEeS81uv5CnTOEw" entityName="Dynamic Horizontal Scaling Assembly Context">
-    <roles id="_-yzLIH4UEeS81uv5CnTOEw" entityName="Replicable Assembly Context"/>
-    <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion" qvtoFileURI="DynamicHorizontalScalingAssemblyContext.qvto"/>
+    <roles id="_-yzLIH4UEeS81uv5CnTOEw" entityName="Replicable Assembly Context">
+      <stereotype href="profiles/DynamicHorizontalScalingAssemblyContext.emfprofile_diagram#_T5PXYJQkEeSq-7Z_6FnzsQ"/>
+    </roles>
+    <roles id="_tly_sJQlEeSq-7Z_6FnzsQ" entityName="Dynamic Horizontal Scaling Assembly Context System">
+      <stereotype href="profiles/DynamicHorizontalScalingAssemblyContext.emfprofile_diagram#_DFBzUJQkEeSq-7Z_6FnzsQ"/>
+    </roles>
+    <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion" qvtoFileURI="DynamicHorizontalScalingAssemblyContext.qvto">
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter"/>
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="resourceenvironment"/>
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="usagemodel"/>
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="pms"/>
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMOutputCompletionParameter" fileExtension="pcmmeasuringpoint"/>
+    </completion>
   </ATs>
   <ATs id="_QgydkH4aEeS81uv5CnTOEw" entityName="Dynamic Horizontal Scaling Resource Container">
     <roles id="_c9Rl4H46EeSqFvs4kqVd7Q" entityName="Dynamic Horizontal Scaling Resource Container System">

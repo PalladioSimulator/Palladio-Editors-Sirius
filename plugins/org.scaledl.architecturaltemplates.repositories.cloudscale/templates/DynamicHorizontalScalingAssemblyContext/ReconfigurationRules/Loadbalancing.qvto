@@ -1,6 +1,7 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.LoadbalancingLibrary;
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
 
+modeltype PRM uses 'http://simulizar.palladiosimulator.org/PalladioRuntimeMonitoring/1.0';
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
 modeltype PCM_REP uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0';
 modeltype PCM_SYS uses 'http://sdq.ipd.uka.de/PalladioComponentModel/System/5.0';
@@ -12,61 +13,90 @@ modeltype PCMSEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/S
 
 
 transformation Loadbalancing(inout pcmAllocation : PCM_ALLOC,
-										inout pcmSystem : PCM_SYS,
-										inout pcmRepository : PCM_REP,
-										inout pcmResourceEnvironment : PCM_RES_ENV);
+								in prm : PRM
+									//	,inout pcmSystem : PCM_SYS,
+									//	inout pcmRepository : PCM_REP,
+									//	inout pcmResourceEnvironment : PCM_RES_ENV
+
+									);
 property numberOfReplicas : Integer;
+property threshold : Real = 2.0;
 main() {
+	log ('Reconfiguration Rule Loadbalancing started');
+	assert fatal(prm.rootObjects()[PCMModelElementMeasurement]->size() > 0)
+		with log ("No Measurements found!");
+			
+	assert fatal(pcmAllocation.rootObjects()[Allocation]->size() > 0)
+		with log ("Allocation Model is empty!");
+		
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var allocationContexts : Set(AllocationContext) := allocation.allocationContexts_Allocation;
 	var assemblyContexts : Set(AssemblyContext);
 	allocationContexts -> forEach(allocationContext){assemblyContexts += allocationContext.assemblyContext_AllocationContext;};
 	
-	assert fatal(appliedStereotypesEqualsOne(assemblyContexts,"LoadbalancedAssemblyContext"))
-		with log ("There is more than one LoadbalancedAssemblyContext Stereotype Application!");	
+	if(prm.rootObjects()[PCMModelElementMeasurement]->checkCondition()){
+		assert fatal(appliedStereotypesEqualsOne(assemblyContexts,"LoadbalancedAssemblyContext"))
+			with log ("There is more than one LoadbalancedAssemblyContext Stereotype Application!");	
+			
+		//get the stereotyped AssemblyContext
+		var loadBalancedAssemblyContext : AssemblyContext := assemblyContexts -> selectOne(assemblyContext : AssemblyContext |
+						hasAppliedStereotype(assemblyContext,"LoadbalancedAssemblyContext"));
+						
+		assert fatal(loadBalancedAssemblyContext != null)
+			with log ("There is no LoadbalancedAssemblyContext Stereotype Application!");	
+			
+		//apply Stereotype OriginalAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
+		applyStereotype(loadBalancedAssemblyContext,"OriginalAssemblyContext");
+						
+		numberOfReplicas := getNumberOfReplicas(loadBalancedAssemblyContext,"numberOfReplicas","LoadbalancedAssemblyContext");
 		
-	//get the stereotyped AssemblyContext
-	var loadBalancedAssemblyContext : AssemblyContext := assemblyContexts -> selectOne(assemblyContext : AssemblyContext |
-					hasAppliedStereotype(assemblyContext,"LoadbalancedAssemblyContext"));
-					
-	assert fatal(loadBalancedAssemblyContext != null)
-		with log ("There is no LoadbalancedAssemblyContext Stereotype Application!");	
+		//remove Stereotype Application LoadbalancedAssemblyContext from the AssemblyContext
+		removeStereotypeApplications(loadBalancedAssemblyContext,"LoadbalancedAssemblyContext");
 		
-	//apply Stereotype OriginalAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
-	applyStereotype(loadBalancedAssemblyContext,"OriginalAssemblyContext");
-					
-	numberOfReplicas := getNumberOfReplicas(loadBalancedAssemblyContext,"numberOfReplicas","LoadbalancedAssemblyContext");
-	
-	//remove Stereotype Application LoadbalancedAssemblyContext from the AssemblyContext. Does it really work??
-	removeStereotypeApplications(loadBalancedAssemblyContext,"LoadbalancedAssemblyContext");
-	
-	var loadBalancedAllocationContext : AllocationContext := allocationContexts ->selectOne(allocationContext : AllocationContext | allocationContext.assemblyContext_AllocationContext.id = loadBalancedAssemblyContext.id);
-	//var loadBalancedAllocationContext : AllocationContext := allocationContexts ->selectOne(allocationContext : AllocationContext | allocationContext.assemblyContext_AllocationContext = loadBalancedAssemblyContext and hasAppliedStereotype(allocationContext.assemblyContext_AllocationContext,"LoadbalancedAssemblyContext"));
-	
-	var loadBalancedResourceContainer : ResourceContainer := loadBalancedAllocationContext.resourceContainer_AllocationContext;
-	
-	//create the LoadBalancer BasicComponent and AssemblyContext
-	var loadBalancerComponent : RepositoryComponent := new BasicComponent(loadBalancedAssemblyContext.encapsulatedComponent__AssemblyContext);
-	var loadBalancerAssemblyContext : AssemblyContext := new AssemblyContext(loadBalancerComponent);
-	
-	//apply Stereotype LoadbalancerAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
-	applyStereotype(loadBalancerAssemblyContext,"LoadbalancerAssemblyContext");
-	
-	//duplicate the stereotyped AssemblyContext
-	var duplicatedAssemblyContexts : OrderedSet(AssemblyContext) := createDuplicatedAssemblyContexts(loadBalancedAssemblyContext,numberOfReplicas);
-	
-	//connect the LoadBalancer Assembly Context with the stereotyped and duplicated AssemblyContext in the System
-	connectLoadBalancerAndAssemblyContexts(loadBalancedAssemblyContext,loadBalancerAssemblyContext,duplicatedAssemblyContexts);
-	
-	//create the ResourceContainer for the LoadBalancer and the duplicated AssemblyContext
-	var loadBalancerResourceContainer : ResourceContainer := createResourceContainerAndConnectionToLinkingResources(loadBalancedResourceContainer,"LoadBalancer");
-	var duplicatedComponentResourceContainer : OrderedSet(ResourceContainer) := createDuplicatedResourceContainer(loadBalancedResourceContainer,loadBalancedAllocationContext.entityName,duplicatedAssemblyContexts);
-	
-	//create the AllocationContexts for the LoadBalancer and the duplicated AssemblyContexts
-	new AllocationContext(loadBalancerAssemblyContext,loadBalancerResourceContainer);
-	duplicatedAssemblyContexts -> map createDuplicatedAllocationContexts(duplicatedComponentResourceContainer);
+		var loadBalancedAllocationContext : AllocationContext := allocationContexts ->selectOne(allocationContext : AllocationContext | allocationContext.assemblyContext_AllocationContext.id = loadBalancedAssemblyContext.id);
+		//var loadBalancedAllocationContext : AllocationContext := allocationContexts ->selectOne(allocationContext : AllocationContext | allocationContext.assemblyContext_AllocationContext = loadBalancedAssemblyContext and hasAppliedStereotype(allocationContext.assemblyContext_AllocationContext,"LoadbalancedAssemblyContext"));
+		
+		var loadBalancedResourceContainer : ResourceContainer := loadBalancedAllocationContext.resourceContainer_AllocationContext;
+		
+		//create the LoadBalancer BasicComponent and AssemblyContext
+		var loadBalancerComponent : RepositoryComponent := new BasicComponent(loadBalancedAssemblyContext.encapsulatedComponent__AssemblyContext);
+		var loadBalancerAssemblyContext : AssemblyContext := new AssemblyContext(loadBalancerComponent);
+		
+		//apply Stereotype LoadbalancerAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
+		applyStereotype(loadBalancerAssemblyContext,"LoadbalancerAssemblyContext");
+		
+		//duplicate the stereotyped AssemblyContext
+		var duplicatedAssemblyContexts : OrderedSet(AssemblyContext) := createDuplicatedAssemblyContexts(loadBalancedAssemblyContext,numberOfReplicas);
+		
+		//connect the LoadBalancer Assembly Context with the stereotyped and duplicated AssemblyContext in the System
+		connectLoadBalancerAndAssemblyContexts(loadBalancedAssemblyContext,loadBalancerAssemblyContext,duplicatedAssemblyContexts);
+		
+		//create the ResourceContainer for the LoadBalancer and the duplicated AssemblyContext
+		var loadBalancerResourceContainer : ResourceContainer := createResourceContainerAndConnectionToLinkingResources(loadBalancedResourceContainer,"LoadBalancer");
+		var duplicatedComponentResourceContainer : OrderedSet(ResourceContainer) := createDuplicatedResourceContainer(loadBalancedResourceContainer,loadBalancedAllocationContext.entityName,duplicatedAssemblyContexts);
+		
+		//create the AllocationContexts for the LoadBalancer and the duplicated AssemblyContexts
+		new AllocationContext(loadBalancerAssemblyContext,loadBalancerResourceContainer);
+		duplicatedAssemblyContexts -> map createDuplicatedAllocationContexts(duplicatedComponentResourceContainer);
+		log ('Reconfiguration Rule Loadbalancing finished');
+	}
 }
 
+
+helper Set(PCMModelElementMeasurement) :: checkCondition() : Boolean {
+	
+		self->forEach(measurement) {
+		log('Measured value is ' + measurement.measurementValue.toString());
+		
+			if (measurement.measurementValue > threshold) {
+				return true;
+			};
+		};
+		
+		log('No measurements match the condition. Number of measurements is ' + self->size().toString());
+		return false;
+	}
+	
 /**
  * Creates the ResourceContainer for all duplicated AssemblyContexts
  */
