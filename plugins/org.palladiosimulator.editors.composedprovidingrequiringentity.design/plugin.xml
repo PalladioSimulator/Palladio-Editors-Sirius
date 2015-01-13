@@ -2,9 +2,9 @@
 <?eclipse version="3.0"?>
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
-    <component class="org.palladiosimulator.composedprovidingrequiringentity.design.Activator"
-               id="org.palladiosimulator.composedprovidingrequiringentity.design"
-	       name="composedprovidingrequiringentity">
+    <component class="org.palladiosimulator.editors.composedprovidingrequiringentity.design.Activator"
+               id="org.palladiosimulator.editors.composedprovidingrequiringentity.design"
+	       name="My">
     </component>
   </extension>
 </plugin>
