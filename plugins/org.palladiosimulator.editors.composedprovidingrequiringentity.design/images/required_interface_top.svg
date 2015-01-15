@@ -1,0 +1,8 @@
+<?xml version="1.0" standalone="no"?>
+<svg width="13" height="17" xmlns="http://www.w3.org/2000/svg">
+<defs><radialGradient id="gG" cx="50%" r="50%" spreadMethod="reflect">
+<stop offset="5%" stop-color="#0F0"/>
+<stop offset="95%" stop-color="#080"/>
+</radialGradient></defs>
+<path d="m5,16.5v-6H1c5.5-5 5.5-11 5.5-11 0,0 0,5 5.5,11h-4v6z" stroke="#080" fill="url(#gG)"/>
+</svg>
