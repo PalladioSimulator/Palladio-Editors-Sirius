@@ -13,6 +13,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
@@ -44,7 +45,16 @@ public class ATExtensionTab extends AbstractLaunchConfigurationTab {
 
     /** The path to the image file for the tab icon. */
     public static final String CONFIGURATION_TAB_IMAGE_PATH = "icons/ATLogo15x15.png";
-
+    
+    /** The pcmMeasuringPoint that was selected by the combobox and used in the RunATCompletionJob*/
+   private static String selectedMeasuringPoint ="";
+    
+    /** Label for the combobox*/
+    private final String [] pcmMeasuringPoints = {"UsageScenarioMeasuringPoint", "EntryLevelSystemCallMeasuringPoint", "ActiveResourceMeasuringPoint"};
+    
+    /**Combobox for choosing a pcmMeasuringPoint*/
+    private Combo pcmMeasuringPointCombo;
+    
     /** Button for control enabling storage of completed models. */
     private Button storeCompletedModelsButton;
 
@@ -106,6 +116,16 @@ public class ATExtensionTab extends AbstractLaunchConfigurationTab {
                 updateATTab();
             }
         });
+        
+        //Create pcmMeasuringPoint section:
+        final GridData gdpcmMeasuringPointGroup = new GridData(SWT.FILL, SWT.CENTER, true, false);
+        final GridLayout gridLayoutCombobox = new GridLayout();
+        gridLayoutCombobox.numColumns = 4;
+        final Group pcmMeasuringPointGroup = new Group(container, SWT.NONE);
+        pcmMeasuringPointGroup.setText("PCM MeasuringPoint");
+        pcmMeasuringPointGroup.setLayoutData(gdpcmMeasuringPointGroup);
+        pcmMeasuringPointGroup.setLayout(gridLayoutCombobox);
+        pcmMeasuringPointCombo = initCombobox(pcmMeasuringPointGroup,gdpcmMeasuringPointGroup,pcmMeasuringPoints);
     }
 
     private void updateATTab() {
@@ -134,7 +154,36 @@ public class ATExtensionTab extends AbstractLaunchConfigurationTab {
 
         return button;
     }
-
+    
+    private Combo initCombobox(final Group pcmMeasuringPointGroup,final GridData gdpcmMeasuringPointGroup, final String [] measuringPoints){
+    	final Combo combo = new Combo(pcmMeasuringPointGroup,SWT.READ_ONLY | SWT.DROP_DOWN);
+    	combo.setLayoutData(gdpcmMeasuringPointGroup);
+    	combo.setItems(pcmMeasuringPoints);
+    	combo.select(0);
+    	setSelectedMeasuringPoint(pcmMeasuringPoints[0]);
+    	combo.addSelectionListener(new SelectionListener(){
+    	    public void widgetDefaultSelected(    SelectionEvent e){
+    	    	 updateATTab();
+    	    }
+    	    public void widgetSelected(SelectionEvent e){
+    	    	int comboSelectionIndex = combo.getSelectionIndex();
+    	    	String measuringPoint = pcmMeasuringPoints[comboSelectionIndex];
+    	    	setSelectedMeasuringPoint(measuringPoint);
+    	    	updateATTab();
+    	    }
+    	  }
+    	);
+    	return combo;
+    }
+    
+    public void setSelectedMeasuringPoint(String measuringPoint){
+    	selectedMeasuringPoint = measuringPoint;
+    }
+    
+    public static String getSelectedMeasuringPoint(){
+    	return selectedMeasuringPoint;
+    }
+    
     @Override
     public final String getName() {
         return "Architectural Templates";
