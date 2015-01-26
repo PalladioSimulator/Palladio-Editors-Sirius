@@ -6,7 +6,7 @@
       <stopConditions xsi:type="ExperimentAutomation.Experiments.AbstractSimulation:SimTimeStopCondition" simulationTime="-1"/>
       <datasource xsi:type="ExperimentAutomation.Experiments.AbstractSimulation:FileDatasource" location="C:\data"/>
     </toolConfiguration>
-    <stopConditions xsi:type="ExperimentAutomation.Experiments.AbstractSimulation:MeasurementCountStopCondition" measurementCount="-1"/>
+    <stopConditions xsi:type="ExperimentAutomation.Experiments.AbstractSimulation:MeasurementCountStopCondition" measurementCount="190"/>
     <stopConditions xsi:type="ExperimentAutomation.Experiments.AbstractSimulation:SimTimeStopCondition" simulationTime="190"/>
     <experimentDesign xsi:type="ExperimentAutomation.Experiments:FullFactorialDesign"/>
     <responseMeasurement xsi:type="ExperimentAutomation.Experiments:SimulationDurationMeasurement"/>
