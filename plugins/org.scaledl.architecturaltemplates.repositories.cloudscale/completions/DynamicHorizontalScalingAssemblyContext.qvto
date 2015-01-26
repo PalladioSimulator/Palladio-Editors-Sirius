@@ -72,12 +72,10 @@ main() {
 			
 		};
 	};
-	//var pmsModel : PMSModel := pms.rootObjects()![PMSModel];
-	//var usageScenarioMeasuringPoint : UsageScenarioMeasuringPoint := usageScenario.map createUsageScenarioMeasuringPoint();	
-	//addPerformanceMeasurementsToPmsModel(pmsModel, usageScenarioMeasuringPoint);
-	var entryLevelSystemCallMeasuringPoint : EntryLevelSystemCallMeasuringPoint := usageScenario.map createEntryLevelSystemCallMeasuringPoint();
-	var sloRepo : ServiceLevelObjectiveRepository := entryLevelSystemCallMeasuringPoint.map createServiceLevelObjectiveRepository();
-	var pmsModel: PMSModel := entryLevelSystemCallMeasuringPoint.map addPerformanceMeasurementsToPmsModel();
+	
+	var usageScenarioMeasuringPoint : UsageScenarioMeasuringPoint := usageScenario.map createUsageScenarioMeasuringPoint();
+	var sloRepo : ServiceLevelObjectiveRepository := usageScenarioMeasuringPoint.map createServiceLevelObjectiveRepository();
+	var pmsModel: PMSModel := usageScenarioMeasuringPoint.map addPerformanceMeasurementsToPmsModel();
 	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Assembly Context" finished');
 }
 
@@ -110,15 +108,6 @@ mapping UsageScenario::createUsageScenarioMeasuringPoint() : UsageScenarioMeasur
 	usageScenario := self;
 }
 
-mapping UsageScenario::createEntryLevelSystemCallMeasuringPoint() : EntryLevelSystemCallMeasuringPoint@pcmUsageScenarioMeasuringPoint{
-	var actions : Set(AbstractUserAction) := self.scenarioBehaviour_UsageScenario.actions_ScenarioBehaviour;
-	actions -> forEach(action){
-		if(action.oclIsKindOf(EntryLevelSystemCall)){
-			entryLevelSystemCall := action.oclAsType(EntryLevelSystemCall);
-			
-		};
-	};
-}
 
 //blackbox helper hasAppliedStereotype(system:Entity, stereotype : String):Boolean;
 //blackbox helper applyStereotype(pcmEntity:Entity, stereotype:String):Void;
