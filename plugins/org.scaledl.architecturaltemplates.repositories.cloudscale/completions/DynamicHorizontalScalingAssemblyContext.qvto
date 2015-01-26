@@ -17,6 +17,9 @@ modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/Pall
 modeltype PCM_MEASURINGPOINT uses 'http://palladiosimulator.org/PCM/MeasuringPoint/1.0';
 modeltype PCM_PMS uses 'http://simulizar.palladiosimulator.org/PalladioMonitoringSpecification/1.0';
 modeltype PCM_EDP2MEASURINGPOINT uses 'http://palladiosimulator.org/EDP2/MeasuringPoint/0.9.1';
+modeltype PCM_EDP2DATA uses 'http://palladiosimulator.org/EDP2/ExperimentData/0.9.1';
+modeltype PCM_SLO uses 'http://palladiosimulator.org/ServiceLevelObjective/1.0';
+	
 
 /**
  * Transforms a system where assembly context are annotated with the "Replicable Assembly
@@ -40,13 +43,14 @@ modeltype PCM_EDP2MEASURINGPOINT uses 'http://palladiosimulator.org/EDP2/Measuri
 transformation DynamicHorizontalScalingAssemblyContext( inout pcmSystem : PCM_SYS,
 						   inout pcmResourceEnvironment : PCM_RES_ENV,
 						   inout pcmUsage: PCM_USE,
-						   inout pms : PCM_PMS,
-						 	//inout pcmAllocation : PCM_ALLOC, 
-						   out pcmUsageScenarioMeasuringPoint : PCM_MEASURINGPOINT);
+						   out pcmUsageScenarioMeasuringPoint : PCM_MEASURINGPOINT,
+						   out slo : PCM_SLO,
+						    out pms : PCM_PMS
+						   );
 						   
 
 property threshold : Real;
-property interval : Real;
+property interval : Real = 10;
 
 main() {	
 	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Assembly Context" started');
@@ -60,7 +64,6 @@ main() {
 	var usageScenario : UsageScenario := usageModel.usageScenario_UsageModel![UsageScenario];
 	var resourceEnvironment : ResourceEnvironment := pcmResourceEnvironment.rootObjects()![ResourceEnvironment];
 	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;	
-//	var allocation : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;	
 	assemblyContexts -> forEach(assemblyContext){
 		if(hasAppliedStereotype(assemblyContext,"ReplicableAssemblyContext")){
 			var numberOfReplicas : Integer := getNumberOfReplicas(assemblyContext,"numberOfReplicas","ReplicableAssemblyContext");
@@ -69,44 +72,29 @@ main() {
 			
 		};
 	};
-	
-	//allocateAssemblyContextsToResourceContainer(assemblyContexts,resourceContainers,allocation);
-	
-	var pmsModel : PMSModel := pms.rootObjects()![PMSModel];
-	var measuringPoint : UsageScenarioMeasuringPoint := usageScenario.map createPcmMeasuringPoint();	
-	addPerformanceMeasurementsToPmsModel(pmsModel, measuringPoint);
-	
+	//var pmsModel : PMSModel := pms.rootObjects()![PMSModel];
+	//var usageScenarioMeasuringPoint : UsageScenarioMeasuringPoint := usageScenario.map createUsageScenarioMeasuringPoint();	
+	//addPerformanceMeasurementsToPmsModel(pmsModel, usageScenarioMeasuringPoint);
+	var entryLevelSystemCallMeasuringPoint : EntryLevelSystemCallMeasuringPoint := usageScenario.map createEntryLevelSystemCallMeasuringPoint();
+	var sloRepo : ServiceLevelObjectiveRepository := entryLevelSystemCallMeasuringPoint.map createServiceLevelObjectiveRepository();
+	var pmsModel: PMSModel := entryLevelSystemCallMeasuringPoint.map addPerformanceMeasurementsToPmsModel();
 	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Assembly Context" finished');
 }
-/**helper allocateAssemblyContextsToResourceContainer(assemblyContexts : Set(AssemblyContext),resourceContainers : Set(ResourceContainer), allocation : Allocation){
-	assemblyContexts -> forEach(assemblyContext){
-		var resourceContainer : ResourceContainer;
-		if(hasAppliedStereotype(assemblyContext,"PresentationLayerAssembly")){
-			resourceContainer := resourceContainers -> any(rc|rc.id = "_ETFqQCPIEeSwPfc4EJw-WA");
-		}
-		else if(hasAppliedStereotype(assemblyContext,"MiddleLayerAssembly")){
-			resourceContainer := resourceContainers -> any(rc|rc.id = "_Fg46ICPIEeSwPfc4EJw-WA");
-			applyStereotype(resourceContainer,"Replicable");
-			threshold := getResponseTimeThreshold(assemblyContext,"responseTimeThreshold","MiddleLayerAssembly");
-			log ('The responseTimeThreshold is ' + threshold.toString());
-			interval := getResponseTimeInterval(assemblyContext,"responseTimeInterval","MiddleLayerAssembly");
-			log ('The responseTimeInterval is ' + interval.toString());
-		}
-		else if(hasAppliedStereotype(assemblyContext,"DataLayerAssembly")){
-			resourceContainer := resourceContainers -> any(rc|rc.id = "_HAQbICPIEeSwPfc4EJw-WA");
-		};
-		new AllocationContext(assemblyContext, resourceContainer, allocation);
-	}
-};*/
 
-helper addPerformanceMeasurementsToPmsModel(inout pmsModel : PMSModel, in measuringPoint : MeasuringPoint){
-	pmsModel.performanceMeasurements += new PerformanceMeasurement(measuringPoint);
+mapping MeasuringPoint::addPerformanceMeasurementsToPmsModel():PMSModel@pms{
+	performanceMeasurements += new PerformanceMeasurement(self);
+}
+mapping MeasuringPoint:: createServiceLevelObjectiveRepository(): ServiceLevelObjectiveRepository@slo{
+	servicelevelobjectives += new ServiceLevelObjective(self);
+}
+
+constructor ServiceLevelObjective::ServiceLevelObjective(mp:MeasuringPoint){
+	measuringPoint := mp;
 }
 
 constructor PerformanceMeasurement :: PerformanceMeasurement(mp : MeasuringPoint){
 	measuringPoint := mp;
 	measurementSpecification := new MeasurementSpecification();
-	//guid := "PerformanceMeasurementID"
 }
 
 constructor MeasurementSpecification :: MeasurementSpecification(){
@@ -118,23 +106,18 @@ constructor Intervall::Intervall(interval:Real){
 	intervall := interval;
 }
 
-mapping UsageScenario::createPcmMeasuringPoint() : UsageScenarioMeasuringPoint@pcmUsageScenarioMeasuringPoint{
+mapping UsageScenario::createUsageScenarioMeasuringPoint() : UsageScenarioMeasuringPoint@pcmUsageScenarioMeasuringPoint{
 	usageScenario := self;
 }
 
-/**mapping System::createAllocation(resourceEnvironment:ResourceEnvironment) : Allocation@pcmAllocation{
-	id := self.id + "_ThreeLayerAllocation";
-	entityName := "ThreeLayerAllocation";
-	system_Allocation := self;
-	targetResourceEnvironment_Allocation := resourceEnvironment;
-}*/
-
-constructor AllocationContext :: AllocationContext (ac : AssemblyContext, rc: ResourceContainer, allocation : Allocation){
-	id := ac.id + "_" + ac.entityName +  "_AllocationContext";
-	entityName := "Allocation_" + ac.entityName;
-	assemblyContext_AllocationContext := ac;
-	resourceContainer_AllocationContext := rc;
-	allocation_AllocationContext := allocation;
+mapping UsageScenario::createEntryLevelSystemCallMeasuringPoint() : EntryLevelSystemCallMeasuringPoint@pcmUsageScenarioMeasuringPoint{
+	var actions : Set(AbstractUserAction) := self.scenarioBehaviour_UsageScenario.actions_ScenarioBehaviour;
+	actions -> forEach(action){
+		if(action.oclIsKindOf(EntryLevelSystemCall)){
+			entryLevelSystemCall := action.oclAsType(EntryLevelSystemCall);
+			
+		};
+	};
 }
 
 //blackbox helper hasAppliedStereotype(system:Entity, stereotype : String):Boolean;

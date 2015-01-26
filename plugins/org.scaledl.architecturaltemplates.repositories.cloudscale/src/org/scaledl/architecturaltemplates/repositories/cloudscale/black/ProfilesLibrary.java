@@ -64,6 +64,7 @@ public class ProfilesLibrary {
 		StereotypeApplication stereotypeApplication = stereotypeApplications
 				.get(0);
 		setValueOfEStructuralFeature(stereotypeApplication,taggedValueName,value);
+		pcmEntity.saveContainingProfileApplication();
 		
 	}
  private static void setValueOfEStructuralFeature(final StereotypeApplication stereotypeApplication, final String name, final Object newValue) {

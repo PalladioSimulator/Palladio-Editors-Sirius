@@ -14,15 +14,23 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.modelversioning.emfprofile.Stereotype;
 import org.palladiosimulator.commons.emfutils.EMFLoadHelper;
+import org.palladiosimulator.edp2.models.measuringpoint.MeasuringPoint;
+import org.palladiosimulator.edp2.models.measuringpoint.MeasuringpointFactory;
+import org.palladiosimulator.pcmmeasuringpoint.EntryLevelSystemCallMeasuringPoint;
 import org.palladiosimulator.pcmmeasuringpoint.UsageScenarioMeasuringPoint;
 import org.palladiosimulator.pcmmeasuringpoint.impl.PcmmeasuringpointFactoryImpl;
 import org.palladiosimulator.pcmmeasuringpoint.util.PcmmeasuringpointResourceImpl;
+import org.palladiosimulator.servicelevelobjective.ServiceLevelObjectiveRepository;
+import org.palladiosimulator.servicelevelobjective.ServicelevelObjectiveFactory;
 import org.palladiosimulator.simulizar.pms.PMSModel;
+import org.palladiosimulator.simulizar.pms.PerformanceMeasurement;
 import org.palladiosimulator.simulizar.pms.impl.PmsFactoryImpl;
 import org.palladiosimulator.simulizar.pms.util.PmsResourceImpl;
 import org.scaledl.architecturaltemplates.completion.config.ATExtensionJobConfiguration;
+import org.scaledl.architecturaltemplates.completion.config.ATExtensionTab;
 import org.scaledl.architecturaltemplates.completion.constants.ATPartitionConstants;
 import org.scaledl.architecturaltemplates.completion.constants.ATPartitionConstants.Partition;
 import org.scaledl.architecturaltemplates.type.AT;
@@ -37,6 +45,8 @@ import de.uka.ipd.sdq.pcm.allocation.Allocation;
 import de.uka.ipd.sdq.pcm.allocation.AllocationFactory;
 import de.uka.ipd.sdq.pcm.allocation.util.AllocationResourceImpl;
 import de.uka.ipd.sdq.pcm.resourceenvironment.ResourceEnvironment;
+import de.uka.ipd.sdq.pcm.usagemodel.AbstractUserAction;
+import de.uka.ipd.sdq.pcm.usagemodel.EntryLevelSystemCall;
 import de.uka.ipd.sdq.pcm.usagemodel.UsageModel;
 import de.uka.ipd.sdq.pcm.usagemodel.UsageScenario;
 import de.uka.ipd.sdq.workflow.jobs.JobFailedException;
@@ -60,7 +70,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
 
     /** Folder with traces as created by the QVT-O engine */
     private static final String TRACESFOLDER = "traces";
-
+    
     public RunATCompletionJob(final ATExtensionJobConfiguration configuration) {
     }
 
@@ -69,6 +79,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
         super.execute(monitor);
 
         final AT architecturalTemplate = this.getATFromSystem();
+
         if (architecturalTemplate != null) {
             // get QVT-O completion
             final QVTOCompletion completion;
@@ -119,6 +130,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
 
     private ModelLocation getModelLocation(final AT architecturalTemplate, final URI rootATUri,
             final CompletionParameter parameter) {
+    	final String selectedMeasuringPoint = ATExtensionTab.getSelectedMeasuringPoint();
         final ResourceSetPartition pcmPartition = this.getBlackboard().getPartition(
                 ATPartitionConstants.Partition.PCM.getPartitionId());
         final ResourceSetPartition pmsPartition = this.getBlackboard().getPartition(
@@ -193,8 +205,9 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                 final Resource outResource = resourceSet.createResource(URI.createURI(systemModelFolderURI
                         + "/GeneratedOut" + parameterFileExtension + "." + parameterFileExtension));
                 final URI uri = outResource.getURI();
-
-                if (outResource instanceof AllocationResourceImpl) {
+                
+               
+               if (outResource instanceof AllocationResourceImpl) {
                     ResourceEnvironment resourceEnvironment = null;
                     try {
                         resourceEnvironment = pcmRepositoryPartition.getResourceEnvironment();
@@ -203,23 +216,63 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                         outResource.getContents().add(allocation);
                     } catch (final IndexOutOfBoundsException e) {
                     }
-                } else if (outResource instanceof PmsResourceImpl) {
-                    PmsFactoryImpl pmsFactory = new PmsFactoryImpl();
-                    PMSModel pmsModel = pmsFactory.createPMSModel();
-                    outResource.getContents().add(pmsModel);
-                } else if (outResource instanceof PcmmeasuringpointResourceImpl) {
-                    UsageModel usageModel = null;
-                    try {
-                        usageModel = pcmRepositoryPartition.getUsageModel();
-                        EList<UsageScenario> usageScenarios = usageModel.getUsageScenario_UsageModel();
-                        UsageScenarioMeasuringPoint usageScenarioMeasuringPoint = PcmmeasuringpointFactoryImpl.eINSTANCE
-                                .createUsageScenarioMeasuringPoint();
-                        usageScenarioMeasuringPoint.setUsageScenario(usageScenarios.get(0));
-                        outResource.getContents().add(usageScenarioMeasuringPoint);
-                    } catch (final IndexOutOfBoundsException e) {
-                    }
-                }
-
+               }
+                
+               else if(outResource instanceof PcmmeasuringpointResourceImpl){
+                	if(selectedMeasuringPoint == "UsageScenarioMeasuringPoint"){
+                		UsageModel usageModel = null;
+                        try {
+                            usageModel = pcmRepositoryPartition.getUsageModel();
+                            EList<UsageScenario> usageScenarios = usageModel.getUsageScenario_UsageModel();
+                            UsageScenarioMeasuringPoint usageScenarioMeasuringPoint = PcmmeasuringpointFactoryImpl.eINSTANCE
+                                    .createUsageScenarioMeasuringPoint();
+                            usageScenarioMeasuringPoint.setUsageScenario(usageScenarios.get(0));
+                          // performanceMeasurement.setMeasuringPoint(usageScenarioMeasuringPoint);
+                            
+                            outResource.getContents().add(usageScenarioMeasuringPoint);
+                        } catch (final IndexOutOfBoundsException e) {
+                        }
+                	}
+                	else if(selectedMeasuringPoint == "EntryLevelSystemCallMeasuringPoint"){
+                		UsageModel usageModel = null;
+                        try {
+                            usageModel = pcmRepositoryPartition.getUsageModel();
+                            EList<UsageScenario> usageScenarios = usageModel.getUsageScenario_UsageModel();
+                            UsageScenario usageScenario = usageScenarios.get(0);
+                            EList<AbstractUserAction> actions = usageScenario.getScenarioBehaviour_UsageScenario().getActions_ScenarioBehaviour();
+                            EntryLevelSystemCall entryLevelSystemCall = null;
+                            for(int i=0;i < actions.size();i++){
+                           	 if(actions.get(i) instanceof EntryLevelSystemCall){
+                           		 entryLevelSystemCall = (EntryLevelSystemCall)actions.get(i);
+                           	 }
+                            }
+                       	 EntryLevelSystemCallMeasuringPoint entryLevelSystemCallMeasuringPoint = PcmmeasuringpointFactoryImpl.eINSTANCE
+                                    .createEntryLevelSystemCallMeasuringPoint();
+                       	 if(entryLevelSystemCall !=null){
+                       		 entryLevelSystemCallMeasuringPoint.setEntryLevelSystemCall(entryLevelSystemCall);
+                          //   performanceMeasurement.setMeasuringPoint(entryLevelSystemCallMeasuringPoint);
+                             outResource.getContents().add(entryLevelSystemCallMeasuringPoint);
+                       	 }
+                       	 else System.out.println("No EntryLevelSystemCall set");
+                        } catch (final IndexOutOfBoundsException e) {
+                        }
+                	}
+                	else if(selectedMeasuringPoint == "ActiveResourceMeasuringPoint"){
+                		
+                	}
+                 }
+               else if (outResource instanceof XMIResourceImpl) {
+            	   ServicelevelObjectiveFactory sloFactory = ServicelevelObjectiveFactory.eINSTANCE;
+            	   ServiceLevelObjectiveRepository sloRepo = sloFactory.createServiceLevelObjectiveRepository();
+            	   outResource.getContents().add(sloRepo);
+               }
+               else if (outResource instanceof PmsResourceImpl) {
+                   PmsFactoryImpl pmsFactory = (PmsFactoryImpl) PmsFactoryImpl.init();
+                   PMSModel pmsModel = pmsFactory.createPMSModel();
+                  
+                 //  PerformanceMeasurement performanceMeasurement = pmsFactory.createPerformanceMeasurement();
+                   outResource.getContents().add(pmsModel);
+                   }
                 if (uri.lastSegment().endsWith("pms")) {
                     pmsPartition.setContents(uri, outResource.getContents());
                     pmsPartition.resolveAllProxies();

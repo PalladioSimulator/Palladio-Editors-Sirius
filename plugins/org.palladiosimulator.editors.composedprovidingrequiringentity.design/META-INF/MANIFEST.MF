@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.palladiosimulator.editors.composedprovidingrequiringentity.design
+Bundle-SymbolicName: org.palladiosimulator.editors.composedprovidingrequiringentity.design;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: org.palladiosimulator.editors.composedprovidingrequiringentity.design.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.sirius,
+ org.eclipse.sirius.common.acceleo.mtl,
+ org.eclipse.core.resources;bundle-version="3.9.1",
+ org.obeonetwork.gmf.runtime.diagram.ui.extension;bundle-version="4.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

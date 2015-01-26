@@ -20,7 +20,7 @@ transformation Loadbalancing(inout pcmAllocation : PCM_ALLOC,
 
 									);
 property numberOfReplicas : Integer;
-property threshold : Real = 2.0;
+property threshold : Real = 1.0;
 main() {
 	log ('Reconfiguration Rule Loadbalancing started');
 	assert fatal(prm.rootObjects()[PCMModelElementMeasurement]->size() > 0)

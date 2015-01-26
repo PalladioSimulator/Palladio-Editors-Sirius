@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+  <extension point="org.eclipse.sirius.componentization">
+    <component class="org.palladiosimulator.editors.composedprovidingrequiringentity.design.Activator"
+               id="org.palladiosimulator.editors.composedprovidingrequiringentity.design"
+	       name="My">
+    </component>
+  </extension>
+  <extension
+        point="org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatableNode">
+     <image
+           id="org.palladiosimulator.editors.composedprovidingrequiringentity.design.ui.extension.rotableNode.requiredInterface"
+           top="/org.palladiosimulator.editors.composedprovidingrequiringentity.design/images/required_interface_top.svg">
+     </image>
+  </extension>
+</plugin>

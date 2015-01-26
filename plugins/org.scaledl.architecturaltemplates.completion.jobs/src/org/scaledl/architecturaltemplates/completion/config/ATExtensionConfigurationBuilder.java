@@ -23,13 +23,6 @@ public class ATExtensionConfigurationBuilder extends AbstractWorkflowExtensionCo
             configuration.setStoreReconfiguredModels(ATExtensionTab.DEFAULT_STORE_COMPLETED_MODELS);
         }
 
-        if (attributes.containsKey(ATExtensionTab.STORE_RECONFIGURED_MODELS)) {
-            final Boolean storeReconfiguredModels = (Boolean) attributes.get(ATExtensionTab.STORE_RECONFIGURED_MODELS);
-            configuration.setStoreReconfiguredModels(storeReconfiguredModels);
-        } else {
-            configuration.setStoreReconfiguredModels(ATExtensionTab.DEFAULT_STORE_RECONFIGURED_MODELS);
-        }
-
         if (attributes.containsKey(ATExtensionTab.MODEL_STORAGE_LOCATION)) {
             final String modelStorageLocation = (String) attributes.get(ATExtensionTab.MODEL_STORAGE_LOCATION);
             configuration.setModelStorageLocation(modelStorageLocation);
