@@ -42,10 +42,9 @@ modeltype PCM_SLO uses 'http://palladiosimulator.org/ServiceLevelObjective/1.0';
  **/
 transformation DynamicHorizontalScalingAssemblyContext( inout pcmSystem : PCM_SYS,
 						   inout pcmResourceEnvironment : PCM_RES_ENV,
-						   inout pcmUsage: PCM_USE,
-						   out pcmUsageScenarioMeasuringPoint : PCM_MEASURINGPOINT,
-						   out slo : PCM_SLO,
-						    out pms : PCM_PMS
+						   inout pcmUsage: PCM_USE
+						   //,inout pcmUsageScenarioMeasuringPoint : PCM_MEASURINGPOINT
+						   //,inout pms : PCM_PMS
 						   );
 						   
 
@@ -64,6 +63,7 @@ main() {
 	var usageScenario : UsageScenario := usageModel.usageScenario_UsageModel![UsageScenario];
 	var resourceEnvironment : ResourceEnvironment := pcmResourceEnvironment.rootObjects()![ResourceEnvironment];
 	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;	
+	//var usageScenarioMeasuringPoint : UsageScenarioMeasuringPoint := pcmUsageScenarioMeasuringPoint.rootObjects()![UsageScenarioMeasuringPoint];
 	assemblyContexts -> forEach(assemblyContext){
 		if(hasAppliedStereotype(assemblyContext,"ReplicableAssemblyContext")){
 			var numberOfReplicas : Integer := getNumberOfReplicas(assemblyContext,"numberOfReplicas","ReplicableAssemblyContext");
@@ -73,21 +73,12 @@ main() {
 		};
 	};
 	
-	var usageScenarioMeasuringPoint : UsageScenarioMeasuringPoint := usageScenario.map createUsageScenarioMeasuringPoint();
-	var sloRepo : ServiceLevelObjectiveRepository := usageScenarioMeasuringPoint.map createServiceLevelObjectiveRepository();
-	var pmsModel: PMSModel := usageScenarioMeasuringPoint.map addPerformanceMeasurementsToPmsModel();
+	//var pmsModel: PMSModel := usageScenarioMeasuringPoint.map addPerformanceMeasurementsToPmsModel();
 	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Assembly Context" finished');
 }
 
-mapping MeasuringPoint::addPerformanceMeasurementsToPmsModel():PMSModel@pms{
+/**mapping MeasuringPoint::addPerformanceMeasurementsToPmsModel():PMSModel@pms{
 	performanceMeasurements += new PerformanceMeasurement(self);
-}
-mapping MeasuringPoint:: createServiceLevelObjectiveRepository(): ServiceLevelObjectiveRepository@slo{
-	servicelevelobjectives += new ServiceLevelObjective(self);
-}
-
-constructor ServiceLevelObjective::ServiceLevelObjective(mp:MeasuringPoint){
-	measuringPoint := mp;
 }
 
 constructor PerformanceMeasurement :: PerformanceMeasurement(mp : MeasuringPoint){
@@ -102,11 +93,9 @@ constructor MeasurementSpecification :: MeasurementSpecification(){
 }
 constructor Intervall::Intervall(interval:Real){
 	intervall := interval;
-}
+}*/
 
-mapping UsageScenario::createUsageScenarioMeasuringPoint() : UsageScenarioMeasuringPoint@pcmUsageScenarioMeasuringPoint{
-	usageScenario := self;
-}
+
 
 
 //blackbox helper hasAppliedStereotype(system:Entity, stereotype : String):Boolean;
