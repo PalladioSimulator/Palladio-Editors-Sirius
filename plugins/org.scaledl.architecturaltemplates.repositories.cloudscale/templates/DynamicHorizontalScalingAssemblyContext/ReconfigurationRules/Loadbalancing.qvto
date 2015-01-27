@@ -12,12 +12,8 @@ modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/Pall
 modeltype PCMSEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0');
 
 
-transformation Loadbalancing(inout pcmAllocation : PCM_ALLOC,
-								in prm : PRM
-									//	,inout pcmSystem : PCM_SYS,
-									//	inout pcmRepository : PCM_REP,
-									//	inout pcmResourceEnvironment : PCM_RES_ENV
-
+transformation Loadbalancing(in prm : PRM,
+							inout pcmAllocation : PCM_ALLOC
 									);
 property numberOfReplicas : Integer;
 property threshold : Real = 1.0;
