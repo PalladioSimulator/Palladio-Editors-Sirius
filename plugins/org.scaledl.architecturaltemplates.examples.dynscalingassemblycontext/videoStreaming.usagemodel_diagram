@@ -44,7 +44,7 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_NedJkpUGEeSkwMoUcKTtwg" fontName="Segoe UI"/>
     <styles xmi:type="notation:FillStyle" xmi:id="_NedJk5UGEeSkwMoUcKTtwg"/>
     <element xmi:type="usagemodel:UsageScenario" href="videoStreaming.usagemodel#_NcFyEJUGEeSkwMoUcKTtwg"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NedJlJUGEeSkwMoUcKTtwg" x="135" y="65" width="451" height="431"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NedJlJUGEeSkwMoUcKTtwg" x="135" y="65" width="1063" height="566"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_NcHnQZUGEeSkwMoUcKTtwg"/>
   <element xmi:type="usagemodel:UsageModel" href="videoStreaming.usagemodel#/"/>
