@@ -93,7 +93,7 @@
         </edgeMappings>
         <containerMappings name="ComposedProvidingRequiringEntity Node" semanticCandidatesExpression="[self/]" domainClass="entity.ComposedProvidingRequiringEntity">
           <borderedNodeMappings name="ExternalOperationProvidedRole Node" semanticCandidatesExpression="[self.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.OperationProvidedRole">
-            <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" labelPosition="node">
+            <style xsi:type="style:SquareDescription" labelExpression="[entityName/]">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
@@ -114,7 +114,7 @@
             </style>
           </borderedNodeMappings>
           <borderedNodeMappings name="ExternalSinkRole Node" semanticCandidatesExpression="[providedRoles_InterfaceProvidingEntity/]" domainClass="repository.SinkRole">
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[entityName/]" hideLabelByDefault="true">
+            <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
@@ -164,14 +164,14 @@
               </style>
             </borderedNodeMappings>
             <borderedNodeMappings name="InfrastructureProvidedRole Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Noop']" semanticCandidatesExpression="feature:eAllContents" domainClass="repository.InfrastructureProvidedRole">
-              <style xsi:type="style:SquareDescription" labelExpression="[entityName/]">
+              <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
               </style>
             </borderedNodeMappings>
             <borderedNodeMappings name="InfrastructureRequiredRole Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Noop']" semanticCandidatesExpression="feature:eAllContents" domainClass="repository.InfrastructureRequiredRole">
-              <style xsi:type="style:SquareDescription" labelExpression="[entityName/]">
+              <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
