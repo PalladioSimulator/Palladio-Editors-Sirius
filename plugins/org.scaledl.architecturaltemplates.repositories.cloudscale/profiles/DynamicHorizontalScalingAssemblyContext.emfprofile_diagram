@@ -3,19 +3,19 @@
   <emfprofile:Profile xmi:id="_0q3P0JQjEeSq-7Z_6FnzsQ" name="DynamicHorizontalScalingAssemblyContextProfile" nsURI="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.dynamichorizontalscalingassemblycontext" nsPrefix="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles">
     <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_DFBzUJQkEeSq-7Z_6FnzsQ" name="DynamicHorizontalScalingAssemblyContextSystem">
       <eSuperTypes xmi:type="ecore:EClass" href="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication"/>
-      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_LXpJwJQkEeSq-7Z_6FnzsQ" name="roleURI" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_tly_sJQlEeSq-7Z_6FnzsQ">
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_LXpJwJQkEeSq-7Z_6FnzsQ" name="roleURI" changeable="false" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_tly_sJQlEeSq-7Z_6FnzsQ">
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eStructuralFeatures>
-      <extensions xmi:type="emfprofile:Extension" xmi:id="_F-_DAJQkEeSq-7Z_6FnzsQ" upperBound="1">
+      <extensions xmi:type="emfprofile:Extension" xmi:id="_F-_DAJQkEeSq-7Z_6FnzsQ" lowerBound="1" upperBound="1">
         <target xmi:type="ecore:EClass" href="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//system/System"/>
       </extensions>
     </eClassifiers>
     <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_T5PXYJQkEeSq-7Z_6FnzsQ" name="ReplicableAssemblyContext" iconPath="">
       <eSuperTypes xmi:type="ecore:EClass" href="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication"/>
-      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_XncugJQkEeSq-7Z_6FnzsQ" name="roleURI" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_-yzLIH4UEeS81uv5CnTOEw">
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_XncugJQkEeSq-7Z_6FnzsQ" name="roleURI" changeable="false" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_-yzLIH4UEeS81uv5CnTOEw">
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eStructuralFeatures>
-      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_iSd3AJQ1EeSQN58w_W_prw" name="numberOfReplicas">
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_iSd3AJQ1EeSQN58w_W_prw" name="numberOfReplicas" defaultValueLiteral="1">
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       </eStructuralFeatures>
       <extensions xmi:type="emfprofile:Extension" xmi:id="_XWQ34JQkEeSq-7Z_6FnzsQ" upperBound="1">
@@ -39,7 +39,7 @@
       </children>
       <styles xmi:type="notation:DescriptionStyle" xmi:id="_CWFCoZQkEeSq-7Z_6FnzsQ"/>
       <styles xmi:type="notation:FontStyle" xmi:id="_CWFCopQkEeSq-7Z_6FnzsQ" fontName="Segoe UI"/>
-      <element xmi:type="ecore:EObject" href="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//system/System"/>
+      <element xmi:type="ecore:EClass" href="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//system/System"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CWFCo5QkEeSq-7Z_6FnzsQ" x="65" y="60" width="118" height="63"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_DFBzUZQkEeSq-7Z_6FnzsQ" type="2006" element="_DFBzUJQkEeSq-7Z_6FnzsQ">
@@ -70,7 +70,7 @@
       </children>
       <styles xmi:type="notation:DescriptionStyle" xmi:id="_TJQr8ZQkEeSq-7Z_6FnzsQ"/>
       <styles xmi:type="notation:FontStyle" xmi:id="_TJQr8pQkEeSq-7Z_6FnzsQ" fontName="Segoe UI"/>
-      <element xmi:type="ecore:EObject" href="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//core/composition/AssemblyContext"/>
+      <element xmi:type="ecore:EClass" href="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//core/composition/AssemblyContext"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TJQr85QkEeSq-7Z_6FnzsQ" x="470" y="80"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_T5YhUJQkEeSq-7Z_6FnzsQ" type="2006" element="_T5PXYJQkEeSq-7Z_6FnzsQ">
