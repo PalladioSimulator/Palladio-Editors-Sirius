@@ -63,7 +63,6 @@ main() {
 	var usageScenario : UsageScenario := usageModel.usageScenario_UsageModel![UsageScenario];
 	var resourceEnvironment : ResourceEnvironment := pcmResourceEnvironment.rootObjects()![ResourceEnvironment];
 	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;	
-	//var usageScenarioMeasuringPoint : UsageScenarioMeasuringPoint := pcmUsageScenarioMeasuringPoint.rootObjects()![UsageScenarioMeasuringPoint];
 	assemblyContexts -> forEach(assemblyContext){
 		if(hasAppliedStereotype(assemblyContext,"ReplicableAssemblyContext")){
 			var numberOfReplicas : Integer := getNumberOfReplicas(assemblyContext,"numberOfReplicas","ReplicableAssemblyContext");
@@ -73,30 +72,8 @@ main() {
 		};
 	};
 	
-	//var pmsModel: PMSModel := usageScenarioMeasuringPoint.map addPerformanceMeasurementsToPmsModel();
 	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Assembly Context" finished');
 }
-
-/**mapping MeasuringPoint::addPerformanceMeasurementsToPmsModel():PMSModel@pms{
-	performanceMeasurements += new PerformanceMeasurement(self);
-}
-
-constructor PerformanceMeasurement :: PerformanceMeasurement(mp : MeasuringPoint){
-	measuringPoint := mp;
-	measurementSpecification := new MeasurementSpecification();
-}
-
-constructor MeasurementSpecification :: MeasurementSpecification(){
-	performanceMetric := PerformanceMetricEnum::ResponseTime;
-	statisticalCharacterization := StatisticalCharacterizationEnum::ArithmeticMean;
-	temporalRestriction := new Intervall(interval);
-}
-constructor Intervall::Intervall(interval:Real){
-	intervall := interval;
-}*/
-
-
-
 
 //blackbox helper hasAppliedStereotype(system:Entity, stereotype : String):Boolean;
 //blackbox helper applyStereotype(pcmEntity:Entity, stereotype:String):Void;
