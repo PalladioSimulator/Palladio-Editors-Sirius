@@ -3,7 +3,7 @@ package org.scaledl.architecturaltemplates.completion.constants;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.palladiosimulator.simulizar.launcher.jobs.LoadPMSModelIntoBlackboardJob;
+import org.palladiosimulator.simulizar.launcher.jobs.LoadMonitorRepositoryModelIntoBlackboardJob;
 import org.palladiosimulator.simulizar.launcher.jobs.LoadSDMModelsIntoBlackboardJob;
 import org.palladiosimulator.simulizar.launcher.jobs.LoadUEModelIntoBlackboardJob;
 
@@ -29,7 +29,7 @@ public final class ATPartitionConstants {
             }
         }),
 
-        PMS("PMS", LoadPMSModelIntoBlackboardJob.PMS_MODEL_PARTITION_ID, new HashSet<String>() {
+        PMS("PMS", LoadMonitorRepositoryModelIntoBlackboardJob.MONITOR_REPOSITORY_MODEL_PARTITION_ID, new HashSet<String>() {
             {
                 add("pms");
             }

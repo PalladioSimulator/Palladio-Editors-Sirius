@@ -22,7 +22,7 @@ import org.palladiosimulator.pcmmeasuringpoint.util.PcmmeasuringpointResourceImp
 import org.palladiosimulator.servicelevelobjective.ServiceLevelObjectiveRepository;
 import org.palladiosimulator.servicelevelobjective.ServicelevelObjectiveFactory;
 import org.palladiosimulator.servicelevelobjective.util.ServicelevelObjectiveResourceImpl;
-import org.palladiosimulator.simulizar.pms.PMSModel;
+import org.palladiosimulator.simulizar.pms.MonitorRepository;
 import org.palladiosimulator.simulizar.pms.impl.PmsFactoryImpl;
 import org.palladiosimulator.simulizar.pms.util.PmsResourceImpl;
 import org.scaledl.architecturaltemplates.completion.config.ATExtensionJobConfiguration;
@@ -63,7 +63,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
 
     /** Folder with traces as created by the QVT-O engine */
     private static final String TRACESFOLDER = "traces";
-    
+
     public RunATCompletionJob(final ATExtensionJobConfiguration configuration) {
     }
 
@@ -197,9 +197,8 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                 final Resource outResource = resourceSet.createResource(URI.createURI(systemModelFolderURI
                         + "/GeneratedOut" + parameterFileExtension + "." + parameterFileExtension));
                 final URI uri = outResource.getURI();
-                
-               
-               if (outResource instanceof AllocationResourceImpl) {
+
+                if (outResource instanceof AllocationResourceImpl) {
                     ResourceEnvironment resourceEnvironment = null;
                     try {
                         resourceEnvironment = pcmRepositoryPartition.getResourceEnvironment();
@@ -208,30 +207,28 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                         outResource.getContents().add(allocation);
                     } catch (final IndexOutOfBoundsException e) {
                     }
-               }
-                
-               else if(outResource instanceof PcmmeasuringpointResourceImpl){
-                		UsageModel usageModel = null;
-                        try {
-                            usageModel = pcmRepositoryPartition.getUsageModel();
-                            EList<UsageScenario> usageScenarios = usageModel.getUsageScenario_UsageModel();
-                            UsageScenarioMeasuringPoint usageScenarioMeasuringPoint = PcmmeasuringpointFactoryImpl.eINSTANCE
-                                    .createUsageScenarioMeasuringPoint();
-                            usageScenarioMeasuringPoint.setUsageScenario(usageScenarios.get(0));
-                            outResource.getContents().add(usageScenarioMeasuringPoint);
-                        } catch (final IndexOutOfBoundsException e) {
-                        }
-                	} 
-               else if (outResource instanceof ServicelevelObjectiveResourceImpl) {
-            	   ServicelevelObjectiveFactory sloFactory = ServicelevelObjectiveFactory.eINSTANCE;
-            	   ServiceLevelObjectiveRepository sloRepo = sloFactory.createServiceLevelObjectiveRepository();
-            	   outResource.getContents().add(sloRepo);
-               }
-               else if (outResource instanceof PmsResourceImpl) {
-                   PmsFactoryImpl pmsFactory = (PmsFactoryImpl) PmsFactoryImpl.init();
-                   PMSModel pmsModel = pmsFactory.createPMSModel();
-                   outResource.getContents().add(pmsModel);
-                   }
+                }
+
+                else if (outResource instanceof PcmmeasuringpointResourceImpl) {
+                    UsageModel usageModel = null;
+                    try {
+                        usageModel = pcmRepositoryPartition.getUsageModel();
+                        EList<UsageScenario> usageScenarios = usageModel.getUsageScenario_UsageModel();
+                        UsageScenarioMeasuringPoint usageScenarioMeasuringPoint = PcmmeasuringpointFactoryImpl.eINSTANCE
+                                .createUsageScenarioMeasuringPoint();
+                        usageScenarioMeasuringPoint.setUsageScenario(usageScenarios.get(0));
+                        outResource.getContents().add(usageScenarioMeasuringPoint);
+                    } catch (final IndexOutOfBoundsException e) {
+                    }
+                } else if (outResource instanceof ServicelevelObjectiveResourceImpl) {
+                    ServicelevelObjectiveFactory sloFactory = ServicelevelObjectiveFactory.eINSTANCE;
+                    ServiceLevelObjectiveRepository sloRepo = sloFactory.createServiceLevelObjectiveRepository();
+                    outResource.getContents().add(sloRepo);
+                } else if (outResource instanceof PmsResourceImpl) {
+                    final PmsFactoryImpl pmsFactory = (PmsFactoryImpl) PmsFactoryImpl.init();
+                    MonitorRepository monitorRepository = pmsFactory.createMonitorRepository();
+                    outResource.getContents().add(monitorRepository);
+                }
                 if (uri.lastSegment().endsWith("pms")) {
                     pmsPartition.setContents(uri, outResource.getContents());
                     pmsPartition.resolveAllProxies();
