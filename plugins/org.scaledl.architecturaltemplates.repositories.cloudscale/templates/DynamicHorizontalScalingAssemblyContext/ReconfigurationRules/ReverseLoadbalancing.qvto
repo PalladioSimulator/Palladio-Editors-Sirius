@@ -44,8 +44,6 @@ main() {
 		}
 		else if(hasAppliedStereotype(allocationContext.assemblyContext_AllocationContext,"OriginalAssemblyContext")){
 			originalAssemblyContext := allocationContext.assemblyContext_AllocationContext;
-			removeStereotypeApplications(originalAssemblyContext,"OriginalAssemblyContext");
-			applyStereotype(originalAssemblyContext,"LoadbalancedAssemblyContext");
 		}
 		else if(hasAppliedStereotype(allocationContext.assemblyContext_AllocationContext,"LoadbalancerAssemblyContext")){
 			resourceContainer := allocationContext.resourceContainer_AllocationContext;
@@ -97,7 +95,7 @@ helper reverseSystem(duplicateAssemblyContexts:Set(AssemblyContext), originalAss
 			}
 			else if(assemblyConnector.providingAssemblyContext_AssemblyConnector.id = loadbalancerAssemblyContext.id){
 				originalAssemblyContextOperationProvidedRole := originalAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity 
-					->selectOne(providedRole : ProvidedRole | providedRole.id = assemblyConnector.providedRole_AssemblyConnector.id).oclAsType(OperationProvidedRole);
+					->selectOne(providedRole : ProvidedRole |providedRole.oclAsType(OperationProvidedRole).providedInterface__OperationProvidedRole.id =  assemblyConnector.providedRole_AssemblyConnector.providedInterface__OperationProvidedRole.id).oclAsType(OperationProvidedRole);
 				assemblyConnector.providingAssemblyContext_AssemblyConnector := originalAssemblyContext;
 				assemblyConnector.providedRole_AssemblyConnector := originalAssemblyContextOperationProvidedRole;
 			}
