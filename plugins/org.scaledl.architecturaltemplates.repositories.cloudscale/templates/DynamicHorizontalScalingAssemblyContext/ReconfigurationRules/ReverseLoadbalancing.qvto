@@ -44,6 +44,7 @@ main() {
 		}
 		else if(hasAppliedStereotype(allocationContext.assemblyContext_AllocationContext,"OriginalAssemblyContext")){
 			originalAssemblyContext := allocationContext.assemblyContext_AllocationContext;
+			applyStereotype(originalAssemblyContext,"LoadbalancedAssemblyContext");
 		}
 		else if(hasAppliedStereotype(allocationContext.assemblyContext_AllocationContext,"LoadbalancerAssemblyContext")){
 			resourceContainer := allocationContext.resourceContainer_AllocationContext;
