@@ -19,6 +19,12 @@ public class LoadbalancingLibrary {
 			String stereotypeName) {
 		return getValueOfIntegerTaggedValue(assemblyContext, taggedValueName, stereotypeName);	
 	}
+	
+	public static double getThreshold(
+			AssemblyContext assemblyContext, String taggedValueName,
+			String stereotypeName) {
+		return getValueOfIntegerTaggedValue(assemblyContext, taggedValueName, stereotypeName);	
+	}
 
 	@SuppressWarnings("unchecked")
 	private static <DATA_TYPE> DATA_TYPE getValueOfIntegerTaggedValue(

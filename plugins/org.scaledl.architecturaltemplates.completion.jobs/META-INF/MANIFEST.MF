@@ -19,3 +19,5 @@ Require-Bundle: de.uka.ipd.sdq.workflow;bundle-version="2.1.0",
  org.palladiosimulator.simulizar.pms
 Export-Package: org.scaledl.architecturaltemplates.completion.config,
  org.scaledl.architecturaltemplates.completion.jobs
+Import-Package: org.palladiosimulator.servicelevelobjective,
+ org.palladiosimulator.servicelevelobjective.util

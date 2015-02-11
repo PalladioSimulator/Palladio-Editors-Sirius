@@ -1,5 +1,6 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.LoadbalancingLibrary;
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
+import ReverseLoadbalancing;
 
 modeltype PRM uses 'http://simulizar.palladiosimulator.org/PalladioRuntimeMonitoring/1.0';
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
@@ -12,15 +13,11 @@ modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/Pall
 modeltype PCMSEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0');
 
 
-transformation Loadbalancing(inout pcmAllocation : PCM_ALLOC,
-								in prm : PRM
-									//	,inout pcmSystem : PCM_SYS,
-									//	inout pcmRepository : PCM_REP,
-									//	inout pcmResourceEnvironment : PCM_RES_ENV
-
-									);
+transformation Loadbalancing(in prm : PRM,inout pcmAllocation : PCM_ALLOC) access transformation ReverseLoadbalancing(inout pcmAllocation : PCM_ALLOC,inout pcmSystem : PCM_SYS,
+										inout pcmRepository : PCM_REP,
+										inout pcmResourceEnvironment : PCM_RES_ENV);
 property numberOfReplicas : Integer;
-property threshold : Real = 2.0;
+property threshold : Real = 1.0;
 main() {
 	log ('Reconfiguration Rule Loadbalancing started');
 	assert fatal(prm.rootObjects()[PCMModelElementMeasurement]->size() > 0)
@@ -130,7 +127,7 @@ helper createDuplicatedAssemblyContexts(loadbalancedAssemblyContext : AssemblyCo
 	var counter : Integer := 1;
 	var duplicatedAssemblyContextSet : OrderedSet(AssemblyContext);
 	var duplicateAssemblyContext : AssemblyContext;
-	while(counter <= replicasNumber){
+	while(counter < replicasNumber){
 		duplicateAssemblyContext := new AssemblyContext(loadbalancedAssemblyContext.encapsulatedComponent__AssemblyContext);
 		//apply Stereotype LoadbalancerAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
 		applyStereotype(duplicateAssemblyContext,"DuplicateAssemblyContext");
@@ -369,7 +366,7 @@ constructor AssemblyContext :: AssemblyContext(bc : RepositoryComponent){
 
 constructor BasicComponent :: BasicComponent (loadBalancedComponent : RepositoryComponent){
 log ('Start of LoadBalancer Constructor');
-	var replicasIncludingLoadBalancer := numberOfReplicas +1;
+	var replicasIncludingLoadBalancer := numberOfReplicas;
 	var repository := loadBalancedComponent.repository__RepositoryComponent;
 	var providedRoles : Set(ProvidedRole) := loadBalancedComponent.providedRoles_InterfaceProvidingEntity;
 	entityName := "LoadBalancer_"+ loadBalancedComponent.entityName;

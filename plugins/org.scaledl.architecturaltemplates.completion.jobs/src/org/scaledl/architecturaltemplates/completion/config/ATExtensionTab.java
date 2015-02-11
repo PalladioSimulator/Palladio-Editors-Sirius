@@ -36,15 +36,6 @@ public class ATExtensionTab extends AbstractLaunchConfigurationTab {
     /** Default configuration for storage of completed models. */
     public static final Boolean DEFAULT_STORE_COMPLETED_MODELS = true;
 
-    /**
-     * Name of configuration attribute for storing blackboard partition models after
-     * reconfigurations.
-     */
-    public static final String STORE_RECONFIGURED_MODELS = "org.scaledl.architecturaltemplates.completion.config.storeReconfiguredModels";
-
-    /** Default configuration for storage of reconfigured models. */
-    public static final Boolean DEFAULT_STORE_RECONFIGURED_MODELS = false;
-
     /** Name of configuration attribute for the model storage location. */
     public static final String MODEL_STORAGE_LOCATION = "org.scaledl.architecturaltemplates.completion.config.modelStorageLocation";
 
@@ -53,12 +44,10 @@ public class ATExtensionTab extends AbstractLaunchConfigurationTab {
 
     /** The path to the image file for the tab icon. */
     public static final String CONFIGURATION_TAB_IMAGE_PATH = "icons/ATLogo15x15.png";
-
+    
+    
     /** Button for control enabling storage of completed models. */
     private Button storeCompletedModelsButton;
-
-    /** Button for control enabling storage of reconfigured models. */
-    private Button storeReconfiguredModelsButton;
 
     /** Text field for name of the plug-in project for storing data. */
     private Text storeLocationField;
@@ -77,10 +66,9 @@ public class ATExtensionTab extends AbstractLaunchConfigurationTab {
 
             @Override
             public void widgetSelected(final SelectionEvent e) {
-                setStorageLocationElementsEnabled(storeCompletedModelsButton.getSelection()
-                        || storeReconfiguredModelsButton.getSelection());
+                setStorageLocationElementsEnabled(storeCompletedModelsButton.getSelection());
 
-                if (storeCompletedModelsButton.getSelection() || storeReconfiguredModelsButton.getSelection()) {
+                if (storeCompletedModelsButton.getSelection()) {
                     storeLocationField.setText(DEFAULT_MODEL_STORAGE_LOCATION);
                 }
 
@@ -103,8 +91,6 @@ public class ATExtensionTab extends AbstractLaunchConfigurationTab {
         modelStorageGroup.setLayout(gridLayout);
 
         storeCompletedModelsButton = initCheckButton(selectionListener, modelStorageGroup, "Store completed models");
-        storeReconfiguredModelsButton = initCheckButton(selectionListener, modelStorageGroup,
-                "Store reconfigured models");
 
         storeLocationLabel = new Label(modelStorageGroup, SWT.NONE);
         storeLocationLabel.setLayoutData(new GridData(48, SWT.DEFAULT));
@@ -121,6 +107,7 @@ public class ATExtensionTab extends AbstractLaunchConfigurationTab {
                 updateATTab();
             }
         });
+        
     }
 
     private void updateATTab() {
@@ -149,7 +136,8 @@ public class ATExtensionTab extends AbstractLaunchConfigurationTab {
 
         return button;
     }
-
+    
+    
     @Override
     public final String getName() {
         return "Architectural Templates";
@@ -160,19 +148,16 @@ public class ATExtensionTab extends AbstractLaunchConfigurationTab {
         try {
             storeCompletedModelsButton.setSelection(configuration.getAttribute(STORE_COMPLETED_MODELS,
                     DEFAULT_STORE_COMPLETED_MODELS));
-            storeReconfiguredModelsButton.setSelection(configuration.getAttribute(STORE_RECONFIGURED_MODELS,
-                    DEFAULT_STORE_RECONFIGURED_MODELS));
             storeLocationField.setText(configuration.getAttribute(MODEL_STORAGE_LOCATION,
                     DEFAULT_MODEL_STORAGE_LOCATION));
 
-            if (storeCompletedModelsButton.getSelection() || storeReconfiguredModelsButton.getSelection()) {
+            if (storeCompletedModelsButton.getSelection()) {
                 setStorageLocationElementsEnabled(true);
             } else {
                 setStorageLocationElementsEnabled(false);
             }
         } catch (CoreException e) {
             storeCompletedModelsButton.setSelection(DEFAULT_STORE_COMPLETED_MODELS);
-            storeReconfiguredModelsButton.setSelection(DEFAULT_STORE_RECONFIGURED_MODELS);
             storeLocationField.setText(DEFAULT_MODEL_STORAGE_LOCATION);
         }
     }
@@ -180,14 +165,12 @@ public class ATExtensionTab extends AbstractLaunchConfigurationTab {
     @Override
     public final void performApply(final ILaunchConfigurationWorkingCopy configuration) {
         configuration.setAttribute(STORE_COMPLETED_MODELS, this.storeCompletedModelsButton.getSelection());
-        configuration.setAttribute(STORE_RECONFIGURED_MODELS, this.storeReconfiguredModelsButton.getSelection());
         configuration.setAttribute(MODEL_STORAGE_LOCATION, storeLocationField.getText());
     }
 
     @Override
     public final void setDefaults(final ILaunchConfigurationWorkingCopy configuration) {
         configuration.setAttribute(STORE_COMPLETED_MODELS, DEFAULT_STORE_COMPLETED_MODELS);
-        configuration.setAttribute(STORE_RECONFIGURED_MODELS, DEFAULT_STORE_RECONFIGURED_MODELS);
         configuration.setAttribute(MODEL_STORAGE_LOCATION, DEFAULT_MODEL_STORAGE_LOCATION);
     }
 

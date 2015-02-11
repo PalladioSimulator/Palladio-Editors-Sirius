@@ -64,9 +64,20 @@ public class ProfilesLibrary {
 		StereotypeApplication stereotypeApplication = stereotypeApplications
 				.get(0);
 		setValueOfEStructuralFeature(stereotypeApplication,taggedValueName,value);
+		pcmEntity.saveContainingProfileApplication();
 		
 	}
- private static void setValueOfEStructuralFeature(final StereotypeApplication stereotypeApplication, final String name, final Object newValue) {
+	
+	public static void setDoubleTaggedValue(Entity pcmEntity, double value, String stereotypeName, String taggedValueName){
+		List<StereotypeApplication> stereotypeApplications = pcmEntity.getStereotypeApplications(stereotypeName);
+		StereotypeApplication stereotypeApplication = stereotypeApplications
+				.get(0);
+		setValueOfEStructuralFeature(stereotypeApplication,taggedValueName,value);
+		pcmEntity.saveContainingProfileApplication();
+		
+	}
+	
+	private static void setValueOfEStructuralFeature(final StereotypeApplication stereotypeApplication, final String name, final Object newValue) {
 
 	        final Stereotype stereotype = stereotypeApplication.getStereotype();
 	        if(stereotype !=null){
