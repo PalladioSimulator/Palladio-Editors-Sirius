@@ -18,6 +18,12 @@
       <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_iSd3AJQ1EeSQN58w_W_prw" name="numberOfReplicas" defaultValueLiteral="1">
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       </eStructuralFeatures>
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_CgyA8LEnEeSCk_uvUgbERg" name="scaleInThreshold" defaultValueLiteral="1">
+        <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_EFnQwLEnEeSCk_uvUgbERg" name="scaleOutThreshold" defaultValueLiteral="5">
+        <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
       <extensions xmi:type="emfprofile:Extension" xmi:id="_XWQ34JQkEeSq-7Z_6FnzsQ" upperBound="1">
         <target xmi:type="ecore:EClass" href="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//core/composition/AssemblyContext"/>
       </extensions>
@@ -82,12 +88,18 @@
         <children xmi:type="notation:Node" xmi:id="_iTGwMJQ1EeSQN58w_W_prw" type="3001" element="_iSd3AJQ1EeSQN58w_W_prw">
           <layoutConstraint xmi:type="notation:Location" xmi:id="_iTGwMZQ1EeSQN58w_W_prw"/>
         </children>
+        <children xmi:type="notation:Node" xmi:id="_Cg4HkLEnEeSCk_uvUgbERg" type="3001" element="_CgyA8LEnEeSCk_uvUgbERg">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_Cg4HkbEnEeSCk_uvUgbERg"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_EFn30LEnEeSCk_uvUgbERg" type="3001" element="_EFnQwLEnEeSCk_uvUgbERg">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_EFn30bEnEeSCk_uvUgbERg"/>
+        </children>
         <styles xmi:type="notation:SortingStyle" xmi:id="_T5YhVpQkEeSq-7Z_6FnzsQ"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_T5YhV5QkEeSq-7Z_6FnzsQ"/>
       </children>
       <styles xmi:type="notation:DescriptionStyle" xmi:id="_T5YhUZQkEeSq-7Z_6FnzsQ"/>
       <styles xmi:type="notation:FontStyle" xmi:id="_T5YhUpQkEeSq-7Z_6FnzsQ" fontName="Segoe UI"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T5YhU5QkEeSq-7Z_6FnzsQ" x="385" y="180"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T5YhU5QkEeSq-7Z_6FnzsQ" x="460" y="225"/>
     </children>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_0rVw8ZQjEeSq-7Z_6FnzsQ"/>
     <edges xmi:type="notation:Edge" xmi:id="_F_I0AJQkEeSq-7Z_6FnzsQ" type="4005" element="_F-_DAJQkEeSq-7Z_6FnzsQ" source="_DFBzUZQkEeSq-7Z_6FnzsQ" target="_CWFCoJQkEeSq-7Z_6FnzsQ">
