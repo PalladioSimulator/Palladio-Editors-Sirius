@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Util
+Bundle-SymbolicName: org.palladiosimulator.editors.util
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: de.uka.ipd.sdq.pcm;bundle-version="3.6.0"
+Export-Package: org.palladiosimulator.editors.util.api.services
