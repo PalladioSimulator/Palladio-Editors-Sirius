@@ -42,10 +42,9 @@ modeltype PCM_SLO uses 'http://palladiosimulator.org/ServiceLevelObjective/1.0';
  **/
 transformation DynamicHorizontalScalingAssemblyContext( inout pcmSystem : PCM_SYS,
 						   inout pcmResourceEnvironment : PCM_RES_ENV,
-						   inout pcmUsage: PCM_USE,
-						   out pcmUsageScenarioMeasuringPoint : PCM_MEASURINGPOINT,
-						   out slo : PCM_SLO,
-						    out pms : PCM_PMS
+						   inout pcmUsage: PCM_USE
+						   //,inout pcmUsageScenarioMeasuringPoint : PCM_MEASURINGPOINT
+						   //,inout pms : PCM_PMS
 						   );
 						   
 
@@ -73,41 +72,8 @@ main() {
 		};
 	};
 	
-	var usageScenarioMeasuringPoint : UsageScenarioMeasuringPoint := usageScenario.map createUsageScenarioMeasuringPoint();
-	var sloRepo : ServiceLevelObjectiveRepository := usageScenarioMeasuringPoint.map createServiceLevelObjectiveRepository();
-	var pmsModel: PMSModel := usageScenarioMeasuringPoint.map addPerformanceMeasurementsToPmsModel();
 	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Assembly Context" finished');
 }
-
-mapping MeasuringPoint::addPerformanceMeasurementsToPmsModel():PMSModel@pms{
-	performanceMeasurements += new PerformanceMeasurement(self);
-}
-mapping MeasuringPoint:: createServiceLevelObjectiveRepository(): ServiceLevelObjectiveRepository@slo{
-	servicelevelobjectives += new ServiceLevelObjective(self);
-}
-
-constructor ServiceLevelObjective::ServiceLevelObjective(mp:MeasuringPoint){
-	measuringPoint := mp;
-}
-
-constructor PerformanceMeasurement :: PerformanceMeasurement(mp : MeasuringPoint){
-	measuringPoint := mp;
-	measurementSpecification := new MeasurementSpecification();
-}
-
-constructor MeasurementSpecification :: MeasurementSpecification(){
-	performanceMetric := PerformanceMetricEnum::ResponseTime;
-	statisticalCharacterization := StatisticalCharacterizationEnum::ArithmeticMean;
-	temporalRestriction := new Intervall(interval);
-}
-constructor Intervall::Intervall(interval:Real){
-	intervall := interval;
-}
-
-mapping UsageScenario::createUsageScenarioMeasuringPoint() : UsageScenarioMeasuringPoint@pcmUsageScenarioMeasuringPoint{
-	usageScenario := self;
-}
-
 
 //blackbox helper hasAppliedStereotype(system:Entity, stereotype : String):Boolean;
 //blackbox helper applyStereotype(pcmEntity:Entity, stereotype:String):Void;

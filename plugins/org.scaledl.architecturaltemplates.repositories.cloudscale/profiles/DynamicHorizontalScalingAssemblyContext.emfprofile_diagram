@@ -3,20 +3,26 @@
   <emfprofile:Profile xmi:id="_0q3P0JQjEeSq-7Z_6FnzsQ" name="DynamicHorizontalScalingAssemblyContextProfile" nsURI="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.dynamichorizontalscalingassemblycontext" nsPrefix="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles">
     <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_DFBzUJQkEeSq-7Z_6FnzsQ" name="DynamicHorizontalScalingAssemblyContextSystem">
       <eSuperTypes xmi:type="ecore:EClass" href="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication"/>
-      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_LXpJwJQkEeSq-7Z_6FnzsQ" name="roleURI" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_tly_sJQlEeSq-7Z_6FnzsQ">
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_LXpJwJQkEeSq-7Z_6FnzsQ" name="roleURI" changeable="false" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_tly_sJQlEeSq-7Z_6FnzsQ">
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eStructuralFeatures>
-      <extensions xmi:type="emfprofile:Extension" xmi:id="_F-_DAJQkEeSq-7Z_6FnzsQ" upperBound="1">
+      <extensions xmi:type="emfprofile:Extension" xmi:id="_F-_DAJQkEeSq-7Z_6FnzsQ" lowerBound="1" upperBound="1">
         <target xmi:type="ecore:EClass" href="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//system/System"/>
       </extensions>
     </eClassifiers>
     <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_T5PXYJQkEeSq-7Z_6FnzsQ" name="ReplicableAssemblyContext" iconPath="">
       <eSuperTypes xmi:type="ecore:EClass" href="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication"/>
-      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_XncugJQkEeSq-7Z_6FnzsQ" name="roleURI" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_-yzLIH4UEeS81uv5CnTOEw">
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_XncugJQkEeSq-7Z_6FnzsQ" name="roleURI" changeable="false" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_-yzLIH4UEeS81uv5CnTOEw">
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eStructuralFeatures>
-      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_iSd3AJQ1EeSQN58w_W_prw" name="numberOfReplicas">
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_iSd3AJQ1EeSQN58w_W_prw" name="numberOfReplicas" defaultValueLiteral="1">
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_CgyA8LEnEeSCk_uvUgbERg" name="scaleInThreshold" defaultValueLiteral="1">
+        <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_EFnQwLEnEeSCk_uvUgbERg" name="scaleOutThreshold" defaultValueLiteral="5">
+        <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
       </eStructuralFeatures>
       <extensions xmi:type="emfprofile:Extension" xmi:id="_XWQ34JQkEeSq-7Z_6FnzsQ" upperBound="1">
         <target xmi:type="ecore:EClass" href="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//core/composition/AssemblyContext"/>
@@ -39,7 +45,7 @@
       </children>
       <styles xmi:type="notation:DescriptionStyle" xmi:id="_CWFCoZQkEeSq-7Z_6FnzsQ"/>
       <styles xmi:type="notation:FontStyle" xmi:id="_CWFCopQkEeSq-7Z_6FnzsQ" fontName="Segoe UI"/>
-      <element xmi:type="ecore:EObject" href="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//system/System"/>
+      <element xmi:type="ecore:EClass" href="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//system/System"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CWFCo5QkEeSq-7Z_6FnzsQ" x="65" y="60" width="118" height="63"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_DFBzUZQkEeSq-7Z_6FnzsQ" type="2006" element="_DFBzUJQkEeSq-7Z_6FnzsQ">
@@ -70,7 +76,7 @@
       </children>
       <styles xmi:type="notation:DescriptionStyle" xmi:id="_TJQr8ZQkEeSq-7Z_6FnzsQ"/>
       <styles xmi:type="notation:FontStyle" xmi:id="_TJQr8pQkEeSq-7Z_6FnzsQ" fontName="Segoe UI"/>
-      <element xmi:type="ecore:EObject" href="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//core/composition/AssemblyContext"/>
+      <element xmi:type="ecore:EClass" href="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//core/composition/AssemblyContext"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TJQr85QkEeSq-7Z_6FnzsQ" x="470" y="80"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_T5YhUJQkEeSq-7Z_6FnzsQ" type="2006" element="_T5PXYJQkEeSq-7Z_6FnzsQ">
@@ -82,12 +88,18 @@
         <children xmi:type="notation:Node" xmi:id="_iTGwMJQ1EeSQN58w_W_prw" type="3001" element="_iSd3AJQ1EeSQN58w_W_prw">
           <layoutConstraint xmi:type="notation:Location" xmi:id="_iTGwMZQ1EeSQN58w_W_prw"/>
         </children>
+        <children xmi:type="notation:Node" xmi:id="_Cg4HkLEnEeSCk_uvUgbERg" type="3001" element="_CgyA8LEnEeSCk_uvUgbERg">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_Cg4HkbEnEeSCk_uvUgbERg"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_EFn30LEnEeSCk_uvUgbERg" type="3001" element="_EFnQwLEnEeSCk_uvUgbERg">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_EFn30bEnEeSCk_uvUgbERg"/>
+        </children>
         <styles xmi:type="notation:SortingStyle" xmi:id="_T5YhVpQkEeSq-7Z_6FnzsQ"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_T5YhV5QkEeSq-7Z_6FnzsQ"/>
       </children>
       <styles xmi:type="notation:DescriptionStyle" xmi:id="_T5YhUZQkEeSq-7Z_6FnzsQ"/>
       <styles xmi:type="notation:FontStyle" xmi:id="_T5YhUpQkEeSq-7Z_6FnzsQ" fontName="Segoe UI"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T5YhU5QkEeSq-7Z_6FnzsQ" x="385" y="180"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T5YhU5QkEeSq-7Z_6FnzsQ" x="460" y="225"/>
     </children>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_0rVw8ZQjEeSq-7Z_6FnzsQ"/>
     <edges xmi:type="notation:Edge" xmi:id="_F_I0AJQkEeSq-7Z_6FnzsQ" type="4005" element="_F-_DAJQkEeSq-7Z_6FnzsQ" source="_DFBzUZQkEeSq-7Z_6FnzsQ" target="_CWFCoJQkEeSq-7Z_6FnzsQ">

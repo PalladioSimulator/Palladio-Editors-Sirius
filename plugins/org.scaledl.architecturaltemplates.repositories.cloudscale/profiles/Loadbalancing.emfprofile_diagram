@@ -9,6 +9,12 @@
       <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_JuJksH7hEeSPVbICnJBAhw" name="roleURI" lowerBound="1" changeable="false" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_kk1l8IHkEeSeK9JYh8VNzw">
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eStructuralFeatures>
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_qY6XILEoEeSCk_uvUgbERg" name="scaleInThreshold" defaultValueLiteral="1">
+        <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_vBedsLEoEeSCk_uvUgbERg" name="scaleOutThreshold" defaultValueLiteral="5">
+        <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+      </eStructuralFeatures>
       <extensions xmi:type="emfprofile:Extension" xmi:id="_3n_3oH7gEeSPVbICnJBAhw" upperBound="1">
         <target xmi:type="ecore:EClass" href="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//core/composition/AssemblyContext"/>
       </extensions>
@@ -50,6 +56,12 @@
         </children>
         <children xmi:type="notation:Node" xmi:id="_JuTVsH7hEeSPVbICnJBAhw" type="3001" element="_JuJksH7hEeSPVbICnJBAhw">
           <layoutConstraint xmi:type="notation:Location" xmi:id="_JuTVsX7hEeSPVbICnJBAhw"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_qZDhELEoEeSCk_uvUgbERg" type="3001" element="_qY6XILEoEeSCk_uvUgbERg">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_qZDhEbEoEeSCk_uvUgbERg"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_vBedsbEoEeSCk_uvUgbERg" type="3001" element="_vBedsLEoEeSCk_uvUgbERg">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_vBedsrEoEeSCk_uvUgbERg"/>
         </children>
         <styles xmi:type="notation:SortingStyle" xmi:id="_qIm6Vn7gEeSPVbICnJBAhw"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_qIm6V37gEeSPVbICnJBAhw"/>
