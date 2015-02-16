@@ -190,7 +190,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subNodeMappings>
-          <subContainerMappings name="Test Container" semanticCandidatesExpression="[self.assemblyContexts__ComposedStructure/]" domainClass="composition.AssemblyContext">
+          <subContainerMappings name="Dummy AssemblyContext Container" semanticCandidatesExpression="[self.assemblyContexts__ComposedStructure/]" documentation="Used for the parameter implementation until the Node can be fully migrated." domainClass="composition.AssemblyContext">
             <subNodeMappings name="VariableUsage Node" semanticCandidatesExpression="[self.getVariableUsages()/]" semanticElements="[self.variableCharacterisation_VariableUsage + self.variableCharacterisation_VariableUsage.specification_VariableCharacterisation/]" domainClass="parameter.VariableUsage">
               <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="[self.namedReference__VariableUsage.referenceName + '=' + self.variableCharacterisation_VariableUsage.specification_VariableCharacterisation.specification/]" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="14" height="4">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
