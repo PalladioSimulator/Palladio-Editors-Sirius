@@ -16,7 +16,7 @@
       <middlewareRepository href="pathmap://PCM_MODELS/Glassfish.repository#_yQk9oIX1EdyWta7nHuXiHQ"/>
       <eventMiddleWareRepository href="pathmap://PCM_MODELS/default_event_middleware.repository#_Onc7cMALEd-LKvNtxXAQbQ"/>
       <reconfigurationRules href="ReconfigurationRules.experiments#/"/>
-      <platformMonitoringSpecification href="../My.pms#/"/>
+      <monitorRepository href="../My.pms#/"/>
       <serviceLevelObjectives href="../videoStreaming.slo#/"/>
       <usageEvolution href="../UsageEvolution/OneYearTrend.usageevolution#_RuRaAJaoEeSP0_kLa2fLig"/>
     </initialModel>

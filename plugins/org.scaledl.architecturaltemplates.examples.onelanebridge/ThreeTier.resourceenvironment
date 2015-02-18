@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<resourceenvironment:ResourceEnvironment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:resourceenvironment="http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0">
+<resourceenvironment:ResourceEnvironment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:resourceenvironment="http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0" entityName="ThreeTier Environment">
   <linkingResources__ResourceEnvironment id="_KjgfcCPIEeSwPfc4EJw-WA" entityName="LocalNetwork" connectedResourceContainers_LinkingResource="_Fg46ICPIEeSwPfc4EJw-WA _HAQbICPIEeSwPfc4EJw-WA _ETFqQCPIEeSwPfc4EJw-WA">
     <communicationLinkResourceSpecifications_LinkingResource id="_KjsssCPIEeSwPfc4EJw-WA">
       <communicationLinkResourceType_CommunicationLinkResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_o3sScH2AEdyH8uerKnHYug"/>

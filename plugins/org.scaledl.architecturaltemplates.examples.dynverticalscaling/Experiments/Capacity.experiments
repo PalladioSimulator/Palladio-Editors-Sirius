@@ -19,7 +19,7 @@
       <allocation href="../default.allocation#_QISmkH4xEeSqFvs4kqVd7Q"/>
       <middlewareRepository href="pathmap://PCM_MODELS/Glassfish.repository#_yQk9oIX1EdyWta7nHuXiHQ"/>
       <eventMiddleWareRepository href="pathmap://PCM_MODELS/default_event_middleware.repository#_Onc7cMALEd-LKvNtxXAQbQ"/>
-      <platformMonitoringSpecification href="../default.pms#/"/>
+      <monitorRepository href="../default.pms#/"/>
       <serviceLevelObjectives href="../default.slo#/"/>
     </initialModel>
   </experiments>
