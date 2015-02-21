@@ -1,7 +1,8 @@
 Tasks:
 - Rotating Nodes for Roles
-- Display parameters
+- Allow editing of parameters
 - Documentation
+- Migrate the VariableUsage Container`s conditional style to a style customization
 
 Known Bugs:
 - Support for filters on EventChannelSinkConnectors
