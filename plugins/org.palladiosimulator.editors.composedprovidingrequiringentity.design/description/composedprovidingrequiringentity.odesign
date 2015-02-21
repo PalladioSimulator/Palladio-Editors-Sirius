@@ -91,86 +91,86 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="ComposedProvidingRequiringEntity Node" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="[self/]" domainClass="entity.ComposedProvidingRequiringEntity">
-          <borderedNodeMappings name="ExternalOperationProvidedRole Node" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="[self.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.OperationProvidedRole">
+        <containerMappings name="ComposedProvidingRequiringEntity Node" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Direct%20Edit%20Label']/@tools.0" semanticCandidatesExpression="[self/]" domainClass="entity.ComposedProvidingRequiringEntity">
+          <borderedNodeMappings name="ExternalOperationProvidedRole Node" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Direct%20Edit%20Label']/@tools.0" semanticCandidatesExpression="[self.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.OperationProvidedRole">
             <style xsi:type="style:SquareDescription" labelExpression="[entityName/]">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
             </style>
           </borderedNodeMappings>
-          <borderedNodeMappings name="ExternalOperationRequiredRole Node" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="[self.requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.OperationRequiredRole">
+          <borderedNodeMappings name="ExternalOperationRequiredRole Node" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Direct%20Edit%20Label']/@tools.0" semanticCandidatesExpression="[self.requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.OperationRequiredRole">
             <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
             </style>
           </borderedNodeMappings>
-          <borderedNodeMappings name="ExternalSourceRole Node" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="[requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.SourceRole">
+          <borderedNodeMappings name="ExternalSourceRole Node" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Direct%20Edit%20Label']/@tools.0" semanticCandidatesExpression="[requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.SourceRole">
             <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
             </style>
           </borderedNodeMappings>
-          <borderedNodeMappings name="ExternalSinkRole Node" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="[providedRoles_InterfaceProvidingEntity/]" domainClass="repository.SinkRole">
+          <borderedNodeMappings name="ExternalSinkRole Node" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Direct%20Edit%20Label']/@tools.0" semanticCandidatesExpression="[providedRoles_InterfaceProvidingEntity/]" domainClass="repository.SinkRole">
             <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
             </style>
           </borderedNodeMappings>
-          <borderedNodeMappings name="ExternalInfrastructureProvidedRole Node" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="feature:eAllContents" domainClass="repository.InfrastructureProvidedRole">
+          <borderedNodeMappings name="ExternalInfrastructureProvidedRole Node" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Direct%20Edit%20Label']/@tools.0" semanticCandidatesExpression="feature:eAllContents" domainClass="repository.InfrastructureProvidedRole">
             <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
             </style>
           </borderedNodeMappings>
-          <borderedNodeMappings name="ExternalInfrastructureRequiredRole Node" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="feature:eAllContents" domainClass="repository.InfrastructureRequiredRole">
+          <borderedNodeMappings name="ExternalInfrastructureRequiredRole Node" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Direct%20Edit%20Label']/@tools.0" semanticCandidatesExpression="feature:eAllContents" domainClass="repository.InfrastructureRequiredRole">
             <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
             </style>
           </borderedNodeMappings>
-          <subNodeMappings name="AssemblyContext Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AssemblyContext%20Deletion']" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="[self.assemblyContexts__ComposedStructure/]" domainClass="composition.AssemblyContext">
-            <borderedNodeMappings name="OperationProvidedRole Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Noop']" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.OperationProvidedRole">
+          <subNodeMappings name="AssemblyContext Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Deletion']/@tools.0" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Direct%20Edit%20Label']/@tools.0" semanticCandidatesExpression="[self.assemblyContexts__ComposedStructure/]" domainClass="composition.AssemblyContext">
+            <borderedNodeMappings name="OperationProvidedRole Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Deletion']/@tools.1" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.OperationProvidedRole">
               <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
               </style>
             </borderedNodeMappings>
-            <borderedNodeMappings name="OperationRequiredRole Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Noop']" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.OperationRequiredRole">
+            <borderedNodeMappings name="OperationRequiredRole Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Deletion']/@tools.1" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.OperationRequiredRole">
               <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
               </style>
             </borderedNodeMappings>
-            <borderedNodeMappings name="SinkRole Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Noop']" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.SinkRole">
+            <borderedNodeMappings name="SinkRole Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Deletion']/@tools.1" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.SinkRole">
               <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
               </style>
             </borderedNodeMappings>
-            <borderedNodeMappings name="SourceRole Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Noop']" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.SourceRole">
+            <borderedNodeMappings name="SourceRole Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Deletion']/@tools.1" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.SourceRole">
               <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
               </style>
             </borderedNodeMappings>
-            <borderedNodeMappings name="InfrastructureProvidedRole Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Noop']" semanticCandidatesExpression="feature:eAllContents" domainClass="repository.InfrastructureProvidedRole">
+            <borderedNodeMappings name="InfrastructureProvidedRole Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Deletion']/@tools.1" semanticCandidatesExpression="feature:eAllContents" domainClass="repository.InfrastructureProvidedRole">
               <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
               </style>
             </borderedNodeMappings>
-            <borderedNodeMappings name="InfrastructureRequiredRole Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Noop']" semanticCandidatesExpression="feature:eAllContents" domainClass="repository.InfrastructureRequiredRole">
+            <borderedNodeMappings name="InfrastructureRequiredRole Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Deletion']/@tools.1" semanticCandidatesExpression="feature:eAllContents" domainClass="repository.InfrastructureRequiredRole">
               <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -183,16 +183,16 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="EventChannel Node" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="feature:eAllContents" domainClass="composition.EventChannel">
+          <subNodeMappings name="EventChannel Node" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Direct%20Edit%20Label']/@tools.0" semanticCandidatesExpression="feature:eAllContents" domainClass="composition.EventChannel">
             <style xsi:type="style:LozengeNodeDescription" labelExpression="[entityName/]" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subNodeMappings>
-          <subContainerMappings name="Dummy AssemblyContext Container" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="[self.assemblyContexts__ComposedStructure/]" documentation="Used for the parameter implementation until the Node can be fully migrated." domainClass="composition.AssemblyContext">
+          <subContainerMappings name="Dummy AssemblyContext Container" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Direct%20Edit%20Label']/@tools.0" semanticCandidatesExpression="[self.assemblyContexts__ComposedStructure/]" documentation="Used for the parameter implementation until the Node can be fully migrated." domainClass="composition.AssemblyContext">
             <subContainerMappings name="VariableUsage Container" semanticCandidatesExpression="[self.getVariableUsages()/]" domainClass="parameter.VariableUsage" childrenPresentation="List">
-              <subNodeMappings name="VariableCharacterisation Node" semanticCandidatesExpression="[self.variableCharacterisation_VariableUsage/]" domainClass="parameter.VariableCharacterisation">
+              <subNodeMappings name="VariableCharacterisation Node" semanticCandidatesExpression="[self.variableCharacterisation_VariableUsage/]" semanticElements="[self.oclAsSet()->union(self.specification_VariableCharacterisation.oclAsSet())/]" domainClass="parameter.VariableCharacterisation">
                 <style xsi:type="style:SquareDescription" labelExpression="[self.type + '=' + self.specification_VariableCharacterisation.expression.toString()/]" labelAlignment="LEFT" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -221,25 +221,40 @@
           </style>
         </containerMappings>
         <toolSections name="Nodes">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="ExternalOperationProvidedRole" label="SystemOperationProvidedRole" nodeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalOperationProvidedRole%20Node']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.OperationProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newProvidedRole"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="ExternalOperationRequiredRole" label="SystemOperationRequiredRole" nodeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalOperationRequiredRole%20Node']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.OperationRequiredRole" referenceName="requiredRoles_InterfaceRequiringEntity"/>
-              </firstModelOperations>
-            </initialOperation>
+          <ownedTools xsi:type="tool:ToolGroup" name="Event Roles and Channel">
+            <tools xsi:type="tool:NodeCreationDescription" name="EventChannel" nodeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='EventChannel%20Node']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.EventChannel" referenceName="eventChannel__ComposedStructure">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newAssemblyContext"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:NodeCreationDescription" name="ExternalSourceRole" label="SystemSourceRole" nodeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalSourceRole%20Node']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.SourceRole" referenceName="requiredRoles_InterfaceRequiringEntity">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newSourceRole"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:NodeCreationDescription" name="ExternalSinkRole" label="SystemSinkRole" nodeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalSinkRole%20Node']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.SinkRole" referenceName="providedRoles_InterfaceProvidingEntity">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newSinkRole"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="AssemblyContext" nodeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='AssemblyContext%20Node']">
             <variable name="container"/>
@@ -252,265 +267,268 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" documentation="Used to prevent modification of the repository upon deletion of an assembly context. By default this would remove the encapsulatedComponent." name="AssemblyContext Deletion">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <containerView name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                <subModelOperations xsi:type="tool_1:RemoveElement"/>
-              </firstModelOperations>
-            </initialOperation>
+          <ownedTools xsi:type="tool:ToolGroup" name="Operation Roles">
+            <tools xsi:type="tool:NodeCreationDescription" name="ExternalOperationProvidedRole" label="SystemOperationProvidedRole" nodeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalOperationProvidedRole%20Node']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.OperationProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newProvidedRole"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:NodeCreationDescription" name="ExternalOperationRequiredRole" label="SystemOperationRequiredRole" nodeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalOperationRequiredRole%20Node']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.OperationRequiredRole" referenceName="requiredRoles_InterfaceRequiringEntity"/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="EventChannel" nodeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='EventChannel%20Node']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.EventChannel" referenceName="eventChannel__ComposedStructure">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newAssemblyContext"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="ExternalSourceRole" label="SystemSourceRole" nodeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalSourceRole%20Node']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.SourceRole" referenceName="requiredRoles_InterfaceRequiringEntity">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newSourceRole"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="ExternalSinkRole" label="SystemSinkRole" nodeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalSinkRole%20Node']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.SinkRole" referenceName="providedRoles_InterfaceProvidingEntity">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newSinkRole"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="ExternalInfrastructureProvidedRole" label="SystemInfrastructureProvidedRole" nodeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalInfrastructureProvidedRole%20Node']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InfrastructureProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newInfrastructureProvidedRole"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="ExternalInfrastructureRequiredRole" label="SystemInfrastructureRequiredRole" nodeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalInfrastructureRequiredRole%20Node']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InfrastructureRequiredRole" referenceName="requiredRoles_InterfaceRequiringEntity">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newInfrastructureRequiredRole"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" documentation="Used to prevent deletion of roles which would modify the components." name="Noop">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <containerView name="containerView"/>
-            <initialOperation/>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" documentation="Basic direct edit label tool for NamedElements. Sets entityName to the user input." name="NamedElementDirectEdit">
-            <mask mask="{0}"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="[arg0/]"/>
-              </firstModelOperations>
-            </initialOperation>
+          <ownedTools xsi:type="tool:ToolGroup" name="Infrastructure Roles">
+            <tools xsi:type="tool:NodeCreationDescription" name="ExternalInfrastructureProvidedRole" label="SystemInfrastructureProvidedRole" nodeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalInfrastructureProvidedRole%20Node']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InfrastructureProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newInfrastructureProvidedRole"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:NodeCreationDescription" name="ExternalInfrastructureRequiredRole" label="SystemInfrastructureRequiredRole" nodeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalInfrastructureRequiredRole%20Node']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InfrastructureRequiredRole" referenceName="requiredRoles_InterfaceRequiringEntity">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newInfrastructureRequiredRole"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
           </ownedTools>
         </toolSections>
         <toolSections name="Links">
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="AssemblyConnector" edgeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@edgeMappings[name='AssemblyConnector%20Edge']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[sourceView.eContainer().eContainer().oclAsType(DNodeContainer).target/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.AssemblyConnector" referenceName="connectors__ComposedStructure">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newAssemblyConnector"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="providedRole_AssemblyConnector" valueExpression="[target/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="requiringAssemblyContext_AssemblyConnector" valueExpression="[sourceView.eContainer(DNode).target/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="requiredRole_AssemblyConnector" valueExpression="[source/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="providingAssemblyContext_AssemblyConnector" valueExpression="[targetView.eContainer(DNode).target/]"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
+          <ownedTools xsi:type="tool:ToolGroup" name="Operation Connectors">
+            <tools xsi:type="tool:EdgeCreationDescription" name="AssemblyConnector" edgeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@edgeMappings[name='AssemblyConnector%20Edge']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[sourceView.eContainer().eContainer().oclAsType(DNodeContainer).target/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.AssemblyConnector" referenceName="connectors__ComposedStructure">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newAssemblyConnector"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="providedRole_AssemblyConnector" valueExpression="[target/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="requiringAssemblyContext_AssemblyConnector" valueExpression="[sourceView.eContainer(DNode).target/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="requiredRole_AssemblyConnector" valueExpression="[source/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="providingAssemblyContext_AssemblyConnector" valueExpression="[targetView.eContainer(DNode).target/]"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:EdgeCreationDescription" name="ProvidedDelegationConnector" edgeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@edgeMappings[name='ProvidedDelegationConnector%20Edge']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.eContainer()/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.ProvidedDelegationConnector" referenceName="connectors__ComposedStructure">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newProvidedDelegationConnector"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext_ProvidedDelegationConnector" valueExpression="[targetView.eInverse()->filter(DNode)->at(1).target/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="innerProvidedRole_ProvidedDelegationConnector" valueExpression="[target/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outerProvidedRole_ProvidedDelegationConnector" valueExpression="[source/]"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:EdgeCreationDescription" name="RequiredDelegationConnector" edgeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@edgeMappings[name='RequiredDelegationConnector%20Edge']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[target.eContainer()/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.RequiredDelegationConnector" referenceName="connectors__ComposedStructure">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="enityName" valueExpression="newRequiredDelegationConnector"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext_RequiredDelegationConnector" valueExpression="[sourceView.eInverse()->filter(DNode)->at(1).target/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="innerRequiredRole_RequiredDelegationConnector" valueExpression="[source/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outerRequiredRole_RequiredDelegationConnector" valueExpression="[target/]"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="ProvidedDelegationConnector" edgeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@edgeMappings[name='ProvidedDelegationConnector%20Edge']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.eContainer()/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.ProvidedDelegationConnector" referenceName="connectors__ComposedStructure">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newProvidedDelegationConnector"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext_ProvidedDelegationConnector" valueExpression="[targetView.eInverse()->filter(DNode)->at(1).target/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="innerProvidedRole_ProvidedDelegationConnector" valueExpression="[target/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="outerProvidedRole_ProvidedDelegationConnector" valueExpression="[source/]"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
+          <ownedTools xsi:type="tool:ToolGroup" name="Event Connectors">
+            <tools xsi:type="tool:EdgeCreationDescription" name="AssemblyEventConnector" edgeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@edgeMappings[name='AssemblyEventConnector%20Edge']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[sourceView.eContainer().eContainer().oclAsType(DNodeContainer).target/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.AssemblyEventConnector" referenceName="connectors__ComposedStructure">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newAssemblyEventConnector"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceRole__AssemblyEventConnector" valueExpression="[source/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="sinkRole__AssemblyEventConnector" valueExpression="[target/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceAssemblyContext__AssemblyEventConnector" valueExpression="[sourceView.eContainer(DNode).target/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="sinkAssemblyContext__AssemblyEventConnector" valueExpression="[targetView.eContainer(DNode).target/]"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:EdgeCreationDescription" name="EventChannelSinkConnector" edgeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@edgeMappings[name='EventChannelSinkConnector%20Edge']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.parentStructure__EventChannel/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.EventChannelSinkConnector" referenceName="connectors__ComposedStructure">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newEventChannelSinkConnector"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="eventChannel__EventChannelSinkConnector" valueExpression="[source/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="sinkRole__EventChannelSinkConnector" valueExpression="[target/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext__EventChannelSinkConnector" valueExpression="[targetView.eContainer(DNode).target/]"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:EdgeCreationDescription" name="EventChannelSourceConnector" edgeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@edgeMappings[name='EventChannelSourceConnector%20Edge']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[target.parentStructure__EventChannel/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.EventChannelSourceConnector" referenceName="connectors__ComposedStructure">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newEventChannelSourceConnector"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="eventChannel__EventChannelSourceConnector" valueExpression="[target/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceRole__EventChannelSourceRole" valueExpression="[source/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext__EventChannelSourceConnector" valueExpression="[sourceView.eContainer(DNode).target/]"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:EdgeCreationDescription" name="SourceDelegationConnector" edgeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@edgeMappings[name='SourceDelegationConnector%20Edge']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[target.eContainer()/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.SourceDelegationConnector" referenceName="connectors__ComposedStructure">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newSourceDelegationConnector"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext__SourceDelegationConnector" valueExpression="[sourceView.eContainer(DNode).target/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="innerSourceRole__SourceRole" valueExpression="[source/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outerSourceRole__SourceRole" valueExpression="[target/]"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:EdgeCreationDescription" name="SinkDelegationConnector" edgeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@edgeMappings[name='SinkDelegationConnector%20Edge']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.eContainer()/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.SinkDelegationConnector" referenceName="connectors__ComposedStructure">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newSinkDelegationConnector"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext__SinkDelegationConnector" valueExpression="[targetView.eContainer(DNode).target/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="innerSinkRole__SinkRole" valueExpression="[target/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outerSinkRole__SinkRole" valueExpression="[source/]"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="RequiredDelegationConnector" edgeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@edgeMappings[name='RequiredDelegationConnector%20Edge']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[target.eContainer()/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.RequiredDelegationConnector" referenceName="connectors__ComposedStructure">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="enityName" valueExpression="newRequiredDelegationConnector"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext_RequiredDelegationConnector" valueExpression="[sourceView.eInverse()->filter(DNode)->at(1).target/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="innerRequiredRole_RequiredDelegationConnector" valueExpression="[source/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="outerRequiredRole_RequiredDelegationConnector" valueExpression="[target/]"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
+          <ownedTools xsi:type="tool:ToolGroup" name="Infrastructure Connectors">
+            <tools xsi:type="tool:EdgeCreationDescription" name="AssemblyInfrastructureConnector" edgeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@edgeMappings[name='AssemblyInfrastructureConnector%20Edge']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[sourceView.eContainer().eContainer().oclAsType(DNodeContainer).target/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.AssemblyInfrastructureConnector" referenceName="connectors__ComposedStructure">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newAssemblyInfrastructureConnector"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="providedRole__AssemblyInfrastructureConnector" valueExpression="[source/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="requiredRole__AssemblyInfrastructureConnector" valueExpression="[target/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="requiringAssemblyContext__AssemblyInfrastructureConnector" valueExpression="[targetView.eContainer(DNode).target/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="providingAssemblyContext__AssemblyInfrastructureConnector" valueExpression="[sourceView.eContainer(DNode).target/]"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:EdgeCreationDescription" name="ProvidedInfrastructureDelegationConnector" edgeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@edgeMappings[name='ProvidedInfrastructureDelegationConnector%20Edge']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.eContainer()/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InfrastructureProvidedRole" referenceName="connectors__ComposedStructure">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newInfrastructureProvidedRole"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext__ProvidedInfrastructureDelegationConnector" valueExpression="[targetView.eContainer(DNode).target/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="innerProvidedRole__ProvidedInfrastructureDelegationConnector" valueExpression="[target/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outerProvidedRole__ProvidedInfrastructureDelegationConnector" valueExpression="[source/]"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:EdgeCreationDescription" name="RequiredInfrastructureDelegationConnector" edgeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@edgeMappings[name='RequiredInfrastructureDelegationConnector%20Edge']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="target.eContainer()/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InfrastructureRequiredRole" referenceName="connectors__ComposedStructure">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newInfrastructureRequiredRole"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext__RequiredInfrastructureDelegationConnector" valueExpression="[sourceView.eContainer(DNode).target/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="innerRequiredRole__RequiredInfrastructureDelegationConnector" valueExpression="[source/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outerRequiredRole__RequiredInfrastructureDelegationConnector" valueExpression="[target/]"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="AssemblyEventConnector" edgeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@edgeMappings[name='AssemblyEventConnector%20Edge']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[sourceView.eContainer().eContainer().oclAsType(DNodeContainer).target/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.AssemblyEventConnector" referenceName="connectors__ComposedStructure">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newAssemblyEventConnector"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceRole__AssemblyEventConnector" valueExpression="[source/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sinkRole__AssemblyEventConnector" valueExpression="[target/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceAssemblyContext__AssemblyEventConnector" valueExpression="[sourceView.eContainer(DNode).target/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sinkAssemblyContext__AssemblyEventConnector" valueExpression="[targetView.eContainer(DNode).target/]"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
+        </toolSections>
+        <toolSections name="Actions">
+          <ownedTools xsi:type="tool:ToolGroup" name="Direct Edit Label">
+            <tools xsi:type="tool:DirectEditLabel" documentation="Basic direct edit label tool for NamedElements. Sets entityName to the user input." name="NamedElementDirectEdit">
+              <mask mask="{0}"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="[arg0/]"/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="EventChannelSinkConnector" edgeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@edgeMappings[name='EventChannelSinkConnector%20Edge']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.parentStructure__EventChannel/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.EventChannelSinkConnector" referenceName="connectors__ComposedStructure">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newEventChannelSinkConnector"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="eventChannel__EventChannelSinkConnector" valueExpression="[source/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sinkRole__EventChannelSinkConnector" valueExpression="[target/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext__EventChannelSinkConnector" valueExpression="[targetView.eContainer(DNode).target/]"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="EventChannelSourceConnector" edgeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@edgeMappings[name='EventChannelSourceConnector%20Edge']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[target.parentStructure__EventChannel/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.EventChannelSourceConnector" referenceName="connectors__ComposedStructure">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newEventChannelSourceConnector"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="eventChannel__EventChannelSourceConnector" valueExpression="[target/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceRole__EventChannelSourceRole" valueExpression="[source/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext__EventChannelSourceConnector" valueExpression="[sourceView.eContainer(DNode).target/]"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="SourceDelegationConnector" edgeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@edgeMappings[name='SourceDelegationConnector%20Edge']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[target.eContainer()/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.SourceDelegationConnector" referenceName="connectors__ComposedStructure">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newSourceDelegationConnector"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext__SourceDelegationConnector" valueExpression="[sourceView.eContainer(DNode).target/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="innerSourceRole__SourceRole" valueExpression="[source/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="outerSourceRole__SourceRole" valueExpression="[target/]"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="SinkDelegationConnector" edgeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@edgeMappings[name='SinkDelegationConnector%20Edge']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.eContainer()/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.SinkDelegationConnector" referenceName="connectors__ComposedStructure">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newSinkDelegationConnector"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext__SinkDelegationConnector" valueExpression="[targetView.eContainer(DNode).target/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="innerSinkRole__SinkRole" valueExpression="[target/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="outerSinkRole__SinkRole" valueExpression="[source/]"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="AssemblyInfrastructureConnector" edgeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@edgeMappings[name='AssemblyInfrastructureConnector%20Edge']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[sourceView.eContainer().eContainer().oclAsType(DNodeContainer).target/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.AssemblyInfrastructureConnector" referenceName="connectors__ComposedStructure">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newAssemblyInfrastructureConnector"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="providedRole__AssemblyInfrastructureConnector" valueExpression="[source/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="requiredRole__AssemblyInfrastructureConnector" valueExpression="[target/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="requiringAssemblyContext__AssemblyInfrastructureConnector" valueExpression="[targetView.eContainer(DNode).target/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="providingAssemblyContext__AssemblyInfrastructureConnector" valueExpression="[sourceView.eContainer(DNode).target/]"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="ProvidedInfrastructureDelegationConnector" edgeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@edgeMappings[name='ProvidedInfrastructureDelegationConnector%20Edge']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.eContainer()/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InfrastructureProvidedRole" referenceName="connectors__ComposedStructure">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newInfrastructureProvidedRole"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext__ProvidedInfrastructureDelegationConnector" valueExpression="[targetView.eContainer(DNode).target/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="innerProvidedRole__ProvidedInfrastructureDelegationConnector" valueExpression="[target/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="outerProvidedRole__ProvidedInfrastructureDelegationConnector" valueExpression="[source/]"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="RequiredInfrastructureDelegationConnector" edgeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@edgeMappings[name='RequiredInfrastructureDelegationConnector%20Edge']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="target.eContainer()/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InfrastructureRequiredRole" referenceName="connectors__ComposedStructure">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newInfrastructureRequiredRole"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext__RequiredInfrastructureDelegationConnector" valueExpression="[sourceView.eContainer(DNode).target/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="innerRequiredRole__RequiredInfrastructureDelegationConnector" valueExpression="[source/]"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="outerRequiredRole__RequiredInfrastructureDelegationConnector" valueExpression="[target/]"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
+          <ownedTools xsi:type="tool:ToolGroup" name="Deletion">
+            <tools xsi:type="tool:DeleteElementDescription" documentation="Used to prevent modification of the repository upon deletion of an assembly context. By default this would remove the encapsulatedComponent." name="AssemblyContext Deletion">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <containerView name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+                  <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:DeleteElementDescription" documentation="Used to prevent deletion of roles which would modify the components." name="Noop">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <containerView name="containerView"/>
+              <initialOperation/>
+            </tools>
           </ownedTools>
         </toolSections>
         <customization>
