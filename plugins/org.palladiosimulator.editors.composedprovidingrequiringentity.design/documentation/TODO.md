@@ -1,6 +1,8 @@
 Tasks:
 - Rotating Nodes for Roles
-- Allow editing of parameters
+- Parameters
+  - Editing support
+  - Move edges to new AssemblyContext representations
 - Documentation
 
 Known Bugs:
