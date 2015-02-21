@@ -191,21 +191,24 @@
             </style>
           </subNodeMappings>
           <subContainerMappings name="Dummy AssemblyContext Container" semanticCandidatesExpression="[self.assemblyContexts__ComposedStructure/]" documentation="Used for the parameter implementation until the Node can be fully migrated." domainClass="composition.AssemblyContext">
-            <subNodeMappings name="VariableUsage Node" semanticCandidatesExpression="[self.getVariableUsages()/]" semanticElements="[self.variableCharacterisation_VariableUsage + self.variableCharacterisation_VariableUsage.specification_VariableCharacterisation/]" domainClass="parameter.VariableUsage">
-              <style xsi:type="style:SquareDescription" labelExpression="[self.namedReference__VariableUsage.referenceName + '=' + self.variableCharacterisation_VariableUsage.specification_VariableCharacterisation.specification/]" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="14" height="4">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-              </style>
-              <conditionnalStyles predicateExpression="[self.eContainer().eClass().name = 'AssemblyContext'/]">
-                <style xsi:type="style:SquareDescription" labelExpression="[self.namedReference__VariableUsage.referenceName + '=' + self.variableCharacterisation_VariableUsage.specification_VariableCharacterisation.specification/]" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="14" height="4">
+            <subContainerMappings name="VariableUsage Container" semanticCandidatesExpression="[self.getVariableUsages()/]" domainClass="parameter.VariableUsage" childrenPresentation="List">
+              <subNodeMappings name="VariableCharacterisation Node" semanticCandidatesExpression="[self.variableCharacterisation_VariableUsage/]" domainClass="parameter.VariableCharacterisation">
+                <style xsi:type="style:SquareDescription" labelExpression="[self.type + '=' + self.specification_VariableCharacterisation.expression.toString()/]" labelAlignment="LEFT" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
                 </style>
+              </subNodeMappings>
+              <conditionnalStyles predicateExpression="[self.eContainer().eClass().name = 'AssemblyContext'/]">
+                <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[self.namedReference__VariableUsage.referenceName/]">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                </style>
               </conditionnalStyles>
-            </subNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[entityName/]">
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[self.namedReference__VariableUsage.referenceName/]">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_chocolate']"/>
