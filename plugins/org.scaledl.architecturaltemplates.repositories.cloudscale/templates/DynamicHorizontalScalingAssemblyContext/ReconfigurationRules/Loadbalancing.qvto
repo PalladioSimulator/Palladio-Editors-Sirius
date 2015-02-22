@@ -13,11 +13,14 @@ modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/Pall
 modeltype PCMSEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0');
 
 
-transformation Loadbalancing(in prm : PRM,inout pcmAllocation : PCM_ALLOC) access transformation ReverseLoadbalancing(inout pcmAllocation : PCM_ALLOC,inout pcmSystem : PCM_SYS,
-										inout pcmRepository : PCM_REP,
-										inout pcmResourceEnvironment : PCM_RES_ENV);
+transformation Loadbalancing(in prm : PRM, inout pcmAllocation : PCM_ALLOC)
+ 				access transformation ReverseLoadbalancing;
+ 				
 property numberOfReplicas : Integer;
-property threshold : Real = 1.0;
+property scaleInThreshold : Real;
+property scaleOutThreshold : Real;
+
+
 main() {
 	log ('Reconfiguration Rule Loadbalancing started');
 	assert fatal(prm.rootObjects()[PCMModelElementMeasurement]->size() > 0)
@@ -30,22 +33,38 @@ main() {
 	var allocationContexts : Set(AllocationContext) := allocation.allocationContexts_Allocation;
 	var assemblyContexts : Set(AssemblyContext);
 	allocationContexts -> forEach(allocationContext){assemblyContexts += allocationContext.assemblyContext_AllocationContext;};
-	
-	if(prm.rootObjects()[PCMModelElementMeasurement]->checkCondition()){
-		assert fatal(appliedStereotypesEqualsOne(assemblyContexts,"LoadbalancedAssemblyContext"))
+	var system : System := allocation.system_Allocation;
+	assert fatal(appliedStereotypesEqualsOne(assemblyContexts,"LoadbalancedAssemblyContext"))
 			with log ("There is more than one LoadbalancedAssemblyContext Stereotype Application!");	
 			
-		//get the stereotyped AssemblyContext
-		var loadBalancedAssemblyContext : AssemblyContext := assemblyContexts -> selectOne(assemblyContext : AssemblyContext |
+	//get the stereotyped AssemblyContext
+	var loadBalancedAssemblyContext : AssemblyContext := assemblyContexts -> selectOne(assemblyContext : AssemblyContext |
 						hasAppliedStereotype(assemblyContext,"LoadbalancedAssemblyContext"));
 						
-		assert fatal(loadBalancedAssemblyContext != null)
+	assert fatal(loadBalancedAssemblyContext != null)
 			with log ("There is no LoadbalancedAssemblyContext Stereotype Application!");	
-			
+	var repo : Repository := loadBalancedAssemblyContext.encapsulatedComponent__AssemblyContext.repository__RepositoryComponent;	
+	var resourceEnvironment : ResourceEnvironment := allocation.targetResourceEnvironment_Allocation;	
+	numberOfReplicas := getNumberOfReplicas(loadBalancedAssemblyContext,"numberOfReplicas","LoadbalancedAssemblyContext");
+	scaleInThreshold := getThreshold(loadBalancedAssemblyContext,"scaleInThreshold","LoadbalancedAssemblyContext");
+	scaleOutThreshold := getThreshold(loadBalancedAssemblyContext,"scaleOutThreshold","LoadbalancedAssemblyContext");
+	
+	if(((prm.rootObjects()[PCMModelElementMeasurement]->checkScaleInCondition() and numberOfReplicas > 1) or prm.rootObjects()[PCMModelElementMeasurement]->checkScaleOutCondition()) and hasAppliedStereotype(system,"LoadbalancedSystem")) {
+		//Reverse Loadbalancing
+		new ReverseLoadbalancing(pcmAllocation)->transform();
+		if(prm.rootObjects()[PCMModelElementMeasurement]->checkScaleInCondition() and numberOfReplicas > 1){
+			numberOfReplicas:= numberOfReplicas -1;
+		}
+		else if(prm.rootObjects()[PCMModelElementMeasurement]->checkScaleOutCondition()){
+			numberOfReplicas:= numberOfReplicas +1;
+		};
+		setIntTaggedValue(loadBalancedAssemblyContext,numberOfReplicas,"LoadbalancedAssemblyContext","numberOfReplicas");
+	};
+		//apply Stereotype Loadbalanced System from the Loadbalanced Profile. Needed when the system should be scaled in
+		applyStereotype(system,"LoadbalancedSystem");
+		
 		//apply Stereotype OriginalAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
 		applyStereotype(loadBalancedAssemblyContext,"OriginalAssemblyContext");
-						
-		numberOfReplicas := getNumberOfReplicas(loadBalancedAssemblyContext,"numberOfReplicas","LoadbalancedAssemblyContext");
 		
 		//remove Stereotype Application LoadbalancedAssemblyContext from the AssemblyContext
 		removeStereotypeApplications(loadBalancedAssemblyContext,"LoadbalancedAssemblyContext");
@@ -76,16 +95,30 @@ main() {
 		new AllocationContext(loadBalancerAssemblyContext,loadBalancerResourceContainer);
 		duplicatedAssemblyContexts -> map createDuplicatedAllocationContexts(duplicatedComponentResourceContainer);
 		log ('Reconfiguration Rule Loadbalancing finished');
-	}
+	
 }
 
 
-helper Set(PCMModelElementMeasurement) :: checkCondition() : Boolean {
+helper Set(PCMModelElementMeasurement) :: checkScaleOutCondition() : Boolean {
 	
 		self->forEach(measurement) {
 		log('Measured value is ' + measurement.measurementValue.toString());
 		
-			if (measurement.measurementValue > threshold) {
+			if (measurement.measurementValue > scaleOutThreshold) {
+				return true;
+			};
+		};
+		
+		log('No measurements match the condition. Number of measurements is ' + self->size().toString());
+		return false;
+	}
+
+helper Set(PCMModelElementMeasurement) :: checkScaleInCondition() : Boolean {
+	
+		self->forEach(measurement) {
+		log('Measured value is ' + measurement.measurementValue.toString());
+		
+			if (measurement.measurementValue < scaleInThreshold) {
 				return true;
 			};
 		};
@@ -366,7 +399,6 @@ constructor AssemblyContext :: AssemblyContext(bc : RepositoryComponent){
 
 constructor BasicComponent :: BasicComponent (loadBalancedComponent : RepositoryComponent){
 log ('Start of LoadBalancer Constructor');
-	var replicasIncludingLoadBalancer := numberOfReplicas;
 	var repository := loadBalancedComponent.repository__RepositoryComponent;
 	var providedRoles : Set(ProvidedRole) := loadBalancedComponent.providedRoles_InterfaceProvidingEntity;
 	entityName := "LoadBalancer_"+ loadBalancedComponent.entityName;
@@ -374,7 +406,7 @@ log ('Start of LoadBalancer Constructor');
 	providedRoles -> forEach(providedRole){
 		var counter : Integer := 1;
 		providedRoles_InterfaceProvidingEntity += new OperationProvidedRole(providedRole.oclAsType(OperationProvidedRole));
-			while(counter<= (replicasIncludingLoadBalancer)){
+			while(counter<= (numberOfReplicas)){
 			requiredRoles_InterfaceRequiringEntity += new OperationRequiredRole(providedRole.oclAsType(OperationProvidedRole),counter);
 			counter := counter+1;
 			};

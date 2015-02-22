@@ -14,17 +14,18 @@ public class LoadbalancingLibrary {
 		super();
 	}
 	
-	public static int getNumberOfReplicas(
-			AssemblyContext assemblyContext, String taggedValueName,
-			String stereotypeName) {
-		return getValueOfIntegerTaggedValue(assemblyContext, taggedValueName, stereotypeName);	
-	}
-	
 	public static double getThreshold(
 			AssemblyContext assemblyContext, String taggedValueName,
 			String stereotypeName) {
 		return getValueOfIntegerTaggedValue(assemblyContext, taggedValueName, stereotypeName);	
 	}
+	
+	public static int getNumberOfReplicas(
+			Entity pcmEntity, String taggedValueName,
+			String stereotypeName) {
+		return getValueOfIntegerTaggedValue(pcmEntity, taggedValueName, stereotypeName);	
+	}
+	
 
 	@SuppressWarnings("unchecked")
 	private static <DATA_TYPE> DATA_TYPE getValueOfIntegerTaggedValue(

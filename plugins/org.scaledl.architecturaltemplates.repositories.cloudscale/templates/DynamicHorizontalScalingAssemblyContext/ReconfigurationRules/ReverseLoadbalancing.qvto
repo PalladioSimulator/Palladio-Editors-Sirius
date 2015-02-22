@@ -11,16 +11,17 @@ modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/Pall
 modeltype PCMSEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0');
 
 
-transformation ReverseLoadbalancing(inout pcmAllocation : PCM_ALLOC,
-										inout pcmSystem : PCM_SYS,
-										inout pcmRepository : PCM_REP,
-										inout pcmResourceEnvironment : PCM_RES_ENV);
+transformation ReverseLoadbalancing(inout pcmAllocation : PCM_ALLOC//,
+										//inout pcmSystem : PCM_SYS,
+										//inout pcmRepository : PCM_REP,
+										//inout pcmResourceEnvironment : PCM_RES_ENV
+										);
 main() {
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
+	
 	var allocationContexts : Set(AllocationContext) := allocation.allocationContexts_Allocation;
 	var assemblyContexts : Set(AssemblyContext);
 	allocationContexts -> forEach(allocationContext){assemblyContexts += allocationContext.assemblyContext_AllocationContext;};
-	
 	assert fatal(appliedStereotypesEqualsOne(assemblyContexts,"LoadbalancerAssemblyContext"))
 		with log ("There is more than one LoadbalancerAssemblyContext Stereotype Application!");		
 		
@@ -30,7 +31,7 @@ main() {
 					
 	assert fatal(loadBalancerAssemblyContext != null)
 		with log ("There is no LoadbalancerAssemblyContext Stereotype Application!");	
-		
+
 	var loadbalancerRepositoryComponent : RepositoryComponent := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext;
 	var duplicateAssemblyContexts : Set(AssemblyContext);
 	var originalAssemblyContext : AssemblyContext;
@@ -69,7 +70,7 @@ helper reverseRepository(loadbalancerRepositoryComponent : RepositoryComponent){
 	};
 	
 	providedRoles->forEach(providedRole){
-		removeProvideddRole(providedRole);
+		removeProvidedRole(providedRole);
 	};
 	removeRepositoryComponent(loadbalancerRepositoryComponent);
 }
@@ -129,43 +130,60 @@ helper reverseSystem(duplicateAssemblyContexts:Set(AssemblyContext), originalAss
 /**
  * Remove the RepositoryComponent of the Repository Model
  */
-helper removeRepositoryComponent(repositoryComponent: RepositoryComponent){
-	pcmRepository.removeElement(repositoryComponent);
+helper removeRepositoryComponent(inout repositoryComponent: RepositoryComponent){
+	repositoryComponent.repository__RepositoryComponent := null;
+	repositoryComponent.providedRoles_InterfaceProvidingEntity := null;
+	repositoryComponent.resourceRequiredRoles__ResourceInterfaceRequiringEntity := null;
+	repositoryComponent.requiredRoles_InterfaceRequiringEntity := null;
+	//pcmRepository.removeElement(repositoryComponent);
 }
 
 /**
  * Remove the ProvidedRole of the Repository Model
  */
-helper removeProvideddRole(providedRole: ProvidedRole){
-	pcmRepository.removeElement(providedRole);
+helper removeProvidedRole(inout providedRole: ProvidedRole){
+	providedRole.providingEntity_ProvidedRole := null;
+	//pcmRepository.removeElement(providedRole);
 }
 
 /**
  * Remove the RequiredRole of the Repository Model
  */
-helper removeRequiredRole(requiredRole: RequiredRole){
-	pcmRepository.removeElement(requiredRole);
+helper removeRequiredRole(inout requiredRole: RequiredRole){
+	requiredRole.requiringEntity_RequiredRole := null;
+	//pcmRepository.removeElement(requiredRole);
 }
 
 /**
  * Remove the RequiredDelegationConnector of the System Model
  */
-helper removeRequiredDelegationConnector(requiredDelegationConnector: RequiredDelegationConnector){
-	pcmSystem.removeElement(requiredDelegationConnector);
+helper removeRequiredDelegationConnector(inout requiredDelegationConnector: RequiredDelegationConnector){
+	requiredDelegationConnector.parentStructure__Connector := null;
+	requiredDelegationConnector.innerRequiredRole_RequiredDelegationConnector := null;
+	requiredDelegationConnector.outerRequiredRole_RequiredDelegationConnector := null;
+	requiredDelegationConnector.assemblyContext_RequiredDelegationConnector := null;
+	//pcmSystem.removeElement(requiredDelegationConnector);
 }
 
 /**
  * Remove the AssemblyContext of the System Model
  */
-helper removeAssemblyContext(assemblyContext: AssemblyContext){
-	pcmSystem.removeElement(assemblyContext);
+helper removeAssemblyContext(inout assemblyContext: AssemblyContext){
+assemblyContext.parentStructure__AssemblyContext := null;
+assemblyContext.encapsulatedComponent__AssemblyContext := null;
+	//pcmSystem.removeElement(assemblyContext);
 }
 
 /**
  * Remove the AssemblyConnector of the System Model
  */
-helper removeAssemblyConnector(assemblyConnector: AssemblyConnector){
-	pcmSystem.removeElement(assemblyConnector);
+helper removeAssemblyConnector(inout assemblyConnector: AssemblyConnector){
+assemblyConnector.parentStructure__Connector := null;
+assemblyConnector.requiringAssemblyContext_AssemblyConnector := null;
+assemblyConnector.providingAssemblyContext_AssemblyConnector := null;
+assemblyConnector.providedRole_AssemblyConnector := null;
+assemblyConnector.requiringAssemblyContext_AssemblyConnector := null;
+	//pcmSystem.removeElement(assemblyConnector);
 }
 
 /**
@@ -179,8 +197,12 @@ helper removeAllocationContext(allocationContext : AllocationContext){
 /**
  * Remove the AllocationContext of the ResourceEnvironment Model
  */
-helper removeResourceContainer(resourceContainer : ResourceContainer){
-	pcmResourceEnvironment.removeElement(resourceContainer);
+helper removeResourceContainer(inout resourceContainer : ResourceContainer){
+resourceContainer.activeResourceSpecifications_ResourceContainer := null;
+resourceContainer.resourceEnvironment_ResourceContainer := null;
+resourceContainer.nestedResourceContainers__ResourceContainer := null;
+resourceContainer.parentResourceContainer__ResourceContainer := null;
+	//pcmResourceEnvironment.removeElement(resourceContainer);
 }
 
 /**
