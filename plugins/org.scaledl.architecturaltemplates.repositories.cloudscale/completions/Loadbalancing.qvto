@@ -31,17 +31,10 @@ main() {
 					
 	assert fatal(loadBalancedAssemblyContext != null)
 		with log ("There is no LoadbalancedAssemblyContext Stereotype Application!");	
-		
-	//apply Stereotype OriginalAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
-	applyStereotype(loadBalancedAssemblyContext,"OriginalAssemblyContext");
-					
+	
 	numberOfReplicas := getNumberOfReplicas(loadBalancedAssemblyContext,"numberOfReplicas","LoadbalancedAssemblyContext");
 	
-	//remove Stereotype Application LoadbalancedAssemblyContext from the AssemblyContext. Does it really work??
-	removeStereotypeApplications(loadBalancedAssemblyContext,"LoadbalancedAssemblyContext");
-	
 	var loadBalancedAllocationContext : AllocationContext := allocationContexts ->selectOne(allocationContext : AllocationContext | allocationContext.assemblyContext_AllocationContext.id = loadBalancedAssemblyContext.id);
-	//var loadBalancedAllocationContext : AllocationContext := allocationContexts ->selectOne(allocationContext : AllocationContext | allocationContext.assemblyContext_AllocationContext = loadBalancedAssemblyContext and hasAppliedStereotype(allocationContext.assemblyContext_AllocationContext,"LoadbalancedAssemblyContext"));
 	
 	var loadBalancedResourceContainer : ResourceContainer := loadBalancedAllocationContext.resourceContainer_AllocationContext;
 	
@@ -49,11 +42,8 @@ main() {
 	var loadBalancerComponent : RepositoryComponent := new BasicComponent(loadBalancedAssemblyContext.encapsulatedComponent__AssemblyContext);
 	var loadBalancerAssemblyContext : AssemblyContext := new AssemblyContext(loadBalancerComponent);
 	
-	//apply Stereotype LoadbalancerAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
-	applyStereotype(loadBalancerAssemblyContext,"LoadbalancerAssemblyContext");
-	
 	//duplicate the stereotyped AssemblyContext
-	var duplicatedAssemblyContexts : OrderedSet(AssemblyContext) := createDuplicatedAssemblyContexts(loadBalancedAssemblyContext,numberOfReplicas);
+	var duplicatedAssemblyContexts : OrderedSet(AssemblyContext) := createDuplicatedAssemblyContexts(loadBalancedAssemblyContext);
 	
 	//connect the LoadBalancer Assembly Context with the stereotyped and duplicated AssemblyContext in the System
 	connectLoadBalancerAndAssemblyContexts(loadBalancedAssemblyContext,loadBalancerAssemblyContext,duplicatedAssemblyContexts);
@@ -96,14 +86,12 @@ mapping OrderedSet(AssemblyContext) :: createDuplicatedAllocationContexts(resour
  * Creates a number, defined in the property numberOfReplicas, of duplicated AssemblyContexts  
  * for the loadbalancedAssemblyContext
  */
-helper createDuplicatedAssemblyContexts(loadbalancedAssemblyContext : AssemblyContext,replicasNumber : Integer) : OrderedSet(AssemblyContext){
+helper createDuplicatedAssemblyContexts(loadbalancedAssemblyContext : AssemblyContext) : OrderedSet(AssemblyContext){
 	var counter : Integer := 1;
 	var duplicatedAssemblyContextSet : OrderedSet(AssemblyContext);
 	var duplicateAssemblyContext : AssemblyContext;
-	while(counter <= replicasNumber){
+	while(counter <= numberOfReplicas){
 		duplicateAssemblyContext := new AssemblyContext(loadbalancedAssemblyContext.encapsulatedComponent__AssemblyContext);
-		//apply Stereotype LoadbalancerAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
-		applyStereotype(duplicateAssemblyContext,"DuplicateAssemblyContext");
 		duplicatedAssemblyContextSet +=duplicateAssemblyContext;
 		counter := counter+1;
 	};
@@ -415,7 +403,3 @@ log ('Start of RequiredRole Constructor');
 	entityName := "Required_" + rr.providedInterface__OperationProvidedRole.entityName +"_LoadBalancer_"+i.toString();
 	requiredInterface__OperationRequiredRole := rr.providedInterface__OperationProvidedRole;
 }
-
-//blackbox helper appliedStereotypesEqualsOne(repositoryComponentSet:Set(Entity),stereotypeName:String):Boolean;
-//blackbox helper hasAppliedStereotype(assemblyContext:Entity, stereotypeName:String):Boolean;
-//blackbox helper getNumberOfReplicas(assemblyContext:AssemblyContext, taggedValueName:String,stereotypeName:String):Integer;

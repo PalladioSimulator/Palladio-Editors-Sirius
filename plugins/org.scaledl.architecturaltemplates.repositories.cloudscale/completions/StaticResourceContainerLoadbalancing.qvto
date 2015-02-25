@@ -16,7 +16,8 @@ modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/Pall
 modeltype PCMStoex uses stoex('http://sdq.ipd.uka.de/StochasticExpressions/2.2');
 modeltype SEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0');
 
-transformation StaticResourceContainerLoadbalancing(inout pcmAllocation : PCM_ALLOC,inout pcmSystem : PCM_SYS,
+transformation StaticResourceContainerLoadbalancing(inout pcmAllocation : PCM_ALLOC,
+										inout pcmSystem : PCM_SYS,
 										inout pcmRepository : PCM_REP,
 										inout pcmResourceEnvironment : PCM_RES_ENV);
 

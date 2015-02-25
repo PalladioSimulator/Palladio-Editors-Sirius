@@ -3,7 +3,9 @@
   <emfprofile:Profile xmi:id="_K3zywLYIEeSD0ruwPZbkDQ" name="StaticResourceContainerLoadbalancingProfile" nsURI="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.staticresourcecontainerloadbalancing" nsPrefix="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles">
     <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_t8foELYJEeSD0ruwPZbkDQ" name="StaticResourceContainerLoadbalancingSystem">
       <eSuperTypes xmi:type="ecore:EClass" href="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication"/>
-      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_7NrxULYJEeSD0ruwPZbkDQ" name="roleURI"/>
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_7NrxULYJEeSD0ruwPZbkDQ" name="roleURI" changeable="false" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_OVB8wLuIEeS4YqzUTAgFdA">
+        <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
       <extensions xmi:type="emfprofile:Extension" xmi:id="_0hdw8LYJEeSD0ruwPZbkDQ" upperBound="1">
         <target xmi:type="ecore:EClass" href="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//system/System"/>
       </extensions>
@@ -13,7 +15,9 @@
     </eClassifiers>
     <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_E_ibALYMEeSh3si8bKqkQg" name="LoadbalancedResourceContainer">
       <eSuperTypes xmi:type="ecore:EClass" href="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication"/>
-      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_xa6LgLYQEeSh3si8bKqkQg" name="roleURI"/>
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_xa6LgLYQEeSh3si8bKqkQg" name="roleURI" changeable="false" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_QxvPwLuIEeS4YqzUTAgFdA">
+        <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
       <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_yxnfwLYQEeSh3si8bKqkQg" name="numberOfReplicas" defaultValueLiteral="1">
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       </eStructuralFeatures>
