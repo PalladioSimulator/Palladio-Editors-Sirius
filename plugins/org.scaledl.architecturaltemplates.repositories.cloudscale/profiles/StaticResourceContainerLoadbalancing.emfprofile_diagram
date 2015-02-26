@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:emfprofile="http://www.modelversioning.org/emfprofile/1.1" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
+  <emfprofile:Profile xmi:id="_K3zywLYIEeSD0ruwPZbkDQ" name="StaticResourceContainerLoadbalancingProfile" nsURI="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.staticresourcecontainerloadbalancing" nsPrefix="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles">
+    <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_t8foELYJEeSD0ruwPZbkDQ" name="StaticResourceContainerLoadbalancingSystem">
+      <eSuperTypes xmi:type="ecore:EClass" href="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication"/>
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_7NrxULYJEeSD0ruwPZbkDQ" name="roleURI" changeable="false" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_OVB8wLuIEeS4YqzUTAgFdA">
+        <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <extensions xmi:type="emfprofile:Extension" xmi:id="_0hdw8LYJEeSD0ruwPZbkDQ" upperBound="1">
+        <target xmi:type="ecore:EClass" href="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//system/System"/>
+      </extensions>
+    </eClassifiers>
+    <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_oy8CYLYLEeSh3si8bKqkQg">
+      <eSuperTypes xmi:type="ecore:EClass" href="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication"/>
+    </eClassifiers>
+    <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_E_ibALYMEeSh3si8bKqkQg" name="LoadbalancedResourceContainer">
+      <eSuperTypes xmi:type="ecore:EClass" href="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication"/>
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_xa6LgLYQEeSh3si8bKqkQg" name="roleURI" changeable="false" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_QxvPwLuIEeS4YqzUTAgFdA">
+        <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_yxnfwLYQEeSh3si8bKqkQg" name="numberOfReplicas" defaultValueLiteral="1">
+        <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <extensions xmi:type="emfprofile:Extension" xmi:id="_Kn4jkLYMEeSh3si8bKqkQg" upperBound="1">
+        <target xmi:type="ecore:EClass" href="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//resourceenvironment/ResourceContainer"/>
+      </extensions>
+    </eClassifiers>
+  </emfprofile:Profile>
+  <notation:Diagram xmi:id="_K3zywbYIEeSD0ruwPZbkDQ" type="EMFProfile" element="_K3zywLYIEeSD0ruwPZbkDQ" name="profile.emfprofile_diagram" measurementUnit="Pixel">
+    <children xmi:type="notation:Node" xmi:id="_tX9-sLYJEeSD0ruwPZbkDQ" type="2002">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_tX9-u7YJEeSD0ruwPZbkDQ" source="Shortcut">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_tX9-vLYJEeSD0ruwPZbkDQ" key="modelID" value="EMFProfile"/>
+      </eAnnotations>
+      <children xmi:type="notation:DecorationNode" xmi:id="_tX9-tLYJEeSD0ruwPZbkDQ" type="5002"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_tX9-tbYJEeSD0ruwPZbkDQ" type="7004">
+        <styles xmi:type="notation:SortingStyle" xmi:id="_tX9-trYJEeSD0ruwPZbkDQ"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_tX9-t7YJEeSD0ruwPZbkDQ"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_tX9-uLYJEeSD0ruwPZbkDQ" type="7005">
+        <styles xmi:type="notation:SortingStyle" xmi:id="_tX9-ubYJEeSD0ruwPZbkDQ"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_tX9-urYJEeSD0ruwPZbkDQ"/>
+      </children>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_tX9-sbYJEeSD0ruwPZbkDQ"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_tX9-srYJEeSD0ruwPZbkDQ" fontName="Segoe UI"/>
+      <element xmi:type="ecore:EClass" href="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//system/System"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tX9-s7YJEeSD0ruwPZbkDQ" x="35" y="50"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_t8pZELYJEeSD0ruwPZbkDQ" type="2006" element="_t8foELYJEeSD0ruwPZbkDQ">
+      <children xmi:type="notation:DecorationNode" xmi:id="_t8pZFLYJEeSD0ruwPZbkDQ" type="5008"/>
+      <children xmi:type="notation:DecorationNode" xmi:id="_t8pZFbYJEeSD0ruwPZbkDQ" type="7008">
+        <children xmi:type="notation:Node" xmi:id="_7N1iULYJEeSD0ruwPZbkDQ" type="3001" element="_7NrxULYJEeSD0ruwPZbkDQ">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_7N1iUbYJEeSD0ruwPZbkDQ"/>
+        </children>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_t8pZFrYJEeSD0ruwPZbkDQ"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_t8pZF7YJEeSD0ruwPZbkDQ"/>
+      </children>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_t8pZEbYJEeSD0ruwPZbkDQ"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_t8pZErYJEeSD0ruwPZbkDQ" fontName="Segoe UI"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_t8pZE7YJEeSD0ruwPZbkDQ" x="40" y="150" width="313" height="78"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_yJoE8LYLEeSh3si8bKqkQg" type="2002">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_yJoE-7YLEeSh3si8bKqkQg" source="Shortcut">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_yJoE_LYLEeSh3si8bKqkQg" key="modelID" value="EMFProfile"/>
+      </eAnnotations>
+      <children xmi:type="notation:DecorationNode" xmi:id="_yJoE9LYLEeSh3si8bKqkQg" type="5002"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_yJoE9bYLEeSh3si8bKqkQg" type="7004">
+        <styles xmi:type="notation:SortingStyle" xmi:id="_yJoE9rYLEeSh3si8bKqkQg"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_yJoE97YLEeSh3si8bKqkQg"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_yJoE-LYLEeSh3si8bKqkQg" type="7005">
+        <styles xmi:type="notation:SortingStyle" xmi:id="_yJoE-bYLEeSh3si8bKqkQg"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_yJoE-rYLEeSh3si8bKqkQg"/>
+      </children>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_yJoE8bYLEeSh3si8bKqkQg"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_yJoE8rYLEeSh3si8bKqkQg" fontName="Segoe UI"/>
+      <element xmi:type="ecore:EClass" href="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//resourceenvironment/ResourceContainer"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yJoE87YLEeSh3si8bKqkQg" x="540" y="75" width="138" height="78"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_E_ibAbYMEeSh3si8bKqkQg" type="2006" element="_E_ibALYMEeSh3si8bKqkQg">
+      <children xmi:type="notation:DecorationNode" xmi:id="_E_ibBbYMEeSh3si8bKqkQg" type="5008"/>
+      <children xmi:type="notation:DecorationNode" xmi:id="_E_ibBrYMEeSh3si8bKqkQg" type="7008">
+        <children xmi:type="notation:Node" xmi:id="_xa6LgbYQEeSh3si8bKqkQg" type="3001" element="_xa6LgLYQEeSh3si8bKqkQg">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_xa6LgrYQEeSh3si8bKqkQg"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_yxxQwLYQEeSh3si8bKqkQg" type="3001" element="_yxnfwLYQEeSh3si8bKqkQg">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_yxxQwbYQEeSh3si8bKqkQg"/>
+        </children>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_E_ibB7YMEeSh3si8bKqkQg"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_E_ibCLYMEeSh3si8bKqkQg"/>
+      </children>
+      <styles xmi:type="notation:DescriptionStyle" xmi:id="_E_ibArYMEeSh3si8bKqkQg"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_E_ibA7YMEeSh3si8bKqkQg" fontName="Segoe UI"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E_ibBLYMEeSh3si8bKqkQg" x="495" y="240"/>
+    </children>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_K3zywrYIEeSD0ruwPZbkDQ"/>
+    <edges xmi:type="notation:Edge" xmi:id="_0hm64LYJEeSD0ruwPZbkDQ" type="4005" element="_0hdw8LYJEeSD0ruwPZbkDQ" source="_t8pZELYJEeSD0ruwPZbkDQ" target="_tX9-sLYJEeSD0ruwPZbkDQ">
+      <children xmi:type="notation:DecorationNode" xmi:id="_0hm65LYJEeSD0ruwPZbkDQ" type="6004">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_0hm65bYJEeSD0ruwPZbkDQ" x="10" y="10"/>
+      </children>
+      <styles xmi:type="notation:RoutingStyle" xmi:id="_0hm64bYJEeSD0ruwPZbkDQ"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_0hm64rYJEeSD0ruwPZbkDQ" fontName="Segoe UI"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_0hm647YJEeSD0ruwPZbkDQ" points="[-7, -8, 1, 92]$[-7, -108, 1, -8]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0hm65rYJEeSD0ruwPZbkDQ" id="(0.31901840490797545,0.11538461538461539)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0hm657YJEeSD0ruwPZbkDQ" id="(0.4803921568627451,0.21428571428571427)"/>
+    </edges>
+    <edges xmi:type="notation:Edge" xmi:id="_Kn4jkbYMEeSh3si8bKqkQg" type="4005" element="_Kn4jkLYMEeSh3si8bKqkQg" source="_E_ibAbYMEeSh3si8bKqkQg" target="_yJoE8LYLEeSh3si8bKqkQg">
+      <children xmi:type="notation:DecorationNode" xmi:id="_Kn4jlbYMEeSh3si8bKqkQg" type="6004">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Kn4jlrYMEeSh3si8bKqkQg" x="10" y="10"/>
+      </children>
+      <styles xmi:type="notation:RoutingStyle" xmi:id="_Kn4jkrYMEeSh3si8bKqkQg"/>
+      <styles xmi:type="notation:FontStyle" xmi:id="_Kn4jk7YMEeSh3si8bKqkQg" fontName="Segoe UI"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Kn4jlLYMEeSh3si8bKqkQg" points="[-1, -13, 19, 169]$[-19, -144, 1, 38]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_KoBtgLYMEeSh3si8bKqkQg" id="(0.17346938775510204,0.3111111111111111)"/>
+    </edges>
+  </notation:Diagram>
+</xmi:XMI>

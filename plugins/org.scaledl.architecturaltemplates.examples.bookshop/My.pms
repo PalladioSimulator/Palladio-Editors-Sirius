@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pms:PMSModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pcmmeasuringpoint="http://palladiosimulator.org/PCM/MeasuringPoint/1.0" xmlns:pms="http://simulizar.palladiosimulator.org/PalladioMonitoringSpecification/1.0" guid="_b39twH61EeSGfMo9xValtg">
-  <performanceMeasurements guid="_cokrUH61EeSGfMo9xValtg" measuringPoint="pcmmeasuringpoint:EntryLevelSystemCallMeasuringPoint My.pcmmeasuringpoint#/">
-    <measurementSpecification guid="_elSPoH61EeSGfMo9xValtg" performanceMetric="ResponseTime" statisticalCharacterization="ArithmeticMean">
-      <temporalRestriction xsi:type="pms:Intervall" guid="_e5ryUH61EeSGfMo9xValtg" intervall="10.0"/>
+<pms:MonitorRepository xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metricspec="http://palladiosimulator.org/MetricSpec/1.0" xmlns:pcmmeasuringpoint="http://palladiosimulator.org/PCM/MeasuringPoint/1.0" xmlns:pms="http://simulizar.palladiosimulator.org/PalladioMonitoringSpecification/1.0" id="_tbnfsLX1EeSBr62tIyq7kg" entityName="Default Monitor Set">
+  <monitors id="_2lkt0LX1EeSBr62tIyq7kg" entityName="Response Times - Usage Scenario">
+    <measurementSpecification id="_6RdJsLX1EeSBr62tIyq7kg" statisticalCharacterization="ArithmeticMean">
+      <temporalRestriction xsi:type="pms:Intervall" id="_6jYAILX1EeSBr62tIyq7kg" intervall="10.0"/>
+      <metricDescription xsi:type="metricspec:NumericalBaseMetricDescription" href="pathmap://METRIC_SPEC_MODELS/models/commonMetrics.metricspec#_6rYmYs7nEeOX_4BzImuHbA"/>
     </measurementSpecification>
-  </performanceMeasurements>
-</pms:PMSModel>
+    <measuringPoint xsi:type="pcmmeasuringpoint:UsageScenarioMeasuringPoint" href="UsageScenario.pcmmeasuringpoint#/"/>
+  </monitors>
+</pms:MonitorRepository>

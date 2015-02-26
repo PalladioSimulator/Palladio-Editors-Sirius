@@ -73,4 +73,18 @@
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="resourceenvironment"/>
     </completion>
   </ATs>
+  <ATs id="_LjXtcLuIEeS4YqzUTAgFdA" entityName="StaticResourceContainerLoadbalancing">
+    <roles id="_OVB8wLuIEeS4YqzUTAgFdA" entityName="StaticResourceContainerLoadbalancingSystem">
+      <stereotype href="profiles/StaticResourceContainerLoadbalancing.emfprofile_diagram#_t8foELYJEeSD0ruwPZbkDQ"/>
+    </roles>
+    <roles id="_QxvPwLuIEeS4YqzUTAgFdA" entityName="LoadbalancedResourceContainer">
+      <stereotype href="profiles/StaticResourceContainerLoadbalancing.emfprofile_diagram#_E_ibALYMEeSh3si8bKqkQg"/>
+    </roles>
+    <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion" qvtoFileURI="StaticResourceContainerLoadbalancing.qvto">
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="allocation"/>
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter"/>
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="repository"/>
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="resourceenvironment"/>
+    </completion>
+  </ATs>
 </org.scaledl.architecturaltemplates:Repository>

@@ -43,8 +43,6 @@ modeltype PCM_SLO uses 'http://palladiosimulator.org/ServiceLevelObjective/1.0';
 transformation DynamicHorizontalScalingAssemblyContext( inout pcmSystem : PCM_SYS,
 						   inout pcmResourceEnvironment : PCM_RES_ENV,
 						   inout pcmUsage: PCM_USE
-						   //,inout pcmUsageScenarioMeasuringPoint : PCM_MEASURINGPOINT
-						   //,inout pms : PCM_PMS
 						   );
 						   
 
@@ -66,12 +64,15 @@ main() {
 	assemblyContexts -> forEach(assemblyContext){
 		if(hasAppliedStereotype(assemblyContext,"ReplicableAssemblyContext")){
 			var numberOfReplicas : Integer := getNumberOfReplicas(assemblyContext,"numberOfReplicas","ReplicableAssemblyContext");
+			var scaleInThreshold : Real := getThreshold(assemblyContext,"scaleInThreshold","ReplicableAssemblyContext");
+			var scaleOutThreshold : Real := getThreshold(assemblyContext,"scaleOutThreshold","ReplicableAssemblyContext");
 			applyStereotype(assemblyContext, "LoadbalancedAssemblyContext");
 			setIntTaggedValue(assemblyContext, numberOfReplicas, "LoadbalancedAssemblyContext", "numberOfReplicas");
+			setDoubleTaggedValue(assemblyContext, scaleInThreshold, "LoadbalancedAssemblyContext", "scaleInThreshold");
+			setDoubleTaggedValue(assemblyContext, scaleOutThreshold, "LoadbalancedAssemblyContext", "scaleOutThreshold");
 			
 		};
 	};
-	
 	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Assembly Context" finished');
 }
 
