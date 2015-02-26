@@ -17,7 +17,7 @@
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter"/>
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMTemplateCompletionParameter" fileExtension="resourceenvironment" templateFileURI="ThreeLayer/ThreeTier.resourceenvironment"/>
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="usagemodel"/>
-      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="pms"/>
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="monitorrepository"/>
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMOutputCompletionParameter" fileExtension="allocation"/>
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMOutputCompletionParameter" fileExtension="pcmmeasuringpoint"/>
     </completion>
@@ -44,7 +44,7 @@
     </roles>
     <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion" qvtoFileURI="DynamicHorizontalScalingResourceContainer.qvto">
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="resourceenvironment"/>
-      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="pms"/>
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="monitorrepository"/>
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMOutputCompletionParameter" fileExtension="pcmmeasuringpoint"/>
     </completion>
   </ATs>

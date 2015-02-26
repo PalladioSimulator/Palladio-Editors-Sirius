@@ -29,11 +29,13 @@ public final class ATPartitionConstants {
             }
         }),
 
-        PMS("PMS", LoadMonitorRepositoryModelIntoBlackboardJob.MONITOR_REPOSITORY_MODEL_PARTITION_ID, new HashSet<String>() {
-            {
-                add("pms");
-            }
-        }),
+        MONITOR_REPOSITORY("Monitor Repository",
+                LoadMonitorRepositoryModelIntoBlackboardJob.MONITOR_REPOSITORY_MODEL_PARTITION_ID,
+                new HashSet<String>() {
+                    {
+                        add("monitorrepository");
+                    }
+                }),
 
         EVENT_MIDDLEWARE("Event Middleware", LoadPCMModelsIntoBlackboardJob.EVENT_MIDDLEWARE_PARTITION_ID,
                 new HashSet<String>() {

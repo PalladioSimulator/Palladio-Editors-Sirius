@@ -24,7 +24,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="role" lowerBound="1"
           eType="#//type/Role" eOpposite="#//type/Role/parameters"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="dataType" lowerBound="1"
-          eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType"/>
+          eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Repository" eSuperTypes="../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
       <eStructuralFeatures xsi:type="ecore:EReference" name="ATs" upperBound="-1"
@@ -49,7 +49,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="QVTOCompletion" eSuperTypes="#//type/Completion">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="qvtoFileURI" lowerBound="1"
-          eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+          eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Completion" abstract="true">
       <eStructuralFeatures xsi:type="ecore:EReference" name="AT" lowerBound="1" eType="#//type/AT"
@@ -66,7 +66,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="GenericBlackboardCompletionParameter"
         eSuperTypes="#//type/CompletionParameter">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileExtension" lowerBound="1"
-          eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+          eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="PCMBlackboardCompletionParameter"
         eSuperTypes="#//type/CompletionParameter">
@@ -80,14 +80,14 @@
       <eLiterals name="REPOSITORY" value="3" literal="repository"/>
       <eLiterals name="USAGEMODEL" value="4" literal="usagemodel"/>
       <eLiterals name="RESOURCETYPE" value="5" literal="resourcetype"/>
-      <eLiterals name="PMS" value="6" literal="pms"/>
+      <eLiterals name="MONITORREPOSITORY" value="6" literal="monitorrepository"/>
       <eLiterals name="PCMMEASURINGPOINT" value="7" literal="pcmmeasuringpoint"/>
       <eLiterals name="SERVICELEVELOBJECTIVE" value="8" literal="slo"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="PCMTemplateCompletionParameter" eSuperTypes="#//type/PCMBlackboardCompletionParameter #//type/TemplateProvidingEntity"/>
     <eClassifiers xsi:type="ecore:EClass" name="TemplateProvidingEntity" abstract="true">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="templateFileURI" lowerBound="1"
-          eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+          eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="PCMOutputCompletionParameter" eSuperTypes="#//type/CompletionParameter">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileExtension" lowerBound="1"
@@ -96,7 +96,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="GenericOutputCompletionParameter"
         eSuperTypes="#//type/CompletionParameter">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileExtension" lowerBound="1"
-          eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+          eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="instance" nsURI="http://scaledl.org/ArchitecturalTemplates/Instance/1.0"

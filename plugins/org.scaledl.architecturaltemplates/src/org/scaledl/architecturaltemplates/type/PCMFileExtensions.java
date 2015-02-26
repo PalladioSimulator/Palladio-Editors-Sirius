@@ -78,17 +78,17 @@ public enum PCMFileExtensions implements Enumerator {
     RESOURCETYPE(5, "RESOURCETYPE", "resourcetype"),
 
     /**
-     * The '<em><b>PMS</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The '<em><b>MONITORREPOSITORY</b></em>' literal object. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
-     * @see #PMS_VALUE
+     * @see #MONITORREPOSITORY_VALUE
      * @generated
      * @ordered
      */
-    PMS(6, "PMS", "pms"),
-
-    /**
-     * The '<em><b>PCMMEASURINGPOINT</b></em>' literal object. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+    MONITORREPOSITORY(6, "MONITORREPOSITORY", "monitorrepository"), /**
+     * The '
+     * <em><b>PCMMEASURINGPOINT</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      *
      * @see #PCMMEASURINGPOINT_VALUE
      * @generated
@@ -197,19 +197,19 @@ public enum PCMFileExtensions implements Enumerator {
     public static final int RESOURCETYPE_VALUE = 5;
 
     /**
-     * The '<em><b>PMS</b></em>' literal value. <!-- begin-user-doc -->
+     * The '<em><b>MONITORREPOSITORY</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of '<em><b>PMS</b></em>' literal object isn't clear, there really should be
-     * more of a description here...
+     * If the meaning of '<em><b>MONITORREPOSITORY</b></em>' literal object isn't clear, there
+     * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      *
-     * @see #PMS
-     * @model literal="pms"
+     * @see #MONITORREPOSITORY
+     * @model literal="monitorrepository"
      * @generated
      * @ordered
      */
-    public static final int PMS_VALUE = 6;
+    public static final int MONITORREPOSITORY_VALUE = 6;
 
     /**
      * The '<em><b>PCMMEASURINGPOINT</b></em>' literal value. <!-- begin-user-doc -->
@@ -248,7 +248,8 @@ public enum PCMFileExtensions implements Enumerator {
      * @generated
      */
     private static final PCMFileExtensions[] VALUES_ARRAY = new PCMFileExtensions[] { SYSTEM, ALLOCATION,
-        RESOURCEENVIRONMENT, REPOSITORY, USAGEMODEL, RESOURCETYPE, PMS, PCMMEASURINGPOINT, SERVICELEVELOBJECTIVE, };
+        RESOURCEENVIRONMENT, REPOSITORY, USAGEMODEL, RESOURCETYPE, MONITORREPOSITORY, PCMMEASURINGPOINT,
+        SERVICELEVELOBJECTIVE, };
 
     /**
      * A public read-only list of all the '<em><b>PCM File Extensions</b></em>' enumerators. <!--
@@ -308,8 +309,8 @@ public enum PCMFileExtensions implements Enumerator {
             return USAGEMODEL;
         case RESOURCETYPE_VALUE:
             return RESOURCETYPE;
-        case PMS_VALUE:
-            return PMS;
+        case MONITORREPOSITORY_VALUE:
+            return MONITORREPOSITORY;
         case PCMMEASURINGPOINT_VALUE:
             return PCMMEASURINGPOINT;
         case SERVICELEVELOBJECTIVE_VALUE:

@@ -17,7 +17,7 @@
         <genEnumLiterals ecoreEnumLiteral="architecturaltemplates.ecore#//type/PCMFileExtensions/REPOSITORY"/>
         <genEnumLiterals ecoreEnumLiteral="architecturaltemplates.ecore#//type/PCMFileExtensions/USAGEMODEL"/>
         <genEnumLiterals ecoreEnumLiteral="architecturaltemplates.ecore#//type/PCMFileExtensions/RESOURCETYPE"/>
-        <genEnumLiterals ecoreEnumLiteral="architecturaltemplates.ecore#//type/PCMFileExtensions/PMS"/>
+        <genEnumLiterals ecoreEnumLiteral="architecturaltemplates.ecore#//type/PCMFileExtensions/MONITORREPOSITORY"/>
         <genEnumLiterals ecoreEnumLiteral="architecturaltemplates.ecore#//type/PCMFileExtensions/PCMMEASURINGPOINT"/>
         <genEnumLiterals ecoreEnumLiteral="architecturaltemplates.ecore#//type/PCMFileExtensions/SERVICELEVELOBJECTIVE"/>
       </genEnums>

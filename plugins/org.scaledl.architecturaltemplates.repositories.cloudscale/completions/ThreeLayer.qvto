@@ -15,7 +15,7 @@ modeltype PCMCore uses pcm::core('http://sdq.ipd.uka.de/PalladioComponentModel/5
 modeltype PCMEntity uses pcm::core::entity('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
 modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
 modeltype PCM_MEASURINGPOINT uses 'http://palladiosimulator.org/PCM/MeasuringPoint/1.0';
-modeltype PCM_PMS uses 'http://palladiosimulator.org/SimuLizar/MonitorRepository/1.0';
+modeltype PCM_MONITOR_REPOSITORY uses 'http://palladiosimulator.org/SimuLizar/MonitorRepository/1.0';
 modeltype PCM_EDP2MEASURINGPOINT uses 'http://palladiosimulator.org/EDP2/MeasuringPoint/0.9.1';
 
 /**
@@ -29,7 +29,7 @@ modeltype PCM_EDP2MEASURINGPOINT uses 'http://palladiosimulator.org/EDP2/Measuri
 transformation ThreeLayer( inout pcmSystem : PCM_SYS,
 						   inout pcmResourceEnvironment : PCM_RES_ENV,
 						   inout pcmUsage: PCM_USE,
-						   inout pms : PCM_PMS,
+						   inout monitorRepositoryModel : PCM_MONITOR_REPOSITORY,
 						   out pcmAllocation : PCM_ALLOC, 
 						   out pcmUsageScenarioMeasuringPoint : PCM_MEASURINGPOINT);
 						   
@@ -53,9 +53,9 @@ main() {
 	var allocation : Allocation := system.map createAllocation(resourceEnvironment);
 	allocateAssemblyContextsToResourceContainer(assemblyContexts,resourceContainers,allocation);
 	
-	var pmsModel : PMSModel := pms.rootObjects()![PMSModel];
+	var monitorRepository : MonitorRepository := monitorRepositoryModel.rootObjects()![MonitorRepository];
 	var measuringPoint : UsageScenarioMeasuringPoint := usageScenario.map createPcmMeasuringPoint();
-	addPerformanceMeasurementsToPmsModel(pmsModel, measuringPoint);
+	addMonitorToMonitorRepository(monitorRepository, measuringPoint);
 	log ('Architectural Template Transformation "ThreeLayer" finished!');
 }
 
@@ -80,11 +80,11 @@ helper allocateAssemblyContextsToResourceContainer(assemblyContexts : Set(Assemb
 	}
 };
 
-helper addPerformanceMeasurementsToPmsModel(inout pmsModel : PMSModel, in measuringPoint : MeasuringPoint){
-	pmsModel.performanceMeasurements += new PerformanceMeasurement(measuringPoint);
+helper addMonitorToMonitorRepository(inout monitorRepository : MonitorRepository, inout measuringPoint : MeasuringPoint){
+	monitorRepository.monitors += new Monitor(measuringPoint);
 }
 
-constructor PerformanceMeasurement :: PerformanceMeasurement(mp : MeasuringPoint){
+constructor Monitor :: Monitor(mp : MeasuringPoint){
 	measuringPoint := mp;
 	measurementSpecification := new MeasurementSpecification();
 	//guid := "PerformanceMeasurementID"

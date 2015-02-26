@@ -125,8 +125,8 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
             final CompletionParameter parameter) {
         final ResourceSetPartition pcmPartition = this.getBlackboard().getPartition(
                 ATPartitionConstants.Partition.PCM.getPartitionId());
-        final ResourceSetPartition pmsPartition = this.getBlackboard().getPartition(
-                ATPartitionConstants.Partition.PMS.getPartitionId());
+        final ResourceSetPartition monitorRepositoryPartition = this.getBlackboard().getPartition(
+                ATPartitionConstants.Partition.MONITOR_REPOSITORY.getPartitionId());
 
         final URI templateFolderURI = rootATUri.appendSegment("templates");
         final URI systemModelFolderURI = getSystemModelFolderURI();
@@ -225,15 +225,15 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                     ServiceLevelObjectiveRepository sloRepo = sloFactory.createServiceLevelObjectiveRepository();
                     outResource.getContents().add(sloRepo);
                 } else if (outResource instanceof MonitorrepositoryResourceImpl) {
-                    final MonitorrepositoryFactoryImpl pmsFactory = (MonitorrepositoryFactoryImpl) MonitorrepositoryFactoryImpl
+                    final MonitorrepositoryFactoryImpl monitorRepositoryFactory = (MonitorrepositoryFactoryImpl) MonitorrepositoryFactoryImpl
                             .init();
-                    MonitorRepository monitorRepository = pmsFactory.createMonitorRepository();
+                    MonitorRepository monitorRepository = monitorRepositoryFactory.createMonitorRepository();
                     outResource.getContents().add(monitorRepository);
                 }
-                if (uri.lastSegment().endsWith("pms")) {
-                    pmsPartition.setContents(uri, outResource.getContents());
-                    pmsPartition.resolveAllProxies();
-                    return new ModelLocation(ATPartitionConstants.Partition.PMS.getPartitionId(), uri);
+                if (uri.lastSegment().endsWith("monitorrepository")) {
+                    monitorRepositoryPartition.setContents(uri, outResource.getContents());
+                    monitorRepositoryPartition.resolveAllProxies();
+                    return new ModelLocation(ATPartitionConstants.Partition.MONITOR_REPOSITORY.getPartitionId(), uri);
                 } else {
                     pcmPartition.setContents(uri, outResource.getContents());
                     pcmPartition.resolveAllProxies();

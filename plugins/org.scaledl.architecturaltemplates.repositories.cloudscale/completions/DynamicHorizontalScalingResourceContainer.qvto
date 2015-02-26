@@ -15,7 +15,7 @@ modeltype PCMCore uses pcm::core('http://sdq.ipd.uka.de/PalladioComponentModel/5
 modeltype PCMEntity uses pcm::core::entity('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
 modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
 modeltype PCM_MEASURINGPOINT uses 'http://palladiosimulator.org/PCM/MeasuringPoint/1.0';
-modeltype PCM_PMS uses 'http://palladiosimulator.org/SimuLizar/MonitorRepository/1.0';
+modeltype PCM_MONITOR_REPOSITORY uses 'http://palladiosimulator.org/SimuLizar/MonitorRepository/1.0';
 modeltype PCM_EDP2MEASURINGPOINT uses 'http://palladiosimulator.org/EDP2/MeasuringPoint/0.9.1';
 
 /**
@@ -37,7 +37,7 @@ modeltype PCM_EDP2MEASURINGPOINT uses 'http://palladiosimulator.org/EDP2/Measuri
  **/
 transformation DynamicHorizontalScalingResourceContainer(
                            inout pcmResourceEnvironment : PCM_RES_ENV,
-						   inout pms : PCM_PMS,
+						   inout monitorRepositoryModel : PCM_MONITOR_REPOSITORY,
 						   out pcmActiveResourceMeasuringPoint : PCM_MEASURINGPOINT);
 						   
 
@@ -49,7 +49,7 @@ main() {
 	
 	var resourceEnvironment : ResourceEnvironment := pcmResourceEnvironment.rootObjects()![ResourceEnvironment];		
 	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
-	var pmsModel : PMSModel := pms.rootObjects()![PMSModel];
+	var monitorRepository : MonitorRepository := monitorRepositoryModel.rootObjects()![MonitorRepository];
 	resourceContainers->forEach(resourceContainer) {
 		if(hasAppliedStereotype(resourceContainer,"ReplicableResourceContainer")){
 			var processingResources : Set(ProcessingResourceSpecification) := 
@@ -61,7 +61,7 @@ main() {
 				    // FIXME actually, we need to aggregate measuring points in a repository and use several performance measurements
 					var measuringPoint : ActiveResourceMeasuringPoint :=
 						resourceContainer.map createActiveResourceMeasuringPoint(processingResource, replica);
-					addPerformanceMeasurementsToPmsModel(pmsModel, measuringPoint);
+					addMonitorToMonitorRepository(monitorRepository, measuringPoint);
 					
 					replica := replica+1;
 				}
@@ -80,11 +80,11 @@ mapping ResourceContainer::createActiveResourceMeasuringPoint(processingResource
 	replicaID := replica;
 }
 
-helper addPerformanceMeasurementsToPmsModel(inout pmsModel : PMSModel, inout measuringPoint : MeasuringPoint){
-	pmsModel.performanceMeasurements += new PerformanceMeasurement(measuringPoint);
+helper addMonitorToMonitorRepository(inout monitorRepository : MonitorRepository, inout measuringPoint : MeasuringPoint){
+	monitorRepository.monitors += new Monitor(measuringPoint);
 }
 
-constructor PerformanceMeasurement :: PerformanceMeasurement(mp : MeasuringPoint){
+constructor Monitor :: Monitor(mp : MeasuringPoint){
 	measuringPoint := mp;
 	measurementSpecification := new MeasurementSpecification();
 }

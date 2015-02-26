@@ -919,7 +919,7 @@ public class TypePackageImpl extends EPackageImpl implements TypePackage {
         this.addEEnumLiteral(this.pcmFileExtensionsEEnum, PCMFileExtensions.REPOSITORY);
         this.addEEnumLiteral(this.pcmFileExtensionsEEnum, PCMFileExtensions.USAGEMODEL);
         this.addEEnumLiteral(this.pcmFileExtensionsEEnum, PCMFileExtensions.RESOURCETYPE);
-        this.addEEnumLiteral(this.pcmFileExtensionsEEnum, PCMFileExtensions.PMS);
+        this.addEEnumLiteral(this.pcmFileExtensionsEEnum, PCMFileExtensions.MONITORREPOSITORY);
         this.addEEnumLiteral(this.pcmFileExtensionsEEnum, PCMFileExtensions.PCMMEASURINGPOINT);
         this.addEEnumLiteral(this.pcmFileExtensionsEEnum, PCMFileExtensions.SERVICELEVELOBJECTIVE);
 
