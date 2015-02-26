@@ -15,7 +15,7 @@ modeltype PCMCore uses pcm::core('http://sdq.ipd.uka.de/PalladioComponentModel/5
 modeltype PCMEntity uses pcm::core::entity('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
 modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
 modeltype PCM_MEASURINGPOINT uses 'http://palladiosimulator.org/PCM/MeasuringPoint/1.0';
-modeltype PCM_PMS uses 'http://simulizar.palladiosimulator.org/PalladioMonitoringSpecification/1.0';
+modeltype PCM_PMS uses 'http://palladiosimulator.org/SimuLizar/MonitorRepository/1.0';
 modeltype PCM_EDP2MEASURINGPOINT uses 'http://palladiosimulator.org/EDP2/MeasuringPoint/0.9.1';
 
 /**
