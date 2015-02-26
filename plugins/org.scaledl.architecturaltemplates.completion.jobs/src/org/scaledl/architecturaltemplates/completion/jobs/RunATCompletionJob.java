@@ -22,9 +22,9 @@ import org.palladiosimulator.pcmmeasuringpoint.util.PcmmeasuringpointResourceImp
 import org.palladiosimulator.servicelevelobjective.ServiceLevelObjectiveRepository;
 import org.palladiosimulator.servicelevelobjective.ServicelevelObjectiveFactory;
 import org.palladiosimulator.servicelevelobjective.util.ServicelevelObjectiveResourceImpl;
-import org.palladiosimulator.simulizar.pms.MonitorRepository;
-import org.palladiosimulator.simulizar.pms.impl.PmsFactoryImpl;
-import org.palladiosimulator.simulizar.pms.util.PmsResourceImpl;
+import org.palladiosimulator.simulizar.monitorrepository.MonitorRepository;
+import org.palladiosimulator.simulizar.monitorrepository.impl.MonitorrepositoryFactoryImpl;
+import org.palladiosimulator.simulizar.monitorrepository.util.MonitorrepositoryResourceImpl;
 import org.scaledl.architecturaltemplates.completion.config.ATExtensionJobConfiguration;
 import org.scaledl.architecturaltemplates.completion.constants.ATPartitionConstants;
 import org.scaledl.architecturaltemplates.completion.constants.ATPartitionConstants.Partition;
@@ -224,8 +224,9 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                     ServicelevelObjectiveFactory sloFactory = ServicelevelObjectiveFactory.eINSTANCE;
                     ServiceLevelObjectiveRepository sloRepo = sloFactory.createServiceLevelObjectiveRepository();
                     outResource.getContents().add(sloRepo);
-                } else if (outResource instanceof PmsResourceImpl) {
-                    final PmsFactoryImpl pmsFactory = (PmsFactoryImpl) PmsFactoryImpl.init();
+                } else if (outResource instanceof MonitorrepositoryResourceImpl) {
+                    final MonitorrepositoryFactoryImpl pmsFactory = (MonitorrepositoryFactoryImpl) MonitorrepositoryFactoryImpl
+                            .init();
                     MonitorRepository monitorRepository = pmsFactory.createMonitorRepository();
                     outResource.getContents().add(monitorRepository);
                 }
