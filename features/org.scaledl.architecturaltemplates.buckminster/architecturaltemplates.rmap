@@ -33,15 +33,17 @@
   <rm:locator searchPathRef="eclipse-release" failOnError="false"/>
   <rm:locator searchPathRef="orbit" failOnError="false"/>
   <rm:searchPath name="CloudScale-Features">
-    <rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="svn">
-      <rm:uri format="https://cloudscale:CloudScale123@dev.xlab.si/svn-pub/cloudscale/trunk/wp3-integration/eclipse/{0}">
+    <rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="local">
+      <rm:uri format="{0}/features/{1}">
+      	<bc:propertyRef key="workspace.root"/>
         <bc:propertyRef key="buckminster.component"/>
       </rm:uri>
     </rm:provider>
   </rm:searchPath>
   <rm:searchPath name="ArchitecturalTemplates">
-    <rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="svn">
-      <rm:uri format="https://cloudscale:CloudScale123@dev.xlab.si/svn-pub/cloudscale/trunk/wp3-integration/architecturaltemplates/{0}">
+    <rm:provider componentTypes="eclipse.feature,osgi.bundle" readerType="local">
+      <rm:uri format="{0}/plugins/{1}">
+      	<bc:propertyRef key="workspace.root"/>
         <bc:propertyRef key="buckminster.component"/>
       </rm:uri>
     </rm:provider>
