@@ -12,6 +12,26 @@
     </rm:provider>
   </rm:searchPath>
   
+  <rm:searchPath name="EMFProfiles">
+    <rm:provider readerType="git" componentTypes="osgi.bundle,eclipse.feature" resolutionFilter="">
+        <rm:uri format="{0}/plugins,{1}">
+          <bc:propertyRef key="workspace.root" />
+          <bc:propertyRef key="buckminster.component" />
+        </rm:uri>
+      <rm:property key="git.remote.uri" value="https://code.google.com/a/eclipselabs.org/p/emf-profiles"/>      
+    </rm:provider>
+  </rm:searchPath>
+  
+  <rm:searchPath name="buildgit">
+    <rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster" readerType="git" resolutionFilter="">
+      <rm:uri format="{0}/plugins,{1}">
+          <bc:propertyRef key="workspace.root" />
+          <bc:propertyRef key="buckminster.component" />
+        </rm:uri>
+      <rm:property key="git.remote.uri" value="https://github.com/CloudScale-Project/ArchitecturalTemplates"/>      
+    </rm:provider>
+  </rm:searchPath>
+  
     <rm:searchPath name="epp">
         <rm:provider componentTypes="osgi.bundle,eclipse.feature"
             readerType="p2" source="false" mutable="false">
@@ -31,7 +51,7 @@
         </rm:provider>
     </rm:searchPath>
 
-    <rm:locator searchPathRef="buildsvn" failOnError="false" />
+    <rm:locator searchPathRef="buildgit" failOnError="false" />
     <rm:locator searchPathRef="epp" failOnError="false" />
     <rm:locator searchPathRef="luna-releases" failOnError="false" />
     <rm:locator searchPathRef="luna-updates" failOnError="true" />
