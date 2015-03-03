@@ -14,7 +14,7 @@
   
   <rm:searchPath name="buildgit">
     <rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster" readerType="git" resolutionFilter="">
-      <rm:uri format="{0}/GIT,{1}/features">
+      <rm:uri format="{0}/features,{1}">
           <bc:propertyRef key="workspace.root" />
           <bc:propertyRef key="buckminster.component" />
         </rm:uri>
