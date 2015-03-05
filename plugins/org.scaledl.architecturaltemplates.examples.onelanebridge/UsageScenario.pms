@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pms:MonitorRepository xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metricspec="http://palladiosimulator.org/MetricSpec/1.0" xmlns:pcmmeasuringpoint="http://palladiosimulator.org/PCM/MeasuringPoint/1.0" xmlns:pms="http://simulizar.palladiosimulator.org/PalladioMonitoringSpecification/1.0" id="_xQRLsK8TEeSndedGMUl_sQ" entityName="Default Monitor Set">
+<monitorrepository:MonitorRepository xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metricspec="http://palladiosimulator.org/MetricSpec/1.0" xmlns:pcmmeasuringpoint="http://palladiosimulator.org/PCM/MeasuringPoint/1.0" xmlns:monitorrepository="http://palladiosimulator.org/SimuLizar/MonitorRepository/1.0" id="_xQRLsK8TEeSndedGMUl_sQ" entityName="Default Monitor Set">
   <monitors id="_z-a0AK8TEeSndedGMUl_sQ" entityName="Response Times - Usage Scenario">
     <measurementSpecification id="_sSAFcK8UEeSskrCYteSGAA" statisticalCharacterization="ArithmeticMean">
-      <temporalRestriction xsi:type="pms:Intervall" id="_-TNoIK8UEeSskrCYteSGAA" intervall="10.0"/>
+      <temporalRestriction xsi:type="monitorrepository:Intervall" id="_-TNoIK8UEeSskrCYteSGAA" intervall="10.0"/>
       <metricDescription xsi:type="metricspec:NumericalBaseMetricDescription" href="pathmap://METRIC_SPEC_MODELS/models/commonMetrics.metricspec#_6rYmYs7nEeOX_4BzImuHbA"/>
     </measurementSpecification>
     <measuringPoint xsi:type="pcmmeasuringpoint:UsageScenarioMeasuringPoint" href="UsageScenario.pcmmeasuringpoint#/"/>
   </monitors>
   <monitors id="_wsR8gK_REeSGL-GAWy2qgA" entityName="Number of Resource Containers - Resource Environment">
     <measurementSpecification id="_Ic4q8K_SEeSGL-GAWy2qgA">
-      <temporalRestriction xsi:type="pms:Intervall" id="_RJX58K_SEeSGL-GAWy2qgA" intervall="10.0"/>
+      <temporalRestriction xsi:type="monitorrepository:Intervall" id="_RJX58K_SEeSGL-GAWy2qgA" intervall="10.0"/>
       <metricDescription xsi:type="metricspec:NumericalBaseMetricDescription" href="pathmap://METRIC_SPEC_MODELS/models/commonMetrics.metricspec#_e7x3gq-eEeSgL6DrxYuwZg"/>
     </measurementSpecification>
     <measuringPoint xsi:type="pcmmeasuringpoint:ResourceEnvironmentMeasuringPoint" href="ResourceEnvironment.pcmmeasuringpoint#/"/>
   </monitors>
-</pms:MonitorRepository>
+</monitorrepository:MonitorRepository>
