@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<pcmmeasuringpoint:ResourceEnvironmentMeasuringPoint xmlns:pcmmeasuringpoint="http://palladiosimulator.org/PCM/MeasuringPoint/1.0">
-  <resourceEnvironment href="ThreeTier.resourceenvironment#/"/>
-</pcmmeasuringpoint:ResourceEnvironmentMeasuringPoint>
