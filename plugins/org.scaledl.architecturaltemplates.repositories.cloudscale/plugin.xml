@@ -27,6 +27,9 @@
   </extension>
     <extension point="org.modelversioning.emfprofile.profile">
      <profile profile_resource="profiles/StaticResourceContainerLoadbalancing.emfprofile_diagram"/>
+    </extension>
+    <extension point="org.modelversioning.emfprofile.profile">
+     <profile profile_resource="profiles/StaticAssemblyContextLoadbalancing.emfprofile_diagram"/>
   </extension>
    <extension
          point="org.eclipse.m2m.qvt.oml.javaBlackboxUnits">

@@ -59,12 +59,12 @@
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="resourceenvironment"/>
     </completion>
   </ATs>
-  <ATs id="_i-ghUIHkEeSeK9JYh8VNzw" entityName="Loadbalancing">
-    <roles id="_rotRUYHkEeSeK9JYh8VNzw" entityName="Loadbalanced System">
-      <stereotype href="profiles/Loadbalancing.emfprofile_diagram#_xHyTsIHlEeSeK9JYh8VNzw"/>
+  <ATs id="_i-ghUIHkEeSeK9JYh8VNzw" entityName="Static Assembly Context Loadbalancing">
+    <roles id="_rotRUYHkEeSeK9JYh8VNzw" entityName="StaticAssemblyContextLoadbalancingSystem">
+      <stereotype href="profiles/StaticAssemblyContextLoadbalancing.emfprofile_diagram#_dgxFkL2VEeS8D6gGtq5evQ"/>
     </roles>
-    <roles id="_kk1l8IHkEeSeK9JYh8VNzw" entityName="Loadbalanced Assembly Context">
-      <stereotype href="profiles/Loadbalancing.emfprofile_diagram#_qIdwYH7gEeSPVbICnJBAhw"/>
+    <roles id="_kk1l8IHkEeSeK9JYh8VNzw" entityName="StaticLoadbalancedAssemblyContext">
+      <stereotype href="profiles/StaticAssemblyContextLoadbalancing.emfprofile_diagram#_kAT74L2VEeS8D6gGtq5evQ"/>
     </roles>
     <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion" qvtoFileURI="Loadbalancing.qvto">
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter"/>
@@ -73,12 +73,12 @@
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="resourceenvironment"/>
     </completion>
   </ATs>
-  <ATs id="_LjXtcLuIEeS4YqzUTAgFdA" entityName="StaticResourceContainerLoadbalancing">
+  <ATs id="_LjXtcLuIEeS4YqzUTAgFdA" entityName="Static Resource Container Loadbalancing">
     <roles id="_OVB8wLuIEeS4YqzUTAgFdA" entityName="StaticResourceContainerLoadbalancingSystem">
-      <stereotype href="profiles/StaticResourceContainerLoadbalancing.emfprofile_diagram#_t8foELYJEeSD0ruwPZbkDQ"/>
+      <stereotype href="profiles/StaticResourceContainerLoadbalancing.emfprofile_diagram#_rXqFsL0NEeSXc41T9TupKQ"/>
     </roles>
-    <roles id="_QxvPwLuIEeS4YqzUTAgFdA" entityName="LoadbalancedResourceContainer">
-      <stereotype href="profiles/StaticResourceContainerLoadbalancing.emfprofile_diagram#_E_ibALYMEeSh3si8bKqkQg"/>
+    <roles id="_QxvPwLuIEeS4YqzUTAgFdA" entityName="StaticLoadbalancedResourceContainer">
+      <stereotype href="profiles/StaticResourceContainerLoadbalancing.emfprofile_diagram#_4S2w0L0NEeSXc41T9TupKQ"/>
     </roles>
     <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion" qvtoFileURI="StaticResourceContainerLoadbalancing.qvto">
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="allocation"/>

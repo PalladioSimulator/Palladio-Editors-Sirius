@@ -30,17 +30,17 @@ main() {
 			
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var system : System := allocation.system_Allocation;
-	assert fatal(hasAppliedStereotype(system,"StaticResourceContainerLoadbalancingSystem"))
-		with log("There is not StaticResourceContainerSystem Stereotype Application");
+	//assert fatal(hasAppliedStereotype(system,"StaticResourceContainerLoadbalancingSystem"))
+	//	with log("There is not StaticResourceContainerSystem Stereotype Application");
 		
 	var resourceEnvironment : ResourceEnvironment := allocation.targetResourceEnvironment_Allocation;
 	var resourceContainer : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
 	
-	assert fatal(appliedStereotypesEqualsOne(resourceContainer,"LoadbalancedResourceContainer"))
-		with log ("There is more than one LoadbalancedResourceContainer Stereotype Application!");
+	assert fatal(appliedStereotypesEqualsOne(resourceContainer,"StaticLoadbalancedResourceContainer"))
+		with log ("There is more than one StaticLoadbalancedResourceContainer Stereotype Application!");
 		
 	var loadbalancedResourceContainer : ResourceContainer := resourceEnvironment.resourceContainer_ResourceEnvironment -> selectOne(rc : ResourceContainer| hasAppliedStereotype(rc, "Replicable"));
-	numberOfReplicas := getNumberOfReplicas(loadbalancedResourceContainer,"numberOfReplicas","LoadbalancedResourceContainer");
+	numberOfReplicas := getNumberOfReplicas(loadbalancedResourceContainer,"numberOfReplicas","StaticLoadbalancedResourceContainer");
 	var replicatedResourceContainer : Bag(ResourceContainer);
 	
 	var counter : Integer := 1;

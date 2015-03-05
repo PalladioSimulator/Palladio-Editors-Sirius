@@ -22,17 +22,17 @@ main() {
 	var assemblyContexts : Set(AssemblyContext);
 	allocationContexts -> forEach(allocationContext){assemblyContexts += allocationContext.assemblyContext_AllocationContext;};
 	
-	assert fatal(appliedStereotypesEqualsOne(assemblyContexts,"LoadbalancedAssemblyContext"))
-		with log ("There is more than one LoadbalancedAssemblyContext Stereotype Application!");	
+	assert fatal(appliedStereotypesEqualsOne(assemblyContexts,"StaticLoadbalancedAssemblyContext"))
+		with log ("There is more than one StaticLoadbalancedAssemblyContext Stereotype Application!");	
 		
 	//get the stereotyped AssemblyContext
 	var loadBalancedAssemblyContext : AssemblyContext := assemblyContexts -> selectOne(assemblyContext : AssemblyContext |
-					hasAppliedStereotype(assemblyContext,"LoadbalancedAssemblyContext"));
+					hasAppliedStereotype(assemblyContext,"StaticLoadbalancedAssemblyContext"));
 					
 	assert fatal(loadBalancedAssemblyContext != null)
-		with log ("There is no LoadbalancedAssemblyContext Stereotype Application!");	
+		with log ("There is no StaticLoadbalancedAssemblyContext Stereotype Application!");	
 	
-	numberOfReplicas := getNumberOfReplicas(loadBalancedAssemblyContext,"numberOfReplicas","LoadbalancedAssemblyContext");
+	numberOfReplicas := getNumberOfReplicas(loadBalancedAssemblyContext,"numberOfReplicas","StaticLoadbalancedAssemblyContext");
 	
 	var loadBalancedAllocationContext : AllocationContext := allocationContexts ->selectOne(allocationContext : AllocationContext | allocationContext.assemblyContext_AllocationContext.id = loadBalancedAssemblyContext.id);
 	
@@ -255,7 +255,7 @@ constructor RequiredDelegationConnector :: RequiredDelegationConnector(assemblyC
 	log ('Start of delegationConnector creation');
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var system : System := allocation.system_Allocation![System];
-	entityName := "RequiredDelegation " + innerRequiredRole.entityName + " " + outerRequiredRole.entityName;
+	entityName := "RequiredDelegation " + innerRequiredRole.entityName + "_" + outerRequiredRole.entityName;
 	assemblyContext_RequiredDelegationConnector := assemblyContext;
 	innerRequiredRole_RequiredDelegationConnector := innerRequiredRole;
 	outerRequiredRole_RequiredDelegationConnector := outerRequiredRole;
