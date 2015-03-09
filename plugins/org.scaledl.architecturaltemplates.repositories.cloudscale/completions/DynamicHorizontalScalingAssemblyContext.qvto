@@ -1,6 +1,7 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ThreeLayerLibrary;
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.LoadbalancingLibrary;
+import Loadbalancing;
 
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
 modeltype PCM_REP uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0';
@@ -20,7 +21,6 @@ modeltype PCM_EDP2MEASURINGPOINT uses 'http://palladiosimulator.org/EDP2/Measuri
 modeltype PCM_EDP2DATA uses 'http://palladiosimulator.org/EDP2/ExperimentData/0.9.1';
 modeltype PCM_SLO uses 'http://palladiosimulator.org/ServiceLevelObjective/1.0';
 	
-
 /**
  * Transforms a system where assembly context are annotated with the "Replicable Assembly
  * Context" AT roles to a PCM instance where each such assembly context can dynamically
@@ -40,43 +40,22 @@ modeltype PCM_SLO uses 'http://palladiosimulator.org/ServiceLevelObjective/1.0';
  * @author Sebastian Lehrig
  * @author Daria Giacinto
  **/
-transformation DynamicHorizontalScalingAssemblyContext( inout pcmSystem : PCM_SYS,
-						   inout pcmResourceEnvironment : PCM_RES_ENV,
-						   inout pcmUsage: PCM_USE
-						   );
+transformation DynamicHorizontalScalingAssemblyContext( inout pcmAllocation : PCM_ALLOC//,
+							//inout pcmSystem : PCM_SYS,
+						   //inout pcmResourceEnvironment : PCM_RES_ENV,
+						   //inout pcmUsage: PCM_USE
+						   )access transformation Loadbalancing();
 						   
 
-property threshold : Real;
-property interval : Real = 10;
 
 main() {	
 	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Assembly Context" started');
 	
 	// Get relevant PCM model elements
-	var system : System := pcmSystem.rootObjects()![System];
+	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
+	var system : System := allocation.system_Allocation;
 	assert fatal(hasAppliedStereotype(system, "DynamicHorizontalScalingAssemblyContextSystem"))
 		with log ("The system is not a dynamical horizontal scaling assembly context system!");
-	var assemblyContexts : Set(AssemblyContext) := system.assemblyContexts__ComposedStructure;	
-	var usageModel : UsageModel := pcmUsage.rootObjects()![UsageModel];
-	var usageScenario : UsageScenario := usageModel.usageScenario_UsageModel![UsageScenario];
-	var resourceEnvironment : ResourceEnvironment := pcmResourceEnvironment.rootObjects()![ResourceEnvironment];
-	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;	
-	assemblyContexts -> forEach(assemblyContext){
-		if(hasAppliedStereotype(assemblyContext,"ReplicableAssemblyContext")){
-			var numberOfReplicas : Integer := getNumberOfReplicas(assemblyContext,"numberOfReplicas","ReplicableAssemblyContext");
-			var scaleInThreshold : Real := getThreshold(assemblyContext,"scaleInThreshold","ReplicableAssemblyContext");
-			var scaleOutThreshold : Real := getThreshold(assemblyContext,"scaleOutThreshold","ReplicableAssemblyContext");
-			applyStereotype(assemblyContext, "LoadbalancedAssemblyContext");
-			setIntTaggedValue(assemblyContext, numberOfReplicas, "LoadbalancedAssemblyContext", "numberOfReplicas");
-			setDoubleTaggedValue(assemblyContext, scaleInThreshold, "LoadbalancedAssemblyContext", "scaleInThreshold");
-			setDoubleTaggedValue(assemblyContext, scaleOutThreshold, "LoadbalancedAssemblyContext", "scaleOutThreshold");
-			
-		};
-	};
+		new Loadbalancing(pcmAllocation)->transform();
 	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Assembly Context" finished');
 }
-
-//blackbox helper hasAppliedStereotype(system:Entity, stereotype : String):Boolean;
-//blackbox helper applyStereotype(pcmEntity:Entity, stereotype:String):Void;
-//blackbox helper getResponseTimeThreshold(assemblyContext:AssemblyContext, taggedValueName:String, stereotypeName: String):Real;
-//blackbox helper getResponseTimeInterval(assemblyContext:AssemblyContext, taggedValueName:String, stereotypeName: String):Real;

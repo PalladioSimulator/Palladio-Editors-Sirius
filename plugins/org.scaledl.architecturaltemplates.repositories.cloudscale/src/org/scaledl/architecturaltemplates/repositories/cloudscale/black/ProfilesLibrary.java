@@ -23,6 +23,17 @@ public class ProfilesLibrary {
 		}
 		return false;
 	}
+	
+	public static boolean hasAppliedStereotype(Set<Entity> pcmEntitySet,String stereotypeName){
+		Iterator<Entity> iterator = pcmEntitySet.iterator();
+		while (iterator.hasNext()) {
+			Entity stereotypable = iterator.next();
+			if (stereotypable.getAppliedStereotype(stereotypeName) != null) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public static boolean appliedStereotypesEqualsOne(Set<Entity> pcmEntitySet,
 			String stereotypeName) {

@@ -11,28 +11,39 @@ modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/Pall
 modeltype PCMSEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0');
 
 
-transformation Loadbalancing(inout pcmAllocation : PCM_ALLOC,
-										inout pcmSystem : PCM_SYS,
-										inout pcmRepository : PCM_REP,
-										inout pcmResourceEnvironment : PCM_RES_ENV);
+transformation Loadbalancing(inout pcmAllocation : PCM_ALLOC);
+
 property numberOfReplicas : Integer;
 main() {
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var allocationContexts : Set(AllocationContext) := allocation.allocationContexts_Allocation;
 	var assemblyContexts : Set(AssemblyContext);
 	allocationContexts -> forEach(allocationContext){assemblyContexts += allocationContext.assemblyContext_AllocationContext;};
+	var appliedStereotype : String;
 	
-	assert fatal(appliedStereotypesEqualsOne(assemblyContexts,"StaticLoadbalancedAssemblyContext"))
-		with log ("There is more than one StaticLoadbalancedAssemblyContext Stereotype Application!");	
-		
+	if(hasAppliedStereotype(assemblyContexts,"StaticLoadbalancedAssemblyContext")){
+					appliedStereotype := "StaticLoadbalancedAssemblyContext";	
+	}
+	else if(hasAppliedStereotype(assemblyContexts,"ReplicableAssemblyContext")){
+				appliedStereotype := "ReplicableAssemblyContext";	
+	};
+	
 	//get the stereotyped AssemblyContext
 	var loadBalancedAssemblyContext : AssemblyContext := assemblyContexts -> selectOne(assemblyContext : AssemblyContext |
-					hasAppliedStereotype(assemblyContext,"StaticLoadbalancedAssemblyContext"));
+					hasAppliedStereotype(assemblyContext,appliedStereotype));
 					
 	assert fatal(loadBalancedAssemblyContext != null)
-		with log ("There is no StaticLoadbalancedAssemblyContext Stereotype Application!");	
+		with log ("There is no Stereotype Application!");	
+		
+	assert fatal(appliedStereotypesEqualsOne(assemblyContexts,appliedStereotype))
+		with log ("There is more than one Stereotype Application!");	
+	numberOfReplicas := getNumberOfReplicas(loadBalancedAssemblyContext,"numberOfReplicas",appliedStereotype);
 	
-	numberOfReplicas := getNumberOfReplicas(loadBalancedAssemblyContext,"numberOfReplicas","StaticLoadbalancedAssemblyContext");
+	//apply Stereotype OriginalAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
+	applyStereotype(loadBalancedAssemblyContext,"OriginalAssemblyContext");
+	
+	//remove Stereotype Application ReplicableAssemblyContext from the AssemblyContext
+	//removeStereotypeApplications(loadBalancedAssemblyContext,"ReplicableAssemblyContext");
 	
 	var loadBalancedAllocationContext : AllocationContext := allocationContexts ->selectOne(allocationContext : AllocationContext | allocationContext.assemblyContext_AllocationContext.id = loadBalancedAssemblyContext.id);
 	
@@ -42,6 +53,9 @@ main() {
 	var loadBalancerComponent : RepositoryComponent := new BasicComponent(loadBalancedAssemblyContext.encapsulatedComponent__AssemblyContext);
 	var loadBalancerAssemblyContext : AssemblyContext := new AssemblyContext(loadBalancerComponent);
 	
+	//apply Stereotype LoadbalancerAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
+	applyStereotype(loadBalancerAssemblyContext,"LoadbalancerAssemblyContext");
+		
 	//duplicate the stereotyped AssemblyContext
 	var duplicatedAssemblyContexts : OrderedSet(AssemblyContext) := createDuplicatedAssemblyContexts(loadBalancedAssemblyContext);
 	
@@ -92,6 +106,8 @@ helper createDuplicatedAssemblyContexts(loadbalancedAssemblyContext : AssemblyCo
 	var duplicateAssemblyContext : AssemblyContext;
 	while(counter < numberOfReplicas){
 		duplicateAssemblyContext := new AssemblyContext(loadbalancedAssemblyContext.encapsulatedComponent__AssemblyContext);
+		//apply Stereotype LoadbalancerAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
+		applyStereotype(duplicateAssemblyContext,"DuplicateAssemblyContext");
 		duplicatedAssemblyContextSet +=duplicateAssemblyContext;
 		counter := counter+1;
 	};

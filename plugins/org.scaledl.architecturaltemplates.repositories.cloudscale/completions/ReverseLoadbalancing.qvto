@@ -12,24 +12,24 @@ modeltype PCMSEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/S
 
 
 transformation ReverseLoadbalancing(inout pcmAllocation : PCM_ALLOC,
-										inout pcmSystem : PCM_SYS,
-										inout pcmRepository : PCM_REP,
-										inout pcmResourceEnvironment : PCM_RES_ENV);
+									inout pcmSystem : PCM_SYS,
+									inout pcmRepository : PCM_REP,
+									inout pcmResourceEnvironment : PCM_RES_ENV);
 main() {
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var allocationContexts : Set(AllocationContext) := allocation.allocationContexts_Allocation;
 	var assemblyContexts : Set(AssemblyContext);
 	allocationContexts -> forEach(allocationContext){assemblyContexts += allocationContext.assemblyContext_AllocationContext;};
 	
-	assert fatal(appliedStereotypesEqualsOne(assemblyContexts,"LoadbalancerAssemblyContext"))
-		with log ("There is more than one LoadbalancerAssemblyContext Stereotype Application!");		
-		
 	//get the LoadbalancerAssemblyContext stereotyped AssemblyContext
 	var loadBalancerAssemblyContext : AssemblyContext := assemblyContexts -> selectOne(assemblyContext : AssemblyContext |
 					hasAppliedStereotype(assemblyContext,"LoadbalancerAssemblyContext"));
 					
 	assert fatal(loadBalancerAssemblyContext != null)
 		with log ("There is no LoadbalancerAssemblyContext Stereotype Application!");	
+		
+	assert fatal(appliedStereotypesEqualsOne(assemblyContexts,"LoadbalancerAssemblyContext"))
+		with log ("There is more than one LoadbalancerAssemblyContext Stereotype Application!");		
 		
 	var loadbalancerRepositoryComponent : RepositoryComponent := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext;
 	var duplicateAssemblyContexts : Set(AssemblyContext);
@@ -44,6 +44,7 @@ main() {
 		}
 		else if(hasAppliedStereotype(allocationContext.assemblyContext_AllocationContext,"OriginalAssemblyContext")){
 			originalAssemblyContext := allocationContext.assemblyContext_AllocationContext;
+			removeStereotypeApplications(originalAssemblyContext,"OriginalAssemblyContext")
 		}
 		else if(hasAppliedStereotype(allocationContext.assemblyContext_AllocationContext,"LoadbalancerAssemblyContext")){
 			resourceContainer := allocationContext.resourceContainer_AllocationContext;
