@@ -78,4 +78,18 @@ public class ComposedProvidingRequiringEntityServices {
 						assemblyContextVariableUsage -> assemblyContextVariableUsage.getNamedReference__VariableUsage()
 								.getReferenceName().equals(variableUsageReferenceName));
 	}
+	
+	/**
+	 * Parses the given expression and sets it on the given {@link PCMRandomVariable}.
+	 * @param pcmRandomVariable the random variable
+	 * @param expression the expression
+	 * @return the random variable
+	 * TODO:
+	 * 	- Parse expression
+	 * 	- show error or set the expression
+	 * 	- pass {@link VariableCharacterisation} or {@link VariableUsage} instead and reinstantiate it on a {@link AssemblyContext} if it is defined on a {@link Component}
+	 */
+	public EObject editPCMRandomVariable(EObject pcmRandomVariable, String expression) {
+		return pcmRandomVariable;
+	}
 }
