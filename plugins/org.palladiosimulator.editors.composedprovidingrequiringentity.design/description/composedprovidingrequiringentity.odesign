@@ -191,7 +191,7 @@
             </style>
           </subNodeMappings>
           <subContainerMappings name="Dummy AssemblyContext Container" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="[self.assemblyContexts__ComposedStructure/]" documentation="Used for the parameter implementation until the Node can be fully migrated." domainClass="composition.AssemblyContext">
-            <subContainerMappings name="VariableUsage Container" semanticCandidatesExpression="[self.getVariableUsages()/]" documentation="Represents a VariableCharacterisation and its associacted PCMRandomVariable. Its style`s color is changed by a style customization depending whether it is defined in an Component or overridden by the AssemblyContext." domainClass="parameter.VariableUsage" childrenPresentation="List">
+            <subContainerMappings name="VariableUsage Container" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Deletion']/@ownedTools[name='VariableUsage']" semanticCandidatesExpression="[self.getVariableUsages()/]" doubleClickDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Double%20Click']/@ownedTools[name='CopyVariableUsage%20to%20AssemblyContext']" documentation="Represents a VariableCharacterisation and its associacted PCMRandomVariable. Its style`s color is changed by a style customization depending whether it is defined in an Component or overridden by the AssemblyContext." domainClass="parameter.VariableUsage" childrenPresentation="List">
               <subNodeMappings name="VariableCharacterisation Node" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='VariableCharacterisationDirectEdit']" semanticCandidatesExpression="[self.variableCharacterisation_VariableUsage/]" semanticElements="[self.oclAsSet()->union(self.specification_VariableCharacterisation.oclAsSet())/]" documentation="Represents a VariableCharacterisation and its associacted PCMRandomVariable. Its style`s color is changed by a style customization depending whether its VariableUsage is defined in an Component or overridden by the AssemblyContext." domainClass="parameter.VariableCharacterisation">
                 <style xsi:type="style:SquareDescription" labelExpression="[self.type + '=' + self.specification_VariableCharacterisation.specification/]" labelAlignment="LEFT" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -511,7 +511,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool:DirectEditLabel" name="VariableCharacterisationDirectEdit" inputLabelExpression="[self.specification_VariableCharacterisation.specification/]">
+            <ownedTools xsi:type="tool:DirectEditLabel" name="VariableCharacterisationDirectEdit" precondition="[self.variableUsage_VariableCharacterisation.eContainer().eClass().name = 'AssemblyContext'/]" inputLabelExpression="[self.specification_VariableCharacterisation.specification/]">
               <mask mask="{0}"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.specification_VariableCharacterisation.editPCMRandomVariable(arg0)/]"/>
@@ -533,7 +533,28 @@
               <element name="element"/>
               <elementView name="elementView"/>
               <containerView name="containerView"/>
-              <initialOperation/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]"/>
+              </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool:DeleteElementDescription" documentation="Deletes the VariableUsage. Only applicable if it is defined on the AssemblyContext." name="VariableUsage" precondition="[self.eContainer().eClass().name = 'AssemblyContext'/]">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <containerView name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+                  <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+          </subSections>
+          <subSections name="Double Click">
+            <ownedTools xsi:type="tool:DoubleClickDescription" name="CopyVariableUsage to AssemblyContext" precondition="[self.eContainer().eClass().name &lt;> 'AssemblyContext'/]" mappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='Dummy%20AssemblyContext%20Container']/@subContainerMappings[name='VariableUsage%20Container']">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element.copyToAssemblyContext(elementView.eContainer().oclAsType(DNodeContainer).target)/]"/>
+              </initialOperation>
             </ownedTools>
           </subSections>
         </toolSections>
