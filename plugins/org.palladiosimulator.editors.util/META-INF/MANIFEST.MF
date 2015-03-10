@@ -1,8 +1,16 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Util
-Bundle-SymbolicName: org.palladiosimulator.editors.util
+Bundle-SymbolicName: org.palladiosimulator.editors.util;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: de.uka.ipd.sdq.pcm;bundle-version="3.6.0"
 Export-Package: org.palladiosimulator.editors.util.api.services
+Import-Package: org.eclipse.core.runtime;version="3.4.0",
+ org.eclipse.jface.dialogs,
+ org.eclipse.swt.widgets,
+ org.eclipse.ui,
+ org.eclipse.ui.plugin,
+ org.osgi.framework;version="1.8.0"
+Bundle-Activator: org.palladiosimulator.editors.util.Activator
+Bundle-ActivationPolicy: lazy

@@ -9,7 +9,12 @@ import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.Lexer;
 import org.antlr.runtime.Parser;
 import org.antlr.runtime.RecognitionException;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.ui.PlatformUI;
+import org.palladiosimulator.editors.util.Activator;
 
 import de.uka.ipd.sdq.pcm.core.PCMRandomVariable;
 import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
@@ -23,6 +28,9 @@ import de.uka.ipd.sdq.pcm.stochasticexpressions.parser.PCMStoExParser;
 import de.uka.ipd.sdq.stoex.Expression;
 
 public class ComposedProvidingRequiringEntityServices {
+
+	private static final String PARSER_ERROR_TITLE = "Error parsing expression";
+	private static final String PARSER_ERROR_MESSAGE = "The entered stochastic expression is invalid.";
 
 	/**
 	 * Returns a list containing all {@link VariableUsage} associated with the
@@ -47,13 +55,19 @@ public class ComposedProvidingRequiringEntityServices {
 			return usages;
 
 		Collection<VariableUsage> componentVariableUsages = ((ImplementationComponentType) assemblyContext
-				.getEncapsulatedComponent__AssemblyContext()).getComponentParameterUsage_ImplementationComponentType();
+				.getEncapsulatedComponent__AssemblyContext())
+				.getComponentParameterUsage_ImplementationComponentType();
 
 		// combine the sets
-		usages.addAll(assemblyContext.getConfigParameterUsages__AssemblyContext());
-		componentVariableUsages.stream()
-				.filter(componentVariableUsage -> !isOverridden(componentVariableUsage, assemblyContext))
-				.forEach(componentVariableUsage -> usages.add(componentVariableUsage));
+		usages.addAll(assemblyContext
+				.getConfigParameterUsages__AssemblyContext());
+		componentVariableUsages
+				.stream()
+				.filter(componentVariableUsage -> !isOverridden(
+						componentVariableUsage, assemblyContext))
+				.forEach(
+						componentVariableUsage -> usages
+								.add(componentVariableUsage));
 		;
 
 		return usages;
@@ -74,29 +88,34 @@ public class ComposedProvidingRequiringEntityServices {
 	 * @return
 	 * 
 	 */
-	public boolean isOverridden(EObject variableUsageParam, EObject assemblyContextParam) {
+	public boolean isOverridden(EObject variableUsageParam,
+			EObject assemblyContextParam) {
 		if (!(variableUsageParam instanceof VariableUsage && assemblyContextParam instanceof AssemblyContext)) {
 			return false; // FIXME: proper error handling
 		}
 
-		String variableUsageReferenceName = ((VariableUsage) variableUsageParam).getNamedReference__VariableUsage()
-				.getReferenceName();
+		String variableUsageReferenceName = ((VariableUsage) variableUsageParam)
+				.getNamedReference__VariableUsage().getReferenceName();
 		AssemblyContext assemblyContext = (AssemblyContext) assemblyContextParam;
 
 		return assemblyContext
 				.getConfigParameterUsages__AssemblyContext()
 				.stream()
 				.anyMatch(
-						assemblyContextVariableUsage -> assemblyContextVariableUsage.getNamedReference__VariableUsage()
-								.getReferenceName().equals(variableUsageReferenceName));
+						assemblyContextVariableUsage -> assemblyContextVariableUsage
+								.getNamedReference__VariableUsage()
+								.getReferenceName()
+								.equals(variableUsageReferenceName));
 	}
-	
+
 	/**
-	 * Sets the given string as a specification on the {@link PCMRandomVariable}.
-	 * For this it first parses it to prevent any errors.
+	 * Sets the given string as a specification on the {@link PCMRandomVariable}
+	 * . For this it first parses it to prevent any errors.
 	 *
-	 * @param pcmRandomVariable the random variable
-	 * @param expression the expression
+	 * @param pcmRandomVariable
+	 *            the random variable
+	 * @param expression
+	 *            the expression
 	 * @return the random variable
 	 */
 	public EObject editPCMRandomVariable(EObject pcmRandomVariable, String expressionString) {
@@ -104,11 +123,15 @@ public class ComposedProvidingRequiringEntityServices {
 			return null;
 		}
 		if (!validExpression(expressionString)) {
-			// TODO: display error dialog
-            System.out.printf("Expression \"%s\" invalid", expressionString);
+			ErrorDialog errorDialog = new ErrorDialog(
+					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), 
+					PARSER_ERROR_TITLE, 
+					null, 
+					new Status(IStatus.ERROR, Activator.PLUGIN_ID, PARSER_ERROR_MESSAGE), 
+					IStatus.ERROR);
+			errorDialog.open();
 			return null;
 		}
-		System.out.printf("Expression \"%s\" valid", expressionString);
 
 		// TODO: check whether the VariableUsage is defined on an Component. If so, duplicate it on the AssemblyContext
 
@@ -120,20 +143,24 @@ public class ComposedProvidingRequiringEntityServices {
 	/**
 	 * Parses an stochastic expression to determine whether it is valid.
 	 *
-	 * @param the expressionString
+	 * @param the
+	 *            expressionString
 	 * @return the validity
 	 */
 	private boolean validExpression(String expressionString) {
-        final MyPCMStoExLexer lexer = new MyPCMStoExLexer(new ANTLRStringStream(expressionString));
-        final MyPCMStoExParser parser = new MyPCMStoExParser(new CommonTokenStream(lexer));
-        try {
-            parser.expression();
-        } catch (final RecognitionException e1) {
-            return false; // TODO: return exception to be displayed in the error message
-        }
-        if (lexer.hasErrors() || parser.hasErrors()) {
-            return false;
-        }
+		final MyPCMStoExLexer lexer = new MyPCMStoExLexer(
+				new ANTLRStringStream(expressionString));
+		final MyPCMStoExParser parser = new MyPCMStoExParser(
+				new CommonTokenStream(lexer));
+		try {
+			parser.expression();
+		} catch (final RecognitionException e1) {
+			return false; // TODO: return exception to be displayed in the error
+							// message
+		}
+		if (lexer.hasErrors() || parser.hasErrors()) {
+			return false;
+		}
 		return true;
 	}
 }
