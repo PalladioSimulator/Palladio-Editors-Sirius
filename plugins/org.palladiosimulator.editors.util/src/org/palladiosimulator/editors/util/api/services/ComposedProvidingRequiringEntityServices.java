@@ -13,7 +13,7 @@ import de.uka.ipd.sdq.pcm.repository.ImplementationComponentType;
 public class ComposedProvidingRequiringEntityServices {
 
 	/**
-	 * Returns a list containing all {@link VariableUsage} associated with the
+	 * Returns a list containing all {@link VariableUsage}s associated with the
 	 * {@link AssemblyContext}. This means all usages that are defined on the
 	 * context itself and those of its encapsulated component which are not
 	 * overwritten.
@@ -42,7 +42,7 @@ public class ComposedProvidingRequiringEntityServices {
 		componentVariableUsages.stream()
 				.filter(componentVariableUsage -> !isOverridden(componentVariableUsage, assemblyContext))
 				.forEach(componentVariableUsage -> usages.add(componentVariableUsage));
-		;
+		
 
 		return usages;
 	}
