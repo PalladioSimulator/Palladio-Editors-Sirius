@@ -1,14 +1,26 @@
 package org.palladiosimulator.editors.util.api.services;
 
+import java.awt.Component;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.stream.Collectors;
 
+import org.antlr.runtime.ANTLRStringStream;
+import org.antlr.runtime.CommonTokenStream;
+import org.antlr.runtime.Lexer;
+import org.antlr.runtime.Parser;
+import org.antlr.runtime.RecognitionException;
 import org.eclipse.emf.ecore.EObject;
 
+import de.uka.ipd.sdq.pcm.core.PCMRandomVariable;
 import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
+import de.uka.ipd.sdq.pcm.parameter.VariableCharacterisation;
 import de.uka.ipd.sdq.pcm.parameter.VariableUsage;
 import de.uka.ipd.sdq.pcm.repository.ImplementationComponentType;
+import de.uka.ipd.sdq.pcm.stochasticexpressions.parser.MyPCMStoExLexer;
+import de.uka.ipd.sdq.pcm.stochasticexpressions.parser.MyPCMStoExParser;
+import de.uka.ipd.sdq.pcm.stochasticexpressions.parser.PCMStoExLexer;
+import de.uka.ipd.sdq.pcm.stochasticexpressions.parser.PCMStoExParser;
+import de.uka.ipd.sdq.stoex.Expression;
 
 public class ComposedProvidingRequiringEntityServices {
 
@@ -80,16 +92,48 @@ public class ComposedProvidingRequiringEntityServices {
 	}
 	
 	/**
-	 * Parses the given expression and sets it on the given {@link PCMRandomVariable}.
+	 * Sets the given string as a specification on the {@link PCMRandomVariable}.
+	 * For this it first parses it to prevent any errors.
+	 *
 	 * @param pcmRandomVariable the random variable
 	 * @param expression the expression
 	 * @return the random variable
-	 * TODO:
-	 * 	- Parse expression
-	 * 	- show error or set the expression
-	 * 	- pass {@link VariableCharacterisation} or {@link VariableUsage} instead and reinstantiate it on a {@link AssemblyContext} if it is defined on a {@link Component}
 	 */
-	public EObject editPCMRandomVariable(EObject pcmRandomVariable, String expression) {
+	public EObject editPCMRandomVariable(EObject pcmRandomVariable, String expressionString) {
+		if (!(pcmRandomVariable instanceof PCMRandomVariable)) {
+			return null;
+		}
+		if (!validExpression(expressionString)) {
+			// TODO: display error dialog
+            System.out.printf("Expression \"%s\" invalid", expressionString);
+			return null;
+		}
+		System.out.printf("Expression \"%s\" valid", expressionString);
+
+		// TODO: check whether the VariableUsage is defined on an Component. If so, duplicate it on the AssemblyContext
+
+		((PCMRandomVariable) pcmRandomVariable).setSpecification(expressionString);
+
 		return pcmRandomVariable;
+	}
+
+	/**
+	 * Parses an stochastic expression to determine whether it is valid.
+	 *
+	 * @param the expressionString
+	 * @return the validity
+	 */
+	private boolean validExpression(String expressionString) {
+        final MyPCMStoExLexer lexer = new MyPCMStoExLexer(new ANTLRStringStream(expressionString));
+        final MyPCMStoExParser parser = new MyPCMStoExParser(new CommonTokenStream(lexer));
+        try {
+            parser.expression();
+        } catch (final RecognitionException e1) {
+            return false; // TODO: return exception to be displayed in the error message
+        }
+        if (lexer.hasErrors() || parser.hasErrors()) {
+            return false;
+        }
+		return true;
 	}
 }
