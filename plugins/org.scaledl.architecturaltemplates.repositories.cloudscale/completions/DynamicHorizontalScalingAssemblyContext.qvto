@@ -40,11 +40,7 @@ modeltype PCM_SLO uses 'http://palladiosimulator.org/ServiceLevelObjective/1.0';
  * @author Sebastian Lehrig
  * @author Daria Giacinto
  **/
-transformation DynamicHorizontalScalingAssemblyContext( inout pcmAllocation : PCM_ALLOC//,
-							//inout pcmSystem : PCM_SYS,
-						   //inout pcmResourceEnvironment : PCM_RES_ENV,
-						   //inout pcmUsage: PCM_USE
-						   )access transformation Loadbalancing();
+transformation DynamicHorizontalScalingAssemblyContext( inout pcmAllocation : PCM_ALLOC )access transformation Loadbalancing;
 						   
 
 

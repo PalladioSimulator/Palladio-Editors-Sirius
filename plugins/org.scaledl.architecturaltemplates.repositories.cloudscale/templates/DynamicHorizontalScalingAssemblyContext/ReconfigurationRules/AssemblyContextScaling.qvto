@@ -20,7 +20,8 @@ modeltype PCM_EDP2DATA uses 'http://palladiosimulator.org/EDP2/ExperimentData/0.
 modeltype PCM_SLO uses 'http://palladiosimulator.org/ServiceLevelObjective/1.0';
 modeltype PRM uses 'http://simulizar.palladiosimulator.org/PalladioRuntimeMonitoring/1.0';
 	
-transformation AssemblyContextScaling(in prm : PRM, inout pcmAllocation : PCM_ALLOC);
+transformation AssemblyContextScaling(in prm : PRM, inout pcmAllocation : PCM_ALLOC) 
+access Loadbalancing, ReverseLoadbalancing;
 
 property numberOfReplicas : Integer;
 property scaleInThreshold : Real;
@@ -36,7 +37,6 @@ main() {
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var allocationContexts : Set(AllocationContext) := allocation.allocationContexts_Allocation;
 	var assemblyContexts : Set(AssemblyContext);
-	
 	allocationContexts -> forEach(allocationContext){
 		assemblyContexts += allocationContext.assemblyContext_AllocationContext;
 	};
@@ -47,7 +47,7 @@ main() {
 						
 	assert fatal(loadBalancedAssemblyContext != null)
 		with log ("There is no LoadbalancedAssemblyContext Stereotype Application!");
-		
+
 	numberOfReplicas := getNumberOfReplicas(loadBalancedAssemblyContext,"numberOfReplicas","ReplicableAssemblyContext");
 	scaleInThreshold := getThreshold(loadBalancedAssemblyContext,"scaleInThreshold","ReplicableAssemblyContext");
 	scaleOutThreshold := getThreshold(loadBalancedAssemblyContext,"scaleOutThreshold","ReplicableAssemblyContext");	
