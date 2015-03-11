@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <monitorrepository:MonitorRepository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metricspec="http://palladiosimulator.org/MetricSpec/1.0" xmlns:monitorrepository="http://palladiosimulator.org/SimuLizar/MonitorRepository/1.0" xmlns:pcmmeasuringpoint="http://palladiosimulator.org/PCM/MeasuringPoint/1.0" id="_xQRLsK8TEeSndedGMUl_sQ" entityName="Default Monitor Set">
   <monitors id="_z-a0AK8TEeSndedGMUl_sQ" entityName="Response Times - Usage Scenario">
-    <measurementSpecification id="_sSAFcK8UEeSskrCYteSGAA" statisticalCharacterization="ArithmeticMean">
+    <measurementSpecifications id="_sSAFcK8UEeSskrCYteSGAA" statisticalCharacterization="ArithmeticMean">
       <temporalRestriction xsi:type="monitorrepository:Intervall" id="_-TNoIK8UEeSskrCYteSGAA" intervall="10.0"/>
       <metricDescription xsi:type="metricspec:NumericalBaseMetricDescription" href="pathmap://METRIC_SPEC_MODELS/models/commonMetrics.metricspec#_6rYmYs7nEeOX_4BzImuHbA"/>
-    </measurementSpecification>
+    </measurementSpecifications>
     <measuringPoint xsi:type="pcmmeasuringpoint:UsageScenarioMeasuringPoint" href="threelayer.measuringpoint#//@measuringPoints.0"/>
   </monitors>
   <monitors id="_wsR8gK_REeSGL-GAWy2qgA" entityName="Number of Resource Containers - Resource Environment">
-    <measurementSpecification id="_Ic4q8K_SEeSGL-GAWy2qgA">
+    <measurementSpecifications id="_Ic4q8K_SEeSGL-GAWy2qgA">
       <temporalRestriction xsi:type="monitorrepository:Intervall" id="_RJX58K_SEeSGL-GAWy2qgA" intervall="10.0"/>
       <metricDescription xsi:type="metricspec:NumericalBaseMetricDescription" href="pathmap://METRIC_SPEC_MODELS/models/commonMetrics.metricspec#_e7x3gq-eEeSgL6DrxYuwZg"/>
-    </measurementSpecification>
+    </measurementSpecifications>
     <measuringPoint xsi:type="pcmmeasuringpoint:ResourceEnvironmentMeasuringPoint" href="threelayer.measuringpoint#//@measuringPoints.1"/>
+  </monitors>
+  <monitors id="_I4aLUMW1EeSis_7JLfBvVA" entityName="State - Database CPU">
+    <measurementSpecifications id="_Puf5YMW1EeSis_7JLfBvVA" statisticalCharacterization="ArithmeticMean">
+      <temporalRestriction xsi:type="monitorrepository:Intervall" id="_THq0oMW1EeSis_7JLfBvVA" intervall="10.0"/>
+      <metricDescription xsi:type="metricspec:MetricSetDescription" href="pathmap://METRIC_SPEC_MODELS/models/commonMetrics.metricspec#_-buIceJDEeO6l86uYUhhyw"/>
+    </measurementSpecifications>
+    <measuringPoint xsi:type="pcmmeasuringpoint:ActiveResourceMeasuringPoint" href="threelayer.measuringpoint#//@measuringPoints.2"/>
+  </monitors>
+  <monitors id="_VNDMwMW1EeSis_7JLfBvVA" entityName="Utilization - Database CPU">
+    <measurementSpecifications id="_XJV6UMW1EeSis_7JLfBvVA" statisticalCharacterization="ArithmeticMean">
+      <temporalRestriction xsi:type="monitorrepository:Intervall" id="_atSiMMW1EeSis_7JLfBvVA" intervall="10.0"/>
+      <metricDescription xsi:type="metricspec:MetricSetDescription" href="pathmap://METRIC_SPEC_MODELS/models/commonMetrics.metricspec#_mhws4SkUEeSuf8LV7cHLgA"/>
+    </measurementSpecifications>
+    <measuringPoint xsi:type="pcmmeasuringpoint:ActiveResourceMeasuringPoint" href="threelayer.measuringpoint#//@measuringPoints.2"/>
   </monitors>
 </monitorrepository:MonitorRepository>
