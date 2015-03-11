@@ -10,11 +10,9 @@ modeltype PCMEntity uses pcm::core::entity('http://sdq.ipd.uka.de/PalladioCompon
 modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
 modeltype PCMSEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0');
 
-
-transformation ReverseLoadbalancing(inout pcmAllocation : PCM_ALLOC,
-									inout pcmSystem : PCM_SYS,
-									inout pcmRepository : PCM_REP,
-									inout pcmResourceEnvironment : PCM_RES_ENV);
+transformation ReverseLoadbalancing(inout pcmAllocation : PCM_ALLOC);
+									
+property listOfRootObjects : List(NamedElement);
 main() {
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var allocationContexts : Set(AllocationContext) := allocation.allocationContexts_Allocation;
@@ -29,8 +27,16 @@ main() {
 		with log ("There is no LoadbalancerAssemblyContext Stereotype Application!");	
 		
 	assert fatal(appliedStereotypesEqualsOne(assemblyContexts,"LoadbalancerAssemblyContext"))
-		with log ("There is more than one LoadbalancerAssemblyContext Stereotype Application!");		
-		
+		with log ("There is more than one LoadbalancerAssemblyContext Stereotype Application!");	
+			
+	var system : System := allocation.system_Allocation;
+	var repository : Repository := assemblyContexts->any(true).encapsulatedComponent__AssemblyContext.repository__RepositoryComponent;
+	var resourceEnvironment : ResourceEnvironment := allocation.targetResourceEnvironment_Allocation;
+	listOfRootObjects ->add(allocation);
+	listOfRootObjects ->add(resourceEnvironment);	
+	listOfRootObjects ->add(system);
+	listOfRootObjects ->add(repository);	
+	
 	var loadbalancerRepositoryComponent : RepositoryComponent := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext;
 	var duplicateAssemblyContexts : Set(AssemblyContext);
 	var originalAssemblyContext : AssemblyContext;
@@ -52,25 +58,30 @@ main() {
 			removeAllocationContext(allocationContext);
 		}
 	};
+
+	removeLinkingResource(resourceEnvironment.linkingResources__ResourceEnvironment);
 	
 	reverseSystem(duplicateAssemblyContexts, originalAssemblyContext, loadBalancerAssemblyContext);
 	reverseRepository(loadbalancerRepositoryComponent);
 }
 
 /**
+ * Remove a LinkingResource when it is connected with only one ResourceContainer
+ */
+helper removeLinkingResource(linkingResources : Set(LinkingResource)){
+	linkingResources->forEach(linkingResource){
+		var connectedResourceContainer : Set(ResourceContainer) := linkingResource.connectedResourceContainers_LinkingResource;
+		if(connectedResourceContainer->size()<2){
+			delete(listOfRootObjects,linkingResource);
+		}
+	};
+	 
+}
+
+/**
  * Remove all Provided and RequiredRoles from the Loadbalancer RepositoryComponent and then remove the component
  */
 helper reverseRepository(loadbalancerRepositoryComponent : RepositoryComponent){
-	var requiredRoles : Set(RequiredRole) := loadbalancerRepositoryComponent.requiredRoles_InterfaceRequiringEntity;
-	var providedRoles : Set(ProvidedRole) := loadbalancerRepositoryComponent.providedRoles_InterfaceProvidingEntity;
-	
-	requiredRoles->forEach(requiredRole){
-		removeRequiredRole(requiredRole);
-	};
-	
-	providedRoles->forEach(providedRole){
-		removeProvideddRole(providedRole);
-	};
 	removeRepositoryComponent(loadbalancerRepositoryComponent);
 }
 
@@ -110,13 +121,6 @@ helper reverseSystem(duplicateAssemblyContexts:Set(AssemblyContext), originalAss
 				providedDelegationConnector.assemblyContext_ProvidedDelegationConnector := originalAssemblyContext;
 				providedDelegationConnector.innerProvidedRole_ProvidedDelegationConnector := originalAssemblyContextOperationProvidedRole;
 			}
-		}
-		else if(connector.oclAsType(RequiredDelegationConnector)){
-			var requiredDelegationConnector : RequiredDelegationConnector := connector.oclAsType(RequiredDelegationConnector);
-			var requiredAssemblyContext : AssemblyContext := getRequiringAssemblyContext(requiredDelegationConnector);
-			if(duplicateAssemblyContexts ->includes(requiredAssemblyContext)){
-				removeRequiredDelegationConnector(requiredDelegationConnector);
-			}
 		}	
 	};
 	removeAssemblyContext(loadbalancerAssemblyContext);
@@ -130,49 +134,28 @@ helper reverseSystem(duplicateAssemblyContexts:Set(AssemblyContext), originalAss
  * Remove the RepositoryComponent of the Repository Model
  */
 helper removeRepositoryComponent(repositoryComponent: RepositoryComponent){
-	pcmRepository.removeElement(repositoryComponent);
-}
-
-/**
- * Remove the ProvidedRole of the Repository Model
- */
-helper removeProvideddRole(providedRole: ProvidedRole){
-	pcmRepository.removeElement(providedRole);
-}
-
-/**
- * Remove the RequiredRole of the Repository Model
- */
-helper removeRequiredRole(requiredRole: RequiredRole){
-	pcmRepository.removeElement(requiredRole);
-}
-
-/**
- * Remove the RequiredDelegationConnector of the System Model
- */
-helper removeRequiredDelegationConnector(requiredDelegationConnector: RequiredDelegationConnector){
-	pcmSystem.removeElement(requiredDelegationConnector);
+	delete(listOfRootObjects,repositoryComponent);
 }
 
 /**
  * Remove the AssemblyContext of the System Model
  */
 helper removeAssemblyContext(assemblyContext: AssemblyContext){
-	pcmSystem.removeElement(assemblyContext);
+	delete(listOfRootObjects,assemblyContext);
 }
 
 /**
  * Remove the AssemblyConnector of the System Model
  */
 helper removeAssemblyConnector(assemblyConnector: AssemblyConnector){
-	pcmSystem.removeElement(assemblyConnector);
+	delete(listOfRootObjects,assemblyConnector);
 }
 
 /**
  * Remove the AllocationContext of the Allocation Model
  */
 helper removeAllocationContext(allocationContext : AllocationContext){
-	pcmAllocation.removeElement(allocationContext);
+	delete(listOfRootObjects,allocationContext);
 }
 
 
@@ -180,7 +163,7 @@ helper removeAllocationContext(allocationContext : AllocationContext){
  * Remove the AllocationContext of the ResourceEnvironment Model
  */
 helper removeResourceContainer(resourceContainer : ResourceContainer){
-	pcmResourceEnvironment.removeElement(resourceContainer);
+	delete(listOfRootObjects,resourceContainer); 
 }
 
 /**

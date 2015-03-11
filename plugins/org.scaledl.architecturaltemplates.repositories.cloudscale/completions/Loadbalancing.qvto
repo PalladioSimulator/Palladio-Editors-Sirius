@@ -52,12 +52,12 @@ main() {
 	//create the LoadBalancer BasicComponent and AssemblyContext
 	var loadBalancerComponent : RepositoryComponent := new BasicComponent(loadBalancedAssemblyContext.encapsulatedComponent__AssemblyContext);
 	var loadBalancerAssemblyContext : AssemblyContext := new AssemblyContext(loadBalancerComponent);
-	
-	//apply Stereotype LoadbalancerAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
-	applyStereotype(loadBalancerAssemblyContext,"LoadbalancerAssemblyContext");
 		
 	//duplicate the stereotyped AssemblyContext
 	var duplicatedAssemblyContexts : OrderedSet(AssemblyContext) := createDuplicatedAssemblyContexts(loadBalancedAssemblyContext);
+	
+	//apply Stereotype LoadbalancerAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
+	applyStereotype(loadBalancerAssemblyContext,"LoadbalancerAssemblyContext");
 	
 	//connect the LoadBalancer Assembly Context with the stereotyped and duplicated AssemblyContext in the System
 	connectLoadBalancerAndAssemblyContexts(loadBalancedAssemblyContext,loadBalancerAssemblyContext,duplicatedAssemblyContexts);
@@ -336,7 +336,7 @@ constructor ResourceContainer :: ResourceContainer(originalResourceContainer : R
 	resourceEnvironment_ResourceContainer := originalResourceContainer.resourceEnvironment_ResourceContainer;	
 } 
 
-constructor AssemblyContext :: AssemblyContext(bc : RepositoryComponent){
+constructor AssemblyContext :: AssemblyContext(bc : RepositoryComponent) {
 	entityName := "Assembly_"+bc.entityName;
 	encapsulatedComponent__AssemblyContext := bc;
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
@@ -344,7 +344,8 @@ constructor AssemblyContext :: AssemblyContext(bc : RepositoryComponent){
 	parentStructure__AssemblyContext := system;
 }
 
-constructor BasicComponent :: BasicComponent (loadBalancedComponent : RepositoryComponent){
+constructor BasicComponent :: BasicComponent (loadBalancedComponent : RepositoryComponent)
+{
 log ('Start of LoadBalancer Constructor');
 	var repository := loadBalancedComponent.repository__RepositoryComponent;
 	var providedRoles : Set(ProvidedRole) := loadBalancedComponent.providedRoles_InterfaceProvidingEntity;
