@@ -3,7 +3,7 @@
   <ownedViewpoints name="System Design" modelFileExtension="*.system">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ComposedProvidingRequiringEntity Diagram" domainClass="entity.ComposedProvidingRequiringEntity">
       <defaultLayer name="Default">
-        <edgeMappings name="AssemblyConnector Edge" preconditionExpression="[sourceView.ancestors()->filter(DNode).target->includes(self.requiringAssemblyContext_AssemblyConnector) and targetView.ancestors()->filter(DNode).target->includes(self.providingAssemblyContext_AssemblyConnector)/]" semanticCandidatesExpression="[self.connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='AssemblyContext%20Node']/@borderedNodeMappings[name='OperationRequiredRole%20Node']" targetMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='AssemblyContext%20Node']/@borderedNodeMappings[name='OperationProvidedRole%20Node']" targetFinderExpression="[self.providedRole_AssemblyConnector/]" sourceFinderExpression="[self.requiredRole_AssemblyConnector/]" domainClass="composition.AssemblyConnector" useDomainElement="true">
+        <edgeMappings name="AssemblyConnector Edge" preconditionExpression="[sourceView.ancestors()->filter(DNodeContainer).target->includes(self.requiringAssemblyContext_AssemblyConnector) and targetView.ancestors()->filter(DNodeContainer).target->includes(self.providingAssemblyContext_AssemblyConnector)/]" semanticCandidatesExpression="[self.connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@borderedNodeMappings[name='OperationRequiredRole%20Node']" targetMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@borderedNodeMappings[name='OperationProvidedRole%20Node']" targetFinderExpression="[self.providedRole_AssemblyConnector/]" sourceFinderExpression="[self.requiredRole_AssemblyConnector/]" domainClass="composition.AssemblyConnector" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -11,7 +11,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="ProvidedDelegationConnector Edge" preconditionExpression="[targetView.ancestors()->filter(DNode).target->includes(self.assemblyContext_ProvidedDelegationConnector)/]" semanticCandidatesExpression="[connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalOperationProvidedRole%20Node']" targetMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='AssemblyContext%20Node']/@borderedNodeMappings[name='OperationProvidedRole%20Node']" targetFinderExpression="[innerProvidedRole_ProvidedDelegationConnector/]" sourceFinderExpression="[outerProvidedRole_ProvidedDelegationConnector/]" domainClass="composition.ProvidedDelegationConnector" useDomainElement="true">
+        <edgeMappings name="ProvidedDelegationConnector Edge" preconditionExpression="[targetView.ancestors()->filter(DNodeContainer).target->includes(self.assemblyContext_ProvidedDelegationConnector)/]" semanticCandidatesExpression="[connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalOperationProvidedRole%20Node']" targetMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@borderedNodeMappings[name='OperationProvidedRole%20Node']" targetFinderExpression="[innerProvidedRole_ProvidedDelegationConnector/]" sourceFinderExpression="[outerProvidedRole_ProvidedDelegationConnector/]" domainClass="composition.ProvidedDelegationConnector" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -19,7 +19,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="RequiredDelegationConnector Edge" preconditionExpression="[sourceView.ancestors()->filter(DNode).target->includes(self.assemblyContext_RequiredDelegationConnector)/]" semanticCandidatesExpression="[connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='AssemblyContext%20Node']/@borderedNodeMappings[name='OperationRequiredRole%20Node']" targetMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalOperationRequiredRole%20Node']" targetFinderExpression="[outerRequiredRole_RequiredDelegationConnector/]" sourceFinderExpression="[innerRequiredRole_RequiredDelegationConnector/]" domainClass="composition.RequiredDelegationConnector" useDomainElement="true">
+        <edgeMappings name="RequiredDelegationConnector Edge" preconditionExpression="[sourceView.ancestors()->filter(DNodeContainer).target->includes(self.assemblyContext_RequiredDelegationConnector)/]" semanticCandidatesExpression="[connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@borderedNodeMappings[name='OperationRequiredRole%20Node']" targetMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalOperationRequiredRole%20Node']" targetFinderExpression="[outerRequiredRole_RequiredDelegationConnector/]" sourceFinderExpression="[innerRequiredRole_RequiredDelegationConnector/]" domainClass="composition.RequiredDelegationConnector" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -27,7 +27,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="AssemblyEventConnector Edge" preconditionExpression="[sourceView.ancestors()->filter(DNode).target->includes(self.sourceAssemblyContext__AssemblyEventConnector) and targetView.ancestors()->filter(DNode).target->includes(self.sinkAssemblyContext__AssemblyEventConnector)/]" semanticCandidatesExpression="[self.connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='AssemblyContext%20Node']/@borderedNodeMappings[name='SourceRole%20Node']" targetMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='AssemblyContext%20Node']/@borderedNodeMappings[name='SinkRole%20Node']" targetFinderExpression="[self.sinkRole__AssemblyEventConnector/]" sourceFinderExpression="[self.sourceRole__AssemblyEventConnector/]" domainClass="composition.AssemblyEventConnector" useDomainElement="true">
+        <edgeMappings name="AssemblyEventConnector Edge" preconditionExpression="[sourceView.ancestors()->filter(DNodeContainer).target->includes(self.sourceAssemblyContext__AssemblyEventConnector) and targetView.ancestors()->filter(DNodeContainer).target->includes(self.sinkAssemblyContext__AssemblyEventConnector)/]" semanticCandidatesExpression="[self.connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@borderedNodeMappings[name='SourceRole%20Node']" targetMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@borderedNodeMappings[name='SinkRole%20Node']" targetFinderExpression="[self.sinkRole__AssemblyEventConnector/]" sourceFinderExpression="[self.sourceRole__AssemblyEventConnector/]" domainClass="composition.AssemblyEventConnector" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -35,7 +35,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="EventChannelSinkConnector Edge" preconditionExpression="[targetView.ancestors()->filter(DNode).target->includes(self.assemblyContext__EventChannelSinkConnector)/]" semanticCandidatesExpression="[connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='EventChannel%20Node']" targetMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='AssemblyContext%20Node']/@borderedNodeMappings[name='SinkRole%20Node']" targetFinderExpression="[sinkRole__EventChannelSinkConnector/]" sourceFinderExpression="[eventChannel__EventChannelSinkConnector/]" domainClass="composition.EventChannelSinkConnector" useDomainElement="true">
+        <edgeMappings name="EventChannelSinkConnector Edge" preconditionExpression="[targetView.ancestors()->filter(DNodeContainer).target->includes(self.assemblyContext__EventChannelSinkConnector)/]" semanticCandidatesExpression="[connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='EventChannel%20Node']" targetMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@borderedNodeMappings[name='SinkRole%20Node']" targetFinderExpression="[sinkRole__EventChannelSinkConnector/]" sourceFinderExpression="[eventChannel__EventChannelSinkConnector/]" domainClass="composition.EventChannelSinkConnector" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -43,7 +43,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="EventChannelSourceConnector Edge" preconditionExpression="[sourceView.ancestors()->filter(DNode).target->includes(self.assemblyContext__EventChannelSourceConnector)/]" semanticCandidatesExpression="[connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='AssemblyContext%20Node']/@borderedNodeMappings[name='SourceRole%20Node']" targetMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='EventChannel%20Node']" targetFinderExpression="[eventChannel__EventChannelSourceConnector/]" sourceFinderExpression="[sourceRole__EventChannelSourceRole/]" domainClass="composition.EventChannelSourceConnector" useDomainElement="true">
+        <edgeMappings name="EventChannelSourceConnector Edge" preconditionExpression="[sourceView.ancestors()->filter(DNodeContainer).target->includes(self.assemblyContext__EventChannelSourceConnector)/]" semanticCandidatesExpression="[connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@borderedNodeMappings[name='SourceRole%20Node']" targetMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='EventChannel%20Node']" targetFinderExpression="[eventChannel__EventChannelSourceConnector/]" sourceFinderExpression="[sourceRole__EventChannelSourceRole/]" domainClass="composition.EventChannelSourceConnector" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -51,7 +51,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="AssemblyInfrastructureConnector Edge" preconditionExpression="[sourceView.ancestors()->filter(DNode).target->includes(self.requiringAssemblyContext__AssemblyInfrastructureConnector) and targetView.ancestors()->filter(DNode).target->includes(self.providingAssemblyContext__AssemblyInfrastructureConnector)/]" semanticCandidatesExpression="[connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='AssemblyContext%20Node']/@borderedNodeMappings[name='InfrastructureRequiredRole%20Node']" targetMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='AssemblyContext%20Node']/@borderedNodeMappings[name='InfrastructureProvidedRole%20Node']" targetFinderExpression="[providedRole__AssemblyInfrastructureConnector/]" sourceFinderExpression="[requiredRole__AssemblyInfrastructureConnector/]" domainClass="composition.AssemblyInfrastructureConnector" useDomainElement="true">
+        <edgeMappings name="AssemblyInfrastructureConnector Edge" preconditionExpression="[sourceView.ancestors()->filter(DNodeContainer).target->includes(self.requiringAssemblyContext__AssemblyInfrastructureConnector) and targetView.ancestors()->filter(DNodeContainer).target->includes(self.providingAssemblyContext__AssemblyInfrastructureConnector)/]" semanticCandidatesExpression="[connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@borderedNodeMappings[name='InfrastructureRequiredRole%20Node']" targetMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@borderedNodeMappings[name='InfrastructureProvidedRole%20Node']" targetFinderExpression="[providedRole__AssemblyInfrastructureConnector/]" sourceFinderExpression="[requiredRole__AssemblyInfrastructureConnector/]" domainClass="composition.AssemblyInfrastructureConnector" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -59,7 +59,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="SourceDelegationConnector Edge" preconditionExpression="[sourceView.ancestors()->filter(DNode).target->includes(self.assemblyContext__SourceDelegationConnector)/]" semanticCandidatesExpression="[connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='AssemblyContext%20Node']/@borderedNodeMappings[name='SourceRole%20Node']" targetMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalSourceRole%20Node']" targetFinderExpression="[outerSourceRole__SourceRole/]" sourceFinderExpression="[innerSourceRole__SourceRole/]" domainClass="composition.SourceDelegationConnector" useDomainElement="true">
+        <edgeMappings name="SourceDelegationConnector Edge" preconditionExpression="[sourceView.ancestors()->filter(DNodeConta).target->includes(self.assemblyContext__SourceDelegationConnector)/]" semanticCandidatesExpression="[connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@borderedNodeMappings[name='SourceRole%20Node']" targetMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalSourceRole%20Node']" targetFinderExpression="[outerSourceRole__SourceRole/]" sourceFinderExpression="[innerSourceRole__SourceRole/]" targetExpression="iner" domainClass="composition.SourceDelegationConnector" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -67,7 +67,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="SinkDelegationConnector Edge" preconditionExpression="[targetView.ancestors()->filter(DNode).target->includes(self.assemblyContext__SinkDelegationConnector)/]" semanticCandidatesExpression="[connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalSinkRole%20Node']" targetMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='AssemblyContext%20Node']/@borderedNodeMappings[name='SinkRole%20Node']" targetFinderExpression="[innerSinkRole__SinkRole/]" sourceFinderExpression="[outerSinkRole__SinkRole/]" domainClass="composition.SinkDelegationConnector" useDomainElement="true">
+        <edgeMappings name="SinkDelegationConnector Edge" preconditionExpression="[targetView.ancestors()->filter(DNodeContainer).target->includes(self.assemblyContext__SinkDelegationConnector)/]" semanticCandidatesExpression="[connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalSinkRole%20Node']" targetMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@borderedNodeMappings[name='SinkRole%20Node']" targetFinderExpression="[innerSinkRole__SinkRole/]" sourceFinderExpression="[outerSinkRole__SinkRole/]" domainClass="composition.SinkDelegationConnector" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -75,7 +75,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="ProvidedInfrastructureDelegationConnector Edge" preconditionExpression="[sourceView.ancestors()->filter(DNode).target->includes(self.assemblyContext__ProvidedInfrastructureDelegationConnector)/]" semanticCandidatesExpression="[connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalInfrastructureProvidedRole%20Node']" targetMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='AssemblyContext%20Node']/@borderedNodeMappings[name='InfrastructureProvidedRole%20Node']" targetFinderExpression="[innerProvidedRole__ProvidedInfrastructureDelegationConnector/]" sourceFinderExpression="[outerProvidedRole__ProvidedInfrastructureDelegationConnector/]" domainClass="composition.ProvidedInfrastructureDelegationConnector" useDomainElement="true">
+        <edgeMappings name="ProvidedInfrastructureDelegationConnector Edge" preconditionExpression="[sourceView.ancestors()->filter(DNodeContainer).target->includes(self.assemblyContext__ProvidedInfrastructureDelegationConnector)/]" semanticCandidatesExpression="[connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalInfrastructureProvidedRole%20Node']" targetMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@borderedNodeMappings[name='InfrastructureProvidedRole%20Node']" targetFinderExpression="[innerProvidedRole__ProvidedInfrastructureDelegationConnector/]" sourceFinderExpression="[outerProvidedRole__ProvidedInfrastructureDelegationConnector/]" domainClass="composition.ProvidedInfrastructureDelegationConnector" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -83,7 +83,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="RequiredInfrastructureDelegationConnector Edge" preconditionExpression="[sourceView.ancestors()->filter(DNode).target->includes(self.assemblyContext__RequiredInfrastructureDelegationConnector)/]" semanticCandidatesExpression="[connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='AssemblyContext%20Node']/@borderedNodeMappings[name='InfrastructureRequiredRole%20Node']" targetMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalInfrastructureRequiredRole%20Node']" targetFinderExpression="[outerRequiredRole__RequiredInfrastructureDelegationConnector/]" sourceFinderExpression="[innerRequiredRole__RequiredInfrastructureDelegationConnector/]" domainClass="composition.RequiredInfrastructureDelegationConnector" useDomainElement="true">
+        <edgeMappings name="RequiredInfrastructureDelegationConnector Edge" preconditionExpression="[sourceView.ancestors()->filter(DNodeContainer).target->includes(self.assemblyContext__RequiredInfrastructureDelegationConnector)/]" semanticCandidatesExpression="[connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@borderedNodeMappings[name='InfrastructureRequiredRole%20Node']" targetMapping="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalInfrastructureRequiredRole%20Node']" targetFinderExpression="[outerRequiredRole__RequiredInfrastructureDelegationConnector/]" sourceFinderExpression="[innerRequiredRole__RequiredInfrastructureDelegationConnector/]" domainClass="composition.RequiredInfrastructureDelegationConnector" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -134,55 +134,6 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
             </style>
           </borderedNodeMappings>
-          <subNodeMappings name="AssemblyContext Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Deletion']/@ownedTools[name='AssemblyContext%20Deletion']" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="[self.assemblyContexts__ComposedStructure/]" domainClass="composition.AssemblyContext">
-            <borderedNodeMappings name="OperationProvidedRole Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Deletion']/@ownedTools[name='Noop']" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.OperationProvidedRole">
-              <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-              </style>
-            </borderedNodeMappings>
-            <borderedNodeMappings name="OperationRequiredRole Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Deletion']/@ownedTools[name='Noop']" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.OperationRequiredRole">
-              <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
-              </style>
-            </borderedNodeMappings>
-            <borderedNodeMappings name="SinkRole Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Deletion']/@ownedTools[name='Noop']" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.SinkRole">
-              <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-              </style>
-            </borderedNodeMappings>
-            <borderedNodeMappings name="SourceRole Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Deletion']/@ownedTools[name='Noop']" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.SourceRole">
-              <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
-              </style>
-            </borderedNodeMappings>
-            <borderedNodeMappings name="InfrastructureProvidedRole Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Deletion']/@ownedTools[name='Noop']" semanticCandidatesExpression="feature:eAllContents" domainClass="repository.InfrastructureProvidedRole">
-              <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-              </style>
-            </borderedNodeMappings>
-            <borderedNodeMappings name="InfrastructureRequiredRole Node" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Deletion']/@ownedTools[name='Noop']" semanticCandidatesExpression="feature:eAllContents" domainClass="repository.InfrastructureRequiredRole">
-              <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
-              </style>
-            </borderedNodeMappings>
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="[entityName/]" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="20" height="9">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
-          </subNodeMappings>
           <subNodeMappings name="EventChannel Node" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="feature:eAllContents" domainClass="composition.EventChannel">
             <style xsi:type="style:LozengeNodeDescription" labelExpression="[entityName/]" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -190,8 +141,50 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subNodeMappings>
-          <subContainerMappings name="Dummy AssemblyContext Container" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="[self.assemblyContexts__ComposedStructure/]" documentation="Used for the parameter implementation until the Node can be fully migrated." domainClass="composition.AssemblyContext">
-            <subContainerMappings name="VariableUsage Container" semanticCandidatesExpression="[self.getVariableUsages()/]" documentation="Represents a VariableCharacterisation and its associacted PCMRandomVariable. Its style`s color is changed by a style customization depending whether it is defined in an Component or overridden by the AssemblyContext." domainClass="parameter.VariableUsage" childrenPresentation="List">
+          <subContainerMappings name="AssemblyContext Container" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="[self.assemblyContexts__ComposedStructure/]" documentation="Used for the parameter implementation until the Node can be fully migrated." domainClass="composition.AssemblyContext">
+            <borderedNodeMappings name="OperationProvidedRole Node" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.OperationProvidedRole">
+              <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+              </style>
+            </borderedNodeMappings>
+            <borderedNodeMappings name="OperationRequiredRole Node" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.OperationRequiredRole">
+              <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              </style>
+            </borderedNodeMappings>
+            <borderedNodeMappings name="SinkRole Node" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.SinkRole">
+              <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+              </style>
+            </borderedNodeMappings>
+            <borderedNodeMappings name="SourceRole Node" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.SourceRole">
+              <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              </style>
+            </borderedNodeMappings>
+            <borderedNodeMappings name="InfrastructureProvidedRole Node" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.InfrastructureProvidedRole">
+              <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+              </style>
+            </borderedNodeMappings>
+            <borderedNodeMappings name="InfrastructureRequiredRole Node" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.InfrastructureRequiredRole">
+              <style xsi:type="style:SquareDescription" labelExpression="[entityName/]" hideLabelByDefault="true">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+              </style>
+            </borderedNodeMappings>
+            <subContainerMappings name="VariableUsage Container" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Deletion']/@ownedTools[name='VariableUsage']" semanticCandidatesExpression="[self.getVariableUsages()/]" doubleClickDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Double%20Click']/@ownedTools[name='CopyVariableUsage%20to%20AssemblyContext']" documentation="Represents a VariableCharacterisation and its associacted PCMRandomVariable. Its style`s color is changed by a style customization depending whether it is defined in an Component or overridden by the AssemblyContext." domainClass="parameter.VariableUsage" childrenPresentation="List">
               <subNodeMappings name="VariableCharacterisation Node" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='VariableCharacterisationDirectEdit']" semanticCandidatesExpression="[self.variableCharacterisation_VariableUsage/]" semanticElements="[self.oclAsSet()->union(self.specification_VariableCharacterisation.oclAsSet())/]" documentation="Represents a VariableCharacterisation and its associacted PCMRandomVariable. Its style`s color is changed by a style customization depending whether its VariableUsage is defined in an Component or overridden by the AssemblyContext." domainClass="parameter.VariableCharacterisation">
                 <style xsi:type="style:SquareDescription" labelExpression="[self.type + '=' + self.specification_VariableCharacterisation.specification/]" labelAlignment="LEFT" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -221,7 +214,7 @@
           </style>
         </containerMappings>
         <toolSections name="Nodes">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="AssemblyContext" nodeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='AssemblyContext%20Node']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AssemblyContext">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -511,7 +504,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool:DirectEditLabel" name="VariableCharacterisationDirectEdit" inputLabelExpression="[self.specification_VariableCharacterisation.specification/]">
+            <ownedTools xsi:type="tool:DirectEditLabel" name="VariableCharacterisationDirectEdit" precondition="[self.variableUsage_VariableCharacterisation.eContainer().eClass().name = 'AssemblyContext'/]" inputLabelExpression="[self.specification_VariableCharacterisation.specification/]">
               <mask mask="{0}"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.specification_VariableCharacterisation.editPCMRandomVariable(arg0)/]"/>
@@ -533,27 +526,48 @@
               <element name="element"/>
               <elementView name="elementView"/>
               <containerView name="containerView"/>
-              <initialOperation/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]"/>
+              </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool:DeleteElementDescription" documentation="Deletes the VariableUsage. Only applicable if it is defined on the AssemblyContext." name="VariableUsage" precondition="[self.eContainer().eClass().name = 'AssemblyContext'/]">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <containerView name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+                  <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+          </subSections>
+          <subSections name="Double Click">
+            <ownedTools xsi:type="tool:DoubleClickDescription" name="CopyVariableUsage to AssemblyContext" precondition="[self.eContainer().eClass().name &lt;> 'AssemblyContext'/]" mappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@subContainerMappings[name='VariableUsage%20Container']">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element.copyToAssemblyContext(elementView.eContainer().oclAsType(DNodeContainer).target)/]"/>
+              </initialOperation>
             </ownedTools>
           </subSections>
         </toolSections>
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.eContainer().eClass().name = 'AssemblyContext'/]">
-            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='Dummy%20AssemblyContext%20Container']/@subContainerMappings[name='VariableUsage%20Container']/@style" referenceName="backgroundColor">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@subContainerMappings[name='VariableUsage%20Container']/@style" referenceName="backgroundColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </featureCustomizations>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='Dummy%20AssemblyContext%20Container']/@subContainerMappings[name='VariableUsage%20Container']/@style" referenceName="foregroundColor">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@subContainerMappings[name='VariableUsage%20Container']/@style" referenceName="foregroundColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </featureCustomizations>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='Dummy%20AssemblyContext%20Container']/@subContainerMappings[name='VariableUsage%20Container']/@style" referenceName="labelColor">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@subContainerMappings[name='VariableUsage%20Container']/@style" referenceName="labelColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </featureCustomizations>
-            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='Dummy%20AssemblyContext%20Container']/@subContainerMappings[name='VariableUsage%20Container']/@style" referenceName="borderColor">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@subContainerMappings[name='VariableUsage%20Container']/@style" referenceName="borderColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </featureCustomizations>
           </vsmElementCustomizations>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.eContainer().eContainer().eClass().name = 'AssemblyContext'/]">
-            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='Dummy%20AssemblyContext%20Container']/@subContainerMappings[name='VariableUsage%20Container']/@subNodeMappings[name='VariableCharacterisation%20Node']/@style" referenceName="labelColor">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@subContainerMappings[name='VariableUsage%20Container']/@subNodeMappings[name='VariableCharacterisation%20Node']/@style" referenceName="labelColor">
               <value href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </featureCustomizations>
           </vsmElementCustomizations>
