@@ -36,9 +36,7 @@ modeltype PCM_EDP2MEASURINGPOINT uses 'http://palladiosimulator.org/EDP2/Measuri
  * @author Sebastian Lehrig
  **/
 transformation DynamicHorizontalScalingResourceContainer(
-                           inout pcmResourceEnvironment : PCM_RES_ENV,
-						   inout monitorRepositoryModel : PCM_MONITOR_REPOSITORY,
-						   out pcmActiveResourceMeasuringPoint : PCM_MEASURINGPOINT);
+                           inout pcmResourceEnvironment : PCM_RES_ENV);
 						   
 
 property threshold : Real;
@@ -49,52 +47,14 @@ main() {
 	
 	var resourceEnvironment : ResourceEnvironment := pcmResourceEnvironment.rootObjects()![ResourceEnvironment];		
 	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
-	var monitorRepository : MonitorRepository := monitorRepositoryModel.rootObjects()![MonitorRepository];
 	resourceContainers->forEach(resourceContainer) {
 		if(hasAppliedStereotype(resourceContainer,"ReplicableResourceContainer")){
 			var processingResources : Set(ProcessingResourceSpecification) := 
 				resourceContainer.activeResourceSpecifications_ResourceContainer;
-				
-			processingResources->forEach(processingResource) {
-				var replica : Integer := 0;
-				while(replica < processingResource.numberOfReplicas) {
-				    // FIXME actually, we need to aggregate measuring points in a repository and use several performance measurements
-					var measuringPoint : ActiveResourceMeasuringPoint :=
-						resourceContainer.map createActiveResourceMeasuringPoint(processingResource, replica);
-					addMonitorToMonitorRepository(monitorRepository, measuringPoint);
-					
-					replica := replica+1;
-				}
-			};
-			
 			//removeStereotypeApplications(resourceContainer, "ReplicableResourceContainer");
 			applyStereotype(resourceContainer, "Replicable");
 		};
 	};
 	
 	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Resource Container" finished');
-}
-
-mapping ResourceContainer::createActiveResourceMeasuringPoint(processingResource : ProcessingResourceSpecification, replica : Integer) : ActiveResourceMeasuringPoint@pcmActiveResourceMeasuringPoint{
-	activeResource := processingResource;
-	replicaID := replica;
-}
-
-helper addMonitorToMonitorRepository(inout monitorRepository : MonitorRepository, inout measuringPoint : MeasuringPoint){
-	monitorRepository.monitors += new Monitor(measuringPoint);
-}
-
-constructor Monitor :: Monitor(mp : MeasuringPoint){
-	measuringPoint := mp;
-	measurementSpecification := new MeasurementSpecification();
-}
-
-constructor MeasurementSpecification :: MeasurementSpecification(){
-	performanceMetric := PerformanceMetricEnum::Utilization;
-	statisticalCharacterization := StatisticalCharacterizationEnum::ArithmeticMean;
-	temporalRestriction := new Intervall(interval);
-}
-
-constructor Intervall::Intervall(interval:Real){
-	intervall := interval;
 }
