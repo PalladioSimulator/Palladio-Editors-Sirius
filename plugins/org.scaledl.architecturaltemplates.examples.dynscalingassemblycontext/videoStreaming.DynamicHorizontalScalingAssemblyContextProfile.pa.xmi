@@ -4,7 +4,7 @@
     <appliedTo href="platform:/resource/org.scaledl.architecturaltemplates.examples.dynscalingassemblycontext/videoStreaming.system#_UWcxkJUFEeSkwMoUcKTtwg"/>
     <extension href="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/DynamicHorizontalScalingAssemblyContext.emfprofile_diagram#_F-_DAJQkEeSq-7Z_6FnzsQ"/>
   </stereotypeApplications>
-  <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles:ReplicableAssemblyContext" numberOfReplicas="2">
+  <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles:ReplicableAssemblyContext" numberOfReplicas="2" scaleOutThreshold="2.0">
     <appliedTo href="platform:/resource/org.scaledl.architecturaltemplates.examples.dynscalingassemblycontext/videoStreaming.system#_XclcEJUFEeSkwMoUcKTtwg"/>
     <extension href="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/DynamicHorizontalScalingAssemblyContext.emfprofile_diagram#_XWQ34JQkEeSq-7Z_6FnzsQ"/>
   </stereotypeApplications>

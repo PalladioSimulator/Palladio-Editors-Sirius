@@ -3,6 +3,6 @@
   <servicelevelobjectives id="_AcGwwJUKEeSMz-4971dv6A" name="Three Seconds Response Time" description="Three Seconds Response Time">
     <upperThreshold xsi:type="slo:HardThreshold" id="_PocYEpUKEeSMz-4971dv6A" thresholdLimit="3 s"/>
     <metricDescription xsi:type="metricspec:NumericalBaseMetricDescription" href="pathmap://METRIC_SPEC_MODELS/models/commonMetrics.metricspec#_6rYmYs7nEeOX_4BzImuHbA"/>
-    <measuringPoint xsi:type="pcmmeasuringpoint:UsageScenarioMeasuringPoint" href="My.pcmmeasuringpoint#/"/>
+    <measuringPoint xsi:type="pcmmeasuringpoint:UsageScenarioMeasuringPoint" href="videoStreaming.measuringpoint#//@measuringPoints.0"/>
   </servicelevelobjectives>
 </slo:ServiceLevelObjectiveRepository>

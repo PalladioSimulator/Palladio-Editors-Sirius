@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<emfprofileapplication:ProfileApplication xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:emfprofileapplication="http://www.modelversioning.org/emfprofile/application/1.1" xmlns:org.scaledl.architecturaltemplates.repositories.cloudscale.profiles="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.loadbalancing" xsi:schemaLocation="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.loadbalancing platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/Loadbalancing.emfprofile_diagram#_SNgzIH7gEeSPVbICnJBAhw">
-  <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles:LoadbalancedAssemblyContext" numberOfReplicas="2">
-    <appliedTo href="platform:/resource/org.scaledl.architecturaltemplates.examples.dynscalingassemblycontext/videoStreaming.system#_XclcEJUFEeSkwMoUcKTtwg"/>
-    <extension href="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/Loadbalancing.emfprofile_diagram#_3n_3oH7gEeSPVbICnJBAhw"/>
-  </stereotypeApplications>
-  <importedProfiles nsURI="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.loadbalancing" location="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/Loadbalancing.emfprofile_diagram"/>
-</emfprofileapplication:ProfileApplication>
