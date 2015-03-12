@@ -1,3 +1,5 @@
+import org.scaledl.architecturaltemplates.repositories.cloudscale.black.LoadbalancingLibrary;
+import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
 import completions.ReverseLoadbalancing;
 import completions.Loadbalancing;
 
