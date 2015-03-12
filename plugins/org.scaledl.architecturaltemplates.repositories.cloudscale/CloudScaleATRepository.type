@@ -17,9 +17,7 @@
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter"/>
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMTemplateCompletionParameter" fileExtension="resourceenvironment" templateFileURI="ThreeLayer/ThreeTier.resourceenvironment"/>
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="usagemodel"/>
-      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="monitorrepository"/>
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMOutputCompletionParameter" fileExtension="allocation"/>
-      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMOutputCompletionParameter" fileExtension="pcmmeasuringpoint"/>
     </completion>
   </ATs>
   <ATs id="_7SshcH4UEeS81uv5CnTOEw" entityName="Dynamic Horizontal Scaling Assembly Context">
@@ -42,8 +40,6 @@
     </roles>
     <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion" qvtoFileURI="DynamicHorizontalScalingResourceContainer.qvto">
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="resourceenvironment"/>
-      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="monitorrepository"/>
-      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMOutputCompletionParameter" fileExtension="pcmmeasuringpoint"/>
     </completion>
   </ATs>
   <ATs id="_nt1zAH4aEeS81uv5CnTOEw" entityName="Dynamic Vertical Scaling Resource Container">
