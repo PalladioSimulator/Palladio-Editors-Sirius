@@ -1,7 +1,9 @@
 package org.palladiosimulator.editors.util.api.services;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CommonTokenStream;
@@ -11,21 +13,15 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.ui.PlatformUI;
+import org.palladiosimulator.commons.emfutils.EMFCopyHelper;
 import org.palladiosimulator.editors.util.Activator;
 
-import de.uka.ipd.sdq.pcm.core.CoreFactory;
 import de.uka.ipd.sdq.pcm.core.PCMRandomVariable;
 import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
-import de.uka.ipd.sdq.pcm.core.impl.CoreFactoryImpl;
-import de.uka.ipd.sdq.pcm.parameter.ParameterFactory;
-import de.uka.ipd.sdq.pcm.parameter.VariableCharacterisation;
 import de.uka.ipd.sdq.pcm.parameter.VariableUsage;
-import de.uka.ipd.sdq.pcm.parameter.impl.ParameterFactoryImpl;
 import de.uka.ipd.sdq.pcm.repository.ImplementationComponentType;
 import de.uka.ipd.sdq.pcm.stochasticexpressions.parser.MyPCMStoExLexer;
 import de.uka.ipd.sdq.pcm.stochasticexpressions.parser.MyPCMStoExParser;
-import de.uka.ipd.sdq.stoex.StoexFactory;
-import de.uka.ipd.sdq.stoex.impl.StoexFactoryImpl;
 
 public class ComposedProvidingRequiringEntityServices {
 
@@ -161,45 +157,26 @@ public class ComposedProvidingRequiringEntityServices {
 
 	/**
 	 * Copies the {@link VariableUsage} to the {@link AssemblyContext}, i.e. 'instantiates' it.
-	 * It performs a deep copy so that the copy does not references to the old object.
 	 * This method will return the VariableUsage or null if the parameters do not have the correct types.
-	 * TODO: For now this only copies the reference name as well as the variable characterisations.
-	 * TODO: There should be a copy-constructor to take over this task.
 	 *
-	 * @param variableUsageObject the VariableUsage to be copied
-	 * @param assemblyContextObject the target AssemblyContext
+	 * @param variableUsage the VariableUsage to be copied
+	 * @param assemblyContext the target AssemblyContext
 	 * @return the original VariableUsage
 	 */
 	public EObject copyToAssemblyContext(final EObject variableUsageObject, final EObject assemblyContextObject) {
 		if (!(variableUsageObject instanceof VariableUsage) || !(assemblyContextObject instanceof AssemblyContext))
 			return null;
-
-		final ParameterFactory parameterFactory = new ParameterFactoryImpl();
-		final StoexFactory stoexFactory = new StoexFactoryImpl();
-		final CoreFactory coreFactory = new CoreFactoryImpl();
-
-		final VariableUsage variableUsage = (VariableUsage) variableUsageObject;
+		
 		final AssemblyContext assemblyContext = (AssemblyContext) assemblyContextObject;
-		final VariableUsage newVariableUsage = parameterFactory.createVariableUsage();
-
-		// Create and set the new NamedReference
-		newVariableUsage.setNamedReference__VariableUsage(stoexFactory.createVariableReference());
-		newVariableUsage.getNamedReference__VariableUsage().setReferenceName(variableUsage.getNamedReference__VariableUsage().getReferenceName());
-
-		// Copy the VariableCharacterisations
-		for (VariableCharacterisation variableCharacterisation : variableUsage.getVariableCharacterisation_VariableUsage()) {
-			VariableCharacterisation newVariableCharacterisation = parameterFactory.createVariableCharacterisation();
-
-			PCMRandomVariable randomVariable = coreFactory.createPCMRandomVariable();
-			randomVariable.setSpecification(variableCharacterisation.getSpecification_VariableCharacterisation().getSpecification());
-			newVariableCharacterisation.setSpecification_VariableCharacterisation(randomVariable);
-
-			newVariableUsage.getVariableCharacterisation_VariableUsage().add(newVariableCharacterisation);
-		}
-
+		
+		final List<EObject> copiedVariableUsage = EMFCopyHelper.deepCopyEObjectList(Collections.singletonList(variableUsageObject));
+		if (copiedVariableUsage.size() != 1 || !(copiedVariableUsage.get(0) instanceof VariableUsage))
+			return null;
+		
+		final VariableUsage newVariableUsage = (VariableUsage) copiedVariableUsage.get(0);
 		newVariableUsage.setAssemblyContext__VariableUsage(assemblyContext);
 		assemblyContext.getConfigParameterUsages__AssemblyContext().add(newVariableUsage);
 
-		return variableUsage;
+		return variableUsageObject;
 	}
 }
