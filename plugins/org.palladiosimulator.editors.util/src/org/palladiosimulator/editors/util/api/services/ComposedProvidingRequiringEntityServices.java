@@ -124,8 +124,6 @@ public class ComposedProvidingRequiringEntityServices {
 			return null;
 		}
 
-		// TODO: check whether the VariableUsage is defined on an Component. If so, duplicate it on the AssemblyContext
-
 		((PCMRandomVariable) pcmRandomVariable).setSpecification(expressionString);
 
 		return pcmRandomVariable;
@@ -146,8 +144,7 @@ public class ComposedProvidingRequiringEntityServices {
 		try {
 			parser.expression();
 		} catch (final RecognitionException e1) {
-			return false; // TODO: return exception to be displayed in the error
-							// message
+			return false; 
 		}
 		if (lexer.hasErrors() || parser.hasErrors()) {
 			return false;
