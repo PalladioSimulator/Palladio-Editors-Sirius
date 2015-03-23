@@ -45,11 +45,11 @@ main() {
 	
 	var resourceEnvironment : ResourceEnvironment := pcmResourceEnvironment.rootObjects()![ResourceEnvironment];		
 	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
-	resourceContainers->forEach(resourceContainer) {
-		if(hasAppliedStereotype(resourceContainer,"VirtualizedResourceContainer")){
-			applyStereotype(resourceContainer, "Virtualized");
-		};
-	};
+	//resourceContainers->forEach(resourceContainer) {
+	//	if(hasAppliedStereotype(resourceContainer,"VirtualizedResourceContainer")){
+		//	applyStereotype(resourceContainer, "Virtualized");
+		//};
+	//};
 	
 	log ('Architectural Template Transformation "Dynamic Vertical Scaling Resource Container" finished');
 }
