@@ -2,12 +2,6 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension point="org.modelversioning.emfprofile.profile">
-     <profile profile_resource="profiles/Replicable.emfprofile_diagram"/>
-   </extension>
-   <extension point="org.modelversioning.emfprofile.profile">
-     <profile profile_resource="profiles/Virtualized.emfprofile_diagram"/>
-   </extension>
-   <extension point="org.modelversioning.emfprofile.profile">
      <profile profile_resource="profiles/ThreeLayer.emfprofile_diagram"/>
    </extension>
    <extension point="org.modelversioning.emfprofile.profile">
@@ -16,9 +10,6 @@
    <extension point="org.modelversioning.emfprofile.profile">
      <profile profile_resource="profiles/DynamicVerticalScalingResourceContainer.emfprofile_diagram"/>
    </extension>
-   <extension point="org.modelversioning.emfprofile.profile">
-     <profile profile_resource="profiles/Loadbalancing.emfprofile_diagram"/>
-  </extension>
      <extension point="org.modelversioning.emfprofile.profile">
      <profile profile_resource="profiles/Loadbalanced.emfprofile_diagram"/>
   </extension>
@@ -86,6 +77,15 @@
     			<metamodel nsURI="http://www.modelversioning.org/emfprofile/application/1.1"/>
     			<metamodel nsURI="http://sdq.ipd.uka.de/PalladioComponentModel/Core/Entity/5.0"/>
     			<metamodel nsURI="http://sdq.ipd.uka.de/PalladioComponentModel/Core/Composition/5.0"/>
+    		</library>
+		</unit>
+		<unit name="VerticalScalingLibrary" namespace="org.scaledl.architecturaltemplates.repositories.cloudscale.black">
+    		<library name="VerticalScalingLibrary" class="org.scaledl.architecturaltemplates.repositories.cloudscale.black.VerticalScalingLibrary">
+    			<metamodel nsURI="http://www.eclipse.org/emf/2002/Ecore"/>
+    			<metamodel nsURI="http://www.modelversioning.org/emfprofile/1.1"/>
+    			<metamodel nsURI="http://www.modelversioning.org/emfprofile/application/1.1"/>
+    			<metamodel nsURI="http://sdq.ipd.uka.de/PalladioComponentModel/Core/Entity/5.0"/>
+    			<metamodel nsURI="http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0"/>
     		</library>
 		</unit>
    </extension>
