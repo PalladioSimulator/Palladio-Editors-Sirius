@@ -1,11 +1,15 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
+import org.scaledl.architecturaltemplates.repositories.cloudscale.black.VerticalScalingLibrary;
 
 modeltype PRM uses 'http://simulizar.palladiosimulator.org/PalladioRuntimeMonitoring/1.0';
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
 modeltype PCM_RES_ENV uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0';
 
 transformation ScaleDown(in prm : PRM, inout pcmAllocation : PCM_ALLOC);
-property scaleDown : Real = 150.0;
+property scaleDownStepSize : Real;
+property scaleDownThreshold : Real;
+property minRate : Real;
+
 main() {
 log ('AT Completion "ScaleDown" started');	
 	
@@ -18,11 +22,17 @@ log ('AT Completion "ScaleDown" started');
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var resourceEnvironment : ResourceEnvironment := allocation.targetResourceEnvironment_Allocation;
 	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
-	assert fatal(appliedStereotypesEqualsOne(resourceContainers, "Virtualized"))
-		with log ("There is more than one Virtualized Stereotype Application!");
-
-	var replicatedResourceContainers : Bag(ResourceContainer) := resourceContainers -> scaleDownVirtualizedContainer();
-	
+	assert fatal(hasAppliedStereotype(resourceContainers,"VirtualizedResourceContainer"))
+		with log ("There is no Virtualized Stereotype Application!");
+		
+	resourceContainers -> forEach(resourceContainer){
+		if(hasAppliedStereotype(resourceContainer,"VirtualizedResourceContainer")){
+			scaleDownThreshold := getScaleDownThreshold(resourceContainer,"scaleDownThreshold","VirtualizedResourceContainer");
+			scaleDownStepSize := getStepSize(resourceContainer,"stepSize","VirtualizedResourceContainer");
+			minRate := getMinRate(resourceContainer,"minRate","VirtualizedResourceContainer");
+			resourceContainer. map scaleDownVirtualizedContainer();
+		};
+	};
 	log ('AT Completion "ScaleUp" finished');	
 }
 // FIXME need to check whether it's the right model element
@@ -30,7 +40,7 @@ helper Set(PCMModelElementMeasurement) :: checkCondition() : Boolean
 {
 	self->forEach(measurement) {
 		log('Measured value is ' + measurement.measurementValue.toString());
-		if (measurement.measurementValue < threshold) {
+		if (measurement.measurementValue < scaleDownThreshold) {
 			return true;
 		};
 	};
@@ -40,7 +50,7 @@ helper Set(PCMModelElementMeasurement) :: checkCondition() : Boolean
 }
 
 mapping ResourceContainer::scaleDownVirtualizedContainer():ResourceContainer 
-	when{hasAppliedStereotype(self, "Virtualized") and prm.rootObjects()[PCMModelElementMeasurement]->checkCondition()}
+	when{prm.rootObjects()[PCMModelElementMeasurement]->checkCondition()}
 {
 	log ('Scaling Up ResourceContainer ' + self.entityName);
 	scaleDownProcessingResourcesRecursively(self);
@@ -51,11 +61,13 @@ mapping ResourceContainer::scaleDownVirtualizedContainer():ResourceContainer
  */
 helper scaleDownProcessingResourcesRecursively(resourceContainer : ResourceContainer) {
 
-	// increase processing rate by scaleUp
+	// decrease processing rate by scaleDown
 	resourceContainer.activeResourceSpecifications_ResourceContainer->forEach(processingResourceSpecification){
 		var currentProcessingRate : String := processingResourceSpecification.processingRate_ProcessingResourceSpecification.specification;
-    	var newProcessingRate : Real := currentProcessingRate.toReal() - scaleDown;
-    	processingResourceSpecification.processingRate_ProcessingResourceSpecification.specification := newProcessingRate.toString();
+    	var newProcessingRate : Real := currentProcessingRate.toReal() - scaleDownStepSize;
+    	if(newProcessingRate >= minRate){
+    		processingResourceSpecification.processingRate_ProcessingResourceSpecification.specification := newProcessingRate.toString();
+    	};
     };
     
     // recursive call

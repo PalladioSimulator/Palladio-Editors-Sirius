@@ -1,4 +1,5 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
+import org.scaledl.architecturaltemplates.repositories.cloudscale.black.VerticalScalingLibrary;
 
 modeltype PRM uses 'http://simulizar.palladiosimulator.org/PalladioRuntimeMonitoring/1.0';
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
@@ -17,8 +18,9 @@ modeltype SEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/SEFF
 
 transformation ScaleUp(in prm : PRM, inout pcmAllocation : PCM_ALLOC);
 
-property threshold : Real = 2.0;
-property scaleUp : Real = 150.0;
+property scaleUpThreshold : Real;
+property scaleUpStepSize : Real;
+property maxRate : Real;
 
 main() {
 	log ('AT Completion "ScaleUp" started');	
@@ -32,11 +34,17 @@ main() {
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var resourceEnvironment : ResourceEnvironment := allocation.targetResourceEnvironment_Allocation;
 	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
-	assert fatal(appliedStereotypesEqualsOne(resourceContainers, "Virtualized"))
-		with log ("There is more than one Virtualized Stereotype Application!");
-
-	var replicatedResourceContainers : Bag(ResourceContainer) := resourceContainers -> scaleUpVirtualizedContainer();
-	
+	assert fatal(hasAppliedStereotype(resourceContainers,"VirtualizedResourceContainer"))
+		with log ("There is no Virtualized Stereotype Application!");
+		
+	resourceContainers -> forEach(resourceContainer){
+		if(hasAppliedStereotype(resourceContainer,"VirtualizedResourceContainer")){
+			scaleUpThreshold := getScaleUpThreshold(resourceContainer,"scaleUpThreshold","VirtualizedResourceContainer");
+			scaleUpStepSize := getStepSize(resourceContainer,"stepSize","VirtualizedResourceContainer");
+			maxRate := getMaxRate(resourceContainer,"maxRate","VirtualizedResourceContainer");
+			resourceContainer. map scaleUpVirtualizedContainer();
+		};
+	};
 	log ('AT Completion "ScaleUp" finished');	
 }
 
@@ -45,7 +53,7 @@ helper Set(PCMModelElementMeasurement) :: checkCondition() : Boolean
 {
 	self->forEach(measurement) {
 		log('Measured value is ' + measurement.measurementValue.toString());
-		if (measurement.measurementValue > threshold) {
+		if (measurement.measurementValue > scaleUpThreshold) {
 			return true;
 		};
 	};
@@ -55,7 +63,7 @@ helper Set(PCMModelElementMeasurement) :: checkCondition() : Boolean
 }
 
 mapping ResourceContainer::scaleUpVirtualizedContainer():ResourceContainer 
-	when{hasAppliedStereotype(self, "Virtualized") and prm.rootObjects()[PCMModelElementMeasurement]->checkCondition()}
+	when{prm.rootObjects()[PCMModelElementMeasurement]->checkCondition()}
 {
 	log ('Scaling Up ResourceContainer ' + self.entityName);
 	scaleUpProcessingResourcesRecursively(self);
@@ -69,8 +77,10 @@ helper scaleUpProcessingResourcesRecursively(resourceContainer : ResourceContain
 	// increase processing rate by scaleUp
 	resourceContainer.activeResourceSpecifications_ResourceContainer->forEach(processingResourceSpecification){
 		var currentProcessingRate : String := processingResourceSpecification.processingRate_ProcessingResourceSpecification.specification;
-    	var newProcessingRate : Real := currentProcessingRate.toReal() + scaleUp;
-    	processingResourceSpecification.processingRate_ProcessingResourceSpecification.specification := newProcessingRate.toString();
+    	var newProcessingRate : Real := currentProcessingRate.toReal() + scaleUpStepSize;
+    	if(newProcessingRate<=maxRate){
+    		processingResourceSpecification.processingRate_ProcessingResourceSpecification.specification := newProcessingRate.toString();
+    	};
     };
     
     // recursive call
