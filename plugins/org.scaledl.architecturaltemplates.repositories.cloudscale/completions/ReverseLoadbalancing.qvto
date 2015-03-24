@@ -106,8 +106,8 @@ helper reverseSystem(duplicateAssemblyContexts:Set(AssemblyContext), originalAss
 				removeAssemblyConnector(assemblyConnector);
 			}
 			else if(assemblyConnector.providingAssemblyContext_AssemblyConnector.id = loadbalancerAssemblyContext.id){
-				originalAssemblyContextOperationProvidedRole := originalAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity 
-					->selectOne(providedRole : ProvidedRole | providedRole.id = assemblyConnector.providedRole_AssemblyConnector.id).oclAsType(OperationProvidedRole);
+			originalAssemblyContextOperationProvidedRole := originalAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity 
+					->selectOne(providedRole : ProvidedRole | providedRole.oclAsType(OperationProvidedRole).providedInterface__OperationProvidedRole.id  = assemblyConnector.providedRole_AssemblyConnector.providedInterface__OperationProvidedRole.id).oclAsType(OperationProvidedRole);
 				assemblyConnector.providingAssemblyContext_AssemblyConnector := originalAssemblyContext;
 				assemblyConnector.providedRole_AssemblyConnector := originalAssemblyContextOperationProvidedRole;
 			}
