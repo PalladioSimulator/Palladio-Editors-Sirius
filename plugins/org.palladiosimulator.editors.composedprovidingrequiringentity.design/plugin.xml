@@ -7,4 +7,14 @@
 	       name="My">
     </component>
   </extension>
+  <extension
+        point="org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatableNode">
+     <image
+           bottom="/org.palladiosimulator.editors.composedprovidingrequiringentity.design/images/required-bottom.svg"
+           id="test"
+           left="/org.palladiosimulator.editors.composedprovidingrequiringentity.design/images/required-left.svg"
+           right="/org.palladiosimulator.editors.composedprovidingrequiringentity.design/images/required-right.svg"
+           top="/org.palladiosimulator.editors.composedprovidingrequiringentity.design/images/required-top.svg">
+     </image>
+  </extension>
 </plugin>
