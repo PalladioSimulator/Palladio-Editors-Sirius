@@ -6,6 +6,9 @@ package org.scaledl.architecturaltemplates.type;
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Generic Output Completion Parameter</b></em>'. <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc --> The output of a completion is an arbitrary model, characterized by the
+ * given file extension. A user can freely specify this extension as String. <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>

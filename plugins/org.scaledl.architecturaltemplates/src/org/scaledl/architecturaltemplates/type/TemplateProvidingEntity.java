@@ -8,6 +8,9 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Template Providing Entity</b></em>'. <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc --> The input of a completion is based on a template model file. <!--
+ * end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>

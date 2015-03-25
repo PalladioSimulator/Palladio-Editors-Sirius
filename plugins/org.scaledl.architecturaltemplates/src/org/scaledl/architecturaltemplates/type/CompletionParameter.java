@@ -8,6 +8,9 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Completion Parameter</b></em>'. <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc --> Completion parameters characterize the signatures of completions (i.e.,
+ * the in- and output parameters of transformations). <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
