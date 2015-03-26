@@ -16,7 +16,7 @@
    <extension
         point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
      <editpartProvider
-           class="org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatable.provider.RotatableImageEditPartProvider">
+           class="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.rotatable.provider.RotatableImageEditPartProvider">
         <Priority
               name="Highest">
         </Priority>
