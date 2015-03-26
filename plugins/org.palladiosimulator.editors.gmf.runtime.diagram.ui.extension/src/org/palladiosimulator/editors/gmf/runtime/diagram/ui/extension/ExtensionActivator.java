@@ -31,7 +31,7 @@ public class ExtensionActivator extends AbstractUIPlugin {
 	/**
 	 * The plug-in ID
 	 */
-	public static final String PLUGIN_ID = "org.obeonetwork.gmf.runtime.diagram.ui.extension";
+	public static final String PLUGIN_ID = "org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension";
 
 	/**
 	 * The shared instance

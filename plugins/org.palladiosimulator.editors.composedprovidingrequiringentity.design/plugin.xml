@@ -8,7 +8,7 @@
     </component>
   </extension>
   <extension
-        point="org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatableNode">
+        point="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.rotatableNode">
      <image
            bottom="/org.palladiosimulator.editors.composedprovidingrequiringentity.design/images/required-bottom.svg"
            id="test"

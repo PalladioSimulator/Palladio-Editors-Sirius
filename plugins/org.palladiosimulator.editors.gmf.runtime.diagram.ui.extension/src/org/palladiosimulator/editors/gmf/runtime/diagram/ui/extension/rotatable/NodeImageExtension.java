@@ -45,7 +45,7 @@ public class NodeImageExtension {
 	/**
 	 * The extension id
 	 */
-	public static final String IMAGE_EXTENSION_ID = "org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatableNode";
+	public static final String IMAGE_EXTENSION_ID = "org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.rotatableNode";
 
 	/**
 	 * Extension image id

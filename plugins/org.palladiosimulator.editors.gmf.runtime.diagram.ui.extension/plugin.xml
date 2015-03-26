@@ -11,7 +11,7 @@
       Obeo - initial API and implementation
 -->
 <plugin>
-   <extension-point id="org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatableNode" name="Rotatable Node Image" schema="schema/org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.rotating_node.exsd"/>
+   <extension-point id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.rotatableNode" name="Rotatable Node Image" schema="schema/org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.rotating_node.exsd"/>
 
    <extension
         point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">

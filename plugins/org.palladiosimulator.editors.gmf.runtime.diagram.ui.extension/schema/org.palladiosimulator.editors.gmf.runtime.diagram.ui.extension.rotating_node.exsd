@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.obeonetwork.gmf.runtime.diagram.ui.extension" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appInfo>
-         <meta.schema plugin="org.obeonetwork.gmf.runtime.diagram.ui.extension" id="/org.obeonetwork.gmf.runtime.diagram.ui.extension.node.image" name="Nodes Image"/>
+         <meta.schema plugin="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension" id="/org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.node.image" name="Nodes Image"/>
       </appInfo>
       <documentation>
          Extension for nodes graphic style : enable rotatable images.
