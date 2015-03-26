@@ -16,12 +16,10 @@ modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/Pall
 modeltype PCMStoex uses stoex('http://sdq.ipd.uka.de/StochasticExpressions/2.2');
 modeltype SEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0');
 
-transformation StaticResourceContainerLoadbalancing(inout pcmAllocation : PCM_ALLOC,
-										inout pcmSystem : PCM_SYS,
-										inout pcmRepository : PCM_REP,
-										inout pcmResourceEnvironment : PCM_RES_ENV);
+transformation StaticResourceContainerLoadbalancing(inout pcmAllocation : PCM_ALLOC);
 
 property numberOfReplicas : Integer;
+
 main() {
 	log ('AT Completion "StaticResourceContainerLoadbalancing" started');	
 			
@@ -30,17 +28,30 @@ main() {
 			
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var system : System := allocation.system_Allocation;
-	//assert fatal(hasAppliedStereotype(system,"StaticResourceContainerLoadbalancingSystem"))
-	//	with log("There is not StaticResourceContainerSystem Stereotype Application");
 		
 	var resourceEnvironment : ResourceEnvironment := allocation.targetResourceEnvironment_Allocation;
 	var resourceContainer : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
-	
-	assert fatal(appliedStereotypesEqualsOne(resourceContainer,"StaticLoadbalancedResourceContainer"))
-		with log ("There is more than one StaticLoadbalancedResourceContainer Stereotype Application!");
+	var appliedStereotype : String;
 		
-	var loadbalancedResourceContainer : ResourceContainer := resourceEnvironment.resourceContainer_ResourceEnvironment -> selectOne(rc : ResourceContainer| hasAppliedStereotype(rc, "Replicable"));
-	numberOfReplicas := getNumberOfReplicas(loadbalancedResourceContainer,"numberOfReplicas","StaticLoadbalancedResourceContainer");
+	if(hasAppliedStereotype(resourceContainer,"StaticLoadbalancedResourceContainer")){
+		appliedStereotype := "StaticLoadbalancedResourceContainer";	
+		//assert fatal(hasAppliedStereotype(system,"StaticResourceContainerLoadbalancingSystem"))
+			//with log("There is not StaticResourceContainerSystem Stereotype Application");
+	}
+	else if(hasAppliedStereotype(resourceContainer,"ReplicableResourceContainer")){
+		appliedStereotype := "ReplicableResourceContainer";	
+	};
+		
+	assert fatal(appliedStereotypesEqualsOne(resourceContainer,appliedStereotype))
+		with log ("There is more than one Stereotype Application!");
+		
+	var loadbalancedResourceContainer : ResourceContainer := resourceEnvironment.resourceContainer_ResourceEnvironment -> selectOne(rc : ResourceContainer| hasAppliedStereotype(rc, appliedStereotype));
+	
+	assert fatal(loadbalancedResourceContainer != null)
+		with log ("There is no Stereotype Application!");	
+		
+	numberOfReplicas := getNumberOfReplicas(loadbalancedResourceContainer,"numberOfReplicas",appliedStereotype);
+	
 	var replicatedResourceContainer : Bag(ResourceContainer);
 	
 	var counter : Integer := 1;
