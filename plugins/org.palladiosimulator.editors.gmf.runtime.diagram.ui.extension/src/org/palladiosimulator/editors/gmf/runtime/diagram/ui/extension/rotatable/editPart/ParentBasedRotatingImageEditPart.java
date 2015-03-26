@@ -75,8 +75,7 @@ public class ParentBasedRotatingImageEditPart extends
 	 */
 	private Orientation orientationRelativeToEditPart(ShapeEditPart parent) {
 		Rectangle parentRectangle = parent.getFigure().getBounds();
-		System.out.println("ParentRectangle: " + parentRectangle
-				+ " this location: " + getLocation());
+
 		if (parentRectangle.getTop().y > getLocation().y) {
 			return Orientation.TOP;
 		} else if (parentRectangle.getBottom().y - CHILD_POSITION_OFFSET == getLocation().y) {
@@ -87,8 +86,7 @@ public class ParentBasedRotatingImageEditPart extends
 			return Orientation.RIGHT;
 		}
 
-		// This should never happen
-		System.out.println("should not happen");
+		// This should not happen
 		return Orientation.TOP;
 	}
 
