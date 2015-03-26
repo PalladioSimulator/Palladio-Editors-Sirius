@@ -1,22 +1,8 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
-import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ThreeLayerLibrary;
-
+import StaticResourceContainerLoadbalancing;
 
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
-modeltype PCM_REP uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0';
 modeltype PCM_SYS uses 'http://sdq.ipd.uka.de/PalladioComponentModel/System/5.0';
-modeltype PCM_USE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/UsageModel/5.0';
-modeltype PCM_RES_ENV uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0';
-modeltype PCM_CORE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Core/5.0';
-modeltype EMF_PROFILE_APPLICATION uses 'http://www.modelversioning.org/emfprofile/application/1.1';
-modeltype EMF_PROFILE uses 'http://www.modelversioning.org/emfprofile/1.1';
-modeltype PCM_RES_TYPE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceType/5.0';
-modeltype PCMCore uses pcm::core('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
-modeltype PCMEntity uses pcm::core::entity('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
-modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
-modeltype PCM_MEASURINGPOINT uses 'http://palladiosimulator.org/PCM/MeasuringPoint/1.0';
-modeltype PCM_MONITOR_REPOSITORY uses 'http://palladiosimulator.org/SimuLizar/MonitorRepository/1.0';
-modeltype PCM_EDP2MEASURINGPOINT uses 'http://palladiosimulator.org/EDP2/MeasuringPoint/0.9.1';
 
 /**
  * Transforms a resource environment where resource containers are annotated with the
@@ -35,26 +21,17 @@ modeltype PCM_EDP2MEASURINGPOINT uses 'http://palladiosimulator.org/EDP2/Measuri
  *
  * @author Sebastian Lehrig
  **/
-transformation DynamicHorizontalScalingResourceContainer(
-                           inout pcmResourceEnvironment : PCM_RES_ENV);
+transformation DynamicHorizontalScalingResourceContainer(inout pcmAllocation : PCM_ALLOC) 
+	access transformation StaticResourceContainerLoadbalancing;
 						   
-
-property threshold : Real;
-property interval : Real;
-
 main() {	
 	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Resource Container" started');
-	
-	var resourceEnvironment : ResourceEnvironment := pcmResourceEnvironment.rootObjects()![ResourceEnvironment];		
-	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
-	resourceContainers->forEach(resourceContainer) {
-		if(hasAppliedStereotype(resourceContainer,"ReplicableResourceContainer")){
-			var processingResources : Set(ProcessingResourceSpecification) := 
-				resourceContainer.activeResourceSpecifications_ResourceContainer;
-			//removeStereotypeApplications(resourceContainer, "ReplicableResourceContainer");
-			applyStereotype(resourceContainer, "Replicable");
-		};
-	};
+	// Get relevant PCM model elements
+	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
+	var system : System := allocation.system_Allocation;
+	//assert fatal(hasAppliedStereotype(system, "DynamicHorizontalScalingResourceContainerSystem"))
+		//with log ("The system is not a dynamic horizontal scaling resource container system!");
+	new StaticResourceContainerLoadbalancing(pcmAllocation)->transform();
 	
 	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Resource Container" finished');
 }
