@@ -22,7 +22,7 @@ property threshold : Real = 1.5;
 main() {
 	log ('AT Completion "Replicable" started');	
 	
-	assert fatal(prm.rootObjects()[PCMModelElementMeasurement]->size() > 0)
+	assert fatal(prm.rootObjects()[PRMMeasurement]->size() > 0)
 		with log ("No Measurements found!");
 			
 	assert fatal(pcmAllocation.rootObjects()[Allocation]->size() > 0)
@@ -43,12 +43,12 @@ main() {
 //blackbox helper hasAppliedStereotype(resourceContainer:Entity, stereotypeName:String):Boolean;
 //blackbox helper appliedStereotypesEqualsOne(resourceContainerSet:Set(Entity),stereotypeName:String):Boolean;
 
-helper Set(PCMModelElementMeasurement) :: checkCondition() : Boolean {
+helper Set(PRMMeasurement) :: checkCondition() : Boolean {
 	
 		self->forEach(measurement) {
-		log('Measured value is ' + measurement.measurementValue.toString());
+		log('Measured value is ' + measurement.measuringValue.toString());
 		
-			if (measurement.measurementValue > threshold) {
+			if (measurement.measuringValue > threshold) {
 				return true;
 			};
 		};
@@ -58,7 +58,7 @@ helper Set(PCMModelElementMeasurement) :: checkCondition() : Boolean {
 	}
 	
 mapping ResourceContainer::duplicateReplicableResourceContainer():ResourceContainer 
-	when{hasAppliedStereotype(self,"Replicable") and prm.rootObjects()[PCMModelElementMeasurement]->checkCondition()}
+	when{hasAppliedStereotype(self,"Replicable") and prm.rootObjects()[PRMMeasurement]->checkCondition()}
 {
 	log ('Start of ResourceContainer duplication of '+self.entityName);
 	
