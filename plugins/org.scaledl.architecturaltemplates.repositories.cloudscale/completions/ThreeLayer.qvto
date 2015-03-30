@@ -1,5 +1,4 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
-import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ThreeLayerLibrary;
 
 
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
@@ -63,9 +62,9 @@ helper allocateAssemblyContextsToResourceContainer(assemblyContexts : Set(Assemb
 		else if(hasAppliedStereotype(assemblyContext,"MiddleLayerAssembly")){
 			resourceContainer := resourceContainers -> any(rc|rc.id = "_Fg46ICPIEeSwPfc4EJw-WA");
 			applyStereotype(resourceContainer,"Replicable");
-			threshold := getResponseTimeThreshold(assemblyContext,"responseTimeThreshold","MiddleLayerAssembly");
+			threshold := getDoubleTaggedValue(assemblyContext,"responseTimeThreshold","MiddleLayerAssembly");
 			log ('The responseTimeThreshold is ' + threshold.toString());
-			interval := getResponseTimeInterval(assemblyContext,"responseTimeInterval","MiddleLayerAssembly");
+			interval := getDoubleTaggedValue(assemblyContext,"responseTimeInterval","MiddleLayerAssembly");
 			log ('The responseTimeInterval is ' + interval.toString());
 		}
 		else if(hasAppliedStereotype(assemblyContext,"DataLayerAssembly")){

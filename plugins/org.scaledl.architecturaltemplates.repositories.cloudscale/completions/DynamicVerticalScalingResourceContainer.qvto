@@ -1,5 +1,5 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
-import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ThreeLayerLibrary;
+
 
 
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';

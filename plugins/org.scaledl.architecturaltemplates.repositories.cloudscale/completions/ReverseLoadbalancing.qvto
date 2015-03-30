@@ -1,4 +1,3 @@
-import org.scaledl.architecturaltemplates.repositories.cloudscale.black.LoadbalancingLibrary;
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
 
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';

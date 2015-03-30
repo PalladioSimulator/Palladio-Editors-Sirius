@@ -1,4 +1,3 @@
-import org.scaledl.architecturaltemplates.repositories.cloudscale.black.LoadbalancingLibrary;
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
 import ReverseLoadbalancing;
 import Loadbalancing;
@@ -50,9 +49,9 @@ main() {
 	assert fatal(loadBalancedAssemblyContext != null)
 		with log ("There is no LoadbalancedAssemblyContext Stereotype Application!");
 
-	numberOfReplicas := getNumberOfReplicas(loadBalancedAssemblyContext,"numberOfReplicas","ReplicableAssemblyContext");
-	scaleInThreshold := getThreshold(loadBalancedAssemblyContext,"scaleInThreshold","ReplicableAssemblyContext");
-	scaleOutThreshold := getThreshold(loadBalancedAssemblyContext,"scaleOutThreshold","ReplicableAssemblyContext");	
+	numberOfReplicas := getIntTaggedValue(loadBalancedAssemblyContext,"numberOfReplicas","ReplicableAssemblyContext");
+	scaleInThreshold := getDoubleTaggedValue(loadBalancedAssemblyContext,"scaleInThreshold","ReplicableAssemblyContext");
+	scaleOutThreshold := getDoubleTaggedValue(loadBalancedAssemblyContext,"scaleOutThreshold","ReplicableAssemblyContext");	
 	
 	var reverseLoadbalancingTrans : ReverseLoadbalancing := new ReverseLoadbalancing(prm,pcmAllocation);
 	var loadbalancingTrans := new Loadbalancing(prm,pcmAllocation);
@@ -62,7 +61,7 @@ main() {
 		reverseLoadbalancingTrans->transform();
 		reverseLoadbalancingTrans.loadbalanced := false;
 		numberOfReplicas:= numberOfReplicas -1;
-		setIntTaggedValue(loadBalancedAssemblyContext,numberOfReplicas,"ReplicableAssemblyContext","numberOfReplicas");
+		setTaggedValue(loadBalancedAssemblyContext,numberOfReplicas,"ReplicableAssemblyContext","numberOfReplicas");
 		loadbalancingTrans.reverseLoadbalanced := true;
 		loadbalancingTrans->transform();
 		loadbalancingTrans.reverseLoadbalanced := false;
@@ -72,7 +71,7 @@ main() {
 		reverseLoadbalancingTrans->transform();
 		reverseLoadbalancingTrans.loadbalanced := false;
 		numberOfReplicas:= numberOfReplicas +1;
-		setIntTaggedValue(loadBalancedAssemblyContext,numberOfReplicas,"ReplicableAssemblyContext","numberOfReplicas");
+		setTaggedValue(loadBalancedAssemblyContext,numberOfReplicas,"ReplicableAssemblyContext","numberOfReplicas");
 		loadbalancingTrans.reverseLoadbalanced := true;
 		loadbalancingTrans->transform();
 		loadbalancingTrans.reverseLoadbalanced := false;

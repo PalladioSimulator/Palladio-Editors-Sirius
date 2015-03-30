@@ -1,4 +1,3 @@
-import org.scaledl.architecturaltemplates.repositories.cloudscale.black.LoadbalancingLibrary;
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
 
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
@@ -37,7 +36,7 @@ main() {
 		
 	assert fatal(appliedStereotypesEqualsOne(assemblyContexts,appliedStereotype))
 		with log ("There is more than one Stereotype Application!");	
-	numberOfReplicas := getNumberOfReplicas(loadBalancedAssemblyContext,"numberOfReplicas",appliedStereotype);
+	numberOfReplicas := getIntTaggedValue(loadBalancedAssemblyContext,"numberOfReplicas",appliedStereotype);
 	
 	//apply Stereotype OriginalAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
 	applyStereotype(loadBalancedAssemblyContext,"OriginalAssemblyContext");
@@ -52,12 +51,10 @@ main() {
 	//create the LoadBalancer BasicComponent and AssemblyContext
 	var loadBalancerComponent : RepositoryComponent := new BasicComponent(loadBalancedAssemblyContext.encapsulatedComponent__AssemblyContext);
 	var loadBalancerAssemblyContext : AssemblyContext := new AssemblyContext(loadBalancerComponent);
-		
+	//apply Stereotype LoadbalancerAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
+	applyStereotype(loadBalancerAssemblyContext,"LoadbalancerAssemblyContext");	
 	//duplicate the stereotyped AssemblyContext
 	var duplicatedAssemblyContexts : OrderedSet(AssemblyContext) := createDuplicatedAssemblyContexts(loadBalancedAssemblyContext);
-	
-	//apply Stereotype LoadbalancerAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
-	applyStereotype(loadBalancerAssemblyContext,"LoadbalancerAssemblyContext");
 	
 	//connect the LoadBalancer Assembly Context with the stereotyped and duplicated AssemblyContext in the System
 	connectLoadBalancerAndAssemblyContexts(loadBalancedAssemblyContext,loadBalancerAssemblyContext,duplicatedAssemblyContexts);

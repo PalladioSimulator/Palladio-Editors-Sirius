@@ -29,8 +29,8 @@ main() {
 	// Get relevant PCM model elements
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var system : System := allocation.system_Allocation;
-	//assert fatal(hasAppliedStereotype(system, "DynamicHorizontalScalingResourceContainerSystem"))
-		//with log ("The system is not a dynamic horizontal scaling resource container system!");
+	assert fatal(hasAppliedStereotype(system, "DynamicHorizontalScalingResourceContainerSystem"))
+		with log ("The system is not a dynamic horizontal scaling resource container system!");
 	new StaticResourceContainerLoadbalancing(pcmAllocation)->transform();
 	
 	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Resource Container" finished');

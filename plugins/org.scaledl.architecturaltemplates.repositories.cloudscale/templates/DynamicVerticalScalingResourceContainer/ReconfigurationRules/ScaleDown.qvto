@@ -1,5 +1,4 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
-import org.scaledl.architecturaltemplates.repositories.cloudscale.black.VerticalScalingLibrary;
 
 modeltype PRM uses 'http://simulizar.palladiosimulator.org/PalladioRuntimeMonitoring/1.0';
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
@@ -27,9 +26,9 @@ log ('AT Completion "ScaleDown" started');
 		
 	resourceContainers -> forEach(resourceContainer){
 		if(hasAppliedStereotype(resourceContainer,"VirtualizedResourceContainer")){
-			scaleDownThreshold := getScaleDownThreshold(resourceContainer,"scaleDownThreshold","VirtualizedResourceContainer");
-			scaleDownStepSize := getStepSize(resourceContainer,"stepSize","VirtualizedResourceContainer");
-			minRate := getMinRate(resourceContainer,"minRate","VirtualizedResourceContainer");
+			scaleDownThreshold := getDoubleTaggedValue(resourceContainer,"scaleDownThreshold","VirtualizedResourceContainer");
+			scaleDownStepSize := getIntTaggedValue(resourceContainer,"stepSize","VirtualizedResourceContainer");
+			minRate := getIntTaggedValue(resourceContainer,"minRate","VirtualizedResourceContainer");
 			resourceContainer. map scaleDownVirtualizedContainer();
 		};
 	};

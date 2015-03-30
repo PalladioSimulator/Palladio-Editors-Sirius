@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -79,7 +80,7 @@ public class ProfilesLibrary {
 		}
 	}
 	
-	public static void setIntTaggedValue(Entity pcmEntity, int value, String stereotypeName, String taggedValueName){
+	public static void setTaggedValue(Entity pcmEntity, int value, String stereotypeName, String taggedValueName){
 		List<StereotypeApplication> stereotypeApplications = pcmEntity.getStereotypeApplications(stereotypeName);
 		StereotypeApplication stereotypeApplication = stereotypeApplications
 				.get(0);
@@ -88,60 +89,78 @@ public class ProfilesLibrary {
 		
 	}
 	
-	public static void setDoubleTaggedValue(Entity pcmEntity, double value, String stereotypeName, String taggedValueName){
-		List<StereotypeApplication> stereotypeApplications = pcmEntity.getStereotypeApplications(stereotypeName);
-		StereotypeApplication stereotypeApplication = stereotypeApplications
-				.get(0);
-		setValueOfEStructuralFeature(stereotypeApplication,taggedValueName,value);
-		pcmEntity.saveContainingProfileApplication();
-		
+	public static int getIntTaggedValue(Entity pcmEntity, String taggedValueName,String stereotypeName){
+		return getTaggedValue(pcmEntity, taggedValueName,stereotypeName);	
 	}
 	
-	private static void setValueOfEStructuralFeature(final StereotypeApplication stereotypeApplication, final String name, final Object newValue) {
+	public static double getDoubleTaggedValue(Entity pcmEntity, String taggedValueName,String stereotypeName){
+		return getTaggedValue(pcmEntity, taggedValueName,stereotypeName);
+	}
+	
+	public static void delete(List<NamedElement> rootEObjects,Entity eObject) {
+        Set<EObject> eObjects = new HashSet<EObject>();
+        Set<EObject> crossResourceEObjects = new HashSet<EObject>();
+        eObjects.add(eObject);
+        for (@SuppressWarnings("unchecked")
+        TreeIterator<InternalEObject> j = (TreeIterator<InternalEObject>) (TreeIterator<?>) eObject
+                        .eAllContents(); j.hasNext();) {
+                InternalEObject childEObject = j.next();
+                if (childEObject.eDirectResource() != null) {
+                        crossResourceEObjects.add(childEObject);
+                } else {
+                        eObjects.add(childEObject);
+                }
+        }
+
+        Map<EObject, Collection<EStructuralFeature.Setting>> usages;
+       usages = UsageCrossReferencer.findAll(eObjects, rootEObjects);
+
+        for (Map.Entry<EObject, Collection<EStructuralFeature.Setting>> entry : usages
+                        .entrySet()) {
+                EObject deletedEObject = entry.getKey();
+                Collection<EStructuralFeature.Setting> settings = entry.getValue();
+                for (EStructuralFeature.Setting setting : settings) {
+                        if (!eObjects.contains(setting.getEObject())
+                                        && setting.getEStructuralFeature().isChangeable()) {
+                                EcoreUtil.remove(setting, deletedEObject);
+                        }
+                }
+        }
+
+        EcoreUtil.remove(eObject);
+
+        for (EObject crossResourceEObject : crossResourceEObjects) {
+                EcoreUtil.remove(crossResourceEObject.eContainer(),
+                                crossResourceEObject.eContainmentFeature(),
+                                crossResourceEObject);
+        }
+	}
+	
+	private static void setValueOfEStructuralFeature(final StereotypeApplication stereotypeApplication, final String taggedValueName, final Object newValue) {
 
 	        final Stereotype stereotype = stereotypeApplication.getStereotype();
 	        if(stereotype !=null){
-	        	EStructuralFeature taggedValue = stereotype.getTaggedValue(name);
+	        	EStructuralFeature taggedValue = stereotype.getTaggedValue(taggedValueName);
 	        	stereotypeApplication.eSet(taggedValue, newValue);
 	        }
 	    }
 	
-	public static void delete(List<NamedElement> rootEObjects,Entity eObject) {
-          Set<EObject> eObjects = new HashSet<EObject>();
-          Set<EObject> crossResourceEObjects = new HashSet<EObject>();
-          eObjects.add(eObject);
-          for (@SuppressWarnings("unchecked")
-          TreeIterator<InternalEObject> j = (TreeIterator<InternalEObject>) (TreeIterator<?>) eObject
-                          .eAllContents(); j.hasNext();) {
-                  InternalEObject childEObject = j.next();
-                  if (childEObject.eDirectResource() != null) {
-                          crossResourceEObjects.add(childEObject);
-                  } else {
-                          eObjects.add(childEObject);
-                  }
-          }
+	@SuppressWarnings("unchecked")
+	private static <DATA_TYPE> DATA_TYPE getTaggedValue(
+			Entity pcmEntity, String taggedValueName,
+			String stereotypeName) {
+		EList<StereotypeApplication> pcmEntityStereotypeApplications = pcmEntity
+				.getStereotypeApplications(stereotypeName);
+		StereotypeApplication stereotypeApplication = pcmEntityStereotypeApplications
+				.get(0);
 
-          Map<EObject, Collection<EStructuralFeature.Setting>> usages;
-         usages = UsageCrossReferencer.findAll(eObjects, rootEObjects);
+		Stereotype stereotype = stereotypeApplication.getStereotype();
 
-          for (Map.Entry<EObject, Collection<EStructuralFeature.Setting>> entry : usages
-                          .entrySet()) {
-                  EObject deletedEObject = entry.getKey();
-                  Collection<EStructuralFeature.Setting> settings = entry.getValue();
-                  for (EStructuralFeature.Setting setting : settings) {
-                          if (!eObjects.contains(setting.getEObject())
-                                          && setting.getEStructuralFeature().isChangeable()) {
-                                  EcoreUtil.remove(setting, deletedEObject);
-                          }
-                  }
-          }
+		EStructuralFeature taggedValue = stereotype
+				.getTaggedValue(taggedValueName);
 
-          EcoreUtil.remove(eObject);
+		return (DATA_TYPE) stereotypeApplication.eGet(taggedValue);
 
-          for (EObject crossResourceEObject : crossResourceEObjects) {
-                  EcoreUtil.remove(crossResourceEObject.eContainer(),
-                                  crossResourceEObject.eContainmentFeature(),
-                                  crossResourceEObject);
-          }
-  }
+	}
+	
 }

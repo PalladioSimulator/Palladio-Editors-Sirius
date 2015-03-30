@@ -1,5 +1,4 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
-import org.scaledl.architecturaltemplates.repositories.cloudscale.black.LoadbalancingLibrary;
 
 modeltype PRM uses 'http://simulizar.palladiosimulator.org/PalladioRuntimeMonitoring/1.0';
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
@@ -50,7 +49,7 @@ main() {
 	assert fatal(loadbalancedResourceContainer != null)
 		with log ("There is no Stereotype Application!");	
 		
-	numberOfReplicas := getNumberOfReplicas(loadbalancedResourceContainer,"numberOfReplicas",appliedStereotype);
+	numberOfReplicas := getIntTaggedValue(loadbalancedResourceContainer,"numberOfReplicas",appliedStereotype);
 	
 	var replicatedResourceContainer : Bag(ResourceContainer);
 	
