@@ -12,14 +12,12 @@
     <responseMeasurement xsi:type="ExperimentAutomation.Experiments:SimulationDurationMeasurement"/>
     <initialModel>
       <usageModel href="../simpleExample.usagemodel#/"/>
+      <allocation href="../simpleExample.allocation#_vhhVkNcNEeSyUvPi1U6uGw"/>
       <middlewareRepository href="pathmap://PCM_MODELS/Glassfish.repository#_yQk9oIX1EdyWta7nHuXiHQ"/>
       <eventMiddleWareRepository href="pathmap://PCM_MODELS/default_event_middleware.repository#_Onc7cMALEd-LKvNtxXAQbQ"/>
       <reconfigurationRules href="ReconfigurationRules.experiments#/"/>
       <monitorRepository href="../simpleExample.monitorrepository#_ZBVJUNcREeSNV4TmK_35qw"/>
       <serviceLevelObjectives href="../simpleExample.slo#/"/>
-      <repository href="../simpleExample.repository#_0ZgNoNcMEeSyUvPi1U6uGw"/>
-      <system href="../simpleExample.system#_SHoqcNcNEeSyUvPi1U6uGw"/>
-      <resourceEnvironment href="../simpleExample.resourceenvironment#/"/>
       <usageEvolution href="../UsageEvolution/simpleUsageEvolution.usageevolution#_RekiENeLEeSA0bC90sbXyw"/>
     </initialModel>
   </experiments>
