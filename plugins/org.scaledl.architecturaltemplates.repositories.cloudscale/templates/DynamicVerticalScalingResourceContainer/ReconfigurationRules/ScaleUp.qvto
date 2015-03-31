@@ -24,7 +24,7 @@ property maxRate : Real;
 main() {
 	log ('AT Completion "ScaleUp" started');	
 	
-	assert fatal(prm.rootObjects()[PCMModelElementMeasurement]->size() > 0)
+	assert fatal(prm.rootObjects()[PRMMeasurement]->size() > 0)
 		with log ("No Measurements found!");
 			
 	assert fatal(pcmAllocation.rootObjects()[Allocation]->size() > 0)
@@ -48,11 +48,11 @@ main() {
 }
 
 // FIXME need to check whether it's the right model element
-helper Set(PCMModelElementMeasurement) :: checkCondition() : Boolean
+helper Set(PRMMeasurement) :: checkCondition() : Boolean
 {
 	self->forEach(measurement) {
-		log('Measured value is ' + measurement.measurementValue.toString());
-		if (measurement.measurementValue > scaleUpThreshold) {
+		log('Measured value is ' + measurement.measuringValue.toString());
+		if (measurement.measuringValue > scaleUpThreshold) {
 			return true;
 		};
 	};
@@ -62,7 +62,7 @@ helper Set(PCMModelElementMeasurement) :: checkCondition() : Boolean
 }
 
 mapping ResourceContainer::scaleUpVirtualizedContainer():ResourceContainer 
-	when{prm.rootObjects()[PCMModelElementMeasurement]->checkCondition()}
+	when{prm.rootObjects()[PRMMeasurement]->checkCondition()}
 {
 	log ('Scaling Up ResourceContainer ' + self.entityName);
 	scaleUpProcessingResourcesRecursively(self);

@@ -37,19 +37,15 @@ modeltype PCM_EDP2MEASURINGPOINT uses 'http://palladiosimulator.org/EDP2/Measuri
  *
  * @author Sebastian Lehrig
  **/
-transformation DynamicHorizontalScalingResourceContainer(
-                           inout pcmResourceEnvironment : PCM_RES_ENV);
+transformation DynamicVerticalScalingResourceContainer(
+                           inout pcmSystem : PCM_SYS);
 
 main() {	
 	log ('Architectural Template Transformation "Dynamic Vertical Scaling Resource Container" started');
-	
-	var resourceEnvironment : ResourceEnvironment := pcmResourceEnvironment.rootObjects()![ResourceEnvironment];		
-	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
-	//resourceContainers->forEach(resourceContainer) {
-	//	if(hasAppliedStereotype(resourceContainer,"VirtualizedResourceContainer")){
-		//	applyStereotype(resourceContainer, "Virtualized");
-		//};
-	//};
+
+	var system : System := pcmSystem.rootObjects()![System];
+	assert fatal(hasAppliedStereotype(system, "DynamicVerticalScalingResourceContainerSystem"))
+		with log ("The system is not a dynamic vertical scaling resource container system!");
 	
 	log ('Architectural Template Transformation "Dynamic Vertical Scaling Resource Container" finished');
 }

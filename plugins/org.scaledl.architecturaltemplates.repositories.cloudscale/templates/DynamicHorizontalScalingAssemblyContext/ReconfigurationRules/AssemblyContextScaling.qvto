@@ -29,7 +29,7 @@ property scaleInThreshold : Real;
 property scaleOutThreshold : Real;
 
 main() {
-	assert fatal(prm.rootObjects()[PCMModelElementMeasurement]->size() > 0)
+	assert fatal(prm.rootObjects()[PRMMeasurement]->size() > 0)
 		with log ("No Measurements found!");
 			
 	assert fatal(pcmAllocation.rootObjects()[Allocation]->size() > 0)
@@ -56,7 +56,7 @@ main() {
 	var reverseLoadbalancingTrans : ReverseLoadbalancing := new ReverseLoadbalancing(prm,pcmAllocation);
 	var loadbalancingTrans := new Loadbalancing(prm,pcmAllocation);
 	//The setting of the configuration properties to false could be unnecessary
-	if(prm.rootObjects()[PCMModelElementMeasurement]->checkScaleInCondition() and numberOfReplicas > 1){
+	if(prm.rootObjects()[PRMMeasurement]->checkScaleInCondition() and numberOfReplicas > 1){
 		reverseLoadbalancingTrans.loadbalanced := true;
 		reverseLoadbalancingTrans->transform();
 		reverseLoadbalancingTrans.loadbalanced := false;
@@ -66,7 +66,7 @@ main() {
 		loadbalancingTrans->transform();
 		loadbalancingTrans.reverseLoadbalanced := false;
 	}
-	else if(prm.rootObjects()[PCMModelElementMeasurement]->checkScaleOutCondition()){
+	else if(prm.rootObjects()[PRMMeasurement]->checkScaleOutCondition()){
 		reverseLoadbalancingTrans.loadbalanced := true;
 		reverseLoadbalancingTrans->transform();
 		reverseLoadbalancingTrans.loadbalanced := false;
@@ -78,12 +78,12 @@ main() {
 	};
 }
 
-helper Set(PCMModelElementMeasurement) :: checkScaleOutCondition() : Boolean {
+helper Set(PRMMeasurement) :: checkScaleOutCondition() : Boolean {
 	
 		self->forEach(measurement) {
-		log('Measured value is ' + measurement.measurementValue.toString());
+		log('Measured value is ' + measurement.measuringValue.toString());
 		
-			if (measurement.measurementValue > scaleOutThreshold) {
+			if (measurement.measuringValue > scaleOutThreshold) {
 				return true;
 			};
 		};
@@ -92,12 +92,12 @@ helper Set(PCMModelElementMeasurement) :: checkScaleOutCondition() : Boolean {
 		return false;
 }
 	
-helper Set(PCMModelElementMeasurement) :: checkScaleInCondition() : Boolean {
+helper Set(PRMMeasurement) :: checkScaleInCondition() : Boolean {
 	
 		self->forEach(measurement) {
-		log('Measured value is ' + measurement.measurementValue.toString());
+		log('Measured value is ' + measurement.measuringValue.toString());
 		
-			if (measurement.measurementValue < scaleInThreshold) {
+			if (measurement.measuringValue < scaleInThreshold) {
 				return true;
 			};
 		};
