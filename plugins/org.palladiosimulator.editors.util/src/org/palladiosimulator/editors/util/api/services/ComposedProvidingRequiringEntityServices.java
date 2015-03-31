@@ -22,11 +22,38 @@ import de.uka.ipd.sdq.pcm.parameter.VariableUsage;
 import de.uka.ipd.sdq.pcm.repository.ImplementationComponentType;
 import de.uka.ipd.sdq.pcm.stochasticexpressions.parser.MyPCMStoExLexer;
 import de.uka.ipd.sdq.pcm.stochasticexpressions.parser.MyPCMStoExParser;
+import edu.kit.ipd.sdq.mdsd.profiles.metamodelextension.EStereotypableObject;
 
 public class ComposedProvidingRequiringEntityServices {
 
 	private static final String PARSER_ERROR_TITLE = "Error parsing expression";
 	private static final String PARSER_ERROR_MESSAGE = "The entered stochastic expression is invalid.";
+	
+	/**
+	 * Tests whether the given object is a {@link EStereotypableObject} and has applied stereotypes.
+	 * FIXME: should take a EStereotypableObject as parameter.
+	 * 
+	 * @param object object
+	 * @return has applied stereotypes
+	 */
+	public boolean hasStereotypeApplications(EObject object) {
+		return object instanceof EStereotypableObject && ((EStereotypableObject) object).getStereotypeApplications().size() != 0;
+	}
+
+	/**
+	 * Returns the annotation to be displayed in case there is an Stereotype applied to the given object.
+	 * 
+	 * @param object object
+	 * @return annotation
+	 */
+	public String getStereotypeAnnotation(EObject object) {
+		if (!hasStereotypeApplications(object))
+			return "";
+		
+		final EStereotypableObject eStereotypableObject = (EStereotypableObject) object;
+		final String name = eStereotypableObject.getStereotypeApplications().get(0).getStereotype().getName();
+		return String.format("<<%s>>\n", name);
+	}
 
 	/**
 	 * Returns a list containing all {@link VariableUsage}s associated with the
