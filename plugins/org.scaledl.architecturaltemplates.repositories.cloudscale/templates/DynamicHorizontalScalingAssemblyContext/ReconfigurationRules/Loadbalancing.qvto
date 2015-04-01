@@ -266,7 +266,7 @@ helper createResourceContainerAndConnectionToLinkingResources(originalResourceCo
 	//create a LinkingResource in the ResourcesEnvironment when none exists
 	//FIXME: parameters of latency and throughput for the CommunicationLinkResourceSpecification should be changed, or they should be defined by the user
 	if (resourceContainerLinkingResources->isEmpty()){
-		resourceContainerLinkingResources += new LinkingResource(originalResourceContainer,"3","5");
+		resourceContainerLinkingResources += new LinkingResource(originalResourceContainer,"0","10000");
 	};
 	resourceContainerLinkingResources
 		->forEach(linkingResource){
