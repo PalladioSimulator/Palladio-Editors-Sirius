@@ -22,14 +22,7 @@ main() {
 		var allocationContexts : Set(AllocationContext) := allocation.allocationContexts_Allocation;
 		var assemblyContexts : Set(AssemblyContext);
 		allocationContexts -> forEach(allocationContext){assemblyContexts += allocationContext.assemblyContext_AllocationContext;};
-		var appliedStereotype : String;
-		
-		if(hasAppliedStereotype(assemblyContexts,"StaticLoadbalancedAssemblyContext")){
-						appliedStereotype := "StaticLoadbalancedAssemblyContext";	
-		}
-		else if(hasAppliedStereotype(assemblyContexts,"ReplicableAssemblyContext")){
-					appliedStereotype := "ReplicableAssemblyContext";	
-		};
+		var appliedStereotype : String := "ReplicableAssemblyContext";
 		
 		//get the stereotyped AssemblyContext
 		var loadBalancedAssemblyContext : AssemblyContext := assemblyContexts -> selectOne(assemblyContext : AssemblyContext |
@@ -44,7 +37,7 @@ main() {
 		numberOfReplicas := getIntTaggedValue(loadBalancedAssemblyContext,"numberOfReplicas",appliedStereotype);
 		
 		
-		if(appliedStereotype.=("ReplicableAssemblyContext") and not hasAppliedStereotype(loadBalancedAssemblyContext,"OriginalAssemblyContext")){
+		if(not hasAppliedStereotype(loadBalancedAssemblyContext,"OriginalAssemblyContext")){
 			//apply Stereotype OriginalAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
 			applyStereotype(loadBalancedAssemblyContext,"OriginalAssemblyContext");
 		};
