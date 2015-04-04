@@ -16,6 +16,7 @@ property listOfRootObjects : List(NamedElement);
 property dict : Dict(AssemblyContext,AssemblyContext);
 
 main() {
+
 	if(loadbalanced){
 	
 		var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
@@ -52,6 +53,10 @@ main() {
 		var duplicatedAssemblyContexts : Set(AssemblyContext) := getAllAssemblyContextsOnResourceContainer(duplicatedResourceContainers,allocationContexts);
 		var loadbalancerAssemblyContexts : Set(AssemblyContext) := getAllAssemblyContextsOnResourceContainer(loadbalancerResourceContainers,allocationContexts);
 		var originalAssemblyContexts : Set(AssemblyContext) := getAllAssemblyContextsOnResourceContainer(originalResourceContainer,allocationContexts);
+		var loadbalancerRepositoryComponents : Set(RepositoryComponent);
+		loadbalancerAssemblyContexts ->forEach(loadbalancerAssemblyContext){
+			loadbalancerRepositoryComponents += loadbalancerAssemblyContext.encapsulatedComponent__AssemblyContext;
+		};
 		var assemblyConnectors : Set(AssemblyConnector) := system.connectors__ComposedStructure->selectByType(AssemblyConnector);
 		var sourceAssemblyContext : AssemblyContext;
 		var targetAssemblyContext : AssemblyContext;
@@ -76,6 +81,7 @@ main() {
 		var loadbalancerAndDuplicatedAllocationContexts : Set(AllocationContext) := allocationContexts -> select(allocationContext : AllocationContext|loadbalancerAndDuplicatedResourceContainer->includes(allocationContext.resourceContainer_AllocationContext));
 		reverseResourceEnvironment(loadbalancerAndDuplicatedResourceContainer,resourceEnvironment);
 		reverseAllocation(loadbalancerAndDuplicatedAllocationContexts);
+		reverseRepository(loadbalancerRepositoryComponents);
 	};	
 }
 
@@ -103,6 +109,15 @@ query getAllAssemblyContextsOnResourceContainer(resourceContainer : ResourceCont
 		}
 	};
 	return assemblyContexts; 
+}
+
+/**
+ * Remove all Provided and RequiredRoles from the Loadbalancer RepositoryComponent and then remove the component
+ */
+helper reverseRepository(loadbalancerRepositoryComponents : Set(RepositoryComponent)){
+	loadbalancerRepositoryComponents->forEach(loadbalancerRepositoryComponent){
+		removeRepositoryComponent(loadbalancerRepositoryComponent);
+	};
 }
 
 helper reverseAllocation(allocationContexts : Set(AllocationContext)){
@@ -208,6 +223,13 @@ helper removeAllocationContext(allocationContext : AllocationContext){
  */
 helper removeResourceContainer(resourceContainer : ResourceContainer){
 	delete(listOfRootObjects,resourceContainer); 
+}
+
+/**
+ * Remove the RepositoryComponent of the Repository Model
+ */
+helper removeRepositoryComponent(repositoryComponent: RepositoryComponent){
+	delete(listOfRootObjects,repositoryComponent);
 }
 
 /**
