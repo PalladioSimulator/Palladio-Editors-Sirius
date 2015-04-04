@@ -1,21 +1,10 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
 
-
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
-modeltype PCM_REP uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0';
 modeltype PCM_SYS uses 'http://sdq.ipd.uka.de/PalladioComponentModel/System/5.0';
 modeltype PCM_USE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/UsageModel/5.0';
 modeltype PCM_RES_ENV uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0';
-modeltype PCM_CORE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Core/5.0';
-modeltype EMF_PROFILE_APPLICATION uses 'http://www.modelversioning.org/emfprofile/application/1.1';
-modeltype EMF_PROFILE uses 'http://www.modelversioning.org/emfprofile/1.1';
-modeltype PCM_RES_TYPE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceType/5.0';
-modeltype PCMCore uses pcm::core('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
-modeltype PCMEntity uses pcm::core::entity('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
 modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
-modeltype PCM_MEASURINGPOINT uses 'http://palladiosimulator.org/PCM/MeasuringPoint/1.0';
-modeltype PCM_MONITOR_REPOSITORY uses 'http://palladiosimulator.org/SimuLizar/MonitorRepository/1.0';
-modeltype PCM_EDP2MEASURINGPOINT uses 'http://palladiosimulator.org/EDP2/MeasuringPoint/0.9.1';
 
 /**
  * Transforms a 3-layer PCM instance (System annotated with 3-layer AT roles) to a PCM instance
@@ -63,9 +52,7 @@ helper allocateAssemblyContextsToResourceContainer(assemblyContexts : Set(Assemb
 			resourceContainer := resourceContainers -> any(rc|rc.id = "_Fg46ICPIEeSwPfc4EJw-WA");
 			applyStereotype(resourceContainer,"Replicable");
 			threshold := getDoubleTaggedValue(assemblyContext,"responseTimeThreshold","MiddleLayerAssembly");
-			log ('The responseTimeThreshold is ' + threshold.toString());
 			interval := getDoubleTaggedValue(assemblyContext,"responseTimeInterval","MiddleLayerAssembly");
-			log ('The responseTimeInterval is ' + interval.toString());
 		}
 		else if(hasAppliedStereotype(assemblyContext,"DataLayerAssembly")){
 			resourceContainer := resourceContainers -> any(rc|rc.id = "_HAQbICPIEeSwPfc4EJw-WA");
