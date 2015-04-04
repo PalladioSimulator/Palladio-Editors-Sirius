@@ -24,16 +24,15 @@ main() {
 		var allocationContexts : Set(AllocationContext) := allocation.allocationContexts_Allocation;
 		var assemblyContexts : Set(AssemblyContext);
 		allocationContexts -> forEach(allocationContext){assemblyContexts += allocationContext.assemblyContext_AllocationContext;};
-		
+		assert fatal(appliedStereotypesEqualsOne(assemblyContexts,"LoadbalancerAssemblyContext"))
+			with log ("There is more than one LoadbalancerAssemblyContext Stereotype Application!");	
+			
 		//get the LoadbalancerAssemblyContext stereotyped AssemblyContext
 		var loadBalancerAssemblyContext : AssemblyContext := assemblyContexts -> selectOne(assemblyContext : AssemblyContext |
 						hasAppliedStereotype(assemblyContext,"LoadbalancerAssemblyContext"));
 				
 		assert fatal(loadBalancerAssemblyContext != null)
 			with log ("There is no LoadbalancerAssemblyContext Stereotype Application!");	
-			
-		assert fatal(appliedStereotypesEqualsOne(assemblyContexts,"LoadbalancerAssemblyContext"))
-			with log ("There is more than one LoadbalancerAssemblyContext Stereotype Application!");	
 				
 		var system : System := allocation.system_Allocation;
 		var repository : Repository := assemblyContexts->any(true).encapsulatedComponent__AssemblyContext.repository__RepositoryComponent;
@@ -113,7 +112,7 @@ helper reverseSystem(duplicateAssemblyContexts:Set(AssemblyContext), originalAss
 				requiringAssemblyContext.id = loadbalancerAssemblyContext.id){
 				removeAssemblyConnector(assemblyConnector);
 			}
-			else if(assemblyConnector.providingAssemblyContext_AssemblyConnector.id = loadbalancerAssemblyContext.id){
+			else if(providingAssemblyContext.id = loadbalancerAssemblyContext.id){
 				originalAssemblyContextOperationProvidedRole := originalAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity 
 					->selectOne(providedRole : ProvidedRole | providedRole.oclAsType(OperationProvidedRole).providedInterface__OperationProvidedRole.id  = assemblyConnector.providedRole_AssemblyConnector.providedInterface__OperationProvidedRole.id).oclAsType(OperationProvidedRole);
 				assemblyConnector.providingAssemblyContext_AssemblyConnector := originalAssemblyContext;
