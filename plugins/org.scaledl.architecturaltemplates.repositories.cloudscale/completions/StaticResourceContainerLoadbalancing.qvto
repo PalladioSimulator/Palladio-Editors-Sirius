@@ -34,8 +34,8 @@ main() {
 		
 	if(hasAppliedStereotype(resourceContainer,"StaticLoadbalancedResourceContainer")){
 		appliedStereotype := "StaticLoadbalancedResourceContainer";	
-		//assert fatal(hasAppliedStereotype(system,"StaticResourceContainerLoadbalancingSystem"))
-			//with log("There is not StaticResourceContainerSystem Stereotype Application");
+		assert fatal(hasAppliedStereotype(system,"StaticResourceContainerLoadbalancingSystem"))
+			with log("There is not StaticResourceContainerSystem Stereotype Application");
 	}
 	else if(hasAppliedStereotype(resourceContainer,"ReplicableResourceContainer")){
 		appliedStereotype := "ReplicableResourceContainer";	
@@ -49,6 +49,8 @@ main() {
 	assert fatal(loadbalancedResourceContainer != null)
 		with log ("There is no Stereotype Application!");	
 		
+	applyStereotype(loadbalancedResourceContainer,"OriginalResourceContainer");
+	
 	numberOfReplicas := getIntTaggedValue(loadbalancedResourceContainer,"numberOfReplicas",appliedStereotype);
 	
 	var replicatedResourceContainer : Bag(ResourceContainer);
@@ -82,11 +84,12 @@ helper duplicateReplicableResourceContainer(counter:Integer,originalResourceCont
 	//create a LinkingResource in the ResourcesEnvironment when none exists
 	//FIXME: parameters of latency and throughput for the CommunicationLinkResourceSpecification should be changed, or they should be defined by the user
 	if (resourceContainerLinkingResources->isEmpty()){
-		resourceContainerLinkingResources += new LinkingResource(originalResourceContainer,"1","100");
+		resourceContainerLinkingResources += new LinkingResource(originalResourceContainer,"0","10000");
 	};
 	resourceContainerLinkingResources ->forEach(linkingResource){
 		linkingResource.connectedResourceContainers_LinkingResource += duplicatedResourceContainer;
 	};	
+	applyStereotype(duplicatedResourceContainer,"DuplicateResourceContainer");
 	return duplicatedResourceContainer;
 	// TODO Add nested resource containers
 }
@@ -176,6 +179,8 @@ helper createSystemAndAllocation(originalResourceContainer : ResourceContainer,r
 				if(assemblyConnector.providedRole_AssemblyConnector.resolve(BasicComponent)->size()=0){
 					loadBalancerResourceContainer := createLoadbalancerResourceContainer(oldAssemblyConnectorProvidedInterface.entityName,originalResourceContainer);
 					loadBalancerAssemblyContext := assemblyConnector.providedRole_AssemblyConnector.createLoadBalancer(loadBalancerResourceContainer,targetAssemblyContext);
+					duplicatedAssemblyContextsAndLoadBalancedAssemblyContext := resolvedTargetAssemblyContext;
+					duplicatedAssemblyContextsAndLoadBalancedAssemblyContext+= targetAssemblyContext;
 				};
 				
 				var loadBalancerProvidedRoles : Bag(OperationProvidedRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity.oclAsType(OperationProvidedRole);
@@ -216,6 +221,8 @@ helper createSystemAndAllocation(originalResourceContainer : ResourceContainer,r
 				if(delegationConnector.innerProvidedRole_ProvidedDelegationConnector.resolve(BasicComponent)->size()=0){
 					loadBalancerResourceContainer := createLoadbalancerResourceContainer(delegationConnectorProvidedInterface.entityName,originalResourceContainer);
 					loadBalancerAssemblyContext := delegationConnector.innerProvidedRole_ProvidedDelegationConnector.createLoadBalancer(loadBalancerResourceContainer,targetAssemblyContext);
+					duplicatedAssemblyContextsAndLoadBalancedAssemblyContext := resolvedTargetAssemblyContext;					
+					duplicatedAssemblyContextsAndLoadBalancedAssemblyContext+= targetAssemblyContext;
 				};
 				
 				var loadBalancerProvidedRoles : Bag(OperationProvidedRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity.oclAsType(OperationProvidedRole);
@@ -430,11 +437,13 @@ helper createLoadbalancerResourceContainer(nameOfLoadbalancedInterface:String,or
 	//create a LinkingResource in the ResourcesEnvironment when none exists
 	//FIXME: parameters of latency and throughput for the CommunicationLinkResourceSpecification should be changed, or they should be defined by the user
 	if (resourceContainerLinkingResources->isEmpty()){
-		resourceContainerLinkingResources += new LinkingResource(originalResourceContainer,"1","100");
+		resourceContainerLinkingResources += new LinkingResource(originalResourceContainer,"0","10000");
 	};
 	resourceContainerLinkingResources ->forEach(linkingResource){
 		linkingResource.connectedResourceContainers_LinkingResource += loadbalancerResourceContainer;
 	};	
+	
+	applyStereotype(loadbalancerResourceContainer,"LoadbalancerResourceContainer");
 	return loadbalancerResourceContainer;
 	// TODO Add nested resource containers
 } 
