@@ -47,34 +47,34 @@ main() {
 						hasAppliedStereotype(assemblyContext,"ReplicableAssemblyContext"));
 						
 	assert fatal(loadBalancedAssemblyContext != null)
-		with log ("There is no LoadbalancedAssemblyContext Stereotype Application!");
+		with log ("There is no Replicable Assembly Context Stereotype Application!");
 
 	numberOfReplicas := getIntTaggedValue(loadBalancedAssemblyContext,"numberOfReplicas","ReplicableAssemblyContext");
 	scaleInThreshold := getDoubleTaggedValue(loadBalancedAssemblyContext,"scaleInThreshold","ReplicableAssemblyContext");
 	scaleOutThreshold := getDoubleTaggedValue(loadBalancedAssemblyContext,"scaleOutThreshold","ReplicableAssemblyContext");	
 	
-	var reverseLoadbalancingTrans : ReverseLoadbalancing := new ReverseLoadbalancing(prm,pcmAllocation);
-	var loadbalancingTrans := new Loadbalancing(prm,pcmAllocation);
+	var reverseLoadbalancingTransformation : ReverseLoadbalancing := new ReverseLoadbalancing(pcmAllocation);
+	var loadbalancingTransformation : Loadbalancing := new Loadbalancing(pcmAllocation);
 	//The setting of the configuration properties to false could be unnecessary
 	if(prm.rootObjects()[PRMMeasurement]->checkScaleInCondition() and numberOfReplicas > 1){
-		reverseLoadbalancingTrans.loadbalanced := true;
-		reverseLoadbalancingTrans->transform();
-		reverseLoadbalancingTrans.loadbalanced := false;
+		reverseLoadbalancingTransformation.loadbalanced := true;
+		reverseLoadbalancingTransformation->transform();
+		reverseLoadbalancingTransformation.loadbalanced := false;
 		numberOfReplicas:= numberOfReplicas -1;
 		setTaggedValue(loadBalancedAssemblyContext,numberOfReplicas,"ReplicableAssemblyContext","numberOfReplicas");
-		loadbalancingTrans.reverseLoadbalanced := true;
-		loadbalancingTrans->transform();
-		loadbalancingTrans.reverseLoadbalanced := false;
+		loadbalancingTransformation.reverseLoadbalanced := true;
+		loadbalancingTransformation->transform();
+		loadbalancingTransformation.reverseLoadbalanced := false;
 	}
 	else if(prm.rootObjects()[PRMMeasurement]->checkScaleOutCondition()){
-		reverseLoadbalancingTrans.loadbalanced := true;
-		reverseLoadbalancingTrans->transform();
-		reverseLoadbalancingTrans.loadbalanced := false;
+		reverseLoadbalancingTransformation.loadbalanced := true;
+		reverseLoadbalancingTransformation->transform();
+		reverseLoadbalancingTransformation.loadbalanced := false;
 		numberOfReplicas:= numberOfReplicas +1;
 		setTaggedValue(loadBalancedAssemblyContext,numberOfReplicas,"ReplicableAssemblyContext","numberOfReplicas");
-		loadbalancingTrans.reverseLoadbalanced := true;
-		loadbalancingTrans->transform();
-		loadbalancingTrans.reverseLoadbalanced := false;
+		loadbalancingTransformation.reverseLoadbalanced := true;
+		loadbalancingTransformation->transform();
+		loadbalancingTransformation.reverseLoadbalanced := false;
 	};
 }
 
