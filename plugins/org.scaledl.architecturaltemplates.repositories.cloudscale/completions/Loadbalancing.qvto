@@ -1,4 +1,3 @@
-import org.scaledl.architecturaltemplates.repositories.cloudscale.black.LoadbalancingLibrary;
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
 
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
@@ -6,7 +5,6 @@ modeltype PCM_REP uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Repository/
 modeltype PCM_SYS uses 'http://sdq.ipd.uka.de/PalladioComponentModel/System/5.0';
 modeltype PCM_RES_ENV uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0';
 modeltype PCM_CORE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Core/5.0';
-modeltype PCMEntity uses pcm::core::entity('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
 modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
 modeltype PCMSEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0');
 
@@ -37,7 +35,7 @@ main() {
 		
 	assert fatal(appliedStereotypesEqualsOne(assemblyContexts,appliedStereotype))
 		with log ("There is more than one Stereotype Application!");	
-	numberOfReplicas := getNumberOfReplicas(loadBalancedAssemblyContext,"numberOfReplicas",appliedStereotype);
+	numberOfReplicas := getIntTaggedValue(loadBalancedAssemblyContext,"numberOfReplicas",appliedStereotype);
 	
 	//apply Stereotype OriginalAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
 	applyStereotype(loadBalancedAssemblyContext,"OriginalAssemblyContext");
@@ -52,12 +50,10 @@ main() {
 	//create the LoadBalancer BasicComponent and AssemblyContext
 	var loadBalancerComponent : RepositoryComponent := new BasicComponent(loadBalancedAssemblyContext.encapsulatedComponent__AssemblyContext);
 	var loadBalancerAssemblyContext : AssemblyContext := new AssemblyContext(loadBalancerComponent);
-		
+	//apply Stereotype LoadbalancerAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
+	applyStereotype(loadBalancerAssemblyContext,"LoadbalancerAssemblyContext");	
 	//duplicate the stereotyped AssemblyContext
 	var duplicatedAssemblyContexts : OrderedSet(AssemblyContext) := createDuplicatedAssemblyContexts(loadBalancedAssemblyContext);
-	
-	//apply Stereotype LoadbalancerAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
-	applyStereotype(loadBalancerAssemblyContext,"LoadbalancerAssemblyContext");
 	
 	//connect the LoadBalancer Assembly Context with the stereotyped and duplicated AssemblyContext in the System
 	connectLoadBalancerAndAssemblyContexts(loadBalancedAssemblyContext,loadBalancerAssemblyContext,duplicatedAssemblyContexts);
@@ -127,9 +123,7 @@ helper connectLoadBalancerAndAssemblyContexts(loadBalancedAssemblyContext : Asse
 	var connectors : Set(Connector) := system.connectors__ComposedStructure;
 	var providingAssemblyContext : AssemblyContext;
 	connectors->forEach(connector) {
-	log ('Start of connector for each loop');
 		if(connector.oclIsTypeOf(AssemblyConnector)){
-		log ('Start of assembly connector case');
 			var assemblyConnector : AssemblyConnector := connector.oclAsType(AssemblyConnector);
 			var requiringAssemblyContext : AssemblyContext := getRequiringAssemblyContext(assemblyConnector);
 			providingAssemblyContext := getProvidingAssemblyContext(assemblyConnector);
@@ -148,7 +142,6 @@ helper connectLoadBalancerAndAssemblyContexts(loadBalancedAssemblyContext : Asse
 			}
 		}
 		else if (connector.oclIsTypeOf(ProvidedDelegationConnector)) {
-			log ('Start of provided delegation connector case');
 			var delegationConnector : ProvidedDelegationConnector := connector.oclAsType(ProvidedDelegationConnector);
 			providingAssemblyContext := getProvidingAssemblyContext(delegationConnector);
 			if(providingAssemblyContext = loadBalancedAssemblyContext){
@@ -257,7 +250,7 @@ helper createResourceContainerAndConnectionToLinkingResources(originalResourceCo
 	//create a LinkingResource in the ResourcesEnvironment when none exists
 	//FIXME: parameters of latency and throughput for the CommunicationLinkResourceSpecification should be changed, or they should be defined by the user
 	if (resourceContainerLinkingResources->isEmpty()){
-		resourceContainerLinkingResources += new LinkingResource(originalResourceContainer,"3","5");
+		resourceContainerLinkingResources += new LinkingResource(originalResourceContainer,"0","10000");
 	};
 	resourceContainerLinkingResources
 		->forEach(linkingResource){
@@ -268,7 +261,6 @@ helper createResourceContainerAndConnectionToLinkingResources(originalResourceCo
 };
 
 constructor RequiredDelegationConnector :: RequiredDelegationConnector(assemblyContext : AssemblyContext, innerRequiredRole : OperationRequiredRole, outerRequiredRole : OperationRequiredRole){
-	log ('Start of delegationConnector creation');
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var system : System := allocation.system_Allocation![System];
 	entityName := "RequiredDelegation " + innerRequiredRole.entityName + "_" + outerRequiredRole.entityName;
@@ -279,7 +271,6 @@ constructor RequiredDelegationConnector :: RequiredDelegationConnector(assemblyC
 }
 
 constructor AssemblyConnector :: AssemblyConnector(requiringAssemblyContext : AssemblyContext,requiredRole:OperationRequiredRole, providedRole: OperationProvidedRole, providingAssemblyContext : AssemblyContext){
-	log ('Start of assemblyConnector creation');
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var system : System := allocation.system_Allocation![System];
 	entityName := requiringAssemblyContext.entityName + "_" + providingAssemblyContext.entityName;
@@ -331,7 +322,6 @@ constructor PCMRandomVariable :: PCMRandomVariable(spec:String){
 }
 
 constructor ResourceContainer :: ResourceContainer(originalResourceContainer : ResourceContainer, rcName : String){
-	log ('Start of ResourceContainer constructor');
 	entityName := originalResourceContainer.entityName + rcName;
 	resourceEnvironment_ResourceContainer := originalResourceContainer.resourceEnvironment_ResourceContainer;	
 } 
@@ -346,7 +336,6 @@ constructor AssemblyContext :: AssemblyContext(bc : RepositoryComponent) {
 
 constructor BasicComponent :: BasicComponent (loadBalancedComponent : RepositoryComponent)
 {
-log ('Start of LoadBalancer Constructor');
 	var repository := loadBalancedComponent.repository__RepositoryComponent;
 	var providedRoles : Set(ProvidedRole) := loadBalancedComponent.providedRoles_InterfaceProvidingEntity;
 	entityName := "LoadBalancer_"+ loadBalancedComponent.entityName;
@@ -372,7 +361,6 @@ log ('Start of LoadBalancer Constructor');
 }
 
 constructor ResourceDemandingSEFF :: ResourceDemandingSEFF (operationSignature : OperationSignature, requiredRoles : Set(OperationRequiredRole)){
-log ('Start of LoadBalancer ServiceEffectSpecification Constructor');
 	describedService__SEFF := operationSignature;
 	var startAction : StartAction := object StartAction{};
 	var branchAction : BranchAction := object BranchAction{
@@ -412,13 +400,11 @@ log ('Start of LoadBalancer ServiceEffectSpecification Constructor');
 }
 	
 constructor OperationProvidedRole :: OperationProvidedRole(pr:OperationProvidedRole){
-log ('Start of ProvidedRole Constructor');
 	entityName := "Provided_" + pr.providedInterface__OperationProvidedRole.entityName + "_LoadBalancer";
 	providedInterface__OperationProvidedRole := pr.providedInterface__OperationProvidedRole;
 }
 
 constructor OperationRequiredRole :: OperationRequiredRole(rr:OperationProvidedRole, i:Integer){
-log ('Start of RequiredRole Constructor');
 	entityName := "Required_" + rr.providedInterface__OperationProvidedRole.entityName +"_LoadBalancer_"+i.toString();
 	requiredInterface__OperationRequiredRole := rr.providedInterface__OperationProvidedRole;
 }

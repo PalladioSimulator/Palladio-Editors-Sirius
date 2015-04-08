@@ -1,13 +1,13 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
-import ReverseLoadbalancing;
-import Loadbalancing;
+import ResourceContainerReverseLoadbalancing;
+import ResourceContainerLoadbalancing;
 
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
-modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
+modeltype PCM_RES_ENV uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0';
 modeltype PRM uses 'http://simulizar.palladiosimulator.org/PalladioRuntimeMonitoring/1.0';
-	
-transformation AssemblyContextScaling(in prm : PRM, inout pcmAllocation : PCM_ALLOC) 
-access transformation Loadbalancing, ReverseLoadbalancing;
+
+transformation ResourceContainerScaling(in prm : PRM, inout pcmAllocation : PCM_ALLOC) 
+access transformation ResourceContainerLoadbalancing, ResourceContainerReverseLoadbalancing;
 
 property numberOfReplicas : Integer;
 property scaleInThreshold : Real;
@@ -21,32 +21,30 @@ main() {
 		with log ("Allocation Model is empty!");
 		
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
-	var allocationContexts : Set(AllocationContext) := allocation.allocationContexts_Allocation;
-	var assemblyContexts : Set(AssemblyContext);
-	allocationContexts -> forEach(allocationContext){
-		assemblyContexts += allocationContext.assemblyContext_AllocationContext;
-	};
+	var resourceEnvironment : ResourceEnvironment := allocation.targetResourceEnvironment_Allocation;
+	
+	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
 	
 	//get the stereotyped AssemblyContext
-	var loadBalancedAssemblyContext : AssemblyContext := assemblyContexts -> selectOne(assemblyContext : AssemblyContext |
-						hasAppliedStereotype(assemblyContext,"ReplicableAssemblyContext"));
+	var loadBalancedResourceContainer : ResourceContainer := resourceContainers -> selectOne(resourceContainer : ResourceContainer |
+						hasAppliedStereotype(resourceContainer,"ReplicableResourceContainer"));
 						
-	assert fatal(loadBalancedAssemblyContext != null)
-		with log ("There is no Replicable Assembly Context Stereotype Application!");
+	assert fatal(loadBalancedResourceContainer != null)
+		with log ("There is no Replicable ResourceContainer Stereotype Application!");
 
-	numberOfReplicas := getIntTaggedValue(loadBalancedAssemblyContext,"numberOfReplicas","ReplicableAssemblyContext");
-	scaleInThreshold := getDoubleTaggedValue(loadBalancedAssemblyContext,"scaleInThreshold","ReplicableAssemblyContext");
-	scaleOutThreshold := getDoubleTaggedValue(loadBalancedAssemblyContext,"scaleOutThreshold","ReplicableAssemblyContext");	
+	numberOfReplicas := getIntTaggedValue(loadBalancedResourceContainer,"numberOfReplicas","ReplicableResourceContainer");
+	scaleInThreshold := getDoubleTaggedValue(loadBalancedResourceContainer,"scaleInThreshold","ReplicableResourceContainer");
+	scaleOutThreshold := getDoubleTaggedValue(loadBalancedResourceContainer,"scaleOutThreshold","ReplicableResourceContainer");	
 	
-	var reverseLoadbalancingTransformation : ReverseLoadbalancing := new ReverseLoadbalancing(prm,pcmAllocation);
-	var loadbalancingTransformation : Loadbalancing := new Loadbalancing(prm,pcmAllocation);
+	var reverseLoadbalancingTransformation : ResourceContainerReverseLoadbalancing := new ResourceContainerReverseLoadbalancing(prm,pcmAllocation);
+	var loadbalancingTransformation : ResourceContainerLoadbalancing:= new ResourceContainerLoadbalancing(prm,pcmAllocation);
 	//The setting of the configuration properties to false could be unnecessary
 	if(prm.rootObjects()[PRMMeasurement]->checkScaleInCondition() and numberOfReplicas > 1){
 		reverseLoadbalancingTransformation.loadbalanced := true;
 		reverseLoadbalancingTransformation->transform();
 		reverseLoadbalancingTransformation.loadbalanced := false;
 		numberOfReplicas:= numberOfReplicas -1;
-		setTaggedValue(loadBalancedAssemblyContext,numberOfReplicas,"ReplicableAssemblyContext","numberOfReplicas");
+		setTaggedValue(loadBalancedResourceContainer,numberOfReplicas,"ReplicableResourceContainer","numberOfReplicas");
 		loadbalancingTransformation.reverseLoadbalanced := true;
 		loadbalancingTransformation->transform();
 		loadbalancingTransformation.reverseLoadbalanced := false;
@@ -56,7 +54,7 @@ main() {
 		reverseLoadbalancingTransformation->transform();
 		reverseLoadbalancingTransformation.loadbalanced := false;
 		numberOfReplicas:= numberOfReplicas +1;
-		setTaggedValue(loadBalancedAssemblyContext,numberOfReplicas,"ReplicableAssemblyContext","numberOfReplicas");
+		setTaggedValue(loadBalancedResourceContainer,numberOfReplicas,"ReplicableResourceContainer","numberOfReplicas");
 		loadbalancingTransformation.reverseLoadbalanced := true;
 		loadbalancingTransformation->transform();
 		loadbalancingTransformation.reverseLoadbalanced := false;
@@ -90,4 +88,3 @@ helper Set(PRMMeasurement) :: checkScaleInCondition() : Boolean {
 		log('No measurements match the condition. Number of measurements is ' + self->size().toString());
 		return false;
 }
-	

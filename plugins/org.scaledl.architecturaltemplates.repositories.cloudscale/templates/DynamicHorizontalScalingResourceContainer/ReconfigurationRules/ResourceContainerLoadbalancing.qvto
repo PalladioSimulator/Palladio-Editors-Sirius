@@ -1,5 +1,6 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
 
+modeltype PRM uses 'http://simulizar.palladiosimulator.org/PalladioRuntimeMonitoring/1.0';
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
 modeltype PCM_REP uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0';
 modeltype PCM_SYS uses 'http://sdq.ipd.uka.de/PalladioComponentModel/System/5.0';
@@ -8,11 +9,13 @@ modeltype PCMCore uses pcm::core('http://sdq.ipd.uka.de/PalladioComponentModel/5
 modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
 modeltype SEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0');
 
-transformation StaticResourceContainerLoadbalancing(inout pcmAllocation : PCM_ALLOC);
+transformation ResourceContainerLoadbalancing(in prm : PRM, inout pcmAllocation : PCM_ALLOC) ;
 
+configuration property reverseLoadbalanced : Boolean;
 property numberOfReplicas : Integer;
 
 main() {
+	if(reverseLoadbalanced){
 	log ('AT Completion "StaticResourceContainerLoadbalancing" started');	
 			
 	assert fatal(pcmAllocation.rootObjects()[Allocation]->size() > 0)
@@ -23,16 +26,7 @@ main() {
 		
 	var resourceEnvironment : ResourceEnvironment := allocation.targetResourceEnvironment_Allocation;
 	var resourceContainer : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
-	var appliedStereotype : String;
-		
-	if(hasAppliedStereotype(resourceContainer,"StaticLoadbalancedResourceContainer")){
-		appliedStereotype := "StaticLoadbalancedResourceContainer";	
-		assert fatal(hasAppliedStereotype(system,"StaticResourceContainerLoadbalancingSystem"))
-			with log("There is not StaticResourceContainerSystem Stereotype Application");
-	}
-	else if(hasAppliedStereotype(resourceContainer,"ReplicableResourceContainer")){
-		appliedStereotype := "ReplicableResourceContainer";	
-	};
+	var appliedStereotype : String := "ReplicableResourceContainer";
 		
 	assert fatal(appliedStereotypesEqualsOne(resourceContainer,appliedStereotype))
 		with log ("There is more than one Stereotype Application!");
@@ -40,10 +34,13 @@ main() {
 	var loadbalancedResourceContainer : ResourceContainer := resourceEnvironment.resourceContainer_ResourceEnvironment -> selectOne(rc : ResourceContainer| hasAppliedStereotype(rc, appliedStereotype));
 	
 	assert fatal(loadbalancedResourceContainer != null)
-		with log ("There is no Stereotype Application!");	
-		
-	applyStereotype(loadbalancedResourceContainer,"OriginalResourceContainer");
+		with log ("There is no Stereotype Application!");
 	
+	if(not hasAppliedStereotype(loadbalancedResourceContainer,"OriginalResourceContainer")){
+			//apply Stereotype OriginalAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
+			applyStereotype(loadbalancedResourceContainer,"OriginalResourceContainer");
+	};
+		
 	numberOfReplicas := getIntTaggedValue(loadbalancedResourceContainer,"numberOfReplicas",appliedStereotype);
 	
 	var replicatedResourceContainer : Bag(ResourceContainer);
@@ -57,6 +54,7 @@ main() {
 	createSystemAndAllocation(loadbalancedResourceContainer,replicatedResourceContainer);
 	
 	log ('AT Completion "StaticResourceContainerLoadbalancing" finished');	
+	};
 }
 
 
@@ -166,8 +164,6 @@ helper createSystemAndAllocation(originalResourceContainer : ResourceContainer,r
 				if(assemblyConnector.providedRole_AssemblyConnector.resolve(BasicComponent)->size()=0){
 					loadBalancerResourceContainer := createLoadbalancerResourceContainer(oldAssemblyConnectorProvidedInterface.entityName,originalResourceContainer);
 					loadBalancerAssemblyContext := assemblyConnector.providedRole_AssemblyConnector.createLoadBalancer(loadBalancerResourceContainer,targetAssemblyContext);
-					duplicatedAssemblyContextsAndLoadBalancedAssemblyContext := resolvedTargetAssemblyContext;
-					duplicatedAssemblyContextsAndLoadBalancedAssemblyContext+= targetAssemblyContext;
 				};
 				
 				var loadBalancerProvidedRoles : Bag(OperationProvidedRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity.oclAsType(OperationProvidedRole);
@@ -177,7 +173,9 @@ helper createSystemAndAllocation(originalResourceContainer : ResourceContainer,r
 		
 				assemblyConnector.providingAssemblyContext_AssemblyConnector := loadBalancerAssemblyContext;
 				assemblyConnector.providedRole_AssemblyConnector := commonProvidedRoleOfAssemblyConnectorAndLoadbalancer;
-				createAssemblyConnectorsBetweenLoadbalancerAndLoadbalancedAssemblyContexts(oldAssemblyConnectorProvidedInterface,loadBalancerAssemblyContext,loadBalancerNeededRequiredRoles,duplicatedAssemblyContextsAndLoadBalancedAssemblyContext);	
+				createAssemblyConnectorsBetweenLoadbalancerAndLoadbalancedAssemblyContexts(oldAssemblyConnectorProvidedInterface,loadBalancerAssemblyContext,loadBalancerNeededRequiredRoles,duplicatedAssemblyContextsAndLoadBalancedAssemblyContext);
+				
+
 			};	
 		} else if (connector.oclIsTypeOf(ProvidedDelegationConnector)) {
 			var delegationConnector : ProvidedDelegationConnector := connector.oclAsType(ProvidedDelegationConnector);

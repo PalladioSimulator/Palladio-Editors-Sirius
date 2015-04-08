@@ -1,20 +1,8 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
-import org.scaledl.architecturaltemplates.repositories.cloudscale.black.VerticalScalingLibrary;
 
 modeltype PRM uses 'http://simulizar.palladiosimulator.org/PalladioRuntimeMonitoring/1.0';
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
-modeltype PCM_REP uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0';
-modeltype PCM_SYS uses 'http://sdq.ipd.uka.de/PalladioComponentModel/System/5.0';
 modeltype PCM_RES_ENV uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0';
-modeltype PCM_CORE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Core/5.0';
-modeltype EMF_PROFILE_APPLICATION uses 'http://www.modelversioning.org/emfprofile/application/1.1';
-modeltype EMF_PROFILE uses 'http://www.modelversioning.org/emfprofile/1.1';
-modeltype PCM_RES_TYPE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceType/5.0';
-modeltype PCMCore uses pcm::core('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
-modeltype PCMEntity uses pcm::core::entity('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
-modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
-modeltype PCMStoex uses stoex('http://sdq.ipd.uka.de/StochasticExpressions/2.2');
-modeltype SEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0');
 
 transformation ScaleUp(in prm : PRM, inout pcmAllocation : PCM_ALLOC);
 
@@ -25,7 +13,7 @@ property maxRate : Real;
 main() {
 	log ('AT Completion "ScaleUp" started');	
 	
-	assert fatal(prm.rootObjects()[PCMModelElementMeasurement]->size() > 0)
+	assert fatal(prm.rootObjects()[PRMMeasurement]->size() > 0)
 		with log ("No Measurements found!");
 			
 	assert fatal(pcmAllocation.rootObjects()[Allocation]->size() > 0)
@@ -39,9 +27,9 @@ main() {
 		
 	resourceContainers -> forEach(resourceContainer){
 		if(hasAppliedStereotype(resourceContainer,"VirtualizedResourceContainer")){
-			scaleUpThreshold := getScaleUpThreshold(resourceContainer,"scaleUpThreshold","VirtualizedResourceContainer");
-			scaleUpStepSize := getStepSize(resourceContainer,"stepSize","VirtualizedResourceContainer");
-			maxRate := getMaxRate(resourceContainer,"maxRate","VirtualizedResourceContainer");
+			scaleUpThreshold := getDoubleTaggedValue(resourceContainer,"scaleUpThreshold","VirtualizedResourceContainer");
+			scaleUpStepSize := getIntTaggedValue(resourceContainer,"stepSize","VirtualizedResourceContainer");
+			maxRate := getIntTaggedValue(resourceContainer,"maxRate","VirtualizedResourceContainer");
 			resourceContainer. map scaleUpVirtualizedContainer();
 		};
 	};
@@ -49,11 +37,11 @@ main() {
 }
 
 // FIXME need to check whether it's the right model element
-helper Set(PCMModelElementMeasurement) :: checkCondition() : Boolean
+helper Set(PRMMeasurement) :: checkCondition() : Boolean
 {
 	self->forEach(measurement) {
-		log('Measured value is ' + measurement.measurementValue.toString());
-		if (measurement.measurementValue > scaleUpThreshold) {
+		log('Measured value is ' + measurement.measuringValue.toString());
+		if (measurement.measuringValue > scaleUpThreshold) {
 			return true;
 		};
 	};
@@ -63,7 +51,7 @@ helper Set(PCMModelElementMeasurement) :: checkCondition() : Boolean
 }
 
 mapping ResourceContainer::scaleUpVirtualizedContainer():ResourceContainer 
-	when{prm.rootObjects()[PCMModelElementMeasurement]->checkCondition()}
+	when{prm.rootObjects()[PRMMeasurement]->checkCondition()}
 {
 	log ('Scaling Up ResourceContainer ' + self.entityName);
 	scaleUpProcessingResourcesRecursively(self);
