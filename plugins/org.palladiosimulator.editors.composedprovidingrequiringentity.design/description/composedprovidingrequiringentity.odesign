@@ -371,7 +371,7 @@
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.parentStructure__EventChannel/]">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.oclAsType(composition::EventChannel).parentStructure__EventChannel/]">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.EventChannelSinkConnector" referenceName="connectors__ComposedStructure">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newEventChannelSinkConnector"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="eventChannel__EventChannelSinkConnector" valueExpression="[source/]"/>
@@ -387,7 +387,7 @@
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[target.parentStructure__EventChannel/]">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[target.oclAsType(composition::EventChannel).parentStructure__EventChannel/]">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.EventChannelSourceConnector" referenceName="connectors__ComposedStructure">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newEventChannelSourceConnector"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="eventChannel__EventChannelSourceConnector" valueExpression="[target/]"/>
