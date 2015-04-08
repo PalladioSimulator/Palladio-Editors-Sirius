@@ -202,7 +202,7 @@
           </style>
         </containerMappings>
         <toolSections name="Nodes">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="AssemblyContext">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AssemblyContext" containerMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
