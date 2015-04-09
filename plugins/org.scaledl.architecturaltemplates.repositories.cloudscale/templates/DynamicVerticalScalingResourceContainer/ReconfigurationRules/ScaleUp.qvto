@@ -2,28 +2,18 @@ import org.scaledl.architecturaltemplates.repositories.cloudscale.black.Profiles
 
 modeltype PRM uses 'http://simulizar.palladiosimulator.org/PalladioRuntimeMonitoring/1.0';
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
-modeltype PCM_REP uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0';
-modeltype PCM_SYS uses 'http://sdq.ipd.uka.de/PalladioComponentModel/System/5.0';
 modeltype PCM_RES_ENV uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0';
-modeltype PCM_CORE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Core/5.0';
-modeltype EMF_PROFILE_APPLICATION uses 'http://www.modelversioning.org/emfprofile/application/1.1';
-modeltype EMF_PROFILE uses 'http://www.modelversioning.org/emfprofile/1.1';
-modeltype PCM_RES_TYPE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceType/5.0';
-modeltype PCMCore uses pcm::core('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
-modeltype PCMEntity uses pcm::core::entity('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
-modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
-modeltype PCMStoex uses stoex('http://sdq.ipd.uka.de/StochasticExpressions/2.2');
-modeltype SEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0');
 
 transformation ScaleUp(in prm : PRM, inout pcmAllocation : PCM_ALLOC);
 
-property threshold : Real = 2.0;
-property scaleUp : Real = 150.0;
+property scaleUpThreshold : Real;
+property scaleUpStepSize : Real;
+property maxRate : Real;
 
 main() {
 	log ('AT Completion "ScaleUp" started');	
 	
-	assert fatal(prm.rootObjects()[PCMModelElementMeasurement]->size() > 0)
+	assert fatal(prm.rootObjects()[PRMMeasurement]->size() > 0)
 		with log ("No Measurements found!");
 			
 	assert fatal(pcmAllocation.rootObjects()[Allocation]->size() > 0)
@@ -32,20 +22,26 @@ main() {
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var resourceEnvironment : ResourceEnvironment := allocation.targetResourceEnvironment_Allocation;
 	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
-	assert fatal(appliedStereotypesEqualsOne(resourceContainers, "Virtualized"))
-		with log ("There is more than one Virtualized Stereotype Application!");
-
-	var replicatedResourceContainers : Bag(ResourceContainer) := resourceContainers -> scaleUpVirtualizedContainer();
-	
+	assert fatal(hasAppliedStereotype(resourceContainers,"VirtualizedResourceContainer"))
+		with log ("There is no Virtualized Stereotype Application!");
+		
+	resourceContainers -> forEach(resourceContainer){
+		if(hasAppliedStereotype(resourceContainer,"VirtualizedResourceContainer")){
+			scaleUpThreshold := getDoubleTaggedValue(resourceContainer,"scaleUpThreshold","VirtualizedResourceContainer");
+			scaleUpStepSize := getIntTaggedValue(resourceContainer,"stepSize","VirtualizedResourceContainer");
+			maxRate := getIntTaggedValue(resourceContainer,"maxRate","VirtualizedResourceContainer");
+			resourceContainer. map scaleUpVirtualizedContainer();
+		};
+	};
 	log ('AT Completion "ScaleUp" finished');	
 }
 
 // FIXME need to check whether it's the right model element
-helper Set(PCMModelElementMeasurement) :: checkCondition() : Boolean
+helper Set(PRMMeasurement) :: checkCondition() : Boolean
 {
 	self->forEach(measurement) {
-		log('Measured value is ' + measurement.measurementValue.toString());
-		if (measurement.measurementValue > threshold) {
+		log('Measured value is ' + measurement.measuringValue.toString());
+		if (measurement.measuringValue > scaleUpThreshold) {
 			return true;
 		};
 	};
@@ -55,7 +51,7 @@ helper Set(PCMModelElementMeasurement) :: checkCondition() : Boolean
 }
 
 mapping ResourceContainer::scaleUpVirtualizedContainer():ResourceContainer 
-	when{hasAppliedStereotype(self, "Virtualized") and prm.rootObjects()[PCMModelElementMeasurement]->checkCondition()}
+	when{prm.rootObjects()[PRMMeasurement]->checkCondition()}
 {
 	log ('Scaling Up ResourceContainer ' + self.entityName);
 	scaleUpProcessingResourcesRecursively(self);
@@ -69,8 +65,10 @@ helper scaleUpProcessingResourcesRecursively(resourceContainer : ResourceContain
 	// increase processing rate by scaleUp
 	resourceContainer.activeResourceSpecifications_ResourceContainer->forEach(processingResourceSpecification){
 		var currentProcessingRate : String := processingResourceSpecification.processingRate_ProcessingResourceSpecification.specification;
-    	var newProcessingRate : Real := currentProcessingRate.toReal() + scaleUp;
-    	processingResourceSpecification.processingRate_ProcessingResourceSpecification.specification := newProcessingRate.toString();
+    	var newProcessingRate : Real := currentProcessingRate.toReal() + scaleUpStepSize;
+    	if(newProcessingRate<=maxRate){
+    		processingResourceSpecification.processingRate_ProcessingResourceSpecification.specification := newProcessingRate.toString();
+    	};
     };
     
     // recursive call

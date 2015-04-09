@@ -9,6 +9,17 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Completion</b></em>'. <!--
  * end-user-doc -->
  *
+ * <!-- begin-model-doc --> A completion is a refinement transformation from AT-annotated model into
+ * a model with well-defined semantics (thus, specifying the semantics of a given AT). This
+ * particularly includes a refinement transformation to another AT-annotated model as well (the
+ * second AT also includes a completion for defining its semantics, thus, has well-defined
+ * semantics).
+ *
+ * As an example, consider a component annotated with an AT role "3-times loabalanced". A completion
+ * could refine this component into a model with 4 components: 1 loadbalancer plus 3 replica of the
+ * originally annotated component. The loadbalancer then evenly distributes load over the 3 replica.
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -62,7 +73,8 @@ public interface Completion extends EObject {
      * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear, there
      * really should be more of a description here...
      * </p>
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc --> <!-- begin-model-doc --> Every in- and output parameter of a completion
+     * has to exactly match this order. <!-- end-model-doc -->
      *
      * @return the value of the '<em>Parameters</em>' containment reference list.
      * @see org.scaledl.architecturaltemplates.type.TypePackage#getCompletion_Parameters()

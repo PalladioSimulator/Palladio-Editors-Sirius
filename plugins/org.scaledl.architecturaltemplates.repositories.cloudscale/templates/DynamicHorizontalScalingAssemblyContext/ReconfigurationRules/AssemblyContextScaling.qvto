@@ -1,36 +1,20 @@
-import org.scaledl.architecturaltemplates.repositories.cloudscale.black.LoadbalancingLibrary;
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
-import completions.ReverseLoadbalancing;
-import completions.Loadbalancing;
+import ReverseLoadbalancing;
+import Loadbalancing;
 
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
-modeltype PCM_REP uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0';
-modeltype PCM_SYS uses 'http://sdq.ipd.uka.de/PalladioComponentModel/System/5.0';
-modeltype PCM_USE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/UsageModel/5.0';
-modeltype PCM_RES_ENV uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0';
-modeltype PCM_CORE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Core/5.0';
-modeltype EMF_PROFILE_APPLICATION uses 'http://www.modelversioning.org/emfprofile/application/1.1';
-modeltype EMF_PROFILE uses 'http://www.modelversioning.org/emfprofile/1.1';
-modeltype PCM_RES_TYPE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceType/5.0';
-modeltype PCMCore uses pcm::core('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
-modeltype PCMEntity uses pcm::core::entity('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
 modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
-modeltype PCM_MEASURINGPOINT uses 'http://palladiosimulator.org/PCM/MeasuringPoint/1.0';
-modeltype PCM_MONITOR_REPOSITORY uses 'http://palladiosimulator.org/SimuLizar/MonitorRepository/1.0';
-modeltype PCM_EDP2MEASURINGPOINT uses 'http://palladiosimulator.org/EDP2/MeasuringPoint/0.9.1';
-modeltype PCM_EDP2DATA uses 'http://palladiosimulator.org/EDP2/ExperimentData/0.9.1';
-modeltype PCM_SLO uses 'http://palladiosimulator.org/ServiceLevelObjective/1.0';
 modeltype PRM uses 'http://simulizar.palladiosimulator.org/PalladioRuntimeMonitoring/1.0';
 	
 transformation AssemblyContextScaling(in prm : PRM, inout pcmAllocation : PCM_ALLOC) 
-access Loadbalancing, ReverseLoadbalancing;
+access transformation Loadbalancing, ReverseLoadbalancing;
 
 property numberOfReplicas : Integer;
 property scaleInThreshold : Real;
 property scaleOutThreshold : Real;
 
 main() {
-	assert fatal(prm.rootObjects()[PCMModelElementMeasurement]->size() > 0)
+	assert fatal(prm.rootObjects()[PRMMeasurement]->size() > 0)
 		with log ("No Measurements found!");
 			
 	assert fatal(pcmAllocation.rootObjects()[Allocation]->size() > 0)
@@ -48,32 +32,43 @@ main() {
 						hasAppliedStereotype(assemblyContext,"ReplicableAssemblyContext"));
 						
 	assert fatal(loadBalancedAssemblyContext != null)
-		with log ("There is no LoadbalancedAssemblyContext Stereotype Application!");
+		with log ("There is no Replicable Assembly Context Stereotype Application!");
 
-	numberOfReplicas := getNumberOfReplicas(loadBalancedAssemblyContext,"numberOfReplicas","ReplicableAssemblyContext");
-	scaleInThreshold := getThreshold(loadBalancedAssemblyContext,"scaleInThreshold","ReplicableAssemblyContext");
-	scaleOutThreshold := getThreshold(loadBalancedAssemblyContext,"scaleOutThreshold","ReplicableAssemblyContext");	
+	numberOfReplicas := getIntTaggedValue(loadBalancedAssemblyContext,"numberOfReplicas","ReplicableAssemblyContext");
+	scaleInThreshold := getDoubleTaggedValue(loadBalancedAssemblyContext,"scaleInThreshold","ReplicableAssemblyContext");
+	scaleOutThreshold := getDoubleTaggedValue(loadBalancedAssemblyContext,"scaleOutThreshold","ReplicableAssemblyContext");	
 	
-	if(prm.rootObjects()[PCMModelElementMeasurement]->checkScaleInCondition() and numberOfReplicas > 1){
-		new ReverseLoadbalancing(pcmAllocation)->transform();
+	var reverseLoadbalancingTransformation : ReverseLoadbalancing := new ReverseLoadbalancing(prm,pcmAllocation);
+	var loadbalancingTransformation : Loadbalancing := new Loadbalancing(prm,pcmAllocation);
+	//The setting of the configuration properties to false could be unnecessary
+	if(prm.rootObjects()[PRMMeasurement]->checkScaleInCondition() and numberOfReplicas > 1){
+		reverseLoadbalancingTransformation.loadbalanced := true;
+		reverseLoadbalancingTransformation->transform();
+		reverseLoadbalancingTransformation.loadbalanced := false;
 		numberOfReplicas:= numberOfReplicas -1;
-		setIntTaggedValue(loadBalancedAssemblyContext,numberOfReplicas,"ReplicableAssemblyContext","numberOfReplicas");
-		new Loadbalancing(pcmAllocation)->transform();
+		setTaggedValue(loadBalancedAssemblyContext,numberOfReplicas,"ReplicableAssemblyContext","numberOfReplicas");
+		loadbalancingTransformation.reverseLoadbalanced := true;
+		loadbalancingTransformation->transform();
+		loadbalancingTransformation.reverseLoadbalanced := false;
 	}
-	else if(prm.rootObjects()[PCMModelElementMeasurement]->checkScaleOutCondition()){
-		new ReverseLoadbalancing(pcmAllocation)->transform();
+	else if(prm.rootObjects()[PRMMeasurement]->checkScaleOutCondition()){
+		reverseLoadbalancingTransformation.loadbalanced := true;
+		reverseLoadbalancingTransformation->transform();
+		reverseLoadbalancingTransformation.loadbalanced := false;
 		numberOfReplicas:= numberOfReplicas +1;
-		setIntTaggedValue(loadBalancedAssemblyContext,numberOfReplicas,"ReplicableAssemblyContext","numberOfReplicas");
-		new Loadbalancing(pcmAllocation)->transform();
+		setTaggedValue(loadBalancedAssemblyContext,numberOfReplicas,"ReplicableAssemblyContext","numberOfReplicas");
+		loadbalancingTransformation.reverseLoadbalanced := true;
+		loadbalancingTransformation->transform();
+		loadbalancingTransformation.reverseLoadbalanced := false;
 	};
 }
 
-helper Set(PCMModelElementMeasurement) :: checkScaleOutCondition() : Boolean {
+helper Set(PRMMeasurement) :: checkScaleOutCondition() : Boolean {
 	
 		self->forEach(measurement) {
-		log('Measured value is ' + measurement.measurementValue.toString());
+		log('Measured value is ' + measurement.measuringValue.toString());
 		
-			if (measurement.measurementValue > scaleOutThreshold) {
+			if (measurement.measuringValue > scaleOutThreshold) {
 				return true;
 			};
 		};
@@ -82,12 +77,12 @@ helper Set(PCMModelElementMeasurement) :: checkScaleOutCondition() : Boolean {
 		return false;
 }
 	
-helper Set(PCMModelElementMeasurement) :: checkScaleInCondition() : Boolean {
+helper Set(PRMMeasurement) :: checkScaleInCondition() : Boolean {
 	
 		self->forEach(measurement) {
-		log('Measured value is ' + measurement.measurementValue.toString());
+		log('Measured value is ' + measurement.measuringValue.toString());
 		
-			if (measurement.measurementValue < scaleInThreshold) {
+			if (measurement.measuringValue < scaleInThreshold) {
 				return true;
 			};
 		};

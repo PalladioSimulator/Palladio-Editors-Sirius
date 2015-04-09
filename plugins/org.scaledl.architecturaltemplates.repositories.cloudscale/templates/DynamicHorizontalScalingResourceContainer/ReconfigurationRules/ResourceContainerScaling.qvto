@@ -1,0 +1,90 @@
+import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
+import ResourceContainerReverseLoadbalancing;
+import ResourceContainerLoadbalancing;
+
+modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
+modeltype PCM_RES_ENV uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0';
+modeltype PRM uses 'http://simulizar.palladiosimulator.org/PalladioRuntimeMonitoring/1.0';
+
+transformation ResourceContainerScaling(in prm : PRM, inout pcmAllocation : PCM_ALLOC) 
+access transformation ResourceContainerLoadbalancing, ResourceContainerReverseLoadbalancing;
+
+property numberOfReplicas : Integer;
+property scaleInThreshold : Real;
+property scaleOutThreshold : Real;
+
+main() {
+	assert fatal(prm.rootObjects()[PRMMeasurement]->size() > 0)
+		with log ("No Measurements found!");
+			
+	assert fatal(pcmAllocation.rootObjects()[Allocation]->size() > 0)
+		with log ("Allocation Model is empty!");
+		
+	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
+	var resourceEnvironment : ResourceEnvironment := allocation.targetResourceEnvironment_Allocation;
+	
+	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
+	
+	//get the stereotyped AssemblyContext
+	var loadBalancedResourceContainer : ResourceContainer := resourceContainers -> selectOne(resourceContainer : ResourceContainer |
+						hasAppliedStereotype(resourceContainer,"ReplicableResourceContainer"));
+						
+	assert fatal(loadBalancedResourceContainer != null)
+		with log ("There is no Replicable ResourceContainer Stereotype Application!");
+
+	numberOfReplicas := getIntTaggedValue(loadBalancedResourceContainer,"numberOfReplicas","ReplicableResourceContainer");
+	scaleInThreshold := getDoubleTaggedValue(loadBalancedResourceContainer,"scaleInThreshold","ReplicableResourceContainer");
+	scaleOutThreshold := getDoubleTaggedValue(loadBalancedResourceContainer,"scaleOutThreshold","ReplicableResourceContainer");	
+	
+	var reverseLoadbalancingTransformation : ResourceContainerReverseLoadbalancing := new ResourceContainerReverseLoadbalancing(prm,pcmAllocation);
+	var loadbalancingTransformation : ResourceContainerLoadbalancing:= new ResourceContainerLoadbalancing(prm,pcmAllocation);
+	//The setting of the configuration properties to false could be unnecessary
+	if(prm.rootObjects()[PRMMeasurement]->checkScaleInCondition() and numberOfReplicas > 1){
+		reverseLoadbalancingTransformation.loadbalanced := true;
+		reverseLoadbalancingTransformation->transform();
+		reverseLoadbalancingTransformation.loadbalanced := false;
+		numberOfReplicas:= numberOfReplicas -1;
+		setTaggedValue(loadBalancedResourceContainer,numberOfReplicas,"ReplicableResourceContainer","numberOfReplicas");
+		loadbalancingTransformation.reverseLoadbalanced := true;
+		loadbalancingTransformation->transform();
+		loadbalancingTransformation.reverseLoadbalanced := false;
+	}
+	else if(prm.rootObjects()[PRMMeasurement]->checkScaleOutCondition()){
+		reverseLoadbalancingTransformation.loadbalanced := true;
+		reverseLoadbalancingTransformation->transform();
+		reverseLoadbalancingTransformation.loadbalanced := false;
+		numberOfReplicas:= numberOfReplicas +1;
+		setTaggedValue(loadBalancedResourceContainer,numberOfReplicas,"ReplicableResourceContainer","numberOfReplicas");
+		loadbalancingTransformation.reverseLoadbalanced := true;
+		loadbalancingTransformation->transform();
+		loadbalancingTransformation.reverseLoadbalanced := false;
+	};
+}
+
+helper Set(PRMMeasurement) :: checkScaleOutCondition() : Boolean {
+	
+		self->forEach(measurement) {
+		log('Measured value is ' + measurement.measuringValue.toString());
+		
+			if (measurement.measuringValue > scaleOutThreshold) {
+				return true;
+			};
+		};
+		
+		log('No measurements match the condition. Number of measurements is ' + self->size().toString());
+		return false;
+}
+	
+helper Set(PRMMeasurement) :: checkScaleInCondition() : Boolean {
+	
+		self->forEach(measurement) {
+		log('Measured value is ' + measurement.measuringValue.toString());
+		
+			if (measurement.measuringValue < scaleInThreshold) {
+				return true;
+			};
+		};
+		
+		log('No measurements match the condition. Number of measurements is ' + self->size().toString());
+		return false;
+}

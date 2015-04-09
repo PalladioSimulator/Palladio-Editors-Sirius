@@ -6,6 +6,9 @@ package org.scaledl.architecturaltemplates.type;
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>PCM Output Completion Parameter</b></em>'. <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc --> The output of a completion is a PCM model, characterized by its typical
+ * file extension. A user can select from available PCM extensions. <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>

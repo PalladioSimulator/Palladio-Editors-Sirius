@@ -4,7 +4,7 @@
     nsPrefix="org.scaledl">
   <eSubpackages name="type" nsURI="http://scaledl.org/ArchitecturalTemplates/Type/1.0"
       nsPrefix="org.scaledl.architecturaltemplates">
-    <eClassifiers xsi:type="ecore:EClass" name="AT" eSuperTypes="../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
+    <eClassifiers xsi:type="ecore:EClass" name="AT" eSuperTypes="platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
       <eStructuralFeatures xsi:type="ecore:EReference" name="repository" lowerBound="1"
           eType="#//type/Repository" eOpposite="#//type/Repository/ATs"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="roles" upperBound="-1"
@@ -12,25 +12,32 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
           eType="#//type/Constraint" containment="true" eOpposite="#//type/Constraint/AT"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="completion" lowerBound="1"
-          eType="#//type/Completion" containment="true" eOpposite="#//type/Completion/AT"/>
+          eType="#//type/Completion" containment="true" eOpposite="#//type/Completion/AT">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="An Architectural Template needs exactly 1 completion for defining its semantics.&#xA;"/>
+        </eAnnotations>
+      </eStructuralFeatures>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Constraint" abstract="true" eSuperTypes="../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
+    <eClassifiers xsi:type="ecore:EClass" name="Constraint" abstract="true" eSuperTypes="platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
       <eStructuralFeatures xsi:type="ecore:EReference" name="AT" lowerBound="1" eType="#//type/AT"
           eOpposite="#//type/AT/constraints"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="roles" upperBound="-1"
           eType="#//type/Role" eOpposite="#//type/Role/constraints"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
+    <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
       <eStructuralFeatures xsi:type="ecore:EReference" name="role" lowerBound="1"
           eType="#//type/Role" eOpposite="#//type/Role/parameters"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="dataType" lowerBound="1"
-          eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType"/>
+          eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Repository" eSuperTypes="../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
+    <eClassifiers xsi:type="ecore:EClass" name="Repository" eSuperTypes="platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Allows to collect Architectural Templates within a catalogue."/>
+      </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="ATs" upperBound="-1"
           eType="#//type/AT" containment="true" eOpposite="#//type/AT/repository"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Role" eSuperTypes="../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
+    <eClassifiers xsi:type="ecore:EClass" name="Role" eSuperTypes="platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
       <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
           eType="#//type/Parameter" containment="true" eOpposite="#//type/Parameter/role"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="AT" lowerBound="1" eType="#//type/AT"
@@ -38,38 +45,61 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
           eType="#//type/Constraint" eOpposite="#//type/Constraint/roles"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="stereotype" lowerBound="1"
-          eType="ecore:EClass ../../org.modelversioning.emfprofile/model/emfprofiles.ecore#//Stereotype"/>
+          eType="ecore:EClass platform:/plugin/org.modelversioning.emfprofile/model/emfprofiles.ecore#//Stereotype"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="OCLConstraint" eSuperTypes="#//type/Constraint">
       <eStructuralFeatures xsi:type="ecore:EReference" name="constraint" lowerBound="1">
-        <eGenericType eClassifier="ecore:EClass ../../org.eclipse.ocl/model/OCL.ecore#//expressions/OCLExpression">
+        <eGenericType eClassifier="ecore:EClass platform:/plugin/org.eclipse.ocl/model/OCL.ecore#//expressions/OCLExpression">
           <eTypeArguments/>
         </eGenericType>
       </eStructuralFeatures>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="QVTOCompletion" eSuperTypes="#//type/Completion">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A completion realized as QVT Operational transformation"/>
+      </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="qvtoFileURI" lowerBound="1"
-          eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+          eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Completion" abstract="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A completion is a refinement transformation from AT-annotated model into a model with well-defined semantics (thus, specifying the semantics of a given AT). This particularly includes a refinement transformation to another AT-annotated model as well (the second AT also includes a completion for defining its semantics, thus, has well-defined semantics).&#xA; &#xA;As an example, consider a component annotated with an AT role &quot;3-times loabalanced&quot;. A completion could refine this component into a model with 4 components: 1 loadbalancer plus 3 replica of the originally annotated component. The loadbalancer then evenly distributes load over the 3 replica."/>
+      </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="AT" lowerBound="1" eType="#//type/AT"
           eOpposite="#//type/AT/completion"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" lowerBound="1"
-          upperBound="-1" eType="#//type/CompletionParameter" containment="true" eOpposite="#//type/CompletionParameter/completion"/>
+          upperBound="-1" eType="#//type/CompletionParameter" containment="true" eOpposite="#//type/CompletionParameter/completion">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Every in- and output parameter of a completion has to exactly match this order."/>
+        </eAnnotations>
+      </eStructuralFeatures>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="CompletionParameter" abstract="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Completion parameters characterize the signatures of completions (i.e., the in- and output parameters of transformations)."/>
+      </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="completion" lowerBound="1"
           eType="#//type/Completion" eOpposite="#//type/Completion/parameters"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="GenericTemplateCompletionParameter"
-        eSuperTypes="#//type/GenericBlackboardCompletionParameter #//type/TemplateProvidingEntity"/>
+        eSuperTypes="#//type/GenericBlackboardCompletionParameter #//type/TemplateProvidingEntity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The input of a completion is an arbritrary model from a template and available via the MDSD blackboard."/>
+      </eAnnotations>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="GenericBlackboardCompletionParameter"
         eSuperTypes="#//type/CompletionParameter">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The input of a completion stems from the MDSD blackboard and is an arbitray model, characterized by the given file extension. The user can freely specify this extension as String."/>
+      </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileExtension" lowerBound="1"
-          eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+          eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="PCMBlackboardCompletionParameter"
         eSuperTypes="#//type/CompletionParameter">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The input of a completion stems from the MDSD blackboard and is a PCM model, characterized by its typical file extension. The user can select from available PCM extensions."/>
+      </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileExtension" lowerBound="1"
           eType="#//type/PCMFileExtensions"/>
     </eClassifiers>
@@ -84,24 +114,37 @@
       <eLiterals name="PCMMEASURINGPOINT" value="7" literal="pcmmeasuringpoint"/>
       <eLiterals name="SERVICELEVELOBJECTIVE" value="8" literal="slo"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="PCMTemplateCompletionParameter" eSuperTypes="#//type/PCMBlackboardCompletionParameter #//type/TemplateProvidingEntity"/>
+    <eClassifiers xsi:type="ecore:EClass" name="PCMTemplateCompletionParameter" eSuperTypes="#//type/PCMBlackboardCompletionParameter #//type/TemplateProvidingEntity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The input of a completion is a PCM model from a template and available via the MDSD blackboard."/>
+      </eAnnotations>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TemplateProvidingEntity" abstract="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The input of a completion is based on a template model file."/>
+      </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="templateFileURI" lowerBound="1"
-          eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+          eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="PCMOutputCompletionParameter" eSuperTypes="#//type/CompletionParameter">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The output of a completion is a PCM model, characterized by its typical file extension. A user can select from available PCM extensions."/>
+      </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileExtension" lowerBound="1"
           eType="#//type/PCMFileExtensions"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="GenericOutputCompletionParameter"
         eSuperTypes="#//type/CompletionParameter">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The output of a completion is an arbitrary model, characterized by the given file extension. A user can freely specify this extension as String."/>
+      </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="fileExtension" lowerBound="1"
-          eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+          eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="instance" nsURI="http://scaledl.org/ArchitecturalTemplates/Instance/1.0"
       nsPrefix="org.scaledl.architecturaltemplates">
-    <eClassifiers xsi:type="ecore:EClass" name="ATInstance" eSuperTypes="../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
+    <eClassifiers xsi:type="ecore:EClass" name="ATInstance" eSuperTypes="platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
       <eStructuralFeatures xsi:type="ecore:EReference" name="role2components" upperBound="-1"
           eType="#//instance/Role2Component" containment="true" eOpposite="#//instance/Role2Component/ATInstance"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="component2roles" upperBound="-1"
@@ -117,7 +160,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Component2Role">
       <eStructuralFeatures xsi:type="ecore:EReference" name="component" lowerBound="1"
-          eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/composition/AssemblyContext"/>
+          eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/composition/AssemblyContext"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="roles" upperBound="-1"
           eType="#//type/Role"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="ATInstance" lowerBound="1"
@@ -125,7 +168,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Role2Component">
       <eStructuralFeatures xsi:type="ecore:EReference" name="component" lowerBound="1"
-          eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/composition/AssemblyContext"/>
+          eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/composition/AssemblyContext"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="role" lowerBound="1"
           eType="#//type/Role"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="ATInstance" lowerBound="1"
@@ -147,7 +190,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="ATInstance" lowerBound="1"
           eType="#//instance/ATInstance" eOpposite="#//instance/ATInstance/role2resources"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="resource" lowerBound="1"
-          eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//resourceenvironment/ResourceContainer"/>
+          eType="ecore:EClass platform:/plugin/de.uka.ipd.sdq.pcm/model/pcm.ecore#//resourceenvironment/ResourceContainer"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="role" lowerBound="1"
           eType="#//type/Role"/>
     </eClassifiers>

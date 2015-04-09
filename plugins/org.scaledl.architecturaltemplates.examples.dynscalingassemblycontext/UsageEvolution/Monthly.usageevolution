@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<usageevolution:UsageEvolution xmlns:usageevolution="http://usageevolution/1.0" id="_cvJ3AJUHEeS7fdmRSNyR5A" entityName="Monthly">
-  <usages id="_XpV-UJUIEeSMz-4971dv6A" entityName="Evolve Closed Workload">
-    <loadEvolution href="OneMonthTrend.dlim#/"/>
-    <scenario href="../videoStreaming.usagemodel#_NcFyEJUGEeSkwMoUcKTtwg"/>
-  </usages>
-</usageevolution:UsageEvolution>

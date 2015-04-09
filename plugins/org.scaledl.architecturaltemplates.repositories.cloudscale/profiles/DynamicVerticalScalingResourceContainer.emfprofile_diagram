@@ -21,6 +21,15 @@
       <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_Rt8AYMgMEeS6CoFWe85nBQ" name="scaleDownThreshold" defaultValueLiteral="1.0">
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
       </eStructuralFeatures>
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_GefwQNF_EeSNH-qkvgNajw" name="maxRate" defaultValueLiteral="200">
+        <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_HSvQoNF_EeSNH-qkvgNajw" name="minRate" defaultValueLiteral="10">
+        <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_ISmLINF_EeSNH-qkvgNajw" name="stepSize" defaultValueLiteral="1">
+        <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </eStructuralFeatures>
       <extensions xmi:type="emfprofile:Extension" xmi:id="_7MhWQH47EeSqFvs4kqVd7Q">
         <target xmi:type="ecore:EClass" href="http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//resourceenvironment/ResourceContainer"/>
       </extensions>
@@ -87,6 +96,15 @@
         </children>
         <children xmi:type="notation:Node" xmi:id="_Rt91kMgMEeS6CoFWe85nBQ" type="3001" element="_Rt8AYMgMEeS6CoFWe85nBQ">
           <layoutConstraint xmi:type="notation:Location" xmi:id="_Rt-coMgMEeS6CoFWe85nBQ"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_GfPXINF_EeSNH-qkvgNajw" type="3001" element="_GefwQNF_EeSNH-qkvgNajw">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_GfPXIdF_EeSNH-qkvgNajw"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_HSv3sNF_EeSNH-qkvgNajw" type="3001" element="_HSvQoNF_EeSNH-qkvgNajw">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_HSwewNF_EeSNH-qkvgNajw"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_ISmyMNF_EeSNH-qkvgNajw" type="3001" element="_ISmLINF_EeSNH-qkvgNajw">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_ISmyMdF_EeSNH-qkvgNajw"/>
         </children>
         <styles xmi:type="notation:SortingStyle" xmi:id="_2NBWYn47EeSqFvs4kqVd7Q"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_2NBWY347EeSqFvs4kqVd7Q"/>

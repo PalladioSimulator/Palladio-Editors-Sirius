@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <emfprofileapplication:ProfileApplication xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:emfprofileapplication="http://www.modelversioning.org/emfprofile/application/1.1" xmlns:org.scaledl.architecturaltemplates.repositories.cloudscale.profiles="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.dynamicverticalscalingresourcecontainer" xsi:schemaLocation="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.dynamicverticalscalingresourcecontainer platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/DynamicVerticalScalingResourceContainer.emfprofile_diagram#_W1LLkCOrEeSubfGVEKswQQ">
-  <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles:VirtualizedResourceContainer">
+  <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles:VirtualizedResourceContainer" scaleDownThreshold="0.1" maxRate="999999" stepSize="150">
     <appliedTo href="platform:/resource/org.scaledl.architecturaltemplates.examples.onelanebridge/ThreeTier.resourceenvironment#_HAQbICPIEeSwPfc4EJw-WA"/>
     <extension href="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/DynamicVerticalScalingResourceContainer.emfprofile_diagram#_7MhWQH47EeSqFvs4kqVd7Q"/>
   </stereotypeApplications>

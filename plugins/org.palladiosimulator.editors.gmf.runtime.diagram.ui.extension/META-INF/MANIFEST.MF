@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-Name: UML Designer Extension
+Bundle-SymbolicName: org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension;singleton=true
+Bundle-Version: 5.0.0.qualifier
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.sirius.diagram,
+ org.eclipse.sirius.common.ui,
+ org.eclipse.gmf.runtime.diagram.ui,
+ org.eclipse.sirius.diagram.ui
+Bundle-Activator: org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.ExtensionActivator
+Bundle-Localization: plugin
+Bundle-Vendor: Obeo Network
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Provide-Package: org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.rotatable,
+ org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.rotatable.editPart,
+ org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.rotatable.figure,
+ org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.rotatable.provider

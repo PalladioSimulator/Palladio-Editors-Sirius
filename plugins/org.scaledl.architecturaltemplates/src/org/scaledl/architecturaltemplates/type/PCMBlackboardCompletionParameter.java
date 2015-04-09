@@ -6,6 +6,10 @@ package org.scaledl.architecturaltemplates.type;
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>PCM Blackboard Completion Parameter</b></em>'. <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc --> The input of a completion stems from the MDSD blackboard and is a PCM
+ * model, characterized by its typical file extension. The user can select from available PCM
+ * extensions. <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
