@@ -9,6 +9,7 @@
   </monitors>
   <monitors id="_ROQAgdONEeSjW_w7tGZZCA" entityName="Number of Resource Container - Resource Environment">
     <measurementSpecifications id="_Uv47QNONEeSjW_w7tGZZCA">
+      <temporalRestriction xsi:type="monitorrepository:Intervall" id="_6g-AoN9bEeSUE-SMyNWSKA"/>
       <metricDescription xsi:type="metricspec:NumericalBaseMetricDescription" href="pathmap://METRIC_SPEC_MODELS/models/commonMetrics.metricspec#_e7x3gq-eEeSgL6DrxYuwZg"/>
     </measurementSpecifications>
     <measuringPoint xsi:type="pcmmeasuringpoint:ResourceEnvironmentMeasuringPoint" href="default.measuringpoint#//@measuringPoints.1"/>
