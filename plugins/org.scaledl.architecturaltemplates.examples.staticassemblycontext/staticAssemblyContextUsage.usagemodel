@@ -9,8 +9,8 @@
         <operationSignature__EntryLevelSystemCall href="../org.scaledl.architecturaltemplates.examples.aliceandbob/AliceAndBob.repository#_WfyuMPqREeKForNjxJiaVQ"/>
       </actions_ScenarioBehaviour>
     </scenarioBehaviour_UsageScenario>
-    <workload_UsageScenario xsi:type="usagemodel:ClosedWorkload" population="10">
-      <thinkTime_ClosedWorkload specification="1.0"/>
+    <workload_UsageScenario xsi:type="usagemodel:ClosedWorkload" population="30">
+      <thinkTime_ClosedWorkload specification="0.0"/>
     </workload_UsageScenario>
   </usageScenario_UsageModel>
 </usagemodel:UsageModel>
