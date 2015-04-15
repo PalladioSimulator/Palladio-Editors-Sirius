@@ -55,6 +55,10 @@ public class ComposedProvidingRequiringEntityServices {
 		return String.format("<<%s>>\n", name);
 	}
 
+	public boolean hasAppliedStereotypes(EStereotypableObject object) {
+		return object.getStereotypeApplications().size() != 0;
+	}
+	
 	/**
 	 * Returns a list containing all {@link VariableUsage}s associated with the
 	 * {@link AssemblyContext}. This means all usages that are defined on the

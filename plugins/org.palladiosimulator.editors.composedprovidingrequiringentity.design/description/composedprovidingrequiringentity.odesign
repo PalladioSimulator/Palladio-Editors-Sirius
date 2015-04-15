@@ -539,6 +539,18 @@
             </ownedTools>
           </subSections>
         </toolSections>
+        <toolSections name="Architectural Templates">
+          <ownedTools xsi:type="tool_1:ExternalJavaAction" name="Add AT" precondition="[self.eClass().name = 'System'/]" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.addAT"/>
+          <ownedTools xsi:type="tool_1:ExternalJavaAction" name="Add AT Role" precondition="[self.eClass().name = 'AssemblyContext'/]" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.addATRole"/>
+          <ownedTools xsi:type="tool_1:OperationAction" name="Load Resource">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Load Resource" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.loadResource">
+                <parameters name="self" value="[self/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.eContainer().eClass().name = 'AssemblyContext'/]">
             <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@subContainerMappings[name='VariableUsage%20Container']/@style" referenceName="backgroundColor">

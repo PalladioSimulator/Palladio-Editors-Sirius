@@ -7,7 +7,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.diagram,
  org.eclipse.sirius.common.ui,
  org.eclipse.gmf.runtime.diagram.ui,
- org.eclipse.sirius.diagram.ui
+ org.eclipse.sirius.diagram.ui,
+ org.eclipse.sirius,
+ org.eclipse.emf.edit.ui;bundle-version="2.10.2"
 Bundle-Activator: org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.ExtensionActivator
 Bundle-Localization: plugin
 Bundle-Vendor: Obeo Network
