@@ -5,8 +5,13 @@ Bundle-SymbolicName: org.palladiosimulator.editors.util;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: de.uka.ipd.sdq.pcm;bundle-version="3.6.0",
- org.palladiosimulator.commons;bundle-version="1.0.0"
-Export-Package: org.palladiosimulator.editors.util.api.services
+ org.palladiosimulator.commons;bundle-version="1.0.0",
+ de.uka.ipd.sdq.dialogs;bundle-version="2.0.1",
+ org.eclipse.emf.edit.ui;bundle-version="2.10.2",
+ org.scaledl.architecturaltemplates.edit,
+ de.uka.ipd.sdq.pcmbench.ui
+Export-Package: org.palladiosimulator.editors.util.api.services,
+ org.palladiosimulator.editors.util.dialogs
 Import-Package: org.eclipse.core.runtime;version="3.4.0",
  org.eclipse.jface.dialogs,
  org.eclipse.swt.widgets,
