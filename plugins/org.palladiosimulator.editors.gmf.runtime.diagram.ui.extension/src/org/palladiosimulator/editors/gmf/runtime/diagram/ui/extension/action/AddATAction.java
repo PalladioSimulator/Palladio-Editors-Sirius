@@ -39,7 +39,7 @@ public class AddATAction implements IExternalJavaAction {
 
 		final ArchitecturalTemplateSelectEObjectDialog atSelectionDialog = new ArchitecturalTemplateSelectEObjectDialog(
 				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-				resourceSet, ArchitecturalTemplateSelectEObjectDialog .Type.ROLE);
+				resourceSet, ArchitecturalTemplateSelectEObjectDialog .Type.AT);
 		if (atSelectionDialog.open() == Dialog.OK) {
 			for (EObject object : selections) {
 				java.lang.System.out.println(object);
