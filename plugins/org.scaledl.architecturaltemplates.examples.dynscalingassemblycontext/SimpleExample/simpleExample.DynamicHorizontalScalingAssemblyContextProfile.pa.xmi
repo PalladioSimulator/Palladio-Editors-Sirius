@@ -16,8 +16,8 @@
   <stereotypeApplications
       xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles:ReplicableAssemblyContext"
       numberOfReplicas="2"
-      scaleInThreshold="0.5"
-      scaleOutThreshold="2.0">
+      scaleInThreshold="0.2"
+      scaleOutThreshold="1.0">
     <appliedTo
         href="simpleExample.system#_VaQRwNcNEeSyUvPi1U6uGw"/>
     <extension

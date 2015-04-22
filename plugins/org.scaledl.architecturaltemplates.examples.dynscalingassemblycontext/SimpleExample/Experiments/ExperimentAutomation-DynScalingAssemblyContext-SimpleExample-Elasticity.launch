@@ -3,6 +3,6 @@
 <stringAttribute key="Experiment Automation" value="platform:/resource/org.scaledl.architecturaltemplates.examples.dynscalingassemblycontext/SimpleExample/Experiments/Elasticity.experiments"/>
 <intAttribute key="de.uka.ipd.sdq.workflowengine.debuglevel" value="2"/>
 <stringAttribute key="org.scaledl.architecturaltemplates.completion.config.modelStorageLocation" value="org.scaledl.architecturaltemplates.temporary"/>
-<booleanAttribute key="org.scaledl.architecturaltemplates.completion.config.storeCompletedModels" value="true"/>
+<booleanAttribute key="org.scaledl.architecturaltemplates.completion.config.storeCompletedModels" value="false"/>
 <stringAttribute key="outpath" value="org.palladiosimulator.temporary"/>
 </launchConfiguration>
