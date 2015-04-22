@@ -2,16 +2,19 @@ package org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.action;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
 import org.modelversioning.emfprofile.Stereotype;
 import org.palladiosimulator.editors.util.dialogs.ArchitecturalTemplateSelectEObjectDialog;
 import org.scaledl.architecturaltemplates.type.AT;
+import org.scaledl.architecturaltemplates.type.TypeFactory;
 
 import de.uka.ipd.sdq.pcm.system.System;
 
@@ -42,19 +45,34 @@ public class AddATAction implements IExternalJavaAction {
 	public void execute(Collection<? extends EObject> selections,
 			Map<String, Object> parameters) {
 		final Object parameter = parameters.get(SELF_KEY);
-		if (parameter == null || !(parameter instanceof EObject)) {
+		if (parameter == null || !(parameter instanceof System)) {
 			return;
 		}
+		final System system = (System) parameter;
 		final ResourceSet resourceSet = SessionManager.INSTANCE
-				.getSession((EObject) parameter)
-				.getTransactionalEditingDomain().getResourceSet();
+				.getSession(system).getTransactionalEditingDomain()
+				.getResourceSet();
 
 		final ArchitecturalTemplateSelectEObjectDialog atSelectionDialog = new ArchitecturalTemplateSelectEObjectDialog(
 				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
 				resourceSet, ArchitecturalTemplateSelectEObjectDialog.Type.AT);
-		if (atSelectionDialog.open() == Dialog.OK) {
-			for (EObject object : selections) {
-				java.lang.System.out.println(object);
+		if (atSelectionDialog.open() == Dialog.OK && atSelectionDialog.getResult() != null) {
+			final AT at = (AT) atSelectionDialog.getResult();
+			final Optional<Stereotype> matchingStereotype = system
+					.getApplicableStereotypes()
+					.stream()
+					.filter(applicableStereotype -> at
+							.getRoles()
+							.stream()
+							.anyMatch(
+									role -> role.getStereotype().getName().equals(	// FIXME: should be comparing the objects, equals is not implemented
+											applicableStereotype.getName())))
+					.findFirst();
+
+			if (matchingStereotype.isPresent()) {
+				java.lang.System.out.println("Applying " + matchingStereotype.get() + " to " + system);
+				system.applyStereotype(matchingStereotype.get());
+				system.saveContainingProfileApplication();
 			}
 		}
 	}
