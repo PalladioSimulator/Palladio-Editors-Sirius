@@ -13,6 +13,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.ui.PlatformUI;
+import org.modelversioning.emfprofileapplication.StereotypeApplication;
 import org.palladiosimulator.commons.emfutils.EMFCopyHelper;
 import org.palladiosimulator.editors.util.Activator;
 
@@ -46,13 +47,24 @@ public class ComposedProvidingRequiringEntityServices {
 	 * @param object object
 	 * @return annotation
 	 */
-	public String getStereotypeAnnotation(EObject object) {
+	public String getSystemStereotypeAnnotation(EObject object) {
 		if (!hasStereotypeApplications(object))
 			return "";
 		
 		final EStereotypableObject eStereotypableObject = (EStereotypableObject) object;
-		final String name = eStereotypableObject.getStereotypeApplications().get(0).getStereotype().getName();
-		return String.format("<<%s>>\n", name);
+		final StringBuilder sb = new StringBuilder();
+		for (StereotypeApplication stereotypeApplication : eStereotypableObject.getStereotypeApplications()){
+			if (stereotypeApplication.getStereotype().getTaggedValue("roleURI") != null) {
+				sb.append('@');
+                sb.append(stereotypeApplication.getStereotype().getName());
+			} else {
+				sb.append("<<");
+                sb.append(stereotypeApplication.getStereotype().getName());
+				sb.append(">>");
+			}
+			sb.append('\n');
+		}
+		return sb.toString();
 	}
 
 	public boolean hasAppliedStereotypes(EStereotypableObject object) {
