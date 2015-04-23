@@ -8,7 +8,7 @@
       <steps_Behaviour xsi:type="seff:StopAction" id="_CrbGUAXKEeOk2t-0hHhTJg" entityName="stop" predecessor_AbstractAction="_txe2MAZ9EeOM8r_xWIFK_w"/>
       <steps_Behaviour xsi:type="seff:InternalAction" id="_WGDTAAXKEeOk2t-0hHhTJg" entityName="callBobInternally" predecessor_AbstractAction="_CrafQAXKEeOk2t-0hHhTJg" successor_AbstractAction="_txe2MAZ9EeOM8r_xWIFK_w">
         <resourceDemand_Action>
-          <specification_ParametericResourceDemand specification="DoublePMF[(5;0.3)(15;0.4)(20;0.3)]"/>
+          <specification_ParametericResourceDemand specification="DoublePMF [ ( 5.0 ; 0.3 ) ( 15.0 ; 0.4 ) ( 20.0 ; 0.3 ) ]"/>
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
@@ -22,7 +22,7 @@
       <steps_Behaviour xsi:type="seff:StopAction" id="_DNvJMAXKEeOk2t-0hHhTJg" entityName="stop" predecessor_AbstractAction="_t_JPEAXKEeOk2t-0hHhTJg"/>
       <steps_Behaviour xsi:type="seff:InternalAction" id="_t_JPEAXKEeOk2t-0hHhTJg" entityName="sayHelloInternally" predecessor_AbstractAction="_DNuiIQXKEeOk2t-0hHhTJg" successor_AbstractAction="_DNvJMAXKEeOk2t-0hHhTJg">
         <resourceDemand_Action>
-          <specification_ParametericResourceDemand specification="DoublePMF[(10;0.3)(20;0.4)(30;0.3)]"/>
+          <specification_ParametericResourceDemand specification="DoublePMF [ ( 10.0 ; 0.3 ) ( 20.0 ; 0.4 ) ( 30.0 ; 0.3 ) ]"/>
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
