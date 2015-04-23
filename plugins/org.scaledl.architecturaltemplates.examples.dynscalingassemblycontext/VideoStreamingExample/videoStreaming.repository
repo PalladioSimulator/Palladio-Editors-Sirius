@@ -7,7 +7,7 @@
       <steps_Behaviour xsi:type="seff:StopAction" id="_e7J74pUEEeSkwMoUcKTtwg" entityName="stop" predecessor_AbstractAction="_kzlu4JUEEeSkwMoUcKTtwg"/>
       <steps_Behaviour xsi:type="seff:InternalAction" id="_kzlu4JUEEeSkwMoUcKTtwg" entityName="streamVideoInternally" predecessor_AbstractAction="_e7J74ZUEEeSkwMoUcKTtwg" successor_AbstractAction="_e7J74pUEEeSkwMoUcKTtwg">
         <resourceDemand_Action>
-          <specification_ParametericResourceDemand specification="DoublePMF[(10.0;0.3)(40;0.1)(20;0.6)]"/>
+          <specification_ParametericResourceDemand specification="DoublePMF [ ( 10.0 ; 0.3 ) ( 40.0 ; 0.1 ) ( 20.0 ; 0.6 ) ]"/>
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
