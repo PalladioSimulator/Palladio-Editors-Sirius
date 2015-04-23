@@ -16,9 +16,9 @@
       <middlewareRepository href="pathmap://PCM_MODELS/Glassfish.repository#_yQk9oIX1EdyWta7nHuXiHQ"/>
       <eventMiddleWareRepository href="pathmap://PCM_MODELS/default_event_middleware.repository#_Onc7cMALEd-LKvNtxXAQbQ"/>
       <reconfigurationRules href="ReconfigurationRules.experiments#/"/>
-      <monitorRepository href="../default.monitorrepository#/"/>
+      <monitorRepository href="../default.monitorrepository#_7rmmsNGEEeSI6PUuryS_mw"/>
       <serviceLevelObjectives href="../default.slo#/"/>
-      <usageEvolution href="../UsageEvolution/OneYearTrend.usageevolution#_i-2QoHWQEeSn05EdHZE9fg"/>
+      <usageEvolution href="../UsageEvolution/verticalScalingUsageEvolution.usageevolution#_EuOTEOkFEeSOuKhiaS9JpA"/>
     </initialModel>
   </experiments>
 </ExperimentAutomation.Experiments:ExperimentRepository>
