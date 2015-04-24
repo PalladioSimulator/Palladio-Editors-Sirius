@@ -16,15 +16,15 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.modelversioning.emfprofile.Stereotype;
 import org.palladiosimulator.commons.emfutils.EMFLoadHelper;
+import org.palladiosimulator.monitorrepository.MonitorRepository;
+import org.palladiosimulator.monitorrepository.impl.MonitorRepositoryFactoryImpl;
+import org.palladiosimulator.monitorrepository.util.MonitorRepositoryResourceImpl;
 import org.palladiosimulator.pcmmeasuringpoint.UsageScenarioMeasuringPoint;
 import org.palladiosimulator.pcmmeasuringpoint.impl.PcmmeasuringpointFactoryImpl;
 import org.palladiosimulator.pcmmeasuringpoint.util.PcmmeasuringpointResourceImpl;
 import org.palladiosimulator.servicelevelobjective.ServiceLevelObjectiveRepository;
 import org.palladiosimulator.servicelevelobjective.ServicelevelObjectiveFactory;
 import org.palladiosimulator.servicelevelobjective.util.ServicelevelObjectiveResourceImpl;
-import org.palladiosimulator.simulizar.monitorrepository.MonitorRepository;
-import org.palladiosimulator.simulizar.monitorrepository.impl.MonitorrepositoryFactoryImpl;
-import org.palladiosimulator.simulizar.monitorrepository.util.MonitorrepositoryResourceImpl;
 import org.scaledl.architecturaltemplates.completion.config.ATExtensionJobConfiguration;
 import org.scaledl.architecturaltemplates.completion.constants.ATPartitionConstants;
 import org.scaledl.architecturaltemplates.completion.constants.ATPartitionConstants.Partition;
@@ -224,8 +224,8 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                     ServicelevelObjectiveFactory sloFactory = ServicelevelObjectiveFactory.eINSTANCE;
                     ServiceLevelObjectiveRepository sloRepo = sloFactory.createServiceLevelObjectiveRepository();
                     outResource.getContents().add(sloRepo);
-                } else if (outResource instanceof MonitorrepositoryResourceImpl) {
-                    final MonitorrepositoryFactoryImpl monitorRepositoryFactory = (MonitorrepositoryFactoryImpl) MonitorrepositoryFactoryImpl
+                } else if (outResource instanceof MonitorRepositoryResourceImpl) {
+                    final MonitorRepositoryFactoryImpl monitorRepositoryFactory = (MonitorRepositoryFactoryImpl) MonitorRepositoryFactoryImpl
                             .init();
                     MonitorRepository monitorRepository = monitorRepositoryFactory.createMonitorRepository();
                     outResource.getContents().add(monitorRepository);
