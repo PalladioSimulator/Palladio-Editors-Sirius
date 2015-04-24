@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CommonTokenStream;
@@ -13,7 +14,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.ui.PlatformUI;
-import org.modelversioning.emfprofileapplication.StereotypeApplication;
+import org.modelversioning.emfprofile.Stereotype;
 import org.palladiosimulator.commons.emfutils.EMFCopyHelper;
 import org.palladiosimulator.editors.util.Activator;
 
@@ -41,30 +42,19 @@ public class ComposedProvidingRequiringEntityServices {
 		return object instanceof EStereotypableObject && ((EStereotypableObject) object).getStereotypeApplications().size() != 0;
 	}
 
-	/**
-	 * Returns the annotation to be displayed in case there is an Stereotype applied to the given object.
-	 * 
-	 * @param object object
-	 * @return annotation
-	 */
-	public String getSystemStereotypeAnnotation(EObject object) {
-		if (!hasStereotypeApplications(object))
-			return "";
+	public List<Stereotype> getRoles(EObject object) {
+		if (!(object instanceof EStereotypableObject))
+			return null;
 		
 		final EStereotypableObject eStereotypableObject = (EStereotypableObject) object;
-		final StringBuilder sb = new StringBuilder();
-		for (StereotypeApplication stereotypeApplication : eStereotypableObject.getStereotypeApplications()){
-			if (stereotypeApplication.getStereotype().getTaggedValue("roleURI") != null) {
-				sb.append('@');
-                sb.append(stereotypeApplication.getStereotype().getName());
-			} else {
-				sb.append("<<");
-                sb.append(stereotypeApplication.getStereotype().getName());
-				sb.append(">>");
-			}
-			sb.append('\n');
-		}
-		return sb.toString();
+        System.out.println(eStereotypableObject.getStereotypeApplications().stream()
+				.map(application -> application.getStereotype())
+				.filter(stereotype -> "".equals(stereotype.getTaggedValue("roleURI")))
+				.collect(Collectors.toList()));
+		return eStereotypableObject.getStereotypeApplications().stream()
+				.map(application -> application.getStereotype())
+				.filter(stereotype -> stereotype.getTaggedValue("roleURI") == null)
+				.collect(Collectors.toList());
 	}
 
 	public boolean hasAppliedStereotypes(EStereotypableObject object) {
