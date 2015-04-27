@@ -28,6 +28,7 @@
   <rm:locator pattern="^org\.apache\..*" searchPathRef="thirdparty" failOnError="false"/>
   <rm:locator pattern="^org\.hibernate.*" searchPathRef="thirdparty" failOnError="false"/>
   <rm:locator pattern="^org\.scaledl\.usageevolution.*" searchPathRef="UsageEvolution" failOnError="false"/>
+  <rm:locator pattern="^org\.palladiosimulator\.monitorrepository.*" searchPathRef="MonitorRepository" failOnError="false"/>
   <rm:locator pattern="^dlim.*" searchPathRef="Limbo" failOnError="false"/>
   <rm:locator searchPathRef="MDSDProfiles" failOnError="false"/>
   <rm:locator pattern="^org\.eclipse\.xtend.*" searchPathRef="xtext" failOnError="false"/>
@@ -160,6 +161,14 @@
       <rm:property key="buckminster.source" value="false"/>
       <rm:property key="buckminster.mutable" value="false"/>
       <rm:uri format="http://cloudscale.xlab.si/cse/updatesites/usageevolution/nightly/"/>
+    </rm:provider>
+  </rm:searchPath>
+    </rm:searchPath>
+    <rm:searchPath name="MonitorRepository">
+    <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
+      <rm:property key="buckminster.source" value="false"/>
+      <rm:property key="buckminster.mutable" value="false"/>
+      <rm:uri format="http://sdqweb.ipd.kit.edu/eclipse/monitorrepository/nightly/"/>
     </rm:provider>
   </rm:searchPath>
   <rm:searchPath name="Limbo">
