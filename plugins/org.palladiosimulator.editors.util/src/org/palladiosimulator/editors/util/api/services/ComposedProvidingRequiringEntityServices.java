@@ -17,6 +17,7 @@ import org.eclipse.ui.PlatformUI;
 import org.modelversioning.emfprofile.Stereotype;
 import org.palladiosimulator.commons.emfutils.EMFCopyHelper;
 import org.palladiosimulator.editors.util.Activator;
+import org.palladiosimulator.editors.util.at.ArchitecturalTemplateHelpers;
 
 import de.uka.ipd.sdq.pcm.core.PCMRandomVariable;
 import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
@@ -28,7 +29,6 @@ import edu.kit.ipd.sdq.mdsd.profiles.metamodelextension.EStereotypableObject;
 
 public class ComposedProvidingRequiringEntityServices {
 
-	private static final String ROLE_URI = "roleURI";
 	private static final String PARSER_ERROR_TITLE = "Error parsing expression";
 	private static final String PARSER_ERROR_MESSAGE = "The entered stochastic expression is invalid.";
 
@@ -38,7 +38,8 @@ public class ComposedProvidingRequiringEntityServices {
 	 * have a tagged value "roleURI" pointing to the correct repository element.
 	 * 
 	 * @param object
-	 * @return
+	 *            object to get roles for
+	 * @return list of roles
 	 */
 	public List<Stereotype> getRoles(final EObject object) {
 		if (!(object instanceof EStereotypableObject))
@@ -47,8 +48,26 @@ public class ComposedProvidingRequiringEntityServices {
 		return ((EStereotypableObject) object)
 				.getAppliedStereotypes()
 				.stream()
-				.filter(stereotype -> stereotype.getTaggedValue(ROLE_URI) != null)
+				.filter(stereotype -> stereotype.getTaggedValue(ArchitecturalTemplateHelpers.ROLE_URI) != null)
 				.collect(Collectors.toList());
+	}
+
+	/**
+	 * Returns, whether the given {@link EStereotypableObject} has roles
+	 * applied.
+	 * 
+	 * @param object
+	 *            object to test
+	 * @return indicator for applied roles
+	 */
+	public boolean hasRoles(final EObject object) {
+		return object instanceof EStereotypableObject
+				&& ((EStereotypableObject) object)
+						.getAppliedStereotypes()
+						.stream()
+						.anyMatch(
+								stereotype -> stereotype
+										.getTaggedValue(ArchitecturalTemplateHelpers.ROLE_URI) != null);
 	}
 
 	/**

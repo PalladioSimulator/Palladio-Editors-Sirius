@@ -33,7 +33,7 @@ public class AddATAction implements IExternalJavaAction {
 	 * The name of the parameter to be given. This is an arbitrary object from
 	 * the editor to get the corresponding {@link Session}.
 	 */
-	private static final Object SELF_KEY = "self";
+	private static final String SYSTEM_PARAMETER_KEY = "system";
 
 	/**
 	 * Creates an {@link ArchitecturalTemplateSelectEObjectDialog} that queries
@@ -43,7 +43,7 @@ public class AddATAction implements IExternalJavaAction {
 	@Override
 	public void execute(Collection<? extends EObject> selections,
 			Map<String, Object> parameters) {
-		final Object parameter = parameters.get(SELF_KEY);
+		final Object parameter = parameters.get(SYSTEM_PARAMETER_KEY);
 		if (parameter == null || !(parameter instanceof System)) {
 			return;
 		}

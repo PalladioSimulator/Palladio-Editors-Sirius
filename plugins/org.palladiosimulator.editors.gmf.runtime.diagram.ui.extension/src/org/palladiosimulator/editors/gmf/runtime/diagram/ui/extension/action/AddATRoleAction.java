@@ -1,18 +1,20 @@
 package org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.action;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.dialogs.Dialog;
-import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
-import org.palladiosimulator.editors.util.dialogs.ArchitecturalTemplateSelectEObjectDialog;
+import org.eclipse.ui.dialogs.ElementListSelectionDialog;
+import org.palladiosimulator.editors.util.at.ArchitecturalTemplateHelpers;
 import org.scaledl.architecturaltemplates.type.Role;
 
 import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
+import de.uka.ipd.sdq.pcm.system.System;
 
 /**
  * This class applies an ArchitecturalTemplate to a {@link System}. It will ask
@@ -25,7 +27,9 @@ import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
  */
 public class AddATRoleAction implements IExternalJavaAction {
 
-	private static final Object SELF_KEY = "self";
+	private static final String SELECT_ROLE_DIALOG_MESSAGE = "Select Role to apply to the AssemblyContext";
+	private static final String SELECT_ROLE_DIALOG_TITLE = "Select Role";
+	private static final String ASSEMBLY_CONTEXT_PARAMETER_KEY = "assemblyContext";
 
 	/**
 	 * Asks the user to select a {@link Role} and attaches it to the given
@@ -34,21 +38,33 @@ public class AddATRoleAction implements IExternalJavaAction {
 	@Override
 	public void execute(Collection<? extends EObject> selections,
 			Map<String, Object> parameters) {
-		final Object parameter = parameters.get(SELF_KEY);
-		if (parameter == null || !(parameter instanceof EObject)) {
+		final Object parameter = parameters.get(ASSEMBLY_CONTEXT_PARAMETER_KEY);
+		if (parameter == null || !(parameter instanceof AssemblyContext)) {
 			return;
 		}
-		final ResourceSet resourceSet = SessionManager.INSTANCE.getSession(
-				(EObject) parameter).getTransactionalEditingDomain().getResourceSet();
 
-		final ArchitecturalTemplateSelectEObjectDialog atSelectionDialog = new ArchitecturalTemplateSelectEObjectDialog(
+		final AssemblyContext assemblyContext = (AssemblyContext) parameter;
+		final List<Role> applicableRoles = ArchitecturalTemplateHelpers
+				.getApplicableRoles(assemblyContext);
+
+		final ElementListSelectionDialog dialog = new ElementListSelectionDialog(
 				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-				resourceSet, ArchitecturalTemplateSelectEObjectDialog .Type.ROLE);
-		if (atSelectionDialog.open() == Dialog.OK) {
-			for (EObject object : selections) {
-				System.out.println(object);
-			}
+				new LabelProvider());
+
+		dialog.setTitle(SELECT_ROLE_DIALOG_TITLE);
+		dialog.setMessage(SELECT_ROLE_DIALOG_MESSAGE);
+		dialog.setElements(applicableRoles.toArray());
+
+		if (dialog.open() != Dialog.OK) {
+			return;
 		}
+		
+		final Role selectedRole = (Role) dialog.getFirstResult();
+		if (selectedRole == null) {
+			return;
+		}
+		
+		assemblyContext.applyStereotype(selectedRole.getStereotype());
 	}
 
 	/**
