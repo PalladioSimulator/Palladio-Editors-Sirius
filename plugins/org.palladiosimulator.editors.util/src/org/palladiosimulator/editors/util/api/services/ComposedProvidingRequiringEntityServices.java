@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.ui.PlatformUI;
 import org.modelversioning.emfprofile.Stereotype;
+import org.modelversioning.emfprofileapplication.StereotypeApplication;
 import org.palladiosimulator.commons.emfutils.EMFCopyHelper;
 import org.palladiosimulator.editors.util.Activator;
 import org.palladiosimulator.editors.util.at.ArchitecturalTemplateHelpers;
@@ -41,14 +42,14 @@ public class ComposedProvidingRequiringEntityServices {
 	 *            object to get roles for
 	 * @return list of roles
 	 */
-	public List<Stereotype> getRoles(final EObject object) {
+	public List<StereotypeApplication> getRoles(final EObject object) {
 		if (!(object instanceof EStereotypableObject))
 			return null;
 
 		return ((EStereotypableObject) object)
-				.getAppliedStereotypes()
+				.getStereotypeApplications()
 				.stream()
-				.filter(stereotype -> stereotype.getTaggedValue(ArchitecturalTemplateHelpers.ROLE_URI) != null)
+				.filter(stereotypeApplication -> stereotypeApplication.getStereotype().getTaggedValue(ArchitecturalTemplateHelpers.ROLE_URI) != null)
 				.collect(Collectors.toList());
 	}
 
