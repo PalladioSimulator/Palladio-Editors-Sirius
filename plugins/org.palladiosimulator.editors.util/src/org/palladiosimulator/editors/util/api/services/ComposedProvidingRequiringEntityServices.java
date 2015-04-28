@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.antlr.runtime.ANTLRStringStream;
@@ -28,39 +29,48 @@ import edu.kit.ipd.sdq.mdsd.profiles.metamodelextension.EStereotypableObject;
 
 public class ComposedProvidingRequiringEntityServices {
 
+	private static final String ROLE_URI = "roleURI";
 	private static final String PARSER_ERROR_TITLE = "Error parsing expression";
 	private static final String PARSER_ERROR_MESSAGE = "The entered stochastic expression is invalid.";
-	
+
 	/**
-	 * Tests whether the given object is a {@link EStereotypableObject} and has applied stereotypes.
-	 * FIXME: should take a EStereotypableObject as parameter.
+	 * Tests whether the given object is a {@link EStereotypableObject} and has
+	 * applied stereotypes. FIXME: should take a EStereotypableObject as
+	 * parameter.
 	 * 
-	 * @param object object
+	 * @param object
+	 *            object
 	 * @return has applied stereotypes
 	 */
-	public boolean hasStereotypeApplications(EObject object) {
-		return object instanceof EStereotypableObject && ((EStereotypableObject) object).getStereotypeApplications().size() != 0;
+	public boolean hasStereotypeApplications(final EObject object) {
+		return object instanceof EStereotypableObject
+				&& ((EStereotypableObject) object).getStereotypeApplications()
+						.size() != 0;
 	}
 
-	public List<Stereotype> getRoles(EObject object) {
+	/**
+	 * Returns a list of {@link Stereotype}s that are associated with the given
+	 * object, that comply with the Architectural Template`s convention, i.e.
+	 * have a tagged value "roleURI" pointing to the correct repository element.
+	 * 
+	 * @param object
+	 * @return
+	 */
+	public List<Stereotype> getRoles(final EObject object) {
 		if (!(object instanceof EStereotypableObject))
 			return null;
-		
-		final EStereotypableObject eStereotypableObject = (EStereotypableObject) object;
-        System.out.println(eStereotypableObject.getStereotypeApplications().stream()
-				.map(application -> application.getStereotype())
-				.filter(stereotype -> "".equals(stereotype.getTaggedValue("roleURI")))
-				.collect(Collectors.toList()));
-		return eStereotypableObject.getStereotypeApplications().stream()
-				.map(application -> application.getStereotype())
-				.filter(stereotype -> stereotype.getTaggedValue("roleURI") == null)
+
+		return ((EStereotypableObject) object)
+				.getAppliedStereotypes()
+				.stream()
+				.filter(stereotype -> stereotype.getTaggedValue(ROLE_URI) != null)
 				.collect(Collectors.toList());
 	}
 
 	public boolean hasAppliedStereotypes(EStereotypableObject object) {
 		return object.getStereotypeApplications().size() != 0;
 	}
-	
+
 	/**
 	 * Returns a list containing all {@link VariableUsage}s associated with the
 	 * {@link AssemblyContext}. This means all usages that are defined on the
@@ -88,11 +98,15 @@ public class ComposedProvidingRequiringEntityServices {
 				.getComponentParameterUsage_ImplementationComponentType();
 
 		// combine the sets
-		usages.addAll(assemblyContext.getConfigParameterUsages__AssemblyContext());
-		componentVariableUsages.stream()
-				.filter(componentVariableUsage -> !isOverridden(componentVariableUsage, assemblyContext))
-				.forEach(componentVariableUsage -> usages.add(componentVariableUsage));
-		
+		usages.addAll(assemblyContext
+				.getConfigParameterUsages__AssemblyContext());
+		componentVariableUsages
+				.stream()
+				.filter(componentVariableUsage -> !isOverridden(
+						componentVariableUsage, assemblyContext))
+				.forEach(
+						componentVariableUsage -> usages
+								.add(componentVariableUsage));
 
 		return usages;
 	}
@@ -142,22 +156,23 @@ public class ComposedProvidingRequiringEntityServices {
 	 *            the expression
 	 * @return the random variable
 	 */
-	public EObject editPCMRandomVariable(final EObject pcmRandomVariable, final String expressionString) {
+	public EObject editPCMRandomVariable(final EObject pcmRandomVariable,
+			final String expressionString) {
 		if (!(pcmRandomVariable instanceof PCMRandomVariable)) {
 			return null;
 		}
 		if (!validExpression(expressionString)) {
-			final ErrorDialog errorDialog = new ErrorDialog(
-					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), 
-					PARSER_ERROR_TITLE, 
-					null, 
-					new Status(IStatus.ERROR, Activator.PLUGIN_ID, PARSER_ERROR_MESSAGE), 
+			final ErrorDialog errorDialog = new ErrorDialog(PlatformUI
+					.getWorkbench().getActiveWorkbenchWindow().getShell(),
+					PARSER_ERROR_TITLE, null, new Status(IStatus.ERROR,
+							Activator.PLUGIN_ID, PARSER_ERROR_MESSAGE),
 					IStatus.ERROR);
 			errorDialog.open();
 			return null;
 		}
 
-		((PCMRandomVariable) pcmRandomVariable).setSpecification(expressionString);
+		((PCMRandomVariable) pcmRandomVariable)
+				.setSpecification(expressionString);
 
 		return pcmRandomVariable;
 	}
@@ -177,7 +192,7 @@ public class ComposedProvidingRequiringEntityServices {
 		try {
 			parser.expression();
 		} catch (final RecognitionException e1) {
-			return false; 
+			return false;
 		}
 		if (lexer.hasErrors() || parser.hasErrors()) {
 			return false;
@@ -186,26 +201,36 @@ public class ComposedProvidingRequiringEntityServices {
 	}
 
 	/**
-	 * Copies the {@link VariableUsage} to the {@link AssemblyContext}, i.e. 'instantiates' it.
-	 * This method will return the VariableUsage or null if the parameters do not have the correct types.
+	 * Copies the {@link VariableUsage} to the {@link AssemblyContext}, i.e.
+	 * 'instantiates' it. This method will return the VariableUsage or null if
+	 * the parameters do not have the correct types.
 	 *
-	 * @param variableUsage the VariableUsage to be copied
-	 * @param assemblyContext the target AssemblyContext
+	 * @param variableUsage
+	 *            the VariableUsage to be copied
+	 * @param assemblyContext
+	 *            the target AssemblyContext
 	 * @return the original VariableUsage
 	 */
-	public EObject copyToAssemblyContext(final EObject variableUsageObject, final EObject assemblyContextObject) {
-		if (!(variableUsageObject instanceof VariableUsage) || !(assemblyContextObject instanceof AssemblyContext))
+	public EObject copyToAssemblyContext(final EObject variableUsageObject,
+			final EObject assemblyContextObject) {
+		if (!(variableUsageObject instanceof VariableUsage)
+				|| !(assemblyContextObject instanceof AssemblyContext))
 			return null;
-		
+
 		final AssemblyContext assemblyContext = (AssemblyContext) assemblyContextObject;
-		
-		final List<EObject> copiedVariableUsage = EMFCopyHelper.deepCopyEObjectList(Collections.singletonList(variableUsageObject));
-		if (copiedVariableUsage.size() != 1 || !(copiedVariableUsage.get(0) instanceof VariableUsage))
+
+		final List<EObject> copiedVariableUsage = EMFCopyHelper
+				.deepCopyEObjectList(Collections
+						.singletonList(variableUsageObject));
+		if (copiedVariableUsage.size() != 1
+				|| !(copiedVariableUsage.get(0) instanceof VariableUsage))
 			return null;
-		
-		final VariableUsage newVariableUsage = (VariableUsage) copiedVariableUsage.get(0);
+
+		final VariableUsage newVariableUsage = (VariableUsage) copiedVariableUsage
+				.get(0);
 		newVariableUsage.setAssemblyContext__VariableUsage(assemblyContext);
-		assemblyContext.getConfigParameterUsages__AssemblyContext().add(newVariableUsage);
+		assemblyContext.getConfigParameterUsages__AssemblyContext().add(
+				newVariableUsage);
 
 		return variableUsageObject;
 	}

@@ -14,7 +14,6 @@ import org.eclipse.ui.PlatformUI;
 import org.modelversioning.emfprofile.Stereotype;
 import org.palladiosimulator.editors.util.dialogs.ArchitecturalTemplateSelectEObjectDialog;
 import org.scaledl.architecturaltemplates.type.AT;
-import org.scaledl.architecturaltemplates.type.TypeFactory;
 
 import de.uka.ipd.sdq.pcm.system.System;
 
