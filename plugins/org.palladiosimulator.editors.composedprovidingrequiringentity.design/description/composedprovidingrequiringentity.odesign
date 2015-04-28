@@ -187,7 +187,7 @@
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               </style>
             </subContainerMappings>
-            <subContainerMappings name="Role Container" semanticCandidatesExpression="[self.getRoles()/]" domainClass="Stereotype">
+            <subContainerMappings name="Role Container" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20Role%20Removal']" semanticCandidatesExpression="[self.getRoles()/]" domainClass="Stereotype" childrenPresentation="List">
               <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[self.name/]">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -202,7 +202,7 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subContainerMappings>
-          <subContainerMappings name="System Role Container" semanticCandidatesExpression="[self.getRoles()/]" domainClass="Stereotype">
+          <subContainerMappings name="System Role Container" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20SystemRole%20Removal']" semanticCandidatesExpression="[self.getRoles()/]" domainClass="Stereotype" childrenPresentation="List">
             <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[self.name/]">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -581,6 +581,30 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Creation" label="Add Role" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.addATRole">
                 <parameters name="assemblyContext" value="[container/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="AT Role Removal" label="Remove Role">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Removal" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.removeATRole">
+                  <parameters name="role" value="[self/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="AT SystemRole Removal" label="Remove Architectural Template">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Removal" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.removeAT">
+                  <parameters name="at" value="[self/]"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
