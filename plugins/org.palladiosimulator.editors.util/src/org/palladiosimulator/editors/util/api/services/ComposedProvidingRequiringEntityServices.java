@@ -33,21 +33,6 @@ public class ComposedProvidingRequiringEntityServices {
 	private static final String PARSER_ERROR_MESSAGE = "The entered stochastic expression is invalid.";
 
 	/**
-	 * Tests whether the given object is a {@link EStereotypableObject} and has
-	 * applied stereotypes. FIXME: should take a EStereotypableObject as
-	 * parameter.
-	 * 
-	 * @param object
-	 *            object
-	 * @return has applied stereotypes
-	 */
-	public boolean hasStereotypeApplications(final EObject object) {
-		return object instanceof EStereotypableObject
-				&& ((EStereotypableObject) object).getStereotypeApplications()
-						.size() != 0;
-	}
-
-	/**
 	 * Returns a list of {@link Stereotype}s that are associated with the given
 	 * object, that comply with the Architectural Template`s convention, i.e.
 	 * have a tagged value "roleURI" pointing to the correct repository element.
@@ -64,10 +49,6 @@ public class ComposedProvidingRequiringEntityServices {
 				.stream()
 				.filter(stereotype -> stereotype.getTaggedValue(ROLE_URI) != null)
 				.collect(Collectors.toList());
-	}
-
-	public boolean hasAppliedStereotypes(EStereotypableObject object) {
-		return object.getStereotypeApplications().size() != 0;
 	}
 
 	/**
