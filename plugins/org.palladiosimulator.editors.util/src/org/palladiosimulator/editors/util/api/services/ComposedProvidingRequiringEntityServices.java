@@ -33,6 +33,22 @@ public class ComposedProvidingRequiringEntityServices {
 	private static final String PARSER_ERROR_TITLE = "Error parsing expression";
 	private static final String PARSER_ERROR_MESSAGE = "The entered stochastic expression is invalid.";
 
+	public EObject removeATRole(final EObject assemblyContextObject,
+			final EObject stereotypeObject) {
+		if (assemblyContextObject == null
+				|| !(assemblyContextObject instanceof AssemblyContext)
+				|| stereotypeObject == null || !(stereotypeObject instanceof Stereotype)) {
+			System.out.println("False parameters");
+			return assemblyContextObject;
+		}
+		final AssemblyContext assemblyContext = (AssemblyContext) assemblyContextObject;
+		final Stereotype stereotype = (Stereotype) stereotypeObject;
+		
+		System.out.println("Called with " + assemblyContext + " and " + stereotype);
+
+		return assemblyContext;
+	}
+
 	/**
 	 * Returns a list of {@link Stereotype}s that are associated with the given
 	 * object, that comply with the Architectural Template`s convention, i.e.
@@ -49,7 +65,9 @@ public class ComposedProvidingRequiringEntityServices {
 		return ((EStereotypableObject) object)
 				.getStereotypeApplications()
 				.stream()
-				.filter(stereotypeApplication -> stereotypeApplication.getStereotype().getTaggedValue(ArchitecturalTemplateHelpers.ROLE_URI) != null)
+				.filter(stereotypeApplication -> stereotypeApplication
+						.getStereotype().getTaggedValue(
+								ArchitecturalTemplateHelpers.ROLE_URI) != null)
 				.collect(Collectors.toList());
 	}
 

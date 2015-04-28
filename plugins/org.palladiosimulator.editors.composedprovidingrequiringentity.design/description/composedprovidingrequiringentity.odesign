@@ -584,28 +584,20 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="AT Role Removal" label="Remove Role">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="AT Role Removal" label="Remove Role" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Removal" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.removeATRole">
-                  <parameters name="role" value="[self/]"/>
-                </subModelOperations>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Removal" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.removeATRole"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="AT SystemRole Removal" label="Remove Architectural Template">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="AT SystemRole Removal" label="Remove Architectural Template" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Removal" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.removeAT">
-                  <parameters name="at" value="[self/]"/>
-                </subModelOperations>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.removeAT"/>
             </initialOperation>
           </ownedTools>
         </toolSections>

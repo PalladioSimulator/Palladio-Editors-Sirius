@@ -42,6 +42,20 @@
             actionClass="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.action.LoadResourceAction"
             id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.loadResource">
       </javaActions>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.action.RemoveATRoleAction"
+            id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.removeATRole">
+      </javaActions>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.action.RemoveATAction"
+            id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.removeAT">
+      </javaActions>
    </extension> 
   
 </plugin>
