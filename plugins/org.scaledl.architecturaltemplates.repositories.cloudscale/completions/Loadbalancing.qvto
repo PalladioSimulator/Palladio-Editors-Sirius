@@ -17,10 +17,13 @@ main() {
 	var allocationContexts : Set(AllocationContext) := allocation.allocationContexts_Allocation;
 	var assemblyContexts : Set(AssemblyContext);
 	allocationContexts -> forEach(allocationContext){assemblyContexts += allocationContext.assemblyContext_AllocationContext;};
+	var system : System := allocation.system_Allocation;
 	var appliedStereotype : String;
 	
 	if(hasAppliedStereotype(assemblyContexts,"StaticLoadbalancedAssemblyContext")){
 					appliedStereotype := "StaticLoadbalancedAssemblyContext";	
+		assert fatal(hasAppliedStereotype(system,"StaticAssemblyContextLoadbalancingSystem"))
+			with log("There is not StaticAssemblyContextLoadbalancingSystem Stereotype Application");
 	}
 	else if(hasAppliedStereotype(assemblyContexts,"ReplicableAssemblyContext")){
 				appliedStereotype := "ReplicableAssemblyContext";	
