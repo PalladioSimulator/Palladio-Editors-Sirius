@@ -1,6 +1,6 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
 
-modeltype PRM uses 'http://simulizar.palladiosimulator.org/PalladioRuntimeMonitoring/1.0';
+modeltype PRM uses 'http://simulizar.palladiosimulator.org/RuntimeMeasurement/1.0';
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
 modeltype PCM_RES_ENV uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0';
 
@@ -13,7 +13,7 @@ property maxRate : Real;
 main() {
 	log ('AT Completion "ScaleUp" started');	
 	
-	assert fatal(prm.rootObjects()[PRMMeasurement]->size() > 0)
+	assert fatal(prm.rootObjects()[RuntimeMeasurement]->size() > 0)
 		with log ("No Measurements found!");
 			
 	assert fatal(pcmAllocation.rootObjects()[Allocation]->size() > 0)
@@ -37,7 +37,7 @@ main() {
 }
 
 // FIXME need to check whether it's the right model element
-helper Set(PRMMeasurement) :: checkCondition() : Boolean
+helper Set(RuntimeMeasurement) :: checkCondition() : Boolean
 {
 	self->forEach(measurement) {
 		log('Measured value is ' + measurement.measuringValue.toString());
@@ -51,7 +51,7 @@ helper Set(PRMMeasurement) :: checkCondition() : Boolean
 }
 
 mapping ResourceContainer::scaleUpVirtualizedContainer():ResourceContainer 
-	when{prm.rootObjects()[PRMMeasurement]->checkCondition()}
+	when{prm.rootObjects()[RuntimeMeasurement]->checkCondition()}
 {
 	log ('Scaling Up ResourceContainer ' + self.entityName);
 	scaleUpProcessingResourcesRecursively(self);

@@ -4,7 +4,7 @@ import Loadbalancing;
 
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
 modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
-modeltype PRM uses 'http://simulizar.palladiosimulator.org/PalladioRuntimeMonitoring/1.0';
+modeltype PRM uses 'http://simulizar.palladiosimulator.org/RuntimeMeasurement/1.0';
 	
 transformation AssemblyContextScaling(in prm : PRM, inout pcmAllocation : PCM_ALLOC) 
 access transformation Loadbalancing, ReverseLoadbalancing;
@@ -14,7 +14,7 @@ property scaleInThreshold : Real;
 property scaleOutThreshold : Real;
 
 main() {
-	assert fatal(prm.rootObjects()[PRMMeasurement]->size() > 0)
+	assert fatal(prm.rootObjects()[RuntimeMeasurement]->size() > 0)
 		with log ("No Measurements found!");
 			
 	assert fatal(pcmAllocation.rootObjects()[Allocation]->size() > 0)
@@ -41,7 +41,7 @@ main() {
 	var reverseLoadbalancingTransformation : ReverseLoadbalancing := new ReverseLoadbalancing(prm,pcmAllocation);
 	var loadbalancingTransformation : Loadbalancing := new Loadbalancing(prm,pcmAllocation);
 	//The setting of the configuration properties to false could be unnecessary
-	if(prm.rootObjects()[PRMMeasurement]->checkScaleInCondition() and numberOfReplicas > 1){
+	if(prm.rootObjects()[RuntimeMeasurement]->checkScaleInCondition() and numberOfReplicas > 1){
 		reverseLoadbalancingTransformation.loadbalanced := true;
 		reverseLoadbalancingTransformation->transform();
 		reverseLoadbalancingTransformation.loadbalanced := false;
@@ -51,7 +51,7 @@ main() {
 		loadbalancingTransformation->transform();
 		loadbalancingTransformation.reverseLoadbalanced := false;
 	}
-	else if(prm.rootObjects()[PRMMeasurement]->checkScaleOutCondition()){
+	else if(prm.rootObjects()[RuntimeMeasurement]->checkScaleOutCondition()){
 		reverseLoadbalancingTransformation.loadbalanced := true;
 		reverseLoadbalancingTransformation->transform();
 		reverseLoadbalancingTransformation.loadbalanced := false;
@@ -63,7 +63,7 @@ main() {
 	};
 }
 
-helper Set(PRMMeasurement) :: checkScaleOutCondition() : Boolean {
+helper Set(RuntimeMeasurement) :: checkScaleOutCondition() : Boolean {
 	
 		self->forEach(measurement) {
 		log('Measured value is ' + measurement.measuringValue.toString());
@@ -77,7 +77,7 @@ helper Set(PRMMeasurement) :: checkScaleOutCondition() : Boolean {
 		return false;
 }
 	
-helper Set(PRMMeasurement) :: checkScaleInCondition() : Boolean {
+helper Set(RuntimeMeasurement) :: checkScaleInCondition() : Boolean {
 	
 		self->forEach(measurement) {
 		log('Measured value is ' + measurement.measuringValue.toString());

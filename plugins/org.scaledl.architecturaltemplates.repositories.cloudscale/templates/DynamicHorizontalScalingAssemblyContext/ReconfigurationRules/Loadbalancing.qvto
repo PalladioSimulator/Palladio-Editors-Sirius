@@ -7,7 +7,7 @@ modeltype PCM_RES_ENV uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Resourc
 modeltype PCM_CORE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Core/5.0';
 modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
 modeltype PCMSEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0');
-modeltype PRM uses 'http://simulizar.palladiosimulator.org/PalladioRuntimeMonitoring/1.0';
+modeltype PRM uses 'http://simulizar.palladiosimulator.org/RuntimeMeasurement/1.0';
 
 transformation Loadbalancing(in prm : PRM,inout pcmAllocation : PCM_ALLOC);
 
