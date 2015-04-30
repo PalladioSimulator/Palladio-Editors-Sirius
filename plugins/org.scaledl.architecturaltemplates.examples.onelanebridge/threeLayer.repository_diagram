@@ -47,7 +47,7 @@
         <styles xmi:type="notation:TitleStyle" xmi:id="_xNiu2COdEeSubfGVEKswQQ" showTitle="true"/>
       </children>
       <element xmi:type="repository:BasicComponent" href="threeLayer.repository#_xNhgsCOdEeSubfGVEKswQQ"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xNiHwSOdEeSubfGVEKswQQ" x="455" y="308" width="229" height="120"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xNiHwSOdEeSubfGVEKswQQ" x="455" y="308" width="229" height="162"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_znqA0COdEeSubfGVEKswQQ" type="2102" fontName="Segoe UI">
       <children xmi:type="notation:DecorationNode" xmi:id="_znqn4COdEeSubfGVEKswQQ" type="5102"/>
@@ -176,7 +176,7 @@
         <styles xmi:type="notation:FilteringStyle" xmi:id="_oM5_UyOeEeSubfGVEKswQQ"/>
       </children>
       <element xmi:type="seff:ExternalCallAction" href="threeLayer.repository#_nK0QMCOeEeSubfGVEKswQQ"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oM5YQSOeEeSubfGVEKswQQ" x="252" y="196"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oM5YQSOeEeSubfGVEKswQQ" x="119" y="189"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_yZwN0COeEeSubfGVEKswQQ" type="2006" fontName="Segoe UI">
       <children xmi:type="notation:DecorationNode" xmi:id="_yZwN0iOeEeSubfGVEKswQQ" type="5012"/>
