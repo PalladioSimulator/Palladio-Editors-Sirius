@@ -9,7 +9,7 @@
       <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_nK0QMCOeEeSubfGVEKswQQ" predecessor_AbstractAction="_jf_kQCOeEeSubfGVEKswQQ" successor_AbstractAction="_yZuYoCOeEeSubfGVEKswQQ" calledService_ExternalService="_OyMfgCOeEeSubfGVEKswQQ" role_ExternalService="_8Q2EMCOdEeSubfGVEKswQQ"/>
       <steps_Behaviour xsi:type="seff:InternalAction" id="_yZuYoCOeEeSubfGVEKswQQ" entityName="CreateHTMLPage" predecessor_AbstractAction="_nK0QMCOeEeSubfGVEKswQQ" successor_AbstractAction="_jgALUCOeEeSubfGVEKswQQ">
         <resourceDemand_Action>
-          <specification_ParametericResourceDemand specification="DoublePDF[(10;0.2)(20;0.3)(50;0.5)]"/>
+          <specification_ParametericResourceDemand specification="DoublePDF [ ( 10.0 ; 0.2 ) ( 20.0 ; 0.3 ) ( 50.0 ; 0.5 ) ]"/>
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
@@ -24,7 +24,7 @@
       <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_Ji4FgCOfEeSubfGVEKswQQ" predecessor_AbstractAction="_wXxgIIHyEeSmZPUvJd7mYg" successor_AbstractAction="_z-iLcIHyEeSmZPUvJd7mYg" calledService_ExternalService="_YrpQ4COeEeSubfGVEKswQQ" role_ExternalService="_9X1hcCOdEeSubfGVEKswQQ"/>
       <steps_Behaviour xsi:type="seff:InternalAction" id="_Ns4n0COfEeSubfGVEKswQQ" entityName="CheckValidity" predecessor_AbstractAction="_hDP1ACOeEeSubfGVEKswQQ" successor_AbstractAction="_wXxgIIHyEeSmZPUvJd7mYg">
         <resourceDemand_Action>
-          <specification_ParametericResourceDemand specification="DoublePDF[(10;0.2)(20;0.3)(50;0.5)]"/>
+          <specification_ParametericResourceDemand specification="DoublePDF [ ( 10.0 ; 0.2 ) ( 20.0 ; 0.3 ) ( 50.0 ; 0.5 ) ]"/>
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>
@@ -42,7 +42,7 @@
       <steps_Behaviour xsi:type="seff:StopAction" id="_ip3NgSOeEeSubfGVEKswQQ" entityName="stop" predecessor_AbstractAction="_dCT5sCOfEeSubfGVEKswQQ"/>
       <steps_Behaviour xsi:type="seff:InternalAction" id="_dCT5sCOfEeSubfGVEKswQQ" entityName="RecordBookOrder" predecessor_AbstractAction="_ip3NgCOeEeSubfGVEKswQQ" successor_AbstractAction="_ip3NgSOeEeSubfGVEKswQQ">
         <resourceDemand_Action>
-          <specification_ParametericResourceDemand specification="DoublePDF[(40;0.2)(60;0.3)(80;0.5)]"/>
+          <specification_ParametericResourceDemand specification="DoublePDF [ ( 40.0 ; 0.2 ) ( 60.0 ; 0.3 ) ( 80.0 ; 0.5 ) ]"/>
           <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
         </resourceDemand_Action>
       </steps_Behaviour>

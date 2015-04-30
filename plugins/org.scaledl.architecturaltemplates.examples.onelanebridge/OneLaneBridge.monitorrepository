@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<monitorrepository:MonitorRepository xmlns:metricspec="http://palladiosimulator.org/MetricSpec/1.0" xmlns:monitorrepository="http://palladiosimulator.org/SimuLizar/MonitorRepository/1.0" xmlns:pcmmeasuringpoint="http://palladiosimulator.org/PCM/MeasuringPoint/1.0" id="_xQRLsK8TEeSndedGMUl_sQ" entityName="Default Monitor Set">
+<monitorrepository:MonitorRepository xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metricspec="http://palladiosimulator.org/MetricSpec/1.0" xmlns:monitorrepository="http://palladiosimulator.org/MonitorRepository/1.0" xmlns:pcmmeasuringpoint="http://palladiosimulator.org/PCM/MeasuringPoint/1.0" id="_ZBVJUNcREeSNV4TmK_35qw" entityName="Default Monitor Set">
   <monitors id="_z-a0AK8TEeSndedGMUl_sQ" entityName="Response Times - Usage Scenario">
     <measurementSpecifications id="_sSAFcK8UEeSskrCYteSGAA" statisticalCharacterization="ArithmeticMean">
       <temporalRestriction xsi:type="monitorrepository:Intervall" id="_-TNoIK8UEeSskrCYteSGAA" intervall="10.0"/>

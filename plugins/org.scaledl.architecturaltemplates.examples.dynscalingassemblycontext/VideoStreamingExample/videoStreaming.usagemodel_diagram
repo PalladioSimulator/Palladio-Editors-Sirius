@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:usagemodel="http://sdq.ipd.uka.de/PalladioComponentModel/UsageModel/5.0" xsi:schemaLocation="http://sdq.ipd.uka.de/PalladioComponentModel/UsageModel/5.0 http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//usagemodel" xmi:id="_NcHnQJUGEeSkwMoUcKTtwg" type="PCM Usage Model" name="videoStreaming.usagemodel_diagram" measurementUnit="Pixel">
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:parameter="http://sdq.ipd.uka.de/PalladioComponentModel/Parameter/5.0" xmlns:usagemodel="http://sdq.ipd.uka.de/PalladioComponentModel/UsageModel/5.0" xsi:schemaLocation="http://sdq.ipd.uka.de/PalladioComponentModel/Parameter/5.0 http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//parameter http://sdq.ipd.uka.de/PalladioComponentModel/UsageModel/5.0 http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//usagemodel" xmi:id="_NcHnQJUGEeSkwMoUcKTtwg" type="PCM Usage Model" name="videoStreaming.usagemodel_diagram" measurementUnit="Pixel">
   <children xmi:type="notation:Node" xmi:id="_NedJkJUGEeSkwMoUcKTtwg" type="2004">
     <children xmi:type="notation:DecorationNode" xmi:id="_NedwoJUGEeSkwMoUcKTtwg" type="5017"/>
     <children xmi:type="notation:DecorationNode" xmi:id="_NedwoZUGEeSkwMoUcKTtwg" type="7012">
@@ -14,20 +14,37 @@
           </children>
           <children xmi:type="notation:Shape" xmi:id="_NegM5ZUGEeSkwMoUcKTtwg" type="3002" fontName="Segoe UI">
             <element xmi:type="usagemodel:Stop" href="videoStreaming.usagemodel#_NcFyE5UGEeSkwMoUcKTtwg"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NegM5pUGEeSkwMoUcKTtwg" x="325" y="74"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NegM5pUGEeSkwMoUcKTtwg" x="438" y="66"/>
           </children>
           <children xmi:type="notation:Shape" xmi:id="_T80UIJUGEeSkwMoUcKTtwg" type="3003" fontName="Segoe UI">
             <children xmi:type="notation:DecorationNode" xmi:id="_T807MJUGEeSkwMoUcKTtwg" type="5004"/>
             <children xmi:type="notation:DecorationNode" xmi:id="_T807MZUGEeSkwMoUcKTtwg" type="7002">
+              <children xmi:type="notation:Node" xmi:id="_qQe0AO8aEeSSn9Sse7NPqg" type="3012">
+                <children xmi:type="notation:DecorationNode" xmi:id="_qQfbEO8aEeSSn9Sse7NPqg" type="5012"/>
+                <children xmi:type="notation:BasicCompartment" xmi:id="_qQfbEe8aEeSSn9Sse7NPqg" type="7011">
+                  <children xmi:type="notation:Node" xmi:id="_qj104O8aEeSSn9Sse7NPqg" type="3013">
+                    <element xmi:type="parameter:VariableCharacterisation" href="videoStreaming.usagemodel#//@usageScenario_UsageModel.0/@scenarioBehaviour_UsageScenario/@actions_ScenarioBehaviour.2/@inputParameterUsages_EntryLevelSystemCall.0/@variableCharacterisation_VariableUsage.0"/>
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_qj104e8aEeSSn9Sse7NPqg"/>
+                  </children>
+                  <styles xmi:type="notation:TitleStyle" xmi:id="_qQfbEu8aEeSSn9Sse7NPqg" showTitle="true"/>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_qQfbE-8aEeSSn9Sse7NPqg"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_qQfbFO8aEeSSn9Sse7NPqg"/>
+                </children>
+                <styles xmi:type="notation:DescriptionStyle" xmi:id="_qQe0Ae8aEeSSn9Sse7NPqg"/>
+                <styles xmi:type="notation:FontStyle" xmi:id="_qQe0Au8aEeSSn9Sse7NPqg" fontName="Segoe UI"/>
+                <styles xmi:type="notation:LineStyle" xmi:id="_qQe0A-8aEeSSn9Sse7NPqg"/>
+                <element xmi:type="parameter:VariableUsage" href="videoStreaming.usagemodel#//@usageScenario_UsageModel.0/@scenarioBehaviour_UsageScenario/@actions_ScenarioBehaviour.2/@inputParameterUsages_EntryLevelSystemCall.0"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qQe0BO8aEeSSn9Sse7NPqg"/>
+              </children>
               <styles xmi:type="notation:SortingStyle" xmi:id="_T807MpUGEeSkwMoUcKTtwg"/>
               <styles xmi:type="notation:FilteringStyle" xmi:id="_T807M5UGEeSkwMoUcKTtwg"/>
             </children>
             <element xmi:type="usagemodel:EntryLevelSystemCall" href="videoStreaming.usagemodel#_RZliYJUGEeSkwMoUcKTtwg"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T80UIZUGEeSkwMoUcKTtwg" x="30" y="84"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_T80UIZUGEeSkwMoUcKTtwg" x="46" y="45"/>
           </children>
         </children>
         <element xmi:type="usagemodel:ScenarioBehaviour" href="videoStreaming.usagemodel#_NcFyEZUGEeSkwMoUcKTtwg"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Nee-wZUGEeSkwMoUcKTtwg" x="3" y="126"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Nee-wZUGEeSkwMoUcKTtwg" x="35" y="165" width="612"/>
       </children>
       <children xmi:type="notation:Node" xmi:id="_ORSUsJUGEeSkwMoUcKTtwg" type="3015">
         <children xmi:type="notation:DecorationNode" xmi:id="_ORSUtZUGEeSkwMoUcKTtwg" type="5013"/>
@@ -44,7 +61,7 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_NedJkpUGEeSkwMoUcKTtwg" fontName="Segoe UI"/>
     <styles xmi:type="notation:FillStyle" xmi:id="_NedJk5UGEeSkwMoUcKTtwg"/>
     <element xmi:type="usagemodel:UsageScenario" href="videoStreaming.usagemodel#_NcFyEJUGEeSkwMoUcKTtwg"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NedJlJUGEeSkwMoUcKTtwg" x="135" y="65" width="1063" height="566"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NedJlJUGEeSkwMoUcKTtwg" x="119" y="42" width="1063" height="566"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_NcHnQZUGEeSkwMoUcKTtwg"/>
   <element xmi:type="usagemodel:UsageModel" href="videoStreaming.usagemodel#/"/>
