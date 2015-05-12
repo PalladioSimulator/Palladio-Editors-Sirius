@@ -8,6 +8,7 @@ modeltype PCM_RES_ENV uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Resourc
 modeltype PCMCore uses pcm::core('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
 modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
 modeltype SEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0');
+modeltype PCM_COMPLETION uses 'http://sdq.ipd.uka.de/Completions/1.0';
 
 transformation ResourceContainerLoadbalancing(in prm : PRM, inout pcmAllocation : PCM_ALLOC);
 
@@ -369,18 +370,18 @@ constructor ResourceDemandingSEFF :: ResourceDemandingSEFF (operationSignature :
 			    branchProbability := probability;
 			    branchBehaviour_BranchTransition := object ResourceDemandingBehaviour{
 			    	var innerStartAction : StartAction := object StartAction{};
-			    	var externalCallAction : ExternalCallAction := object ExternalCallAction{
+			    	var delegatingExternalCallAction : DelegatingExternalCallAction := object DelegatingExternalCallAction{
 			    		predecessor_AbstractAction := innerStartAction;
 			    		entityName := "Call "+operationSignature.entityName;
 			    		role_ExternalService := requiredRole;
 			    		calledService_ExternalService := operationSignature;
 			    	};
 			    	var innerStopAction : StopAction := object StopAction{
-						predecessor_AbstractAction := externalCallAction;
+						predecessor_AbstractAction := delegatingExternalCallAction;
 					};
 					
 					steps_Behaviour += innerStartAction;
-					steps_Behaviour += externalCallAction;
+					steps_Behaviour += delegatingExternalCallAction;
 					steps_Behaviour += innerStopAction;
 			    };
 			};
