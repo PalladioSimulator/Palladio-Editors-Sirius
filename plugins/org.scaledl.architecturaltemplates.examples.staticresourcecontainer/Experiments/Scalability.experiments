@@ -15,7 +15,7 @@
       <allocation href="../staticResourceContainerAllocation.allocation#_Ry1GsMKWEeSWFuHcXeRvDQ"/>
       <middlewareRepository href="pathmap://PCM_MODELS/Glassfish.repository#_yQk9oIX1EdyWta7nHuXiHQ"/>
       <eventMiddleWareRepository href="pathmap://PCM_MODELS/default_event_middleware.repository#_Onc7cMALEd-LKvNtxXAQbQ"/>
-      <monitorRepository href="../staticResourceContainerMonitorRepository.monitorrepository#_CalIcONSEeSKB94gKG4tKg"/>
+      <monitorRepository href="../staticResourceContainerMonitorRepository.monitorrepository#_ZBVJUNcREeSNV4TmK_35qw"/>
       <serviceLevelObjectives href="../staticResourceContainer.slo#/"/>
       <usageEvolution href="../UsageEvolution/OneYearTrend.usageevolution#_i-2QoHWQEeSn05EdHZE9fg"/>
     </initialModel>
