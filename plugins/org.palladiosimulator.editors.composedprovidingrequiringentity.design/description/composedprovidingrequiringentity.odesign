@@ -188,7 +188,7 @@
               </style>
             </subContainerMappings>
             <subContainerMappings name="Role Container" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20Role%20Removal']" semanticCandidatesExpression="[self.getRoles()/]" domainClass="StereotypeApplication" childrenPresentation="List">
-              <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[self.name/]">
+              <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[self.oclAsType(StereotypeApplication).getStereotype().name/]">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -203,7 +203,7 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="System Role Container" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20SystemRole%20Removal']" semanticCandidatesExpression="[self.getRoles()/]" domainClass="StereotypeApplication" childrenPresentation="List">
-            <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[self.name/]">
+            <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[getStereotype().name/]">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -564,7 +564,7 @@
           </subSections>
         </toolSections>
         <toolSections name="Architectural Templates">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="The action is specified without a parameter, because Sirius does not allow for this right now. This bears potential for future bugs." name="AT Creation" label="Add Architectural Template" precondition="[self.eClass().name = 'System'/]" containerMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='System%20Role%20Container']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="The action is specified without a parameter, because Sirius does not allow for this right now. This bears potential for future bugs." name="AT Creation" label="Add Architectural Template" precondition="[self.eClass().name = 'System'/]" forceRefresh="true" containerMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='System%20Role%20Container']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -575,7 +575,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AT Role Creation" label="Add Role" precondition="[(self.eClass().name = 'AssemblyContext') and (self.eContainer().hasRoles())/]" containerMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@subContainerMappings[name='Role%20Container']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AT Role Creation" label="Add Role" precondition="[(self.eClass().name = 'AssemblyContext') and (self.eContainer().hasRoles())/]" forceRefresh="true" containerMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@subContainerMappings[name='Role%20Container']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
