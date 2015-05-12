@@ -8,7 +8,7 @@
     <measuringPoint xsi:type="pcmmeasuringpoint:UsageScenarioMeasuringPoint" href="threelayer.measuringpoint#//@measuringPoints.0"/>
   </monitors>
   <monitors id="_wsR8gK_REeSGL-GAWy2qgA" entityName="Number of Resource Containers - Resource Environment">
-    <measurementSpecifications id="_Ic4q8K_SEeSGL-GAWy2qgA">
+    <measurementSpecifications id="_Ic4q8K_SEeSGL-GAWy2qgA" statisticalCharacterization="ArithmeticMean">
       <temporalRestriction xsi:type="monitorrepository:Intervall" id="_RJX58K_SEeSGL-GAWy2qgA" intervall="10.0"/>
       <metricDescription xsi:type="metricspec:NumericalBaseMetricDescription" href="pathmap://METRIC_SPEC_MODELS/models/commonMetrics.metricspec#_e7x3gq-eEeSgL6DrxYuwZg"/>
     </measurementSpecifications>
@@ -17,14 +17,21 @@
   <monitors id="_I4aLUMW1EeSis_7JLfBvVA" entityName="State - Database CPU">
     <measurementSpecifications id="_Puf5YMW1EeSis_7JLfBvVA" statisticalCharacterization="ArithmeticMean">
       <temporalRestriction xsi:type="monitorrepository:Intervall" id="_THq0oMW1EeSis_7JLfBvVA" intervall="10.0"/>
-      <metricDescription xsi:type="metricspec:MetricSetDescription" href="pathmap://METRIC_SPEC_MODELS/models/commonMetrics.metricspec#_-buIceJDEeO6l86uYUhhyw"/>
+      <metricDescription xsi:type="metricspec:NumericalBaseMetricDescription" href="pathmap://METRIC_SPEC_MODELS/models/commonMetrics.metricspec#_paDhIs7qEeOX_4BzImuHbA"/>
     </measurementSpecifications>
     <measuringPoint xsi:type="pcmmeasuringpoint:ActiveResourceMeasuringPoint" href="threelayer.measuringpoint#//@measuringPoints.2"/>
   </monitors>
-  <monitors id="_VNDMwMW1EeSis_7JLfBvVA" entityName="Utilization - Database CPU">
+  <monitors id="_VNDMwMW1EeSis_7JLfBvVA" entityName="Waiting Time - Database CPU">
     <measurementSpecifications id="_XJV6UMW1EeSis_7JLfBvVA" statisticalCharacterization="ArithmeticMean">
       <temporalRestriction xsi:type="monitorrepository:Intervall" id="_atSiMMW1EeSis_7JLfBvVA" intervall="10.0"/>
-      <metricDescription xsi:type="metricspec:MetricSetDescription" href="pathmap://METRIC_SPEC_MODELS/models/commonMetrics.metricspec#_mhws4SkUEeSuf8LV7cHLgA"/>
+      <metricDescription xsi:type="metricspec:NumericalBaseMetricDescription" href="pathmap://METRIC_SPEC_MODELS/models/commonMetrics.metricspec#_QWjAYs7qEeOX_4BzImuHbA"/>
+    </measurementSpecifications>
+    <measuringPoint xsi:type="pcmmeasuringpoint:ActiveResourceMeasuringPoint" href="threelayer.measuringpoint#//@measuringPoints.2"/>
+  </monitors>
+  <monitors id="_PwsJMPjjEeS3ucsqbhCwmA" entityName="Holding Time - Database CPU">
+    <measurementSpecifications id="_REeFQPjjEeS3ucsqbhCwmA" statisticalCharacterization="ArithmeticMean">
+      <temporalRestriction xsi:type="monitorrepository:Intervall" id="_Z11NMPjjEeS3ucsqbhCwmA" intervall="10.0"/>
+      <metricDescription xsi:type="metricspec:NumericalBaseMetricDescription" href="pathmap://METRIC_SPEC_MODELS/models/commonMetrics.metricspec#_zETOUs7pEeOX_4BzImuHbA"/>
     </measurementSpecifications>
     <measuringPoint xsi:type="pcmmeasuringpoint:ActiveResourceMeasuringPoint" href="threelayer.measuringpoint#//@measuringPoints.2"/>
   </monitors>
