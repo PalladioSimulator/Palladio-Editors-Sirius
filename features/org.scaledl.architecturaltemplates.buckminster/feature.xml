@@ -24,4 +24,8 @@
          id="org.scaledl.architecturaltemplates.examples.feature"
          version="0.0.0"/>
 
+   <includes
+         id="org.palladiosimulator.editors.feature"
+         version="0.0.0"/>
+
 </feature>
