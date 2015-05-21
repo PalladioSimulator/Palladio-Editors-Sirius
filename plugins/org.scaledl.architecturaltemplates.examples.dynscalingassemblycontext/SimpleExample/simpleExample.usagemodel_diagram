@@ -29,15 +29,15 @@
         <element xmi:type="usagemodel:ScenarioBehaviour" href="simpleExample.usagemodel#_zchykdcNEeSyUvPi1U6uGw"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zfr0QdcNEeSyUvPi1U6uGw" x="45" y="51" width="395" height="146"/>
       </children>
-      <children xmi:type="notation:Node" xmi:id="_9UNpYNcNEeSyUvPi1U6uGw" type="3015">
-        <children xmi:type="notation:DecorationNode" xmi:id="_9UNpZdcNEeSyUvPi1U6uGw" type="5013"/>
-        <children xmi:type="notation:DecorationNode" xmi:id="_9UNpZtcNEeSyUvPi1U6uGw" type="5014"/>
-        <children xmi:type="notation:DecorationNode" xmi:id="_9UNpZ9cNEeSyUvPi1U6uGw" type="5015"/>
-        <styles xmi:type="notation:DescriptionStyle" xmi:id="_9UNpYdcNEeSyUvPi1U6uGw"/>
-        <styles xmi:type="notation:FontStyle" xmi:id="_9UNpYtcNEeSyUvPi1U6uGw" fontName="Segoe UI"/>
-        <styles xmi:type="notation:LineStyle" xmi:id="_9UNpY9cNEeSyUvPi1U6uGw"/>
+      <children xmi:type="notation:Node" xmi:id="_Uh_5MOjWEeSFj-nkRIG2cw" type="3015">
+        <children xmi:type="notation:DecorationNode" xmi:id="_Uh_5NejWEeSFj-nkRIG2cw" type="5013"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_Uh_5NujWEeSFj-nkRIG2cw" type="5014"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_Uh_5N-jWEeSFj-nkRIG2cw" type="5015"/>
+        <styles xmi:type="notation:DescriptionStyle" xmi:id="_Uh_5MejWEeSFj-nkRIG2cw"/>
+        <styles xmi:type="notation:FontStyle" xmi:id="_Uh_5MujWEeSFj-nkRIG2cw" fontName="Segoe UI"/>
+        <styles xmi:type="notation:LineStyle" xmi:id="_Uh_5M-jWEeSFj-nkRIG2cw"/>
         <element xmi:type="usagemodel:ClosedWorkload" href="simpleExample.usagemodel#//@usageScenario_UsageModel.0/@workload_UsageScenario"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9UNpZNcNEeSyUvPi1U6uGw" x="482" y="45"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Uh_5NOjWEeSFj-nkRIG2cw" x="498" y="136"/>
       </children>
     </children>
     <styles xmi:type="notation:DescriptionStyle" xmi:id="_zfiqUdcNEeSyUvPi1U6uGw"/>

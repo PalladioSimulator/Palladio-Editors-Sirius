@@ -16,7 +16,8 @@ Require-Bundle: de.uka.ipd.sdq.workflow;bundle-version="2.1.0",
  org.palladiosimulator.commons;bundle-version="1.0.0",
  org.scaledl.architecturaltemplates;bundle-version="1.0.0",
  org.palladiosimulator.pcm.edp2.measuringpoint;bundle-version="1.0.0",
- org.palladiosimulator.simulizar.monitorrepository;bundle-version="2.0.0",
- org.palladiosimulator.servicelevelobjective;bundle-version="0.1.0"
+ org.palladiosimulator.monitorrepository;bundle-version="2.0.0",
+ org.palladiosimulator.servicelevelobjective;bundle-version="0.1.0",
+ org.palladiosimulator.simulizar.reconfiguration.storydiagram
 Export-Package: org.scaledl.architecturaltemplates.completion.config,
  org.scaledl.architecturaltemplates.completion.jobs

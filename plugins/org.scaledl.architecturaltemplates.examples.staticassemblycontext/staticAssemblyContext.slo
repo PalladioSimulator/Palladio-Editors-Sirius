@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<slo:ServiceLevelObjectiveRepository xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metricspec="http://palladiosimulator.org/MetricSpec/1.0" xmlns:pcmmeasuringpoint="http://palladiosimulator.org/PCM/MeasuringPoint/1.0" xmlns:slo="http://palladiosimulator.org/ServiceLevelObjective/1.0">
+<slo:ServiceLevelObjectiveRepository xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:slo="http://palladiosimulator.org/ServiceLevelObjective/1.0">
   <servicelevelobjectives id="_zZrBwHU3EeS2FLkQxohaHg" name="Three Seconds Response Time" description="Three Seconds Response Time">
     <upperThreshold xsi:type="slo:HardThreshold" id="_W0jmAnU4EeS2FLkQxohaHg" thresholdLimit="3 s"/>
-    <metricDescription xsi:type="metricspec:NumericalBaseMetricDescription" href="pathmap://METRIC_SPEC_MODELS/models/commonMetrics.metricspec#_6rYmYs7nEeOX_4BzImuHbA"/>
-    <measuringPoint xsi:type="pcmmeasuringpoint:UsageScenarioMeasuringPoint" href="staticAssemblyContextUsageScenarioMP.pcmmeasuringpoint#/"/>
+    <measurementSpecification href="staticAssemblyContextMonitorRepository.monitorrepository#_PPnv8uNMEeS_urNI4LXenw"/>
   </servicelevelobjectives>
 </slo:ServiceLevelObjectiveRepository>

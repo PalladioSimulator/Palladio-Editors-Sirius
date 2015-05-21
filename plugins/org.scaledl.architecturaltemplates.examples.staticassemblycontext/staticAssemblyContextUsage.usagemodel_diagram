@@ -44,7 +44,7 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_51tfMr7EEeSuir3ZgvAmUQ" fontName="Segoe UI"/>
     <styles xmi:type="notation:FillStyle" xmi:id="_51tfM77EEeSuir3ZgvAmUQ"/>
     <element xmi:type="usagemodel:UsageScenario" href="staticAssemblyContextUsage.usagemodel#_5zn0gL7EEeSuir3ZgvAmUQ"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_51tfNL7EEeSuir3ZgvAmUQ" width="326" height="251"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_51tfNL7EEeSuir3ZgvAmUQ" width="656" height="251"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_5zobkb7EEeSuir3ZgvAmUQ"/>
   <element xmi:type="usagemodel:UsageModel" href="staticAssemblyContextUsage.usagemodel#/"/>

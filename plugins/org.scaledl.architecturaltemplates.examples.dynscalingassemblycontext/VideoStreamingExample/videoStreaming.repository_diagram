@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:repository="http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0" xmlns:seff="http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0" xmlns:seff_performance="http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/SEFF_Performance/5.0" xsi:schemaLocation="http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0 http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//repository http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0 http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//seff http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/SEFF_Performance/5.0 http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//seff/seff_performance">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:parameter="http://sdq.ipd.uka.de/PalladioComponentModel/Parameter/5.0" xmlns:repository="http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0" xmlns:seff="http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0" xmlns:seff_performance="http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/SEFF_Performance/5.0" xsi:schemaLocation="http://sdq.ipd.uka.de/PalladioComponentModel/Parameter/5.0 http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//parameter http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0 http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//repository http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0 http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//seff http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/SEFF_Performance/5.0 http://sdq.ipd.uka.de/PalladioComponentModel/5.0#//seff/seff_performance">
   <notation:Diagram xmi:id="_Hdv2QJUEEeSkwMoUcKTtwg" type="PCM Repository Model" name="videoStreaming.repository_diagram" measurementUnit="Pixel">
     <children xmi:type="notation:Shape" xmi:id="_IUnz4JUEEeSkwMoUcKTtwg" type="2107" fontName="Segoe UI">
       <children xmi:type="notation:DecorationNode" xmi:id="_IUoa8JUEEeSkwMoUcKTtwg" type="5108"/>
@@ -115,7 +115,7 @@
     </children>
     <children xmi:type="notation:Shape" xmi:id="_hOmlMJUEEeSkwMoUcKTtwg" type="2002" fontName="Segoe UI">
       <element xmi:type="seff:StopAction" href="videoStreaming.repository#_e7J74pUEEeSkwMoUcKTtwg"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hOmlMZUEEeSkwMoUcKTtwg" x="230" y="195"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hOmlMZUEEeSkwMoUcKTtwg" x="567" y="371"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_kzm9AJUEEeSkwMoUcKTtwg" type="2006" fontName="Segoe UI">
       <children xmi:type="notation:DecorationNode" xmi:id="_kzm9ApUEEeSkwMoUcKTtwg" type="5012"/>
@@ -139,7 +139,7 @@
         <styles xmi:type="notation:FilteringStyle" xmi:id="_kznkF5UEEeSkwMoUcKTtwg"/>
       </children>
       <element xmi:type="seff:InternalAction" href="videoStreaming.repository#_kzlu4JUEEeSkwMoUcKTtwg"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kzm9AZUEEeSkwMoUcKTtwg" x="10" y="55"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kzm9AZUEEeSkwMoUcKTtwg" x="63" y="84"/>
     </children>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_hL_9IZUEEeSkwMoUcKTtwg"/>
     <element xmi:type="seff:ResourceDemandingSEFF" href="videoStreaming.repository#_e7J74JUEEeSkwMoUcKTtwg"/>
@@ -172,6 +172,23 @@
     <children xmi:type="notation:Shape" xmi:id="_MYNvsJUFEeSkwMoUcKTtwg" type="2003" fontName="Segoe UI">
       <children xmi:type="notation:DecorationNode" xmi:id="_MYNvspUFEeSkwMoUcKTtwg" type="5002"/>
       <children xmi:type="notation:BasicCompartment" xmi:id="_MYNvs5UFEeSkwMoUcKTtwg" type="7001">
+        <children xmi:type="notation:Node" xmi:id="_eQS_oO8aEeSSn9Sse7NPqg" type="3042">
+          <children xmi:type="notation:DecorationNode" xmi:id="_eQUNwO8aEeSSn9Sse7NPqg" type="5040"/>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_eQU00O8aEeSSn9Sse7NPqg" type="7037">
+            <children xmi:type="notation:Node" xmi:id="_elFj4O8aEeSSn9Sse7NPqg" type="3033">
+              <element xmi:type="parameter:VariableCharacterisation" href="videoStreaming.repository#//@components__Repository.1/@serviceEffectSpecifications__BasicComponent.0/@steps_Behaviour.2/@inputVariableUsages__CallAction.0/@variableCharacterisation_VariableUsage.0"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_elGK8O8aEeSSn9Sse7NPqg"/>
+            </children>
+            <styles xmi:type="notation:TitleStyle" xmi:id="_eQU00e8aEeSSn9Sse7NPqg" showTitle="true"/>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_eQU00u8aEeSSn9Sse7NPqg"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_eQU00-8aEeSSn9Sse7NPqg"/>
+          </children>
+          <styles xmi:type="notation:DescriptionStyle" xmi:id="_eQS_oe8aEeSSn9Sse7NPqg"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_eQS_ou8aEeSSn9Sse7NPqg" fontName="Segoe UI"/>
+          <styles xmi:type="notation:LineStyle" xmi:id="_eQS_o-8aEeSSn9Sse7NPqg"/>
+          <element xmi:type="parameter:VariableUsage" href="videoStreaming.repository#//@components__Repository.1/@serviceEffectSpecifications__BasicComponent.0/@steps_Behaviour.2/@inputVariableUsages__CallAction.0"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eQS_pO8aEeSSn9Sse7NPqg"/>
+        </children>
         <styles xmi:type="notation:TitleStyle" xmi:id="_MYNvtJUFEeSkwMoUcKTtwg" showTitle="true"/>
         <styles xmi:type="notation:SortingStyle" xmi:id="_MYNvtZUFEeSkwMoUcKTtwg"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_MYNvtpUFEeSkwMoUcKTtwg"/>
@@ -182,7 +199,7 @@
         <styles xmi:type="notation:FilteringStyle" xmi:id="_MYNvupUFEeSkwMoUcKTtwg"/>
       </children>
       <element xmi:type="seff:ExternalCallAction" href="videoStreaming.repository#_ME7AQJUFEeSkwMoUcKTtwg"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MYNvsZUFEeSkwMoUcKTtwg" x="200" y="124"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MYNvsZUFEeSkwMoUcKTtwg" x="84" y="77"/>
     </children>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_LuNwcZUFEeSkwMoUcKTtwg"/>
     <element xmi:type="seff:ResourceDemandingSEFF" href="videoStreaming.repository#_J6hlQZUFEeSkwMoUcKTtwg"/>

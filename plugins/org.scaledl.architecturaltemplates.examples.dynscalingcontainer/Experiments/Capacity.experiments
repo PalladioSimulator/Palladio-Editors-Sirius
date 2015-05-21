@@ -8,7 +8,7 @@
     <toolConfiguration xsi:type="simulizartooladapter:SimuLizarConfiguration" name="EDP2 SimuLizar Configuration">
       <stopConditions xsi:type="ExperimentAutomation.Experiments.AbstractSimulation:MeasurementCountStopCondition" measurementCount="100"/>
       <stopConditions xsi:type="ExperimentAutomation.Experiments.AbstractSimulation:SimTimeStopCondition" simulationTime="-1"/>
-      <datasource xsi:type="ExperimentAutomation.Experiments.AbstractSimulation:FileDatasource" location="/Users/lehrig/data"/>
+      <datasource xsi:type="ExperimentAutomation.Experiments.AbstractSimulation:MemoryDatasource"/>
     </toolConfiguration>
     <stopConditions xsi:type="ExperimentAutomation.Experiments.AbstractSimulation:MeasurementCountStopCondition" measurementCount="100"/>
     <stopConditions xsi:type="ExperimentAutomation.Experiments.AbstractSimulation:SimTimeStopCondition" simulationTime="-1"/>
@@ -19,7 +19,7 @@
       <allocation href="../default.allocation#_QISmkH4xEeSqFvs4kqVd7Q"/>
       <middlewareRepository href="pathmap://PCM_MODELS/Glassfish.repository#_yQk9oIX1EdyWta7nHuXiHQ"/>
       <eventMiddleWareRepository href="pathmap://PCM_MODELS/default_event_middleware.repository#_Onc7cMALEd-LKvNtxXAQbQ"/>
-      <monitorRepository href="../default.monitorrepository#_Dez1ANONEeSjW_w7tGZZCA"/>
+      <monitorRepository href="../default.monitorrepository#_ZBVJUNcREeSNV4TmK_35qw"/>
       <serviceLevelObjectives href="../default.slo#/"/>
     </initialModel>
   </experiments>

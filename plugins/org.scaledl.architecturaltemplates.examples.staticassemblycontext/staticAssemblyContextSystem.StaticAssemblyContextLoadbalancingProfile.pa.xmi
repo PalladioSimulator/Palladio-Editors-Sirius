@@ -4,5 +4,9 @@
     <appliedTo href="platform:/resource/org.scaledl.architecturaltemplates.examples.staticassemblycontext/staticAssemblyContextSystem.system#_rUs-wL7CEeSuir3ZgvAmUQ"/>
     <extension href="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/StaticAssemblyContextLoadbalancing.emfprofile_diagram#_2c7oML2VEeS8D6gGtq5evQ"/>
   </stereotypeApplications>
+  <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles:StaticAssemblyContextLoadbalancingSystem">
+    <appliedTo href="platform:/resource/org.scaledl.architecturaltemplates.examples.staticassemblycontext/staticAssemblyContextSystem.system#_jKRT8L7CEeSuir3ZgvAmUQ"/>
+    <extension href="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/StaticAssemblyContextLoadbalancing.emfprofile_diagram#_hnEzoL2VEeS8D6gGtq5evQ"/>
+  </stereotypeApplications>
   <importedProfiles nsURI="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.staticassemblycontextloadbalancing" location="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/StaticAssemblyContextLoadbalancing.emfprofile_diagram"/>
 </emfprofileapplication:ProfileApplication>

@@ -24,7 +24,7 @@
       </children>
     </children>
     <element xmi:type="resourceenvironment:ResourceContainer" href="staticAssemblyContextResourceEnvironment.resourceenvironment#_zUuwYL7CEeSuir3ZgvAmUQ"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GLc6lb7KEeSuir3ZgvAmUQ" x="220" y="250"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GLc6lb7KEeSuir3ZgvAmUQ" x="245" y="180"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_GI1rcr7KEeSuir3ZgvAmUQ"/>
   <element xmi:type="allocation:Allocation" href="staticAssemblyContextAllocation.allocation#_GI1rcL7KEeSuir3ZgvAmUQ"/>
