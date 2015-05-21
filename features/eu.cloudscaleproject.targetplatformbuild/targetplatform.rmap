@@ -37,7 +37,7 @@
     <rm:searchPath name="luna-updates">
         <rm:provider componentTypes="osgi.bundle,eclipse.feature"
             readerType="p2" source="false" mutable="false">
-            <rm:uri format="http://download.eclipse.org/eclipse/updates/4.4" />
+            <rm:uri format="http://download.eclipse.org/eclipse/updates/4.5" />
         </rm:provider>
     </rm:searchPath>
 
