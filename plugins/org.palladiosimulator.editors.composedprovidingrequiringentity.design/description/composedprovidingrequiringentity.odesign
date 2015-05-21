@@ -187,7 +187,7 @@
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               </style>
             </subContainerMappings>
-            <subContainerMappings name="Role Container" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20Role%20Removal']" semanticCandidatesExpression="[self.getRoles()/]" domainClass="StereotypeApplication" childrenPresentation="List">
+            <subContainerMappings name="Role Container" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='AT%20Role%20Removal']" semanticCandidatesExpression="[self.getRoles()/]" domainClass="StereotypeApplication" childrenPresentation="List">
               <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[self.oclAsType(StereotypeApplication).getStereotype().name/]">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -202,7 +202,7 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subContainerMappings>
-          <subContainerMappings name="System Role Container" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20SystemRole%20Removal']" semanticCandidatesExpression="[self.getRoles()/]" domainClass="StereotypeApplication" childrenPresentation="List">
+          <subContainerMappings name="System Role Container" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='AT%20SystemRole%20Removal']" semanticCandidatesExpression="[self.getRoles()/]" domainClass="StereotypeApplication" childrenPresentation="List">
             <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[getStereotype().name/]">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
