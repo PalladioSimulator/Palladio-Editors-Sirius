@@ -12,8 +12,8 @@ import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
 import de.uka.ipd.sdq.pcm.system.System;
 
 /**
- * This class applies an ArchitecturalTemplate to a {@link System}. It will ask
- * the user to select from an list of available ArchitecturalTemplates.
+ * This class applies an ArchitecturalTemplate to a {@link System}. It will ask the user to select
+ * from an list of available ArchitecturalTemplates.
  * 
  * FIXME: use org.eclipse.sirius.tools.api.ui.IExternalJavaAction2
  * 
@@ -22,33 +22,32 @@ import de.uka.ipd.sdq.pcm.system.System;
  */
 public class RemoveATRoleAction implements IExternalJavaAction {
 
-	/**
-	 * Asks the user to select a {@link Role} and attaches it to the given
-	 * {@link AssemblyContext}.
-	 */
-	@Override
-	public void execute(Collection<? extends EObject> selections,
-			Map<String, Object> parameters) {
-		final StereotypeApplication stereotypeApplication = (StereotypeApplication) selections.stream().findFirst().get();
-		if (!(stereotypeApplication.getAppliedTo() instanceof AssemblyContext)) {
-			return;
-		}
-		final AssemblyContext assemblyContext = (AssemblyContext) stereotypeApplication.getAppliedTo();
-		assemblyContext.removeStereotypeApplication(stereotypeApplication);
-	}
+    /**
+     * Asks the user to select a {@link Role} and attaches it to the given {@link AssemblyContext}.
+     */
+    @Override
+    public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
+        final StereotypeApplication stereotypeApplication = (StereotypeApplication) selections.stream().findFirst()
+                .get();
+        if (!(stereotypeApplication.getAppliedTo() instanceof AssemblyContext)) {
+            return;
+        }
+        final AssemblyContext assemblyContext = (AssemblyContext) stereotypeApplication.getAppliedTo();
+        assemblyContext.unapplyStereotype(stereotypeApplication.getExtension().getSource());
+    }
 
-	/**
-	 * Tests whether the object this tool is applied to is a {@link System}.
-	 */
-	@Override
-	public boolean canExecute(Collection<? extends EObject> selections) {
-		if (selections.size() != 1) {
-			return false;
-		}
-		for (EObject object : selections) {
-			return object instanceof StereotypeApplication;
-		}
-		return false;
-	}
+    /**
+     * Tests whether the object this tool is applied to is a {@link System}.
+     */
+    @Override
+    public boolean canExecute(Collection<? extends EObject> selections) {
+        if (selections.size() != 1) {
+            return false;
+        }
+        for (EObject object : selections) {
+            return object instanceof StereotypeApplication;
+        }
+        return false;
+    }
 
 }
