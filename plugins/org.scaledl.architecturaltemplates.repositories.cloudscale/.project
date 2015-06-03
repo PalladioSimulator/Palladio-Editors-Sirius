@@ -20,17 +20,11 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
-		<buildCommand>
-			<name>edu.kit.ipd.sdq.mdsd.profiles.builder.profileprojectbuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>org.modelversioning.emfprofile.project.nature</nature>
 		<nature>org.eclipse.pde.PluginNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.m2m.qvt.oml.project.QVTONature</nature>
-		<nature>edu.kit.ipd.sdq.mdsd.profiles.nature.profileprojectnature</nature>
 	</natures>
 </projectDescription>

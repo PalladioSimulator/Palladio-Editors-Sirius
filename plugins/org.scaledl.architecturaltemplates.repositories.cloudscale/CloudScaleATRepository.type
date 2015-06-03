@@ -75,4 +75,21 @@
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="allocation"/>
     </completion>
   </ATs>
+  <ATs id="_pvPiUPpWEeSRjMxcTrWsAA" entityName="Hadoop MapReduce">
+    <roles id="_07Qu0PpWEeSRjMxcTrWsAA" entityName="Hadoop MapReduce System">
+      <stereotype href="profiles/HadoopMapReduce.emfprofile_diagram#_cPD50PphEeSRjMxcTrWsAA"/>
+    </roles>
+    <roles id="_tZxTUPpWEeSRjMxcTrWsAA" entityName="Map SEFF">
+      <stereotype href="profiles/HadoopMapReduce.emfprofile_diagram#_d-IqwPphEeSRjMxcTrWsAA"/>
+    </roles>
+    <roles id="_y6cGkPpWEeSRjMxcTrWsAA" entityName="Reduce SEFF">
+      <stereotype href="profiles/HadoopMapReduce.emfprofile_diagram#_g4wBwPphEeSRjMxcTrWsAA"/>
+    </roles>
+    <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion">
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter"/>
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="repository"/>
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="usagemodel"/>
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMTemplateCompletionParameter" fileExtension="allocation" templateFileURI="HadoopMapReduce/HadoopMapReduce.allocation"/>
+    </completion>
+  </ATs>
 </org.scaledl.architecturaltemplates:Repository>
