@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface TemplateProvidingEntity extends EObject {
+
     /**
      * Returns the value of the '<em><b>Template File URI</b></em>' attribute. <!-- begin-user-doc
      * -->

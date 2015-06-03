@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface CompletionParameter extends EObject {
+
     /**
      * Returns the value of the '<em><b>Completion</b></em>' container reference. It is
      * bidirectional and its opposite is '

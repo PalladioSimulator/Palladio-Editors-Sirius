@@ -31,6 +31,7 @@ import org.scaledl.architecturaltemplates.type.Parameter;
  * @generated
  */
 public abstract class ParameterValueImpl extends MinimalEObjectImpl.Container implements ParameterValue {
+
     /**
      * The cached value of the '{@link #getType() <em>Type</em>}' reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->

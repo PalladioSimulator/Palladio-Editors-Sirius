@@ -32,6 +32,7 @@ import org.scaledl.architecturaltemplates.instance.util.InstanceAdapterFactory;
  */
 public class InstanceItemProviderAdapterFactory extends InstanceAdapterFactory implements ComposeableAdapterFactory,
         IChangeNotifier, IDisposable {
+
     /**
      * This keeps track of the root adapter factory that delegates to this adapter factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->

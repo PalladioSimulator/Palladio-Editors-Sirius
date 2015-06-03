@@ -28,6 +28,7 @@ import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
  * @generated
  */
 public interface Component2Role extends EObject {
+
     /**
      * Returns the value of the '<em><b>Component</b></em>' reference. <!-- begin-user-doc -->
      * <p>

@@ -27,6 +27,7 @@ import de.uka.ipd.sdq.pcm.resourceenvironment.ResourceContainer;
  * @generated
  */
 public interface Role2Resource extends EObject {
+
     /**
      * Returns the value of the '<em><b>AT Instance</b></em>' container reference. It is
      * bidirectional and its opposite is '

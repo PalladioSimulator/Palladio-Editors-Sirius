@@ -8,6 +8,8 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 import org.eclipse.ocl.edit.OCLEditPlugin;
 import org.modelversioning.emfprofile.provider.EMFProfileEditPlugin;
+import org.modelversioning.emfprofileapplication.provider.EMFProfileApplicationEditPlugin;
+import org.palladiosimulator.mdsdprofiles.provider.MdsdprofilesEditPlugin;
 
 import de.uka.ipd.sdq.identifier.provider.IdentifierEditPlugin;
 import de.uka.ipd.sdq.pcm.core.provider.PalladioComponentModelEditPlugin;
@@ -22,6 +24,7 @@ import de.uka.ipd.sdq.units.provider.UnitsEditPlugin;
  * @generated
  */
 public final class ArchitecturaltemplatesEditorPlugin extends EMFPlugin {
+
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -44,7 +47,8 @@ public final class ArchitecturaltemplatesEditorPlugin extends EMFPlugin {
     public ArchitecturaltemplatesEditorPlugin() {
         super(new ResourceLocator[] { EcoreEditPlugin.INSTANCE, EMFProfileEditPlugin.INSTANCE,
                 IdentifierEditPlugin.INSTANCE, OCLEditPlugin.INSTANCE, PalladioComponentModelEditPlugin.INSTANCE,
-                ProbabilityFunctionEditPlugin.INSTANCE, StoexEditPlugin.INSTANCE, UnitsEditPlugin.INSTANCE, });
+                ProbabilityFunctionEditPlugin.INSTANCE, StoexEditPlugin.INSTANCE, UnitsEditPlugin.INSTANCE,
+                MdsdprofilesEditPlugin.INSTANCE, EMFProfileApplicationEditPlugin.INSTANCE, });
     }
 
     /**
@@ -77,6 +81,7 @@ public final class ArchitecturaltemplatesEditorPlugin extends EMFPlugin {
      * @generated
      */
     public static class Implementation extends EclipseUIPlugin {
+
         /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 

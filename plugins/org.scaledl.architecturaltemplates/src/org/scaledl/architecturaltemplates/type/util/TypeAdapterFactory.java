@@ -6,6 +6,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.palladiosimulator.mdsdprofiles.StereotypableElement;
 import org.scaledl.architecturaltemplates.type.AT;
 import org.scaledl.architecturaltemplates.type.Completion;
 import org.scaledl.architecturaltemplates.type.CompletionParameter;
@@ -36,6 +37,7 @@ import de.uka.ipd.sdq.pcm.core.entity.NamedElement;
  * @generated
  */
 public class TypeAdapterFactory extends AdapterFactoryImpl {
+
     /**
      * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -80,6 +82,7 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     protected TypeSwitch<Adapter> modelSwitch = new TypeSwitch<Adapter>() {
+
         @Override
         public Adapter caseAT(final AT object) {
             return TypeAdapterFactory.this.createATAdapter();
@@ -158,6 +161,11 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseGenericOutputCompletionParameter(final GenericOutputCompletionParameter object) {
             return TypeAdapterFactory.this.createGenericOutputCompletionParameterAdapter();
+        }
+
+        @Override
+        public Adapter caseStereotypableElement(final StereotypableElement object) {
+            return TypeAdapterFactory.this.createStereotypableElementAdapter();
         }
 
         @Override
@@ -429,6 +437,21 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createGenericOutputCompletionParameterAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.palladiosimulator.mdsdprofiles.StereotypableElement
+     * <em>Stereotypable Element</em>}'. <!-- begin-user-doc --> This default implementation returns
+     * null so that we can easily ignore cases; it's useful to ignore a case when inheritance will
+     * catch all the cases anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.palladiosimulator.mdsdprofiles.StereotypableElement
+     * @generated
+     */
+    public Adapter createStereotypableElementAdapter() {
         return null;
     }
 

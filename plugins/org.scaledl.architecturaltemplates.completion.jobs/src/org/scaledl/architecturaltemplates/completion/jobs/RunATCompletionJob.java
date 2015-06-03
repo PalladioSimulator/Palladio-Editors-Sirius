@@ -109,12 +109,13 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
             // execute transformation job
             try {
                 job.execute(new NullProgressMonitor());
-            } catch (JobFailedException e) {
-                if (logger.isEnabledFor(Level.ERROR)) {
-                    logger.error("Failed to perform Architectural Template completion: " + e.getMessage());
+            } catch (final JobFailedException e) {
+                if (this.logger.isEnabledFor(Level.ERROR)) {
+                    this.logger.error("Failed to perform Architectural Template completion: " + e.getMessage());
                 }
-                if (logger.isEnabledFor(Level.INFO)) {
-                    logger.info("Trying to continue Architectural Template completion even though an internal failure occured");
+                if (this.logger.isEnabledFor(Level.INFO)) {
+                    this.logger
+                            .info("Trying to continue Architectural Template completion even though an internal failure occured");
                 }
             }
         }
@@ -138,7 +139,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
              */
             @Override
             public ModelLocation casePCMTemplateCompletionParameter(
-                    org.scaledl.architecturaltemplates.type.PCMTemplateCompletionParameter object) {
+                    final org.scaledl.architecturaltemplates.type.PCMTemplateCompletionParameter object) {
 
                 final String[] segments = URI.createURI(object.getTemplateFileURI()).segments();
                 final URI templateURI = templateFolderURI.appendSegments(segments);
@@ -164,7 +165,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
              * Find the models in blackboard
              */
             @Override
-            public ModelLocation casePCMBlackboardCompletionParameter(PCMBlackboardCompletionParameter object) {
+            public ModelLocation casePCMBlackboardCompletionParameter(final PCMBlackboardCompletionParameter object) {
                 final String parameterFileExtension = object.getFileExtension().getLiteral();
 
                 for (final Partition partition : ATPartitionConstants.Partition.values()) {
@@ -190,7 +191,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
              * Create new output model for QVTo transformation
              */
             @Override
-            public ModelLocation casePCMOutputCompletionParameter(PCMOutputCompletionParameter object) {
+            public ModelLocation casePCMOutputCompletionParameter(final PCMOutputCompletionParameter object) {
                 final String parameterFileExtension = object.getFileExtension().getLiteral();
                 final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) pcmPartition;
                 final ResourceSet resourceSet = new ResourceSetImpl();
@@ -202,7 +203,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                     ResourceEnvironment resourceEnvironment = null;
                     try {
                         resourceEnvironment = pcmRepositoryPartition.getResourceEnvironment();
-                        Allocation allocation = AllocationFactory.eINSTANCE.createAllocation();
+                        final Allocation allocation = AllocationFactory.eINSTANCE.createAllocation();
                         allocation.setTargetResourceEnvironment_Allocation(resourceEnvironment);
                         outResource.getContents().add(allocation);
                     } catch (final IndexOutOfBoundsException e) {
@@ -213,21 +214,21 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                     UsageModel usageModel = null;
                     try {
                         usageModel = pcmRepositoryPartition.getUsageModel();
-                        EList<UsageScenario> usageScenarios = usageModel.getUsageScenario_UsageModel();
-                        UsageScenarioMeasuringPoint usageScenarioMeasuringPoint = PcmmeasuringpointFactoryImpl.eINSTANCE
+                        final EList<UsageScenario> usageScenarios = usageModel.getUsageScenario_UsageModel();
+                        final UsageScenarioMeasuringPoint usageScenarioMeasuringPoint = PcmmeasuringpointFactoryImpl.eINSTANCE
                                 .createUsageScenarioMeasuringPoint();
                         usageScenarioMeasuringPoint.setUsageScenario(usageScenarios.get(0));
                         outResource.getContents().add(usageScenarioMeasuringPoint);
                     } catch (final IndexOutOfBoundsException e) {
                     }
                 } else if (outResource instanceof ServicelevelObjectiveResourceImpl) {
-                    ServicelevelObjectiveFactory sloFactory = ServicelevelObjectiveFactory.eINSTANCE;
-                    ServiceLevelObjectiveRepository sloRepo = sloFactory.createServiceLevelObjectiveRepository();
+                    final ServicelevelObjectiveFactory sloFactory = ServicelevelObjectiveFactory.eINSTANCE;
+                    final ServiceLevelObjectiveRepository sloRepo = sloFactory.createServiceLevelObjectiveRepository();
                     outResource.getContents().add(sloRepo);
                 } else if (outResource instanceof MonitorRepositoryResourceImpl) {
                     final MonitorRepositoryFactoryImpl monitorRepositoryFactory = (MonitorRepositoryFactoryImpl) MonitorRepositoryFactoryImpl
                             .init();
-                    MonitorRepository monitorRepository = monitorRepositoryFactory.createMonitorRepository();
+                    final MonitorRepository monitorRepository = monitorRepositoryFactory.createMonitorRepository();
                     outResource.getContents().add(monitorRepository);
                 }
                 if (uri.lastSegment().endsWith("monitorrepository")) {
@@ -266,7 +267,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
             for (final Stereotype stereotype : system.getAppliedStereotypes()) {
                 final EStructuralFeature roleURI = stereotype.getTaggedValue("roleURI");
                 if (roleURI != null) {
-                    final EObject eObject = EMFLoadHelper.loadModel(roleURI.getDefaultValueLiteral());
+                    final EObject eObject = EMFLoadHelper.loadAndResolveEObject(roleURI.getDefaultValueLiteral());
                     final Role atRole = (Role) eObject;
                     return atRole.getAT();
                 }

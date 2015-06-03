@@ -24,6 +24,7 @@ package org.scaledl.architecturaltemplates.type;
  * @generated
  */
 public interface GenericBlackboardCompletionParameter extends CompletionParameter {
+
     /**
      * Returns the value of the '<em><b>File Extension</b></em>' attribute. <!-- begin-user-doc -->
      * <p>

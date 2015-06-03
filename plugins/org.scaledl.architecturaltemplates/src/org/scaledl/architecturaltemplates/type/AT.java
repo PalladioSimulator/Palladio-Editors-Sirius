@@ -3,7 +3,6 @@
 package org.scaledl.architecturaltemplates.type;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
 import de.uka.ipd.sdq.pcm.core.entity.Entity;
 
@@ -25,7 +24,8 @@ import de.uka.ipd.sdq.pcm.core.entity.Entity;
  * @model
  * @generated
  */
-public interface AT extends EObject, Entity {
+public interface AT extends Entity {
+
     /**
      * Returns the value of the '<em><b>Repository</b></em>' container reference. It is
      * bidirectional and its opposite is '

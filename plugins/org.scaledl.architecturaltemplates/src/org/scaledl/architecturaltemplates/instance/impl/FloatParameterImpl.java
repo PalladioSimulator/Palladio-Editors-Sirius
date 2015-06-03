@@ -15,6 +15,7 @@ import org.scaledl.architecturaltemplates.instance.InstancePackage;
  * @generated
  */
 public class FloatParameterImpl extends ParameterValueImpl implements FloatParameter {
+
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *

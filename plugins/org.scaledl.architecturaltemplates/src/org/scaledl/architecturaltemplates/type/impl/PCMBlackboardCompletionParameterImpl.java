@@ -25,6 +25,7 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  */
 public class PCMBlackboardCompletionParameterImpl extends CompletionParameterImpl implements
 PCMBlackboardCompletionParameter {
+
     /**
      * The default value of the '{@link #getFileExtension() <em>File Extension</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->

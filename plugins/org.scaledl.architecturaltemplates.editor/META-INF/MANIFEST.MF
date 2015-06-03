@@ -23,5 +23,6 @@ Require-Bundle: org.eclipse.core.runtime,
  de.uka.ipd.sdq.pcm.edit;visibility:=reexport,
  de.uka.ipd.sdq.probfunction.edit;visibility:=reexport,
  de.uka.ipd.sdq.stoex.edit;visibility:=reexport,
- de.uka.ipd.sdq.units.edit;visibility:=reexport
+ de.uka.ipd.sdq.units.edit;visibility:=reexport,
+ org.palladiosimulator.mdsdprofiles.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy

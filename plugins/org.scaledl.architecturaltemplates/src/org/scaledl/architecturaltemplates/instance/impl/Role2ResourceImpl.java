@@ -5,7 +5,6 @@ package org.scaledl.architecturaltemplates.instance.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -35,6 +34,7 @@ import de.uka.ipd.sdq.pcm.resourceenvironment.ResourceContainer;
  * @generated
  */
 public class Role2ResourceImpl extends MinimalEObjectImpl.Container implements Role2Resource {
+
     /**
      * The cached value of the '{@link #getResource() <em>Resource</em>}' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -135,7 +135,7 @@ public class Role2ResourceImpl extends MinimalEObjectImpl.Container implements R
      */
     @Override
     public ResourceContainer getResource() {
-        if (this.resource != null && ((EObject) this.resource).eIsProxy()) {
+        if (this.resource != null && this.resource.eIsProxy()) {
             final InternalEObject oldResource = (InternalEObject) this.resource;
             this.resource = (ResourceContainer) this.eResolveProxy(oldResource);
             if (this.resource != oldResource) {

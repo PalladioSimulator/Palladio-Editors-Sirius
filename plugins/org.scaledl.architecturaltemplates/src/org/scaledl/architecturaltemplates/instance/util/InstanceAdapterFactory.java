@@ -6,6 +6,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.palladiosimulator.mdsdprofiles.StereotypableElement;
 import org.scaledl.architecturaltemplates.instance.ATInstance;
 import org.scaledl.architecturaltemplates.instance.Component2Role;
 import org.scaledl.architecturaltemplates.instance.EnumParameter;
@@ -29,6 +30,7 @@ import de.uka.ipd.sdq.pcm.core.entity.NamedElement;
  * @generated
  */
 public class InstanceAdapterFactory extends AdapterFactoryImpl {
+
     /**
      * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -73,6 +75,7 @@ public class InstanceAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     protected InstanceSwitch<Adapter> modelSwitch = new InstanceSwitch<Adapter>() {
+
         @Override
         public Adapter caseATInstance(final ATInstance object) {
             return InstanceAdapterFactory.this.createATInstanceAdapter();
@@ -116,6 +119,11 @@ public class InstanceAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseRole2Resource(final Role2Resource object) {
             return InstanceAdapterFactory.this.createRole2ResourceAdapter();
+        }
+
+        @Override
+        public Adapter caseStereotypableElement(final StereotypableElement object) {
+            return InstanceAdapterFactory.this.createStereotypableElementAdapter();
         }
 
         @Override
@@ -284,6 +292,21 @@ public class InstanceAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createRole2ResourceAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.palladiosimulator.mdsdprofiles.StereotypableElement
+     * <em>Stereotypable Element</em>}'. <!-- begin-user-doc --> This default implementation returns
+     * null so that we can easily ignore cases; it's useful to ignore a case when inheritance will
+     * catch all the cases anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.palladiosimulator.mdsdprofiles.StereotypableElement
+     * @generated
+     */
+    public Adapter createStereotypableElementAdapter() {
         return null;
     }
 

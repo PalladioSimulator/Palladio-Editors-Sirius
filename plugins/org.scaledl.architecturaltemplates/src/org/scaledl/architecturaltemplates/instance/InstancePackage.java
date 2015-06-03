@@ -24,6 +24,7 @@ import de.uka.ipd.sdq.pcm.core.entity.EntityPackage;
  * @generated
  */
 public interface InstancePackage extends EPackage {
+
     /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -62,6 +63,15 @@ public interface InstancePackage extends EPackage {
      * @generated
      */
     int AT_INSTANCE = 0;
+
+    /**
+     * The feature id for the '<em><b>Profileable Element</b></em>' reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int AT_INSTANCE__PROFILEABLE_ELEMENT = EntityPackage.ENTITY__PROFILEABLE_ELEMENT;
 
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -801,6 +811,7 @@ public interface InstancePackage extends EPackage {
      * @generated
      */
     interface Literals {
+
         /**
          * The meta object literal for the '
          * {@link org.scaledl.architecturaltemplates.instance.impl.ATInstanceImpl

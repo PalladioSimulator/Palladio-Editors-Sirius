@@ -25,6 +25,7 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  */
 public abstract class TemplateProvidingEntityImpl extends MinimalEObjectImpl.Container implements
 TemplateProvidingEntity {
+
     /**
      * The default value of the '{@link #getTemplateFileURI() <em>Template File URI</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->

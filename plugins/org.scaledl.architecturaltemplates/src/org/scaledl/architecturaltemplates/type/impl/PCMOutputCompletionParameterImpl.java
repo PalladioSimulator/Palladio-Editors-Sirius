@@ -24,6 +24,7 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  * @generated
  */
 public class PCMOutputCompletionParameterImpl extends CompletionParameterImpl implements PCMOutputCompletionParameter {
+
     /**
      * The default value of the '{@link #getFileExtension() <em>File Extension</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->

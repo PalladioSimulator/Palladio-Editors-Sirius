@@ -41,6 +41,7 @@ import de.uka.ipd.sdq.pcm.core.entity.impl.EntityImpl;
  * @generated
  */
 public class ATImpl extends EntityImpl implements AT {
+
     /**
      * The cached value of the '{@link #getRoles() <em>Roles</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->

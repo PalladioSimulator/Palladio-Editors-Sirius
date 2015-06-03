@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Completion extends EObject {
+
     /**
      * Returns the value of the '<em><b>AT</b></em>' container reference. It is bidirectional and
      * its opposite is '{@link org.scaledl.architecturaltemplates.type.AT#getCompletion

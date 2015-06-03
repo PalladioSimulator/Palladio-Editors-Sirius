@@ -26,6 +26,7 @@ import de.uka.ipd.sdq.pcm.core.entity.EntityPackage;
  * @generated
  */
 public interface TypePackage extends EPackage {
+
     /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -63,6 +64,15 @@ public interface TypePackage extends EPackage {
      * @generated
      */
     int AT = 0;
+
+    /**
+     * The feature id for the '<em><b>Profileable Element</b></em>' reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int AT__PROFILEABLE_ELEMENT = EntityPackage.ENTITY__PROFILEABLE_ELEMENT;
 
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -139,6 +149,15 @@ public interface TypePackage extends EPackage {
     int CONSTRAINT = 1;
 
     /**
+     * The feature id for the '<em><b>Profileable Element</b></em>' reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CONSTRAINT__PROFILEABLE_ELEMENT = EntityPackage.ENTITY__PROFILEABLE_ELEMENT;
+
+    /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -193,6 +212,15 @@ public interface TypePackage extends EPackage {
      * @generated
      */
     int PARAMETER = 2;
+
+    /**
+     * The feature id for the '<em><b>Profileable Element</b></em>' reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int PARAMETER__PROFILEABLE_ELEMENT = EntityPackage.ENTITY__PROFILEABLE_ELEMENT;
 
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -251,6 +279,15 @@ public interface TypePackage extends EPackage {
     int REPOSITORY = 3;
 
     /**
+     * The feature id for the '<em><b>Profileable Element</b></em>' reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int REPOSITORY__PROFILEABLE_ELEMENT = EntityPackage.ENTITY__PROFILEABLE_ELEMENT;
+
+    /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -295,6 +332,15 @@ public interface TypePackage extends EPackage {
      * @generated
      */
     int ROLE = 4;
+
+    /**
+     * The feature id for the '<em><b>Profileable Element</b></em>' reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ROLE__PROFILEABLE_ELEMENT = EntityPackage.ENTITY__PROFILEABLE_ELEMENT;
 
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -369,6 +415,15 @@ public interface TypePackage extends EPackage {
      * @generated
      */
     int OCL_CONSTRAINT = 5;
+
+    /**
+     * The feature id for the '<em><b>Profileable Element</b></em>' reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int OCL_CONSTRAINT__PROFILEABLE_ELEMENT = CONSTRAINT__PROFILEABLE_ELEMENT;
 
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -1310,6 +1365,7 @@ public interface TypePackage extends EPackage {
      * @generated
      */
     interface Literals {
+
         /**
          * The meta object literal for the '
          * {@link org.scaledl.architecturaltemplates.type.impl.ATImpl <em>AT</em>}' class. <!--

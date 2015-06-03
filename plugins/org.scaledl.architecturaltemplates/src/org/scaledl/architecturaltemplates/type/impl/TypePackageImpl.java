@@ -44,6 +44,7 @@ import de.uka.ipd.sdq.pcm.core.entity.EntityPackage;
  * @generated
  */
 public class TypePackageImpl extends EPackageImpl implements TypePackage {
+
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -214,7 +215,6 @@ public class TypePackageImpl extends EPackageImpl implements TypePackage {
         isInited = true;
 
         // Initialize simple dependencies
-        EMFProfilePackage.eINSTANCE.eClass();
         TypesPackage.eINSTANCE.eClass();
         UtilitiesPackage.eINSTANCE.eClass();
         ExpressionsPackage.eINSTANCE.eClass();

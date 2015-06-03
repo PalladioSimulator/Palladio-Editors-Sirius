@@ -3,7 +3,6 @@
 package org.scaledl.architecturaltemplates.instance;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.scaledl.architecturaltemplates.type.AT;
 
 import de.uka.ipd.sdq.pcm.core.entity.Entity;
@@ -33,7 +32,8 @@ import de.uka.ipd.sdq.pcm.core.entity.Entity;
  * @model
  * @generated
  */
-public interface ATInstance extends EObject, Entity {
+public interface ATInstance extends Entity {
+
     /**
      * Returns the value of the '<em><b>Role2components</b></em>' containment reference list. The
      * list contents are of type {@link org.scaledl.architecturaltemplates.instance.Role2Component}.

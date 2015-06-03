@@ -3,7 +3,6 @@
 package org.scaledl.architecturaltemplates.type;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.modelversioning.emfprofile.Stereotype;
 
 import de.uka.ipd.sdq.pcm.core.entity.Entity;
@@ -26,7 +25,8 @@ import de.uka.ipd.sdq.pcm.core.entity.Entity;
  * @model
  * @generated
  */
-public interface Role extends EObject, Entity {
+public interface Role extends Entity {
+
     /**
      * Returns the value of the '<em><b>Parameters</b></em>' containment reference list. The list
      * contents are of type {@link org.scaledl.architecturaltemplates.type.Parameter}. It is

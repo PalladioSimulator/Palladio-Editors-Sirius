@@ -15,6 +15,7 @@ import org.scaledl.architecturaltemplates.instance.InstancePackage;
  * @generated
  */
 public class EnumParameterImpl extends ParameterValueImpl implements EnumParameter {
+
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
