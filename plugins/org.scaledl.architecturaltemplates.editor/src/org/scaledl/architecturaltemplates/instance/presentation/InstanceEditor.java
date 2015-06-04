@@ -121,8 +121,6 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.modelversioning.emfprofile.provider.EMFProfileItemProviderAdapterFactory;
-import org.modelversioning.emfprofileapplication.provider.EMFProfileApplicationItemProviderAdapterFactory;
-import org.palladiosimulator.mdsdprofiles.provider.MdsdprofilesItemProviderAdapterFactory;
 import org.scaledl.architecturaltemplates.instance.provider.InstanceItemProviderAdapterFactory;
 import org.scaledl.architecturaltemplates.type.presentation.ArchitecturaltemplatesEditorPlugin;
 import org.scaledl.architecturaltemplates.type.provider.TypeItemProviderAdapterFactory;
@@ -709,8 +707,6 @@ IMenuListener, IViewerProvider, IGotoMarker {
         this.adapterFactory.addAdapterFactory(new ProbfunctionItemProviderAdapterFactory());
         this.adapterFactory.addAdapterFactory(new StoexItemProviderAdapterFactory());
         this.adapterFactory.addAdapterFactory(new UnitsItemProviderAdapterFactory());
-        this.adapterFactory.addAdapterFactory(new MdsdprofilesItemProviderAdapterFactory());
-        this.adapterFactory.addAdapterFactory(new EMFProfileApplicationItemProviderAdapterFactory());
         this.adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
         // Create the command stack that will notify this editor as commands are executed.

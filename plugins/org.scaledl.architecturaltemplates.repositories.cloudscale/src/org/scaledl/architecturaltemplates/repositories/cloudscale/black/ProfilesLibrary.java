@@ -3,6 +3,7 @@ package org.scaledl.architecturaltemplates.repositories.cloudscale.black;
 import java.util.List;
 import java.util.Set;
 
+import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.palladiosimulator.pcm.profiles.util.helper.ProfileHelper;
 
 import de.uka.ipd.sdq.pcm.core.entity.Entity;
@@ -15,7 +16,7 @@ public class ProfilesLibrary {
     }
 
     public static boolean hasAppliedStereotype(final Entity pcmEntity, final String stereotypeName) {
-        return pcmEntity.isStereotypeApplied(stereotypeName);
+        return StereotypeAPI.isStereotypeApplied(pcmEntity, stereotypeName);
     }
 
     public static boolean hasAppliedStereotype(final Set<Entity> pcmEntitySet, final String stereotypeName) {
@@ -27,11 +28,11 @@ public class ProfilesLibrary {
     }
 
     public static void applyStereotype(final Entity pcmEntity, final String stereotypeName) {
-        pcmEntity.applyStereotype(stereotypeName);
+        StereotypeAPI.applyStereotype(pcmEntity, stereotypeName);
     }
 
     public static void removeStereotypeApplications(final Entity pcmEntity, final String stereotypeName) {
-        pcmEntity.unapplyStereotype(stereotypeName);
+        StereotypeAPI.unapplyStereotype(pcmEntity, stereotypeName);
     }
 
     public static void setTaggedValue(final Entity pcmEntity, final int value, final String stereotypeName,

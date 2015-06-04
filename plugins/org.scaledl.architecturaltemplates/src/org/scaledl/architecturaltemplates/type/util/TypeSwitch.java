@@ -5,7 +5,6 @@ package org.scaledl.architecturaltemplates.type.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
-import org.palladiosimulator.mdsdprofiles.StereotypableElement;
 import org.scaledl.architecturaltemplates.type.AT;
 import org.scaledl.architecturaltemplates.type.Completion;
 import org.scaledl.architecturaltemplates.type.CompletionParameter;
@@ -94,9 +93,6 @@ public class TypeSwitch<T> extends Switch<T> {
                 result = this.caseNamedElement(at);
             }
             if (result == null) {
-                result = this.caseStereotypableElement(at);
-            }
-            if (result == null) {
                 result = this.defaultCase(theEObject);
             }
             return result;
@@ -112,9 +108,6 @@ public class TypeSwitch<T> extends Switch<T> {
             }
             if (result == null) {
                 result = this.caseNamedElement(constraint);
-            }
-            if (result == null) {
-                result = this.caseStereotypableElement(constraint);
             }
             if (result == null) {
                 result = this.defaultCase(theEObject);
@@ -134,9 +127,6 @@ public class TypeSwitch<T> extends Switch<T> {
                 result = this.caseNamedElement(parameter);
             }
             if (result == null) {
-                result = this.caseStereotypableElement(parameter);
-            }
-            if (result == null) {
                 result = this.defaultCase(theEObject);
             }
             return result;
@@ -154,9 +144,6 @@ public class TypeSwitch<T> extends Switch<T> {
                 result = this.caseNamedElement(repository);
             }
             if (result == null) {
-                result = this.caseStereotypableElement(repository);
-            }
-            if (result == null) {
                 result = this.defaultCase(theEObject);
             }
             return result;
@@ -172,9 +159,6 @@ public class TypeSwitch<T> extends Switch<T> {
             }
             if (result == null) {
                 result = this.caseNamedElement(role);
-            }
-            if (result == null) {
-                result = this.caseStereotypableElement(role);
             }
             if (result == null) {
                 result = this.defaultCase(theEObject);
@@ -195,9 +179,6 @@ public class TypeSwitch<T> extends Switch<T> {
             }
             if (result == null) {
                 result = this.caseNamedElement(oclConstraint);
-            }
-            if (result == null) {
-                result = this.caseStereotypableElement(oclConstraint);
             }
             if (result == null) {
                 result = this.defaultCase(theEObject);
@@ -568,22 +549,6 @@ public class TypeSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseGenericOutputCompletionParameter(final GenericOutputCompletionParameter object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Stereotypable Element</em>'. <!-- begin-user-doc --> This implementation returns null;
-     * returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Stereotypable Element</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseStereotypableElement(final StereotypableElement object) {
         return null;
     }
 

@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.modelversioning.emfprofile.Stereotype;
 import org.palladiosimulator.commons.emfutils.EMFLoadHelper;
+import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.palladiosimulator.monitorrepository.MonitorRepository;
 import org.palladiosimulator.monitorrepository.impl.MonitorRepositoryFactoryImpl;
 import org.palladiosimulator.monitorrepository.util.MonitorRepositoryResourceImpl;
@@ -264,7 +265,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
         }
 
         if (system != null) {
-            for (final Stereotype stereotype : system.getAppliedStereotypes()) {
+            for (final Stereotype stereotype : StereotypeAPI.getAppliedStereotypes(system)) {
                 final EStructuralFeature roleURI = stereotype.getTaggedValue("roleURI");
                 if (roleURI != null) {
                     final EObject eObject = EMFLoadHelper.loadAndResolveEObject(roleURI.getDefaultValueLiteral());

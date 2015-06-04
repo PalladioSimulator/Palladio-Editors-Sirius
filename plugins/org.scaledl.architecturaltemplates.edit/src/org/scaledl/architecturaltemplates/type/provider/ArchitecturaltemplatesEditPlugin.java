@@ -7,8 +7,6 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 import org.eclipse.ocl.edit.OCLEditPlugin;
 import org.modelversioning.emfprofile.provider.EMFProfileEditPlugin;
-import org.modelversioning.emfprofileapplication.provider.EMFProfileApplicationEditPlugin;
-import org.palladiosimulator.mdsdprofiles.provider.MdsdprofilesEditPlugin;
 
 import de.uka.ipd.sdq.identifier.provider.IdentifierEditPlugin;
 import de.uka.ipd.sdq.pcm.core.provider.PalladioComponentModelEditPlugin;
@@ -46,8 +44,7 @@ public final class ArchitecturaltemplatesEditPlugin extends EMFPlugin {
     public ArchitecturaltemplatesEditPlugin() {
         super(new ResourceLocator[] { EcoreEditPlugin.INSTANCE, EMFProfileEditPlugin.INSTANCE,
                 IdentifierEditPlugin.INSTANCE, OCLEditPlugin.INSTANCE, PalladioComponentModelEditPlugin.INSTANCE,
-                ProbabilityFunctionEditPlugin.INSTANCE, StoexEditPlugin.INSTANCE, UnitsEditPlugin.INSTANCE,
-                MdsdprofilesEditPlugin.INSTANCE, EMFProfileApplicationEditPlugin.INSTANCE, });
+                ProbabilityFunctionEditPlugin.INSTANCE, StoexEditPlugin.INSTANCE, UnitsEditPlugin.INSTANCE, });
     }
 
     /**

@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.ocl.expressions.ExpressionsPackage;
 import org.eclipse.ocl.types.TypesPackage;
 import org.eclipse.ocl.utilities.UtilitiesPackage;
+import org.modelversioning.emfprofile.EMFProfilePackage;
 import org.scaledl.architecturaltemplates.instance.ATInstance;
 import org.scaledl.architecturaltemplates.instance.Component2Role;
 import org.scaledl.architecturaltemplates.instance.EnumParameter;
@@ -149,6 +150,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
         isInited = true;
 
         // Initialize simple dependencies
+        EMFProfilePackage.eINSTANCE.eClass();
         TypesPackage.eINSTANCE.eClass();
         UtilitiesPackage.eINSTANCE.eClass();
         ExpressionsPackage.eINSTANCE.eClass();

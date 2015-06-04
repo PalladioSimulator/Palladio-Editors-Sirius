@@ -15,7 +15,8 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.10.0",
  de.uka.ipd.sdq.pcm;bundle-version="3.6.0",
  de.uka.ipd.sdq.completions;bundle-version="1.0.0",
  org.palladiosimulator.pcm.profiles.util;bundle-version="1.0.0",
- org.palladiosimulator.mdsdprofiles;bundle-version="1.0.0"
+ org.palladiosimulator.mdsdprofiles;bundle-version="1.0.0",
+ org.palladiosimulator.mdsdprofiles.api
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.scaledl.architecturaltemplates.repositories.cloudscale.black
