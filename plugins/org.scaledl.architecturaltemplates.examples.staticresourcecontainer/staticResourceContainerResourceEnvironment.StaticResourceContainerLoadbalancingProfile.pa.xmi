@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<emfprofileapplication:ProfileApplication xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:emfprofileapplication="http://www.modelversioning.org/emfprofile/application/1.1" xmlns:org.scaledl.architecturaltemplates.repositories.cloudscale.profiles="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.staticresourcecontainerloadbalancing" xsi:schemaLocation="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.staticresourcecontainerloadbalancing platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/StaticResourceContainerLoadbalancing.emfprofile_diagram#_TC7WgL0NEeSXc41T9TupKQ">
-  <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles:StaticLoadbalancedResourceContainer" numberOfReplicas="3">
-    <appliedTo href="platform:/resource/org.scaledl.architecturaltemplates.examples.staticresourcecontainer/staticResourceContainerResourceEnvironment.resourceenvironment#_7chzEMKVEeSWFuHcXeRvDQ"/>
-    <extension href="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/StaticResourceContainerLoadbalancing.emfprofile_diagram#_58BuEL0NEeSXc41T9TupKQ"/>
-  </stereotypeApplications>
-  <importedProfiles nsURI="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.staticresourcecontainerloadbalancing" location="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/StaticResourceContainerLoadbalancing.emfprofile_diagram"/>
-</emfprofileapplication:ProfileApplication>
