@@ -3,6 +3,7 @@ package org.scaledl.architecturaltemplates.repositories.cloudscale.black;
 import java.util.List;
 import java.util.Set;
 
+import org.palladiosimulator.mdsdprofiles.api.ProfileAPI;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.palladiosimulator.pcm.profiles.util.helper.ProfileHelper;
 
@@ -13,6 +14,14 @@ public class ProfilesLibrary {
 
     public ProfilesLibrary() {
         super();
+    }
+
+    public static boolean isProfileApplied(final Entity pcmEntity, final String profileName) {
+        return ProfileAPI.isProfileApplied(pcmEntity.eResource(), profileName);
+    }
+
+    public static void applyProfile(final Entity pcmEntity, final String profileName) {
+        ProfileAPI.applyProfile(pcmEntity.eResource(), profileName);
     }
 
     public static boolean hasAppliedStereotype(final Entity pcmEntity, final String stereotypeName) {
