@@ -38,7 +38,7 @@ main() {
 		with log ("The system is not a dynamical horizontal scaling assembly context system!");
 		
 	// apply loadbalancing profile
-	if (!isProfileApplied(system, "LoadbalancedProfile")) {
+	if (not isProfileApplied(system, "LoadbalancedProfile")) {
 		applyProfile(system, "LoadbalancedProfile");
 	}
 	
