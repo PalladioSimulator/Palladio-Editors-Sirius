@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.palladiosimulator.simulizar.launcher.jobs.LoadMonitorRepositoryModelIntoBlackboardJob;
-import org.palladiosimulator.simulizar.launcher.jobs.LoadUEModelIntoBlackboardJob;
 import org.palladiosimulator.simulizar.reconfiguration.storydiagram.jobs.LoadSDMModelsIntoBlackboardJob;
 
 import de.uka.ipd.sdq.workflow.pcm.jobs.LoadPCMModelsIntoBlackboardJob;
@@ -15,6 +14,7 @@ public final class ATPartitionConstants {
     public enum Partition {
 
         PCM("PCM", LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID, new HashSet<String>() {
+
             {
                 add("repository");
                 add("system");
@@ -26,12 +26,15 @@ public final class ATPartitionConstants {
                 add("measuringpoint");
                 add("emfprofile_diagram");
                 add("xmi");
+                add("usageevolution");
+                add("dlim");
             }
         }),
 
         MONITOR_REPOSITORY("Monitor Repository",
                 LoadMonitorRepositoryModelIntoBlackboardJob.MONITOR_REPOSITORY_MODEL_PARTITION_ID,
                 new HashSet<String>() {
+
                     {
                         add("monitorrepository");
                     }
@@ -39,6 +42,7 @@ public final class ATPartitionConstants {
 
         EVENT_MIDDLEWARE("Event Middleware", LoadPCMModelsIntoBlackboardJob.EVENT_MIDDLEWARE_PARTITION_ID,
                 new HashSet<String>() {
+
                     {
                         add("repository");
                     }
@@ -46,19 +50,14 @@ public final class ATPartitionConstants {
 
         RMI_MIDDLEWARE("RMI Middleware", LoadPCMModelsIntoBlackboardJob.RMI_MIDDLEWARE_PARTITION_ID,
                 new HashSet<String>() {
+
                     {
                         add("repository");
                     }
                 }),
 
-        USAGE_EVOLUTION("Usage Evolution", LoadUEModelIntoBlackboardJob.UE_MODEL_PARTITION_ID, new HashSet<String>() {
-            {
-                add("usageevolution");
-                add("dlim");
-            }
-        }),
-
         SDM("SDM", LoadSDMModelsIntoBlackboardJob.SDM_MODEL_PARTITION_ID, new HashSet<String>() {
+
             {
                 add("sdm");
             }
