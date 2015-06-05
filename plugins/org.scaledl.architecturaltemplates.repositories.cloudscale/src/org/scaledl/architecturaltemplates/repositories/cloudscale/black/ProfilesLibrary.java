@@ -20,7 +20,7 @@ public class ProfilesLibrary {
     }
 
     public static boolean hasAppliedStereotype(final Set<Entity> pcmEntitySet, final String stereotypeName) {
-        return hasAppliedStereotype(pcmEntitySet, stereotypeName);
+        return ProfileHelper.hasAppliedStereotype(pcmEntitySet, stereotypeName);
     }
 
     public static boolean appliedStereotypesEqualsOne(final Set<Entity> pcmEntitySet, final String stereotypeName) {
