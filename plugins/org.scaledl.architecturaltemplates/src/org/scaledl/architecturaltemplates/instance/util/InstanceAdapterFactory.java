@@ -29,6 +29,7 @@ import de.uka.ipd.sdq.pcm.core.entity.NamedElement;
  * @generated
  */
 public class InstanceAdapterFactory extends AdapterFactoryImpl {
+
     /**
      * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -73,6 +74,7 @@ public class InstanceAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     protected InstanceSwitch<Adapter> modelSwitch = new InstanceSwitch<Adapter>() {
+
         @Override
         public Adapter caseATInstance(final ATInstance object) {
             return InstanceAdapterFactory.this.createATInstanceAdapter();

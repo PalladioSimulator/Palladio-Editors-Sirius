@@ -38,6 +38,7 @@ import de.uka.ipd.sdq.pcm.core.entity.NamedElement;
  * @generated
  */
 public class TypeSwitch<T> extends Switch<T> {
+
     /**
      * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
      *

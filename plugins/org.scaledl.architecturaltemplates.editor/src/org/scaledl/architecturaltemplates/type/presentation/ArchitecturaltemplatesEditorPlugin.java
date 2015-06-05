@@ -22,6 +22,7 @@ import de.uka.ipd.sdq.units.provider.UnitsEditPlugin;
  * @generated
  */
 public final class ArchitecturaltemplatesEditorPlugin extends EMFPlugin {
+
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -77,6 +78,7 @@ public final class ArchitecturaltemplatesEditorPlugin extends EMFPlugin {
      * @generated
      */
     public static class Implementation extends EclipseUIPlugin {
+
         /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 

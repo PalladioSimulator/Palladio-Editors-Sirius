@@ -22,6 +22,7 @@ package org.scaledl.architecturaltemplates.type;
  * @generated
  */
 public interface QVTOCompletion extends Completion {
+
     /**
      * Returns the value of the '<em><b>Qvto File URI</b></em>' attribute. <!-- begin-user-doc -->
      * <p>

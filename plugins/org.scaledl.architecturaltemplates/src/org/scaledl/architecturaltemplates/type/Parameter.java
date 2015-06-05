@@ -3,7 +3,6 @@
 package org.scaledl.architecturaltemplates.type;
 
 import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EObject;
 
 import de.uka.ipd.sdq.pcm.core.entity.Entity;
 
@@ -23,7 +22,8 @@ import de.uka.ipd.sdq.pcm.core.entity.Entity;
  * @model
  * @generated
  */
-public interface Parameter extends EObject, Entity {
+public interface Parameter extends Entity {
+
     /**
      * Returns the value of the '<em><b>Role</b></em>' container reference. It is bidirectional and
      * its opposite is '{@link org.scaledl.architecturaltemplates.type.Role#getParameters

@@ -25,6 +25,7 @@ import de.uka.ipd.sdq.pcm.core.entity.provider.EntityItemProvider;
  * @generated
  */
 public class RoleItemProvider extends EntityItemProvider {
+
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!--
      * end-user-doc -->

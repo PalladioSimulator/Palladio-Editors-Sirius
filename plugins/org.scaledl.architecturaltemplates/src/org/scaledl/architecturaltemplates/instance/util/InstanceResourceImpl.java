@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
  * @generated
  */
 public class InstanceResourceImpl extends XMLResourceImpl {
+
     /**
      * Creates an instance of the resource. <!-- begin-user-doc --> <!-- end-user-doc -->
      *

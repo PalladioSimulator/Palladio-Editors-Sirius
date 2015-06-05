@@ -22,6 +22,7 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  * @generated
  */
 public class QVTOCompletionImpl extends CompletionImpl implements QVTOCompletion {
+
     /**
      * The default value of the '{@link #getQvtoFileURI() <em>Qvto File URI</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->

@@ -28,6 +28,7 @@ import org.scaledl.architecturaltemplates.type.provider.ArchitecturaltemplatesEd
  */
 public class ParameterValueItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
         IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!--
      * end-user-doc -->

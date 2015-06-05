@@ -27,6 +27,7 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  * @generated
  */
 public abstract class CompletionParameterImpl extends MinimalEObjectImpl.Container implements CompletionParameter {
+
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *

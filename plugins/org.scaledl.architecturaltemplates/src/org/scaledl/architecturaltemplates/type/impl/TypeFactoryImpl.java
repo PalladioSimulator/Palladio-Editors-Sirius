@@ -30,6 +30,7 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  * @generated
  */
 public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
+
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
      *

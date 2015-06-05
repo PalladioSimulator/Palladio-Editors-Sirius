@@ -22,10 +22,12 @@
       <import plugin="org.eclipse.m2m.qvt.oml.project" version="3.4.0" match="greaterOrEqual"/>
       <import plugin="org.modelversioning.emfprofile" version="1.1.0" match="greaterOrEqual"/>
       <import plugin="org.modelversioning.emfprofile.registry" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="edu.kit.ipd.sdq.mdsd.profiles" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf" version="2.6.0" match="greaterOrEqual"/>
       <import plugin="de.uka.ipd.sdq.identifier" version="2.1.0" match="greaterOrEqual"/>
       <import plugin="de.uka.ipd.sdq.pcm" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="de.uka.ipd.sdq.completions" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.palladiosimulator.pcm.profiles.util" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.palladiosimulator.mdsdprofiles" version="1.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin

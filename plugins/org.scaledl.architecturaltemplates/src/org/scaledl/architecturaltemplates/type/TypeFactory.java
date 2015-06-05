@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EFactory;
  * @generated
  */
 public interface TypeFactory extends EFactory {
+
     /**
      * The singleton instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
      *

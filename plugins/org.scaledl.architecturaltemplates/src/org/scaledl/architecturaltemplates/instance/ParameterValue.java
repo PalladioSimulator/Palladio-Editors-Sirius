@@ -24,6 +24,7 @@ import org.scaledl.architecturaltemplates.type.Parameter;
  * @generated
  */
 public interface ParameterValue extends EObject {
+
     /**
      * Returns the value of the '<em><b>Type</b></em>' reference. <!-- begin-user-doc -->
      * <p>

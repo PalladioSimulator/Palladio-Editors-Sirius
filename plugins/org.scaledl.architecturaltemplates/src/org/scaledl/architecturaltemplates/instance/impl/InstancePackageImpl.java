@@ -35,6 +35,7 @@ import de.uka.ipd.sdq.pcm.resourceenvironment.ResourceenvironmentPackage;
  * @generated
  */
 public class InstancePackageImpl extends EPackageImpl implements InstancePackage {
+
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *

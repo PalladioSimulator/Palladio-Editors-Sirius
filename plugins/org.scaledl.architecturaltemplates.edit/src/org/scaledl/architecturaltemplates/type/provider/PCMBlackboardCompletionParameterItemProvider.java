@@ -23,6 +23,7 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  * @generated
  */
 public class PCMBlackboardCompletionParameterItemProvider extends CompletionParameterItemProvider {
+
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!--
      * end-user-doc -->

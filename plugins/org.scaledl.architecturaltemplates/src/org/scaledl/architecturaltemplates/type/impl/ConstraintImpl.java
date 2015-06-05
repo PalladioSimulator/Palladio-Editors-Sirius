@@ -34,6 +34,7 @@ import de.uka.ipd.sdq.pcm.core.entity.impl.EntityImpl;
  * @generated
  */
 public abstract class ConstraintImpl extends EntityImpl implements Constraint {
+
     /**
      * The cached value of the '{@link #getRoles() <em>Roles</em>}' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->

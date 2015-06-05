@@ -22,6 +22,7 @@ package org.scaledl.architecturaltemplates.type;
  * @generated
  */
 public interface PCMOutputCompletionParameter extends CompletionParameter {
+
     /**
      * Returns the value of the '<em><b>File Extension</b></em>' attribute. The literals are from
      * the enumeration {@link org.scaledl.architecturaltemplates.type.PCMFileExtensions}. <!--

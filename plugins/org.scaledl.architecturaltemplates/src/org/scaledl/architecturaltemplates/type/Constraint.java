@@ -3,7 +3,6 @@
 package org.scaledl.architecturaltemplates.type;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
 import de.uka.ipd.sdq.pcm.core.entity.Entity;
 
@@ -23,7 +22,8 @@ import de.uka.ipd.sdq.pcm.core.entity.Entity;
  * @model abstract="true"
  * @generated
  */
-public interface Constraint extends EObject, Entity {
+public interface Constraint extends Entity {
+
     /**
      * Returns the value of the '<em><b>AT</b></em>' container reference. It is bidirectional and
      * its opposite is '{@link org.scaledl.architecturaltemplates.type.AT#getConstraints

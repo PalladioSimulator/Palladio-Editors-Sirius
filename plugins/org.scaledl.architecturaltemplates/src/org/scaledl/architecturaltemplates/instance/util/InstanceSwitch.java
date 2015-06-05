@@ -31,6 +31,7 @@ import de.uka.ipd.sdq.pcm.core.entity.NamedElement;
  * @generated
  */
 public class InstanceSwitch<T1> extends Switch<T1> {
+
     /**
      * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
      *
