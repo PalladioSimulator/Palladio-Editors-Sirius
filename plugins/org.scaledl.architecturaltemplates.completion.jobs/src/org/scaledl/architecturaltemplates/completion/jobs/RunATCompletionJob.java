@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.modelversioning.emfprofile.Stereotype;
+import org.modelversioning.emfprofileapplication.StereotypeApplication;
 import org.palladiosimulator.commons.emfutils.EMFLoadHelper;
 import org.palladiosimulator.monitorrepository.MonitorRepository;
 import org.palladiosimulator.monitorrepository.impl.MonitorRepositoryFactoryImpl;
@@ -263,10 +263,11 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
         }
 
         if (system != null) {
-            for (final Stereotype stereotype : system.getAppliedStereotypes()) {
-                final EStructuralFeature roleURI = stereotype.getTaggedValue("roleURI");
+            for (final StereotypeApplication stereotypeApplication : system.getStereotypeApplications()) {
+                final EStructuralFeature roleURI = stereotypeApplication.getExtension().getSource()
+                        .getTaggedValue("roleURI");
                 if (roleURI != null) {
-                    final EObject eObject = EMFLoadHelper.loadModel(roleURI.getDefaultValueLiteral());
+                    final EObject eObject = EMFLoadHelper.loadAndResolveEObject(roleURI.getDefaultValueLiteral());
                     final Role atRole = (Role) eObject;
                     return atRole.getAT();
                 }

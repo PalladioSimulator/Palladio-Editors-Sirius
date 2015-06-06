@@ -4,9 +4,4 @@
 	<comment></comment>
 	<projects>
 	</projects>
-	<buildSpec>
-	</buildSpec>
-	<natures>
-		<nature>edu.kit.ipd.sdq.mdsd.profiles.nature.profileprojectnature</nature>
-	</natures>
 </projectDescription>

@@ -4,14 +4,4 @@
 	<comment></comment>
 	<projects>
 	</projects>
-	<buildSpec>
-		<buildCommand>
-			<name>edu.kit.ipd.sdq.mdsd.profiles.builder.profileprojectbuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
-	</buildSpec>
-	<natures>
-		<nature>edu.kit.ipd.sdq.mdsd.profiles.nature.profileprojectnature</nature>
-	</natures>
 </projectDescription>

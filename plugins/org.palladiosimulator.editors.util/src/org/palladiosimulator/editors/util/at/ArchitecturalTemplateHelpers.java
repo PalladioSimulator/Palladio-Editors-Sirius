@@ -12,76 +12,67 @@ import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
 import de.uka.ipd.sdq.pcm.system.System;
 
 /**
- * Class containing helper methods for interacting with Architectural Templates.
- * FIXME Should maybe be moved to a separate project in the org.scaledl
- * namespace.
+ * Class containing helper methods for interacting with Architectural Templates. FIXME Should maybe
+ * be moved to a separate project in the org.scaledl namespace.
  * 
  * @author max
  *
  */
 public final class ArchitecturalTemplateHelpers {
 
-	public static final String ROLE_URI = "roleURI";
+    public static final String ROLE_URI = "roleURI";
 
-	/**
-	 * Hidden constructor
-	 */
-	private ArchitecturalTemplateHelpers() {
+    /**
+     * Hidden constructor
+     */
+    private ArchitecturalTemplateHelpers() {
 
-	}
+    }
 
-	/**
-	 * Returns all roles applicable to a {@link AssemblyContext}.
-	 * 
-	 * @param assemblyContext
-	 * @return
-	 */
-	public static List<Role> getApplicableRoles(
-			final AssemblyContext assemblyContext) {
-		if (assemblyContext == null
-				|| !(assemblyContext.getParentStructure__AssemblyContext() instanceof System))
-			return null;
+    /**
+     * Returns all roles applicable to a {@link AssemblyContext}.
+     * 
+     * @param assemblyContext
+     * @return
+     */
+    public static List<Role> getApplicableRoles(final AssemblyContext assemblyContext) {
+        if (assemblyContext == null || !(assemblyContext.getParentStructure__AssemblyContext() instanceof System))
+            return null;
 
-		final List<Role> systemRoles = getSystemRoles((System) assemblyContext
-				.getParentStructure__AssemblyContext());
+        final List<Role> systemRoles = getSystemRoles((System) assemblyContext.getParentStructure__AssemblyContext());
 
-		final Predicate<Role> isntSystemRole = role -> systemRoles.stream()
-				.noneMatch(systemRole -> systemRole.equals(role));
-		final Predicate<Role> isntAlreadyApplied = role -> assemblyContext
-				.getAppliedStereotypes()
-				.stream()
-				.noneMatch(
-						appliedStereotype -> appliedStereotype.getName().equals(role
-								.getStereotype().getName()));
+        final Predicate<Role> isntSystemRole = role -> systemRoles.stream().noneMatch(
+                systemRole -> systemRole.equals(role));
+        final Predicate<Role> isntAlreadyApplied = role -> assemblyContext
+                .getStereotypeApplications()
+                .stream()
+                .noneMatch(
+                        stereotypeApplication -> stereotypeApplication.getExtension().getSource().getName()
+                                .equals(role.getStereotype().getName()));
 
-		final List<Role> applicableRoles = systemRoles.stream()
-				.map(systemRole -> systemRole.getAT())
-				.flatMap(at -> at.getRoles().stream()).filter(isntSystemRole)
-				.filter(isntAlreadyApplied).collect(Collectors.toList());
+        final List<Role> applicableRoles = systemRoles.stream().map(systemRole -> systemRole.getAT())
+                .flatMap(at -> at.getRoles().stream()).filter(isntSystemRole).filter(isntAlreadyApplied)
+                .collect(Collectors.toList());
 
-		// FIXME: This assertion is actually just
-		// applicableRoles.stream.allMatch(role ->
-		// assemblyContext.isApplicableStereotype(role.getStereotype()); but the
-		// Stereotpye::equals method is not implemented correctly.
-		assert(applicableRoles.stream().allMatch(role -> assemblyContext
-				.getApplicableStereotypes()
-				.stream()
-				.map(stereotype -> stereotype.getName())
-				.anyMatch(
-						applicableName -> applicableName.equals(role
-								.getStereotype().getName()))));
+        // FIXME: This assertion is actually just
+        // applicableRoles.stream.allMatch(role ->
+        // assemblyContext.isApplicableStereotype(role.getStereotype()); but the
+        // Stereotpye::equals method is not implemented correctly.
+        assert (applicableRoles.stream().allMatch(role -> assemblyContext.getApplicableStereotypes().stream()
+                .map(stereotype -> stereotype.getName())
+                .anyMatch(applicableName -> applicableName.equals(role.getStereotype().getName()))));
 
-		return applicableRoles;
-	}
+        return applicableRoles;
+    }
 
-	public static List<Role> getSystemRoles(final System system) {
-		return system.getAppliedStereotypes().stream()
-				.map(stereotype -> stereotype.getTaggedValue(ROLE_URI))
-				.filter(Objects::nonNull)
-				.map(taggedValue -> taggedValue.getDefaultValueLiteral())
-				.map(uriString -> EMFLoadHelper.loadModel(uriString))
-				.filter(elem -> elem instanceof Role).map(elem -> (Role) elem)
-				.collect(Collectors.toList());
-	}
+    public static List<Role> getSystemRoles(final System system) {
+        return system
+                .getStereotypeApplications()
+                .stream()
+                .map(stereotypeApplication -> stereotypeApplication.getExtension().getSource().getTaggedValue(ROLE_URI))
+                .filter(Objects::nonNull).map(taggedValue -> taggedValue.getDefaultValueLiteral())
+                .map(uriString -> EMFLoadHelper.loadAndResolveEObject(uriString)).filter(elem -> elem instanceof Role)
+                .map(elem -> (Role) elem).collect(Collectors.toList());
+    }
 
 }
