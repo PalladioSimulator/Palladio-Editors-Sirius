@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bundle-Name: UML Designer Extension
+Bundle-Name: ComposedProvidingRequiringEntity-design extensions
 Bundle-SymbolicName: org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension;singleton=true
 Bundle-Version: 5.0.0.qualifier
 Require-Bundle: org.eclipse.ui,
@@ -17,7 +17,7 @@ Require-Bundle: org.eclipse.ui,
  org.palladiosimulator.commons;bundle-version="1.0.0"
 Bundle-Activator: org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.ExtensionActivator
 Bundle-Localization: plugin
-Bundle-Vendor: Obeo Network
+Bundle-Vendor: palladiosimulator.org
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Provide-Package: org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.rotatable,
