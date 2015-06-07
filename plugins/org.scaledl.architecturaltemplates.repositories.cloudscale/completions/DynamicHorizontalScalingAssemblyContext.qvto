@@ -26,8 +26,6 @@ modeltype PCM_SYS uses 'http://sdq.ipd.uka.de/PalladioComponentModel/System/5.0'
 transformation DynamicHorizontalScalingAssemblyContext(inout pcmAllocation : PCM_ALLOC)
 	access transformation Loadbalancing;
 						   
-
-
 main() {	
 	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Assembly Context" started');
 	
@@ -38,9 +36,9 @@ main() {
 		with log ("The system is not a dynamical horizontal scaling assembly context system!");
 		
 	// apply loadbalancing profile
-	if (not isProfileApplied(system, "LoadbalancedProfile")) {
-		applyProfile(system, "LoadbalancedProfile");
-	}
+	//if (not isProfileApplied(system, "LoadbalancedProfile")) {
+	//	applyProfile(system, "LoadbalancedProfile");
+	//}
 	
 	// execute loadbalancing completion
 	new Loadbalancing(pcmAllocation)->transform();

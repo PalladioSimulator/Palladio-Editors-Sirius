@@ -10,26 +10,36 @@ import de.uka.ipd.sdq.workflow.pcm.jobs.LoadPCMModelsIntoBlackboardJob;
 
 public final class ATPartitionConstants {
 
+    public static Set<String> PCM_FILES = new HashSet<String>() {
+
+        private static final long serialVersionUID = 6737375727319070884L;
+
+        {
+            add("repository");
+            add("system");
+            add("resourceenvironment");
+            add("allocation");
+            add("usagemodel");
+            add("resourcetype");
+            add("pcmmeasuringpoint");
+            add("measuringpoint");
+            add("emfprofile_diagram");
+            add("xmi");
+            add("usageevolution");
+            add("dlim");
+        }
+    };
+
     @SuppressWarnings("serial")
     public enum Partition {
 
-        PCM("PCM", LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID, new HashSet<String>() {
+        // FIXME Why are the contents of Original PCM and PCM different when being stored with the
+        // StoreCompletedModelsJob? [Lehrig]
 
-            {
-                add("repository");
-                add("system");
-                add("resourceenvironment");
-                add("allocation");
-                add("usagemodel");
-                add("resourcetype");
-                add("pcmmeasuringpoint");
-                add("measuringpoint");
-                add("emfprofile_diagram");
-                add("xmi");
-                add("usageevolution");
-                add("dlim");
-            }
-        }),
+        // ORIGINAL_PCM("Original PCM",
+        // LoadSimuLizarModelsIntoBlackboardJob.ORIGINAL_PCM_MODELS_PARTITION_ID, PCM_FILES),
+
+        PCM("PCM", LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID, PCM_FILES),
 
         MONITOR_REPOSITORY("Monitor Repository",
                 LoadMonitorRepositoryModelIntoBlackboardJob.MONITOR_REPOSITORY_MODEL_PARTITION_ID,
