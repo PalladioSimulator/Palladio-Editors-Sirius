@@ -38,10 +38,11 @@ main() {
 		
 	assert fatal(appliedStereotypesEqualsOne(assemblyContexts,appliedStereotype))
 		with log ("There is more than one Stereotype Application!");	
-	numberOfReplicas := getIntTaggedValue(loadBalancedAssemblyContext,"numberOfReplicas",appliedStereotype);
+	numberOfReplicas := getIntTaggedValue(loadBalancedAssemblyContext, "numberOfReplicas", appliedStereotype);
 	
 	//apply Stereotype OriginalAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
-	applyStereotype(loadBalancedAssemblyContext,"OriginalAssemblyContext");
+	applyProfile(system, "LoadbalancedProfile");
+	applyStereotype(loadBalancedAssemblyContext, "OriginalAssemblyContext");
 	
 	//remove Stereotype Application ReplicableAssemblyContext from the AssemblyContext
 	//removeStereotypeApplications(loadBalancedAssemblyContext,"ReplicableAssemblyContext");
