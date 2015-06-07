@@ -36,6 +36,7 @@ import de.uka.ipd.sdq.pcm.core.entity.NamedElement;
  * @generated
  */
 public class TypeAdapterFactory extends AdapterFactoryImpl {
+
     /**
      * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -80,6 +81,7 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     protected TypeSwitch<Adapter> modelSwitch = new TypeSwitch<Adapter>() {
+
         @Override
         public Adapter caseAT(final AT object) {
             return TypeAdapterFactory.this.createATAdapter();

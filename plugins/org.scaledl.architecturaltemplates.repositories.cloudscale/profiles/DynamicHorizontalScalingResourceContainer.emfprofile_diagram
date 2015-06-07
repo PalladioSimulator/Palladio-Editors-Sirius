@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:emfprofile="http://www.modelversioning.org/emfprofile/1.1" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation">
-  <emfprofile:Profile xmi:id="_W1LLkCOrEeSubfGVEKswQQ" name="DynamicHorizontalScalingResourceContainerProfile" nsURI="http://scaledl.org/repository/DynamicHorizontalScalingResourceContainer" nsPrefix="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles">
+  <emfprofile:Profile xmi:id="_W1LLkCOrEeSubfGVEKswQQ" name="DynamicHorizontalScalingResourceContainerProfile" nsURI="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.dynamichorizontalscalingresourcecontainer" nsPrefix="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles">
     <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_paph0CO_EeSbfv_s0ToTIw" name="DynamicHorizontalScalingResourceContainerSystem">
       <eSuperTypes xmi:type="ecore:EClass" href="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication"/>
       <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_hfcSgEDOEeStM_n5R_Fc_g" name="roleURI" lowerBound="1" changeable="false" defaultValueLiteral="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/CloudScaleATRepository.type#_c9Rl4H46EeSqFvs4kqVd7Q">

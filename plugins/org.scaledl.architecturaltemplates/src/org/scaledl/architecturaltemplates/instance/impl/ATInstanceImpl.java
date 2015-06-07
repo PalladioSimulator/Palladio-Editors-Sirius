@@ -46,6 +46,7 @@ import de.uka.ipd.sdq.pcm.core.entity.impl.EntityImpl;
  * @generated
  */
 public class ATInstanceImpl extends EntityImpl implements ATInstance {
+
     /**
      * The cached value of the '{@link #getRole2components() <em>Role2components</em>}' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->

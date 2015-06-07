@@ -156,6 +156,7 @@ import de.uka.ipd.sdq.units.provider.UnitsItemProviderAdapterFactory;
  */
 public class TypeEditor extends MultiPageEditorPart implements IEditingDomainProvider, ISelectionProvider,
 IMenuListener, IViewerProvider, IGotoMarker {
+
     /**
      * This keeps track of the editing domain that is used to track all changes to the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -300,6 +301,7 @@ IMenuListener, IViewerProvider, IGotoMarker {
      * @generated
      */
     protected IPartListener partListener = new IPartListener() {
+
         @Override
         public void partActivated(final IWorkbenchPart p) {
             if (p instanceof ContentOutline) {
@@ -385,6 +387,7 @@ IMenuListener, IViewerProvider, IGotoMarker {
      * @generated
      */
     protected EContentAdapter problemIndicationAdapter = new EContentAdapter() {
+
         @Override
         public void notifyChanged(final Notification notification) {
             if (notification.getNotifier() instanceof Resource) {
@@ -402,6 +405,7 @@ IMenuListener, IViewerProvider, IGotoMarker {
 
                     if (TypeEditor.this.updateProblemIndication) {
                         TypeEditor.this.getSite().getShell().getDisplay().asyncExec(new Runnable() {
+
                             @Override
                             public void run() {
                                 TypeEditor.this.updateProblemIndication();
@@ -427,6 +431,7 @@ IMenuListener, IViewerProvider, IGotoMarker {
             TypeEditor.this.resourceToDiagnosticMap.remove(target);
             if (TypeEditor.this.updateProblemIndication) {
                 TypeEditor.this.getSite().getShell().getDisplay().asyncExec(new Runnable() {
+
                     @Override
                     public void run() {
                         TypeEditor.this.updateProblemIndication();
@@ -442,11 +447,13 @@ IMenuListener, IViewerProvider, IGotoMarker {
      * @generated
      */
     protected IResourceChangeListener resourceChangeListener = new IResourceChangeListener() {
+
         @Override
         public void resourceChanged(final IResourceChangeEvent event) {
             final IResourceDelta delta = event.getDelta();
             try {
                 class ResourceDeltaVisitor implements IResourceDeltaVisitor {
+
                     protected ResourceSet resourceSet = TypeEditor.this.editingDomain.getResourceSet();
                     protected Collection<Resource> changedResources = new ArrayList<Resource>();
                     protected Collection<Resource> removedResources = new ArrayList<Resource>();
@@ -486,6 +493,7 @@ IMenuListener, IViewerProvider, IGotoMarker {
 
                 if (!visitor.getRemovedResources().isEmpty()) {
                     TypeEditor.this.getSite().getShell().getDisplay().asyncExec(new Runnable() {
+
                         @Override
                         public void run() {
                             TypeEditor.this.removedResources.addAll(visitor.getRemovedResources());
@@ -498,6 +506,7 @@ IMenuListener, IViewerProvider, IGotoMarker {
 
                 if (!visitor.getChangedResources().isEmpty()) {
                     TypeEditor.this.getSite().getShell().getDisplay().asyncExec(new Runnable() {
+
                         @Override
                         public void run() {
                             TypeEditor.this.changedResources.addAll(visitor.getChangedResources());
@@ -707,9 +716,11 @@ IMenuListener, IViewerProvider, IGotoMarker {
         // the viewer with focus.
         //
         commandStack.addCommandStackListener(new CommandStackListener() {
+
             @Override
             public void commandStackChanged(final EventObject event) {
                 TypeEditor.this.getContainer().getDisplay().asyncExec(new Runnable() {
+
                     @Override
                     public void run() {
                         TypeEditor.this.firePropertyChange(IEditorPart.PROP_DIRTY);
@@ -763,6 +774,7 @@ IMenuListener, IViewerProvider, IGotoMarker {
         //
         if (theSelection != null && !theSelection.isEmpty()) {
             final Runnable runnable = new Runnable() {
+
                 @Override
                 public void run() {
                     // Try to select the items in the current content viewer of the editor.
@@ -796,6 +808,7 @@ IMenuListener, IViewerProvider, IGotoMarker {
      * @generated
      */
     public class ReverseAdapterFactoryContentProvider extends AdapterFactoryContentProvider {
+
         /**
          * <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
@@ -878,6 +891,7 @@ IMenuListener, IViewerProvider, IGotoMarker {
                 // Create the listener on demand.
                 //
                 this.selectionChangedListener = new ISelectionChangedListener() {
+
                     // This just notifies those things that are affected by the section.
                     //
                     @Override
@@ -1009,6 +1023,7 @@ IMenuListener, IViewerProvider, IGotoMarker {
             //
             {
                 final ViewerPane viewerPane = new ViewerPane(this.getSite().getPage(), TypeEditor.this) {
+
                     @Override
                     public Viewer createViewer(final Composite composite) {
                         final Tree tree = new Tree(composite, SWT.MULTI);
@@ -1044,6 +1059,7 @@ IMenuListener, IViewerProvider, IGotoMarker {
             //
             {
                 final ViewerPane viewerPane = new ViewerPane(this.getSite().getPage(), TypeEditor.this) {
+
                     @Override
                     public Viewer createViewer(final Composite composite) {
                         final Tree tree = new Tree(composite, SWT.MULTI);
@@ -1073,6 +1089,7 @@ IMenuListener, IViewerProvider, IGotoMarker {
             //
             {
                 final ViewerPane viewerPane = new ViewerPane(this.getSite().getPage(), TypeEditor.this) {
+
                     @Override
                     public Viewer createViewer(final Composite composite) {
                         return new ListViewer(composite);
@@ -1098,6 +1115,7 @@ IMenuListener, IViewerProvider, IGotoMarker {
             //
             {
                 final ViewerPane viewerPane = new ViewerPane(this.getSite().getPage(), TypeEditor.this) {
+
                     @Override
                     public Viewer createViewer(final Composite composite) {
                         return new TreeViewer(composite);
@@ -1125,6 +1143,7 @@ IMenuListener, IViewerProvider, IGotoMarker {
             //
             {
                 final ViewerPane viewerPane = new ViewerPane(this.getSite().getPage(), TypeEditor.this) {
+
                     @Override
                     public Viewer createViewer(final Composite composite) {
                         return new TableViewer(composite);
@@ -1168,6 +1187,7 @@ IMenuListener, IViewerProvider, IGotoMarker {
             //
             {
                 final ViewerPane viewerPane = new ViewerPane(this.getSite().getPage(), TypeEditor.this) {
+
                     @Override
                     public Viewer createViewer(final Composite composite) {
                         return new TreeViewer(composite);
@@ -1208,6 +1228,7 @@ IMenuListener, IViewerProvider, IGotoMarker {
             }
 
             this.getSite().getShell().getDisplay().asyncExec(new Runnable() {
+
                 @Override
                 public void run() {
                     TypeEditor.this.setActivePage(0);
@@ -1219,6 +1240,7 @@ IMenuListener, IViewerProvider, IGotoMarker {
         // area if there are more than one page
         //
         this.getContainer().addControlListener(new ControlAdapter() {
+
             boolean guard = false;
 
             @Override
@@ -1232,6 +1254,7 @@ IMenuListener, IViewerProvider, IGotoMarker {
         });
 
         this.getSite().getShell().getDisplay().asyncExec(new Runnable() {
+
             @Override
             public void run() {
                 TypeEditor.this.updateProblemIndication();
@@ -1318,6 +1341,7 @@ IMenuListener, IViewerProvider, IGotoMarker {
             // The content outline is just a tree.
             //
             class MyContentOutlinePage extends ContentOutlinePage {
+
                 @Override
                 public void createControl(final Composite parent) {
                     super.createControl(parent);
@@ -1363,6 +1387,7 @@ IMenuListener, IViewerProvider, IGotoMarker {
             // Listen to selection so that we can handle it is a special way.
             //
             this.contentOutlinePage.addSelectionChangedListener(new ISelectionChangedListener() {
+
                 // This ensures that we handle selections correctly.
                 //
                 @Override
@@ -1383,6 +1408,7 @@ IMenuListener, IViewerProvider, IGotoMarker {
      */
     public IPropertySheetPage getPropertySheetPage() {
         final PropertySheetPage propertySheetPage = new ExtendedPropertySheetPage(this.editingDomain) {
+
             @Override
             public void setSelectionToViewer(final List<?> selection) {
                 TypeEditor.this.setSelectionToViewer(selection);
@@ -1469,6 +1495,7 @@ IMenuListener, IViewerProvider, IGotoMarker {
         // workbench.
         //
         final WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
+
             // This is the method that gets invoked when the operation runs.
             //
             @Override

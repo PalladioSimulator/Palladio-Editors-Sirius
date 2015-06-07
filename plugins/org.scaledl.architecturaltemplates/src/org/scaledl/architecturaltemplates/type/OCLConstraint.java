@@ -21,6 +21,7 @@ import org.eclipse.ocl.expressions.OCLExpression;
  * @generated
  */
 public interface OCLConstraint extends Constraint {
+
     /**
      * Returns the value of the '<em><b>Constraint</b></em>' reference. <!-- begin-user-doc -->
      * <p>

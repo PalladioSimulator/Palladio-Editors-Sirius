@@ -26,7 +26,7 @@ main() {
 		
 		//get the stereotyped AssemblyContext
 		var loadBalancedAssemblyContext : AssemblyContext := assemblyContexts -> selectOne(assemblyContext : AssemblyContext |
-						hasAppliedStereotype(assemblyContext,appliedStereotype));
+						hasAppliedStereotype(assemblyContext, appliedStereotype));
 						
 		assert fatal(loadBalancedAssemblyContext != null)
 			with log ("There is no Stereotype Application!");	

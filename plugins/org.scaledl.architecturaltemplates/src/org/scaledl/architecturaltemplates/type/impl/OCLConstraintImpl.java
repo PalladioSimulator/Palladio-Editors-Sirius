@@ -24,6 +24,7 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  * @generated
  */
 public class OCLConstraintImpl extends ConstraintImpl implements OCLConstraint {
+
     /**
      * The cached value of the '{@link #getConstraint() <em>Constraint</em>}' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->

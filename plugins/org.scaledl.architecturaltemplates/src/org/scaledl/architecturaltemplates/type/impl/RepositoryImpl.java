@@ -29,6 +29,7 @@ import de.uka.ipd.sdq.pcm.core.entity.impl.EntityImpl;
  * @generated
  */
 public class RepositoryImpl extends EntityImpl implements Repository {
+
     /**
      * The cached value of the '{@link #getATs() <em>ATs</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->

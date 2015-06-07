@@ -15,6 +15,7 @@ import org.scaledl.architecturaltemplates.instance.StringParameter;
  * @generated
  */
 public class StringParameterImpl<T> extends ParameterValueImpl implements StringParameter<T> {
+
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *

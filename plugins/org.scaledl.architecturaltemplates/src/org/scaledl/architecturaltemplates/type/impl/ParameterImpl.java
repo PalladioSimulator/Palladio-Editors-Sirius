@@ -30,6 +30,7 @@ import de.uka.ipd.sdq.pcm.core.entity.impl.EntityImpl;
  * @generated
  */
 public class ParameterImpl extends EntityImpl implements Parameter {
+
     /**
      * The cached value of the '{@link #getDataType() <em>Data Type</em>}' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->

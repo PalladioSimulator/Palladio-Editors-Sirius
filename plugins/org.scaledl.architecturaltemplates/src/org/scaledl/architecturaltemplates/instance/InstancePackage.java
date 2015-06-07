@@ -24,6 +24,7 @@ import de.uka.ipd.sdq.pcm.core.entity.EntityPackage;
  * @generated
  */
 public interface InstancePackage extends EPackage {
+
     /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -801,6 +802,7 @@ public interface InstancePackage extends EPackage {
      * @generated
      */
     interface Literals {
+
         /**
          * The meta object literal for the '
          * {@link org.scaledl.architecturaltemplates.instance.impl.ATInstanceImpl

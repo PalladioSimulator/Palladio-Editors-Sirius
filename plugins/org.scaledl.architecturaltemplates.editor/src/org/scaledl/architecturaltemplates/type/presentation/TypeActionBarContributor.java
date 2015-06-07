@@ -41,6 +41,7 @@ import org.eclipse.ui.PartInitException;
  * @generated
  */
 public class TypeActionBarContributor extends EditingDomainActionBarContributor implements ISelectionChangedListener {
+
     /**
      * This keeps track of the active editor. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -63,6 +64,7 @@ public class TypeActionBarContributor extends EditingDomainActionBarContributor 
      */
     protected IAction showPropertiesViewAction = new Action(
             ArchitecturaltemplatesEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) {
+
         @Override
         public void run() {
             try {
@@ -82,6 +84,7 @@ public class TypeActionBarContributor extends EditingDomainActionBarContributor 
      */
     protected IAction refreshViewerAction = new Action(
             ArchitecturaltemplatesEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) {
+
         @Override
         public boolean isEnabled() {
             return TypeActionBarContributor.this.activeEditorPart instanceof IViewerProvider;
@@ -190,6 +193,7 @@ public class TypeActionBarContributor extends EditingDomainActionBarContributor 
         // Force an update because Eclipse hides empty menus now.
         //
         submenuManager.addMenuListener(new IMenuListener() {
+
             @Override
             public void menuAboutToShow(final IMenuManager menuManager) {
                 menuManager.updateAll(true);

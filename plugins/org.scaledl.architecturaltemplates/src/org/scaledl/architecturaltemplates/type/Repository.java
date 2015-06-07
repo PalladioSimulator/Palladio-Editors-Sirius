@@ -3,7 +3,6 @@
 package org.scaledl.architecturaltemplates.type;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
 import de.uka.ipd.sdq.pcm.core.entity.Entity;
 
@@ -25,7 +24,8 @@ import de.uka.ipd.sdq.pcm.core.entity.Entity;
  * @model
  * @generated
  */
-public interface Repository extends EObject, Entity {
+public interface Repository extends Entity {
+
     /**
      * Returns the value of the '<em><b>ATs</b></em>' containment reference list. The list contents
      * are of type {@link org.scaledl.architecturaltemplates.type.AT}. It is bidirectional and its

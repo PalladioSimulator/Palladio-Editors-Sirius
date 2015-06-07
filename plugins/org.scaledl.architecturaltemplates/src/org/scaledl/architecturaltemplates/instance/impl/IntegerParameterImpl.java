@@ -15,6 +15,7 @@ import org.scaledl.architecturaltemplates.instance.IntegerParameter;
  * @generated
  */
 public class IntegerParameterImpl extends ParameterValueImpl implements IntegerParameter {
+
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *

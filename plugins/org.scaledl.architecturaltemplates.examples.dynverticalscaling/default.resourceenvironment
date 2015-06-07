@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<resourceenvironment:ResourceEnvironment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:resourceenvironment="http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0" entityName="verticalScalingResourceEnvironment">
-  <linkingResources__ResourceEnvironment id="_9lNF4H4wEeSqFvs4kqVd7Q" entityName="Network" connectedResourceContainers_LinkingResource="_vHW8QH4wEeSqFvs4kqVd7Q _xnmEYH4wEeSqFvs4kqVd7Q">
-    <communicationLinkResourceSpecifications_LinkingResource id="_9lTzkH4wEeSqFvs4kqVd7Q">
-      <communicationLinkResourceType_CommunicationLinkResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_o3sScH2AEdyH8uerKnHYug"/>
-      <latency_CommunicationLinkResourceSpecification specification="0"/>
-      <throughput_CommunicationLinkResourceSpecification specification="99999"/>
-    </communicationLinkResourceSpecifications_LinkingResource>
-  </linkingResources__ResourceEnvironment>
-  <resourceContainer_ResourceEnvironment id="_vHW8QH4wEeSqFvs4kqVd7Q" entityName="Virtualized Resource Container">
-    <activeResourceSpecifications_ResourceContainer id="_05cPoH4wEeSqFvs4kqVd7Q">
-      <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
-      <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
-      <processingRate_ProcessingResourceSpecification specification="50"/>
-    </activeResourceSpecifications_ResourceContainer>
-  </resourceContainer_ResourceEnvironment>
-  <resourceContainer_ResourceEnvironment id="_xnmEYH4wEeSqFvs4kqVd7Q" entityName="Normal Resource Container">
-    <activeResourceSpecifications_ResourceContainer id="_5_aD4H4wEeSqFvs4kqVd7Q">
-      <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
-      <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
-      <processingRate_ProcessingResourceSpecification specification="2000"/>
-    </activeResourceSpecifications_ResourceContainer>
-  </resourceContainer_ResourceEnvironment>
-</resourceenvironment:ResourceEnvironment>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:emfprofileapplication="http://www.modelversioning.org/emfprofile/application/1.1" xmlns:org.scaledl.architecturaltemplates.repositories.cloudscale.profiles="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.dynamicverticalscalingresourcecontainer" xmlns:resourceenvironment="http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0">
+  <resourceenvironment:ResourceEnvironment entityName="verticalScalingResourceEnvironment">
+    <linkingResources__ResourceEnvironment id="_9lNF4H4wEeSqFvs4kqVd7Q" entityName="Network" connectedResourceContainers_LinkingResource="_vHW8QH4wEeSqFvs4kqVd7Q _xnmEYH4wEeSqFvs4kqVd7Q">
+      <communicationLinkResourceSpecifications_LinkingResource id="_9lTzkH4wEeSqFvs4kqVd7Q">
+        <communicationLinkResourceType_CommunicationLinkResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_o3sScH2AEdyH8uerKnHYug"/>
+        <latency_CommunicationLinkResourceSpecification specification="0"/>
+        <throughput_CommunicationLinkResourceSpecification specification="99999"/>
+      </communicationLinkResourceSpecifications_LinkingResource>
+    </linkingResources__ResourceEnvironment>
+    <resourceContainer_ResourceEnvironment id="_vHW8QH4wEeSqFvs4kqVd7Q" entityName="Virtualized Resource Container">
+      <activeResourceSpecifications_ResourceContainer id="_05cPoH4wEeSqFvs4kqVd7Q">
+        <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
+        <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        <processingRate_ProcessingResourceSpecification specification="50"/>
+      </activeResourceSpecifications_ResourceContainer>
+    </resourceContainer_ResourceEnvironment>
+    <resourceContainer_ResourceEnvironment id="_xnmEYH4wEeSqFvs4kqVd7Q" entityName="Normal Resource Container">
+      <activeResourceSpecifications_ResourceContainer id="_5_aD4H4wEeSqFvs4kqVd7Q">
+        <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
+        <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        <processingRate_ProcessingResourceSpecification specification="2000"/>
+      </activeResourceSpecifications_ResourceContainer>
+    </resourceContainer_ResourceEnvironment>
+  </resourceenvironment:ResourceEnvironment>
+  <emfprofileapplication:ProfileApplication>
+    <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles:VirtualizedResourceContainer" appliedTo="_vHW8QH4wEeSqFvs4kqVd7Q" scaleUpThreshold="1.0" scaleDownThreshold="0.5" maxRate="10000" minRate="50" stepSize="50">
+      <extension href="../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/DynamicVerticalScalingResourceContainer.emfprofile_diagram#_7MhWQH47EeSqFvs4kqVd7Q"/>
+    </stereotypeApplications>
+    <importedProfiles nsURI="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.dynamicverticalscalingresourcecontainer" location="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/DynamicVerticalScalingResourceContainer.emfprofile_diagram"/>
+  </emfprofileapplication:ProfileApplication>
+</xmi:XMI>

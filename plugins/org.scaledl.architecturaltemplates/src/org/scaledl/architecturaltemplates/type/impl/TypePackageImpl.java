@@ -44,6 +44,7 @@ import de.uka.ipd.sdq.pcm.core.entity.EntityPackage;
  * @generated
  */
 public class TypePackageImpl extends EPackageImpl implements TypePackage {
+
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *

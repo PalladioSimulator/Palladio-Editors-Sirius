@@ -34,6 +34,7 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  * @generated
  */
 public abstract class CompletionImpl extends MinimalEObjectImpl.Container implements Completion {
+
     /**
      * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->

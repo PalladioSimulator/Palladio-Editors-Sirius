@@ -22,6 +22,7 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  * @generated
  */
 public class QVTOCompletionItemProvider extends CompletionItemProvider {
+
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!--
      * end-user-doc -->

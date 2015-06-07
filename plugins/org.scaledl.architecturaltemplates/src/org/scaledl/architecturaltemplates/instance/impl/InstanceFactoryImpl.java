@@ -24,6 +24,7 @@ import org.scaledl.architecturaltemplates.instance.StringParameter;
  * @generated
  */
 public class InstanceFactoryImpl extends EFactoryImpl implements InstanceFactory {
+
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
      *

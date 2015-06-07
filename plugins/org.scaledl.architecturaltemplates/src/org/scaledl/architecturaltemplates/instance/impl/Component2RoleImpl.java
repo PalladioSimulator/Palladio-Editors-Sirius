@@ -8,7 +8,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -39,6 +38,7 @@ import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
  * @generated
  */
 public class Component2RoleImpl extends MinimalEObjectImpl.Container implements Component2Role {
+
     /**
      * The cached value of the '{@link #getComponent() <em>Component</em>}' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -85,7 +85,7 @@ public class Component2RoleImpl extends MinimalEObjectImpl.Container implements 
      */
     @Override
     public AssemblyContext getComponent() {
-        if (this.component != null && ((EObject) this.component).eIsProxy()) {
+        if (this.component != null && this.component.eIsProxy()) {
             final InternalEObject oldComponent = (InternalEObject) this.component;
             this.component = (AssemblyContext) this.eResolveProxy(oldComponent);
             if (this.component != oldComponent) {
