@@ -19,7 +19,7 @@ import org.modelversioning.emfprofileapplication.StereotypeApplication;
 import org.palladiosimulator.commons.emfutils.EMFCopyHelper;
 import org.palladiosimulator.editors.util.Activator;
 import org.palladiosimulator.editors.util.at.ArchitecturalTemplateHelpers;
-import org.palladiosimulator.mdsdprofiles.StereotypableElement;
+import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 
 import de.uka.ipd.sdq.pcm.core.PCMRandomVariable;
 import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
@@ -57,11 +57,8 @@ public class ComposedProvidingRequiringEntityServices {
      * @return list of roles
      */
     public List<StereotypeApplication> getRoles(final EObject object) {
-        if (!(object instanceof StereotypableElement))
-            return null;
-
-        return ((StereotypableElement) object)
-                .getStereotypeApplications()
+    	return StereotypeAPI
+    			.getStereotypeApplications(object)
                 .stream()
                 .filter(stereotypeApplication -> stereotypeApplication.getExtension().getSource()
                         .getTaggedValue(ArchitecturalTemplateHelpers.ROLE_URI) != null).collect(Collectors.toList());
@@ -75,13 +72,11 @@ public class ComposedProvidingRequiringEntityServices {
      * @return indicator for applied roles
      */
     public boolean hasRoles(final EObject object) {
-        return object instanceof StereotypableElement
-                && ((StereotypableElement) object)
-                        .getStereotypeApplications()
-                        .stream()
-                        .anyMatch(
-                                stereotypeApplication -> stereotypeApplication.getExtension().getSource()
-                                        .getTaggedValue(ArchitecturalTemplateHelpers.ROLE_URI) != null);
+        return StereotypeAPI.getStereotypeApplications(object)
+                .stream()
+                .anyMatch(
+                        stereotypeApplication -> stereotypeApplication.getExtension().getSource()
+                                .getTaggedValue(ArchitecturalTemplateHelpers.ROLE_URI) != null);
     }
 
     /**

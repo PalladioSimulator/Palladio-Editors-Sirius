@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.palladiosimulator.commons.emfutils.EMFLoadHelper;
+import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.scaledl.architecturaltemplates.type.Role;
 
 import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
@@ -43,8 +44,8 @@ public final class ArchitecturalTemplateHelpers {
 
         final Predicate<Role> isntSystemRole = role -> systemRoles.stream().noneMatch(
                 systemRole -> systemRole.equals(role));
-        final Predicate<Role> isntAlreadyApplied = role -> assemblyContext
-                .getStereotypeApplications()
+        final Predicate<Role> isntAlreadyApplied = role -> StereotypeAPI
+        		.getStereotypeApplications(assemblyContext)
                 .stream()
                 .noneMatch(
                         stereotypeApplication -> stereotypeApplication.getExtension().getSource().getName()
@@ -58,7 +59,7 @@ public final class ArchitecturalTemplateHelpers {
         // applicableRoles.stream.allMatch(role ->
         // assemblyContext.isApplicableStereotype(role.getStereotype()); but the
         // Stereotpye::equals method is not implemented correctly.
-        assert (applicableRoles.stream().allMatch(role -> assemblyContext.getApplicableStereotypes().stream()
+        assert (applicableRoles.stream().allMatch(role -> StereotypeAPI.getApplicableStereotypes(assemblyContext).stream()
                 .map(stereotype -> stereotype.getName())
                 .anyMatch(applicableName -> applicableName.equals(role.getStereotype().getName()))));
 
@@ -66,8 +67,8 @@ public final class ArchitecturalTemplateHelpers {
     }
 
     public static List<Role> getSystemRoles(final System system) {
-        return system
-                .getStereotypeApplications()
+        return StereotypeAPI
+        		.getStereotypeApplications(system)
                 .stream()
                 .map(stereotypeApplication -> stereotypeApplication.getExtension().getSource().getTaggedValue(ROLE_URI))
                 .filter(Objects::nonNull).map(taggedValue -> taggedValue.getDefaultValueLiteral())

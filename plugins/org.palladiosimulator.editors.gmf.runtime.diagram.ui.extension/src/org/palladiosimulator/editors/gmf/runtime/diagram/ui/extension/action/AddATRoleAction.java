@@ -11,6 +11,7 @@ import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import org.palladiosimulator.editors.util.at.ArchitecturalTemplateHelpers;
+import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.scaledl.architecturaltemplates.type.Role;
 
 import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
@@ -55,16 +56,14 @@ public class AddATRoleAction implements IExternalJavaAction {
 		dialog.setMessage(SELECT_ROLE_DIALOG_MESSAGE);
 		dialog.setElements(applicableRoles.toArray());
 
-		if (dialog.open() != Dialog.OK) {
+		if (dialog.open() != Dialog.OK || dialog.getFirstResult() == null) {
 			return;
 		}
-		
+
 		final Role selectedRole = (Role) dialog.getFirstResult();
-		if (selectedRole == null) {
-			return;
-		}
-		
-		assemblyContext.applyStereotype(selectedRole.getStereotype());
+
+		StereotypeAPI.applyStereotype(assemblyContext,
+				selectedRole.getStereotype());
 	}
 
 	/**

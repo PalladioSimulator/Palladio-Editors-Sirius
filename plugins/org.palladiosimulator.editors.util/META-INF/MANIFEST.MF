@@ -9,7 +9,8 @@ Require-Bundle: de.uka.ipd.sdq.pcm;bundle-version="3.6.0",
  de.uka.ipd.sdq.dialogs;bundle-version="2.0.1",
  org.eclipse.emf.edit.ui;bundle-version="2.10.2",
  org.scaledl.architecturaltemplates.edit,
- de.uka.ipd.sdq.pcmbench.ui
+ de.uka.ipd.sdq.pcmbench.ui,
+ org.palladiosimulator.mdsdprofiles.api
 Export-Package: org.palladiosimulator.editors.util.api.services,
  org.palladiosimulator.editors.util.at,
  org.palladiosimulator.editors.util.dialogs

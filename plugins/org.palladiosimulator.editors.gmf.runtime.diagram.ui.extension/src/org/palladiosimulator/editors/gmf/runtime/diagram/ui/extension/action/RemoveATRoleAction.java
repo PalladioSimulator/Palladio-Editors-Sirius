@@ -6,6 +6,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.modelversioning.emfprofileapplication.StereotypeApplication;
+import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.scaledl.architecturaltemplates.type.Role;
 
 import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
@@ -33,7 +34,8 @@ public class RemoveATRoleAction implements IExternalJavaAction {
             return;
         }
         final AssemblyContext assemblyContext = (AssemblyContext) stereotypeApplication.getAppliedTo();
-        assemblyContext.unapplyStereotype(stereotypeApplication.getExtension().getSource());
+
+        StereotypeAPI.unapplyStereotype(assemblyContext, stereotypeApplication.getStereotype());
     }
 
     /**

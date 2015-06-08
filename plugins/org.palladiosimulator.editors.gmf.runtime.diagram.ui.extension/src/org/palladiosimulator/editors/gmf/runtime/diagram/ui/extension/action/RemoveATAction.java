@@ -6,6 +6,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.modelversioning.emfprofileapplication.StereotypeApplication;
+import org.palladiosimulator.mdsdprofiles.api.ProfileAPI;
 
 import de.uka.ipd.sdq.pcm.system.System;
 
@@ -27,8 +28,10 @@ public class RemoveATAction implements IExternalJavaAction {
         if (!(stereotypeApplication.getAppliedTo() instanceof System)) {
             return;
         }
+
         final System system = (System) stereotypeApplication.getAppliedTo();
-        system.unapplyStereotype(stereotypeApplication.getExtension().getSource());
+
+        ProfileAPI.unapplyProfile(system.eResource(), stereotypeApplication.getStereotype().getProfile());
     }
 
     /**
