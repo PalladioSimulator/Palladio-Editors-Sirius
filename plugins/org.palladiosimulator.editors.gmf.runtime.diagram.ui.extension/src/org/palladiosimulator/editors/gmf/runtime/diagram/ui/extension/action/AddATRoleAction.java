@@ -6,8 +6,11 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import org.palladiosimulator.editors.util.at.ArchitecturalTemplateHelpers;
@@ -50,7 +53,14 @@ public class AddATRoleAction implements IExternalJavaAction {
 
 		final ElementListSelectionDialog dialog = new ElementListSelectionDialog(
 				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-				new LabelProvider());
+				new LabelProvider() {
+
+					@Override
+					public String getText(Object element) {
+						return ((Role) element).getEntityName();
+					}
+					
+				});
 
 		dialog.setTitle(SELECT_ROLE_DIALOG_TITLE);
 		dialog.setMessage(SELECT_ROLE_DIALOG_MESSAGE);
