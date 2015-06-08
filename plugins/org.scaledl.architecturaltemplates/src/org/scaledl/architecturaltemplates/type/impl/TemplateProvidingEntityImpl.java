@@ -5,7 +5,7 @@ package org.scaledl.architecturaltemplates.type.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 import org.scaledl.architecturaltemplates.type.TemplateProvidingEntity;
 import org.scaledl.architecturaltemplates.type.TypePackage;
 
@@ -23,8 +23,7 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  *
  * @generated
  */
-public abstract class TemplateProvidingEntityImpl extends MinimalEObjectImpl.Container implements
-TemplateProvidingEntity {
+public abstract class TemplateProvidingEntityImpl extends CDOObjectImpl implements TemplateProvidingEntity {
 
     /**
      * The default value of the '{@link #getTemplateFileURI() <em>Template File URI</em>}'

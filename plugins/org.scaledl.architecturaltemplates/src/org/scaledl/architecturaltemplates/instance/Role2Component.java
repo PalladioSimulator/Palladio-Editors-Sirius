@@ -2,7 +2,7 @@
  */
 package org.scaledl.architecturaltemplates.instance;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.cdo.CDOObject;
 import org.scaledl.architecturaltemplates.type.Role;
 
 import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
@@ -24,9 +24,10 @@ import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
  *
  * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getRole2Component()
  * @model
+ * @extends CDOObject
  * @generated
  */
-public interface Role2Component extends EObject {
+public interface Role2Component extends CDOObject {
 
     /**
      * Returns the value of the '<em><b>Component</b></em>' reference. <!-- begin-user-doc -->

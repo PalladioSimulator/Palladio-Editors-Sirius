@@ -2,7 +2,7 @@
  */
 package org.scaledl.architecturaltemplates.instance;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.cdo.CDOObject;
 import org.scaledl.architecturaltemplates.type.Parameter;
 
 /**
@@ -21,9 +21,10 @@ import org.scaledl.architecturaltemplates.type.Parameter;
  *
  * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getParameterValue()
  * @model abstract="true"
+ * @extends CDOObject
  * @generated
  */
-public interface ParameterValue extends EObject {
+public interface ParameterValue extends CDOObject {
 
     /**
      * Returns the value of the '<em><b>Type</b></em>' reference. <!-- begin-user-doc -->

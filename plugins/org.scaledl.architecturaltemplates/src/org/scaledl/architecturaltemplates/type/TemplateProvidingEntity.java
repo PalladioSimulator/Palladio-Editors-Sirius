@@ -2,7 +2,7 @@
  */
 package org.scaledl.architecturaltemplates.type;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.cdo.CDOObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -21,9 +21,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.scaledl.architecturaltemplates.type.TypePackage#getTemplateProvidingEntity()
  * @model abstract="true"
+ * @extends CDOObject
  * @generated
  */
-public interface TemplateProvidingEntity extends EObject {
+public interface TemplateProvidingEntity extends CDOObject {
 
     /**
      * Returns the value of the '<em><b>Template File URI</b></em>' attribute. <!-- begin-user-doc

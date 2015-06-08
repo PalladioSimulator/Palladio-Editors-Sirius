@@ -8,6 +8,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
@@ -161,7 +162,7 @@ public class ATInstanceImpl extends EntityImpl implements ATInstance {
      */
     @Override
     public Role2Component getAT2Components() {
-        if (this.at2Components != null && this.at2Components.eIsProxy()) {
+        if (this.at2Components != null && ((EObject) this.at2Components).eIsProxy()) {
             final InternalEObject oldAT2Components = (InternalEObject) this.at2Components;
             this.at2Components = (Role2Component) this.eResolveProxy(oldAT2Components);
             if (this.at2Components != oldAT2Components) {
@@ -205,7 +206,7 @@ public class ATInstanceImpl extends EntityImpl implements ATInstance {
      */
     @Override
     public AT getType() {
-        if (this.type != null && this.type.eIsProxy()) {
+        if (this.type != null && ((EObject) this.type).eIsProxy()) {
             final InternalEObject oldType = (InternalEObject) this.type;
             this.type = (AT) this.eResolveProxy(oldType);
             if (this.type != oldType) {

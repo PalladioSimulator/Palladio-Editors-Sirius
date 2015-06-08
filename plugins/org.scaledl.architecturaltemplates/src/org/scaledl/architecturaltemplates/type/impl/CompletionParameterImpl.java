@@ -7,8 +7,8 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 import org.scaledl.architecturaltemplates.type.Completion;
 import org.scaledl.architecturaltemplates.type.CompletionParameter;
 import org.scaledl.architecturaltemplates.type.TypePackage;
@@ -26,7 +26,7 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  *
  * @generated
  */
-public abstract class CompletionParameterImpl extends MinimalEObjectImpl.Container implements CompletionParameter {
+public abstract class CompletionParameterImpl extends CDOObjectImpl implements CompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->

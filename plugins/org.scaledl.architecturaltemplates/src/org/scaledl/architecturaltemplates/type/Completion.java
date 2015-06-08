@@ -2,8 +2,8 @@
  */
 package org.scaledl.architecturaltemplates.type;
 
+import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Completion</b></em>'. <!--
@@ -30,9 +30,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.scaledl.architecturaltemplates.type.TypePackage#getCompletion()
  * @model abstract="true"
+ * @extends CDOObject
  * @generated
  */
-public interface Completion extends EObject {
+public interface Completion extends CDOObject {
 
     /**
      * Returns the value of the '<em><b>AT</b></em>' container reference. It is bidirectional and

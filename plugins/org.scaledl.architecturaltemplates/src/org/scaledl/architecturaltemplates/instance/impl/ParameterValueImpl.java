@@ -5,10 +5,11 @@ package org.scaledl.architecturaltemplates.instance.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 import org.scaledl.architecturaltemplates.instance.ATInstance;
 import org.scaledl.architecturaltemplates.instance.InstancePackage;
 import org.scaledl.architecturaltemplates.instance.ParameterValue;
@@ -30,7 +31,7 @@ import org.scaledl.architecturaltemplates.type.Parameter;
  *
  * @generated
  */
-public abstract class ParameterValueImpl extends MinimalEObjectImpl.Container implements ParameterValue {
+public abstract class ParameterValueImpl extends CDOObjectImpl implements ParameterValue {
 
     /**
      * The cached value of the '{@link #getType() <em>Type</em>}' reference. <!-- begin-user-doc -->
@@ -68,7 +69,7 @@ public abstract class ParameterValueImpl extends MinimalEObjectImpl.Container im
      */
     @Override
     public Parameter getType() {
-        if (this.type != null && this.type.eIsProxy()) {
+        if (this.type != null && ((EObject) this.type).eIsProxy()) {
             final InternalEObject oldType = (InternalEObject) this.type;
             this.type = (Parameter) this.eResolveProxy(oldType);
             if (this.type != oldType) {

@@ -2,7 +2,7 @@
  */
 package org.scaledl.architecturaltemplates.instance;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.cdo.CDOObject;
 import org.scaledl.architecturaltemplates.type.Role;
 
 import de.uka.ipd.sdq.pcm.resourceenvironment.ResourceContainer;
@@ -24,9 +24,10 @@ import de.uka.ipd.sdq.pcm.resourceenvironment.ResourceContainer;
  *
  * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getRole2Resource()
  * @model
+ * @extends CDOObject
  * @generated
  */
-public interface Role2Resource extends EObject {
+public interface Role2Resource extends CDOObject {
 
     /**
      * Returns the value of the '<em><b>AT Instance</b></em>' container reference. It is

@@ -5,10 +5,11 @@ package org.scaledl.architecturaltemplates.instance.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 import org.scaledl.architecturaltemplates.instance.ATInstance;
 import org.scaledl.architecturaltemplates.instance.InstancePackage;
 import org.scaledl.architecturaltemplates.instance.Role2Component;
@@ -33,7 +34,7 @@ import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
  *
  * @generated
  */
-public class Role2ComponentImpl extends MinimalEObjectImpl.Container implements Role2Component {
+public class Role2ComponentImpl extends CDOObjectImpl implements Role2Component {
 
     /**
      * The cached value of the '{@link #getComponent() <em>Component</em>}' reference. <!--
@@ -81,7 +82,7 @@ public class Role2ComponentImpl extends MinimalEObjectImpl.Container implements 
      */
     @Override
     public AssemblyContext getComponent() {
-        if (this.component != null && this.component.eIsProxy()) {
+        if (this.component != null && ((EObject) this.component).eIsProxy()) {
             final InternalEObject oldComponent = (InternalEObject) this.component;
             this.component = (AssemblyContext) this.eResolveProxy(oldComponent);
             if (this.component != oldComponent) {
@@ -125,7 +126,7 @@ public class Role2ComponentImpl extends MinimalEObjectImpl.Container implements 
      */
     @Override
     public Role getRole() {
-        if (this.role != null && this.role.eIsProxy()) {
+        if (this.role != null && ((EObject) this.role).eIsProxy()) {
             final InternalEObject oldRole = (InternalEObject) this.role;
             this.role = (Role) this.eResolveProxy(oldRole);
             if (this.role != oldRole) {

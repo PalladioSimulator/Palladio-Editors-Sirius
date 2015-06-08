@@ -10,10 +10,10 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 import org.scaledl.architecturaltemplates.type.AT;
 import org.scaledl.architecturaltemplates.type.Completion;
 import org.scaledl.architecturaltemplates.type.CompletionParameter;
@@ -33,7 +33,7 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  *
  * @generated
  */
-public abstract class CompletionImpl extends MinimalEObjectImpl.Container implements Completion {
+public abstract class CompletionImpl extends CDOObjectImpl implements Completion {
 
     /**
      * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference
