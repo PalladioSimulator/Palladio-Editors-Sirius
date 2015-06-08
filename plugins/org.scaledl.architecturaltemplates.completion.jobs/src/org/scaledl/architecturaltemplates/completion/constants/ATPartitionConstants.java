@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.palladiosimulator.simulizar.launcher.jobs.LoadMonitorRepositoryModelIntoBlackboardJob;
+import org.palladiosimulator.simulizar.launcher.jobs.LoadSimuLizarModelsIntoBlackboardJob;
 import org.palladiosimulator.simulizar.reconfiguration.storydiagram.jobs.LoadSDMModelsIntoBlackboardJob;
 
 import de.uka.ipd.sdq.workflow.pcm.jobs.LoadPCMModelsIntoBlackboardJob;
@@ -36,10 +37,9 @@ public final class ATPartitionConstants {
         // FIXME Why are the contents of Original PCM and PCM different when being stored with the
         // StoreCompletedModelsJob? [Lehrig]
 
-        // ORIGINAL_PCM("Original PCM",
-        // LoadSimuLizarModelsIntoBlackboardJob.ORIGINAL_PCM_MODELS_PARTITION_ID, PCM_FILES),
-
         PCM("PCM", LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID, PCM_FILES),
+
+        ORIGINAL_PCM("Original PCM", LoadSimuLizarModelsIntoBlackboardJob.ORIGINAL_PCM_MODELS_PARTITION_ID, PCM_FILES),
 
         MONITOR_REPOSITORY("Monitor Repository",
                 LoadMonitorRepositoryModelIntoBlackboardJob.MONITOR_REPOSITORY_MODEL_PARTITION_ID,
