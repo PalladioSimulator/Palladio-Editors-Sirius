@@ -3,19 +3,22 @@ package org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.action;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Objects;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import org.modelversioning.emfprofile.Profile;
 import org.modelversioning.emfprofile.Stereotype;
+import org.modelversioning.emfprofile.registry.IProfileRegistry;
+import org.palladiosimulator.editors.util.at.ArchitecturalTemplateHelpers;
 import org.palladiosimulator.editors.util.dialogs.ArchitecturalTemplateSelectEObjectDialog;
 import org.palladiosimulator.mdsdprofiles.api.ProfileAPI;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
@@ -40,6 +43,13 @@ public class AddATAction implements IExternalJavaAction {
 	 * the editor to get the corresponding {@link Session}.
 	 */
 	private static final String SYSTEM_PARAMETER_KEY = "system";
+	private static final String PROFILE_SELECTION_DIALOG_TITLE = "Select Architectural Template";
+	private static final String PROFILE_SELECTION_DIALOG_EMPTY_LIST_MESSAGE = "No Architectural Templates are registered";
+	private static final String PROFILE_SELECTION_DIALOG_EMPTY_SELECTION_MESSAGE = "You need to select an Architectural Template";
+	/**
+	 * TODO extract to ArchitecturalTemplateAPI
+	 */
+	private static final String SYSTEM_ROLE_NAME_SUFFIX = "System";
 
 	/**
 	 * Creates an {@link ArchitecturalTemplateSelectEObjectDialog} that queries
@@ -54,62 +64,85 @@ public class AddATAction implements IExternalJavaAction {
 			return;
 		}
 		final System system = (System) parameter;
-		final ResourceSet resourceSet = SessionManager.INSTANCE
-				.getSession(system).getTransactionalEditingDomain()
-				.getResourceSet();
 
-		final ArchitecturalTemplateSelectEObjectDialog atSelectionDialog = new ArchitecturalTemplateSelectEObjectDialog(
+		// TODO Extract to API
+		final Predicate<Stereotype> isRole = stereotype -> Objects
+				.nonNull(stereotype
+						.getTaggedValue(ArchitecturalTemplateHelpers.ROLE_URI));
+		final Predicate<Stereotype> isSystemRole = isRole.and(stereotype -> stereotype.getName().endsWith(SYSTEM_ROLE_NAME_SUFFIX));
+		final Predicate<Profile> isArchitecturalTemplate = profile -> profile
+				.getStereotypes()
+				.stream()
+				.filter(isSystemRole).findAny()
+				.isPresent();
+
+		// TODO create subclass for selecting a AT-profiles
+		ElementListSelectionDialog profileSelectionDialog = new ElementListSelectionDialog(
 				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-				resourceSet, ArchitecturalTemplateSelectEObjectDialog.Type.AT);
-		if (atSelectionDialog.open() == Dialog.OK
-				&& atSelectionDialog.getResult() != null) {
-			final AT at = (AT) atSelectionDialog.getResult();
-
-			// TODO extract this to an API
-			// void applyArchitecturalTemplate(final System system)
-			final Optional<Profile> atProfile = at.getRoles().stream()
-					.map(role -> role.getStereotype().getProfile()).findAny();
+				new LabelProvider() {
+					@Override
+					public String getText(Object element) {
+						return ((Profile) element).getName();
+					}
+				});
 
 
-			if (!atProfile.isPresent()) {
-				throw new RuntimeException(
-						"Architectural Template \"" + at.getEntityName() + "\" defines no roles");
-			}
+		profileSelectionDialog.setElements(IProfileRegistry.eINSTANCE
+				.getRegisteredProfiles().stream()
+				.filter(isArchitecturalTemplate).toArray());
 
-			ProfileAPI.applyProfile(system.eResource(), atProfile.get());
-			EPackage.Registry.INSTANCE.put(atProfile.get().getNsURI(), atProfile.get());
+		profileSelectionDialog.setTitle(PROFILE_SELECTION_DIALOG_TITLE);
+		profileSelectionDialog
+				.setEmptyListMessage(PROFILE_SELECTION_DIALOG_EMPTY_LIST_MESSAGE);
+		profileSelectionDialog
+				.setEmptySelectionMessage(PROFILE_SELECTION_DIALOG_EMPTY_SELECTION_MESSAGE);
 
-			// Role getSystemRole(final AT at)
-			final List<Stereotype> atSystemRoleStereotypes = at
-					.getRoles()
-					.stream()
-					.map(role -> role.getStereotype())
-					.filter(stereotype -> stereotype.getName().endsWith(
-							"System")).collect(Collectors.toList());
-
-			if (atSystemRoleStereotypes.size() == 0) {
-				throw new RuntimeException(
-						"No system-role found in Architectural Template \"" + at.getEntityName() + "\"");
-			}
-			if (atSystemRoleStereotypes.size() > 1) {
-				throw new RuntimeException(
-						"Architectural Template \"" + at.getEntityName() + "\" defines multiple system-roles");
-			}
-
-			final Stereotype atSystemRoleStereotype = atSystemRoleStereotypes
-					.get(0);
-
-			if (StereotypeAPI.isStereotypeApplicable(system,
-					atSystemRoleStereotype)) {
-				StereotypeAPI.applyStereotype(system, atSystemRoleStereotype);
-			} else {
-				ProfileAPI.unapplyProfile(system.eResource(), atProfile.get());
-				throw new RuntimeException("System-role \""
-						+ atSystemRoleStereotype.getName()
-						+ "\" not applicable to system \""
-						+ system.getEntityName() + "\"");
-			}
+		if (profileSelectionDialog.open() != Dialog.OK
+				|| profileSelectionDialog.getResult().length != 1) {
+			return;
 		}
+
+		final Profile atProfile = (Profile) profileSelectionDialog.getResult()[0];
+
+		// TODO extract this to an API
+		if (!isArchitecturalTemplate.test(atProfile)) {
+			throw new RuntimeException("Selected Profile \"" + atProfile
+					+ "\" does not only define roles");
+		}
+
+		ProfileAPI.applyProfile(system.eResource(), atProfile);
+		EPackage.Registry.INSTANCE.put(atProfile.getNsURI(), atProfile);
+
+		// Role getSystemRole(final AT at)
+		final List<Stereotype> atSystemRoleStereotypes = atProfile
+				.getStereotypes().stream()
+				.filter(isSystemRole)
+				.collect(Collectors.toList());
+
+		if (atSystemRoleStereotypes.size() == 0) {
+			throw new RuntimeException(
+					"No system-role found in Architectural Template \""
+							+ atProfile.getName() + "\"");
+		}
+		if (atSystemRoleStereotypes.size() > 1) {
+			throw new RuntimeException("Architectural Template \""
+					+ atProfile.getName() + "\" defines multiple system-roles");
+		}
+
+		final Stereotype atSystemRoleStereotype = atSystemRoleStereotypes
+				.get(0);
+
+		if (StereotypeAPI
+				.isStereotypeApplicable(system, atSystemRoleStereotype)) {
+			StereotypeAPI.applyStereotype(system, atSystemRoleStereotype);
+		} else {
+			ProfileAPI.unapplyProfile(system.eResource(), atProfile);
+			throw new RuntimeException("System-role \""
+					+ atSystemRoleStereotype.getName()
+					+ "\" not applicable to system \"" + system.getEntityName()
+					+ "\"");
+		}
+
 	}
 
 	/**
