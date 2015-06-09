@@ -3,6 +3,7 @@ package org.scaledl.architecturaltemplates.completion.constants;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.palladiosimulator.experimentautomation.application.jobs.LoadModelsIntoBlackboardJob;
 import org.palladiosimulator.simulizar.launcher.jobs.LoadSimuLizarModelsIntoBlackboardJob;
 import org.palladiosimulator.simulizar.reconfiguration.storydiagram.jobs.LoadSDMModelsIntoBlackboardJob;
 
@@ -36,7 +37,9 @@ public final class ATPartitionConstants {
 
         PCM("PCM", LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID, PCM_FILES),
 
-        ORIGINAL_PCM("Original PCM", LoadSimuLizarModelsIntoBlackboardJob.ORIGINAL_PCM_MODELS_PARTITION_ID, PCM_FILES),
+        ORIGINAL_PCM("Original PCM", LoadModelsIntoBlackboardJob.PCM_MODELS_ORIGINAL_PARTITION_ID, PCM_FILES),
+
+        ANALYZED_PCM("Analyzed PCM", LoadSimuLizarModelsIntoBlackboardJob.PCM_MODELS_ANALYZED_PARTITION_ID, PCM_FILES),
 
         SDM("SDM", LoadSDMModelsIntoBlackboardJob.SDM_MODEL_PARTITION_ID, new HashSet<String>() {
 
