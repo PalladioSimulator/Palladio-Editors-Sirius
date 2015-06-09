@@ -25,12 +25,12 @@ public class ProfilesLibrary {
         super();
     }
 
-    public static boolean isProfileApplied(final Entity pcmEntity, final String profileName) {
-        return ProfileAPI.isProfileApplied(pcmEntity.eResource(), profileName);
+    public static boolean isProfileApplied(final EObject eObject, final String profileName) {
+        return ProfileAPI.isProfileApplied(eObject.eResource(), profileName);
     }
 
-    public static void applyProfile(final Entity pcmEntity, final String profileName) {
-        ProfileAPI.applyProfile(pcmEntity.eResource(), profileName);
+    public static void applyProfile(final EObject eObject, final String profileName) {
+        ProfileAPI.applyProfile(eObject.eResource(), profileName);
     }
 
     public static boolean hasAppliedStereotype(final Entity pcmEntity, final String stereotypeName) {

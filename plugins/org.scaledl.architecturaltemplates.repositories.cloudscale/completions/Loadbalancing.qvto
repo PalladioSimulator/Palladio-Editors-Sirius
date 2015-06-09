@@ -1,5 +1,6 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
 
+modeltype ECORE uses 'http://www.eclipse.org/emf/2002/Ecore';
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
 modeltype PCM_REP uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0';
 modeltype PCM_SYS uses 'http://sdq.ipd.uka.de/PalladioComponentModel/System/5.0';
@@ -41,7 +42,9 @@ main() {
 	numberOfReplicas := getIntTaggedValue(loadBalancedAssemblyContext, "numberOfReplicas", appliedStereotype);
 	
 	//apply Stereotype OriginalAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
-	applyProfile(system, "LoadbalancedProfile");
+	if (not isProfileApplied(system.oclAsType(EObject), "LoadbalancedProfile")) {
+		applyProfile(system.oclAsType(EObject), "LoadbalancedProfile");
+	};
 	applyStereotype(loadBalancedAssemblyContext, "OriginalAssemblyContext");
 	
 	//remove Stereotype Application ReplicableAssemblyContext from the AssemblyContext
@@ -125,20 +128,25 @@ helper connectLoadBalancerAndAssemblyContexts(loadBalancedAssemblyContext : Asse
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var system : System := allocation.system_Allocation;
 	var connectors : Set(Connector) := system.connectors__ComposedStructure;
-	var providingAssemblyContext : AssemblyContext;
+	
 	connectors->forEach(connector) {
 		if(connector.oclIsTypeOf(AssemblyConnector)){
 			var assemblyConnector : AssemblyConnector := connector.oclAsType(AssemblyConnector);
 			var requiringAssemblyContext : AssemblyContext := getRequiringAssemblyContext(assemblyConnector);
-			providingAssemblyContext := getProvidingAssemblyContext(assemblyConnector);
+			var providingAssemblyContext : AssemblyContext := getProvidingAssemblyContext(assemblyConnector);
 			if(providingAssemblyContext = loadBalancedAssemblyContext){
 				var oldAssemblyConnectorProvidedInterface := assemblyConnector.providedRole_AssemblyConnector.providedInterface__OperationProvidedRole;
+				
 				//get all ProvidedRoles of the LoadBalancer component and then get this one whose interface equals the interface of the ProvidedRole of the AssemblyConnector
 				var loadBalancerProvidedRoles : Bag(OperationProvidedRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity.oclAsType(OperationProvidedRole);
 				var commonProvidedRoleOfAssemblyConnectorAndLoadbalancer : OperationProvidedRole := loadBalancerProvidedRoles -> selectOne(providedRole : OperationProvidedRole | providedRole.providedInterface__OperationProvidedRole.id = oldAssemblyConnectorProvidedInterface.id);
+				assert fatal(commonProvidedRoleOfAssemblyConnectorAndLoadbalancer != null)
+					with log ("Did not find common provided role for loadbalancer "+loadBalancerAssemblyContext.entityName+" and assembly connector "+assemblyConnector.entityName+"!");
+		
 				//get all RequiredRoles of the LoadBalancer and select these ones whose required interface equals the provided one as the calls are forwarded to the stereotyped and duplicated component
 				var loadBalancerAllRequiredRoles : Bag(OperationRequiredRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity.oclAsType(OperationRequiredRole);
 				var loadBalancerNeededRequiredRoles : Bag(OperationRequiredRole) := loadBalancerAllRequiredRoles -> select(operationRequiredRole:OperationRequiredRole|operationRequiredRole.requiredInterface__OperationRequiredRole.id=assemblyConnector.providedRole_AssemblyConnector.providedInterface__OperationProvidedRole.id);
+				
 				//change the ProvidedRole and the ProvidingAssemblyContext of the AssemblyConnector to the LoadBalancer
 				assemblyConnector.providingAssemblyContext_AssemblyConnector := loadBalancerAssemblyContext;
 				assemblyConnector.providedRole_AssemblyConnector := commonProvidedRoleOfAssemblyConnectorAndLoadbalancer;
@@ -147,7 +155,7 @@ helper connectLoadBalancerAndAssemblyContexts(loadBalancedAssemblyContext : Asse
 		}
 		else if (connector.oclIsTypeOf(ProvidedDelegationConnector)) {
 			var delegationConnector : ProvidedDelegationConnector := connector.oclAsType(ProvidedDelegationConnector);
-			providingAssemblyContext := getProvidingAssemblyContext(delegationConnector);
+			var providingAssemblyContext : AssemblyContext := getProvidingAssemblyContext(delegationConnector);
 			if(providingAssemblyContext = loadBalancedAssemblyContext){
 				var delegationConnectorProvidedInterface := delegationConnector.innerProvidedRole_ProvidedDelegationConnector.providedInterface__OperationProvidedRole;
 				var loadBalancerProvidedRoles : Bag(OperationProvidedRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity.oclAsType(OperationProvidedRole);

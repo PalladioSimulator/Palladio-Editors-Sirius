@@ -2,6 +2,7 @@ import org.scaledl.architecturaltemplates.repositories.cloudscale.black.Profiles
 import ResourceContainerReverseLoadbalancing;
 import ResourceContainerLoadbalancing;
 
+modeltype ECORE uses 'http://www.eclipse.org/emf/2002/Ecore';
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
 modeltype PCM_RES_ENV uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0';
 modeltype PRM uses 'http://simulizar.palladiosimulator.org/RuntimeMeasurement/1.0';
