@@ -32,7 +32,7 @@ public interface GenericBlackboardCompletionParameter extends CompletionParamete
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>File Extension</em>' attribute.
      * @see #setFileExtension(String)
      * @see org.scaledl.architecturaltemplates.type.TypePackage#getGenericBlackboardCompletionParameter_FileExtension()
@@ -45,7 +45,7 @@ public interface GenericBlackboardCompletionParameter extends CompletionParamete
      * Sets the value of the '
      * {@link org.scaledl.architecturaltemplates.type.GenericBlackboardCompletionParameter#getFileExtension
      * <em>File Extension</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>File Extension</em>' attribute.
      * @see #getFileExtension()

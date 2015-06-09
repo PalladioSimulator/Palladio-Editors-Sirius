@@ -2,12 +2,9 @@
  */
 package org.scaledl.architecturaltemplates.type.impl;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 import org.scaledl.architecturaltemplates.type.Completion;
 import org.scaledl.architecturaltemplates.type.CompletionParameter;
@@ -30,7 +27,7 @@ public abstract class CompletionParameterImpl extends CDOObjectImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected CompletionParameterImpl() {
@@ -39,7 +36,7 @@ public abstract class CompletionParameterImpl extends CDOObjectImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -49,20 +46,28 @@ public abstract class CompletionParameterImpl extends CDOObjectImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
-    public Completion getCompletion() {
-        if (this.eContainerFeatureID() != TypePackage.COMPLETION_PARAMETER__COMPLETION) {
-            return null;
-        }
-        return (Completion) this.eInternalContainer();
+    protected int eStaticFeatureCount() {
+        return 0;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
+     * @generated
+     */
+    @Override
+    public Completion getCompletion() {
+        return (Completion) this.eDynamicGet(TypePackage.COMPLETION_PARAMETER__COMPLETION,
+                TypePackage.Literals.COMPLETION_PARAMETER__COMPLETION, true, true);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NotificationChain basicSetCompletion(final Completion newCompletion, NotificationChain msgs) {
@@ -73,37 +78,18 @@ public abstract class CompletionParameterImpl extends CDOObjectImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public void setCompletion(final Completion newCompletion) {
-        if (newCompletion != this.eInternalContainer()
-                || (this.eContainerFeatureID() != TypePackage.COMPLETION_PARAMETER__COMPLETION && newCompletion != null)) {
-            if (EcoreUtil.isAncestor(this, newCompletion)) {
-                throw new IllegalArgumentException("Recursive containment not allowed for " + this.toString());
-            }
-            NotificationChain msgs = null;
-            if (this.eInternalContainer() != null) {
-                msgs = this.eBasicRemoveFromContainer(msgs);
-            }
-            if (newCompletion != null) {
-                msgs = ((InternalEObject) newCompletion).eInverseAdd(this, TypePackage.COMPLETION__PARAMETERS,
-                        Completion.class, msgs);
-            }
-            msgs = this.basicSetCompletion(newCompletion, msgs);
-            if (msgs != null) {
-                msgs.dispatch();
-            }
-        } else if (this.eNotificationRequired()) {
-            this.eNotify(new ENotificationImpl(this, Notification.SET, TypePackage.COMPLETION_PARAMETER__COMPLETION,
-                    newCompletion, newCompletion));
-        }
+        this.eDynamicSet(TypePackage.COMPLETION_PARAMETER__COMPLETION,
+                TypePackage.Literals.COMPLETION_PARAMETER__COMPLETION, newCompletion);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -120,7 +106,7 @@ public abstract class CompletionParameterImpl extends CDOObjectImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -135,7 +121,7 @@ public abstract class CompletionParameterImpl extends CDOObjectImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -150,7 +136,7 @@ public abstract class CompletionParameterImpl extends CDOObjectImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -164,7 +150,7 @@ public abstract class CompletionParameterImpl extends CDOObjectImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -179,7 +165,7 @@ public abstract class CompletionParameterImpl extends CDOObjectImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -194,7 +180,7 @@ public abstract class CompletionParameterImpl extends CDOObjectImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

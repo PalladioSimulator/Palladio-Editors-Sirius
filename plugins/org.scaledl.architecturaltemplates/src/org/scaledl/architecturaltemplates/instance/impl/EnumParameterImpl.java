@@ -18,7 +18,7 @@ public class EnumParameterImpl extends ParameterValueImpl implements EnumParamet
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected EnumParameterImpl() {
@@ -27,7 +27,7 @@ public class EnumParameterImpl extends ParameterValueImpl implements EnumParamet
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

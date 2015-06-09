@@ -29,7 +29,7 @@ public interface OCLConstraint extends Constraint {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Constraint</em>' reference.
      * @see #setConstraint(OCLExpression)
      * @see org.scaledl.architecturaltemplates.type.TypePackage#getOCLConstraint_Constraint()
@@ -42,7 +42,7 @@ public interface OCLConstraint extends Constraint {
      * Sets the value of the '
      * {@link org.scaledl.architecturaltemplates.type.OCLConstraint#getConstraint
      * <em>Constraint</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Constraint</em>' reference.
      * @see #getConstraint()

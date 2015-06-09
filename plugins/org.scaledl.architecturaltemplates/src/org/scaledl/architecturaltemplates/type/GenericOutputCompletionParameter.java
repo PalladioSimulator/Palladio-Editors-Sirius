@@ -31,7 +31,7 @@ public interface GenericOutputCompletionParameter extends CompletionParameter {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>File Extension</em>' attribute.
      * @see #setFileExtension(String)
      * @see org.scaledl.architecturaltemplates.type.TypePackage#getGenericOutputCompletionParameter_FileExtension()
@@ -44,7 +44,7 @@ public interface GenericOutputCompletionParameter extends CompletionParameter {
      * Sets the value of the '
      * {@link org.scaledl.architecturaltemplates.type.GenericOutputCompletionParameter#getFileExtension
      * <em>File Extension</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>File Extension</em>' attribute.
      * @see #getFileExtension()

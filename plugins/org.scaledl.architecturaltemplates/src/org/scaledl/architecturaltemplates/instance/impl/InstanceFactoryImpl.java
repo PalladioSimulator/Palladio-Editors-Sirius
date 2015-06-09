@@ -20,14 +20,14 @@ import org.scaledl.architecturaltemplates.instance.StringParameter;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class InstanceFactoryImpl extends EFactoryImpl implements InstanceFactory {
 
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static InstanceFactory init() {
@@ -45,7 +45,7 @@ public class InstanceFactoryImpl extends EFactoryImpl implements InstanceFactory
 
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public InstanceFactoryImpl() {
@@ -54,7 +54,7 @@ public class InstanceFactoryImpl extends EFactoryImpl implements InstanceFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -83,7 +83,7 @@ public class InstanceFactoryImpl extends EFactoryImpl implements InstanceFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -94,7 +94,7 @@ public class InstanceFactoryImpl extends EFactoryImpl implements InstanceFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -105,7 +105,7 @@ public class InstanceFactoryImpl extends EFactoryImpl implements InstanceFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -116,7 +116,7 @@ public class InstanceFactoryImpl extends EFactoryImpl implements InstanceFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public class InstanceFactoryImpl extends EFactoryImpl implements InstanceFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -138,7 +138,7 @@ public class InstanceFactoryImpl extends EFactoryImpl implements InstanceFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -149,7 +149,7 @@ public class InstanceFactoryImpl extends EFactoryImpl implements InstanceFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class InstanceFactoryImpl extends EFactoryImpl implements InstanceFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -171,7 +171,7 @@ public class InstanceFactoryImpl extends EFactoryImpl implements InstanceFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -181,7 +181,7 @@ public class InstanceFactoryImpl extends EFactoryImpl implements InstanceFactory
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @deprecated
      * @generated
      */

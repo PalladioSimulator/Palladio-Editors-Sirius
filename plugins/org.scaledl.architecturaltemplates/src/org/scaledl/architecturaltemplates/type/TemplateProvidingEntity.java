@@ -34,7 +34,7 @@ public interface TemplateProvidingEntity extends CDOObject {
      * be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Template File URI</em>' attribute.
      * @see #setTemplateFileURI(String)
      * @see org.scaledl.architecturaltemplates.type.TypePackage#getTemplateProvidingEntity_TemplateFileURI()
@@ -47,7 +47,7 @@ public interface TemplateProvidingEntity extends CDOObject {
      * Sets the value of the '
      * {@link org.scaledl.architecturaltemplates.type.TemplateProvidingEntity#getTemplateFileURI
      * <em>Template File URI</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Template File URI</em>' attribute.
      * @see #getTemplateFileURI()

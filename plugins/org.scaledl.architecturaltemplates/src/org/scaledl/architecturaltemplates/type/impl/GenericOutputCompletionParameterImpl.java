@@ -2,9 +2,7 @@
  */
 package org.scaledl.architecturaltemplates.type.impl;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.scaledl.architecturaltemplates.type.GenericOutputCompletionParameter;
 import org.scaledl.architecturaltemplates.type.TypePackage;
 
@@ -28,7 +26,7 @@ GenericOutputCompletionParameter {
     /**
      * The default value of the '{@link #getFileExtension() <em>File Extension</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getFileExtension()
      * @generated
      * @ordered
@@ -36,18 +34,8 @@ GenericOutputCompletionParameter {
     protected static final String FILE_EXTENSION_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getFileExtension() <em>File Extension</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getFileExtension()
-     * @generated
-     * @ordered
-     */
-    protected String fileExtension = FILE_EXTENSION_EDEFAULT;
-
-    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected GenericOutputCompletionParameterImpl() {
@@ -56,7 +44,7 @@ GenericOutputCompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -66,33 +54,29 @@ GenericOutputCompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getFileExtension() {
-        return this.fileExtension;
+        return (String) this.eDynamicGet(TypePackage.GENERIC_OUTPUT_COMPLETION_PARAMETER__FILE_EXTENSION,
+                TypePackage.Literals.GENERIC_OUTPUT_COMPLETION_PARAMETER__FILE_EXTENSION, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public void setFileExtension(final String newFileExtension) {
-        final String oldFileExtension = this.fileExtension;
-        this.fileExtension = newFileExtension;
-        if (this.eNotificationRequired()) {
-            this.eNotify(new ENotificationImpl(this, Notification.SET,
-                    TypePackage.GENERIC_OUTPUT_COMPLETION_PARAMETER__FILE_EXTENSION, oldFileExtension,
-                    this.fileExtension));
-        }
+        this.eDynamicSet(TypePackage.GENERIC_OUTPUT_COMPLETION_PARAMETER__FILE_EXTENSION,
+                TypePackage.Literals.GENERIC_OUTPUT_COMPLETION_PARAMETER__FILE_EXTENSION, newFileExtension);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -106,7 +90,7 @@ GenericOutputCompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -121,7 +105,7 @@ GenericOutputCompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -136,35 +120,17 @@ GenericOutputCompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(final int featureID) {
         switch (featureID) {
         case TypePackage.GENERIC_OUTPUT_COMPLETION_PARAMETER__FILE_EXTENSION:
-            return FILE_EXTENSION_EDEFAULT == null ? this.fileExtension != null : !FILE_EXTENSION_EDEFAULT
-            .equals(this.fileExtension);
+            return FILE_EXTENSION_EDEFAULT == null ? this.getFileExtension() != null : !FILE_EXTENSION_EDEFAULT
+            .equals(this.getFileExtension());
         }
         return super.eIsSet(featureID);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public String toString() {
-        if (this.eIsProxy()) {
-            return super.toString();
-        }
-
-        final StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (fileExtension: ");
-        result.append(this.fileExtension);
-        result.append(')');
-        return result.toString();
     }
 
 } // GenericOutputCompletionParameterImpl

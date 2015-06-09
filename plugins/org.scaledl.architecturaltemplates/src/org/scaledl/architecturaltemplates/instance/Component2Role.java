@@ -37,7 +37,7 @@ public interface Component2Role extends CDOObject {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Component</em>' reference.
      * @see #setComponent(AssemblyContext)
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getComponent2Role_Component()
@@ -50,7 +50,7 @@ public interface Component2Role extends CDOObject {
      * Sets the value of the '
      * {@link org.scaledl.architecturaltemplates.instance.Component2Role#getComponent
      * <em>Component</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Component</em>' reference.
      * @see #getComponent()
@@ -66,7 +66,7 @@ public interface Component2Role extends CDOObject {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Roles</em>' reference list.
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getComponent2Role_Roles()
      * @model
@@ -84,7 +84,7 @@ public interface Component2Role extends CDOObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>AT Instance</em>' container reference.
      * @see #setATInstance(ATInstance)
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getComponent2Role_ATInstance()
@@ -98,7 +98,7 @@ public interface Component2Role extends CDOObject {
      * Sets the value of the '
      * {@link org.scaledl.architecturaltemplates.instance.Component2Role#getATInstance
      * <em>AT Instance</em>}' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>AT Instance</em>' container reference.
      * @see #getATInstance()

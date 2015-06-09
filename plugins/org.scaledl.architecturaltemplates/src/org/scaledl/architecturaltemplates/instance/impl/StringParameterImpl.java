@@ -18,7 +18,7 @@ public class StringParameterImpl<T> extends ParameterValueImpl implements String
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected StringParameterImpl() {
@@ -27,7 +27,7 @@ public class StringParameterImpl<T> extends ParameterValueImpl implements String
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

@@ -26,14 +26,14 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static TypeFactory init() {
@@ -51,7 +51,7 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public TypeFactoryImpl() {
@@ -60,7 +60,7 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -97,7 +97,7 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -112,7 +112,7 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -127,7 +127,7 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -138,7 +138,7 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -149,7 +149,7 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -160,7 +160,7 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -171,7 +171,7 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -182,7 +182,7 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -193,7 +193,7 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -204,7 +204,7 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -215,7 +215,7 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -226,7 +226,7 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -237,7 +237,7 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -248,7 +248,7 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -259,7 +259,7 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public PCMFileExtensions createPCMFileExtensionsFromString(final EDataType eDataType, final String initialValue) {
@@ -273,7 +273,7 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public String convertPCMFileExtensionsToString(final EDataType eDataType, final Object instanceValue) {
@@ -282,7 +282,7 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -292,7 +292,7 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @deprecated
      * @generated
      */

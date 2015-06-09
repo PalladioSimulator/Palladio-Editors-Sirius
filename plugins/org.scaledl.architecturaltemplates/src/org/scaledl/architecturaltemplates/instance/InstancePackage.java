@@ -18,7 +18,7 @@ import de.uka.ipd.sdq.pcm.core.entity.EntityPackage;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- *
+ * 
  * @see org.scaledl.architecturaltemplates.instance.InstanceFactory
  * @model kind="package"
  * @generated
@@ -27,28 +27,28 @@ public interface InstancePackage extends EPackage {
 
     /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     String eNAME = "instance";
 
     /**
      * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     String eNS_URI = "http://scaledl.org/ArchitecturalTemplates/Instance/1.0";
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     String eNS_PREFIX = "org.scaledl.architecturaltemplates";
 
     /**
      * The singleton instance of the package. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     InstancePackage eINSTANCE = org.scaledl.architecturaltemplates.instance.impl.InstancePackageImpl.init();
@@ -57,7 +57,7 @@ public interface InstancePackage extends EPackage {
      * The meta object id for the '
      * {@link org.scaledl.architecturaltemplates.instance.impl.ATInstanceImpl <em>AT Instance</em>}'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see org.scaledl.architecturaltemplates.instance.impl.ATInstanceImpl
      * @see org.scaledl.architecturaltemplates.instance.impl.InstancePackageImpl#getATInstance()
      * @generated
@@ -67,7 +67,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -76,7 +76,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Entity Name</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -103,7 +103,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>AT2 Components</b></em>' reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -112,7 +112,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Type</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -139,7 +139,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The number of structural features of the '<em>AT Instance</em>' class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -149,7 +149,7 @@ public interface InstancePackage extends EPackage {
      * The meta object id for the '
      * {@link org.scaledl.architecturaltemplates.instance.impl.Component2RoleImpl
      * <em>Component2 Role</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see org.scaledl.architecturaltemplates.instance.impl.Component2RoleImpl
      * @see org.scaledl.architecturaltemplates.instance.impl.InstancePackageImpl#getComponent2Role()
      * @generated
@@ -159,7 +159,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Component</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -168,7 +168,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Roles</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -177,7 +177,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>AT Instance</b></em>' container reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -196,7 +196,7 @@ public interface InstancePackage extends EPackage {
      * The meta object id for the '
      * {@link org.scaledl.architecturaltemplates.instance.impl.Role2ComponentImpl
      * <em>Role2 Component</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see org.scaledl.architecturaltemplates.instance.impl.Role2ComponentImpl
      * @see org.scaledl.architecturaltemplates.instance.impl.InstancePackageImpl#getRole2Component()
      * @generated
@@ -206,7 +206,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Component</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -215,7 +215,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Role</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -224,7 +224,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>AT Instance</b></em>' container reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -243,7 +243,7 @@ public interface InstancePackage extends EPackage {
      * The meta object id for the '
      * {@link org.scaledl.architecturaltemplates.instance.impl.ParameterValueImpl
      * <em>Parameter Value</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see org.scaledl.architecturaltemplates.instance.impl.ParameterValueImpl
      * @see org.scaledl.architecturaltemplates.instance.impl.InstancePackageImpl#getParameterValue()
      * @generated
@@ -253,7 +253,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Type</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -262,7 +262,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Architectural Template Instance</b></em>' container reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -281,7 +281,7 @@ public interface InstancePackage extends EPackage {
      * The meta object id for the '
      * {@link org.scaledl.architecturaltemplates.instance.impl.EnumParameterImpl
      * <em>Enum Parameter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see org.scaledl.architecturaltemplates.instance.impl.EnumParameterImpl
      * @see org.scaledl.architecturaltemplates.instance.impl.InstancePackageImpl#getEnumParameter()
      * @generated
@@ -291,7 +291,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Type</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -300,7 +300,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Architectural Template Instance</b></em>' container reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -309,7 +309,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The number of structural features of the '<em>Enum Parameter</em>' class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -319,7 +319,7 @@ public interface InstancePackage extends EPackage {
      * The meta object id for the '
      * {@link org.scaledl.architecturaltemplates.instance.impl.IntegerParameterImpl
      * <em>Integer Parameter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see org.scaledl.architecturaltemplates.instance.impl.IntegerParameterImpl
      * @see org.scaledl.architecturaltemplates.instance.impl.InstancePackageImpl#getIntegerParameter()
      * @generated
@@ -329,7 +329,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Type</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -338,7 +338,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Architectural Template Instance</b></em>' container reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -357,7 +357,7 @@ public interface InstancePackage extends EPackage {
      * The meta object id for the '
      * {@link org.scaledl.architecturaltemplates.instance.impl.FloatParameterImpl
      * <em>Float Parameter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see org.scaledl.architecturaltemplates.instance.impl.FloatParameterImpl
      * @see org.scaledl.architecturaltemplates.instance.impl.InstancePackageImpl#getFloatParameter()
      * @generated
@@ -367,7 +367,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Type</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -376,7 +376,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Architectural Template Instance</b></em>' container reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -395,7 +395,7 @@ public interface InstancePackage extends EPackage {
      * The meta object id for the '
      * {@link org.scaledl.architecturaltemplates.instance.impl.StringParameterImpl
      * <em>String Parameter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see org.scaledl.architecturaltemplates.instance.impl.StringParameterImpl
      * @see org.scaledl.architecturaltemplates.instance.impl.InstancePackageImpl#getStringParameter()
      * @generated
@@ -405,7 +405,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Type</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -414,7 +414,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Architectural Template Instance</b></em>' container reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -433,7 +433,7 @@ public interface InstancePackage extends EPackage {
      * The meta object id for the '
      * {@link org.scaledl.architecturaltemplates.instance.impl.Role2ResourceImpl
      * <em>Role2 Resource</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see org.scaledl.architecturaltemplates.instance.impl.Role2ResourceImpl
      * @see org.scaledl.architecturaltemplates.instance.impl.InstancePackageImpl#getRole2Resource()
      * @generated
@@ -443,7 +443,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>AT Instance</b></em>' container reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -452,7 +452,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Resource</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -461,7 +461,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The feature id for the '<em><b>Role</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -470,7 +470,7 @@ public interface InstancePackage extends EPackage {
     /**
      * The number of structural features of the '<em>Role2 Resource</em>' class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      * @ordered
      */
@@ -491,7 +491,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.scaledl.architecturaltemplates.instance.ATInstance#getRole2components
      * <em>Role2components</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the containment reference list '<em>Role2components</em>'.
      * @see org.scaledl.architecturaltemplates.instance.ATInstance#getRole2components()
      * @see #getATInstance()
@@ -503,7 +503,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.scaledl.architecturaltemplates.instance.ATInstance#getComponent2roles
      * <em>Component2roles</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the containment reference list '<em>Component2roles</em>'.
      * @see org.scaledl.architecturaltemplates.instance.ATInstance#getComponent2roles()
      * @see #getATInstance()
@@ -515,7 +515,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.scaledl.architecturaltemplates.instance.ATInstance#getAT2Components
      * <em>AT2 Components</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the reference '<em>AT2 Components</em>'.
      * @see org.scaledl.architecturaltemplates.instance.ATInstance#getAT2Components()
      * @see #getATInstance()
@@ -539,7 +539,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.scaledl.architecturaltemplates.instance.ATInstance#getParameterValues
      * <em>Parameter Values</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the containment reference list '<em>Parameter Values</em>'.
      * @see org.scaledl.architecturaltemplates.instance.ATInstance#getParameterValues()
      * @see #getATInstance()
@@ -551,7 +551,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for the containment reference list '
      * {@link org.scaledl.architecturaltemplates.instance.ATInstance#getRole2resources
      * <em>Role2resources</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the containment reference list '<em>Role2resources</em>'.
      * @see org.scaledl.architecturaltemplates.instance.ATInstance#getRole2resources()
      * @see #getATInstance()
@@ -563,7 +563,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.scaledl.architecturaltemplates.instance.Component2Role <em>Component2 Role</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for class '<em>Component2 Role</em>'.
      * @see org.scaledl.architecturaltemplates.instance.Component2Role
      * @generated
@@ -574,7 +574,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.scaledl.architecturaltemplates.instance.Component2Role#getComponent
      * <em>Component</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the reference '<em>Component</em>'.
      * @see org.scaledl.architecturaltemplates.instance.Component2Role#getComponent()
      * @see #getComponent2Role()
@@ -586,7 +586,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for the reference list '
      * {@link org.scaledl.architecturaltemplates.instance.Component2Role#getRoles <em>Roles</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the reference list '<em>Roles</em>'.
      * @see org.scaledl.architecturaltemplates.instance.Component2Role#getRoles()
      * @see #getComponent2Role()
@@ -598,7 +598,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for the container reference '
      * {@link org.scaledl.architecturaltemplates.instance.Component2Role#getATInstance
      * <em>AT Instance</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the container reference '<em>AT Instance</em>'.
      * @see org.scaledl.architecturaltemplates.instance.Component2Role#getATInstance()
      * @see #getComponent2Role()
@@ -610,7 +610,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.scaledl.architecturaltemplates.instance.Role2Component <em>Role2 Component</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for class '<em>Role2 Component</em>'.
      * @see org.scaledl.architecturaltemplates.instance.Role2Component
      * @generated
@@ -621,7 +621,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.scaledl.architecturaltemplates.instance.Role2Component#getComponent
      * <em>Component</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the reference '<em>Component</em>'.
      * @see org.scaledl.architecturaltemplates.instance.Role2Component#getComponent()
      * @see #getRole2Component()
@@ -633,7 +633,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.scaledl.architecturaltemplates.instance.Role2Component#getRole <em>Role</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the reference '<em>Role</em>'.
      * @see org.scaledl.architecturaltemplates.instance.Role2Component#getRole()
      * @see #getRole2Component()
@@ -645,7 +645,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for the container reference '
      * {@link org.scaledl.architecturaltemplates.instance.Role2Component#getATInstance
      * <em>AT Instance</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the container reference '<em>AT Instance</em>'.
      * @see org.scaledl.architecturaltemplates.instance.Role2Component#getATInstance()
      * @see #getRole2Component()
@@ -657,7 +657,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.scaledl.architecturaltemplates.instance.ParameterValue <em>Parameter Value</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for class '<em>Parameter Value</em>'.
      * @see org.scaledl.architecturaltemplates.instance.ParameterValue
      * @generated
@@ -668,7 +668,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.scaledl.architecturaltemplates.instance.ParameterValue#getType <em>Type</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the reference '<em>Type</em>'.
      * @see org.scaledl.architecturaltemplates.instance.ParameterValue#getType()
      * @see #getParameterValue()
@@ -680,7 +680,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for the container reference '
      * {@link org.scaledl.architecturaltemplates.instance.ParameterValue#getArchitecturalTemplateInstance
      * <em>Architectural Template Instance</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the container reference '<em>Architectural Template Instance</em>
      *         '.
      * @see org.scaledl.architecturaltemplates.instance.ParameterValue#getArchitecturalTemplateInstance()
@@ -693,7 +693,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.scaledl.architecturaltemplates.instance.EnumParameter <em>Enum Parameter</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for class '<em>Enum Parameter</em>'.
      * @see org.scaledl.architecturaltemplates.instance.EnumParameter
      * @generated
@@ -704,7 +704,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.scaledl.architecturaltemplates.instance.IntegerParameter
      * <em>Integer Parameter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for class '<em>Integer Parameter</em>'.
      * @see org.scaledl.architecturaltemplates.instance.IntegerParameter
      * @generated
@@ -715,7 +715,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.scaledl.architecturaltemplates.instance.FloatParameter <em>Float Parameter</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for class '<em>Float Parameter</em>'.
      * @see org.scaledl.architecturaltemplates.instance.FloatParameter
      * @generated
@@ -726,7 +726,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.scaledl.architecturaltemplates.instance.StringParameter <em>String Parameter</em>}
      * '. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for class '<em>String Parameter</em>'.
      * @see org.scaledl.architecturaltemplates.instance.StringParameter
      * @generated
@@ -737,7 +737,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for class '
      * {@link org.scaledl.architecturaltemplates.instance.Role2Resource <em>Role2 Resource</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for class '<em>Role2 Resource</em>'.
      * @see org.scaledl.architecturaltemplates.instance.Role2Resource
      * @generated
@@ -748,7 +748,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for the container reference '
      * {@link org.scaledl.architecturaltemplates.instance.Role2Resource#getATInstance
      * <em>AT Instance</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the container reference '<em>AT Instance</em>'.
      * @see org.scaledl.architecturaltemplates.instance.Role2Resource#getATInstance()
      * @see #getRole2Resource()
@@ -760,7 +760,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.scaledl.architecturaltemplates.instance.Role2Resource#getResource
      * <em>Resource</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the reference '<em>Resource</em>'.
      * @see org.scaledl.architecturaltemplates.instance.Role2Resource#getResource()
      * @see #getRole2Resource()
@@ -772,7 +772,7 @@ public interface InstancePackage extends EPackage {
      * Returns the meta object for the reference '
      * {@link org.scaledl.architecturaltemplates.instance.Role2Resource#getRole <em>Role</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the meta object for the reference '<em>Role</em>'.
      * @see org.scaledl.architecturaltemplates.instance.Role2Resource#getRole()
      * @see #getRole2Resource()
@@ -783,7 +783,7 @@ public interface InstancePackage extends EPackage {
     /**
      * Returns the factory that creates the instances of the model. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @return the factory that creates the instances of the model.
      * @generated
      */
@@ -798,7 +798,7 @@ public interface InstancePackage extends EPackage {
      * <li>and each data type</li>
      * </ul>
      * <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     interface Literals {
@@ -807,7 +807,7 @@ public interface InstancePackage extends EPackage {
          * The meta object literal for the '
          * {@link org.scaledl.architecturaltemplates.instance.impl.ATInstanceImpl
          * <em>AT Instance</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @see org.scaledl.architecturaltemplates.instance.impl.ATInstanceImpl
          * @see org.scaledl.architecturaltemplates.instance.impl.InstancePackageImpl#getATInstance()
          * @generated
@@ -817,7 +817,7 @@ public interface InstancePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Role2components</b></em>' containment reference
          * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         EReference AT_INSTANCE__ROLE2COMPONENTS = eINSTANCE.getATInstance_Role2components();
@@ -825,7 +825,7 @@ public interface InstancePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Component2roles</b></em>' containment reference
          * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         EReference AT_INSTANCE__COMPONENT2ROLES = eINSTANCE.getATInstance_Component2roles();
@@ -849,7 +849,7 @@ public interface InstancePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Parameter Values</b></em>' containment reference
          * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         EReference AT_INSTANCE__PARAMETER_VALUES = eINSTANCE.getATInstance_ParameterValues();
@@ -857,7 +857,7 @@ public interface InstancePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Role2resources</b></em>' containment reference
          * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         EReference AT_INSTANCE__ROLE2RESOURCES = eINSTANCE.getATInstance_Role2resources();
@@ -866,7 +866,7 @@ public interface InstancePackage extends EPackage {
          * The meta object literal for the '
          * {@link org.scaledl.architecturaltemplates.instance.impl.Component2RoleImpl
          * <em>Component2 Role</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @see org.scaledl.architecturaltemplates.instance.impl.Component2RoleImpl
          * @see org.scaledl.architecturaltemplates.instance.impl.InstancePackageImpl#getComponent2Role()
          * @generated
@@ -892,7 +892,7 @@ public interface InstancePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>AT Instance</b></em>' container reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         EReference COMPONENT2_ROLE__AT_INSTANCE = eINSTANCE.getComponent2Role_ATInstance();
@@ -901,7 +901,7 @@ public interface InstancePackage extends EPackage {
          * The meta object literal for the '
          * {@link org.scaledl.architecturaltemplates.instance.impl.Role2ComponentImpl
          * <em>Role2 Component</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @see org.scaledl.architecturaltemplates.instance.impl.Role2ComponentImpl
          * @see org.scaledl.architecturaltemplates.instance.impl.InstancePackageImpl#getRole2Component()
          * @generated
@@ -927,7 +927,7 @@ public interface InstancePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>AT Instance</b></em>' container reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         EReference ROLE2_COMPONENT__AT_INSTANCE = eINSTANCE.getRole2Component_ATInstance();
@@ -936,7 +936,7 @@ public interface InstancePackage extends EPackage {
          * The meta object literal for the '
          * {@link org.scaledl.architecturaltemplates.instance.impl.ParameterValueImpl
          * <em>Parameter Value</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @see org.scaledl.architecturaltemplates.instance.impl.ParameterValueImpl
          * @see org.scaledl.architecturaltemplates.instance.impl.InstancePackageImpl#getParameterValue()
          * @generated
@@ -954,7 +954,7 @@ public interface InstancePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Architectural Template Instance</b></em>'
          * container reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         EReference PARAMETER_VALUE__ARCHITECTURAL_TEMPLATE_INSTANCE = eINSTANCE
@@ -964,7 +964,7 @@ public interface InstancePackage extends EPackage {
          * The meta object literal for the '
          * {@link org.scaledl.architecturaltemplates.instance.impl.EnumParameterImpl
          * <em>Enum Parameter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @see org.scaledl.architecturaltemplates.instance.impl.EnumParameterImpl
          * @see org.scaledl.architecturaltemplates.instance.impl.InstancePackageImpl#getEnumParameter()
          * @generated
@@ -975,7 +975,7 @@ public interface InstancePackage extends EPackage {
          * The meta object literal for the '
          * {@link org.scaledl.architecturaltemplates.instance.impl.IntegerParameterImpl
          * <em>Integer Parameter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @see org.scaledl.architecturaltemplates.instance.impl.IntegerParameterImpl
          * @see org.scaledl.architecturaltemplates.instance.impl.InstancePackageImpl#getIntegerParameter()
          * @generated
@@ -986,7 +986,7 @@ public interface InstancePackage extends EPackage {
          * The meta object literal for the '
          * {@link org.scaledl.architecturaltemplates.instance.impl.FloatParameterImpl
          * <em>Float Parameter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @see org.scaledl.architecturaltemplates.instance.impl.FloatParameterImpl
          * @see org.scaledl.architecturaltemplates.instance.impl.InstancePackageImpl#getFloatParameter()
          * @generated
@@ -997,7 +997,7 @@ public interface InstancePackage extends EPackage {
          * The meta object literal for the '
          * {@link org.scaledl.architecturaltemplates.instance.impl.StringParameterImpl
          * <em>String Parameter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @see org.scaledl.architecturaltemplates.instance.impl.StringParameterImpl
          * @see org.scaledl.architecturaltemplates.instance.impl.InstancePackageImpl#getStringParameter()
          * @generated
@@ -1008,7 +1008,7 @@ public interface InstancePackage extends EPackage {
          * The meta object literal for the '
          * {@link org.scaledl.architecturaltemplates.instance.impl.Role2ResourceImpl
          * <em>Role2 Resource</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @see org.scaledl.architecturaltemplates.instance.impl.Role2ResourceImpl
          * @see org.scaledl.architecturaltemplates.instance.impl.InstancePackageImpl#getRole2Resource()
          * @generated
@@ -1018,7 +1018,7 @@ public interface InstancePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>AT Instance</b></em>' container reference
          * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         *
+         * 
          * @generated
          */
         EReference ROLE2_RESOURCE__AT_INSTANCE = eINSTANCE.getRole2Resource_ATInstance();

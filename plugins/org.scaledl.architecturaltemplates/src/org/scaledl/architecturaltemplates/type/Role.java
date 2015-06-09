@@ -56,7 +56,7 @@ public interface Role extends Entity {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>AT</em>' container reference.
      * @see #setAT(AT)
      * @see org.scaledl.architecturaltemplates.type.TypePackage#getRole_AT()
@@ -69,7 +69,7 @@ public interface Role extends Entity {
     /**
      * Sets the value of the '{@link org.scaledl.architecturaltemplates.type.Role#getAT <em>AT</em>}
      * ' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>AT</em>' container reference.
      * @see #getAT()
@@ -87,7 +87,7 @@ public interface Role extends Entity {
      * be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Constraints</em>' reference list.
      * @see org.scaledl.architecturaltemplates.type.TypePackage#getRole_Constraints()
      * @see org.scaledl.architecturaltemplates.type.Constraint#getRoles
@@ -103,7 +103,7 @@ public interface Role extends Entity {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Stereotype</em>' reference.
      * @see #setStereotype(Stereotype)
      * @see org.scaledl.architecturaltemplates.type.TypePackage#getRole_Stereotype()
@@ -115,7 +115,7 @@ public interface Role extends Entity {
     /**
      * Sets the value of the '{@link org.scaledl.architecturaltemplates.type.Role#getStereotype
      * <em>Stereotype</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Stereotype</em>' reference.
      * @see #getStereotype()

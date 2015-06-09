@@ -18,7 +18,7 @@ public class IntegerParameterImpl extends ParameterValueImpl implements IntegerP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected IntegerParameterImpl() {
@@ -27,7 +27,7 @@ public class IntegerParameterImpl extends ParameterValueImpl implements IntegerP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

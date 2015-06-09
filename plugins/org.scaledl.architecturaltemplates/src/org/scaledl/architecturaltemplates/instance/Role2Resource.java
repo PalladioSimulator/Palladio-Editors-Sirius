@@ -39,7 +39,7 @@ public interface Role2Resource extends CDOObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>AT Instance</em>' container reference.
      * @see #setATInstance(ATInstance)
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getRole2Resource_ATInstance()
@@ -53,7 +53,7 @@ public interface Role2Resource extends CDOObject {
      * Sets the value of the '
      * {@link org.scaledl.architecturaltemplates.instance.Role2Resource#getATInstance
      * <em>AT Instance</em>}' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>AT Instance</em>' container reference.
      * @see #getATInstance()
@@ -68,7 +68,7 @@ public interface Role2Resource extends CDOObject {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Resource</em>' reference.
      * @see #setResource(ResourceContainer)
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getRole2Resource_Resource()
@@ -81,7 +81,7 @@ public interface Role2Resource extends CDOObject {
      * Sets the value of the '
      * {@link org.scaledl.architecturaltemplates.instance.Role2Resource#getResource
      * <em>Resource</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Resource</em>' reference.
      * @see #getResource()
@@ -96,7 +96,7 @@ public interface Role2Resource extends CDOObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Role</em>' reference.
      * @see #setRole(Role)
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getRole2Resource_Role()
@@ -109,7 +109,7 @@ public interface Role2Resource extends CDOObject {
      * Sets the value of the '
      * {@link org.scaledl.architecturaltemplates.instance.Role2Resource#getRole <em>Role</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Role</em>' reference.
      * @see #getRole()

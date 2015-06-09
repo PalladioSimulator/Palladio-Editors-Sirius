@@ -36,7 +36,7 @@ public interface CompletionParameter extends CDOObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Completion</em>' container reference.
      * @see #setCompletion(Completion)
      * @see org.scaledl.architecturaltemplates.type.TypePackage#getCompletionParameter_Completion()
@@ -50,7 +50,7 @@ public interface CompletionParameter extends CDOObject {
      * Sets the value of the '
      * {@link org.scaledl.architecturaltemplates.type.CompletionParameter#getCompletion
      * <em>Completion</em>}' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Completion</em>' container reference.
      * @see #getCompletion()

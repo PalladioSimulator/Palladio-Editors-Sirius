@@ -36,7 +36,7 @@ public interface Repository extends Entity {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>ATs</em>' containment reference list.
      * @see org.scaledl.architecturaltemplates.type.TypePackage#getRepository_ATs()
      * @see org.scaledl.architecturaltemplates.type.AT#getRepository

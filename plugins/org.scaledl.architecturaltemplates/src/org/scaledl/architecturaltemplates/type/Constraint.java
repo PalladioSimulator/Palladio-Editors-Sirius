@@ -33,7 +33,7 @@ public interface Constraint extends Entity {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>AT</em>' container reference.
      * @see #setAT(AT)
      * @see org.scaledl.architecturaltemplates.type.TypePackage#getConstraint_AT()
@@ -46,7 +46,7 @@ public interface Constraint extends Entity {
     /**
      * Sets the value of the '{@link org.scaledl.architecturaltemplates.type.Constraint#getAT
      * <em>AT</em>}' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>AT</em>' container reference.
      * @see #getAT()
@@ -64,7 +64,7 @@ public interface Constraint extends Entity {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Roles</em>' reference list.
      * @see org.scaledl.architecturaltemplates.type.TypePackage#getConstraint_Roles()
      * @see org.scaledl.architecturaltemplates.type.Role#getConstraints

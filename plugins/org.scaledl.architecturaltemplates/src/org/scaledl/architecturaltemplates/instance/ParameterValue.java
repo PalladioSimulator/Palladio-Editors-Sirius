@@ -33,7 +33,7 @@ public interface ParameterValue extends CDOObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Type</em>' reference.
      * @see #setType(Parameter)
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getParameterValue_Type()
@@ -46,7 +46,7 @@ public interface ParameterValue extends CDOObject {
      * Sets the value of the '
      * {@link org.scaledl.architecturaltemplates.instance.ParameterValue#getType <em>Type</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Type</em>' reference.
      * @see #getType()
@@ -64,7 +64,7 @@ public interface ParameterValue extends CDOObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Architectural Template Instance</em>' container reference.
      * @see #setArchitecturalTemplateInstance(ATInstance)
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getParameterValue_ArchitecturalTemplateInstance()
@@ -79,7 +79,7 @@ public interface ParameterValue extends CDOObject {
      * {@link org.scaledl.architecturaltemplates.instance.ParameterValue#getArchitecturalTemplateInstance
      * <em>Architectural Template Instance</em>}' container reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Architectural Template Instance</em>' container
      *            reference.

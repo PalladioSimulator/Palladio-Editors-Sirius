@@ -2,13 +2,9 @@
  */
 package org.scaledl.architecturaltemplates.instance.impl;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 import org.scaledl.architecturaltemplates.instance.ATInstance;
 import org.scaledl.architecturaltemplates.instance.InstancePackage;
@@ -37,28 +33,8 @@ import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
 public class Role2ComponentImpl extends CDOObjectImpl implements Role2Component {
 
     /**
-     * The cached value of the '{@link #getComponent() <em>Component</em>}' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getComponent()
-     * @generated
-     * @ordered
-     */
-    protected AssemblyContext component;
-
-    /**
-     * The cached value of the '{@link #getRole() <em>Role</em>}' reference. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
-     * @see #getRole()
-     * @generated
-     * @ordered
-     */
-    protected Role role;
-
-    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected Role2ComponentImpl() {
@@ -67,7 +43,7 @@ public class Role2ComponentImpl extends CDOObjectImpl implements Role2Component 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -77,108 +53,91 @@ public class Role2ComponentImpl extends CDOObjectImpl implements Role2Component 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
+     * @generated
+     */
+    @Override
+    protected int eStaticFeatureCount() {
+        return 0;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public AssemblyContext getComponent() {
-        if (this.component != null && ((EObject) this.component).eIsProxy()) {
-            final InternalEObject oldComponent = (InternalEObject) this.component;
-            this.component = (AssemblyContext) this.eResolveProxy(oldComponent);
-            if (this.component != oldComponent) {
-                if (this.eNotificationRequired()) {
-                    this.eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-                            InstancePackage.ROLE2_COMPONENT__COMPONENT, oldComponent, this.component));
-                }
-            }
-        }
-        return this.component;
+        return (AssemblyContext) this.eDynamicGet(InstancePackage.ROLE2_COMPONENT__COMPONENT,
+                InstancePackage.Literals.ROLE2_COMPONENT__COMPONENT, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public AssemblyContext basicGetComponent() {
-        return this.component;
+        return (AssemblyContext) this.eDynamicGet(InstancePackage.ROLE2_COMPONENT__COMPONENT,
+                InstancePackage.Literals.ROLE2_COMPONENT__COMPONENT, false, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public void setComponent(final AssemblyContext newComponent) {
-        final AssemblyContext oldComponent = this.component;
-        this.component = newComponent;
-        if (this.eNotificationRequired()) {
-            this.eNotify(new ENotificationImpl(this, Notification.SET, InstancePackage.ROLE2_COMPONENT__COMPONENT,
-                    oldComponent, this.component));
-        }
+        this.eDynamicSet(InstancePackage.ROLE2_COMPONENT__COMPONENT,
+                InstancePackage.Literals.ROLE2_COMPONENT__COMPONENT, newComponent);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public Role getRole() {
-        if (this.role != null && ((EObject) this.role).eIsProxy()) {
-            final InternalEObject oldRole = (InternalEObject) this.role;
-            this.role = (Role) this.eResolveProxy(oldRole);
-            if (this.role != oldRole) {
-                if (this.eNotificationRequired()) {
-                    this.eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-                            InstancePackage.ROLE2_COMPONENT__ROLE, oldRole, this.role));
-                }
-            }
-        }
-        return this.role;
+        return (Role) this.eDynamicGet(InstancePackage.ROLE2_COMPONENT__ROLE,
+                InstancePackage.Literals.ROLE2_COMPONENT__ROLE, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public Role basicGetRole() {
-        return this.role;
+        return (Role) this.eDynamicGet(InstancePackage.ROLE2_COMPONENT__ROLE,
+                InstancePackage.Literals.ROLE2_COMPONENT__ROLE, false, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public void setRole(final Role newRole) {
-        final Role oldRole = this.role;
-        this.role = newRole;
-        if (this.eNotificationRequired()) {
-            this.eNotify(new ENotificationImpl(this, Notification.SET, InstancePackage.ROLE2_COMPONENT__ROLE, oldRole,
-                    this.role));
-        }
+        this.eDynamicSet(InstancePackage.ROLE2_COMPONENT__ROLE, InstancePackage.Literals.ROLE2_COMPONENT__ROLE, newRole);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public ATInstance getATInstance() {
-        if (this.eContainerFeatureID() != InstancePackage.ROLE2_COMPONENT__AT_INSTANCE) {
-            return null;
-        }
-        return (ATInstance) this.eInternalContainer();
+        return (ATInstance) this.eDynamicGet(InstancePackage.ROLE2_COMPONENT__AT_INSTANCE,
+                InstancePackage.Literals.ROLE2_COMPONENT__AT_INSTANCE, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetATInstance(final ATInstance newATInstance, NotificationChain msgs) {
@@ -189,37 +148,18 @@ public class Role2ComponentImpl extends CDOObjectImpl implements Role2Component 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public void setATInstance(final ATInstance newATInstance) {
-        if (newATInstance != this.eInternalContainer()
-                || (this.eContainerFeatureID() != InstancePackage.ROLE2_COMPONENT__AT_INSTANCE && newATInstance != null)) {
-            if (EcoreUtil.isAncestor(this, newATInstance)) {
-                throw new IllegalArgumentException("Recursive containment not allowed for " + this.toString());
-            }
-            NotificationChain msgs = null;
-            if (this.eInternalContainer() != null) {
-                msgs = this.eBasicRemoveFromContainer(msgs);
-            }
-            if (newATInstance != null) {
-                msgs = ((InternalEObject) newATInstance).eInverseAdd(this,
-                        InstancePackage.AT_INSTANCE__ROLE2COMPONENTS, ATInstance.class, msgs);
-            }
-            msgs = this.basicSetATInstance(newATInstance, msgs);
-            if (msgs != null) {
-                msgs.dispatch();
-            }
-        } else if (this.eNotificationRequired()) {
-            this.eNotify(new ENotificationImpl(this, Notification.SET, InstancePackage.ROLE2_COMPONENT__AT_INSTANCE,
-                    newATInstance, newATInstance));
-        }
+        this.eDynamicSet(InstancePackage.ROLE2_COMPONENT__AT_INSTANCE,
+                InstancePackage.Literals.ROLE2_COMPONENT__AT_INSTANCE, newATInstance);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -236,7 +176,7 @@ public class Role2ComponentImpl extends CDOObjectImpl implements Role2Component 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -251,7 +191,7 @@ public class Role2ComponentImpl extends CDOObjectImpl implements Role2Component 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -266,7 +206,7 @@ public class Role2ComponentImpl extends CDOObjectImpl implements Role2Component 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -290,7 +230,7 @@ public class Role2ComponentImpl extends CDOObjectImpl implements Role2Component 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -311,7 +251,7 @@ public class Role2ComponentImpl extends CDOObjectImpl implements Role2Component 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -332,16 +272,16 @@ public class Role2ComponentImpl extends CDOObjectImpl implements Role2Component 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(final int featureID) {
         switch (featureID) {
         case InstancePackage.ROLE2_COMPONENT__COMPONENT:
-            return this.component != null;
+            return this.basicGetComponent() != null;
         case InstancePackage.ROLE2_COMPONENT__ROLE:
-            return this.role != null;
+            return this.basicGetRole() != null;
         case InstancePackage.ROLE2_COMPONENT__AT_INSTANCE:
             return this.getATInstance() != null;
         }

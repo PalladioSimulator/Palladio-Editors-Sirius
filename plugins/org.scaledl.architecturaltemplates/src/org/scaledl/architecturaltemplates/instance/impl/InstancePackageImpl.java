@@ -31,70 +31,70 @@ import de.uka.ipd.sdq.pcm.resourceenvironment.ResourceenvironmentPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
- *
+ * 
  * @generated
  */
 public class InstancePackageImpl extends EPackageImpl implements InstancePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass atInstanceEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass component2RoleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass role2ComponentEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass parameterValueEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass enumParameterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass integerParameterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass floatParameterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass stringParameterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private EClass role2ResourceEClass = null;
@@ -107,7 +107,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
      * Note: the correct way to create the package is via the static factory method {@link #init
      * init()}, which also performs initialization of the package, or returns the registered
      * package, if one already exists. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#eNS_URI
      * @see #init()
@@ -119,7 +119,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private static boolean isInited = false;
@@ -132,7 +132,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
      * This method is used to initialize {@link InstancePackage#eINSTANCE} when that field is
      * accessed. Clients should not invoke it directly. Instead, they should simply access that
      * field to obtain the package. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
@@ -179,7 +179,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -189,7 +189,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -199,7 +199,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -209,7 +209,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -219,7 +219,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -229,7 +229,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -239,7 +239,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -249,7 +249,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -259,7 +259,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -269,7 +269,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -279,7 +279,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -289,7 +289,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -299,7 +299,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -309,7 +309,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -319,7 +319,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -329,7 +329,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -339,7 +339,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -349,7 +349,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -359,7 +359,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -369,7 +369,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -379,7 +379,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -389,7 +389,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -399,7 +399,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -409,7 +409,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -419,7 +419,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -429,7 +429,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -439,7 +439,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -449,7 +449,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private boolean isCreated = false;
@@ -457,7 +457,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
     /**
      * Creates the meta-model objects for the package. This method is guarded to have no affect on
      * any invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public void createPackageContents() {
@@ -505,7 +505,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private boolean isInitialized = false;
@@ -513,7 +513,7 @@ public class InstancePackageImpl extends EPackageImpl implements InstancePackage
     /**
      * Complete the initialization of the package and its meta-model. This method is guarded to have
      * no affect on any invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public void initializePackageContents() {

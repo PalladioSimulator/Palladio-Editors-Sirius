@@ -4,15 +4,10 @@ package org.scaledl.architecturaltemplates.type.impl;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.modelversioning.emfprofile.Stereotype;
 import org.scaledl.architecturaltemplates.type.AT;
@@ -44,38 +39,8 @@ import de.uka.ipd.sdq.pcm.core.entity.impl.EntityImpl;
 public class RoleImpl extends EntityImpl implements Role {
 
     /**
-     * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getParameters()
-     * @generated
-     * @ordered
-     */
-    protected EList<Parameter> parameters;
-
-    /**
-     * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getConstraints()
-     * @generated
-     * @ordered
-     */
-    protected EList<Constraint> constraints;
-
-    /**
-     * The cached value of the '{@link #getStereotype() <em>Stereotype</em>}' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getStereotype()
-     * @generated
-     * @ordered
-     */
-    protected Stereotype stereotype;
-
-    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected RoleImpl() {
@@ -84,7 +49,7 @@ public class RoleImpl extends EntityImpl implements Role {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -94,34 +59,29 @@ public class RoleImpl extends EntityImpl implements Role {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public EList<Parameter> getParameters() {
-        if (this.parameters == null) {
-            this.parameters = new EObjectContainmentWithInverseEList<Parameter>(Parameter.class, this,
-                    TypePackage.ROLE__PARAMETERS, TypePackage.PARAMETER__ROLE);
-        }
-        return this.parameters;
+        return (EList<Parameter>) this.eDynamicGet(TypePackage.ROLE__PARAMETERS, TypePackage.Literals.ROLE__PARAMETERS,
+                true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public AT getAT() {
-        if (this.eContainerFeatureID() != TypePackage.ROLE__AT) {
-            return null;
-        }
-        return (AT) this.eInternalContainer();
+        return (AT) this.eDynamicGet(TypePackage.ROLE__AT, TypePackage.Literals.ROLE__AT, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetAT(final AT newAT, NotificationChain msgs) {
@@ -131,92 +91,60 @@ public class RoleImpl extends EntityImpl implements Role {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public void setAT(final AT newAT) {
-        if (newAT != this.eInternalContainer() || (this.eContainerFeatureID() != TypePackage.ROLE__AT && newAT != null)) {
-            if (EcoreUtil.isAncestor(this, newAT)) {
-                throw new IllegalArgumentException("Recursive containment not allowed for " + this.toString());
-            }
-            NotificationChain msgs = null;
-            if (this.eInternalContainer() != null) {
-                msgs = this.eBasicRemoveFromContainer(msgs);
-            }
-            if (newAT != null) {
-                msgs = ((InternalEObject) newAT).eInverseAdd(this, TypePackage.AT__ROLES, AT.class, msgs);
-            }
-            msgs = this.basicSetAT(newAT, msgs);
-            if (msgs != null) {
-                msgs.dispatch();
-            }
-        } else if (this.eNotificationRequired()) {
-            this.eNotify(new ENotificationImpl(this, Notification.SET, TypePackage.ROLE__AT, newAT, newAT));
-        }
+        this.eDynamicSet(TypePackage.ROLE__AT, TypePackage.Literals.ROLE__AT, newAT);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public EList<Constraint> getConstraints() {
-        if (this.constraints == null) {
-            this.constraints = new EObjectWithInverseResolvingEList.ManyInverse<Constraint>(Constraint.class, this,
-                    TypePackage.ROLE__CONSTRAINTS, TypePackage.CONSTRAINT__ROLES);
-        }
-        return this.constraints;
+        return (EList<Constraint>) this.eDynamicGet(TypePackage.ROLE__CONSTRAINTS,
+                TypePackage.Literals.ROLE__CONSTRAINTS, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public Stereotype getStereotype() {
-        if (this.stereotype != null && this.stereotype.eIsProxy()) {
-            final InternalEObject oldStereotype = (InternalEObject) this.stereotype;
-            this.stereotype = (Stereotype) this.eResolveProxy(oldStereotype);
-            if (this.stereotype != oldStereotype) {
-                if (this.eNotificationRequired()) {
-                    this.eNotify(new ENotificationImpl(this, Notification.RESOLVE, TypePackage.ROLE__STEREOTYPE,
-                            oldStereotype, this.stereotype));
-                }
-            }
-        }
-        return this.stereotype;
+        return (Stereotype) this.eDynamicGet(TypePackage.ROLE__STEREOTYPE, TypePackage.Literals.ROLE__STEREOTYPE, true,
+                true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public Stereotype basicGetStereotype() {
-        return this.stereotype;
+        return (Stereotype) this.eDynamicGet(TypePackage.ROLE__STEREOTYPE, TypePackage.Literals.ROLE__STEREOTYPE,
+                false, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public void setStereotype(final Stereotype newStereotype) {
-        final Stereotype oldStereotype = this.stereotype;
-        this.stereotype = newStereotype;
-        if (this.eNotificationRequired()) {
-            this.eNotify(new ENotificationImpl(this, Notification.SET, TypePackage.ROLE__STEREOTYPE, oldStereotype,
-                    this.stereotype));
-        }
+        this.eDynamicSet(TypePackage.ROLE__STEREOTYPE, TypePackage.Literals.ROLE__STEREOTYPE, newStereotype);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -238,7 +166,7 @@ public class RoleImpl extends EntityImpl implements Role {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -257,7 +185,7 @@ public class RoleImpl extends EntityImpl implements Role {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -271,7 +199,7 @@ public class RoleImpl extends EntityImpl implements Role {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -294,7 +222,7 @@ public class RoleImpl extends EntityImpl implements Role {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -321,7 +249,7 @@ public class RoleImpl extends EntityImpl implements Role {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -345,20 +273,20 @@ public class RoleImpl extends EntityImpl implements Role {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(final int featureID) {
         switch (featureID) {
         case TypePackage.ROLE__PARAMETERS:
-            return this.parameters != null && !this.parameters.isEmpty();
+            return !this.getParameters().isEmpty();
         case TypePackage.ROLE__AT:
             return this.getAT() != null;
         case TypePackage.ROLE__CONSTRAINTS:
-            return this.constraints != null && !this.constraints.isEmpty();
+            return !this.getConstraints().isEmpty();
         case TypePackage.ROLE__STEREOTYPE:
-            return this.stereotype != null;
+            return this.basicGetStereotype() != null;
         }
         return super.eIsSet(featureID);
     }

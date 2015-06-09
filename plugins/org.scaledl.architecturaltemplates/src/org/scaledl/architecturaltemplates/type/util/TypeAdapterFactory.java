@@ -31,7 +31,7 @@ import de.uka.ipd.sdq.pcm.core.entity.NamedElement;
 /**
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides an adapter
  * <code>createXXX</code> method for each class of the model. <!-- end-user-doc -->
- *
+ * 
  * @see org.scaledl.architecturaltemplates.type.TypePackage
  * @generated
  */
@@ -39,14 +39,14 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected static TypePackage modelPackage;
 
     /**
      * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public TypeAdapterFactory() {
@@ -59,7 +59,7 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
      * Returns whether this factory is applicable for the type of the object. <!-- begin-user-doc
      * --> This implementation returns <code>true</code> if the object is either the model's package
      * or is an instance object of the model. <!-- end-user-doc -->
-     *
+     * 
      * @return whether this factory is applicable for the type of the object.
      * @generated
      */
@@ -77,7 +77,7 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
     /**
      * The switch that delegates to the <code>createXXX</code> methods. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected TypeSwitch<Adapter> modelSwitch = new TypeSwitch<Adapter>() {
@@ -185,7 +185,7 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates an adapter for the <code>target</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param target
      *            the object to adapt.
      * @return the adapter for the <code>target</code>.
@@ -201,7 +201,7 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
      * {@link org.scaledl.architecturaltemplates.type.AT <em>AT</em>}'. <!-- begin-user-doc --> This
      * default implementation returns null so that we can easily ignore cases; it's useful to ignore
      * a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-     *
+     * 
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.type.AT
      * @generated
@@ -260,7 +260,7 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
      * {@link org.scaledl.architecturaltemplates.type.Role <em>Role</em>}'. <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore cases; it's useful to
      * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-     *
+     * 
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.type.Role
      * @generated
@@ -290,7 +290,7 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
      * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
      * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
      * end-user-doc -->
-     *
+     * 
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.type.QVTOCompletion
      * @generated
@@ -320,7 +320,7 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
      * <em>Completion Parameter</em>}'. <!-- begin-user-doc --> This default implementation returns
      * null so that we can easily ignore cases; it's useful to ignore a case when inheritance will
      * catch all the cases anyway. <!-- end-user-doc -->
-     *
+     * 
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.type.CompletionParameter
      * @generated
@@ -335,7 +335,7 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
      * <em>Generic Template Completion Parameter</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's useful to ignore a case
      * when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-     *
+     * 
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.type.GenericTemplateCompletionParameter
      * @generated
@@ -350,7 +350,7 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
      * <em>Generic Blackboard Completion Parameter</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's useful to ignore a case
      * when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-     *
+     * 
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.type.GenericBlackboardCompletionParameter
      * @generated
@@ -365,7 +365,7 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
      * <em>PCM Blackboard Completion Parameter</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's useful to ignore a case
      * when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-     *
+     * 
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.type.PCMBlackboardCompletionParameter
      * @generated
@@ -380,7 +380,7 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
      * <em>PCM Template Completion Parameter</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's useful to ignore a case
      * when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-     *
+     * 
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.type.PCMTemplateCompletionParameter
      * @generated
@@ -395,7 +395,7 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
      * <em>Template Providing Entity</em>}'. <!-- begin-user-doc --> This default implementation
      * returns null so that we can easily ignore cases; it's useful to ignore a case when
      * inheritance will catch all the cases anyway. <!-- end-user-doc -->
-     *
+     * 
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.type.TemplateProvidingEntity
      * @generated
@@ -410,7 +410,7 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
      * <em>PCM Output Completion Parameter</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's useful to ignore a case
      * when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-     *
+     * 
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter
      * @generated
@@ -425,7 +425,7 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
      * <em>Generic Output Completion Parameter</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's useful to ignore a case
      * when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-     *
+     * 
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.type.GenericOutputCompletionParameter
      * @generated
@@ -439,7 +439,7 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
      * <em>Identifier</em>}'. <!-- begin-user-doc --> This default implementation returns null so
      * that we can easily ignore cases; it's useful to ignore a case when inheritance will catch all
      * the cases anyway. <!-- end-user-doc -->
-     *
+     * 
      * @return the new adapter.
      * @see de.uka.ipd.sdq.identifier.Identifier
      * @generated
@@ -468,7 +468,7 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
      * <em>Entity</em>}'. <!-- begin-user-doc --> This default implementation returns null so that
      * we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the
      * cases anyway. <!-- end-user-doc -->
-     *
+     * 
      * @return the new adapter.
      * @see de.uka.ipd.sdq.pcm.core.entity.Entity
      * @generated
@@ -480,7 +480,7 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
     /**
      * Creates a new adapter for the default case. <!-- begin-user-doc --> This default
      * implementation returns null. <!-- end-user-doc -->
-     *
+     * 
      * @return the new adapter.
      * @generated
      */
