@@ -29,6 +29,7 @@ public final class ATPartitionConstants {
             add("usageevolution");
             add("dlim");
             add("monitorrepository");
+            add("slo");
         }
     };
 
