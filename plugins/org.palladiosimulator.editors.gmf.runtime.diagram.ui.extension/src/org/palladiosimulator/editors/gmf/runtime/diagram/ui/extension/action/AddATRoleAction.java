@@ -1,8 +1,8 @@
 package org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.action;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.Dialog;
@@ -10,7 +10,7 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
-import org.palladiosimulator.editors.util.at.ArchitecturalTemplateHelpers;
+import org.modelversioning.emfprofile.Stereotype;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.scaledl.architecturaltemplates.type.Role;
 
@@ -45,8 +45,12 @@ public class AddATRoleAction implements IExternalJavaAction {
 		}
 
 		final AssemblyContext assemblyContext = (AssemblyContext) parameter;
-		final List<Role> applicableRoles = ArchitecturalTemplateHelpers
-				.getApplicableRoles(assemblyContext);
+		final Predicate<Stereotype> notAlreadyApplied = stereotype -> StereotypeAPI
+				.getAppliedStereotypes(assemblyContext)
+				.stream()
+				.noneMatch(
+						otherSteretype -> otherSteretype.getName().equals(
+								stereotype));
 
 		final ElementListSelectionDialog dialog = new ElementListSelectionDialog(
 				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
@@ -54,23 +58,23 @@ public class AddATRoleAction implements IExternalJavaAction {
 
 					@Override
 					public String getText(Object element) {
-						return ((Role) element).getEntityName();
+						return ((Stereotype) element).getName();
 					}
-					
+
 				});
 
 		dialog.setTitle(SELECT_ROLE_DIALOG_TITLE);
 		dialog.setMessage(SELECT_ROLE_DIALOG_MESSAGE);
-		dialog.setElements(applicableRoles.toArray());
+		dialog.setElements(StereotypeAPI
+				.getApplicableStereotypes(assemblyContext).stream()
+				.filter(notAlreadyApplied).toArray());
 
-		if (dialog.open() != Dialog.OK || dialog.getFirstResult() == null) {
-			return;
-		}
+		if (dialog.open() != Dialog.OK || dialog.getFirstResult() == null) { return; }
 
-		final Role selectedRole = (Role) dialog.getFirstResult();
+		final Stereotype selectedRoleStereotype = (Stereotype) dialog.getFirstResult();
 
 		StereotypeAPI.applyStereotype(assemblyContext,
-				selectedRole.getStereotype());
+				selectedRoleStereotype);
 	}
 
 	/**
