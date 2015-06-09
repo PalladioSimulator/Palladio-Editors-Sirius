@@ -52,13 +52,19 @@ public class StoreCompletedModelsJob extends SequentialBlackboardInteractingJob<
      * @param folderName
      *            name for folder after the MODEL_GEN_FOLDER_NAME folder, e.g.,
      *            "model-gen/completion/".
+     * @param createNewStorageFolder
+     *            <code>true</code> if an existing storage folder should be deleted and a new one
+     *            should be created, <code>false</code> if an existing folder should be reused.
      */
-    public StoreCompletedModelsJob(final ATExtensionJobConfiguration configuration, final String folderName) {
+    public StoreCompletedModelsJob(final ATExtensionJobConfiguration configuration, final String folderName,
+            final boolean createNewStorageFolder) {
         this.configuration = configuration;
         this.folderName = folderName;
 
-        PLUGIN_CONFIGURATION.setStoragePluginID(configuration.getModelStorageLocation());
-        this.add(new CreatePluginProjectJob(PLUGIN_CONFIGURATION));
+        if (createNewStorageFolder) {
+            PLUGIN_CONFIGURATION.setStoragePluginID(configuration.getModelStorageLocation());
+            this.add(new CreatePluginProjectJob(PLUGIN_CONFIGURATION));
+        }
     }
 
     /**
