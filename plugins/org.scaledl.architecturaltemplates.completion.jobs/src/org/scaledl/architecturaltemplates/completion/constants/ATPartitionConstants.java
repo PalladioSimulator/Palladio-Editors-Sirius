@@ -38,22 +38,6 @@ public final class ATPartitionConstants {
 
         ORIGINAL_PCM("Original PCM", LoadSimuLizarModelsIntoBlackboardJob.ORIGINAL_PCM_MODELS_PARTITION_ID, PCM_FILES),
 
-        EVENT_MIDDLEWARE("Event Middleware", LoadPCMModelsIntoBlackboardJob.EVENT_MIDDLEWARE_PARTITION_ID,
-                new HashSet<String>() {
-
-                    {
-                        add("repository");
-                    }
-                }),
-
-        RMI_MIDDLEWARE("RMI Middleware", LoadPCMModelsIntoBlackboardJob.RMI_MIDDLEWARE_PARTITION_ID,
-                new HashSet<String>() {
-
-                    {
-                        add("repository");
-                    }
-                }),
-
         SDM("SDM", LoadSDMModelsIntoBlackboardJob.SDM_MODEL_PARTITION_ID, new HashSet<String>() {
 
             {
