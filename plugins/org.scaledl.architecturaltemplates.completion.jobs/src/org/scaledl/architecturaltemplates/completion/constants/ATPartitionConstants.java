@@ -3,7 +3,6 @@ package org.scaledl.architecturaltemplates.completion.constants;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.palladiosimulator.simulizar.launcher.jobs.LoadMonitorRepositoryModelIntoBlackboardJob;
 import org.palladiosimulator.simulizar.launcher.jobs.LoadSimuLizarModelsIntoBlackboardJob;
 import org.palladiosimulator.simulizar.reconfiguration.storydiagram.jobs.LoadSDMModelsIntoBlackboardJob;
 
@@ -28,27 +27,16 @@ public final class ATPartitionConstants {
             add("xmi");
             add("usageevolution");
             add("dlim");
+            add("monitorrepository");
         }
     };
 
     @SuppressWarnings("serial")
     public enum Partition {
 
-        // FIXME Why are the contents of Original PCM and PCM different when being stored with the
-        // StoreCompletedModelsJob? [Lehrig]
-
         PCM("PCM", LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID, PCM_FILES),
 
         ORIGINAL_PCM("Original PCM", LoadSimuLizarModelsIntoBlackboardJob.ORIGINAL_PCM_MODELS_PARTITION_ID, PCM_FILES),
-
-        MONITOR_REPOSITORY("Monitor Repository",
-                LoadMonitorRepositoryModelIntoBlackboardJob.MONITOR_REPOSITORY_MODEL_PARTITION_ID,
-                new HashSet<String>() {
-
-                    {
-                        add("monitorrepository");
-                    }
-                }),
 
         EVENT_MIDDLEWARE("Event Middleware", LoadPCMModelsIntoBlackboardJob.EVENT_MIDDLEWARE_PARTITION_ID,
                 new HashSet<String>() {

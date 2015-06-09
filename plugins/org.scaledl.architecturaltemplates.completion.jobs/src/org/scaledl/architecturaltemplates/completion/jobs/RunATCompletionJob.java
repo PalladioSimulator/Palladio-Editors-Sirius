@@ -126,8 +126,6 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
             final CompletionParameter parameter) {
         final ResourceSetPartition pcmPartition = this.getBlackboard().getPartition(
                 ATPartitionConstants.Partition.PCM.getPartitionId());
-        final ResourceSetPartition monitorRepositoryPartition = this.getBlackboard().getPartition(
-                ATPartitionConstants.Partition.MONITOR_REPOSITORY.getPartitionId());
 
         final URI templateFolderURI = rootATUri.appendSegment("templates");
         final URI systemModelFolderURI = getSystemModelFolderURI();
@@ -203,9 +201,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                         outResource.getContents().add(allocation);
                     } catch (final IndexOutOfBoundsException e) {
                     }
-                }
-
-                else if (outResource instanceof PcmmeasuringpointResourceImpl) {
+                } else if (outResource instanceof PcmmeasuringpointResourceImpl) {
                     UsageModel usageModel = null;
                     try {
                         usageModel = pcmRepositoryPartition.getUsageModel();
@@ -226,15 +222,10 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                     final MonitorRepository monitorRepository = monitorRepositoryFactory.createMonitorRepository();
                     outResource.getContents().add(monitorRepository);
                 }
-                if (uri.lastSegment().endsWith("monitorrepository")) {
-                    monitorRepositoryPartition.setContents(uri, outResource.getContents());
-                    monitorRepositoryPartition.resolveAllProxies();
-                    return new ModelLocation(ATPartitionConstants.Partition.MONITOR_REPOSITORY.getPartitionId(), uri);
-                } else {
-                    pcmPartition.setContents(uri, outResource.getContents());
-                    pcmPartition.resolveAllProxies();
-                    return new ModelLocation(ATPartitionConstants.Partition.PCM.getPartitionId(), uri);
-                }
+
+                pcmPartition.setContents(uri, outResource.getContents());
+                pcmPartition.resolveAllProxies();
+                return new ModelLocation(ATPartitionConstants.Partition.PCM.getPartitionId(), uri);
             };
 
         }.doSwitch(parameter);
