@@ -10,7 +10,6 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import org.eclipse.ui.dialogs.ISelectionStatusValidator;
 import org.modelversioning.emfprofile.Profile;
-import org.modelversioning.emfprofile.registry.IProfileRegistry;
 import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
 import org.scaledl.architecturaltemplates.type.AT;
 

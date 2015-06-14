@@ -6,13 +6,12 @@ import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.Dialog;
-import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import org.modelversioning.emfprofile.Stereotype;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.scaledl.architecturaltemplates.type.Role;
+import org.scaledl.architecturaltemplates.ui.RoleSelectionDialog;
 
 import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
 import de.uka.ipd.sdq.pcm.system.System;
@@ -28,8 +27,14 @@ import de.uka.ipd.sdq.pcm.system.System;
  */
 public class AddATRoleAction implements IExternalJavaAction {
 
-	private static final String SELECT_ROLE_DIALOG_MESSAGE = "Select Role to apply to the AssemblyContext";
-	private static final String SELECT_ROLE_DIALOG_TITLE = "Select Role";
+	/**
+	 * Message displayed in the selection dialog.
+	 */
+	private static final String DIALOG_MESSAGE = "Select Role to apply to the AssemblyContext";
+	
+	/**
+	 * The key of the {@link AssemblyContext} parameter.
+	 */
 	private static final String ASSEMBLY_CONTEXT_PARAMETER_KEY = "assemblyContext";
 
 	/**
@@ -52,26 +57,18 @@ public class AddATRoleAction implements IExternalJavaAction {
 						otherSteretype -> otherSteretype.getName().equals(
 								stereotype));
 
-		final ElementListSelectionDialog dialog = new ElementListSelectionDialog(
-				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-				new LabelProvider() {
+		final RoleSelectionDialog dialog = new RoleSelectionDialog(
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
 
-					@Override
-					public String getText(Object element) {
-						return ((Stereotype) element).getName();
-					}
+		dialog.setMessage(DIALOG_MESSAGE);
 
-				});
-
-		dialog.setTitle(SELECT_ROLE_DIALOG_TITLE);
-		dialog.setMessage(SELECT_ROLE_DIALOG_MESSAGE);
 		dialog.setElements(StereotypeAPI
 				.getApplicableStereotypes(assemblyContext).stream()
 				.filter(notAlreadyApplied).toArray());
 
-		if (dialog.open() != Dialog.OK || dialog.getFirstResult() == null) { return; }
+		if (dialog.open() != Dialog.OK) { return; }
 
-		final Stereotype selectedRoleStereotype = (Stereotype) dialog.getFirstResult();
+		final Stereotype selectedRoleStereotype = dialog.getResultRole().getStereotype();
 
 		StereotypeAPI.applyStereotype(assemblyContext,
 				selectedRoleStereotype);
