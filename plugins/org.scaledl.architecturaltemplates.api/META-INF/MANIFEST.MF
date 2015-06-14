@@ -9,3 +9,4 @@ Require-Bundle: org.modelversioning.emfprofile,
  org.palladiosimulator.mdsdprofiles.api,
  org.palladiosimulator.commons,
  org.scaledl.architecturaltemplates
+Export-Package: org.scaledl.architecturaltemplates.api
