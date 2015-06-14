@@ -4,13 +4,10 @@ package org.scaledl.architecturaltemplates.instance.impl;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.scaledl.architecturaltemplates.instance.ATInstance;
 import org.scaledl.architecturaltemplates.instance.Component2Role;
@@ -48,68 +45,8 @@ import de.uka.ipd.sdq.pcm.core.entity.impl.EntityImpl;
 public class ATInstanceImpl extends EntityImpl implements ATInstance {
 
     /**
-     * The cached value of the '{@link #getRole2components() <em>Role2components</em>}' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getRole2components()
-     * @generated
-     * @ordered
-     */
-    protected EList<Role2Component> role2components;
-
-    /**
-     * The cached value of the '{@link #getComponent2roles() <em>Component2roles</em>}' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getComponent2roles()
-     * @generated
-     * @ordered
-     */
-    protected EList<Component2Role> component2roles;
-
-    /**
-     * The cached value of the '{@link #getAT2Components() <em>AT2 Components</em>}' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getAT2Components()
-     * @generated
-     * @ordered
-     */
-    protected Role2Component at2Components;
-
-    /**
-     * The cached value of the '{@link #getType() <em>Type</em>}' reference. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
-     * @see #getType()
-     * @generated
-     * @ordered
-     */
-    protected AT type;
-
-    /**
-     * The cached value of the '{@link #getParameterValues() <em>Parameter Values</em>}' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getParameterValues()
-     * @generated
-     * @ordered
-     */
-    protected EList<ParameterValue> parameterValues;
-
-    /**
-     * The cached value of the '{@link #getRole2resources() <em>Role2resources</em>}' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getRole2resources()
-     * @generated
-     * @ordered
-     */
-    protected EList<Role2Resource> role2resources;
-
-    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ATInstanceImpl() {
@@ -118,7 +55,7 @@ public class ATInstanceImpl extends EntityImpl implements ATInstance {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -128,152 +65,118 @@ public class ATInstanceImpl extends EntityImpl implements ATInstance {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public EList<Role2Component> getRole2components() {
-        if (this.role2components == null) {
-            this.role2components = new EObjectContainmentWithInverseEList<Role2Component>(Role2Component.class, this,
-                    InstancePackage.AT_INSTANCE__ROLE2COMPONENTS, InstancePackage.ROLE2_COMPONENT__AT_INSTANCE);
-        }
-        return this.role2components;
+        return (EList<Role2Component>) this.eDynamicGet(InstancePackage.AT_INSTANCE__ROLE2COMPONENTS,
+                InstancePackage.Literals.AT_INSTANCE__ROLE2COMPONENTS, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public EList<Component2Role> getComponent2roles() {
-        if (this.component2roles == null) {
-            this.component2roles = new EObjectContainmentWithInverseEList<Component2Role>(Component2Role.class, this,
-                    InstancePackage.AT_INSTANCE__COMPONENT2ROLES, InstancePackage.COMPONENT2_ROLE__AT_INSTANCE);
-        }
-        return this.component2roles;
+        return (EList<Component2Role>) this.eDynamicGet(InstancePackage.AT_INSTANCE__COMPONENT2ROLES,
+                InstancePackage.Literals.AT_INSTANCE__COMPONENT2ROLES, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public Role2Component getAT2Components() {
-        if (this.at2Components != null && this.at2Components.eIsProxy()) {
-            final InternalEObject oldAT2Components = (InternalEObject) this.at2Components;
-            this.at2Components = (Role2Component) this.eResolveProxy(oldAT2Components);
-            if (this.at2Components != oldAT2Components) {
-                if (this.eNotificationRequired()) {
-                    this.eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-                            InstancePackage.AT_INSTANCE__AT2_COMPONENTS, oldAT2Components, this.at2Components));
-                }
-            }
-        }
-        return this.at2Components;
+        return (Role2Component) this.eDynamicGet(InstancePackage.AT_INSTANCE__AT2_COMPONENTS,
+                InstancePackage.Literals.AT_INSTANCE__AT2_COMPONENTS, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public Role2Component basicGetAT2Components() {
-        return this.at2Components;
+        return (Role2Component) this.eDynamicGet(InstancePackage.AT_INSTANCE__AT2_COMPONENTS,
+                InstancePackage.Literals.AT_INSTANCE__AT2_COMPONENTS, false, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public void setAT2Components(final Role2Component newAT2Components) {
-        final Role2Component oldAT2Components = this.at2Components;
-        this.at2Components = newAT2Components;
-        if (this.eNotificationRequired()) {
-            this.eNotify(new ENotificationImpl(this, Notification.SET, InstancePackage.AT_INSTANCE__AT2_COMPONENTS,
-                    oldAT2Components, this.at2Components));
-        }
+        this.eDynamicSet(InstancePackage.AT_INSTANCE__AT2_COMPONENTS,
+                InstancePackage.Literals.AT_INSTANCE__AT2_COMPONENTS, newAT2Components);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public AT getType() {
-        if (this.type != null && this.type.eIsProxy()) {
-            final InternalEObject oldType = (InternalEObject) this.type;
-            this.type = (AT) this.eResolveProxy(oldType);
-            if (this.type != oldType) {
-                if (this.eNotificationRequired()) {
-                    this.eNotify(new ENotificationImpl(this, Notification.RESOLVE, InstancePackage.AT_INSTANCE__TYPE,
-                            oldType, this.type));
-                }
-            }
-        }
-        return this.type;
+        return (AT) this.eDynamicGet(InstancePackage.AT_INSTANCE__TYPE, InstancePackage.Literals.AT_INSTANCE__TYPE,
+                true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public AT basicGetType() {
-        return this.type;
+        return (AT) this.eDynamicGet(InstancePackage.AT_INSTANCE__TYPE, InstancePackage.Literals.AT_INSTANCE__TYPE,
+                false, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public void setType(final AT newType) {
-        final AT oldType = this.type;
-        this.type = newType;
-        if (this.eNotificationRequired()) {
-            this.eNotify(new ENotificationImpl(this, Notification.SET, InstancePackage.AT_INSTANCE__TYPE, oldType,
-                    this.type));
-        }
+        this.eDynamicSet(InstancePackage.AT_INSTANCE__TYPE, InstancePackage.Literals.AT_INSTANCE__TYPE, newType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public EList<ParameterValue> getParameterValues() {
-        if (this.parameterValues == null) {
-            this.parameterValues = new EObjectContainmentWithInverseEList<ParameterValue>(ParameterValue.class, this,
-                    InstancePackage.AT_INSTANCE__PARAMETER_VALUES,
-                    InstancePackage.PARAMETER_VALUE__ARCHITECTURAL_TEMPLATE_INSTANCE);
-        }
-        return this.parameterValues;
+        return (EList<ParameterValue>) this.eDynamicGet(InstancePackage.AT_INSTANCE__PARAMETER_VALUES,
+                InstancePackage.Literals.AT_INSTANCE__PARAMETER_VALUES, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public EList<Role2Resource> getRole2resources() {
-        if (this.role2resources == null) {
-            this.role2resources = new EObjectContainmentWithInverseEList<Role2Resource>(Role2Resource.class, this,
-                    InstancePackage.AT_INSTANCE__ROLE2RESOURCES, InstancePackage.ROLE2_RESOURCE__AT_INSTANCE);
-        }
-        return this.role2resources;
+        return (EList<Role2Resource>) this.eDynamicGet(InstancePackage.AT_INSTANCE__ROLE2RESOURCES,
+                InstancePackage.Literals.AT_INSTANCE__ROLE2RESOURCES, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -299,7 +202,7 @@ public class ATInstanceImpl extends EntityImpl implements ATInstance {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -320,7 +223,7 @@ public class ATInstanceImpl extends EntityImpl implements ATInstance {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -350,7 +253,7 @@ public class ATInstanceImpl extends EntityImpl implements ATInstance {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -385,7 +288,7 @@ public class ATInstanceImpl extends EntityImpl implements ATInstance {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -415,24 +318,24 @@ public class ATInstanceImpl extends EntityImpl implements ATInstance {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(final int featureID) {
         switch (featureID) {
         case InstancePackage.AT_INSTANCE__ROLE2COMPONENTS:
-            return this.role2components != null && !this.role2components.isEmpty();
+            return !this.getRole2components().isEmpty();
         case InstancePackage.AT_INSTANCE__COMPONENT2ROLES:
-            return this.component2roles != null && !this.component2roles.isEmpty();
+            return !this.getComponent2roles().isEmpty();
         case InstancePackage.AT_INSTANCE__AT2_COMPONENTS:
-            return this.at2Components != null;
+            return this.basicGetAT2Components() != null;
         case InstancePackage.AT_INSTANCE__TYPE:
-            return this.type != null;
+            return this.basicGetType() != null;
         case InstancePackage.AT_INSTANCE__PARAMETER_VALUES:
-            return this.parameterValues != null && !this.parameterValues.isEmpty();
+            return !this.getParameterValues().isEmpty();
         case InstancePackage.AT_INSTANCE__ROLE2RESOURCES:
-            return this.role2resources != null && !this.role2resources.isEmpty();
+            return !this.getRole2resources().isEmpty();
         }
         return super.eIsSet(featureID);
     }

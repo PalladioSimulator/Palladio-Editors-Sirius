@@ -33,7 +33,7 @@ public interface Parameter extends Entity {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Role</em>' container reference.
      * @see #setRole(Role)
      * @see org.scaledl.architecturaltemplates.type.TypePackage#getParameter_Role()
@@ -46,7 +46,7 @@ public interface Parameter extends Entity {
     /**
      * Sets the value of the '{@link org.scaledl.architecturaltemplates.type.Parameter#getRole
      * <em>Role</em>}' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Role</em>' container reference.
      * @see #getRole()
@@ -61,7 +61,7 @@ public interface Parameter extends Entity {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Data Type</em>' reference.
      * @see #setDataType(EDataType)
      * @see org.scaledl.architecturaltemplates.type.TypePackage#getParameter_DataType()
@@ -73,7 +73,7 @@ public interface Parameter extends Entity {
     /**
      * Sets the value of the '{@link org.scaledl.architecturaltemplates.type.Parameter#getDataType
      * <em>Data Type</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Data Type</em>' reference.
      * @see #getDataType()

@@ -26,7 +26,7 @@ import de.uka.ipd.sdq.pcm.core.entity.NamedElement;
  * each class of the model, starting with the actual class of the object and proceeding up the
  * inheritance hierarchy until a non-null result is returned, which is the result of the switch.
  * <!-- end-user-doc -->
- *
+ * 
  * @see org.scaledl.architecturaltemplates.instance.InstancePackage
  * @generated
  */
@@ -34,14 +34,14 @@ public class InstanceSwitch<T1> extends Switch<T1> {
 
     /**
      * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected static InstancePackage modelPackage;
 
     /**
      * Creates an instance of the switch. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public InstanceSwitch() {
@@ -53,7 +53,7 @@ public class InstanceSwitch<T1> extends Switch<T1> {
     /**
      * Checks whether this is a switch for the given package. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @parameter ePackage the package in question.
      * @return whether this is a switch for the given package.
      * @generated
@@ -66,7 +66,7 @@ public class InstanceSwitch<T1> extends Switch<T1> {
     /**
      * Calls <code>caseXXX</code> for each class of the model until one returns a non null result;
      * it yields that result. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
@@ -190,7 +190,7 @@ public class InstanceSwitch<T1> extends Switch<T1> {
      * Returns the result of interpreting the object as an instance of '<em>Component2 Role</em>'.
      * <!-- begin-user-doc --> This implementation returns null; returning a non-null result will
      * terminate the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Component2 Role</em>'.
@@ -205,7 +205,7 @@ public class InstanceSwitch<T1> extends Switch<T1> {
      * Returns the result of interpreting the object as an instance of '<em>Role2 Component</em>'.
      * <!-- begin-user-doc --> This implementation returns null; returning a non-null result will
      * terminate the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Role2 Component</em>'.
@@ -220,7 +220,7 @@ public class InstanceSwitch<T1> extends Switch<T1> {
      * Returns the result of interpreting the object as an instance of '<em>Parameter Value</em>'.
      * <!-- begin-user-doc --> This implementation returns null; returning a non-null result will
      * terminate the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Parameter Value</em>'.
@@ -235,7 +235,7 @@ public class InstanceSwitch<T1> extends Switch<T1> {
      * Returns the result of interpreting the object as an instance of '<em>Enum Parameter</em>'.
      * <!-- begin-user-doc --> This implementation returns null; returning a non-null result will
      * terminate the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Enum Parameter</em>'.
@@ -250,7 +250,7 @@ public class InstanceSwitch<T1> extends Switch<T1> {
      * Returns the result of interpreting the object as an instance of '<em>Integer Parameter</em>'.
      * <!-- begin-user-doc --> This implementation returns null; returning a non-null result will
      * terminate the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Integer Parameter</em>'.
@@ -265,7 +265,7 @@ public class InstanceSwitch<T1> extends Switch<T1> {
      * Returns the result of interpreting the object as an instance of '<em>Float Parameter</em>'.
      * <!-- begin-user-doc --> This implementation returns null; returning a non-null result will
      * terminate the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Float Parameter</em>'.
@@ -280,7 +280,7 @@ public class InstanceSwitch<T1> extends Switch<T1> {
      * Returns the result of interpreting the object as an instance of '<em>String Parameter</em>'.
      * <!-- begin-user-doc --> This implementation returns null; returning a non-null result will
      * terminate the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>String Parameter</em>'.
@@ -295,7 +295,7 @@ public class InstanceSwitch<T1> extends Switch<T1> {
      * Returns the result of interpreting the object as an instance of '<em>Role2 Resource</em>'.
      * <!-- begin-user-doc --> This implementation returns null; returning a non-null result will
      * terminate the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Role2 Resource</em>'.
@@ -325,7 +325,7 @@ public class InstanceSwitch<T1> extends Switch<T1> {
      * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
      * <!-- begin-user-doc --> This implementation returns null; returning a non-null result will
      * terminate the switch. <!-- end-user-doc -->
-     *
+     * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.

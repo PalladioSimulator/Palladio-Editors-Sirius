@@ -4,15 +4,11 @@ package org.scaledl.architecturaltemplates.instance.impl;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 import org.scaledl.architecturaltemplates.instance.ATInstance;
 import org.scaledl.architecturaltemplates.instance.Component2Role;
 import org.scaledl.architecturaltemplates.instance.InstancePackage;
@@ -37,31 +33,11 @@ import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
  *
  * @generated
  */
-public class Component2RoleImpl extends MinimalEObjectImpl.Container implements Component2Role {
-
-    /**
-     * The cached value of the '{@link #getComponent() <em>Component</em>}' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getComponent()
-     * @generated
-     * @ordered
-     */
-    protected AssemblyContext component;
-
-    /**
-     * The cached value of the '{@link #getRoles() <em>Roles</em>}' reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getRoles()
-     * @generated
-     * @ordered
-     */
-    protected EList<Role> roles;
+public class Component2RoleImpl extends CDOObjectImpl implements Component2Role {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected Component2RoleImpl() {
@@ -70,7 +46,7 @@ public class Component2RoleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -80,77 +56,72 @@ public class Component2RoleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
+     * @generated
+     */
+    @Override
+    protected int eStaticFeatureCount() {
+        return 0;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
     public AssemblyContext getComponent() {
-        if (this.component != null && this.component.eIsProxy()) {
-            final InternalEObject oldComponent = (InternalEObject) this.component;
-            this.component = (AssemblyContext) this.eResolveProxy(oldComponent);
-            if (this.component != oldComponent) {
-                if (this.eNotificationRequired()) {
-                    this.eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-                            InstancePackage.COMPONENT2_ROLE__COMPONENT, oldComponent, this.component));
-                }
-            }
-        }
-        return this.component;
+        return (AssemblyContext) this.eDynamicGet(InstancePackage.COMPONENT2_ROLE__COMPONENT,
+                InstancePackage.Literals.COMPONENT2_ROLE__COMPONENT, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public AssemblyContext basicGetComponent() {
-        return this.component;
+        return (AssemblyContext) this.eDynamicGet(InstancePackage.COMPONENT2_ROLE__COMPONENT,
+                InstancePackage.Literals.COMPONENT2_ROLE__COMPONENT, false, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public void setComponent(final AssemblyContext newComponent) {
-        final AssemblyContext oldComponent = this.component;
-        this.component = newComponent;
-        if (this.eNotificationRequired()) {
-            this.eNotify(new ENotificationImpl(this, Notification.SET, InstancePackage.COMPONENT2_ROLE__COMPONENT,
-                    oldComponent, this.component));
-        }
+        this.eDynamicSet(InstancePackage.COMPONENT2_ROLE__COMPONENT,
+                InstancePackage.Literals.COMPONENT2_ROLE__COMPONENT, newComponent);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public EList<Role> getRoles() {
-        if (this.roles == null) {
-            this.roles = new EObjectResolvingEList<Role>(Role.class, this, InstancePackage.COMPONENT2_ROLE__ROLES);
-        }
-        return this.roles;
+        return (EList<Role>) this.eDynamicGet(InstancePackage.COMPONENT2_ROLE__ROLES,
+                InstancePackage.Literals.COMPONENT2_ROLE__ROLES, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public ATInstance getATInstance() {
-        if (this.eContainerFeatureID() != InstancePackage.COMPONENT2_ROLE__AT_INSTANCE) {
-            return null;
-        }
-        return (ATInstance) this.eInternalContainer();
+        return (ATInstance) this.eDynamicGet(InstancePackage.COMPONENT2_ROLE__AT_INSTANCE,
+                InstancePackage.Literals.COMPONENT2_ROLE__AT_INSTANCE, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetATInstance(final ATInstance newATInstance, NotificationChain msgs) {
@@ -161,37 +132,18 @@ public class Component2RoleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public void setATInstance(final ATInstance newATInstance) {
-        if (newATInstance != this.eInternalContainer()
-                || (this.eContainerFeatureID() != InstancePackage.COMPONENT2_ROLE__AT_INSTANCE && newATInstance != null)) {
-            if (EcoreUtil.isAncestor(this, newATInstance)) {
-                throw new IllegalArgumentException("Recursive containment not allowed for " + this.toString());
-            }
-            NotificationChain msgs = null;
-            if (this.eInternalContainer() != null) {
-                msgs = this.eBasicRemoveFromContainer(msgs);
-            }
-            if (newATInstance != null) {
-                msgs = ((InternalEObject) newATInstance).eInverseAdd(this,
-                        InstancePackage.AT_INSTANCE__COMPONENT2ROLES, ATInstance.class, msgs);
-            }
-            msgs = this.basicSetATInstance(newATInstance, msgs);
-            if (msgs != null) {
-                msgs.dispatch();
-            }
-        } else if (this.eNotificationRequired()) {
-            this.eNotify(new ENotificationImpl(this, Notification.SET, InstancePackage.COMPONENT2_ROLE__AT_INSTANCE,
-                    newATInstance, newATInstance));
-        }
+        this.eDynamicSet(InstancePackage.COMPONENT2_ROLE__AT_INSTANCE,
+                InstancePackage.Literals.COMPONENT2_ROLE__AT_INSTANCE, newATInstance);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -208,7 +160,7 @@ public class Component2RoleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -223,7 +175,7 @@ public class Component2RoleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -238,7 +190,7 @@ public class Component2RoleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -259,7 +211,7 @@ public class Component2RoleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -282,7 +234,7 @@ public class Component2RoleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -303,16 +255,16 @@ public class Component2RoleImpl extends MinimalEObjectImpl.Container implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(final int featureID) {
         switch (featureID) {
         case InstancePackage.COMPONENT2_ROLE__COMPONENT:
-            return this.component != null;
+            return this.basicGetComponent() != null;
         case InstancePackage.COMPONENT2_ROLE__ROLES:
-            return this.roles != null && !this.roles.isEmpty();
+            return !this.getRoles().isEmpty();
         case InstancePackage.COMPONENT2_ROLE__AT_INSTANCE:
             return this.getATInstance() != null;
         }

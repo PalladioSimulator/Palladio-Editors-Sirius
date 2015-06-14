@@ -2,9 +2,7 @@
  */
 package org.scaledl.architecturaltemplates.type.impl;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.scaledl.architecturaltemplates.type.PCMFileExtensions;
 import org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter;
 import org.scaledl.architecturaltemplates.type.TypePackage;
@@ -28,7 +26,7 @@ public class PCMOutputCompletionParameterImpl extends CompletionParameterImpl im
     /**
      * The default value of the '{@link #getFileExtension() <em>File Extension</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getFileExtension()
      * @generated
      * @ordered
@@ -36,18 +34,8 @@ public class PCMOutputCompletionParameterImpl extends CompletionParameterImpl im
     protected static final PCMFileExtensions FILE_EXTENSION_EDEFAULT = PCMFileExtensions.SYSTEM;
 
     /**
-     * The cached value of the '{@link #getFileExtension() <em>File Extension</em>}' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getFileExtension()
-     * @generated
-     * @ordered
-     */
-    protected PCMFileExtensions fileExtension = FILE_EXTENSION_EDEFAULT;
-
-    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected PCMOutputCompletionParameterImpl() {
@@ -56,7 +44,7 @@ public class PCMOutputCompletionParameterImpl extends CompletionParameterImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -66,32 +54,29 @@ public class PCMOutputCompletionParameterImpl extends CompletionParameterImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public PCMFileExtensions getFileExtension() {
-        return this.fileExtension;
+        return (PCMFileExtensions) this.eDynamicGet(TypePackage.PCM_OUTPUT_COMPLETION_PARAMETER__FILE_EXTENSION,
+                TypePackage.Literals.PCM_OUTPUT_COMPLETION_PARAMETER__FILE_EXTENSION, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public void setFileExtension(final PCMFileExtensions newFileExtension) {
-        final PCMFileExtensions oldFileExtension = this.fileExtension;
-        this.fileExtension = newFileExtension == null ? FILE_EXTENSION_EDEFAULT : newFileExtension;
-        if (this.eNotificationRequired()) {
-            this.eNotify(new ENotificationImpl(this, Notification.SET,
-                    TypePackage.PCM_OUTPUT_COMPLETION_PARAMETER__FILE_EXTENSION, oldFileExtension, this.fileExtension));
-        }
+        this.eDynamicSet(TypePackage.PCM_OUTPUT_COMPLETION_PARAMETER__FILE_EXTENSION,
+                TypePackage.Literals.PCM_OUTPUT_COMPLETION_PARAMETER__FILE_EXTENSION, newFileExtension);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -105,7 +90,7 @@ public class PCMOutputCompletionParameterImpl extends CompletionParameterImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -120,7 +105,7 @@ public class PCMOutputCompletionParameterImpl extends CompletionParameterImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -135,34 +120,16 @@ public class PCMOutputCompletionParameterImpl extends CompletionParameterImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(final int featureID) {
         switch (featureID) {
         case TypePackage.PCM_OUTPUT_COMPLETION_PARAMETER__FILE_EXTENSION:
-            return this.fileExtension != FILE_EXTENSION_EDEFAULT;
+            return this.getFileExtension() != FILE_EXTENSION_EDEFAULT;
         }
         return super.eIsSet(featureID);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public String toString() {
-        if (this.eIsProxy()) {
-            return super.toString();
-        }
-
-        final StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (fileExtension: ");
-        result.append(this.fileExtension);
-        result.append(')');
-        return result.toString();
     }
 
 } // PCMOutputCompletionParameterImpl

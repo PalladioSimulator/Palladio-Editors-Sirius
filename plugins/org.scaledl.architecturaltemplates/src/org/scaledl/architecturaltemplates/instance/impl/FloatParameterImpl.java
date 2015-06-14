@@ -18,7 +18,7 @@ public class FloatParameterImpl extends ParameterValueImpl implements FloatParam
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected FloatParameterImpl() {
@@ -27,7 +27,7 @@ public class FloatParameterImpl extends ParameterValueImpl implements FloatParam
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

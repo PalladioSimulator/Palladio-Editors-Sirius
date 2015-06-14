@@ -2,8 +2,8 @@
  */
 package org.scaledl.architecturaltemplates.type;
 
+import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Completion</b></em>'. <!--
@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * particularly includes a refinement transformation to another AT-annotated model as well (the
  * second AT also includes a completion for defining its semantics, thus, has well-defined
  * semantics).
- *
+ * 
  * As an example, consider a component annotated with an AT role "3-times loabalanced". A completion
  * could refine this component into a model with 4 components: 1 loadbalancer plus 3 replica of the
  * originally annotated component. The loadbalancer then evenly distributes load over the 3 replica.
@@ -30,9 +30,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.scaledl.architecturaltemplates.type.TypePackage#getCompletion()
  * @model abstract="true"
+ * @extends CDOObject
  * @generated
  */
-public interface Completion extends EObject {
+public interface Completion extends CDOObject {
 
     /**
      * Returns the value of the '<em><b>AT</b></em>' container reference. It is bidirectional and
@@ -43,7 +44,7 @@ public interface Completion extends EObject {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>AT</em>' container reference.
      * @see #setAT(AT)
      * @see org.scaledl.architecturaltemplates.type.TypePackage#getCompletion_AT()
@@ -56,7 +57,7 @@ public interface Completion extends EObject {
     /**
      * Sets the value of the '{@link org.scaledl.architecturaltemplates.type.Completion#getAT
      * <em>AT</em>}' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>AT</em>' container reference.
      * @see #getAT()

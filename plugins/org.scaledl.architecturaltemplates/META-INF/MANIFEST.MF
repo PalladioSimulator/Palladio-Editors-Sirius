@@ -15,6 +15,7 @@ Export-Package: org.scaledl.architecturaltemplates.instance,
  org.scaledl.architecturaltemplates.type.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.emf.cdo;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.modelversioning.emfprofile;visibility:=reexport,
  de.uka.ipd.sdq.identifier;visibility:=reexport,

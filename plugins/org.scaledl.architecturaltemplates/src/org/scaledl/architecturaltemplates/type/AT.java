@@ -49,7 +49,7 @@ public interface AT extends Entity {
     /**
      * Sets the value of the '{@link org.scaledl.architecturaltemplates.type.AT#getRepository
      * <em>Repository</em>}' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Repository</em>' container reference.
      * @see #getRepository()
@@ -67,7 +67,7 @@ public interface AT extends Entity {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Roles</em>' containment reference list.
      * @see org.scaledl.architecturaltemplates.type.TypePackage#getAT_Roles()
      * @see org.scaledl.architecturaltemplates.type.Role#getAT
@@ -119,7 +119,7 @@ public interface AT extends Entity {
     /**
      * Sets the value of the '{@link org.scaledl.architecturaltemplates.type.AT#getCompletion
      * <em>Completion</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Completion</em>' containment reference.
      * @see #getCompletion()

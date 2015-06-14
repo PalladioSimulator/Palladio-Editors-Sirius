@@ -2,13 +2,10 @@
  */
 package org.scaledl.architecturaltemplates.type.impl;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.scaledl.architecturaltemplates.type.Parameter;
 import org.scaledl.architecturaltemplates.type.Role;
 import org.scaledl.architecturaltemplates.type.TypePackage;
@@ -32,18 +29,8 @@ import de.uka.ipd.sdq.pcm.core.entity.impl.EntityImpl;
 public class ParameterImpl extends EntityImpl implements Parameter {
 
     /**
-     * The cached value of the '{@link #getDataType() <em>Data Type</em>}' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getDataType()
-     * @generated
-     * @ordered
-     */
-    protected EDataType dataType;
-
-    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ParameterImpl() {
@@ -52,7 +39,7 @@ public class ParameterImpl extends EntityImpl implements Parameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -62,20 +49,17 @@ public class ParameterImpl extends EntityImpl implements Parameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public Role getRole() {
-        if (this.eContainerFeatureID() != TypePackage.PARAMETER__ROLE) {
-            return null;
-        }
-        return (Role) this.eInternalContainer();
+        return (Role) this.eDynamicGet(TypePackage.PARAMETER__ROLE, TypePackage.Literals.PARAMETER__ROLE, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetRole(final Role newRole, NotificationChain msgs) {
@@ -85,79 +69,48 @@ public class ParameterImpl extends EntityImpl implements Parameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public void setRole(final Role newRole) {
-        if (newRole != this.eInternalContainer()
-                || (this.eContainerFeatureID() != TypePackage.PARAMETER__ROLE && newRole != null)) {
-            if (EcoreUtil.isAncestor(this, newRole)) {
-                throw new IllegalArgumentException("Recursive containment not allowed for " + this.toString());
-            }
-            NotificationChain msgs = null;
-            if (this.eInternalContainer() != null) {
-                msgs = this.eBasicRemoveFromContainer(msgs);
-            }
-            if (newRole != null) {
-                msgs = ((InternalEObject) newRole).eInverseAdd(this, TypePackage.ROLE__PARAMETERS, Role.class, msgs);
-            }
-            msgs = this.basicSetRole(newRole, msgs);
-            if (msgs != null) {
-                msgs.dispatch();
-            }
-        } else if (this.eNotificationRequired()) {
-            this.eNotify(new ENotificationImpl(this, Notification.SET, TypePackage.PARAMETER__ROLE, newRole, newRole));
-        }
+        this.eDynamicSet(TypePackage.PARAMETER__ROLE, TypePackage.Literals.PARAMETER__ROLE, newRole);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public EDataType getDataType() {
-        if (this.dataType != null && this.dataType.eIsProxy()) {
-            final InternalEObject oldDataType = (InternalEObject) this.dataType;
-            this.dataType = (EDataType) this.eResolveProxy(oldDataType);
-            if (this.dataType != oldDataType) {
-                if (this.eNotificationRequired()) {
-                    this.eNotify(new ENotificationImpl(this, Notification.RESOLVE, TypePackage.PARAMETER__DATA_TYPE,
-                            oldDataType, this.dataType));
-                }
-            }
-        }
-        return this.dataType;
+        return (EDataType) this.eDynamicGet(TypePackage.PARAMETER__DATA_TYPE,
+                TypePackage.Literals.PARAMETER__DATA_TYPE, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public EDataType basicGetDataType() {
-        return this.dataType;
+        return (EDataType) this.eDynamicGet(TypePackage.PARAMETER__DATA_TYPE,
+                TypePackage.Literals.PARAMETER__DATA_TYPE, false, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public void setDataType(final EDataType newDataType) {
-        final EDataType oldDataType = this.dataType;
-        this.dataType = newDataType;
-        if (this.eNotificationRequired()) {
-            this.eNotify(new ENotificationImpl(this, Notification.SET, TypePackage.PARAMETER__DATA_TYPE, oldDataType,
-                    this.dataType));
-        }
+        this.eDynamicSet(TypePackage.PARAMETER__DATA_TYPE, TypePackage.Literals.PARAMETER__DATA_TYPE, newDataType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -174,7 +127,7 @@ public class ParameterImpl extends EntityImpl implements Parameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -189,7 +142,7 @@ public class ParameterImpl extends EntityImpl implements Parameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -203,7 +156,7 @@ public class ParameterImpl extends EntityImpl implements Parameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -222,7 +175,7 @@ public class ParameterImpl extends EntityImpl implements Parameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -240,7 +193,7 @@ public class ParameterImpl extends EntityImpl implements Parameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -258,7 +211,7 @@ public class ParameterImpl extends EntityImpl implements Parameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -267,7 +220,7 @@ public class ParameterImpl extends EntityImpl implements Parameter {
         case TypePackage.PARAMETER__ROLE:
             return this.getRole() != null;
         case TypePackage.PARAMETER__DATA_TYPE:
-            return this.dataType != null;
+            return this.basicGetDataType() != null;
         }
         return super.eIsSet(featureID);
     }

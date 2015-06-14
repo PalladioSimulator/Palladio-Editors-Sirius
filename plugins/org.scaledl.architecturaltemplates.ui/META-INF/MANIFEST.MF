@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Architectural Templates UI
+Bundle-SymbolicName: org.scaledl.architecturaltemplates.ui
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: scaledl.org
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.ui.workbench,
+ org.eclipse.jface,
+ org.scaledl.architecturaltemplates,
+ org.palladiosimulator.mdsdprofiles.api,
+ org.scaledl.architecturaltemplates.api,
+ org.modelversioning.emfprofile.registry

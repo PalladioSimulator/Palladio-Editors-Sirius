@@ -2,7 +2,7 @@
  */
 package org.scaledl.architecturaltemplates.instance;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.cdo.CDOObject;
 import org.scaledl.architecturaltemplates.type.Parameter;
 
 /**
@@ -21,9 +21,10 @@ import org.scaledl.architecturaltemplates.type.Parameter;
  *
  * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getParameterValue()
  * @model abstract="true"
+ * @extends CDOObject
  * @generated
  */
-public interface ParameterValue extends EObject {
+public interface ParameterValue extends CDOObject {
 
     /**
      * Returns the value of the '<em><b>Type</b></em>' reference. <!-- begin-user-doc -->
@@ -32,7 +33,7 @@ public interface ParameterValue extends EObject {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Type</em>' reference.
      * @see #setType(Parameter)
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getParameterValue_Type()
@@ -45,7 +46,7 @@ public interface ParameterValue extends EObject {
      * Sets the value of the '
      * {@link org.scaledl.architecturaltemplates.instance.ParameterValue#getType <em>Type</em>}'
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Type</em>' reference.
      * @see #getType()
@@ -63,7 +64,7 @@ public interface ParameterValue extends EObject {
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Architectural Template Instance</em>' container reference.
      * @see #setArchitecturalTemplateInstance(ATInstance)
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getParameterValue_ArchitecturalTemplateInstance()
@@ -78,7 +79,7 @@ public interface ParameterValue extends EObject {
      * {@link org.scaledl.architecturaltemplates.instance.ParameterValue#getArchitecturalTemplateInstance
      * <em>Architectural Template Instance</em>}' container reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Architectural Template Instance</em>' container
      *            reference.

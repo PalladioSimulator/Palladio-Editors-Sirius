@@ -30,7 +30,7 @@ public interface QVTOCompletion extends Completion {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Qvto File URI</em>' attribute.
      * @see #setQvtoFileURI(String)
      * @see org.scaledl.architecturaltemplates.type.TypePackage#getQVTOCompletion_QvtoFileURI()
@@ -43,7 +43,7 @@ public interface QVTOCompletion extends Completion {
      * Sets the value of the '
      * {@link org.scaledl.architecturaltemplates.type.QVTOCompletion#getQvtoFileURI
      * <em>Qvto File URI</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Qvto File URI</em>' attribute.
      * @see #getQvtoFileURI()

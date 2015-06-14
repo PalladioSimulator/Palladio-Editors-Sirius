@@ -52,18 +52,25 @@ public class StoreCompletedModelsJob extends SequentialBlackboardInteractingJob<
      * @param folderName
      *            name for folder after the MODEL_GEN_FOLDER_NAME folder, e.g.,
      *            "model-gen/completion/".
+     * @param createNewStorageFolder
+     *            <code>true</code> if an existing storage folder should be deleted and a new one
+     *            should be created, <code>false</code> if an existing folder should be reused.
      */
-    public StoreCompletedModelsJob(final ATExtensionJobConfiguration configuration, final String folderName) {
+    public StoreCompletedModelsJob(final ATExtensionJobConfiguration configuration, final String folderName,
+            final boolean createNewStorageFolder) {
         this.configuration = configuration;
         this.folderName = folderName;
 
-        PLUGIN_CONFIGURATION.setStoragePluginID(configuration.getModelStorageLocation());
-        this.add(new CreatePluginProjectJob(PLUGIN_CONFIGURATION));
+        if (createNewStorageFolder) {
+            PLUGIN_CONFIGURATION.setStoragePluginID(configuration.getModelStorageLocation());
+            this.add(new CreatePluginProjectJob(PLUGIN_CONFIGURATION));
+        }
     }
 
     /**
      * For each partition of PARTITION_IDS, copies resources to a dedicated a temporary partition
-     * for storage and stores all resources to disk.
+     * for storage and stores all resources to disk. Note that the copy operation is needed for
+     * setting up new URIs for resources to be saved.
      * 
      * @param monitor
      *            for monitoring the progress of copy and storage.
@@ -72,11 +79,11 @@ public class StoreCompletedModelsJob extends SequentialBlackboardInteractingJob<
     public void execute(final IProgressMonitor monitor) throws JobFailedException, UserCanceledException {
         super.execute(monitor);
 
-        final URI storageURI = URI.createPlatformResourceURI(configuration.getModelStorageLocation(), false);
+        final URI storageURI = URI.createPlatformResourceURI(this.configuration.getModelStorageLocation(), false);
         for (final Partition partition : ATPartitionConstants.Partition.values()) {
-            final ResourceSetPartition copy = copyPartition(partition, storageURI);
-            this.getBlackboard().addPartition(AT_COPY_PARTITION, copy);
+            this.getBlackboard().addPartition(AT_COPY_PARTITION, copyPartition(partition, storageURI));
             storePartition(monitor, AT_COPY_PARTITION);
+            this.getBlackboard().removePartition(AT_COPY_PARTITION);
         }
     }
 

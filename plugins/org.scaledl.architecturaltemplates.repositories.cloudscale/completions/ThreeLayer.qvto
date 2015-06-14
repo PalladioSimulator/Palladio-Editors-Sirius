@@ -1,5 +1,6 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
 
+modeltype ECORE uses 'http://www.eclipse.org/emf/2002/Ecore';
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
 modeltype PCM_SYS uses 'http://sdq.ipd.uka.de/PalladioComponentModel/System/5.0';
 modeltype PCM_USE uses 'http://sdq.ipd.uka.de/PalladioComponentModel/UsageModel/5.0';
@@ -50,7 +51,10 @@ helper allocateAssemblyContextsToResourceContainer(assemblyContexts : Set(Assemb
 		}
 		else if(hasAppliedStereotype(assemblyContext,"MiddleLayerAssembly")){
 			resourceContainer := resourceContainers -> any(rc|rc.id = "_Fg46ICPIEeSwPfc4EJw-WA");
-			applyStereotype(resourceContainer,"Replicable");
+			if (not isProfileApplied(resourceContainer.oclAsType(EObject), "DynamicHorizontalScalingResourceContainerProfile")) {
+				applyProfile(resourceContainer.oclAsType(EObject), "DynamicHorizontalScalingResourceContainerProfile");
+			};
+			applyStereotype(resourceContainer,"ReplicableResourceContainer");
 			threshold := getDoubleTaggedValue(assemblyContext,"responseTimeThreshold","MiddleLayerAssembly");
 			interval := getDoubleTaggedValue(assemblyContext,"responseTimeInterval","MiddleLayerAssembly");
 		}

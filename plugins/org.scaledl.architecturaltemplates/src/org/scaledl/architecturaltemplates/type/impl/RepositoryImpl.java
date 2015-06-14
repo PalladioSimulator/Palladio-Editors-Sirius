@@ -8,7 +8,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.scaledl.architecturaltemplates.type.AT;
 import org.scaledl.architecturaltemplates.type.Repository;
@@ -31,18 +30,8 @@ import de.uka.ipd.sdq.pcm.core.entity.impl.EntityImpl;
 public class RepositoryImpl extends EntityImpl implements Repository {
 
     /**
-     * The cached value of the '{@link #getATs() <em>ATs</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getATs()
-     * @generated
-     * @ordered
-     */
-    protected EList<AT> aTs;
-
-    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected RepositoryImpl() {
@@ -51,7 +40,7 @@ public class RepositoryImpl extends EntityImpl implements Repository {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -61,21 +50,19 @@ public class RepositoryImpl extends EntityImpl implements Repository {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public EList<AT> getATs() {
-        if (this.aTs == null) {
-            this.aTs = new EObjectContainmentWithInverseEList<AT>(AT.class, this, TypePackage.REPOSITORY__ATS,
-                    TypePackage.AT__REPOSITORY);
-        }
-        return this.aTs;
+        return (EList<AT>) this.eDynamicGet(TypePackage.REPOSITORY__ATS, TypePackage.Literals.REPOSITORY__ATS, true,
+                true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -91,7 +78,7 @@ public class RepositoryImpl extends EntityImpl implements Repository {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -106,7 +93,7 @@ public class RepositoryImpl extends EntityImpl implements Repository {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -120,7 +107,7 @@ public class RepositoryImpl extends EntityImpl implements Repository {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -137,7 +124,7 @@ public class RepositoryImpl extends EntityImpl implements Repository {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -152,14 +139,14 @@ public class RepositoryImpl extends EntityImpl implements Repository {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(final int featureID) {
         switch (featureID) {
         case TypePackage.REPOSITORY__ATS:
-            return this.aTs != null && !this.aTs.isEmpty();
+            return !this.getATs().isEmpty();
         }
         return super.eIsSet(featureID);
     }

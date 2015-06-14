@@ -4,14 +4,10 @@ package org.scaledl.architecturaltemplates.type.impl;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.scaledl.architecturaltemplates.type.AT;
 import org.scaledl.architecturaltemplates.type.Constraint;
@@ -36,18 +32,8 @@ import de.uka.ipd.sdq.pcm.core.entity.impl.EntityImpl;
 public abstract class ConstraintImpl extends EntityImpl implements Constraint {
 
     /**
-     * The cached value of the '{@link #getRoles() <em>Roles</em>}' reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getRoles()
-     * @generated
-     * @ordered
-     */
-    protected EList<Role> roles;
-
-    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected ConstraintImpl() {
@@ -56,7 +42,7 @@ public abstract class ConstraintImpl extends EntityImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -66,20 +52,17 @@ public abstract class ConstraintImpl extends EntityImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public AT getAT() {
-        if (this.eContainerFeatureID() != TypePackage.CONSTRAINT__AT) {
-            return null;
-        }
-        return (AT) this.eInternalContainer();
+        return (AT) this.eDynamicGet(TypePackage.CONSTRAINT__AT, TypePackage.Literals.CONSTRAINT__AT, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public NotificationChain basicSetAT(final AT newAT, NotificationChain msgs) {
@@ -89,49 +72,29 @@ public abstract class ConstraintImpl extends EntityImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public void setAT(final AT newAT) {
-        if (newAT != this.eInternalContainer()
-                || (this.eContainerFeatureID() != TypePackage.CONSTRAINT__AT && newAT != null)) {
-            if (EcoreUtil.isAncestor(this, newAT)) {
-                throw new IllegalArgumentException("Recursive containment not allowed for " + this.toString());
-            }
-            NotificationChain msgs = null;
-            if (this.eInternalContainer() != null) {
-                msgs = this.eBasicRemoveFromContainer(msgs);
-            }
-            if (newAT != null) {
-                msgs = ((InternalEObject) newAT).eInverseAdd(this, TypePackage.AT__CONSTRAINTS, AT.class, msgs);
-            }
-            msgs = this.basicSetAT(newAT, msgs);
-            if (msgs != null) {
-                msgs.dispatch();
-            }
-        } else if (this.eNotificationRequired()) {
-            this.eNotify(new ENotificationImpl(this, Notification.SET, TypePackage.CONSTRAINT__AT, newAT, newAT));
-        }
+        this.eDynamicSet(TypePackage.CONSTRAINT__AT, TypePackage.Literals.CONSTRAINT__AT, newAT);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public EList<Role> getRoles() {
-        if (this.roles == null) {
-            this.roles = new EObjectWithInverseResolvingEList.ManyInverse<Role>(Role.class, this,
-                    TypePackage.CONSTRAINT__ROLES, TypePackage.ROLE__CONSTRAINTS);
-        }
-        return this.roles;
+        return (EList<Role>) this.eDynamicGet(TypePackage.CONSTRAINT__ROLES, TypePackage.Literals.CONSTRAINT__ROLES,
+                true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -151,7 +114,7 @@ public abstract class ConstraintImpl extends EntityImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -168,7 +131,7 @@ public abstract class ConstraintImpl extends EntityImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -182,7 +145,7 @@ public abstract class ConstraintImpl extends EntityImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -198,7 +161,7 @@ public abstract class ConstraintImpl extends EntityImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -218,7 +181,7 @@ public abstract class ConstraintImpl extends EntityImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -236,7 +199,7 @@ public abstract class ConstraintImpl extends EntityImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -245,7 +208,7 @@ public abstract class ConstraintImpl extends EntityImpl implements Constraint {
         case TypePackage.CONSTRAINT__AT:
             return this.getAT() != null;
         case TypePackage.CONSTRAINT__ROLES:
-            return this.roles != null && !this.roles.isEmpty();
+            return !this.getRoles().isEmpty();
         }
         return super.eIsSet(featureID);
     }

@@ -12,7 +12,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>PCM File Extensions</b></em>', and utility methods for working with them. <!--
  * end-user-doc -->
- *
+ * 
  * @see org.scaledl.architecturaltemplates.type.TypePackage#getPCMFileExtensions()
  * @model
  * @generated
@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.Enumerator;
 public enum PCMFileExtensions implements Enumerator {
     /**
      * The '<em><b>SYSTEM</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #SYSTEM_VALUE
      * @generated
      * @ordered
@@ -40,7 +40,7 @@ public enum PCMFileExtensions implements Enumerator {
     /**
      * The '<em><b>RESOURCEENVIRONMENT</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #RESOURCEENVIRONMENT_VALUE
      * @generated
      * @ordered
@@ -80,7 +80,7 @@ public enum PCMFileExtensions implements Enumerator {
     /**
      * The '<em><b>MONITORREPOSITORY</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #MONITORREPOSITORY_VALUE
      * @generated
      * @ordered
@@ -99,7 +99,7 @@ public enum PCMFileExtensions implements Enumerator {
     /**
      * The '<em><b>SERVICELEVELOBJECTIVE</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @see #SERVICELEVELOBJECTIVE_VALUE
      * @generated
      * @ordered
@@ -113,7 +113,7 @@ public enum PCMFileExtensions implements Enumerator {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #SYSTEM
      * @model literal="system"
      * @generated
@@ -128,7 +128,7 @@ public enum PCMFileExtensions implements Enumerator {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #ALLOCATION
      * @model literal="allocation"
      * @generated
@@ -143,7 +143,7 @@ public enum PCMFileExtensions implements Enumerator {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #RESOURCEENVIRONMENT
      * @model literal="resourceenvironment"
      * @generated
@@ -158,7 +158,7 @@ public enum PCMFileExtensions implements Enumerator {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #REPOSITORY
      * @model literal="repository"
      * @generated
@@ -173,7 +173,7 @@ public enum PCMFileExtensions implements Enumerator {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #USAGEMODEL
      * @model literal="usagemodel"
      * @generated
@@ -188,7 +188,7 @@ public enum PCMFileExtensions implements Enumerator {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #RESOURCETYPE
      * @model literal="resourcetype"
      * @generated
@@ -203,7 +203,7 @@ public enum PCMFileExtensions implements Enumerator {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #MONITORREPOSITORY
      * @model literal="monitorrepository"
      * @generated
@@ -218,7 +218,7 @@ public enum PCMFileExtensions implements Enumerator {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #PCMMEASURINGPOINT
      * @model literal="pcmmeasuringpoint"
      * @generated
@@ -233,7 +233,7 @@ public enum PCMFileExtensions implements Enumerator {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @see #SERVICELEVELOBJECTIVE
      * @model literal="slo"
      * @generated
@@ -244,7 +244,7 @@ public enum PCMFileExtensions implements Enumerator {
     /**
      * An array of all the '<em><b>PCM File Extensions</b></em>' enumerators. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private static final PCMFileExtensions[] VALUES_ARRAY = new PCMFileExtensions[] { SYSTEM, ALLOCATION,
@@ -262,7 +262,7 @@ public enum PCMFileExtensions implements Enumerator {
     /**
      * Returns the '<em><b>PCM File Extensions</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static PCMFileExtensions get(final String literal) {
@@ -292,7 +292,7 @@ public enum PCMFileExtensions implements Enumerator {
     /**
      * Returns the '<em><b>PCM File Extensions</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     public static PCMFileExtensions get(final int value) {
@@ -321,28 +321,28 @@ public enum PCMFileExtensions implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private final String literal;
 
     /**
      * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     private PCMFileExtensions(final int value, final String name, final String literal) {
@@ -353,7 +353,7 @@ public enum PCMFileExtensions implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -363,7 +363,7 @@ public enum PCMFileExtensions implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -373,7 +373,7 @@ public enum PCMFileExtensions implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override

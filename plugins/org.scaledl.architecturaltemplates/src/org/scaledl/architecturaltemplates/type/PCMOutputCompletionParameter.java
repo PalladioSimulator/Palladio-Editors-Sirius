@@ -46,7 +46,7 @@ public interface PCMOutputCompletionParameter extends CompletionParameter {
      * Sets the value of the '
      * {@link org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter#getFileExtension
      * <em>File Extension</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>File Extension</em>' attribute.
      * @see org.scaledl.architecturaltemplates.type.PCMFileExtensions

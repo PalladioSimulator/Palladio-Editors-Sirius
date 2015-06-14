@@ -2,8 +2,8 @@
  */
 package org.scaledl.architecturaltemplates.instance;
 
+import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.scaledl.architecturaltemplates.type.Role;
 
 import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
@@ -25,9 +25,10 @@ import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
  *
  * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getComponent2Role()
  * @model
+ * @extends CDOObject
  * @generated
  */
-public interface Component2Role extends EObject {
+public interface Component2Role extends CDOObject {
 
     /**
      * Returns the value of the '<em><b>Component</b></em>' reference. <!-- begin-user-doc -->
@@ -36,7 +37,7 @@ public interface Component2Role extends EObject {
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Component</em>' reference.
      * @see #setComponent(AssemblyContext)
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getComponent2Role_Component()
@@ -49,7 +50,7 @@ public interface Component2Role extends EObject {
      * Sets the value of the '
      * {@link org.scaledl.architecturaltemplates.instance.Component2Role#getComponent
      * <em>Component</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Component</em>' reference.
      * @see #getComponent()
@@ -65,7 +66,7 @@ public interface Component2Role extends EObject {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Roles</em>' reference list.
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getComponent2Role_Roles()
      * @model
@@ -83,7 +84,7 @@ public interface Component2Role extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>AT Instance</em>' container reference.
      * @see #setATInstance(ATInstance)
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getComponent2Role_ATInstance()
@@ -97,7 +98,7 @@ public interface Component2Role extends EObject {
      * Sets the value of the '
      * {@link org.scaledl.architecturaltemplates.instance.Component2Role#getATInstance
      * <em>AT Instance</em>}' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>AT Instance</em>' container reference.
      * @see #getATInstance()

@@ -28,7 +28,6 @@ import org.palladiosimulator.servicelevelobjective.ServicelevelObjectiveFactory;
 import org.palladiosimulator.servicelevelobjective.util.ServicelevelObjectiveResourceImpl;
 import org.scaledl.architecturaltemplates.completion.config.ATExtensionJobConfiguration;
 import org.scaledl.architecturaltemplates.completion.constants.ATPartitionConstants;
-import org.scaledl.architecturaltemplates.completion.constants.ATPartitionConstants.Partition;
 import org.scaledl.architecturaltemplates.type.AT;
 import org.scaledl.architecturaltemplates.type.CompletionParameter;
 import org.scaledl.architecturaltemplates.type.PCMBlackboardCompletionParameter;
@@ -127,8 +126,6 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
             final CompletionParameter parameter) {
         final ResourceSetPartition pcmPartition = this.getBlackboard().getPartition(
                 ATPartitionConstants.Partition.PCM.getPartitionId());
-        final ResourceSetPartition monitorRepositoryPartition = this.getBlackboard().getPartition(
-                ATPartitionConstants.Partition.MONITOR_REPOSITORY.getPartitionId());
 
         final URI templateFolderURI = rootATUri.appendSegment("templates");
         final URI systemModelFolderURI = getSystemModelFolderURI();
@@ -146,15 +143,13 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                 final URI templateURI = templateFolderURI.appendSegments(segments);
                 final String lastSegment = templateURI.lastSegment();
 
-                for (final Partition partition : ATPartitionConstants.Partition.values()) {
-                    for (final String fileName : partition.getFileNames()) {
-                        if (lastSegment.endsWith(fileName)) {
-                            final ResourceSetPartition resourceSetPartition = getBlackboard().getPartition(
-                                    partition.getPartitionId());
-                            resourceSetPartition.loadModel(templateURI);
-                            resourceSetPartition.resolveAllProxies();
-                            return new ModelLocation(partition.getPartitionId(), templateURI);
-                        }
+                for (final String fileName : ATPartitionConstants.PCM_FILES) {
+                    if (lastSegment.endsWith(fileName)) {
+                        final ResourceSetPartition resourceSetPartition = getBlackboard().getPartition(
+                                ATPartitionConstants.Partition.PCM.getPartitionId());
+                        resourceSetPartition.loadModel(templateURI);
+                        resourceSetPartition.resolveAllProxies();
+                        return new ModelLocation(ATPartitionConstants.Partition.PCM.getPartitionId(), templateURI);
                     }
                 }
 
@@ -169,19 +164,16 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
             public ModelLocation casePCMBlackboardCompletionParameter(final PCMBlackboardCompletionParameter object) {
                 final String parameterFileExtension = object.getFileExtension().getLiteral();
 
-                for (final Partition partition : ATPartitionConstants.Partition.values()) {
-                    final ResourceSetPartition resourceSetPartition = getBlackboard().getPartition(
-                            partition.getPartitionId());
+                final ResourceSetPartition resourceSetPartition = getBlackboard().getPartition(
+                        ATPartitionConstants.Partition.PCM.getPartitionId());
 
-                    for (final Resource r : resourceSetPartition.getResourceSet().getResources()) {
-                        final URI modelURI = r.getURI();
-                        final String fileExtension = modelURI.fileExtension();
+                for (final Resource r : resourceSetPartition.getResourceSet().getResources()) {
+                    final URI modelURI = r.getURI();
+                    final String fileExtension = modelURI.fileExtension();
 
-                        if (fileExtension.equals(parameterFileExtension)
-                                && !modelURI.toString().startsWith("pathmap://")
-                                && !modelURI.toString().contains("PrimitiveTypes.repository")) {
-                            return new ModelLocation(partition.getPartitionId(), modelURI);
-                        }
+                    if (fileExtension.equals(parameterFileExtension) && !modelURI.toString().startsWith("pathmap://")
+                            && !modelURI.toString().contains("PrimitiveTypes.repository")) {
+                        return new ModelLocation(ATPartitionConstants.Partition.PCM.getPartitionId(), modelURI);
                     }
                 }
 
@@ -209,9 +201,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                         outResource.getContents().add(allocation);
                     } catch (final IndexOutOfBoundsException e) {
                     }
-                }
-
-                else if (outResource instanceof PcmmeasuringpointResourceImpl) {
+                } else if (outResource instanceof PcmmeasuringpointResourceImpl) {
                     UsageModel usageModel = null;
                     try {
                         usageModel = pcmRepositoryPartition.getUsageModel();
@@ -232,15 +222,10 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                     final MonitorRepository monitorRepository = monitorRepositoryFactory.createMonitorRepository();
                     outResource.getContents().add(monitorRepository);
                 }
-                if (uri.lastSegment().endsWith("monitorrepository")) {
-                    monitorRepositoryPartition.setContents(uri, outResource.getContents());
-                    monitorRepositoryPartition.resolveAllProxies();
-                    return new ModelLocation(ATPartitionConstants.Partition.MONITOR_REPOSITORY.getPartitionId(), uri);
-                } else {
-                    pcmPartition.setContents(uri, outResource.getContents());
-                    pcmPartition.resolveAllProxies();
-                    return new ModelLocation(ATPartitionConstants.Partition.PCM.getPartitionId(), uri);
-                }
+
+                pcmPartition.setContents(uri, outResource.getContents());
+                pcmPartition.resolveAllProxies();
+                return new ModelLocation(ATPartitionConstants.Partition.PCM.getPartitionId(), uri);
             };
 
         }.doSwitch(parameter);

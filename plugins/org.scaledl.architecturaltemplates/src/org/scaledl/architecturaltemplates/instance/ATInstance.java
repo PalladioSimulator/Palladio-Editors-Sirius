@@ -45,7 +45,7 @@ public interface ATInstance extends Entity {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Role2components</em>' containment reference list.
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getATInstance_Role2components()
      * @see org.scaledl.architecturaltemplates.instance.Role2Component#getATInstance
@@ -65,7 +65,7 @@ public interface ATInstance extends Entity {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Component2roles</em>' containment reference list.
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getATInstance_Component2roles()
      * @see org.scaledl.architecturaltemplates.instance.Component2Role#getATInstance
@@ -81,7 +81,7 @@ public interface ATInstance extends Entity {
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>AT2 Components</em>' reference.
      * @see #setAT2Components(Role2Component)
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getATInstance_AT2Components()
@@ -94,7 +94,7 @@ public interface ATInstance extends Entity {
      * Sets the value of the '
      * {@link org.scaledl.architecturaltemplates.instance.ATInstance#getAT2Components
      * <em>AT2 Components</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>AT2 Components</em>' reference.
      * @see #getAT2Components()
@@ -109,7 +109,7 @@ public interface ATInstance extends Entity {
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Type</em>' reference.
      * @see #setType(AT)
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getATInstance_Type()
@@ -121,7 +121,7 @@ public interface ATInstance extends Entity {
     /**
      * Sets the value of the '{@link org.scaledl.architecturaltemplates.instance.ATInstance#getType
      * <em>Type</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Type</em>' reference.
      * @see #getType()
@@ -140,7 +140,7 @@ public interface ATInstance extends Entity {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Parameter Values</em>' containment reference list.
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getATInstance_ParameterValues()
      * @see org.scaledl.architecturaltemplates.instance.ParameterValue#getArchitecturalTemplateInstance
@@ -160,7 +160,7 @@ public interface ATInstance extends Entity {
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Role2resources</em>' containment reference list.
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getATInstance_Role2resources()
      * @see org.scaledl.architecturaltemplates.instance.Role2Resource#getATInstance

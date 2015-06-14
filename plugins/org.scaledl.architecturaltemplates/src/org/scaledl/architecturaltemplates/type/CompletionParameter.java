@@ -2,7 +2,7 @@
  */
 package org.scaledl.architecturaltemplates.type;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.cdo.CDOObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -21,9 +21,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.scaledl.architecturaltemplates.type.TypePackage#getCompletionParameter()
  * @model abstract="true"
+ * @extends CDOObject
  * @generated
  */
-public interface CompletionParameter extends EObject {
+public interface CompletionParameter extends CDOObject {
 
     /**
      * Returns the value of the '<em><b>Completion</b></em>' container reference. It is
@@ -35,7 +36,7 @@ public interface CompletionParameter extends EObject {
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     *
+     * 
      * @return the value of the '<em>Completion</em>' container reference.
      * @see #setCompletion(Completion)
      * @see org.scaledl.architecturaltemplates.type.TypePackage#getCompletionParameter_Completion()
@@ -49,7 +50,7 @@ public interface CompletionParameter extends EObject {
      * Sets the value of the '
      * {@link org.scaledl.architecturaltemplates.type.CompletionParameter#getCompletion
      * <em>Completion</em>}' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @param value
      *            the new value of the '<em>Completion</em>' container reference.
      * @see #getCompletion()

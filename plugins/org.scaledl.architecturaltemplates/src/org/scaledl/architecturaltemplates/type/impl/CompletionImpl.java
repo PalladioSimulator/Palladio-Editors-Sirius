@@ -4,16 +4,12 @@ package org.scaledl.architecturaltemplates.type.impl;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 import org.scaledl.architecturaltemplates.type.AT;
 import org.scaledl.architecturaltemplates.type.Completion;
 import org.scaledl.architecturaltemplates.type.CompletionParameter;
@@ -33,21 +29,11 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  *
  * @generated
  */
-public abstract class CompletionImpl extends MinimalEObjectImpl.Container implements Completion {
-
-    /**
-     * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getParameters()
-     * @generated
-     * @ordered
-     */
-    protected EList<CompletionParameter> parameters;
+public abstract class CompletionImpl extends CDOObjectImpl implements Completion {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected CompletionImpl() {
@@ -56,7 +42,7 @@ public abstract class CompletionImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -66,20 +52,27 @@ public abstract class CompletionImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
-    public AT getAT() {
-        if (this.eContainerFeatureID() != TypePackage.COMPLETION__AT) {
-            return null;
-        }
-        return (AT) this.eInternalContainer();
+    protected int eStaticFeatureCount() {
+        return 0;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
+     * @generated
+     */
+    @Override
+    public AT getAT() {
+        return (AT) this.eDynamicGet(TypePackage.COMPLETION__AT, TypePackage.Literals.COMPLETION__AT, true, true);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public NotificationChain basicSetAT(final AT newAT, NotificationChain msgs) {
@@ -89,49 +82,29 @@ public abstract class CompletionImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public void setAT(final AT newAT) {
-        if (newAT != this.eInternalContainer()
-                || (this.eContainerFeatureID() != TypePackage.COMPLETION__AT && newAT != null)) {
-            if (EcoreUtil.isAncestor(this, newAT)) {
-                throw new IllegalArgumentException("Recursive containment not allowed for " + this.toString());
-            }
-            NotificationChain msgs = null;
-            if (this.eInternalContainer() != null) {
-                msgs = this.eBasicRemoveFromContainer(msgs);
-            }
-            if (newAT != null) {
-                msgs = ((InternalEObject) newAT).eInverseAdd(this, TypePackage.AT__COMPLETION, AT.class, msgs);
-            }
-            msgs = this.basicSetAT(newAT, msgs);
-            if (msgs != null) {
-                msgs.dispatch();
-            }
-        } else if (this.eNotificationRequired()) {
-            this.eNotify(new ENotificationImpl(this, Notification.SET, TypePackage.COMPLETION__AT, newAT, newAT));
-        }
+        this.eDynamicSet(TypePackage.COMPLETION__AT, TypePackage.Literals.COMPLETION__AT, newAT);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public EList<CompletionParameter> getParameters() {
-        if (this.parameters == null) {
-            this.parameters = new EObjectContainmentWithInverseEList<CompletionParameter>(CompletionParameter.class,
-                    this, TypePackage.COMPLETION__PARAMETERS, TypePackage.COMPLETION_PARAMETER__COMPLETION);
-        }
-        return this.parameters;
+        return (EList<CompletionParameter>) this.eDynamicGet(TypePackage.COMPLETION__PARAMETERS,
+                TypePackage.Literals.COMPLETION__PARAMETERS, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -151,7 +124,7 @@ public abstract class CompletionImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -168,7 +141,7 @@ public abstract class CompletionImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -182,7 +155,7 @@ public abstract class CompletionImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -198,7 +171,7 @@ public abstract class CompletionImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -218,7 +191,7 @@ public abstract class CompletionImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -236,7 +209,7 @@ public abstract class CompletionImpl extends MinimalEObjectImpl.Container implem
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -245,7 +218,7 @@ public abstract class CompletionImpl extends MinimalEObjectImpl.Container implem
         case TypePackage.COMPLETION__AT:
             return this.getAT() != null;
         case TypePackage.COMPLETION__PARAMETERS:
-            return this.parameters != null && !this.parameters.isEmpty();
+            return !this.getParameters().isEmpty();
         }
         return super.eIsSet(featureID);
     }

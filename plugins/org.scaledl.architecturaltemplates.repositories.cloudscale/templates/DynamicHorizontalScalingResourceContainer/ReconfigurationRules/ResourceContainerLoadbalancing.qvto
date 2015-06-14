@@ -1,5 +1,6 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
 
+modeltype ECORE uses 'http://www.eclipse.org/emf/2002/Ecore';
 modeltype PRM uses 'http://simulizar.palladiosimulator.org/RuntimeMeasurement/1.0';
 modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
 modeltype PCM_REP uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0';
@@ -36,6 +37,10 @@ main() {
 	
 	assert fatal(loadbalancedResourceContainer != null)
 		with log ("There is no Stereotype Application!");
+	
+	if (not (isProfileApplied(resourceEnvironment.oclAsType(EObject), "LoadbalancedProfile"))) {
+		applyProfile(resourceEnvironment.oclAsType(EObject), "LoadbalancedProfile");
+	};
 	
 	if(not hasAppliedStereotype(loadbalancedResourceContainer,"OriginalResourceContainer")){
 			//apply Stereotype OriginalAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				

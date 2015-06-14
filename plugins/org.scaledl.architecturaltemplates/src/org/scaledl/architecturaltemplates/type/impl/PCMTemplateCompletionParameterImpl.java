@@ -2,9 +2,7 @@
  */
 package org.scaledl.architecturaltemplates.type.impl;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.scaledl.architecturaltemplates.type.PCMTemplateCompletionParameter;
 import org.scaledl.architecturaltemplates.type.TemplateProvidingEntity;
 import org.scaledl.architecturaltemplates.type.TypePackage;
@@ -29,7 +27,7 @@ PCMTemplateCompletionParameter {
     /**
      * The default value of the '{@link #getTemplateFileURI() <em>Template File URI</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @see #getTemplateFileURI()
      * @generated
      * @ordered
@@ -37,18 +35,8 @@ PCMTemplateCompletionParameter {
     protected static final String TEMPLATE_FILE_URI_EDEFAULT = null;
 
     /**
-     * The cached value of the '{@link #getTemplateFileURI() <em>Template File URI</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @see #getTemplateFileURI()
-     * @generated
-     * @ordered
-     */
-    protected String templateFileURI = TEMPLATE_FILE_URI_EDEFAULT;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     protected PCMTemplateCompletionParameterImpl() {
@@ -57,7 +45,7 @@ PCMTemplateCompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -67,33 +55,29 @@ PCMTemplateCompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public String getTemplateFileURI() {
-        return this.templateFileURI;
+        return (String) this.eDynamicGet(TypePackage.PCM_TEMPLATE_COMPLETION_PARAMETER__TEMPLATE_FILE_URI,
+                TypePackage.Literals.TEMPLATE_PROVIDING_ENTITY__TEMPLATE_FILE_URI, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public void setTemplateFileURI(final String newTemplateFileURI) {
-        final String oldTemplateFileURI = this.templateFileURI;
-        this.templateFileURI = newTemplateFileURI;
-        if (this.eNotificationRequired()) {
-            this.eNotify(new ENotificationImpl(this, Notification.SET,
-                    TypePackage.PCM_TEMPLATE_COMPLETION_PARAMETER__TEMPLATE_FILE_URI, oldTemplateFileURI,
-                    this.templateFileURI));
-        }
+        this.eDynamicSet(TypePackage.PCM_TEMPLATE_COMPLETION_PARAMETER__TEMPLATE_FILE_URI,
+                TypePackage.Literals.TEMPLATE_PROVIDING_ENTITY__TEMPLATE_FILE_URI, newTemplateFileURI);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -107,7 +91,7 @@ PCMTemplateCompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -122,7 +106,7 @@ PCMTemplateCompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -137,22 +121,22 @@ PCMTemplateCompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
     public boolean eIsSet(final int featureID) {
         switch (featureID) {
         case TypePackage.PCM_TEMPLATE_COMPLETION_PARAMETER__TEMPLATE_FILE_URI:
-            return TEMPLATE_FILE_URI_EDEFAULT == null ? this.templateFileURI != null : !TEMPLATE_FILE_URI_EDEFAULT
-            .equals(this.templateFileURI);
+            return TEMPLATE_FILE_URI_EDEFAULT == null ? this.getTemplateFileURI() != null : !TEMPLATE_FILE_URI_EDEFAULT
+            .equals(this.getTemplateFileURI());
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -170,7 +154,7 @@ PCMTemplateCompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @generated
      */
     @Override
@@ -184,24 +168,6 @@ PCMTemplateCompletionParameter {
             }
         }
         return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public String toString() {
-        if (this.eIsProxy()) {
-            return super.toString();
-        }
-
-        final StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (templateFileURI: ");
-        result.append(this.templateFileURI);
-        result.append(')');
-        return result.toString();
     }
 
 } // PCMTemplateCompletionParameterImpl
