@@ -82,6 +82,7 @@ public final class ArchitecturalTemplateAPI {
 			throw new RuntimeException("Stereotype \"" + stereotype
 					+ "\" is no role");
 		}
+		java.lang.System.out.println(stereotype.getTaggedValue(ROLE_URI).getDefaultValueLiteral());
 		final EObject roleURIEObject = EMFLoadHelper
 				.loadAndResolveEObject(stereotype.getTaggedValue(ROLE_URI)
 						.getDefaultValueLiteral());
@@ -213,14 +214,6 @@ public final class ArchitecturalTemplateAPI {
 			throw new RuntimeException("Profile \"" + profile
 					+ "\" is no Architectural Template");
 		}
-
-		system.getAssemblyContexts__ComposedStructure().forEach(
-				assemblyContext -> profile
-						.getStereotypes()
-						.stream()
-						.forEach(
-								stereotype -> StereotypeAPI.unapplyStereotype(
-										assemblyContext, stereotype)));
 		ProfileAPI.unapplyProfile(system.eResource(), profile);
 	}
 
@@ -235,6 +228,21 @@ public final class ArchitecturalTemplateAPI {
 	}
 
 	/**
+	 * Applies the given Role-{@link Stereotype} to the {@link AssemblyContext}.
+	 * @param assemblyContext the {@link AssemblyContext}
+	 * @param stereotype the {@link Stereotype}
+	 * @throws RuntimeException if the given stereotype does not conform the role-convention.
+	 */
+	public static void applyRole(final AssemblyContext assemblyContext,
+			final Stereotype stereotype) {
+		if (!isRole(stereotype)) {
+			throw new RuntimeException("Stereotype \"" + stereotype
+					+ "\" is no role");
+		}
+		StereotypeAPI.applyStereotype(assemblyContext, stereotype);
+	}
+
+	/**
 	 * Unapplies the given {@link Role} from the {@link AssemblyContext}.
 	 * @param assemblyContext the {@link AssemblyContext}
 	 * @param role the {@link Role}
@@ -242,6 +250,21 @@ public final class ArchitecturalTemplateAPI {
 	public static void unapplyRole(final AssemblyContext assemblyContext,
 			final Role role) {
 		StereotypeAPI.unapplyStereotype(assemblyContext, role.getStereotype());
+	}
+
+	/**
+	 * Unapplies the given Role-{@link Stereotype} from the {@link AssemblyContext}.
+	 * @param assemblyContext the {@link AssemblyContext}
+	 * @param stereotype the {@link Stereotype}
+	 * @throws RuntimeException if the given stereotype does not conform the role-convention.
+	 */
+	public static void unapplyRole(final AssemblyContext assemblyContext,
+			final Stereotype stereotype) {
+		if (!isRole(stereotype)) {
+			throw new RuntimeException("Stereotype \"" + stereotype
+					+ "\" is no role");
+		}
+		StereotypeAPI.unapplyStereotype(assemblyContext, stereotype);
 	}
 
 }
