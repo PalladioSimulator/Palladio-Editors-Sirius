@@ -11,7 +11,7 @@ import org.eclipse.ui.PlatformUI;
 import org.modelversioning.emfprofile.Stereotype;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.scaledl.architecturaltemplates.type.Role;
-import org.scaledl.architecturaltemplates.ui.RoleSelectionDialog;
+import org.scaledl.architecturaltemplates.ui.RoleStereotypeSelectionDialog;
 
 import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
 import de.uka.ipd.sdq.pcm.system.System;
@@ -30,7 +30,7 @@ public class AddATRoleAction implements IExternalJavaAction {
 	/**
 	 * Message displayed in the selection dialog.
 	 */
-	private static final String DIALOG_MESSAGE = "Select Role to apply to the AssemblyContext";
+	private static final String DIALOG_MESSAGE = "Select Role-Stereotype to apply to the AssemblyContext";
 	
 	/**
 	 * The key of the {@link AssemblyContext} parameter.
@@ -57,18 +57,19 @@ public class AddATRoleAction implements IExternalJavaAction {
 						otherSteretype -> otherSteretype.getName().equals(
 								stereotype));
 
-		final RoleSelectionDialog dialog = new RoleSelectionDialog(
+		final RoleStereotypeSelectionDialog dialog = new RoleStereotypeSelectionDialog(
 				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
 
 		dialog.setMessage(DIALOG_MESSAGE);
 
 		dialog.setElements(StereotypeAPI
 				.getApplicableStereotypes(assemblyContext).stream()
-				.filter(notAlreadyApplied).toArray());
+				.filter(notAlreadyApplied)
+				.toArray());
 
 		if (dialog.open() != Dialog.OK) { return; }
 
-		final Stereotype selectedRoleStereotype = dialog.getResultRole().getStereotype();
+		final Stereotype selectedRoleStereotype = dialog.getResultRoleStereotype();
 
 		StereotypeAPI.applyStereotype(assemblyContext,
 				selectedRoleStereotype);

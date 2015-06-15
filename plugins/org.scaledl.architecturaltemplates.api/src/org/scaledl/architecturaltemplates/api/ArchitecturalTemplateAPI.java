@@ -82,6 +82,7 @@ public final class ArchitecturalTemplateAPI {
 			throw new RuntimeException("Stereotype \"" + stereotype
 					+ "\" is no role");
 		}
+		java.lang.System.out.println(stereotype.getTaggedValue(ROLE_URI).getDefaultValueLiteral());
 		final EObject roleURIEObject = EMFLoadHelper
 				.loadAndResolveEObject(stereotype.getTaggedValue(ROLE_URI)
 						.getDefaultValueLiteral());

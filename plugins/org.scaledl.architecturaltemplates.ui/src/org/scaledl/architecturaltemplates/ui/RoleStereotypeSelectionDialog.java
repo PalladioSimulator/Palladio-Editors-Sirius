@@ -10,6 +10,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import org.eclipse.ui.dialogs.ISelectionStatusValidator;
 import org.modelversioning.emfprofile.Stereotype;
+import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
 import org.scaledl.architecturaltemplates.type.Role;
 
 /**
@@ -17,13 +18,13 @@ import org.scaledl.architecturaltemplates.type.Role;
  * @author Max Schettler
  *
  */
-public class RoleSelectionDialog extends ElementListSelectionDialog {
+public class RoleStereotypeSelectionDialog extends ElementListSelectionDialog {
 
-	private static final String EMPTY_LIST_MESSAGE = "No Roles can be selected";
-	private static final String TITLE = "Select Role";
-	private static final String EMPTY_SELECTION_MESSAGE = "You need to select a Role to continue";
+	private static final String EMPTY_LIST_MESSAGE = "No Role-Stereotypes can be selected";
+	private static final String TITLE = "Select Role-Stereotype";
+	private static final String EMPTY_SELECTION_MESSAGE = "You need to select a Role-Stereotype to continue";
 
-	public RoleSelectionDialog(final Shell parent) {
+	public RoleStereotypeSelectionDialog(final Shell parent) {
 		super(parent, new LabelProvider() {
 			
 			@Override
@@ -52,22 +53,23 @@ public class RoleSelectionDialog extends ElementListSelectionDialog {
 	
 	/**
 	 * {@inheritDoc}
-	 * @throws IllegalArgumentException if not all elements are of the type {@link Role}
+	 * @throws IllegalArgumentException if not all elements are of the type {@link Stereotype} and define a {@link Role}s.
+	 * @see ArchitecturalTemplateAPI#isRole(Stereotype)
 	 */
 	@Override
 	public void setElements(Object[] elements) {
-		if (!Arrays.stream(elements).allMatch(element -> element instanceof Role)) {
-			throw new IllegalArgumentException("All elements must be of type \"Role\"");
+		if (!Arrays.stream(elements).allMatch(element -> element instanceof Stereotype) || !Arrays.stream(elements).map(element -> (Stereotype) element).allMatch(ArchitecturalTemplateAPI::isRole) ) {
+			throw new IllegalArgumentException("All elements must be of type \"Stereotype\"");
 		}
 		super.setElements(elements);
 	}
 
 	/**
-	 * Returns the selected {@link Role}.
-	 * @return
+	 * Returns the selected {@link Stereotype}.
+	 * @return the stereotype
 	 */
-	public Role getResultRole() {
-		return (Role) getResult()[0];
+	public Stereotype getResultRoleStereotype() {
+		return (Stereotype) getResult()[0];
 	}
 
 }
