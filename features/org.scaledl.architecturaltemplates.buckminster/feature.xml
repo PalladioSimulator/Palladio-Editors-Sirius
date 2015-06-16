@@ -10,11 +10,6 @@
       [Enter Feature Description here.]
    </description>
 
-   <copyright url="http://www.example.com/copyright">
-      [Enter Copyright Description here.]
-   </copyright>
-
-   
    <includes
          id="org.scaledl.architecturaltemplates.feature"
          version="0.0.0"/>
