@@ -31,6 +31,6 @@ public class ComposedProvidingRequringEntityStyleConfiguration implements
 		if (isRoleParentNode.test(mapping)) {
 			return new RoleParentStyleConfiguration();
 		}
-		return null;
+		throw new RuntimeException("Called with invalid parameters");
 	}
 }
