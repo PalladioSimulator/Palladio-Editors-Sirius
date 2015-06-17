@@ -11,7 +11,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.resources;bundle-version="3.9.1",
  de.uka.ipd.sdq.pcm;bundle-version="3.6.0",
  org.palladiosimulator.editors.util;bundle-version="1.0.0",
- org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension;resolution:=optional
+ org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.palladiosimulator.editors.util.api.services
