@@ -20,7 +20,6 @@
       <import plugin="de.uka.ipd.sdq.identifier" version="2.1.0" match="greaterOrEqual"/>
       <import plugin="de.uka.ipd.sdq.pcm" version="3.6.0" match="greaterOrEqual"/>
       <import plugin="de.uka.ipd.sdq.completions" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.palladiosimulator.pcm.profiles.util" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.mdsdprofiles" version="1.0.0" match="greaterOrEqual"/>
    </requires>
 
