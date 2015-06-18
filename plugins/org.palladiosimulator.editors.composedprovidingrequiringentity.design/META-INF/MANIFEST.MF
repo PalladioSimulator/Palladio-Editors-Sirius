@@ -14,4 +14,3 @@ Require-Bundle: org.eclipse.ui,
  org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Import-Package: org.palladiosimulator.editors.util.api.services
