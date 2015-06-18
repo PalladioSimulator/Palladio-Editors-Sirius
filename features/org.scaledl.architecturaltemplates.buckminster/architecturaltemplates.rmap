@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rm:rmap xmlns:bc="http://www.eclipse.org/buckminster/Common-1.0" xmlns:rm="http://www.eclipse.org/buckminster/RMap-1.0">
   <rm:locator searchPathRef="CloudScale-Features" failOnError="false"/>
-  <rm:locator searchPathRef="ArchitecturalTemplates" failOnError="false"/>
-  <rm:locator searchPathRef="ExperimentAutomation" failOnError="false" />
+  <rm:locator pattern="^org\.palladiosimulator\.editors.*" searchPathRef="ArchitecturalTemplates" failOnError="false"/>
+  <rm:locator pattern="^org\.palladiosimulator\.architecturaltemplates.*" searchPathRef="ArchitecturalTemplates" failOnError="true"/>
+  <rm:locator pattern="^org\.palladiosimulator\.experimentautomation.*" searchPathRef="ExperimentAutomation" failOnError="true" />
   <rm:locator pattern="^de\.fzi\.power.*" searchPathRef="PowerConsumptionAnalyzer" failOnError="false"/>
   <rm:redirect pattern=".*"
 		href="https://anonymous:anonymous@svnserver.informatik.kit.edu/i43/svn/code/Palladio/Incubation/SimuLizar/trunk/org.palladiosimulator.simulizar.buckminster/simulizar.rmap" />
