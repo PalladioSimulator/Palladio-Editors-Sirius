@@ -2,7 +2,7 @@
 <rm:rmap xmlns:bc="http://www.eclipse.org/buckminster/Common-1.0" xmlns:rm="http://www.eclipse.org/buckminster/RMap-1.0">
   <rm:locator searchPathRef="CloudScale-Features" failOnError="false"/>
   <rm:locator pattern="^org\.palladiosimulator\.editors.*" searchPathRef="ArchitecturalTemplates" failOnError="false"/>
-  <rm:locator pattern="^org\.palladiosimulator\.architecturaltemplates.*" searchPathRef="ArchitecturalTemplates" failOnError="true"/>
+  <rm:locator pattern="^org\.scaledl\.architecturaltemplates.*" searchPathRef="ArchitecturalTemplates" failOnError="true"/>
   <rm:locator pattern="^org\.palladiosimulator\.experimentautomation.*" searchPathRef="ExperimentAutomation" failOnError="true" />
   <rm:locator pattern="^de\.fzi\.power.*" searchPathRef="PowerConsumptionAnalyzer" failOnError="false"/>
   <rm:redirect pattern=".*"
