@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rm:rmap xmlns:rm="http://www.eclipse.org/buckminster/RMap-1.0" xmlns:bc="http://www.eclipse.org/buckminster/Common-1.0">
     
-    <rm:locator searchPathRef="buildgit" failOnError="false" />
+    <rm:locator pattern="^eu\.cloudscaleproject\.targetplatformbuild$" searchPathRef="buildgit" failOnError="false" />
     <rm:redirect pattern=".*" href="https://anonymous:anonymous@svnserver.informatik.kit.edu/i43/svn/code/Build/trunk/org.palladiosimulator.targetPlatformBuild/eclipse-platform.rmap"/>
   
 	<rm:searchPath name="buildgit">
