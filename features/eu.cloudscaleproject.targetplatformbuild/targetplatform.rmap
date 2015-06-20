@@ -1,48 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rm:rmap xmlns:rm="http://www.eclipse.org/buckminster/RMap-1.0"
-    xmlns:bc="http://www.eclipse.org/buckminster/Common-1.0">
- 
-    <rm:property key="projects.location" value="${workspace.root}" />
- 
-   <rm:searchPath name="buildsvn">
-    <rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster" readerType="svn" source="true">
-      <rm:uri format="https://cloudscale:CloudScale123@dev.xlab.si/svn-pub/cloudscale/trunk/wp3-integration/eclipse/{0}">
-      	<bc:propertyRef key="buckminster.component" />
-      </rm:uri>
-    </rm:provider>
-  </rm:searchPath>
-  
-  <rm:searchPath name="buildgit">
-    <rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster" readerType="git" resolutionFilter="">
-      <rm:uri format="{0}/GIT,features/{1}">
-          <bc:propertyRef key="workspace.root" />
-          <bc:propertyRef key="buckminster.component" />
-        </rm:uri>
-      <rm:property key="git.remote.uri" value="https://github.com/CloudScale-Project/ArchitecturalTemplates"/>      
-    </rm:provider>
-  </rm:searchPath>
-  
-    <rm:searchPath name="epp">
-        <rm:provider componentTypes="osgi.bundle,eclipse.feature"
-            readerType="p2" source="false" mutable="false">
-            <rm:uri format="http://download.eclipse.org/technology/epp/packages/luna" />
-        </rm:provider>
-    </rm:searchPath>
-    <rm:searchPath name="luna-releases">
-        <rm:provider componentTypes="osgi.bundle,eclipse.feature"
-            readerType="p2" source="false" mutable="false">
-            <rm:uri format="http://download.eclipse.org/releases/luna" />
-        </rm:provider>
-    </rm:searchPath>
-    <rm:searchPath name="luna-updates">
-        <rm:provider componentTypes="osgi.bundle,eclipse.feature"
-            readerType="p2" source="false" mutable="false">
-            <rm:uri format="http://download.eclipse.org/eclipse/updates/4.5" />
-        </rm:provider>
-    </rm:searchPath>
+<rm:rmap xmlns:rm="http://www.eclipse.org/buckminster/RMap-1.0" xmlns:bc="http://www.eclipse.org/buckminster/Common-1.0">
 
-    <rm:locator searchPathRef="buildgit" failOnError="false" />
-    <rm:locator searchPathRef="epp" failOnError="false" />
-    <rm:locator searchPathRef="luna-releases" failOnError="false" />
-    <rm:locator searchPathRef="luna-updates" failOnError="true" />
+   <rm:redirect pattern=".*" href="https://anonymous:anonymous@svnserver.informatik.kit.edu/i43/svn/code/Build/trunk/org.palladiosimulator.targetPlatformBuild/eclipse-platform.rmap"/>
+
 </rm:rmap>
