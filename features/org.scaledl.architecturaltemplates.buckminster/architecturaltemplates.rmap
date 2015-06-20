@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rm:rmap xmlns:bc="http://www.eclipse.org/buckminster/Common-1.0" xmlns:rm="http://www.eclipse.org/buckminster/RMap-1.0">
+  <rm:locator pattern="^org\.palladiosimulator\.editors.*" searchPathRef="ArchitecturalTemplates-Features" failOnError="false"/>
+  <rm:locator pattern="^org\.scaledl\.architecturaltemplates.*" searchPathRef="ArchitecturalTemplates-Features" failOnError="false"/>
   <rm:locator pattern="^org\.palladiosimulator\.editors.*" searchPathRef="ArchitecturalTemplates" failOnError="false"/>
   <rm:locator pattern="^org\.scaledl\.architecturaltemplates.*" searchPathRef="ArchitecturalTemplates" failOnError="true"/>
-  <rm:locator pattern="^org\.palladiosimulator\.experimentautomation.*" searchPathRef="ExperimentAutomation" failOnError="true"/>
-  
+  <rm:locator pattern="^org\.palladiosimulator\.experimentautomation.*" searchPathRef="ExperimentAutomation" failOnError="true" />
   <rm:redirect pattern=".*"
 		href="https://anonymous:anonymous@svnserver.informatik.kit.edu/i43/svn/code/Palladio/Incubation/ExperimentAutomation/trunk/org.palladiosimulator.experimentautomation.buckminster/experimentautomation.rmap" />
   
-  <rm:searchPath name="ArchitecturalTemplates">
+  <rm:searchPath name="ArchitecturalTemplates-Features">
     <rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster" readerType="git" resolutionFilter="">
       <rm:uri format="{0}/GIT,features/{1}">
+          <bc:propertyRef key="workspace.root" />
+          <bc:propertyRef key="buckminster.component" />
+        </rm:uri>
+      <rm:property key="git.remote.uri" value="https://github.com/CloudScale-Project/ArchitecturalTemplates"/>      
+    </rm:provider>
+  </rm:searchPath>
+  
+  <rm:searchPath name="ArchitecturalTemplates">
+    <rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster" readerType="git" resolutionFilter="">
+      <rm:uri format="{0}/GIT,plugins/{1}">
           <bc:propertyRef key="workspace.root" />
           <bc:propertyRef key="buckminster.component" />
         </rm:uri>
@@ -21,6 +32,5 @@
     <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
       <rm:uri format="https://sdqweb.ipd.kit.edu/eclipse/experimentautomation/nightly/"/>
     </rm:provider>
-  </rm:searchPath>
-  
+  </rm:searchPath>  
 </rm:rmap>
