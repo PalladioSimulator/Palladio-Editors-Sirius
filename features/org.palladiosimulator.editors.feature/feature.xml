@@ -17,6 +17,30 @@
       [Enter License Description here.]
    </license>
 
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.sirius"/>
+      <import plugin="org.eclipse.sirius.common.acceleo.mtl"/>
+      <import plugin="org.eclipse.core.resources" version="3.9.1" match="greaterOrEqual"/>
+      <import plugin="de.uka.ipd.sdq.pcm" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.palladiosimulator.editors.util" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.sirius.diagram"/>
+      <import plugin="org.eclipse.sirius.common.ui"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui"/>
+      <import plugin="org.eclipse.sirius.diagram.ui"/>
+      <import plugin="org.eclipse.emf.edit.ui" version="2.10.2" match="greaterOrEqual"/>
+      <import plugin="de.uka.ipd.sdq.dialogs" version="2.0.1" match="greaterOrEqual"/>
+      <import plugin="org.scaledl.architecturaltemplates"/>
+      <import plugin="org.palladiosimulator.commons" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.palladiosimulator.mdsdprofiles.api"/>
+      <import plugin="org.modelversioning.emfprofile.registry"/>
+      <import plugin="org.scaledl.architecturaltemplates.ui"/>
+      <import plugin="org.scaledl.architecturaltemplates.edit"/>
+      <import plugin="de.uka.ipd.sdq.pcmbench.ui"/>
+      <import plugin="org.scaledl.architecturaltemplates.api"/>
+   </requires>
+
    <plugin
          id="org.palladiosimulator.editors.composedprovidingrequiringentity.design"
          download-size="0"
