@@ -15,7 +15,7 @@ import org.scaledl.architecturaltemplates.type.AT;
 import org.scaledl.architecturaltemplates.type.TypeFactory;
 import org.scaledl.architecturaltemplates.type.TypePackage;
 
-import de.uka.ipd.sdq.pcm.core.entity.provider.EntityItemProvider;
+import org.palladiosimulator.pcm.core.entity.provider.EntityItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.scaledl.architecturaltemplates.type.AT}

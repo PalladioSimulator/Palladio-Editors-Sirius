@@ -9,7 +9,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.BorderItemLocatorProvider;
 import org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.borderItemLocator.RoleBorderItemLocator;
 
-import de.uka.ipd.sdq.pcm.repository.Role;
+import org.palladiosimulator.pcm.repository.Role;
 
 /**
  * A {@link BorderItemLocatorProvider} responsible for elements that are parents of {@link Role}s.

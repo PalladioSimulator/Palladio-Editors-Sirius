@@ -11,7 +11,7 @@ import org.scaledl.architecturaltemplates.instance.InstancePackage;
 import org.scaledl.architecturaltemplates.instance.Role2Resource;
 import org.scaledl.architecturaltemplates.type.Role;
 
-import de.uka.ipd.sdq.pcm.resourceenvironment.ResourceContainer;
+import org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Role2 Resource</b></em>'.

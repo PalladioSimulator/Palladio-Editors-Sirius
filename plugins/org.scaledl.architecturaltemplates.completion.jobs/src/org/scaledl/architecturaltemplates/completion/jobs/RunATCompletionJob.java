@@ -36,12 +36,12 @@ import org.scaledl.architecturaltemplates.type.QVTOCompletion;
 import org.scaledl.architecturaltemplates.type.Role;
 import org.scaledl.architecturaltemplates.type.util.TypeSwitch;
 
-import de.uka.ipd.sdq.pcm.allocation.Allocation;
-import de.uka.ipd.sdq.pcm.allocation.AllocationFactory;
-import de.uka.ipd.sdq.pcm.allocation.util.AllocationResourceImpl;
-import de.uka.ipd.sdq.pcm.resourceenvironment.ResourceEnvironment;
-import de.uka.ipd.sdq.pcm.usagemodel.UsageModel;
-import de.uka.ipd.sdq.pcm.usagemodel.UsageScenario;
+import org.palladiosimulator.pcm.allocation.Allocation;
+import org.palladiosimulator.pcm.allocation.AllocationFactory;
+import org.palladiosimulator.pcm.allocation.util.AllocationResourceImpl;
+import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
+import org.palladiosimulator.pcm.usagemodel.UsageModel;
+import org.palladiosimulator.pcm.usagemodel.UsageScenario;
 import de.uka.ipd.sdq.workflow.jobs.JobFailedException;
 import de.uka.ipd.sdq.workflow.jobs.SequentialBlackboardInteractingJob;
 import de.uka.ipd.sdq.workflow.jobs.UserCanceledException;
@@ -243,7 +243,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
         final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) this.myBlackboard
                 .getPartition(ATPartitionConstants.Partition.PCM.getPartitionId());
 
-        de.uka.ipd.sdq.pcm.system.System system = null;
+        org.palladiosimulator.pcm.system.System system = null;
         try {
             system = pcmRepositoryPartition.getSystem();
         } catch (final IndexOutOfBoundsException e) {
@@ -267,7 +267,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
         final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) this.myBlackboard
                 .getPartition(ATPartitionConstants.Partition.PCM.getPartitionId());
 
-        de.uka.ipd.sdq.pcm.system.System system = null;
+        org.palladiosimulator.pcm.system.System system = null;
         try {
             system = pcmRepositoryPartition.getSystem();
         } catch (final IndexOutOfBoundsException e) {

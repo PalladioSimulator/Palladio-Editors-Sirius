@@ -6,7 +6,7 @@ import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.common.util.EList;
 import org.scaledl.architecturaltemplates.type.Role;
 
-import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
+import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Component2 Role</b></em>'.

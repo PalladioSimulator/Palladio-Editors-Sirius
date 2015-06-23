@@ -5,7 +5,7 @@ package org.scaledl.architecturaltemplates.instance;
 import org.eclipse.emf.cdo.CDOObject;
 import org.scaledl.architecturaltemplates.type.Role;
 
-import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
+import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Role2 Component</b></em>'.

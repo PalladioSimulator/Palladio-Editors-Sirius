@@ -5,7 +5,7 @@ package org.scaledl.architecturaltemplates.instance;
 import org.eclipse.emf.cdo.CDOObject;
 import org.scaledl.architecturaltemplates.type.Role;
 
-import de.uka.ipd.sdq.pcm.resourceenvironment.ResourceContainer;
+import org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Role2 Resource</b></em>'.

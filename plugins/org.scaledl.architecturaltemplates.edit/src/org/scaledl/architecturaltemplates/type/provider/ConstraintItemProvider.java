@@ -13,7 +13,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.scaledl.architecturaltemplates.type.Constraint;
 import org.scaledl.architecturaltemplates.type.TypePackage;
 
-import de.uka.ipd.sdq.pcm.core.entity.provider.EntityItemProvider;
+import org.palladiosimulator.pcm.core.entity.provider.EntityItemProvider;
 
 /**
  * This is the item provider adapter for a

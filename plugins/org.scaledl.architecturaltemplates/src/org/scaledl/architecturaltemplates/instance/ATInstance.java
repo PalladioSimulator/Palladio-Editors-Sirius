@@ -5,7 +5,7 @@ package org.scaledl.architecturaltemplates.instance;
 import org.eclipse.emf.common.util.EList;
 import org.scaledl.architecturaltemplates.type.AT;
 
-import de.uka.ipd.sdq.pcm.core.entity.Entity;
+import org.palladiosimulator.pcm.core.entity.Entity;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>AT Instance</b></em>'. <!--

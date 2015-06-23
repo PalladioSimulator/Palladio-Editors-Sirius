@@ -18,7 +18,7 @@ import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
 import org.scaledl.architecturaltemplates.type.AT;
 import org.scaledl.architecturaltemplates.ui.ArchitecturalTemplateProfileSelectionDialog;
 
-import de.uka.ipd.sdq.pcm.system.System;
+import org.palladiosimulator.pcm.system.System;
 
 /**
  * A Sirius action that is used to add an ArchitecturalTemplate Role to the

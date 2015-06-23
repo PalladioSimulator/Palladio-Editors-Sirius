@@ -21,12 +21,12 @@ import org.palladiosimulator.editors.util.Activator;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
 
-import de.uka.ipd.sdq.pcm.core.PCMRandomVariable;
-import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
-import de.uka.ipd.sdq.pcm.parameter.VariableUsage;
-import de.uka.ipd.sdq.pcm.repository.ImplementationComponentType;
-import de.uka.ipd.sdq.pcm.stochasticexpressions.parser.MyPCMStoExLexer;
-import de.uka.ipd.sdq.pcm.stochasticexpressions.parser.MyPCMStoExParser;
+import org.palladiosimulator.pcm.core.PCMRandomVariable;
+import org.palladiosimulator.pcm.core.composition.AssemblyContext;
+import org.palladiosimulator.pcm.parameter.VariableUsage;
+import org.palladiosimulator.pcm.repository.ImplementationComponentType;
+import org.palladiosimulator.pcm.stochasticexpressions.parser.MyPCMStoExLexer;
+import org.palladiosimulator.pcm.stochasticexpressions.parser.MyPCMStoExParser;
 
 public class ComposedProvidingRequiringEntityServices {
 

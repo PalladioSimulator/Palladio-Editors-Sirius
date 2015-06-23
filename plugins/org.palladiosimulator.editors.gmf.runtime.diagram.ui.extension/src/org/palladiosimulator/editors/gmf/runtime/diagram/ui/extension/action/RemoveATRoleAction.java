@@ -9,8 +9,8 @@ import org.modelversioning.emfprofileapplication.StereotypeApplication;
 import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
 import org.scaledl.architecturaltemplates.type.Role;
 
-import de.uka.ipd.sdq.pcm.core.composition.AssemblyContext;
-import de.uka.ipd.sdq.pcm.system.System;
+import org.palladiosimulator.pcm.core.composition.AssemblyContext;
+import org.palladiosimulator.pcm.system.System;
 
 /**
  * This class applies an ArchitecturalTemplate to a {@link System}. It will ask the user to select

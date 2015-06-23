@@ -17,7 +17,7 @@ import org.scaledl.architecturaltemplates.instance.Role2Component;
 import org.scaledl.architecturaltemplates.instance.Role2Resource;
 import org.scaledl.architecturaltemplates.type.AT;
 
-import de.uka.ipd.sdq.pcm.core.entity.impl.EntityImpl;
+import org.palladiosimulator.pcm.core.entity.impl.EntityImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>AT Instance</b></em>'. <!--

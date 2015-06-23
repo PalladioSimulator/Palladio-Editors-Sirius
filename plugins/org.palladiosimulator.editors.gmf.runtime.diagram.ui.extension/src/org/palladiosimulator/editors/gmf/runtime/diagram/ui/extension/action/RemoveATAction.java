@@ -8,7 +8,7 @@ import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.modelversioning.emfprofileapplication.StereotypeApplication;
 import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
 
-import de.uka.ipd.sdq.pcm.system.System;
+import org.palladiosimulator.pcm.system.System;
 
 /**
  * A Sirius action that is used to remove an ArchitecturalTemplate Role from a {@link System}.

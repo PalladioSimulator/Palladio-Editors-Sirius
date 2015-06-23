@@ -4,7 +4,7 @@ package org.scaledl.architecturaltemplates.type;
 
 import org.eclipse.emf.common.util.EList;
 
-import de.uka.ipd.sdq.pcm.core.entity.Entity;
+import org.palladiosimulator.pcm.core.entity.Entity;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>AT</b></em>'. <!--

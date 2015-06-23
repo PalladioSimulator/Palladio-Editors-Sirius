@@ -10,7 +10,7 @@ import org.scaledl.architecturaltemplates.type.Parameter;
 import org.scaledl.architecturaltemplates.type.Role;
 import org.scaledl.architecturaltemplates.type.TypePackage;
 
-import de.uka.ipd.sdq.pcm.core.entity.impl.EntityImpl;
+import org.palladiosimulator.pcm.core.entity.impl.EntityImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Parameter</b></em>'. <!--
