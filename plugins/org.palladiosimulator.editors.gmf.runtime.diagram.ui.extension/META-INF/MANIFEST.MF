@@ -2,23 +2,14 @@ Manifest-Version: 1.0
 Bundle-Name: ComposedProvidingRequiringEntity-design extensions
 Bundle-SymbolicName: org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension;singleton=true
 Bundle-Version: 5.0.0.qualifier
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
- org.eclipse.sirius.diagram,
- org.eclipse.sirius.common.ui,
- org.eclipse.gmf.runtime.diagram.ui,
- org.eclipse.sirius.diagram.ui,
- org.eclipse.sirius,
+Require-Bundle: org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0",
+ org.eclipse.sirius.diagram.ui;bundle-version="3.0.0",
  org.eclipse.emf.edit.ui;bundle-version="2.10.2",
- de.uka.ipd.sdq.pcm,
- org.palladiosimulator.editors.util;bundle-version="1.0.0",
- de.uka.ipd.sdq.dialogs;bundle-version="2.0.1",
- org.scaledl.architecturaltemplates,
- org.palladiosimulator.commons;bundle-version="1.0.0",
- org.palladiosimulator.mdsdprofiles.api,
- org.modelversioning.emfprofile.registry,
- org.scaledl.architecturaltemplates.ui,
- org.scaledl.architecturaltemplates.api
+ org.scaledl.architecturaltemplates;bundle-version="1.0.0",
+ org.palladiosimulator.mdsdprofiles.api;bundle-version="1.0.0",
+ org.modelversioning.emfprofile.registry;bundle-version="1.0.0",
+ org.scaledl.architecturaltemplates.ui;bundle-version="1.0.0",
+ org.scaledl.architecturaltemplates.api;bundle-version="1.0.0"
 Bundle-Activator: org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.ExtensionActivator
 Bundle-Localization: plugin
 Bundle-Vendor: palladiosimulator.org
