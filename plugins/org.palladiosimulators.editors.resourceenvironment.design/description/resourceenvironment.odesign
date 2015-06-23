@@ -3,6 +3,50 @@
   <ownedViewpoints name="Resourceenvironment" modelFileExtension="*.resourceenvironment">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Resourceenvironment Diagram" domainClass="resourceenvironment.ResourceEnvironment">
       <defaultLayer name="Default">
+        <edgeMappings name="Connection" semanticCandidatesExpression="[connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource'] //@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetMapping="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer'] //@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']" domainClass="composition.Connector" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="LinkingResource" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.LinkingResource" childrenPresentation="List">
+          <subNodeMappings name="CommunicationLinkResourceSpecification" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
+            <style xsi:type="style:SquareDescription" labelExpression="[self.communicationLinkResourceType_CommunicationLinkResourceSpecification.entityName/]" labelAlignment="LEFT" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="Latency" labelDirectEdit="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Latency']" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="['Latency: ' + latency_CommunicationLinkResourceSpecification.specification.toString()/]" labelAlignment="LEFT" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="Throughput" labelDirectEdit="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Throughput']" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="['Throughput: ' + throughput_CommunicationLinkResourceSpecification.specification.toString()/]" labelAlignment="LEFT" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="Failure Probability" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="['Failure Probability: ' + failureProbability/]" labelAlignment="LEFT" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="5" arcHeight="5" labelExpression="[self.entityName/]" labelAlignment="LEFT" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
         <containerMappings name="ResourceContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.ResourceContainer">
           <subContainerMappings name="ProcessingResourceSpecification Container" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.ProcessingResourceSpecification" childrenPresentation="List">
             <subNodeMappings name="Scheduling" semanticCandidatesExpression="[self/]" domainClass="resourceenvironment.ProcessingResourceSpecification">
@@ -47,24 +91,8 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subContainerMappings>
-          <subContainerMappings name="CommunicationLinkResourceSpecification" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.CommunicationLinkResourceSpecification" childrenPresentation="List">
-            <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[self.entityName/]" labelAlignment="LEFT">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-            </style>
-          </subContainerMappings>
-          <subContainerMappings name="CommunicationLinkResourceSpecification" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.CommunicationLinkResourceSpecification" childrenPresentation="List">
-            <style xsi:type="style:FlatContainerStyleDescription" labelAlignment="LEFT">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-            </style>
-          </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="15" arcHeight="15" borderSizeComputationExpression="30" labelExpression="[entityName/]" labelAlignment="LEFT" tooltipExpression="ResourceContainer">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="2" labelExpression="[self.entityName/]" labelAlignment="LEFT" tooltipExpression="ResourceContainer" heightComputationExpression="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -82,7 +110,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="LinkingResource" containerMappings="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='CommunicationLinkResourceSpecification']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="LinkingResource" containerMappings="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -102,6 +130,15 @@
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="new ProcessingResourceSpecification"/>
                 </subModelOperations>
               </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Connection" edgeMappings="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@edgeMappings[name='Connection']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@edgeMappings[name='Connection']" variableName="createConnection" sourceExpression="feature:eContainer" targetExpression="feature:eContainer"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
@@ -130,19 +167,23 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:OperationAction" name="load ResContainer" forceRefresh="true">
-            <view name="views"/>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Latency" forceRefresh="true">
+            <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ProcessingResourceSpecification%20Container']" containerViewExpression="[self/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="latency_CommunicationLinkResourceSpecification.specification" valueExpression="[arg0/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Throughput">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="throughput_CommunicationLinkResourceSpecification.specification" valueExpression="[arg0/]"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <decorationDescriptionsSet>
-          <decorationDescriptions xsi:type="description_1:MappingBasedDecoration" name="MTTR Label" position="WEST" preconditionExpression="'MTTR :'" mappings="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ProcessingResourceSpecification%20Container']/@subNodeMappings[name='MTTR']"/>
-        </decorationDescriptionsSet>
-        <customization>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.eGet(container)->ge/]"/>
-        </customization>
       </defaultLayer>
     </ownedRepresentations>
   </ownedViewpoints>
