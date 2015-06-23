@@ -5,8 +5,8 @@ Bundle-SymbolicName: org.scaledl.architecturaltemplates.api
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: scaledl.org
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.modelversioning.emfprofile,
- org.palladiosimulator.mdsdprofiles.api,
- org.palladiosimulator.commons,
- org.scaledl.architecturaltemplates
+Require-Bundle: org.modelversioning.emfprofile;bundle-version="1.1.0",
+ org.palladiosimulator.mdsdprofiles.api;bundle-version="1.0.0",
+ org.palladiosimulator.commons;bundle-version="1.0.0",
+ org.scaledl.architecturaltemplates;bundle-version="1.0.0"
 Export-Package: org.scaledl.architecturaltemplates.api

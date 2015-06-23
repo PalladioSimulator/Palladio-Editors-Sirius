@@ -13,14 +13,15 @@
    <requires>
       <import plugin="org.eclipse.core.runtime"/>
       <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.emf.cdo"/>
       <import plugin="org.eclipse.emf.ecore.xmi"/>
-      <import plugin="org.modelversioning.emfprofile"/>
-      <import plugin="de.uka.ipd.sdq.identifier"/>
+      <import plugin="org.modelversioning.emfprofile" version="1.1.0" match="greaterOrEqual"/>
+      <import plugin="de.uka.ipd.sdq.identifier" version="2.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ocl"/>
-      <import plugin="de.uka.ipd.sdq.pcm"/>
-      <import plugin="de.uka.ipd.sdq.probfunction"/>
-      <import plugin="de.uka.ipd.sdq.stoex"/>
-      <import plugin="de.uka.ipd.sdq.units"/>
+      <import plugin="de.uka.ipd.sdq.pcm" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="de.uka.ipd.sdq.probfunction" version="2.1.0" match="greaterOrEqual"/>
+      <import plugin="de.uka.ipd.sdq.stoex" version="2.2.0" match="greaterOrEqual"/>
+      <import plugin="de.uka.ipd.sdq.units" version="2.1.0" match="greaterOrEqual"/>
       <import plugin="de.uka.ipd.sdq.workflow" version="2.1.0" match="greaterOrEqual"/>
       <import plugin="de.uka.ipd.sdq.workflow.mdsd" version="2.1.0" match="greaterOrEqual"/>
       <import plugin="de.uka.ipd.sdq.workflow.pcm" version="1.0.0" match="greaterOrEqual"/>
@@ -34,27 +35,28 @@
       <import plugin="org.palladiosimulator.pcm.edp2.measuringpoint" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.monitorrepository" version="2.0.0" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.servicelevelobjective" version="0.1.0" match="greaterOrEqual"/>
+      <import plugin="org.palladiosimulator.simulizar.reconfiguration.storydiagram" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.palladiosimulator.mdsdprofiles.api" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.palladiosimulator.experimentautomation.application" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.edit"/>
       <import plugin="org.eclipse.emf.ecore.edit"/>
-      <import plugin="org.modelversioning.emfprofile.edit"/>
-      <import plugin="de.uka.ipd.sdq.identifier.edit"/>
+      <import plugin="org.modelversioning.emfprofile.edit" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="de.uka.ipd.sdq.identifier.edit" version="2.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ocl.edit"/>
-      <import plugin="de.uka.ipd.sdq.pcm.edit"/>
-      <import plugin="de.uka.ipd.sdq.probfunction.edit"/>
-      <import plugin="de.uka.ipd.sdq.stoex.edit"/>
-      <import plugin="de.uka.ipd.sdq.units.edit"/>
+      <import plugin="de.uka.ipd.sdq.pcm.edit" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="de.uka.ipd.sdq.probfunction.edit" version="2.1.0" match="greaterOrEqual"/>
+      <import plugin="de.uka.ipd.sdq.stoex.edit" version="2.2.0" match="greaterOrEqual"/>
+      <import plugin="de.uka.ipd.sdq.units.edit" version="2.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.scaledl.architecturaltemplates.edit" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.edit.ui"/>
       <import plugin="org.eclipse.ui.ide"/>
-      <import feature="org.eclipse.rcp" version="4.4.0.v20140606-1445"/>
-      <import feature="org.eclipse.e4.rcp" version="1.3.100.v20140606-1445"/>
-      <import plugin="org.eclipse.emf.cdo"/>
-      <import plugin="org.palladiosimulator.simulizar.reconfiguration.storydiagram"/>
-      <import plugin="org.palladiosimulator.mdsdprofiles.api"/>
-      <import plugin="org.palladiosimulator.experimentautomation.application"/>
       <import plugin="org.eclipse.ui.workbench"/>
       <import plugin="org.eclipse.jface"/>
-      <import plugin="org.modelversioning.emfprofile.registry"/>
+      <import feature="org.eclipse.rcp" version="4.4.0.v20140606-1445"/>
+      <import feature="org.eclipse.e4.rcp" version="1.3.100.v20140606-1445"/>
+      <import plugin="org.scaledl.architecturaltemplates.api" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.modelversioning.emfprofile.registry" version="1.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -80,13 +82,6 @@
 
    <plugin
          id="org.scaledl.architecturaltemplates.editor"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.swt"
          download-size="0"
          install-size="0"
          version="0.0.0"
