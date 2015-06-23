@@ -20,23 +20,24 @@
    <requires>
       <import plugin="org.eclipse.ui"/>
       <import plugin="org.eclipse.core.runtime"/>
-      <import plugin="org.eclipse.sirius"/>
-      <import plugin="org.eclipse.sirius.common.acceleo.mtl"/>
+      <import plugin="org.eclipse.sirius" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.sirius.common.acceleo.mtl" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.resources" version="3.9.1" match="greaterOrEqual"/>
       <import plugin="de.uka.ipd.sdq.pcm" version="4.0.0" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.editors.util" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.edit.ui" version="2.10.2" match="greaterOrEqual"/>
-      <import plugin="org.palladiosimulator.commons" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="de.uka.ipd.sdq.dialogs" version="2.0.1" match="greaterOrEqual"/>
-      <import plugin="org.scaledl.architecturaltemplates.edit"/>
-      <import plugin="de.uka.ipd.sdq.pcmbench.ui"/>
+      <import plugin="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension" version="5.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.gmf.runtime.diagram.ui" version="1.8.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.sirius.diagram.ui" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.edit.ui" version="2.10.2" match="greaterOrEqual"/>
       <import plugin="org.scaledl.architecturaltemplates" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.mdsdprofiles.api" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.modelversioning.emfprofile.registry" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.scaledl.architecturaltemplates.ui" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.scaledl.architecturaltemplates.api" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.palladiosimulator.commons" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="de.uka.ipd.sdq.dialogs" version="2.0.1" match="greaterOrEqual"/>
+      <import plugin="org.scaledl.architecturaltemplates.edit" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="de.uka.ipd.sdq.pcmbench.ui" version="2.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
