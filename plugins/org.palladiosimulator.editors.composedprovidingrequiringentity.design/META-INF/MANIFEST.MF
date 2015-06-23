@@ -9,7 +9,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius;bundle-version="1.0.0",
  org.eclipse.sirius.common.acceleo.mtl;bundle-version="1.0.0",
  org.eclipse.core.resources;bundle-version="3.9.1",
- de.uka.ipd.sdq.pcm;bundle-version="4.0.0",
+ org.palladiosimulator.pcm;bundle-version="4.0.0",
  org.palladiosimulator.editors.util;bundle-version="1.0.0",
  org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension;bundle-version="5.0.0"
 Bundle-ActivationPolicy: lazy
