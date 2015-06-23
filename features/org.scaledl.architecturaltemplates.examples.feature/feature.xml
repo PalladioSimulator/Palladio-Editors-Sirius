@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.scaledl.architecturaltemplates.examples.feature"
-      label="Official ScaleDL Architectural Template Examples of CloudScale"
+      label="ScaleDL Architectural Templates - CloudScale AT Catalogue"
       version="1.0.0.qualifier"
       license-feature="org.palladiosimulator.license"
       license-feature-version="1.0.0">
 
-   <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
+   <description url="http://wiki.cloudscale-project.eu/index.php/HowTos">
+      CloudScale&apos;s AT catalogue provides best practice ATs for designing and analyzing scalable, elastic, and cost-efficient SaaS applications.
    </description>
 
    <requires>

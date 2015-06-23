@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.palladiosimulator.editors.feature"
-      label="Palladiosimulator Sirius Editors"
+      label="Palladio Component Model - Sirius Editors"
       version="1.0.0.qualifier"
-      provider-name="palladiosimulator.org">
+      license-feature="org.palladiosimulator.license"
+      license-feature-version="1.0.0">
 
-   <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
+   <description url="https://sdqweb.ipd.kit.edu/wiki/PCM_Development/Sirius_Editors">
+      Sirius is a framework for model-driven graphical editor generation. This feature brings Sirius-based editors to Palladio.
    </description>
-
-   <copyright url="http://www.example.com/copyright">
-      [Enter Copyright Description here.]
-   </copyright>
-
-   <license url="http://www.example.com/license">
-      [Enter License Description here.]
-   </license>
 
    <requires>
       <import plugin="org.eclipse.ui"/>

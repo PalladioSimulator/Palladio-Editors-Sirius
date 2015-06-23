@@ -6,8 +6,8 @@
       license-feature="org.palladiosimulator.license"
       license-feature-version="1.0.0">
 
-   <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
+   <description url="https://sdqweb.ipd.kit.edu/wiki/Architectural_Templates">
+      Reusable templates, e.g., to specify styles, patterns, and reference architectures.
    </description>
 
    <requires>
