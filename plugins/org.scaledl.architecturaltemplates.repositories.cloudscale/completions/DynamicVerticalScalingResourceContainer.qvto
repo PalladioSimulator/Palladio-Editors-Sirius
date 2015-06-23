@@ -1,6 +1,6 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
 
-modeltype PCM_SYS uses 'http://sdq.ipd.uka.de/PalladioComponentModel/System/5.0';
+modeltype PCM_SYS uses 'http://palladiosimulator.org/PalladioComponentModel/System/5.0';
 
 /**
  * Transforms a resource environment where resource containers are annotated with the

@@ -1,8 +1,8 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
 import Loadbalancing;
 
-modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
-modeltype PCM_SYS uses 'http://sdq.ipd.uka.de/PalladioComponentModel/System/5.0';
+modeltype PCM_ALLOC uses 'http://palladiosimulator.org/PalladioComponentModel/Allocation/5.0';
+modeltype PCM_SYS uses 'http://palladiosimulator.org/PalladioComponentModel/System/5.0';
 	
 /**
  * Transforms a system where assembly context are annotated with the "Replicable Assembly

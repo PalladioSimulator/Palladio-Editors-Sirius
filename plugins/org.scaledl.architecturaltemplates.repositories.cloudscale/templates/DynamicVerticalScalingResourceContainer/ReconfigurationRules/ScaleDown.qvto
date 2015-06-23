@@ -1,8 +1,8 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
 
 modeltype PRM uses 'http://simulizar.palladiosimulator.org/RuntimeMeasurement/1.0';
-modeltype PCM_ALLOC uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Allocation/5.0';
-modeltype PCM_RES_ENV uses 'http://sdq.ipd.uka.de/PalladioComponentModel/ResourceEnvironment/5.0';
+modeltype PCM_ALLOC uses 'http://palladiosimulator.org/PalladioComponentModel/Allocation/5.0';
+modeltype PCM_RES_ENV uses 'http://palladiosimulator.org/PalladioComponentModel/ResourceEnvironment/5.0';
 
 transformation ScaleDown(in prm : PRM, inout pcmAllocation : PCM_ALLOC);
 property scaleDownStepSize : Real;

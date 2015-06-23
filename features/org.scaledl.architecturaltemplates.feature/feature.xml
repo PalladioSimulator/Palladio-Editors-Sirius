@@ -43,7 +43,7 @@
       <import plugin="org.modelversioning.emfprofile.edit" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="de.uka.ipd.sdq.identifier.edit" version="2.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ocl.edit"/>
-      <import plugin="de.uka.ipd.sdq.pcm.edit" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.palladiosimulator.pcm.edit" version="4.0.0" match="greaterOrEqual"/>
       <import plugin="de.uka.ipd.sdq.probfunction.edit" version="2.1.0" match="greaterOrEqual"/>
       <import plugin="de.uka.ipd.sdq.stoex.edit" version="2.2.0" match="greaterOrEqual"/>
       <import plugin="de.uka.ipd.sdq.units.edit" version="2.1.0" match="greaterOrEqual"/>

@@ -43,7 +43,7 @@
                   nsURI="http://www.modelversioning.org/emfprofile/application/1.1">
             </metamodel>
             <metamodel
-                  nsURI="http://sdq.ipd.uka.de/PalladioComponentModel/Core/Entity/5.0">
+                  nsURI="http://palladiosimulator.org/PalladioComponentModel/Core/Entity/5.0">
             </metamodel>
          </library>
       </unit>
