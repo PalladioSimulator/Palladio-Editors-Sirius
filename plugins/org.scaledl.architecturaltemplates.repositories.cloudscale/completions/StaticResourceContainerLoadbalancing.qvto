@@ -7,7 +7,7 @@ modeltype PCM_RES_ENV uses 'http://sdq.ipd.uka.de/PalladioComponentModel/Resourc
 modeltype PCMCore uses pcm::core('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
 modeltype PCMComposition uses pcm::core::composition('http://sdq.ipd.uka.de/PalladioComponentModel/5.0');
 modeltype SEFF uses pcm::seff('http://sdq.ipd.uka.de/PalladioComponentModel/SEFF/5.0');
-modeltype PCM_COMPLETION uses 'http://sdq.ipd.uka.de/Completions/1.0';
+modeltype PCM_COMPLETION uses 'http://palladiosimulator.org/Completions/1.0';
 
 
 transformation StaticResourceContainerLoadbalancing(inout pcmAllocation : PCM_ALLOC);
