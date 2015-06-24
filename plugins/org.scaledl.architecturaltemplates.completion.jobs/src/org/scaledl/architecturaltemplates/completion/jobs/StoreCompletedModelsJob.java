@@ -7,6 +7,8 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.palladiosimulator.analyzer.workflow.configurations.AbstractPCMWorkflowRunConfiguration;
+import org.palladiosimulator.analyzer.workflow.jobs.CreatePluginProjectJob;
 import org.palladiosimulator.commons.emfutils.EMFCopyHelper;
 import org.scaledl.architecturaltemplates.completion.config.ATExtensionJobConfiguration;
 import org.scaledl.architecturaltemplates.completion.constants.ATPartitionConstants;
@@ -19,8 +21,6 @@ import de.uka.ipd.sdq.workflow.jobs.UserCanceledException;
 import de.uka.ipd.sdq.workflow.mdsd.blackboard.MDSDBlackboard;
 import de.uka.ipd.sdq.workflow.mdsd.blackboard.ResourceSetPartition;
 import de.uka.ipd.sdq.workflow.mdsd.blackboard.SavePartitionToDiskJob;
-import de.uka.ipd.sdq.workflow.pcm.configurations.AbstractPCMWorkflowRunConfiguration;
-import de.uka.ipd.sdq.workflow.pcm.jobs.CreatePluginProjectJob;
 
 /**
  * Copies all resources of the partitions defined in the PARTITION_IDS constant to a given model

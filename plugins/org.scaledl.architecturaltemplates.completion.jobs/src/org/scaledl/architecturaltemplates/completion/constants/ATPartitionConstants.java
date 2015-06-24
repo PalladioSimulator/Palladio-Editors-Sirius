@@ -3,11 +3,10 @@ package org.scaledl.architecturaltemplates.completion.constants;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.palladiosimulator.analyzer.workflow.jobs.LoadPCMModelsIntoBlackboardJob;
 import org.palladiosimulator.experimentautomation.application.jobs.LoadModelsIntoBlackboardJob;
 import org.palladiosimulator.simulizar.launcher.jobs.LoadSimuLizarModelsIntoBlackboardJob;
 import org.palladiosimulator.simulizar.reconfiguration.storydiagram.jobs.LoadSDMModelsIntoBlackboardJob;
-
-import de.uka.ipd.sdq.workflow.pcm.jobs.LoadPCMModelsIntoBlackboardJob;
 
 public final class ATPartitionConstants {
 
