@@ -4,7 +4,7 @@
     nsPrefix="org.scaledl">
   <eSubpackages name="type" nsURI="http://scaledl.org/ArchitecturalTemplates/Type/1.0"
       nsPrefix="org.scaledl.architecturaltemplates">
-    <eClassifiers xsi:type="ecore:EClass" name="AT" eSuperTypes="../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
+    <eClassifiers xsi:type="ecore:EClass" name="AT" eSuperTypes="../../org.palladiosimulator.pcm/model/pcm.ecore#//core/entity/Entity">
       <eStructuralFeatures xsi:type="ecore:EReference" name="repository" lowerBound="1"
           eType="#//type/Repository" eOpposite="#//type/Repository/ATs"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="roles" upperBound="-1"
@@ -18,26 +18,26 @@
         </eAnnotations>
       </eStructuralFeatures>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Constraint" abstract="true" eSuperTypes="../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
+    <eClassifiers xsi:type="ecore:EClass" name="Constraint" abstract="true" eSuperTypes="../../org.palladiosimulator.pcm/model/pcm.ecore#//core/entity/Entity">
       <eStructuralFeatures xsi:type="ecore:EReference" name="AT" lowerBound="1" eType="#//type/AT"
           eOpposite="#//type/AT/constraints"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="roles" upperBound="-1"
           eType="#//type/Role" eOpposite="#//type/Role/constraints"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
+    <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="../../org.palladiosimulator.pcm/model/pcm.ecore#//core/entity/Entity">
       <eStructuralFeatures xsi:type="ecore:EReference" name="role" lowerBound="1"
           eType="#//type/Role" eOpposite="#//type/Role/parameters"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="dataType" lowerBound="1"
           eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Repository" eSuperTypes="../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
+    <eClassifiers xsi:type="ecore:EClass" name="Repository" eSuperTypes="../../org.palladiosimulator.pcm/model/pcm.ecore#//core/entity/Entity">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Allows to collect Architectural Templates within a catalogue."/>
       </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="ATs" upperBound="-1"
           eType="#//type/AT" containment="true" eOpposite="#//type/AT/repository"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Role" eSuperTypes="../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
+    <eClassifiers xsi:type="ecore:EClass" name="Role" eSuperTypes="../../org.palladiosimulator.pcm/model/pcm.ecore#//core/entity/Entity">
       <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
           eType="#//type/Parameter" containment="true" eOpposite="#//type/Parameter/role"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="AT" lowerBound="1" eType="#//type/AT"
@@ -144,7 +144,7 @@
   </eSubpackages>
   <eSubpackages name="instance" nsURI="http://scaledl.org/ArchitecturalTemplates/Instance/1.0"
       nsPrefix="org.scaledl.architecturaltemplates">
-    <eClassifiers xsi:type="ecore:EClass" name="ATInstance" eSuperTypes="../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/entity/Entity">
+    <eClassifiers xsi:type="ecore:EClass" name="ATInstance" eSuperTypes="../../org.palladiosimulator.pcm/model/pcm.ecore#//core/entity/Entity">
       <eStructuralFeatures xsi:type="ecore:EReference" name="role2components" upperBound="-1"
           eType="#//instance/Role2Component" containment="true" eOpposite="#//instance/Role2Component/ATInstance"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="component2roles" upperBound="-1"
@@ -160,7 +160,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Component2Role">
       <eStructuralFeatures xsi:type="ecore:EReference" name="component" lowerBound="1"
-          eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/composition/AssemblyContext"/>
+          eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//core/composition/AssemblyContext"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="roles" upperBound="-1"
           eType="#//type/Role"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="ATInstance" lowerBound="1"
@@ -168,7 +168,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Role2Component">
       <eStructuralFeatures xsi:type="ecore:EReference" name="component" lowerBound="1"
-          eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//core/composition/AssemblyContext"/>
+          eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//core/composition/AssemblyContext"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="role" lowerBound="1"
           eType="#//type/Role"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="ATInstance" lowerBound="1"
@@ -190,7 +190,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="ATInstance" lowerBound="1"
           eType="#//instance/ATInstance" eOpposite="#//instance/ATInstance/role2resources"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="resource" lowerBound="1"
-          eType="ecore:EClass ../../de.uka.ipd.sdq.pcm/model/pcm.ecore#//resourceenvironment/ResourceContainer"/>
+          eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//resourceenvironment/ResourceContainer"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="role" lowerBound="1"
           eType="#//type/Role"/>
     </eClassifiers>

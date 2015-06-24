@@ -13,6 +13,7 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.IBaseLabelProvider;
 import org.eclipse.swt.widgets.Shell;
+import org.palladiosimulator.pcm.ui.provider.PalladioItemProviderAdapterFactory;
 import org.scaledl.architecturaltemplates.type.AT;
 import org.scaledl.architecturaltemplates.type.Repository;
 import org.scaledl.architecturaltemplates.type.Role;
@@ -20,7 +21,6 @@ import org.scaledl.architecturaltemplates.type.provider.TypeItemProviderAdapterF
 
 import de.uka.ipd.sdq.dialogs.selection.FilteredItemsAdapterFactory;
 import de.uka.ipd.sdq.dialogs.selection.SelectEObjectDialog;
-import de.uka.ipd.sdq.pcmbench.ui.provider.PalladioItemProviderAdapterFactory;
 
 /**
  * A {@link SelectEObjectDialog} for selecting Architectural Templates ({@link AT}) and {@link Roles}.
