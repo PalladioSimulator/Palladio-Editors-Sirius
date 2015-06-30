@@ -3,7 +3,7 @@
   <ownedViewpoints name="Resourceenvironment" modelFileExtension="*.resourceenvironment">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Resourceenvironment Diagram" domainClass="resourceenvironment.ResourceEnvironment">
       <defaultLayer name="Default">
-        <edgeMappings name="Connection" semanticCandidatesExpression="[connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource'] //@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetMapping="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer'] //@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']" domainClass="composition.Connector" useDomainElement="true">
+        <edgeMappings name="Connection" semanticCandidatesExpression="[connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']" targetMapping="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetFinderExpression="[target.eContainer(ResourcecResourceContainer)/]" sourceFinderExpression="[source.eContainer(LinkingResource)/]" domainClass="composition.ComposedStructure" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -138,7 +138,11 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@edgeMappings[name='Connection']" variableName="createConnection" sourceExpression="feature:eContainer" targetExpression="feature:eContainer"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.oclAsType(resourceenresourceEnvironment_LinkingResource)/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.ResourceContainer" referenceName="ConnectionToResourceContainer">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="assembly" valueExpression="[targetView.eContainer(DDiagramElement).target/]"/>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
@@ -171,7 +175,9 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="latency_CommunicationLinkResourceSpecification.specification" valueExpression="[arg0/]"/>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="OpenLatencyDialog" id="org.palladiosimulator.editors.gmf.runtime.diagram.resource.extension.OpenLatencyDialog">
+                  <parameters name="latency" value="[arg0/]"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -179,7 +185,7 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="throughput_CommunicationLinkResourceSpecification.specification" valueExpression="[arg0/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="throughput_CommunicationLinkResourceSpecification" valueExpression="[arg0/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
