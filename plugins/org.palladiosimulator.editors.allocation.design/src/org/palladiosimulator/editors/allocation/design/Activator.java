@@ -1,4 +1,4 @@
-package org.palladiosimulators.editors.allocation.design;
+package org.palladiosimulator.editors.allocation.design;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,7 +13,7 @@ import org.osgi.framework.BundleContext;
  */
 public class Activator extends AbstractUIPlugin {
     // The plug-in ID
-    public static final String PLUGIN_ID = "org.palladiosimulators.editors.allocation.design";
+    public static final String PLUGIN_ID = "org.palladiosimulator.editors.allocation.design";
 
     // The shared instance
     private static Activator plugin;

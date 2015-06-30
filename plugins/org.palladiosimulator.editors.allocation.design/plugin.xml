@@ -2,8 +2,8 @@
 <?eclipse version="3.0"?>
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
-    <component class="org.palladiosimulators.editors.allocation.design.Activator"
-               id="org.palladiosimulators.editors.allocation.design"
+    <component class="org.palladiosimulator.editors.allocation.design.Activator"
+               id="org.palladiosimulator.editors.allocation.design"
 	       name="Allocation">
     </component>
   </extension>
