@@ -1,6 +1,5 @@
 package org.scaledl.architecturaltemplates.ui;
 
-import java.util.Arrays;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -59,9 +58,14 @@ public class ArchitecturalTemplateProfileSelectionDialog extends
 	 */
 	@Override
 	public void setElements(Object[] elements) {
-		if (!Arrays.stream(elements).allMatch(element -> element instanceof Profile) && Arrays.stream(elements).map(element -> (Profile) element).allMatch(ArchitecturalTemplateAPI.isArchitecturalTemplate)) {
-			throw new IllegalArgumentException("All elements must be of type \"Profile\"");
+		for (Object o : elements)
+		{
+			if (! (o instanceof Profile && ArchitecturalTemplateAPI.isArchitecturalTemplate((Profile) o)))
+			{
+				throw new IllegalArgumentException("All elements must be of type \"Profile\"");
+			}
 		}
+
 		super.setElements(elements);
 	}
 	

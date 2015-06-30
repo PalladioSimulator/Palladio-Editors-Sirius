@@ -17,6 +17,7 @@ import org.eclipse.gmf.runtime.diagram.ui.services.editpart.AbstractEditPartProv
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.CustomStyle;
 import org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.ExtensionActivator;
+import org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.rotatable.NodeImageExtension;
 import org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.rotatable.editPart.ParentBasedRotatingImageEditPart;
 
 /**
@@ -45,13 +46,11 @@ public class RotatableImageEditPartProvider extends AbstractEditPartProvider {
 	}
 
 	private boolean customStyleSupported(CustomStyle customStyle) {
-		return customStyle.getId() != null
-				&& ExtensionActivator
-						.getDefault()
-						.getImageExtensions()
-						.stream()
-						.anyMatch(
-								desc -> customStyle.getId()
-										.equals(desc.getId()));
+		for (NodeImageExtension nie : ExtensionActivator.getDefault().getImageExtensions())
+		{
+			if (customStyle.getId().equals(nie.getId())) return true;
+		}
+
+		return false;
 	}
 }

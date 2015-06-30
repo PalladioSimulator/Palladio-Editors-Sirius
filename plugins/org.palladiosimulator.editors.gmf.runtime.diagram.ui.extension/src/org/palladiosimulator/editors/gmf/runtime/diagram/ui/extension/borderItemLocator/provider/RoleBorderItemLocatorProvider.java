@@ -8,7 +8,6 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.BorderItemLocatorProvider;
 import org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.borderItemLocator.RoleBorderItemLocator;
-
 import org.palladiosimulator.pcm.repository.Role;
 
 /**

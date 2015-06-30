@@ -1,8 +1,8 @@
 package org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.action;
 
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.Map;
-import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.Dialog;
@@ -10,11 +10,10 @@ import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
 import org.modelversioning.emfprofile.Stereotype;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
-import org.scaledl.architecturaltemplates.type.Role;
-import org.scaledl.architecturaltemplates.ui.RoleStereotypeSelectionDialog;
-
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.system.System;
+import org.scaledl.architecturaltemplates.type.Role;
+import org.scaledl.architecturaltemplates.ui.RoleStereotypeSelectionDialog;
 
 /**
  * This class applies an ArchitecturalTemplate to a {@link System}. It will ask
@@ -50,22 +49,23 @@ public class AddATRoleAction implements IExternalJavaAction {
 		}
 
 		final AssemblyContext assemblyContext = (AssemblyContext) parameter;
-		final Predicate<Stereotype> notAlreadyApplied = stereotype -> StereotypeAPI
-				.getAppliedStereotypes(assemblyContext)
-				.stream()
-				.noneMatch(
-						otherSteretype -> otherSteretype.getName().equals(
-								stereotype));
 
+		LinkedList<Stereotype> unapplyedStereotypes = new LinkedList<>();
+
+		for (Stereotype stereotype : StereotypeAPI.getApplicableStereotypes(assemblyContext))
+		{
+            if (!StereotypeAPI.isStereotypeApplied(assemblyContext, stereotype.getName())) {
+            	unapplyedStereotypes.add(stereotype);
+            }
+		}
+
+		
 		final RoleStereotypeSelectionDialog dialog = new RoleStereotypeSelectionDialog(
 				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
 
 		dialog.setMessage(DIALOG_MESSAGE);
 
-		dialog.setElements(StereotypeAPI
-				.getApplicableStereotypes(assemblyContext).stream()
-				.filter(notAlreadyApplied)
-				.toArray());
+		dialog.setElements(unapplyedStereotypes.toArray(new Stereotype[0]));
 
 		if (dialog.open() != Dialog.OK) { return; }
 

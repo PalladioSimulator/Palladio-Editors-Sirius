@@ -1,20 +1,15 @@
 package org.scaledl.architecturaltemplates.api;
 
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Predicate;
-
 import org.eclipse.emf.ecore.EObject;
 import org.modelversioning.emfprofile.Profile;
 import org.modelversioning.emfprofile.Stereotype;
 import org.palladiosimulator.commons.emfutils.EMFLoadHelper;
 import org.palladiosimulator.mdsdprofiles.api.ProfileAPI;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
-import org.scaledl.architecturaltemplates.type.AT;
-import org.scaledl.architecturaltemplates.type.Role;
-
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.system.System;
+import org.scaledl.architecturaltemplates.type.AT;
+import org.scaledl.architecturaltemplates.type.Role;
 
 /**
  * An API class providing methods to interact with Architectural Templates
@@ -35,35 +30,6 @@ public final class ArchitecturalTemplateAPI {
 	 * {@link Stereotype} as an system-role.
 	 */
 	private static final String SYSTEM_ROLE_NAME_SUFFIX = "System";
-
-	/**
-	 * A {@link Predicate} to test whether a {@link Stereotype} conforms the role-convention (a tagged-value for the {@link #ROLE_URI} exists).
-	 */
-	public static final Predicate<Stereotype> isRole = stereotype -> Objects
-			.nonNull(stereotype.getTaggedValue(ROLE_URI));
-
-	/**
-	 * A {@link Predicate} to test whether a {@link Stereotype} conforms the system-role-convention (name ends with {@link #SYSTEM_ROLE_NAME_SUFFIX}).
-	 */
-	private static final Predicate<Stereotype> conformsSystemNameConvention = stereotype -> stereotype
-			.getName().endsWith(SYSTEM_ROLE_NAME_SUFFIX);
-
-	/**
-	 * A {@link Predicate} to test whether a {@link Stereotype} conforms both the role-convention (a tagged-value for the {@link #ROLE_URI} exists )and the system-role-convention (name ends with {@link #SYSTEM_ROLE_NAME_SUFFIX}).
-	 */
-	public static final Predicate<Stereotype> isSystemRole = isRole
-			.and(conformsSystemNameConvention);
-
-
-	/**
-	 * A {@link Predicate} to test whether a {@link Profile} conforms the Architecural-Template-convention (all stereotypes are roles and exactly one is the system role).
-	 * {@see #isRole}
-	 * {@see #conformsSystemNameConvention}
-	 */
-	public static final Predicate<Profile> isArchitecturalTemplate = profile -> profile
-			.getStereotypes().stream().allMatch(isRole)
-			&& profile.getStereotypes().stream()
-					.filter(conformsSystemNameConvention).count() == 1;
 
 	/**
 	 * Hidden constructor.
@@ -112,7 +78,7 @@ public final class ArchitecturalTemplateAPI {
 	 * {@see #isRole}
 	 */
 	public static boolean isRole(final Stereotype stereotype) {
-		return isRole.test(stereotype);
+		return stereotype.getTaggedValue(ROLE_URI) != null;
 	}
 	
 	/**
@@ -120,7 +86,7 @@ public final class ArchitecturalTemplateAPI {
 	 * {@see #isSystemRole}
 	 */
 	public static boolean isSystemRole(final Stereotype stereotype) {
-		return isSystemRole.test(stereotype);
+		return isRole (stereotype) && stereotype.getName().endsWith(SYSTEM_ROLE_NAME_SUFFIX);
 	}
 
 	/**
@@ -128,7 +94,16 @@ public final class ArchitecturalTemplateAPI {
 	 * {@see #isArchitecturalTemplate}
 	 */
 	public static boolean isArchitecturalTemplate(final Profile profile) {
-		return isArchitecturalTemplate.test(profile);
+
+		int count = 0;
+
+		for (Stereotype s : profile.getStereotypes())
+		{
+			if (!isRole(s)) return false;
+			if (isSystemRole(s)) count++;
+		}
+		
+		return count == 1;
 	}
 
 	/**
@@ -142,9 +117,13 @@ public final class ArchitecturalTemplateAPI {
 			throw new RuntimeException("Profile \"" + profile
 					+ "\" is no Architectural Template");
 		}
-		Optional<Stereotype> systemRoleStereotype = profile.getStereotypes()
-				.stream().filter(isSystemRole).findAny();
-		return systemRoleStereotype.get();
+		
+		for (Stereotype s : profile.getStereotypes())
+		{
+			if (isSystemRole(s)) return s;
+		}
+		
+		return null;
 	}
 
 	/**

@@ -3,8 +3,8 @@ package org.palladiosimulator.editors.util.api.services;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CommonTokenStream;
@@ -20,7 +20,6 @@ import org.palladiosimulator.commons.emfutils.EMFCopyHelper;
 import org.palladiosimulator.editors.util.Activator;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
-
 import org.palladiosimulator.pcm.core.PCMRandomVariable;
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.parameter.VariableUsage;
@@ -61,12 +60,17 @@ public class ComposedProvidingRequiringEntityServices {
 	 * @return list of roles
 	 */
 	public List<StereotypeApplication> getRoles(final EObject object) {
-		return StereotypeAPI
-				.getStereotypeApplications(object)
-				.stream()
-				.filter(stereotypeApplication -> ArchitecturalTemplateAPI.isRole
-						.test(stereotypeApplication.getStereotype()))
-				.collect(Collectors.toList());
+		LinkedList<StereotypeApplication> l = new LinkedList<>();
+		
+		for (StereotypeApplication sa : StereotypeAPI.getStereotypeApplications(object))
+		{
+			if (ArchitecturalTemplateAPI.isRole(sa.getStereotype()))
+			{
+				l.add(sa);
+			}
+		}
+		
+		return l;
 	}
 
 	/**
@@ -78,11 +82,15 @@ public class ComposedProvidingRequiringEntityServices {
 	 * @return indicator for applied roles
 	 */
 	public boolean hasRoles(final EObject object) {
-		return StereotypeAPI
-				.getStereotypeApplications(object)
-				.stream()
-				.map(stereotypeApplication -> stereotypeApplication.getStereotype())
-				.anyMatch(ArchitecturalTemplateAPI.isRole);
+		for (StereotypeApplication sa : StereotypeAPI.getStereotypeApplications(object))
+		{
+			if (ArchitecturalTemplateAPI.isRole(sa.getStereotype()))
+			{
+				return true;
+			}
+		}
+		
+		return false;
 	}
 
 	/**
@@ -114,13 +122,14 @@ public class ComposedProvidingRequiringEntityServices {
 		// combine the sets
 		usages.addAll(assemblyContext
 				.getConfigParameterUsages__AssemblyContext());
-		componentVariableUsages
-				.stream()
-				.filter(componentVariableUsage -> !isOverridden(
-						componentVariableUsage, assemblyContext))
-				.forEach(
-						componentVariableUsage -> usages
-								.add(componentVariableUsage));
+
+		for (VariableUsage vu : componentVariableUsages)
+		{
+			if (!isOverridden(vu, assemblyContext))
+			{
+				usages.add(vu);
+			}
+		}
 
 		return usages;
 	}
@@ -149,15 +158,16 @@ public class ComposedProvidingRequiringEntityServices {
 		final String variableUsageReferenceName = ((VariableUsage) variableUsageParam)
 				.getNamedReference__VariableUsage().getReferenceName();
 		final AssemblyContext assemblyContext = (AssemblyContext) assemblyContextParam;
-
-		return assemblyContext
-				.getConfigParameterUsages__AssemblyContext()
-				.stream()
-				.anyMatch(
-						assemblyContextVariableUsage -> assemblyContextVariableUsage
-								.getNamedReference__VariableUsage()
-								.getReferenceName()
-								.equals(variableUsageReferenceName));
+		
+		for (VariableUsage vu : assemblyContext.getConfigParameterUsages__AssemblyContext())
+		{
+			if (vu.getNamedReference__VariableUsage().getReferenceName().equals(variableUsageReferenceName))
+			{
+				return true;
+			}
+		}
+		
+		return false;
 	}
 
 	/**

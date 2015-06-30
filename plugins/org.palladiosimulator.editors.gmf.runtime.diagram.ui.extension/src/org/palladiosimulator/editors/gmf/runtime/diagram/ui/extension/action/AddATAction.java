@@ -1,6 +1,7 @@
 package org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.action;
 
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
@@ -11,14 +12,14 @@ import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
 import org.modelversioning.emfprofile.Profile;
 import org.modelversioning.emfprofile.Stereotype;
+import org.modelversioning.emfprofile.registry.IProfileProvider;
 import org.modelversioning.emfprofile.registry.IProfileRegistry;
 import org.palladiosimulator.mdsdprofiles.api.ProfileAPI;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
+import org.palladiosimulator.pcm.system.System;
 import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
 import org.scaledl.architecturaltemplates.type.AT;
 import org.scaledl.architecturaltemplates.ui.ArchitecturalTemplateProfileSelectionDialog;
-
-import org.palladiosimulator.pcm.system.System;
 
 /**
  * A Sirius action that is used to add an ArchitecturalTemplate Role to the
@@ -58,10 +59,18 @@ public class AddATAction implements IExternalJavaAction {
 		final System system = (System) parameter;
 
 		ArchitecturalTemplateProfileSelectionDialog profileSelectionDialog = new ArchitecturalTemplateProfileSelectionDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+		
+		LinkedList<Profile> profiles = new LinkedList<>();
 
-		profileSelectionDialog.setElements(IProfileRegistry.eINSTANCE
-				.getRegisteredProfiles().stream()
-				.filter(ArchitecturalTemplateAPI.isArchitecturalTemplate).toArray());
+		for (IProfileProvider profileProvider : IProfileRegistry.eINSTANCE.getRegisteredProfileProviders())
+		{
+			if (ArchitecturalTemplateAPI.isArchitecturalTemplate(profileProvider.getProfile()))
+			{
+				profiles.add(profileProvider.getProfile());
+			}
+		}
+		
+		profileSelectionDialog.setElements(profiles.toArray(new Profile[0]));
 
 		profileSelectionDialog.setMessage(DIALOG_MESSAGE);
 

@@ -6,9 +6,8 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.modelversioning.emfprofileapplication.StereotypeApplication;
-import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
-
 import org.palladiosimulator.pcm.system.System;
+import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
 
 /**
  * A Sirius action that is used to remove an ArchitecturalTemplate Role from a {@link System}.
@@ -23,8 +22,8 @@ public class RemoveATAction implements IExternalJavaAction {
      */
     @Override
     public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
-        final StereotypeApplication stereotypeApplication = (StereotypeApplication) selections.stream().findFirst()
-                .get();
+        final StereotypeApplication stereotypeApplication = (StereotypeApplication) (selections.isEmpty() ? null : selections.iterator().next());
+
         if (!(stereotypeApplication.getAppliedTo() instanceof System)) {
             return;
         }

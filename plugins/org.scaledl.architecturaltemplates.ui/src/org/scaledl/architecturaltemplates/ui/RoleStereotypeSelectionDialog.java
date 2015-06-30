@@ -58,8 +58,12 @@ public class RoleStereotypeSelectionDialog extends ElementListSelectionDialog {
 	 */
 	@Override
 	public void setElements(Object[] elements) {
-		if (!Arrays.stream(elements).allMatch(element -> element instanceof Stereotype) || !Arrays.stream(elements).map(element -> (Stereotype) element).allMatch(ArchitecturalTemplateAPI::isRole) ) {
-			throw new IllegalArgumentException("All elements must be of type \"Stereotype\"");
+		for (Object o : elements)
+		{
+			if (! (o instanceof Stereotype && ArchitecturalTemplateAPI.isRole((Stereotype) o)))
+			{
+				throw new IllegalArgumentException("All elements must be of type \"Stereotype\"");
+			}
 		}
 		super.setElements(elements);
 	}

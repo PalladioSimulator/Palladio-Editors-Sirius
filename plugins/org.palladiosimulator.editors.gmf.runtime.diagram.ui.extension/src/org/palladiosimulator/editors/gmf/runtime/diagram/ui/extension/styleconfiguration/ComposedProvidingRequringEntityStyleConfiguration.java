@@ -1,7 +1,5 @@
 package org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.styleconfiguration;
 
-import java.util.function.Predicate;
-
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
@@ -11,26 +9,28 @@ import org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.ComposedPr
 public class ComposedProvidingRequringEntityStyleConfiguration implements
 		IStyleConfigurationProvider {
 
-	private static final Predicate<DiagramElementMapping> isRoleParentNode = mapping -> mapping
-			.getName()
-			.equals(ComposedProvidingRequiringEntityEditorConstants.ASSEMBLY_CONTEXT_MAPPING)
-			|| mapping
-					.getName()
-					.equals(ComposedProvidingRequiringEntityEditorConstants.COMPOSED_PROVIDING_REQUIRING_ENTITY_MAPPING);
-
 	public ComposedProvidingRequringEntityStyleConfiguration() {}
 
 	@Override
 	public boolean provides(DiagramElementMapping mapping, Style style) {
-		return isRoleParentNode.test(mapping);
+		
+		return isRoleParentNode(mapping);
 	}
 
 	@Override
 	public StyleConfiguration createStyleConfiguration(
 			DiagramElementMapping mapping, Style style) {
-		if (isRoleParentNode.test(mapping)) {
+
+		if (isRoleParentNode(mapping)) {
 			return new RoleParentStyleConfiguration();
 		}
 		throw new RuntimeException("Called with invalid parameters");
+	}
+	
+	private boolean isRoleParentNode (DiagramElementMapping mapping)
+	{
+		return mapping.getName().equals(ComposedProvidingRequiringEntityEditorConstants.ASSEMBLY_CONTEXT_MAPPING) ||
+				mapping.getName().equals(ComposedProvidingRequiringEntityEditorConstants.COMPOSED_PROVIDING_REQUIRING_ENTITY_MAPPING);
+		
 	}
 }

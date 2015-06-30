@@ -6,11 +6,10 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.modelversioning.emfprofileapplication.StereotypeApplication;
-import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
-import org.scaledl.architecturaltemplates.type.Role;
-
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.system.System;
+import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
+import org.scaledl.architecturaltemplates.type.Role;
 
 /**
  * This class applies an ArchitecturalTemplate to a {@link System}. It will ask the user to select
@@ -28,8 +27,8 @@ public class RemoveATRoleAction implements IExternalJavaAction {
      */
     @Override
     public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
-        final StereotypeApplication stereotypeApplication = (StereotypeApplication) selections.stream().findFirst()
-                .get();
+        final StereotypeApplication stereotypeApplication = (StereotypeApplication) (selections.isEmpty() ? null : selections.iterator().next());
+
         if (!(stereotypeApplication.getAppliedTo() instanceof AssemblyContext)) {
             return;
         }

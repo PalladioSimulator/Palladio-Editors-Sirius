@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Util
 Bundle-SymbolicName: org.palladiosimulator.editors.util;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.palladiosimulator.commons;bundle-version="1.0.0",
  de.uka.ipd.sdq.dialogs;bundle-version="2.0.1",
  org.eclipse.emf.edit.ui;bundle-version="2.10.2",
