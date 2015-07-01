@@ -12,7 +12,6 @@ import org.modelversioning.emfprofileapplication.StereotypeApplication;
 import org.palladiosimulator.commons.emfutils.EMFLoadHelper;
 import org.palladiosimulator.mdsdprofiles.api.ProfileAPI;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
-import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.system.System;
 import org.scaledl.architecturaltemplates.type.AT;
 import org.scaledl.architecturaltemplates.type.Role;
@@ -219,62 +218,62 @@ public final class ArchitecturalTemplateAPI {
 	}
 
 	/**
-	 * Applies the given {@link Role} to the {@link AssemblyContext}.
+	 * Applies the given {@link Role} to the {@link EObject}.
 	 * 
-	 * @param assemblyContext
-	 *            the {@link AssemblyContext}
+	 * @param eObject
+	 *            the {@link EObject}
 	 * @param role
 	 *            the {@link Role}
 	 */
-	public static void applyRole(final AssemblyContext assemblyContext, final Role role) {
-		StereotypeAPI.applyStereotype(assemblyContext, role.getStereotype());
+	public static void applyRole(final EObject eObject, final Role role) {
+		StereotypeAPI.applyStereotype(eObject, role.getStereotype());
 	}
 
 	/**
-	 * Applies the given Role-{@link Stereotype} to the {@link AssemblyContext}.
+	 * Applies the given Role-{@link Stereotype} to the {@link EObject}.
 	 * 
-	 * @param assemblyContext
-	 *            the {@link AssemblyContext}
+	 * @param eObject
+	 *            the {@link EObject}
 	 * @param stereotype
 	 *            the {@link Stereotype}
 	 * @throws RuntimeException
 	 *             if the given stereotype does not conform the role-convention.
 	 */
-	public static void applyRole(final AssemblyContext assemblyContext, final Stereotype stereotype) {
+	public static void applyRole(final EObject eObject, final Stereotype stereotype) {
 		if (!isRole(stereotype)) {
 			throw new RuntimeException("Stereotype \"" + stereotype + "\" is no role");
 		}
-		StereotypeAPI.applyStereotype(assemblyContext, stereotype);
+		StereotypeAPI.applyStereotype(eObject, stereotype);
 	}
 
 	/**
-	 * Unapplies the given {@link Role} from the {@link AssemblyContext}.
+	 * Unapplies the given {@link Role} from the {@link EObject}.
 	 * 
-	 * @param assemblyContext
-	 *            the {@link AssemblyContext}
+	 * @param eObject
+	 *            the {@link EObject}
 	 * @param role
 	 *            the {@link Role}
 	 */
-	public static void unapplyRole(final AssemblyContext assemblyContext, final Role role) {
-		StereotypeAPI.unapplyStereotype(assemblyContext, role.getStereotype());
+	public static void unapplyRole(final EObject eObject, final Role role) {
+		StereotypeAPI.unapplyStereotype(eObject, role.getStereotype());
 	}
 
 	/**
 	 * Unapplies the given Role-{@link Stereotype} from the
-	 * {@link AssemblyContext}.
+	 * {@link EObject}.
 	 * 
-	 * @param assemblyContext
-	 *            the {@link AssemblyContext}
+	 * @param eObject
+	 *            the {@link EObject}
 	 * @param stereotype
 	 *            the {@link Stereotype}
 	 * @throws RuntimeException
 	 *             if the given stereotype does not conform the role-convention.
 	 */
-	public static void unapplyRole(final AssemblyContext assemblyContext, final Stereotype stereotype) {
+	public static void unapplyRole(final EObject eObject, final Stereotype stereotype) {
 		if (!isRole(stereotype)) {
 			throw new RuntimeException("Stereotype \"" + stereotype + "\" is no role");
 		}
-		StereotypeAPI.unapplyStereotype(assemblyContext, stereotype);
+		StereotypeAPI.unapplyStereotype(eObject, stereotype);
 	}
 
 	/**
