@@ -73,7 +73,7 @@
    <extension
          point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
       <editpolicyProvider
-            class="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.action.OpenLatencyDialogEditPolicyProvider">
+            class="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.action.LinkingResourceEditPolicyProvider">
          <Priority
                name="Highest">
          </Priority>
