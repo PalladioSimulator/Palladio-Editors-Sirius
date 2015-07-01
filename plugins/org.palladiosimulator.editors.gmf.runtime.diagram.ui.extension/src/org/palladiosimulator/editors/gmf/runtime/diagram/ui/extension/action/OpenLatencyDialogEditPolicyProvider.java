@@ -3,7 +3,7 @@ package org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.action;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.common.core.service.IOperation;
 
-public class OpenLatencyDialogEditPoliciyProvider extends AbstractEditPolicyProvider {
+public class OpenLatencyDialogEditPolicyProvider extends AbstractEditPolicyProvider {
 
     @Override
     public void createEditPolicies(final EditPart editPart) {
