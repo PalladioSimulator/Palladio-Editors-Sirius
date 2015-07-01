@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.modelversioning.emfprofile.Profile;
 import org.modelversioning.emfprofile.Stereotype;
+import org.modelversioning.emfprofile.registry.IProfileRegistry;
 import org.modelversioning.emfprofileapplication.StereotypeApplication;
 import org.palladiosimulator.commons.emfutils.EMFLoadHelper;
 import org.palladiosimulator.mdsdprofiles.api.ProfileAPI;
@@ -175,6 +177,7 @@ public final class ArchitecturalTemplateAPI {
 
 		ProfileAPI.applyProfile(system.eResource(), profile);
 		StereotypeAPI.applyStereotype(system, systemRoleStereotype);
+		EPackage.Registry.INSTANCE.put(profile.getNsURI(), profile);
 	}
 
 	/**
@@ -310,6 +313,39 @@ public final class ArchitecturalTemplateAPI {
 		}
 		
 		return roleStereotypeApplications;
+	}
+	
+	/**
+	 * Returns all {@link AT}s that are currently registered.
+	 * @return the {@link AT}s
+	 */
+	public static Collection<AT> getRegisteredArchitecturalTemplates() {
+		final Collection<AT> registeredATs = new ArrayList<>();
+
+		for (Profile profile : IProfileRegistry.eINSTANCE.getRegisteredProfiles()) {
+			if (isArchitecturalTemplate(profile)) {
+				registeredATs.add(getArchitecturalTemplate(profile));
+			}
+		}
+		
+		return registeredATs;
+	}
+
+	/**
+	 * Returns all {@link Role}s that are applicable to the given {@link EObject}.
+	 * @param eObject the {@link EObject}
+	 * @return applicable {@link Role}s
+	 */
+	public static Collection<Role> getApplicableRoles(final EObject eObject) {
+		final Collection<Role> applicableRoles = new ArrayList<>();
+		
+		for (Stereotype applicableStereotype : StereotypeAPI.getApplicableStereotypes(eObject)) {
+			if (isRole(applicableStereotype) && !StereotypeAPI.isStereotypeApplied(eObject, applicableStereotype)) {
+				applicableRoles.add(getRole(applicableStereotype));
+			}
+			
+		}
+		return applicableRoles;
 	}
 
 }

@@ -1,7 +1,5 @@
 package org.scaledl.architecturaltemplates.ui;
 
-import java.util.Arrays;
-
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.viewers.LabelProvider;
@@ -14,7 +12,8 @@ import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
 import org.scaledl.architecturaltemplates.type.Role;
 
 /**
- * A dialog for selecting {@link Role}s.
+ * A dialog for selecting {@link Role}-{@link Stereotype}s.
+ * @see ArchitecturalTemplateAPI#isRole(Stereotype)
  * @author Max Schettler
  *
  */
