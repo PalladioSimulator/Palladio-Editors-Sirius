@@ -12,12 +12,20 @@ import org.modelversioning.emfprofile.Stereotype;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.system.System;
+import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
 import org.scaledl.architecturaltemplates.type.Role;
 import org.scaledl.architecturaltemplates.ui.RoleStereotypeSelectionDialog;
 
 /**
  * This class applies an ArchitecturalTemplate to a {@link System}. It will ask
  * the user to select from an list of available ArchitecturalTemplates.
+ * 
+ * TODO: Should rely on
+ * {@link ArchitecturalTemplateAPI#getApplicableRoles(EObject)} with a
+ * refactored {@link RoleStereotypeSelectionDialog} that works on {@link Role}s.
+ * This however induces a weird Acceleo bug at the moment (1.7.2015) where
+ * expressions on the element will only be evaluated after an restart
+ * (ArgumentTypeMissmatch).
  * 
  * FIXME: use org.eclipse.sirius.tools.api.ui.IExternalJavaAction2
  * 
@@ -30,7 +38,7 @@ public class AddATRoleAction implements IExternalJavaAction {
 	 * Message displayed in the selection dialog.
 	 */
 	private static final String DIALOG_MESSAGE = "Select Role-Stereotype to apply to the AssemblyContext";
-	
+
 	/**
 	 * The key of the {@link AssemblyContext} parameter.
 	 */
@@ -41,8 +49,7 @@ public class AddATRoleAction implements IExternalJavaAction {
 	 * {@link AssemblyContext}.
 	 */
 	@Override
-	public void execute(Collection<? extends EObject> selections,
-			Map<String, Object> parameters) {
+	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
 		final Object parameter = parameters.get(ASSEMBLY_CONTEXT_PARAMETER_KEY);
 		if (parameter == null || !(parameter instanceof AssemblyContext)) {
 			return;
@@ -52,14 +59,12 @@ public class AddATRoleAction implements IExternalJavaAction {
 
 		LinkedList<Stereotype> unapplyedStereotypes = new LinkedList<>();
 
-		for (Stereotype stereotype : StereotypeAPI.getApplicableStereotypes(assemblyContext))
-		{
-            if (!StereotypeAPI.isStereotypeApplied(assemblyContext, stereotype.getName())) {
-            	unapplyedStereotypes.add(stereotype);
-            }
+		for (Stereotype stereotype : StereotypeAPI.getApplicableStereotypes(assemblyContext)) {
+			if (!StereotypeAPI.isStereotypeApplied(assemblyContext, stereotype.getName())) {
+				unapplyedStereotypes.add(stereotype);
+			}
 		}
 
-		
 		final RoleStereotypeSelectionDialog dialog = new RoleStereotypeSelectionDialog(
 				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
 
@@ -67,12 +72,13 @@ public class AddATRoleAction implements IExternalJavaAction {
 
 		dialog.setElements(unapplyedStereotypes.toArray(new Stereotype[0]));
 
-		if (dialog.open() != Dialog.OK) { return; }
+		if (dialog.open() != Dialog.OK) {
+			return;
+		}
 
 		final Stereotype selectedRoleStereotype = dialog.getResultRoleStereotype();
 
-		StereotypeAPI.applyStereotype(assemblyContext,
-				selectedRoleStereotype);
+		StereotypeAPI.applyStereotype(assemblyContext, selectedRoleStereotype);
 	}
 
 	/**

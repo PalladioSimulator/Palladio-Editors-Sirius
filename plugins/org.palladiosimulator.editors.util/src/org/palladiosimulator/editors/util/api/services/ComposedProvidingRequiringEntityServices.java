@@ -19,13 +19,14 @@ import org.modelversioning.emfprofileapplication.StereotypeApplication;
 import org.palladiosimulator.commons.emfutils.EMFCopyHelper;
 import org.palladiosimulator.editors.util.Activator;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
-import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
 import org.palladiosimulator.pcm.core.PCMRandomVariable;
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.parameter.VariableUsage;
 import org.palladiosimulator.pcm.repository.ImplementationComponentType;
 import org.palladiosimulator.pcm.stochasticexpressions.parser.MyPCMStoExLexer;
 import org.palladiosimulator.pcm.stochasticexpressions.parser.MyPCMStoExParser;
+import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
+import org.scaledl.architecturaltemplates.type.Role;
 
 public class ComposedProvidingRequiringEntityServices {
 
@@ -48,6 +49,16 @@ public class ComposedProvidingRequiringEntityServices {
 				+ stereotype);
 
 		return assemblyContext;
+	}
+	
+	/**
+	 * Returns the {@link StereotypeApplication}s that define a {@link Role}-Application on the given {@link EObject}.
+	 * @param eObject object to get roles for
+	 * @return collection of role-StereotypeApplications
+	 * @see ArchitecturalTemplateAPI#getRoleApplications(EObject)
+	 */
+	public Collection<StereotypeApplication> getRoleApplications(final EObject eObject) {
+		return ArchitecturalTemplateAPI.getRoleApplications(eObject);
 	}
 
 	/**

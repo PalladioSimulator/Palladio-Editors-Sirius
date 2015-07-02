@@ -9,27 +9,26 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import org.eclipse.ui.dialogs.ISelectionStatusValidator;
 import org.modelversioning.emfprofile.Profile;
-import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
 import org.scaledl.architecturaltemplates.type.AT;
 
 /**
- * A dialog for selecting a profile that defines an Architectural Template ({@link AT}).
- * TODO maybe this should select the AT directly?
+ * A dialog for selecting an Architectural Template ({@link AT}).
+ * 
  * @author Max Schettler
  *
  */
-public class ArchitecturalTemplateProfileSelectionDialog extends
+public class ArchitecturalTemplateSelectionDialog extends
 		ElementListSelectionDialog {
 
 	private static final String EMPTY_LIST_MESSAGE = "There are no registered Architectural Templates";
 	private static final String EMPTY_SELECTION_MESSAGE = "You need to select an Architectural Template";
 	private static final String TITLE = "Select an Architectural Template";
 
-	public ArchitecturalTemplateProfileSelectionDialog(Shell parent) {
+	public ArchitecturalTemplateSelectionDialog(Shell parent) {
 		super(parent, new LabelProvider() {
 			@Override
 			public String getText(Object element) {
-				return ((Profile) element).getName();
+				return ((AT) element).getEntityName();
 			}
 			
 			@Override
@@ -60,17 +59,17 @@ public class ArchitecturalTemplateProfileSelectionDialog extends
 	public void setElements(Object[] elements) {
 		for (Object o : elements)
 		{
-			if (! (o instanceof Profile && ArchitecturalTemplateAPI.isArchitecturalTemplate((Profile) o)))
+			if (!(o instanceof AT))
 			{
-				throw new IllegalArgumentException("All elements must be of type \"Profile\"");
+				throw new IllegalArgumentException("All elements must be of type \"AT\"");
 			}
 		}
 
 		super.setElements(elements);
 	}
 	
-	public Profile getResultProfile() {
-		return (Profile) getResult()[0];
+	public AT getResultArchitecturalTemplate() {
+		return (AT) getResult()[0];
 	}
 
 	
