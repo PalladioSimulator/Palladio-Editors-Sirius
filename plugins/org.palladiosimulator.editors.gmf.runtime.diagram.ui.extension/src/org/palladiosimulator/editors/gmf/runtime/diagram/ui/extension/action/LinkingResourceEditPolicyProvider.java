@@ -8,8 +8,6 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.palladiosimulator.editors.dialogs.resource.OpenLatencyDialog;
 
-import de.uka.ipd.sdq.pcm.gmf.resource.edit.parts.ResourceContainerEditPart;
-
 /**
  * Configures custom edit policy for linking resources, i.e., it opens appropriate dialogs for
  * setting latencies, throughput, etc.
@@ -39,7 +37,7 @@ public class LinkingResourceEditPolicyProvider extends AbstractEditPolicyProvide
                 // FIXME find right constraints for this filter
                 if (view.getDiagram() != null && view.getDiagram().getElement() != null && view.getDiagram()
                         .getElement().eClass().getEPackage().getNsURI().equals(DiagramPackage.eINSTANCE.getNsURI())) {
-                    if (("" + ResourceContainerEditPart.VISUAL_ID).equals(view.getType())) {
+                    if (("SomeVisualID").equals(view.getType())) {
                         return true;
                     }
                 }
