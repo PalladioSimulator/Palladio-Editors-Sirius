@@ -16,6 +16,7 @@
       <import plugin="org.eclipse.sirius" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.sirius.common.acceleo.mtl" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.resources" version="3.9.1" match="greaterOrEqual"/>
+      <import plugin="org.palladiosimulator.pcm" version="4.0.0" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.editors.util" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension" version="5.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.gmf.runtime.diagram.ui" version="1.8.0" match="greaterOrEqual"/>
@@ -30,7 +31,8 @@
       <import plugin="de.uka.ipd.sdq.dialogs" version="2.0.1" match="greaterOrEqual"/>
       <import plugin="org.scaledl.architecturaltemplates.edit" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.pcm.ui" version="2.0.0" match="greaterOrEqual"/>
-      <import plugin="org.palladiosimulator.pcm" version="4.0.0" match="greaterOrEqual"/>
+      <import plugin="org.palladiosimulator.editors.dialogs"/>
+      <import plugin="de.uka.ipd.sdq.pcm.gmf.resource"/>
    </requires>
 
    <plugin
