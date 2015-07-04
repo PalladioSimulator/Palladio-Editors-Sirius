@@ -10,7 +10,8 @@ Require-Bundle: org.palladiosimulator.commons;bundle-version="1.0.0",
  org.scaledl.architecturaltemplates.edit;bundle-version="1.0.0",
  org.palladiosimulator.pcm.ui;bundle-version="2.0.0",
  org.palladiosimulator.mdsdprofiles.api;bundle-version="1.0.0",
- org.scaledl.architecturaltemplates.api;bundle-version="1.0.0"
+ org.scaledl.architecturaltemplates.api;bundle-version="1.0.0",
+ org.modelversioning.emfprofile
 Export-Package: org.palladiosimulator.editors.util.api.services
 Bundle-Activator: org.palladiosimulator.editors.util.Activator
 Bundle-ActivationPolicy: lazy

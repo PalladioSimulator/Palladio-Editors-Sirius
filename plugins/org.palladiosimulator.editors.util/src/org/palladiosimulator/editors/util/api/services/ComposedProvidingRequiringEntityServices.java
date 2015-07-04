@@ -11,11 +11,14 @@ import org.antlr.runtime.RecognitionException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.ui.PlatformUI;
+import org.modelversioning.emfprofile.Stereotype;
 import org.modelversioning.emfprofileapplication.StereotypeApplication;
 import org.palladiosimulator.commons.emfutils.EMFCopyHelper;
 import org.palladiosimulator.editors.util.Activator;
+import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.palladiosimulator.pcm.core.PCMRandomVariable;
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.parameter.VariableUsage;
@@ -29,6 +32,19 @@ public class ComposedProvidingRequiringEntityServices {
 
 	private static final String PARSER_ERROR_TITLE = "Error parsing expression";
 	private static final String PARSER_ERROR_MESSAGE = "The entered stochastic expression is invalid.";
+	
+	/**
+	 * Returns the {@link EStructuralFeature}s that define the {@link Stereotype}`s
+	 * parameters.
+	 * 
+	 * @param stereotype
+	 *            the {@link Stereotype}
+	 * @return the parameters` features
+	 */
+	public static Collection<EStructuralFeature> getParameters(
+			final Stereotype stereotype) {
+		return StereotypeAPI.getParameters(stereotype);
+	}
 	
 	/**
 	 * Returns the {@link StereotypeApplication}s that define a {@link Role}-Application on the given {@link EObject}.
