@@ -386,4 +386,13 @@ public final class ArchitecturalTemplateAPI {
 		return applicableRoles;
 	}
 
+	/**
+	 * Tests whether the given {@link EObject} has roles attached.
+	 * @param eObject the {@link EObject} to test
+	 * @return the test result
+	 */
+	public static boolean hasRoles(final EObject eObject) {
+		return !getAppliedRoles(eObject).isEmpty();
+	}
+
 }
