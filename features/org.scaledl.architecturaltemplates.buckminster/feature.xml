@@ -3,6 +3,7 @@
       id="org.scaledl.architecturaltemplates.buckminster"
       label="ScaleDL Architectural Templates"
       version="1.0.0.qualifier"
+      plugin="org.palladiosimulator.branding"
       license-feature="org.palladiosimulator.license"
       license-feature-version="1.0.0">
 
@@ -21,5 +22,12 @@
    <includes
          id="org.palladiosimulator.editors.feature"
          version="0.0.0"/>
+
+   <plugin
+         id="org.palladiosimulator.branding"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>
