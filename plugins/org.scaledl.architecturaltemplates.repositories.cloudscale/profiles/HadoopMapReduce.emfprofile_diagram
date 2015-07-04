@@ -7,7 +7,7 @@
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eStructuralFeatures>
       <extensions xmi:type="emfprofile:Extension" xmi:id="_jW0msPphEeSRjMxcTrWsAA" lowerBound="1" upperBound="1">
-        <target xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.0#//system/System"/>
+        <target xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.1#//system/System"/>
       </extensions>
     </eClassifiers>
     <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_d-IqwPphEeSRjMxcTrWsAA" name="MapSEFF">
@@ -16,7 +16,7 @@
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eStructuralFeatures>
       <extensions xmi:type="emfprofile:Extension" xmi:id="_mqqWAPphEeSRjMxcTrWsAA" lowerBound="1" upperBound="1">
-        <target xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.0#//seff/ResourceDemandingSEFF"/>
+        <target xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.1#//seff/ResourceDemandingSEFF"/>
       </extensions>
     </eClassifiers>
     <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_g4wBwPphEeSRjMxcTrWsAA" name="ReduceSEFF">
@@ -25,7 +25,7 @@
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eStructuralFeatures>
       <extensions xmi:type="emfprofile:Extension" xmi:id="_ooy2oPphEeSRjMxcTrWsAA" lowerBound="1" upperBound="1">
-        <target xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.0#//seff/ResourceDemandingSEFF"/>
+        <target xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.1#//seff/ResourceDemandingSEFF"/>
       </extensions>
     </eClassifiers>
   </emfprofile:Profile>
@@ -45,7 +45,7 @@
       </children>
       <styles xmi:type="notation:DescriptionStyle" xmi:id="_14fAgfpgEeSRjMxcTrWsAA"/>
       <styles xmi:type="notation:FontStyle" xmi:id="_14fAgvpgEeSRjMxcTrWsAA" fontName=".Helvetica Neue DeskInterface"/>
-      <element xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.0#//system/System"/>
+      <element xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.1#//system/System"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_14fAg_pgEeSRjMxcTrWsAA" x="96" y="88"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_cPGWEPphEeSRjMxcTrWsAA" type="2006" element="_cPD50PphEeSRjMxcTrWsAA">
@@ -102,7 +102,7 @@
       </children>
       <styles xmi:type="notation:DescriptionStyle" xmi:id="_Ufb0UfpkEeSRjMxcTrWsAA"/>
       <styles xmi:type="notation:FontStyle" xmi:id="_Ufb0UvpkEeSRjMxcTrWsAA" fontName=".Helvetica Neue DeskInterface"/>
-      <element xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.0#//seff/ResourceDemandingSEFF"/>
+      <element xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.1#//seff/ResourceDemandingSEFF"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ufb0U_pkEeSRjMxcTrWsAA" x="280" y="88"/>
     </children>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_Foz7IfpgEeSRjMxcTrWsAA"/>

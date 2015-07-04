@@ -3,6 +3,7 @@
       id="org.scaledl.architecturaltemplates.feature"
       label="ScaleDL Architectural Templates"
       version="1.0.0.qualifier"
+      plugin="org.palladiosimulator.branding"
       license-feature="org.palladiosimulator.license"
       license-feature-version="1.0.0">
 
@@ -96,6 +97,13 @@
 
    <plugin
          id="org.scaledl.architecturaltemplates.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.palladiosimulator.branding"
          download-size="0"
          install-size="0"
          version="0.0.0"

@@ -10,7 +10,7 @@
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eStructuralFeatures>
       <extensions xmi:type="emfprofile:Extension" xmi:id="_3EaTMCOrEeSubfGVEKswQQ" upperBound="1">
-        <target xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.0#//core/composition/AssemblyContext"/>
+        <target xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.1#//core/composition/AssemblyContext"/>
       </extensions>
     </eClassifiers>
     <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_zWM8ECOrEeSubfGVEKswQQ" name="MiddleLayerAssembly">
@@ -28,7 +28,7 @@
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eStructuralFeatures>
       <extensions xmi:type="emfprofile:Extension" xmi:id="_4Qx_sCOrEeSubfGVEKswQQ" upperBound="1">
-        <target xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.0#//core/composition/AssemblyContext"/>
+        <target xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.1#//core/composition/AssemblyContext"/>
       </extensions>
     </eClassifiers>
     <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_08e9YCOrEeSubfGVEKswQQ" name="DataLayerAssembly">
@@ -40,7 +40,7 @@
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eStructuralFeatures>
       <extensions xmi:type="emfprofile:Extension" xmi:id="_44Kv0COrEeSubfGVEKswQQ" upperBound="1">
-        <target xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.0#//core/composition/AssemblyContext"/>
+        <target xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.1#//core/composition/AssemblyContext"/>
       </extensions>
     </eClassifiers>
     <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_paph0CO_EeSbfv_s0ToTIw" name="ThreeLayerSystem">
@@ -49,7 +49,7 @@
         <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eStructuralFeatures>
       <extensions xmi:type="emfprofile:Extension" xmi:id="_Xr9AkCPBEeSbfv_s0ToTIw" lowerBound="1" upperBound="1">
-        <target xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.0#//system/System"/>
+        <target xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.1#//system/System"/>
       </extensions>
     </eClassifiers>
   </emfprofile:Profile>
@@ -69,7 +69,7 @@
       </children>
       <styles xmi:type="notation:DescriptionStyle" xmi:id="_tse6gSOrEeSubfGVEKswQQ"/>
       <styles xmi:type="notation:FontStyle" xmi:id="_tse6giOrEeSubfGVEKswQQ" fontName="Segoe UI"/>
-      <element xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.0#//core/composition/AssemblyContext"/>
+      <element xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.1#//core/composition/AssemblyContext"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tse6gyOrEeSubfGVEKswQQ" x="91" y="77" width="304" height="143"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_ud7lkCOrEeSubfGVEKswQQ" type="2006" element="_ud6-gCOrEeSubfGVEKswQQ">
@@ -154,7 +154,7 @@
       </children>
       <styles xmi:type="notation:DescriptionStyle" xmi:id="_WMXdISPBEeSbfv_s0ToTIw"/>
       <styles xmi:type="notation:FontStyle" xmi:id="_WMXdIiPBEeSbfv_s0ToTIw" fontName="Segoe UI"/>
-      <element xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.0#//system/System"/>
+      <element xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.1#//system/System"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WMXdIyPBEeSbfv_s0ToTIw" x="445" y="45" width="203" height="87"/>
     </children>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_W1LyoSOrEeSubfGVEKswQQ"/>
