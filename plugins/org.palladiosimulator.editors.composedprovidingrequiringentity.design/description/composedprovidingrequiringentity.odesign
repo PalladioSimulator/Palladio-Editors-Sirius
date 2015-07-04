@@ -199,7 +199,7 @@
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
                 </style>
               </subNodeMappings>
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelExpression="[self.oclAsType(StereotypeApplication).getStereotype().name/]">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelExpression="[self.getStereotype().name/]">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -437,7 +437,7 @@
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[sourceView.eContainer().eContainer().oclAsType(DNodeContainer).target/]">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[sourceView.eContainer().eContainer(DDiagramElement).target/]">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.AssemblyConnector" referenceName="connectors__ComposedStructure">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newAssemblyConnector"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="providedRole_AssemblyConnector" valueExpression="[target/]"/>
@@ -454,7 +454,7 @@
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[sourceView.eContainer().eContainer().oclAsType(DNodeContainer).target/]">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[sourceView.eContainer().eContainer(DDiagramElement).target/]">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.AssemblyEventConnector" referenceName="connectors__ComposedStructure">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newAssemblyEventConnector"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceRole__AssemblyEventConnector" valueExpression="[source/]"/>
@@ -471,7 +471,7 @@
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[sourceView.eContainer().eContainer().oclAsType(DNodeContainer).target/]">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[sourceView.eContainer().eContainer(DDiagramElement).target/]">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.AssemblyInfrastructureConnector" referenceName="connectors__ComposedStructure">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newAssemblyInfrastructureConnector"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="providedRole__AssemblyInfrastructureConnector" valueExpression="[source/]"/>
