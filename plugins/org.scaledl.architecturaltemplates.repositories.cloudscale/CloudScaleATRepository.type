@@ -85,7 +85,7 @@
     <roles id="_y6cGkPpWEeSRjMxcTrWsAA" entityName="Reduce SEFF">
       <stereotype href="profiles/HadoopMapReduce.emfprofile_diagram#_g4wBwPphEeSRjMxcTrWsAA"/>
     </roles>
-    <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion">
+    <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion" qvtoFileURI="HadoopMapReduce.qvto">
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter"/>
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="repository"/>
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="usagemodel"/>
