@@ -40,22 +40,12 @@ public class AddATRoleAction implements IExternalJavaAction {
 	private static final String DIALOG_MESSAGE = "Select Role-Stereotype to apply to the AssemblyContext";
 
 	/**
-	 * The key of the {@link AssemblyContext} parameter.
-	 */
-	private static final String ASSEMBLY_CONTEXT_PARAMETER_KEY = "assemblyContext";
-
-	/**
 	 * Asks the user to select a {@link Role} and attaches it to the given
 	 * {@link AssemblyContext}.
 	 */
 	@Override
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
-		final Object parameter = parameters.get(ASSEMBLY_CONTEXT_PARAMETER_KEY);
-		if (parameter == null || !(parameter instanceof AssemblyContext)) {
-			return;
-		}
-
-		final AssemblyContext assemblyContext = (AssemblyContext) parameter;
+		final AssemblyContext assemblyContext = (AssemblyContext) selections.iterator().next();
 
 		LinkedList<Stereotype> unapplyedStereotypes = new LinkedList<>();
 

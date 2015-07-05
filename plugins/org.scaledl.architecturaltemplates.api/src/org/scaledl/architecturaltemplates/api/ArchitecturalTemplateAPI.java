@@ -2,6 +2,7 @@ package org.scaledl.architecturaltemplates.api;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -275,13 +276,51 @@ public final class ArchitecturalTemplateAPI {
 		}
 		StereotypeAPI.unapplyStereotype(eObject, stereotype);
 	}
+	
+	/**
+	 * Returns all {@link AT}s applied to the {@link System}.
+	 * 
+	 * @param system
+	 *            the {@link System}
+	 * @return applied {@link AT}s
+	 */
+	public static Collection<AT> getAppliedArchitecturalTemplates(final System system) {
+		final Collection<AT> appliedATs = new LinkedList<>();
+		
+		for (Profile appliedProfile : ProfileAPI.getAppliedProfiles(system.eResource())) {
+			if (isArchitecturalTemplate(appliedProfile)) {
+				appliedATs.add(getArchitecturalTemplate(appliedProfile));
+			}
+		}
+		
+		return appliedATs;
+	}
+	
+	/**
+	 * Returns all {@link StereotypeApplication}s applied to the {@link System}
+	 * that are role-applications (their {@link Stereotype} is a {@link Role}).
+	 * 
+	 * @param eObject the {@link EObject}
+	 * @return role-{@link StereotypeApplication}s
+	 */
+	public static Collection<StereotypeApplication> getArchitecturalTemplateApplications(final System system) {
+		Collection<StereotypeApplication> systemRoleStereotypeApplications = new ArrayList<>();
+		
+		for (StereotypeApplication stereotypeApplication : StereotypeAPI.getStereotypeApplications(system)) {
+			if (isSystemRole(stereotypeApplication.getStereotype())) {
+				systemRoleStereotypeApplications.add(stereotypeApplication);
+			}
+		}
+		
+		return systemRoleStereotypeApplications;
+	}
 
 	/**
 	 * Returns all {@link Role}s applied to the {@link EObject}.
 	 * 
 	 * @param eObject
 	 *            the {@link EObject}
-	 * @return applied {@link Role}
+	 * @return applied {@link Role}s
 	 */
 	public static Collection<Role> getAppliedRoles(final EObject eObject) {
 		final Collection<Role> appliedRoles = new ArrayList<>();
@@ -345,6 +384,15 @@ public final class ArchitecturalTemplateAPI {
 			
 		}
 		return applicableRoles;
+	}
+
+	/**
+	 * Tests whether the given {@link EObject} has roles attached.
+	 * @param eObject the {@link EObject} to test
+	 * @return the test result
+	 */
+	public static boolean hasRoles(final EObject eObject) {
+		return !getAppliedRoles(eObject).isEmpty();
 	}
 
 }

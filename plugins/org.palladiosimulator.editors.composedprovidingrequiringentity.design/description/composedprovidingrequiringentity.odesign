@@ -129,7 +129,7 @@
             </style>
           </borderedNodeMappings>
           <subNodeMappings name="EventChannel Node" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="feature:eAllContents" domainClass="composition.EventChannel">
-            <style xsi:type="style:LozengeNodeDescription" labelExpression="[entityName/]" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:LozengeNodeDescription" labelExpression="[entityName/]" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW" widthComputationExpression="[entityName.size()/]" heightComputationExpression="7">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -571,9 +571,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT SystemRole Creation" label="Add Architectural Template" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.addAT">
-                  <parameters name="system" value="[container/]"/>
-                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT SystemRole Creation" label="Add Architectural Template" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.addAT"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -581,9 +579,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Creation" label="Add Role" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.addATRole">
-                <parameters name="assemblyContext" value="[container/]"/>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Creation" label="Add Role" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.addATRole"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="AT Role Removal" label="Remove Role" forceRefresh="true">

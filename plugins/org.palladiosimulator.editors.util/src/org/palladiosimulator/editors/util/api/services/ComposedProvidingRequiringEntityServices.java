@@ -3,7 +3,6 @@ package org.palladiosimulator.editors.util.api.services;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.antlr.runtime.ANTLRStringStream;
@@ -14,11 +13,9 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.ui.PlatformUI;
-import org.modelversioning.emfprofile.Stereotype;
 import org.modelversioning.emfprofileapplication.StereotypeApplication;
 import org.palladiosimulator.commons.emfutils.EMFCopyHelper;
 import org.palladiosimulator.editors.util.Activator;
-import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.palladiosimulator.pcm.core.PCMRandomVariable;
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.parameter.VariableUsage;
@@ -32,24 +29,6 @@ public class ComposedProvidingRequiringEntityServices {
 
 	private static final String PARSER_ERROR_TITLE = "Error parsing expression";
 	private static final String PARSER_ERROR_MESSAGE = "The entered stochastic expression is invalid.";
-
-	public EObject removeATRole(final EObject assemblyContextObject,
-			final EObject stereotypeObject) {
-		if (assemblyContextObject == null
-				|| !(assemblyContextObject instanceof AssemblyContext)
-				|| stereotypeObject == null
-				|| !(stereotypeObject instanceof Stereotype)) {
-			System.out.println("False parameters");
-			return assemblyContextObject;
-		}
-		final AssemblyContext assemblyContext = (AssemblyContext) assemblyContextObject;
-		final Stereotype stereotype = (Stereotype) stereotypeObject;
-
-		System.out.println("Called with " + assemblyContext + " and "
-				+ stereotype);
-
-		return assemblyContext;
-	}
 	
 	/**
 	 * Returns the {@link StereotypeApplication}s that define a {@link Role}-Application on the given {@link EObject}.
@@ -62,29 +41,6 @@ public class ComposedProvidingRequiringEntityServices {
 	}
 
 	/**
-	 * Returns a list of {@link Stereotype}s that are associated with the given
-	 * object, that comply with the Architectural Template`s convention, i.e.
-	 * have a tagged value "roleURI" pointing to the correct repository element.
-	 * 
-	 * @param object
-	 *            object to get roles for
-	 * @return list of roles
-	 */
-	public List<StereotypeApplication> getRoles(final EObject object) {
-		LinkedList<StereotypeApplication> l = new LinkedList<>();
-		
-		for (StereotypeApplication sa : StereotypeAPI.getStereotypeApplications(object))
-		{
-			if (ArchitecturalTemplateAPI.isRole(sa.getStereotype()))
-			{
-				l.add(sa);
-			}
-		}
-		
-		return l;
-	}
-
-	/**
 	 * Returns, whether the given {@link StereotypableElement} has roles
 	 * applied.
 	 * 
@@ -93,15 +49,7 @@ public class ComposedProvidingRequiringEntityServices {
 	 * @return indicator for applied roles
 	 */
 	public boolean hasRoles(final EObject object) {
-		for (StereotypeApplication sa : StereotypeAPI.getStereotypeApplications(object))
-		{
-			if (ArchitecturalTemplateAPI.isRole(sa.getStereotype()))
-			{
-				return true;
-			}
-		}
-		
-		return false;
+		return ArchitecturalTemplateAPI.hasRoles(object);
 	}
 
 	/**
