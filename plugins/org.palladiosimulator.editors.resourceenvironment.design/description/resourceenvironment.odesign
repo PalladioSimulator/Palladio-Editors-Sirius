@@ -134,7 +134,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.oclAsType(resourceenresourceEnvironment_LinkingResource)/]">
+              <firstModelOperations xsi:type="tool_1:ChangeContext">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.ResourceContainer" referenceName="ConnectionToResourceContainer">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="assembly" valueExpression="[targetView.eContainer(DDiagramElement).target/]"/>
                 </subModelOperations>

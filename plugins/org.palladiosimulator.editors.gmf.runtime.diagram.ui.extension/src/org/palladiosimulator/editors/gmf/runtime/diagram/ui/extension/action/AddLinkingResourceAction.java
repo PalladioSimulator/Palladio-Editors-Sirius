@@ -1,14 +1,16 @@
 package org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.action;
 
-import java.util.Collection;
-import java.util.Map;
+import org.eclipse.gef.EditPart;
+import org.eclipse.gmf.runtime.common.core.service.IOperation;
+import org.eclipse.gmf.runtime.common.core.service.IProviderChangeListener;
+import org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.IEditPolicyProvider;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
-import org.palladiosimulator.editors.dialogs.resource.OpenLatencyDialog;
 
-public class AddLinkingResourceAction implements IExternalJavaAction {
+public class AddLinkingResourceAction implements  IEditPolicyProvider  {
 
+	/*public AddLinkingResourceAction(){
+		super(PalladioComponentModelElementTypes.LinkingResource_2005);
+		}
 	@Override
 	public boolean canExecute(Collection<? extends EObject> arg0) {
 		// TODO Auto-generated method stub
@@ -22,6 +24,30 @@ public class AddLinkingResourceAction implements IExternalJavaAction {
 		//installEditPolicy <- openLatencyDialog ist das? 
 		
 		System.out.println("huhu");
+	}
+*/
+	@Override
+	public void addProviderChangeListener(IProviderChangeListener listener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean provides(IOperation operation) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void removeProviderChangeListener(IProviderChangeListener listener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void createEditPolicies(EditPart editPart) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

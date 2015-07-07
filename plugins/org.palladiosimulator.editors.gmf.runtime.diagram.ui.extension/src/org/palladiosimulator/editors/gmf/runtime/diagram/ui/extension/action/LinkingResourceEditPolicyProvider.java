@@ -7,6 +7,7 @@ import org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.CreateEditPolicies
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.palladiosimulator.editors.dialogs.resource.OpenLatencyDialog;
+import org.palladiosimulator.pcm.resourceenvironment.CommunicationLinkResourceSpecification;
 
 /**
  * Configures custom edit policy for linking resources, i.e., it opens appropriate dialogs for
@@ -20,7 +21,7 @@ public class LinkingResourceEditPolicyProvider extends AbstractEditPolicyProvide
 
     @Override
     public void createEditPolicies(final EditPart editPart) {
-        if (editPart instanceof IOperation) { // FIXME using IOperation to disable this path; find
+        if (editPart instanceof CommunicationLinkResourceSpecification) { // FIXME using IOperation to disable this path; find
                                               // the correct type
             editPart.installEditPolicy(EditPolicyRoles.OPEN_ROLE, new OpenLatencyDialog());
         }
