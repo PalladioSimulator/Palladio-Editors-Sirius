@@ -39,6 +39,9 @@ public class RoleStereotypeSelectionDialog extends ElementListSelectionDialog {
 	public RoleStereotypeSelectionDialog(final Shell parent) {
 		super(parent, new LabelProvider() {
 			
+			
+			private Image roleImage = null;
+			
 			@Override
 			public String getText(Object element) {
 				return ((Stereotype) element).getName();
@@ -46,17 +49,20 @@ public class RoleStereotypeSelectionDialog extends ElementListSelectionDialog {
 
 			@Override
 			public Image getImage(Object element) {
-                try {
-					return new Image(Display.getCurrent(), new FileInputStream(FileHelper.getFile("platform:plugin/org.scaledl.architecturaltemplates.edit/icons/full/obj16/Role.gif")));
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();	// TODO proper error handling
-					return null;
+				if (roleImage == null) {
+					try {
+						roleImage  = new Image(Display.getCurrent(), new FileInputStream(FileHelper.getFile("platform:plugin/org.scaledl.architecturaltemplates.edit/icons/full/obj16/Role.gif")));
+					} catch (FileNotFoundException e) {
+						e.printStackTrace(); 	// TODO proper error handling
+					}
 				}
+                return roleImage;
 			}
 			
 			@Override
 			public void dispose() {
 				super.dispose();
+				roleImage.dispose();
 			}
 		});
 		setValidator(new ISelectionStatusValidator() {
