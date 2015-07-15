@@ -10,9 +10,14 @@ import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.ui.PlatformUI;
 import org.modelversioning.emfprofile.Stereotype;
 import org.modelversioning.emfprofileapplication.StereotypeApplication;
@@ -32,23 +37,79 @@ public class ComposedProvidingRequiringEntityServices {
 
 	private static final String PARSER_ERROR_TITLE = "Error parsing expression";
 	private static final String PARSER_ERROR_MESSAGE = "The entered stochastic expression is invalid.";
-	
+	private static final String PARAMETER_VALUE_LITERAL_DIALOG_TITLE = "Enter value literal";
+	private static final String PARAMETER_VALUE_LITERAL_DIALOG_MESSAGE = "Please enter a literal to set the parameter";
+
 	/**
-	 * Returns the {@link EStructuralFeature}s that define the {@link Stereotype}`s
-	 * parameters.
+	 * Queries an {@link String} literal from the user and uses
+	 * {@link #setParameterValue(EStructuralFeature, EObject, String)} to set
+	 * the value.
+	 * 
+	 * @param parameter
+	 *            the parameter to set
+	 * @param owningEObject
+	 *            the object for which the feature will be set
+	 */
+	public void queryAndSetParameterValue(final EStructuralFeature parameter, final EObject owningEObject) {
+		final InputDialog inputDialog = new InputDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+				PARAMETER_VALUE_LITERAL_DIALOG_TITLE, PARAMETER_VALUE_LITERAL_DIALOG_MESSAGE, null, null);
+		if (inputDialog.open() == Dialog.OK) {
+			setParameterValue(parameter, owningEObject, inputDialog.getValue());
+		}
+	}
+
+	/**
+	 * Sets the value of the {@link EStructuralFeature} on the given
+	 * {@link EObject} to the parsed value literal.
+	 * 
+	 * @param parameter
+	 *            the feature to set
+	 * @param owningEObject
+	 *            the object for which the feature will be set
+	 * @param valueLiteral
+	 *            the literal representing the new value
+	 */
+	public void setParameterValue(final EStructuralFeature parameter, final EObject owningEObject,
+			final String valueLiteral) {
+		EClassifier eType = parameter.getEType();
+		Object value = null;
+
+		if (valueLiteral == null && eType != null) {
+			value = parameter.isMany() ? null : eType.getDefaultValue();
+		} else if (eType instanceof EDataType) {
+			EFactory factory = eType.getEPackage().getEFactoryInstance();
+			EDataType eDataType = (EDataType) eType;
+			if (eDataType.isSerializable()) {
+				try {
+					value = factory.createFromString(eDataType, valueLiteral);
+				} catch (Throwable e) {
+					// At development time, the real factory may not be
+					// available. Just return null.
+					//
+				}
+			}
+		}
+		owningEObject.eSet(parameter, value);
+	}
+
+	/**
+	 * Returns the {@link EStructuralFeature}s that define the
+	 * {@link Stereotype}`s parameters.
 	 * 
 	 * @param stereotype
 	 *            the {@link Stereotype}
 	 * @return the parameters` features
 	 */
-	public static Collection<EStructuralFeature> getParameters(
-			final Stereotype stereotype) {
+	public Collection<EStructuralFeature> getParameters(final Stereotype stereotype) {
 		return StereotypeAPI.getParameters(stereotype);
 	}
-	
+
 	/**
-	 * Returns the {@link StereotypeApplication}s that define a {@link Role}-Application on the given {@link EObject}.
-	 * @param eObject object to get roles for
+	 * Returns the {@link StereotypeApplication}s that define a {@link Role}
+	 * -Application on the given {@link EObject}.
+	 * 
+	 * @param eObject
+	 *            object to get roles for
 	 * @return collection of role-StereotypeApplications
 	 * @see ArchitecturalTemplateAPI#getRoleApplications(EObject)
 	 */
@@ -91,17 +152,13 @@ public class ComposedProvidingRequiringEntityServices {
 			return usages;
 
 		final Collection<VariableUsage> componentVariableUsages = ((ImplementationComponentType) assemblyContext
-				.getEncapsulatedComponent__AssemblyContext())
-				.getComponentParameterUsage_ImplementationComponentType();
+				.getEncapsulatedComponent__AssemblyContext()).getComponentParameterUsage_ImplementationComponentType();
 
 		// combine the sets
-		usages.addAll(assemblyContext
-				.getConfigParameterUsages__AssemblyContext());
+		usages.addAll(assemblyContext.getConfigParameterUsages__AssemblyContext());
 
-		for (VariableUsage vu : componentVariableUsages)
-		{
-			if (!isOverridden(vu, assemblyContext))
-			{
+		for (VariableUsage vu : componentVariableUsages) {
+			if (!isOverridden(vu, assemblyContext)) {
 				usages.add(vu);
 			}
 		}
@@ -124,8 +181,7 @@ public class ComposedProvidingRequiringEntityServices {
 	 * @return
 	 * 
 	 */
-	public boolean isOverridden(final EObject variableUsageParam,
-			final EObject assemblyContextParam) {
+	public boolean isOverridden(final EObject variableUsageParam, final EObject assemblyContextParam) {
 		if (!(variableUsageParam instanceof VariableUsage && assemblyContextParam instanceof AssemblyContext)) {
 			return false; // FIXME: proper error handling
 		}
@@ -133,15 +189,13 @@ public class ComposedProvidingRequiringEntityServices {
 		final String variableUsageReferenceName = ((VariableUsage) variableUsageParam)
 				.getNamedReference__VariableUsage().getReferenceName();
 		final AssemblyContext assemblyContext = (AssemblyContext) assemblyContextParam;
-		
-		for (VariableUsage vu : assemblyContext.getConfigParameterUsages__AssemblyContext())
-		{
-			if (vu.getNamedReference__VariableUsage().getReferenceName().equals(variableUsageReferenceName))
-			{
+
+		for (VariableUsage vu : assemblyContext.getConfigParameterUsages__AssemblyContext()) {
+			if (vu.getNamedReference__VariableUsage().getReferenceName().equals(variableUsageReferenceName)) {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
 
@@ -155,23 +209,19 @@ public class ComposedProvidingRequiringEntityServices {
 	 *            the expression
 	 * @return the random variable
 	 */
-	public EObject editPCMRandomVariable(final EObject pcmRandomVariable,
-			final String expressionString) {
+	public EObject editPCMRandomVariable(final EObject pcmRandomVariable, final String expressionString) {
 		if (!(pcmRandomVariable instanceof PCMRandomVariable)) {
 			return null;
 		}
 		if (!validExpression(expressionString)) {
-			final ErrorDialog errorDialog = new ErrorDialog(PlatformUI
-					.getWorkbench().getActiveWorkbenchWindow().getShell(),
-					PARSER_ERROR_TITLE, null, new Status(IStatus.ERROR,
-							Activator.PLUGIN_ID, PARSER_ERROR_MESSAGE),
-					IStatus.ERROR);
+			final ErrorDialog errorDialog = new ErrorDialog(
+					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), PARSER_ERROR_TITLE, null,
+					new Status(IStatus.ERROR, Activator.PLUGIN_ID, PARSER_ERROR_MESSAGE), IStatus.ERROR);
 			errorDialog.open();
 			return null;
 		}
 
-		((PCMRandomVariable) pcmRandomVariable)
-				.setSpecification(expressionString);
+		((PCMRandomVariable) pcmRandomVariable).setSpecification(expressionString);
 
 		return pcmRandomVariable;
 	}
@@ -184,10 +234,8 @@ public class ComposedProvidingRequiringEntityServices {
 	 * @return the validity
 	 */
 	private boolean validExpression(final String expressionString) {
-		final MyPCMStoExLexer lexer = new MyPCMStoExLexer(
-				new ANTLRStringStream(expressionString));
-		final MyPCMStoExParser parser = new MyPCMStoExParser(
-				new CommonTokenStream(lexer));
+		final MyPCMStoExLexer lexer = new MyPCMStoExLexer(new ANTLRStringStream(expressionString));
+		final MyPCMStoExParser parser = new MyPCMStoExParser(new CommonTokenStream(lexer));
 		try {
 			parser.expression();
 		} catch (final RecognitionException e1) {
@@ -210,26 +258,20 @@ public class ComposedProvidingRequiringEntityServices {
 	 *            the target AssemblyContext
 	 * @return the original VariableUsage
 	 */
-	public EObject copyToAssemblyContext(final EObject variableUsageObject,
-			final EObject assemblyContextObject) {
-		if (!(variableUsageObject instanceof VariableUsage)
-				|| !(assemblyContextObject instanceof AssemblyContext))
+	public EObject copyToAssemblyContext(final EObject variableUsageObject, final EObject assemblyContextObject) {
+		if (!(variableUsageObject instanceof VariableUsage) || !(assemblyContextObject instanceof AssemblyContext))
 			return null;
 
 		final AssemblyContext assemblyContext = (AssemblyContext) assemblyContextObject;
 
 		final List<EObject> copiedVariableUsage = EMFCopyHelper
-				.deepCopyEObjectList(Collections
-						.singletonList(variableUsageObject));
-		if (copiedVariableUsage.size() != 1
-				|| !(copiedVariableUsage.get(0) instanceof VariableUsage))
+				.deepCopyEObjectList(Collections.singletonList(variableUsageObject));
+		if (copiedVariableUsage.size() != 1 || !(copiedVariableUsage.get(0) instanceof VariableUsage))
 			return null;
 
-		final VariableUsage newVariableUsage = (VariableUsage) copiedVariableUsage
-				.get(0);
+		final VariableUsage newVariableUsage = (VariableUsage) copiedVariableUsage.get(0);
 		newVariableUsage.setAssemblyContext__VariableUsage(assemblyContext);
-		assemblyContext.getConfigParameterUsages__AssemblyContext().add(
-				newVariableUsage);
+		assemblyContext.getConfigParameterUsages__AssemblyContext().add(newVariableUsage);
 
 		return variableUsageObject;
 	}
