@@ -39,6 +39,27 @@ public class ComposedProvidingRequiringEntityServices {
 	private static final String PARSER_ERROR_MESSAGE = "The entered stochastic expression is invalid.";
 	private static final String PARAMETER_VALUE_LITERAL_DIALOG_TITLE = "Enter value literal";
 	private static final String PARAMETER_VALUE_LITERAL_DIALOG_MESSAGE = "Please enter a literal to set the parameter";
+	
+	/**
+	 * @see StereotypeAPI#getStereotypeApplications(EObject)
+	 */
+	public Collection<StereotypeApplication> getStereotypeApplications(final EObject eObject) {
+		return StereotypeAPI.getStereotypeApplications(eObject);
+	}
+	
+	/**
+	 * @see ArchitecturalTemplateAPI#isRole(Stereotype)
+	 */
+	public boolean isRole(final StereotypeApplication stereotypeApplication) {
+		return ArchitecturalTemplateAPI.isRole(stereotypeApplication.getStereotype());
+	}
+	
+	/**
+	 * @see ArchitecturalTemplateAPI#isSystemRole(Stereotype)
+	 */
+	public boolean isSystemRole(final StereotypeApplication stereotypeApplication) {
+		return ArchitecturalTemplateAPI.isSystemRole(stereotypeApplication.getStereotype());
+	}
 
 	/**
 	 * Queries an {@link String} literal from the user and uses
