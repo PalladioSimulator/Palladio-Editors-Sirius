@@ -1,4 +1,4 @@
-package org.scaledl.architecturaltemplates.ui;
+package org.scaledl.architecturaltemplates.ui.dialogs;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

@@ -14,7 +14,7 @@ import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.system.System;
 import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
 import org.scaledl.architecturaltemplates.type.Role;
-import org.scaledl.architecturaltemplates.ui.RoleStereotypeSelectionDialog;
+import org.scaledl.architecturaltemplates.ui.dialogs.RoleStereotypeSelectionDialog;
 
 /**
  * This class applies an ArchitecturalTemplate to a {@link System}. It will ask

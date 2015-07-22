@@ -638,6 +638,21 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
+        <toolSections name="Stereotypes">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Apply Stereotype" nodeMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='StereotypeApplication%20Node'] //@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@subNodeMappings[name='StereotypeApplication%20Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Unapply Stereotype">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ExternalJavaActionCall" name="Apply Profile"/>
+          <ownedTools xsi:type="tool_1:ExternalJavaActionCall" name="Unapply Profile"/>
+        </toolSections>
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.eContainer().eClass().name = 'AssemblyContext'/]">
             <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@subContainerMappings[name='VariableUsage%20Container']/@style" referenceName="backgroundColor">

@@ -1,4 +1,4 @@
-package org.scaledl.architecturaltemplates.ui;
+package org.scaledl.architecturaltemplates.ui.dialogs;
 
 
 import org.eclipse.core.runtime.IStatus;

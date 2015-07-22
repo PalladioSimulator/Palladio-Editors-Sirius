@@ -14,4 +14,4 @@ Require-Bundle: org.eclipse.ui.workbench,
  org.eclipse.emf.edit.ui,
  org.scaledl.architecturaltemplates.edit,
  org.palladiosimulator.commons
-Export-Package: org.scaledl.architecturaltemplates.ui
+Export-Package: org.scaledl.architecturaltemplates.ui.dialogs
