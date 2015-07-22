@@ -16,7 +16,7 @@ import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
  * @author Max Schettler
  *
  */
-public class UnapplyStereotype implements IExternalJavaAction {
+public class UnapplyStereotypeAction implements IExternalJavaAction {
 
 	@Override
 	public boolean canExecute(Collection<? extends EObject> selections) {
