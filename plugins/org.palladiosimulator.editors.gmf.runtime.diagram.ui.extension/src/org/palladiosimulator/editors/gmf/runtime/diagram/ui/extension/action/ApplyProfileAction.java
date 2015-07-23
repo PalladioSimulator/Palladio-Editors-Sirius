@@ -6,6 +6,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
 import org.modelversioning.emfprofile.Profile;
@@ -28,7 +29,7 @@ public class ApplyProfileAction implements IExternalJavaAction {
 
 	@Override
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
-		final Resource targetResource = ((EObject) selections.iterator().next()).eResource();
+		final Resource targetResource = ((DDiagramElement) selections.iterator().next()).getTarget().eResource();
 
 		final ProfileSelectionDialog profileSelectionDialog = new ProfileSelectionDialog(
 				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
