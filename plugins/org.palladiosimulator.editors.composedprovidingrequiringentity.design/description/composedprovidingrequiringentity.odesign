@@ -139,7 +139,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="StereotypeApplication Node" preconditionExpression="[not self.isSystemRole()/]" semanticCandidatesExpression="[self.getStereotypeApplications()/]" domainClass="StereotypeApplication">
+          <subNodeMappings name="StereotypeApplication Node" preconditionExpression="[true &lt;> self.isSystemRole()/]" semanticCandidatesExpression="[self.getStereotypeApplications()/]" domainClass="StereotypeApplication">
             <style xsi:type="style:SquareDescription" labelExpression="[self.getStereotype().name/]" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -183,7 +183,7 @@
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
-            <subNodeMappings name="StereotypeApplication Node" preconditionExpression="[not self.isRole()/]" semanticCandidatesExpression="[self.getStereotypeApplications()/]" domainClass="StereotypeApplication">
+            <subNodeMappings name="StereotypeApplication Node" preconditionExpression="[true &lt;> self.isRole()/]" semanticCandidatesExpression="[self.getStereotypeApplications()/]" domainClass="StereotypeApplication">
               <style xsi:type="style:SquareDescription" labelExpression="[self.getStereotype().name/]" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
