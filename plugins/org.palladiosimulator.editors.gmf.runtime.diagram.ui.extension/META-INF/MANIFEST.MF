@@ -11,7 +11,8 @@ Require-Bundle: org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0",
  org.scaledl.architecturaltemplates.ui;bundle-version="1.0.0",
  org.scaledl.architecturaltemplates.api;bundle-version="1.0.0",
  org.palladiosimulator.editors.dialogs,
- org.palladiosimulator.mdsdprofiles.ui
+ org.palladiosimulator.mdsdprofiles.ui,
+ org.modelversioning.emfprofile.edit
 Bundle-Activator: org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.ExtensionActivator
 Bundle-Localization: plugin
 Bundle-Vendor: palladiosimulator.org
