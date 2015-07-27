@@ -42,34 +42,31 @@ public class ValidateModelsJob extends SequentialBlackboardInteractingJob<MDSDBl
     		super.execute(monitor);
         	logger.info("Validating AT Constraints.");
         	final ProfileApplication systemProfileApplication = this.getProfileApplicationFromSystem();
-        	EList<StereotypeApplication> stereotypeApplications = systemProfileApplication.getStereotypeApplications();
-        	//final org.palladiosimulator.pcm.system.System system = getSystemFromBlackboard();
-        	OCL ocl = OCL.newInstance(EcoreEnvironmentFactory.INSTANCE);
-        
-        	OCLHelper<EClassifier, EOperation, EStructuralFeature, Constraint> helper = ocl.createOCLHelper();
-        	for(StereotypeApplication stereotypeApplication : stereotypeApplications){
-
-	        	EList<org.scaledl.architecturaltemplates.type.Constraint> constraints = this.getConstraintsFromStereotypeApplication(stereotypeApplication);
-	        	helper.setContext(stereotypeApplication.getExtension().getTarget());
-	        	//helper.setInstanceContext(stereotypeApplication);
-	        	 Constraint invariant = null;
+        	if(systemProfileApplication!=null){
+	        	EList<StereotypeApplication> stereotypeApplications = systemProfileApplication.getStereotypeApplications();
+	        	OCL ocl = OCL.newInstance(EcoreEnvironmentFactory.INSTANCE);
+	        
+	        	OCLHelper<EClassifier, EOperation, EStructuralFeature, Constraint> helper = ocl.createOCLHelper();
+	        	for(StereotypeApplication stereotypeApplication : stereotypeApplications){
 	
-	        	for(org.scaledl.architecturaltemplates.type.Constraint constraint : constraints){
-	        		 try{
-	             		invariant = helper.createInvariant(constraint.getEntityName());
-	             		Query constraintEvaluation = ocl.createQuery(invariant);
-	             		/*if(!constraintEvaluation.check(stereotypeApplication)){
-	             			logger.error("Constraint: " + invariant.getSpecification().toString() +" failed on " + stereotypeApplication.toString());
-			        	 }*/
-	             		if(!constraintEvaluation.check(stereotypeApplication.getAppliedTo())){
-		        			logger.error("Constraint: " + invariant.getSpecification().toString() +" failed on " + stereotypeApplication.getAppliedTo().toString());
-		        		}
-	             	 }catch(ParserException e){
-	             		 logger.error("Unable to parse expression \"" + e.getMessage() + '"'+ " on context "+ stereotypeApplication.getAppliedTo());
-	             	 }
+		        	EList<org.scaledl.architecturaltemplates.type.Constraint> constraints = this.getConstraintsFromStereotypeApplication(stereotypeApplication);
+		        	helper.setInstanceContext(stereotypeApplication);
+		        	 Constraint invariant = null;
+		        	
+		        	for(org.scaledl.architecturaltemplates.type.Constraint constraint : constraints){
+		        		 try{
+		             		invariant = helper.createInvariant(constraint.getEntityName());
+		             		Query constraintEvaluation = ocl.createQuery(invariant);
+		             		if(!constraintEvaluation.check(stereotypeApplication)){
+		             			logger.error("Constraint: " + invariant.toString()+" failed.");
+				        	 }
+		             	 }catch(ParserException e){
+		             		 logger.error("Unable to parse expression \"" + e.getMessage());
+		             	 }
+		        	}
 	        	}
         	}
-   }
+    	}
     
     
     private ProfileApplication getProfileApplicationFromSystem() {
@@ -80,7 +77,8 @@ public class ValidateModelsJob extends SequentialBlackboardInteractingJob<MDSDBl
             system = pcmRepositoryPartition.getSystem();
         } catch (final IndexOutOfBoundsException e) {
         }
-        if (system != null) {
+        if (system != null & ProfileAPI.hasProfileApplication(system.eResource())) {
+        
         	return ProfileAPI.getProfileApplication(system.eResource());
         	}
         return null;
