@@ -11,10 +11,13 @@ modeltype PCM_COMPLETION uses 'http://palladiosimulator.org/AnalyzerFramework/Co
 
 transformation LoadbalancingCompletionTest(inout allocationBeforeCompletion : PCM_ALLOC, inout allocationAfterCompletion : PCM_ALLOC);
 
+property newAllocation : Allocation;
+property oldAllocation : Allocation;
+
 main() {
 log('Test started');
-	var oldAllocation : Allocation := allocationBeforeCompletion.rootObjects()![Allocation];
-	var newAllocation : Allocation := allocationAfterCompletion.rootObjects()![Allocation];
+	oldAllocation := allocationBeforeCompletion.rootObjects()![Allocation];
+	newAllocation := allocationAfterCompletion.rootObjects()![Allocation];
 	var oldSystem : System := oldAllocation.system_Allocation;
 	var newSystem : System := newAllocation.system_Allocation;
 	var oldAssemblyContexts : Set(AssemblyContext) := oldSystem.assemblyContexts__ComposedStructure;
@@ -23,11 +26,11 @@ log('Test started');
 	testLoadbalancerAssemblyContextExists(newAssemblyContexts);
 	testLoadbalancerAssemblyContextEqualsOne(newAssemblyContexts);
 	testNewAssemblyContextsSizeEqualsOldAssemblyContextsSizePlusNumberOfReplicas(oldAssemblyContexts,newAssemblyContexts);
-	testNumberOfReplicasEqualsNumberOfOriginalAndDuplicateAssemblyContexts(oldAssemblyContexts,newAssemblyContexts);
-	testConnectorFromLoadbalancerToOriginalExists(newSystem, newAssemblyContexts);
-	testAssemblyConnectorsOnlyBetweenLoadbalancerAndOriginalAssemblyContext(newSystem,newAssemblyContexts);
-	testNoProvidedDelegationConnectorToOriginalAssemblyContext(newSystem,newAssemblyContexts);
-	testConnectorsFromLoadbalancerToDuplicatesExist(newSystem,oldAssemblyContexts,newAssemblyContexts);
+	testNumberOfReplicasEqualsNumberOfOriginalAndDuplicateAssemblyContexts(newAssemblyContexts);
+	testConnectorFromLoadbalancerToOriginalExists(newSystem);
+	testAssemblyConnectorsOnlyBetweenLoadbalancerAndOriginalAssemblyContext(newSystem);
+	testNoProvidedDelegationConnectorToOriginalAssemblyContext(newSystem);
+	testConnectorsFromLoadbalancerToDuplicatesExist(newSystem);
 	testConnectorsOnlyToLoadbalancer(oldSystem,newSystem);
 	testLoadbalancerRepositoryComponentExists(newSystem);
 	testLoadbalancerRepositoryComponentIsNewlyCreated(oldSystem,newSystem);
@@ -66,8 +69,7 @@ query testLoadbalancerAssemblyContextEqualsOne(newAssemblyContexts : Set(Assembl
 * in the system before the completion plus the predefined number of replicas
 **/
 query testNewAssemblyContextsSizeEqualsOldAssemblyContextsSizePlusNumberOfReplicas(oldAssemblyContexts : Set(AssemblyContext), newAssemblyContexts : Set(AssemblyContext)){
-	var replicableAssemblyContext : AssemblyContext := oldAssemblyContexts->selectOne(assemblyContext : AssemblyContext |
-					hasAppliedStereotype(assemblyContext,"ReplicableAssemblyContext"));
+	var replicableAssemblyContext : AssemblyContext := getStereotypedAssemblyContextBeforeCompletion("ReplicableAssemblyContext");
 	var numberOfReplicas : Integer := getIntTaggedValue(replicableAssemblyContext,"numberOfReplicas","ReplicableAssemblyContext");
 	var oldAssemblyContextsSize : Integer := oldAssemblyContexts->size();
 	var newAssemblyContextsSize : Integer := newAssemblyContexts->size();
@@ -78,9 +80,8 @@ query testNewAssemblyContextsSizeEqualsOldAssemblyContextsSizePlusNumberOfReplic
 /**
 * Tests whether the original  assembly context plus its duplicates equals the predefined number of replicas
 **/
-query testNumberOfReplicasEqualsNumberOfOriginalAndDuplicateAssemblyContexts(oldAssemblyContexts : Set(AssemblyContext),newAssemblyContexts : Set(AssemblyContext)){
-	var replicableAssemblyContext : AssemblyContext := oldAssemblyContexts->selectOne(assemblyContext : AssemblyContext |
-					hasAppliedStereotype(assemblyContext,"ReplicableAssemblyContext"));
+query testNumberOfReplicasEqualsNumberOfOriginalAndDuplicateAssemblyContexts(newAssemblyContexts : Set(AssemblyContext)){
+	var replicableAssemblyContext : AssemblyContext := getStereotypedAssemblyContextBeforeCompletion("ReplicableAssemblyContext");
 	var numberOfReplicas : Integer := getIntTaggedValue(replicableAssemblyContext,"numberOfReplicas","ReplicableAssemblyContext");
 	var originalAndDuplicateAssemblyContext : Set(AssemblyContext) := newAssemblyContexts->select(assemblyContext : AssemblyContext| 
 		hasAppliedStereotype(assemblyContext,"OriginalAssemblyContext") or hasAppliedStereotype(assemblyContext,"DuplicateAssemblyContext"));
@@ -92,9 +93,9 @@ query testNumberOfReplicasEqualsNumberOfOriginalAndDuplicateAssemblyContexts(old
 /**
 * Tests whether there exists only one assembly connector between the loadbalancer and the original assembly context
 **/
-query testConnectorFromLoadbalancerToOriginalExists(newSystem : System, newAssemblyContexts : Set(AssemblyContext)){
-	var originalAssemblyContext : AssemblyContext := newAssemblyContexts->selectOne(assemblyContext: AssemblyContext|hasAppliedStereotype(assemblyContext,"OriginalAssemblyContext"));
-	var loadbalancerAssemblyContext : AssemblyContext := newAssemblyContexts->selectOne(assemblyContext: AssemblyContext|hasAppliedStereotype(assemblyContext,"LoadbalancerAssemblyContext"));
+query testConnectorFromLoadbalancerToOriginalExists(newSystem : System){
+	var originalAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("OriginalAssemblyContext");
+	var loadbalancerAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("LoadbalancerAssemblyContext");
 	var connectors : Set(Connector) := newSystem.connectors__ComposedStructure;
 	var assemblyConnectors : Bag(AssemblyConnector) := connectors->select(connector : Connector | connector.oclIsTypeOf(AssemblyConnector)).oclAsType(AssemblyConnector);
 	var loadbalancerToOriginalAssemblyConnectors : Bag(AssemblyConnector) := assemblyConnectors -> select(assemblyConnector : AssemblyConnector|
@@ -106,14 +107,11 @@ query testConnectorFromLoadbalancerToOriginalExists(newSystem : System, newAssem
 /**
 * Tests whether there is no assembly connector to the original assembly context other than the loadbalancer
 **/
-query testAssemblyConnectorsOnlyBetweenLoadbalancerAndOriginalAssemblyContext(newSystem : System, newAssemblyContexts : Set(AssemblyContext)){
+query testAssemblyConnectorsOnlyBetweenLoadbalancerAndOriginalAssemblyContext(newSystem : System){
 	var connectors : Set(Connector) := newSystem.connectors__ComposedStructure;
 	var assemblyConnectors : Bag(AssemblyConnector) := connectors->select(connector : Connector | connector.oclIsTypeOf(AssemblyConnector)).oclAsType(AssemblyConnector);
-	var originalAssemblyContext : AssemblyContext := newAssemblyContexts->selectOne(assemblyContext : AssemblyContext |
-					hasAppliedStereotype(assemblyContext,"OriginalAssemblyContext"));
-	var loadbalancerAssemblyContext : AssemblyContext := newAssemblyContexts->selectOne(assemblyContext : AssemblyContext |
-					hasAppliedStereotype(assemblyContext,"LoadbalancerAssemblyContext"));
-					
+	var originalAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("OriginalAssemblyContext");
+	var loadbalancerAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("LoadbalancerAssemblyContext");
 	var assemblyConnectorsNotFromLoadbalancer : Bag(AssemblyConnector) := assemblyConnectors->select(assemblyConnector : AssemblyConnector|
 		 assemblyConnector.providingAssemblyContext_AssemblyConnector  = originalAssemblyContext and not(assemblyConnector.requiringAssemblyContext_AssemblyConnector = loadbalancerAssemblyContext));
 	assert error (assemblyConnectorsNotFromLoadbalancer->isEmpty())
@@ -123,12 +121,10 @@ query testAssemblyConnectorsOnlyBetweenLoadbalancerAndOriginalAssemblyContext(ne
 /**
 * Tests whether there is no provided delegation connector to the original assembly context
 **/
-query testNoProvidedDelegationConnectorToOriginalAssemblyContext(newSystem : System, newAssemblyContexts : Set(AssemblyContext)){
+query testNoProvidedDelegationConnectorToOriginalAssemblyContext(newSystem : System){
 	var connectors : Set(Connector) := newSystem.connectors__ComposedStructure;
 	var providedDelegationConnectors : Bag(ProvidedDelegationConnector) := connectors->select(connector : Connector | connector.oclIsTypeOf(ProvidedDelegationConnector)).oclAsType(ProvidedDelegationConnector);
-	var originalAssemblyContext : AssemblyContext := newAssemblyContexts->selectOne(assemblyContext : AssemblyContext |
-					hasAppliedStereotype(assemblyContext,"OriginalAssemblyContext"));
-					
+	var originalAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("OriginalAssemblyContext");	
 	var providedDelegationConnectorsToOriginial : Bag(ProvidedDelegationConnector) := providedDelegationConnectors->select(providedDelegationConnector : ProvidedDelegationConnector|
 		 providedDelegationConnector.assemblyContext_ProvidedDelegationConnector  = originalAssemblyContext);
 	assert error (providedDelegationConnectorsToOriginial->isEmpty())
@@ -138,10 +134,10 @@ query testNoProvidedDelegationConnectorToOriginalAssemblyContext(newSystem : Sys
 /**
 * Tests whether each of the duplicated assembly contexts is connected the the loadbalancer
 **/
-query testConnectorsFromLoadbalancerToDuplicatesExist(newSystem : System ,oldAssemblyContexts : Set(AssemblyContext), newAssemblyContexts : Set(AssemblyContext)){
-	var duplicateAssemblyContexts : Set(AssemblyContext) := newAssemblyContexts->select(assemblyContext: AssemblyContext|hasAppliedStereotype(assemblyContext,"DuplicateAssemblyContext"));
-	var loadbalancerAssemblyContext : AssemblyContext := newAssemblyContexts->selectOne(assemblyContext: AssemblyContext|hasAppliedStereotype(assemblyContext,"LoadbalancerAssemblyContext"));
-	var replicableAssemblyContext : AssemblyContext := oldAssemblyContexts->selectOne(assemblyContext : AssemblyContext |hasAppliedStereotype(assemblyContext,"ReplicableAssemblyContext"));
+query testConnectorsFromLoadbalancerToDuplicatesExist(newSystem : System){
+	var duplicateAssemblyContexts : Set(AssemblyContext) := getStereotypedAssemblyContextsAfterCompletion("DuplicateAssemblyContext");
+	var loadbalancerAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("LoadbalancerAssemblyContext");
+	var replicableAssemblyContext : AssemblyContext := getStereotypedAssemblyContextBeforeCompletion("ReplicableAssemblyContext");
 	var numberOfReplicas : Integer := getIntTaggedValue(replicableAssemblyContext,"numberOfReplicas","ReplicableAssemblyContext");
 	var connectors : Set(Connector) := newSystem.connectors__ComposedStructure;
 	var assemblyConnectors : Bag(AssemblyConnector) := connectors->select(connector : Connector | connector.oclIsTypeOf(AssemblyConnector)).oclAsType(AssemblyConnector);
@@ -162,24 +158,22 @@ query testConnectorsOnlyToLoadbalancer(oldSystem : System, newSystem : System){
 	var newConnectors : Set(Connector) := newSystem.connectors__ComposedStructure;
 	var oldAssemblyContexts : Set(AssemblyContext) := oldSystem.assemblyContexts__ComposedStructure;
 	var newAssemblyContexts : Set(AssemblyContext) := newSystem.assemblyContexts__ComposedStructure;
-	var loadbalancerAssemblyContext : AssemblyContext := newAssemblyContexts->selectOne(assemblyContext: AssemblyContext|
-		hasAppliedStereotype(assemblyContext,"LoadbalancerAssemblyContext"));
-	var originalAssemblyContext : AssemblyContext := oldAssemblyContexts->selectOne(assemblyContext : AssemblyContext |
-					hasAppliedStereotype(assemblyContext,"ReplicableAssemblyContext"));
-	var originalConnectors : Set(Connector);
+	var loadbalancerAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("LoadbalancerAssemblyContext");
+	var replicableAssemblyContext : AssemblyContext := getStereotypedAssemblyContextBeforeCompletion("ReplicableAssemblyContext");
+	var replicableConnectors : Set(Connector);
 	var loadbalancerConnectors : Set(Connector);
 					
 	oldConnectors->forEach(oldConnector){
 		if(oldConnector.oclIsTypeOf(AssemblyConnector)){
 			var oldAssemblyConnector : AssemblyConnector := oldConnector.oclAsType(AssemblyConnector);
-			if(oldAssemblyConnector.providingAssemblyContext_AssemblyConnector = originalAssemblyContext){
-				originalConnectors += oldAssemblyConnector;
+			if(oldAssemblyConnector.providingAssemblyContext_AssemblyConnector = replicableAssemblyContext){
+				replicableConnectors += oldAssemblyConnector;
 			};
 		}
 		else if(oldConnector.oclIsTypeOf(ProvidedDelegationConnector)){
 			var oldProvidedDelegationConnector : ProvidedDelegationConnector := oldConnector.oclAsType(ProvidedDelegationConnector);
-			if(oldProvidedDelegationConnector.assemblyContext_ProvidedDelegationConnector = originalAssemblyContext){
-				originalConnectors += oldProvidedDelegationConnector;
+			if(oldProvidedDelegationConnector.assemblyContext_ProvidedDelegationConnector = replicableAssemblyContext){
+				replicableConnectors += oldProvidedDelegationConnector;
 			};
 		};
 	};
@@ -197,8 +191,8 @@ query testConnectorsOnlyToLoadbalancer(oldSystem : System, newSystem : System){
 			};	
 		};
 	};
-	originalConnectors->forEach(originalConnector){
-		var loadbalancerConnector : Connector := loadbalancerConnectors->selectOne(connector : Connector | connector.id = originalConnector.id);
+	replicableConnectors->forEach(replicableConnector){
+		var loadbalancerConnector : Connector := loadbalancerConnectors->selectOne(connector : Connector | connector.id = replicableConnector.id);
 		assert error(loadbalancerConnector != null) 
 			with log('The loadbalancer is not target of all connectors previously connected with the replicable assembly context');
 	
@@ -209,8 +203,7 @@ query testConnectorsOnlyToLoadbalancer(oldSystem : System, newSystem : System){
 * Tests whether a loadbalancer repository component exists
 **/
 query testLoadbalancerRepositoryComponentExists(newSystem : System){
-	var loadbalancerAssemblyContext : AssemblyContext := newSystem.assemblyContexts__ComposedStructure->selectOne(assemblyContext: AssemblyContext|
-		hasAppliedStereotype(assemblyContext,"LoadbalancerAssemblyContext"));
+	var loadbalancerAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("LoadbalancerAssemblyContext");
 	var loadbalancerRepositoryComponent : RepositoryComponent := loadbalancerAssemblyContext.encapsulatedComponent__AssemblyContext;
 	assert error(loadbalancerRepositoryComponent != null) 
 			with log('The loadbalancer repository component does not exist after completion');
@@ -220,11 +213,9 @@ query testLoadbalancerRepositoryComponentExists(newSystem : System){
 * Tests whether a loadbalancer repository component is newly created in the completion
 **/
 query testLoadbalancerRepositoryComponentIsNewlyCreated(oldSystem : System, newSystem : System){
-	var loadbalancerAssemblyContext : AssemblyContext := newSystem.assemblyContexts__ComposedStructure->selectOne(assemblyContext: AssemblyContext|
-		hasAppliedStereotype(assemblyContext,"LoadbalancerAssemblyContext"));
+	var loadbalancerAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("LoadbalancerAssemblyContext");
 	var loadbalancerRepositoryComponent : RepositoryComponent := loadbalancerAssemblyContext.encapsulatedComponent__AssemblyContext;
-	var replicableAssemblyContext : AssemblyContext := oldSystem.assemblyContexts__ComposedStructure->selectOne(assemblyContext: AssemblyContext|
-		hasAppliedStereotype(assemblyContext,"ReplicableAssemblyContext"));
+	var replicableAssemblyContext : AssemblyContext := getStereotypedAssemblyContextBeforeCompletion("ReplicableAssemblyContext");
 	var oldRepository : Repository := replicableAssemblyContext.encapsulatedComponent__AssemblyContext.repository__RepositoryComponent;
 	var oldRepositoryComponents : Set(RepositoryComponent) := oldRepository.components__Repository;
 	assert error(oldRepositoryComponents->excludes(loadbalancerRepositoryComponent)) 
@@ -236,12 +227,10 @@ query testLoadbalancerRepositoryComponentIsNewlyCreated(oldSystem : System, newS
 * of loadbalancer's required roles equal the number of replicas
 **/
 query testNumberOfLoadbalancersRequiredRolesEqualsNumberOfReplicas(oldSystem : System, newSystem : System){
-	var loadbalancerAssemblyContext : AssemblyContext := newSystem.assemblyContexts__ComposedStructure->selectOne(assemblyContext: AssemblyContext|
-		hasAppliedStereotype(assemblyContext,"LoadbalancerAssemblyContext"));
+	var loadbalancerAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("LoadbalancerAssemblyContext");
 	var loadbalancerRepositoryComponent : RepositoryComponent := loadbalancerAssemblyContext.encapsulatedComponent__AssemblyContext;
 	var loadbalancerRequiredRoles : Bag(OperationRequiredRole) := loadbalancerRepositoryComponent.requiredRoles_InterfaceRequiringEntity.oclAsType(OperationRequiredRole);
-	var replicableAssemblyContext : AssemblyContext := oldSystem.assemblyContexts__ComposedStructure->selectOne(assemblyContext: AssemblyContext|
-		hasAppliedStereotype(assemblyContext,"ReplicableAssemblyContext"));
+	var replicableAssemblyContext : AssemblyContext := getStereotypedAssemblyContextBeforeCompletion("ReplicableAssemblyContext");
 	var numberOfReplicas : Integer := getIntTaggedValue(replicableAssemblyContext,"numberOfReplicas","ReplicableAssemblyContext");
 	var replicableRepositoryComponent : RepositoryComponent := replicableAssemblyContext.encapsulatedComponent__AssemblyContext;
 	var replicableProvidedRoles : Bag(OperationProvidedRole) := replicableRepositoryComponent.providedRoles_InterfaceProvidingEntity.oclAsType(OperationProvidedRole);
@@ -257,12 +246,10 @@ query testNumberOfLoadbalancersRequiredRolesEqualsNumberOfReplicas(oldSystem : S
 * equal the provided roles' interfaces of the replicable assembly context basic component
 **/
 query testLoadbalancerProvidedRolesEqualReplicableProvidedRoles(oldSystem : System, newSystem : System){
-	var loadbalancerAssemblyContext : AssemblyContext := newSystem.assemblyContexts__ComposedStructure->selectOne(assemblyContext: AssemblyContext|
-		hasAppliedStereotype(assemblyContext,"LoadbalancerAssemblyContext"));
+	var loadbalancerAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("LoadbalancerAssemblyContext");
 	var loadbalancerRepositoryComponent : RepositoryComponent := loadbalancerAssemblyContext.encapsulatedComponent__AssemblyContext;
 	var loadbalancerProvidedRoles : Bag(OperationProvidedRole) :=loadbalancerRepositoryComponent.providedRoles_InterfaceProvidingEntity.oclAsType(OperationProvidedRole);
-	var replicableAssemblyContext : AssemblyContext := oldSystem.assemblyContexts__ComposedStructure->selectOne(assemblyContext: AssemblyContext|
-		hasAppliedStereotype(assemblyContext,"ReplicableAssemblyContext"));
+	var replicableAssemblyContext : AssemblyContext := getStereotypedAssemblyContextBeforeCompletion("ReplicableAssemblyContext");
 	var replicableRepositoryComponent : RepositoryComponent := replicableAssemblyContext.encapsulatedComponent__AssemblyContext;
 	var replicableProvidedRoles : Bag(OperationProvidedRole) := replicableRepositoryComponent.providedRoles_InterfaceProvidingEntity.oclAsType(OperationProvidedRole);
 	replicableProvidedRoles ->forEach(replicableProvidedRole){
@@ -281,11 +268,9 @@ query testLoadbalancerProvidedRolesEqualReplicableProvidedRoles(oldSystem : Syst
 * Tests whether the loadbalancer's SEFF has a branch for each required role
 **/
 query testLoadbalancerSeffCallsRequiredRoles(oldSystem : System, newSystem : System){
-	var loadbalancerAssemblyContext : AssemblyContext := newSystem.assemblyContexts__ComposedStructure->selectOne(assemblyContext: AssemblyContext|
-		hasAppliedStereotype(assemblyContext,"LoadbalancerAssemblyContext"));
+	var loadbalancerAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("LoadbalancerAssemblyContext");
 	var loadbalancerRepositoryComponent : RepositoryComponent := loadbalancerAssemblyContext.encapsulatedComponent__AssemblyContext;
-	var replicableAssemblyContext : AssemblyContext := oldSystem.assemblyContexts__ComposedStructure->selectOne(assemblyContext: AssemblyContext|
-		hasAppliedStereotype(assemblyContext,"ReplicableAssemblyContext"));
+	var replicableAssemblyContext : AssemblyContext := getStereotypedAssemblyContextBeforeCompletion("ReplicableAssemblyContext");
 	var replicableRepositoryComponent : RepositoryComponent := replicableAssemblyContext.encapsulatedComponent__AssemblyContext;
 	var numberOfReplicas : Integer := getIntTaggedValue(replicableAssemblyContext,"numberOfReplicas","ReplicableAssemblyContext");
 	var resourceDemandingSeffs : Bag(ResourceDemandingSEFF) := loadbalancerRepositoryComponent.oclAsType(BasicComponent).serviceEffectSpecifications__BasicComponent.oclAsType(ResourceDemandingSEFF);
@@ -303,8 +288,8 @@ query testLoadbalancerSeffCallsRequiredRoles(oldSystem : System, newSystem : Sys
 * Tests whether there are number of replicas many new resource container
 **/
 query testNumberOfNewResourceContainer(oldAllocation : Allocation, newAllocation : Allocation){
-	var replicableAssemblyContext : AssemblyContext := oldAllocation.system_Allocation.assemblyContexts__ComposedStructure->selectOne(assemblyContext: AssemblyContext|
-		hasAppliedStereotype(assemblyContext,"ReplicableAssemblyContext"));
+	var replicableAssemblyContext : AssemblyContext := getStereotypedAssemblyContextBeforeCompletion("ReplicableAssemblyContext");
+		getStereotypedAssemblyContextBeforeCompletion("ReplicableAssemblyContext");
 	var numberOfReplicas : Integer := getIntTaggedValue(replicableAssemblyContext,"numberOfReplicas","ReplicableAssemblyContext");
 	var oldResEnv : ResourceEnvironment := oldAllocation.targetResourceEnvironment_Allocation;
 	var newResEnv : ResourceEnvironment := newAllocation.targetResourceEnvironment_Allocation;
@@ -318,17 +303,17 @@ query testNumberOfNewResourceContainer(oldAllocation : Allocation, newAllocation
 * Tests whether each duplicate is allocated to a newly created resource container
 **/
 query testDuplicatesAllocatedToNewResourceContainer(oldAllocation : Allocation, newAllocation : Allocation){
-	var duplicateAssemblyContexts : Set(AssemblyContext) := newAllocation.system_Allocation.assemblyContexts__ComposedStructure->select(assemblyContext : AssemblyContext|hasAppliedStereotype(assemblyContext,"DuplicateAssemblyContext"));
+	var duplicateAssemblyContexts : Set(AssemblyContext) := getStereotypedAssemblyContextsAfterCompletion("DuplicateAssemblyContext");
 	var oldResContainer : Set(ResourceContainer) := oldAllocation.targetResourceEnvironment_Allocation.resourceContainer_ResourceEnvironment;
 	var newResContainer: Set(ResourceContainer) := newAllocation.targetResourceEnvironment_Allocation.resourceContainer_ResourceEnvironment;
 	var duplicateResContainer : Set(ResourceContainer) := newResContainer-(oldResContainer);
 	duplicateAssemblyContexts->forEach(assemblyContext){
-		var duplicateAllocationContext : Set(AllocationContext) := newAllocation.allocationContexts_Allocation->select(allocationContext : AllocationContext | allocationContext.assemblyContext_AllocationContext = assemblyContext);
+		var duplicateAllocationContext : AllocationContext := getAllocationContextFromAssemblyContextAfterCompletion(assemblyContext);
 		assert error(duplicateAllocationContext->size() = 1) 
-			with log('A duplicate assembly context is allocated to no resource container');
-			var relatedResourceContainer : Set(ResourceContainer):= duplicateAllocationContext.resourceContainer_AllocationContext->asSet();
-			assert error(duplicateResContainer->includesAll(relatedResourceContainer))
-				with log('A duplicate is allocated to a resource container that was not newly created');
+			with log('A duplicate assembly context is not allocated to a resource container');
+		var relatedResourceContainer : Set(ResourceContainer):= duplicateAllocationContext.resourceContainer_AllocationContext->asSet();
+		assert error(duplicateResContainer->includesAll(relatedResourceContainer))
+			with log('A duplicate is allocated to a resource container that was not newly created');
 	};
 }
 
@@ -336,14 +321,13 @@ query testDuplicatesAllocatedToNewResourceContainer(oldAllocation : Allocation, 
 * Tests whether the loadbalancer is allocated to a newly created resource container
 **/
 query testLoadbalancerAllocatedToNewResourceContainer(oldAllocation : Allocation, newAllocation : Allocation){
-	var loadbalancerAssemblyContext : AssemblyContext := newAllocation.system_Allocation.assemblyContexts__ComposedStructure->selectOne(assemblyContext : AssemblyContext|hasAppliedStereotype(assemblyContext,"LoadbalancerAssemblyContext"));
+	var loadbalancerAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("LoadbalancerAssemblyContext");
 	var oldResContainer : Set(ResourceContainer) := oldAllocation.targetResourceEnvironment_Allocation.resourceContainer_ResourceEnvironment;
 	var newResContainer: Set(ResourceContainer) := newAllocation.targetResourceEnvironment_Allocation.resourceContainer_ResourceEnvironment;
 	var duplicateResContainer : Set(ResourceContainer) := newResContainer-(oldResContainer);
-	var loadbalancerAllocationContext : AllocationContext := newAllocation.allocationContexts_Allocation->selectOne(allocationContext : AllocationContext | allocationContext.assemblyContext_AllocationContext = loadbalancerAssemblyContext);
+	var loadbalancerAllocationContext : AllocationContext := getAllocationContextFromAssemblyContextAfterCompletion(loadbalancerAssemblyContext);
 	assert error(loadbalancerAllocationContext->size() = 1) 
-		with log('A duplicate assembly context is allocated to no resource container');
-	//test whether duplicate allocations exist
+		with log('The loadbalancer assembly context is not allocated to a resource container');
 	var loadbalancerResourceContainer : ResourceContainer:= loadbalancerAllocationContext.resourceContainer_AllocationContext;
 	assert error(duplicateResContainer->includes(loadbalancerResourceContainer))
 		with log('The loadbalancer is allocated to a resource container that was not newly created');
@@ -354,15 +338,15 @@ query testLoadbalancerAllocatedToNewResourceContainer(oldAllocation : Allocation
 * resource as the replicable's resource container
 **/
 query testDuplicateResourceContainerConnectedToSameLinkingResource(oldAllocation : Allocation, newAllocation : Allocation){
-	var duplicateAssemblyContext : Set(AssemblyContext) := newAllocation.system_Allocation.assemblyContexts__ComposedStructure->select(assemblyContext : AssemblyContext|hasAppliedStereotype(assemblyContext,"DuplicateAssemblyContext"));
-	var duplicateAllocationContexts : Set(AllocationContext) := newAllocation.allocationContexts_Allocation->select(allocationContext : AllocationContext | duplicateAssemblyContext->includes(allocationContext.assemblyContext_AllocationContext));
+	var duplicateAssemblyContexts : Set(AssemblyContext) := getStereotypedAssemblyContextsAfterCompletion("DuplicateAssemblyContext");
+	var duplicateAllocationContexts : Set(AllocationContext) := getAllocationContextsFromAssemblyContextsAfterCompletion(duplicateAssemblyContexts);
 	var duplicateResContainer : Bag(ResourceContainer) := duplicateAllocationContexts.resourceContainer_AllocationContext;
-	var replicableAssemblyContexts : AssemblyContext := newAllocation.system_Allocation.assemblyContexts__ComposedStructure->selectOne(assemblyContext : AssemblyContext|hasAppliedStereotype(assemblyContext,"OriginalAssemblyContext"));
-	var replicableAllocationContext : AllocationContext := newAllocation.allocationContexts_Allocation->selectOne(allocationContext : AllocationContext | allocationContext.assemblyContext_AllocationContext = replicableAssemblyContexts);
-	var replicableResourceContainer : ResourceContainer := replicableAllocationContext.resourceContainer_AllocationContext;
-	var replicableLinkingResources : Set(LinkingResource) := newAllocation.targetResourceEnvironment_Allocation.linkingResources__ResourceEnvironment->select(linkingResource : LinkingResource| linkingResource.connectedResourceContainers_LinkingResource->includes(replicableResourceContainer));
-	var replicableLinkingResourceContainer : Bag(ResourceContainer) := replicableLinkingResources.connectedResourceContainers_LinkingResource;
-	assert error(replicableLinkingResourceContainer->includesAll(duplicateResContainer))
+	var originalAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("OriginalAssemblyContext");
+	var originalAllocationContext : AllocationContext := getAllocationContextFromAssemblyContextAfterCompletion(originalAssemblyContext);
+	var originalResourceContainer : ResourceContainer := originalAllocationContext.resourceContainer_AllocationContext;
+	var originalLinkingResources : Set(LinkingResource) := getLinkingResourcesFromResourceContainerAfterCompletion(originalResourceContainer);
+	var originalLinkingResourceContainer : Bag(ResourceContainer) := originalLinkingResources.connectedResourceContainers_LinkingResource;
+	assert error(originalLinkingResourceContainer->includesAll(duplicateResContainer))
 		with log('A duplicate resource container is not connected with the replicable linking resource');
 }
 
@@ -370,13 +354,40 @@ query testDuplicateResourceContainerConnectedToSameLinkingResource(oldAllocation
 * Tests whether  the loadbalancers resource container is connected with the replicable linking resource
 **/
 query testLoadblancerResourceContainerConntectedToSameLinkingResource(oldAllocation : Allocation, newAllocation : Allocation){
-	var loadbalancerAssemblyContext : AssemblyContext := newAllocation.system_Allocation.assemblyContexts__ComposedStructure->selectOne(assemblyContext : AssemblyContext|hasAppliedStereotype(assemblyContext,"LoadbalancerAssemblyContext"));
-	var loadbalancerAllocationContext : AllocationContext := newAllocation.allocationContexts_Allocation->selectOne(allocationContext : AllocationContext | allocationContext.assemblyContext_AllocationContext = loadbalancerAssemblyContext);
+	var loadbalancerAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("LoadbalancerAssemblyContext");
+	var loadbalancerAllocationContext : AllocationContext := getAllocationContextFromAssemblyContextAfterCompletion(loadbalancerAssemblyContext);
 	var loadbalancerResourceContainer : ResourceContainer:= loadbalancerAllocationContext.resourceContainer_AllocationContext;
-	var replicableAssemblyContexts : AssemblyContext := oldAllocation.system_Allocation.assemblyContexts__ComposedStructure->selectOne(assemblyContext : AssemblyContext|hasAppliedStereotype(assemblyContext,"ReplicableAssemblyContext"));
-	var replicableAllocationContext : AllocationContext := oldAllocation.allocationContexts_Allocation->selectOne(allocationContext : AllocationContext | allocationContext.assemblyContext_AllocationContext = replicableAssemblyContexts);
-	var replicableResourceContainer : ResourceContainer := replicableAllocationContext.resourceContainer_AllocationContext;
-	var replicableLinkingResource : Set(LinkingResource) := oldAllocation.targetResourceEnvironment_Allocation.linkingResources__ResourceEnvironment->select(linkingResource : LinkingResource| linkingResource.connectedResourceContainers_LinkingResource->includes(replicableResourceContainer));
-	assert error(replicableLinkingResource.connectedResourceContainers_LinkingResource->includes(replicableResourceContainer))
+	var originalAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("OriginalAssemblyContext");
+	var originalAllocationContext : AllocationContext := getAllocationContextFromAssemblyContextAfterCompletion(originalAssemblyContext);
+	var originalResourceContainer : ResourceContainer := originalAllocationContext.resourceContainer_AllocationContext;
+	var originalLinkingResource : Set(LinkingResource) := getLinkingResourcesFromResourceContainerAfterCompletion(originalResourceContainer);
+	assert error(originalLinkingResource.connectedResourceContainers_LinkingResource->includes(loadbalancerResourceContainer))
 		with log('The loadbalancer resource container is not connected with the replicable linking resource');
+}
+
+query getStereotypedAssemblyContextAfterCompletion(stereotypeName : String):AssemblyContext{
+	return newAllocation.system_Allocation.assemblyContexts__ComposedStructure->selectOne(assemblyContext : AssemblyContext|hasAppliedStereotype(assemblyContext,stereotypeName));
+}
+
+query getStereotypedAssemblyContextsAfterCompletion(stereotypeName : String):Set(AssemblyContext){
+	return newAllocation.system_Allocation.assemblyContexts__ComposedStructure->select(assemblyContext : AssemblyContext|hasAppliedStereotype(assemblyContext,stereotypeName));
+}
+
+query getAllocationContextFromAssemblyContextAfterCompletion(assemblyContext : AssemblyContext):AllocationContext{
+	return newAllocation.allocationContexts_Allocation->selectOne(allocationContext : AllocationContext | allocationContext.assemblyContext_AllocationContext = assemblyContext);
+}
+
+query getAllocationContextsFromAssemblyContextsAfterCompletion(assemblyContexts:Set(AssemblyContext)):Set(AllocationContext) {
+	return newAllocation.allocationContexts_Allocation->select(allocationContext : AllocationContext | assemblyContexts->includes(allocationContext.assemblyContext_AllocationContext));
+}
+query getStereotypedAssemblyContextBeforeCompletion(stereotypeName : String):AssemblyContext{
+	return oldAllocation.system_Allocation.assemblyContexts__ComposedStructure->selectOne(assemblyContext : AssemblyContext|hasAppliedStereotype(assemblyContext,stereotypeName));
+}
+
+query getAllocationContextFromStereotypedAssemblyContextBeforeCompletion(stereotypeName : String):AllocationContext{
+	return oldAllocation.allocationContexts_Allocation->selectOne(allocationContext : AllocationContext | allocationContext.assemblyContext_AllocationContext = getStereotypedAssemblyContextBeforeCompletion(stereotypeName));
+}
+
+query getLinkingResourcesFromResourceContainerAfterCompletion(resourceContainer : ResourceContainer):Set(LinkingResource){
+	return newAllocation.targetResourceEnvironment_Allocation.linkingResources__ResourceEnvironment->select(linkingResource : LinkingResource| linkingResource.connectedResourceContainers_LinkingResource->includes(resourceContainer));
 }
