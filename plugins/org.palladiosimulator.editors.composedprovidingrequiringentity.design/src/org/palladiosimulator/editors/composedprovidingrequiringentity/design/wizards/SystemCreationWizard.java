@@ -1,25 +1,20 @@
-package org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.wizards;
+package org.palladiosimulator.editors.composedprovidingrequiringentity.design.wizards;
 
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Collections;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -33,13 +28,11 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
-import org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.ComposedProvidingRequiringEntityEditorConstants;
-import org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.ExtensionActivator;
+import org.palladiosimulator.editors.composedprovidingrequiringentity.design.Activator;
+import org.palladiosimulator.editors.composedprovidingrequiringentity.design.commands.CreateSystemModelCommand;
 import org.palladiosimulator.pcm.system.System;
-import org.palladiosimulator.pcm.system.SystemFactory;
 
 /**
  * Wizard for creating a {@link System}-model. Allows creating a corresponding
@@ -50,10 +43,7 @@ import org.palladiosimulator.pcm.system.SystemFactory;
  */
 public class SystemCreationWizard extends Wizard implements INewWizard {
 
-	private static final String NEW_SYSTEM_NAME = "defaultSystem";
 	private static final String WINDOW_TITLE = "Create System";
-	private static final String RESOURCE_CREATION_ERROR_TITLE = "Operation failed";
-	private static final String RESOURCE_CREATION_ERROR_MESSAGE = "Error while creating new System-resource";
 
 	private SystemModelCreationPage fileCreationPage;
 	private RepresentationCreationPage representationCreationPage;
@@ -64,20 +54,45 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 	@Override
 	public boolean performFinish() {
 		final URI systemURI = fileCreationPage.getPlatformURI();
+		// TODO use optional
+		final boolean createRepresentation = representationCreationPage.isRepresentationCreationEnabled(); 
+		final String representationName = representationCreationPage.getRepresentationName(); 
 
-		final IRunnableWithProgress operation = representationCreationPage.isRepresentationCreationEnabled()
-				? new CreateSystemResourceAndRepresentationOperation(systemURI,
-						representationCreationPage.getRepresentationName())
-				: new CreateSystemResourceAndRepresentationOperation(systemURI);
+		final IRunnableWithProgress operation = new WorkspaceModifyOperation() {
 
+			@Override
+			protected void execute(IProgressMonitor monitor)
+					throws CoreException, InvocationTargetException, InterruptedException {
+				final Session session = SessionManager.INSTANCE.getSession(
+						URI.createPlatformResourceURI("/" + systemURI.segment(1) + "/representations.aird", true),
+						monitor);
+				final TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
+
+				monitor.worked(25);
+
+				final CreateSystemModelCommand createSystemModelCommand = new CreateSystemModelCommand(domain, systemURI);
+				domain.getCommandStack().execute(createSystemModelCommand);
+				final System createdSystem = createSystemModelCommand.getCreatedSystem();
+
+				monitor.worked(50);
+
+				if (createRepresentation) {
+					final CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(session,
+							Activator.getDefault().COMPOSED_PROVIDING_REQUIRING_ENTITY_DIAGRAM, createdSystem, representationName,
+							monitor);
+					domain.getCommandStack().execute(createRepresentationCommand);
+					final DRepresentation createdRepresentation = createRepresentationCommand.getCreatedRepresentation();
+					monitor.worked(75);
+
+					DialectUIManager.INSTANCE.openEditor(session, createdRepresentation, monitor);
+				}
+				monitor.worked(100);
+
+			}
+		};
 		try {
 			this.getContainer().run(false, false, operation);
 		} catch (InvocationTargetException | InterruptedException e) {
-			final ErrorDialog errorDialog = new ErrorDialog(
-					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), RESOURCE_CREATION_ERROR_TITLE,
-					RESOURCE_CREATION_ERROR_MESSAGE,
-					new Status(Status.ERROR, ExtensionActivator.PLUGIN_ID, RESOURCE_CREATION_ERROR_MESSAGE, e), 0);
-			errorDialog.open();
 			return false;
 		}
 
@@ -109,8 +124,6 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 	/**
 	 * Page for creating a System model file.
 	 * 
-	 * TODO check whether the selected file is inside of a modelling project
-	 * 
 	 * @author Max Schettler
 	 *
 	 */
@@ -133,8 +146,7 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 	}
 
 	/**
-	 * Class for selecting a representation name. TODO make only enabled if the
-	 * selected project is an modelling project
+	 * Class for selecting a representation name.
 	 * 
 	 * @author Max Schettler
 	 *
@@ -166,7 +178,7 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 			return !enabledCheckbox.getSelection()
 					|| (representationNameInput.getText() != null && !representationNameInput.getText().equals("")); // $NON-NLS-N$
 		}
-		
+
 		private void setEnabled(boolean enabled) {
 			enabledCheckbox.setSelection(enabled);
 			representationComposite.setEnabled(enabled);
@@ -255,85 +267,6 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 		@Override
 		public void modifyText(ModifyEvent e) {
 			getWizard().getContainer().updateButtons();
-		}
-
-	}
-
-	private class CreateSystemResourceAndRepresentationOperation extends WorkspaceModifyOperation {
-
-		private final URI systemURI;
-		private final String representationName;
-
-		public CreateSystemResourceAndRepresentationOperation(final URI systemURI) {
-			this.systemURI = systemURI;
-			this.representationName = null;
-		}
-
-		public CreateSystemResourceAndRepresentationOperation(final URI systemURI, final String representationName) {
-			this.systemURI = systemURI;
-			this.representationName = representationName;
-		}
-
-		@Override
-		protected void execute(final IProgressMonitor progressMonitor) {
-			try {
-				final URI representationFileURI = URI // FIXME refactor to get
-														// session simpler
-						.createPlatformResourceURI("/" + systemURI.segment(1) + "/representations.aird", true);
-				final Session session = SessionManager.INSTANCE.getExistingSession(representationFileURI);
-				if (session == null) {
-					throw new RuntimeException("Not a modelling project");
-				}
-
-				final Resource systemResource = session.getTransactionalEditingDomain().getResourceSet()
-						.createResource(systemURI);
-
-				final System newSystem = SystemFactory.eINSTANCE.createSystem();
-				newSystem.setEntityName(NEW_SYSTEM_NAME);
-				systemResource.getContents().add(newSystem);
-
-				systemResource.save(Collections.EMPTY_MAP);
-				progressMonitor.worked(50);
-
-				if (representationName != null) {
-					Viewpoint systemViewpoint = null; // FIXME expose with a
-														// constant
-					for (Viewpoint possibleViewpoint : session.getSelectedViewpoints(true)) {
-						if (ComposedProvidingRequiringEntityEditorConstants.SYSTEM_DESIGN_NAME
-								.equals(possibleViewpoint.getName())) {
-							systemViewpoint = possibleViewpoint;
-							break;
-						}
-					}
-					if (systemViewpoint == null) { // FIXME expose with a
-													// constant
-						throw new RuntimeException("No suitable Viewpoint is registered");
-					}
-
-					RepresentationDescription representationDescription = null;
-					for (RepresentationDescription possibleRepresentationDescription : DialectManager.INSTANCE
-							.getAvailableRepresentationDescriptions(Collections.singleton(systemViewpoint),
-									newSystem)) {
-						representationDescription = possibleRepresentationDescription;
-						break;
-					}
-					if (representationDescription == null) {
-						throw new RuntimeException("No suitable RepresentationDescription has been found");
-					}
-
-					DRepresentation representation = DialectManager.INSTANCE.createRepresentation(representationName,
-							newSystem, representationDescription, session, progressMonitor);
-
-					DialectUIManager.INSTANCE.openEditor(session, representation, progressMonitor);
-				}
-
-			} catch (final IOException e) {
-				e.printStackTrace();
-				progressMonitor.done();
-			} /*
-				 * finally { progressMonitor.done(); }
-				 */
-			progressMonitor.done();
 		}
 
 	}

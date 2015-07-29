@@ -11,6 +11,10 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.resources;bundle-version="3.9.1",
  org.palladiosimulator.pcm;bundle-version="4.0.0",
  org.palladiosimulator.editors.util;bundle-version="1.0.0",
- org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension;bundle-version="5.0.0"
+ org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension;bundle-version="5.0.0",
+ org.eclipse.emf.transaction,
+ org.eclipse.sirius.ui,
+ org.eclipse.ui.workbench,
+ org.eclipse.ui.ide;bundle-version="3.11.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
