@@ -8,8 +8,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -68,7 +66,8 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 		final URI systemURI = fileCreationPage.getPlatformURI();
 
 		final IRunnableWithProgress operation = representationCreationPage.isRepresentationCreationEnabled()
-				? new CreateSystemResourceAndRepresentationOperation(systemURI, representationCreationPage.getRepresentationName())
+				? new CreateSystemResourceAndRepresentationOperation(systemURI,
+						representationCreationPage.getRepresentationName())
 				: new CreateSystemResourceAndRepresentationOperation(systemURI);
 
 		try {
@@ -147,6 +146,7 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 		private static final String REPRESENTATION_NAME = "Representation name:";
 		private static final String TITLE = "Create representation";
 		private static final String MESSAGE = "Select whether you want to create a representation";
+		private static final String DEFAULT_REPRESENTATION_NAME = "new System Diagram";
 
 		private Button enabledCheckbox;
 		private Text representationNameInput;
@@ -166,6 +166,11 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 			return !enabledCheckbox.getSelection()
 					|| (representationNameInput.getText() != null && !representationNameInput.getText().equals("")); // $NON-NLS-N$
 		}
+		
+		private void setEnabled(boolean enabled) {
+			enabledCheckbox.setSelection(enabled);
+			representationComposite.setEnabled(enabled);
+		}
 
 		/**
 		 * {@inheritDoc}
@@ -181,7 +186,6 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 				enabledCheckbox = new Button(composite, SWT.CHECK);
 				enabledCheckbox.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING));
 				enabledCheckbox.setText(ENABLE);
-				enabledCheckbox.setSelection(false);
 				enabledCheckbox.addSelectionListener(this);
 			}
 
@@ -202,8 +206,10 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 				representationNameInput = new Text(representationComposite, SWT.SINGLE | SWT.BORDER);
 				representationNameInput.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 				representationNameInput.addModifyListener(this);
+				representationNameInput.setText(DEFAULT_REPRESENTATION_NAME);
 			}
 
+			setEnabled(true);
 			setControl(composite);
 		}
 
@@ -213,7 +219,7 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 		@Override
 		public void widgetSelected(SelectionEvent e) {
 			if (enabledCheckbox.equals(e.getSource())) {
-				representationComposite.setEnabled(((Button) e.getSource()).getSelection());
+				setEnabled(((Button) e.getSource()).getSelection());
 			}
 			getWizard().getContainer().updateButtons();
 		}
@@ -271,59 +277,63 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 		@Override
 		protected void execute(final IProgressMonitor progressMonitor) {
 			try {
-final ResourceSet resourceSet = new ResourceSetImpl();
-final Resource systemResource = resourceSet.createResource(systemURI);
+				final URI representationFileURI = URI // FIXME refactor to get
+														// session simpler
+						.createPlatformResourceURI("/" + systemURI.segment(1) + "/representations.aird", true);
+				final Session session = SessionManager.INSTANCE.getExistingSession(representationFileURI);
+				if (session == null) {
+					throw new RuntimeException("Not a modelling project");
+				}
 
-final System newSystem = SystemFactory.eINSTANCE.createSystem();
-newSystem.setEntityName(NEW_SYSTEM_NAME);
-systemResource.getContents().add(newSystem);
+				final Resource systemResource = session.getTransactionalEditingDomain().getResourceSet()
+						.createResource(systemURI);
 
-systemResource.save(Collections.EMPTY_MAP);
-progressMonitor.worked(50);
+				final System newSystem = SystemFactory.eINSTANCE.createSystem();
+				newSystem.setEntityName(NEW_SYSTEM_NAME);
+				systemResource.getContents().add(newSystem);
 
-if (representationName != null) {
-    final URI representationFileURI = URI
-            .createPlatformResourceURI("/" + systemURI.segment(1) + "/representations.aird", true);
-    final Session session = SessionManager.INSTANCE.getExistingSession(representationFileURI);
-    if (session == null) {
-        throw new RuntimeException("Not a modelling project");
-    }
-    
-    Viewpoint systemViewpoint = null; // FIXME expose with a constant
-    for (Viewpoint possibleViewpoint : session.getSelectedViewpoints(true)) {
-        if (ComposedProvidingRequiringEntityEditorConstants.SYSTEM_DESIGN_NAME.equals(possibleViewpoint.getName())) {
-            systemViewpoint = possibleViewpoint;
-            break;
-        }
-    }
-    if (systemViewpoint == null) { // FIXME expose with a constant
-        throw new RuntimeException("No suitable Viewpoint is registered");
-    }
-    
-    RepresentationDescription representationDescription = null;
-    for (RepresentationDescription possibleRepresentationDescription : DialectManager.INSTANCE
-            .getAvailableRepresentationDescriptions(
-                    Collections
-                            .singleton(systemViewpoint),
-                    newSystem)) {
-        representationDescription = possibleRepresentationDescription;
-        break;
-    }
-    if (representationDescription == null) {
-        throw new RuntimeException("No suitable RepresentationDescription has been found");
-    }
+				systemResource.save(Collections.EMPTY_MAP);
+				progressMonitor.worked(50);
 
-    DRepresentation representation = DialectManager.INSTANCE.createRepresentation(representationName,
-            newSystem, representationDescription, session, progressMonitor);
-    
-    DialectUIManager.INSTANCE.openEditor(session, representation, progressMonitor);
-}
+				if (representationName != null) {
+					Viewpoint systemViewpoint = null; // FIXME expose with a
+														// constant
+					for (Viewpoint possibleViewpoint : session.getSelectedViewpoints(true)) {
+						if (ComposedProvidingRequiringEntityEditorConstants.SYSTEM_DESIGN_NAME
+								.equals(possibleViewpoint.getName())) {
+							systemViewpoint = possibleViewpoint;
+							break;
+						}
+					}
+					if (systemViewpoint == null) { // FIXME expose with a
+													// constant
+						throw new RuntimeException("No suitable Viewpoint is registered");
+					}
+
+					RepresentationDescription representationDescription = null;
+					for (RepresentationDescription possibleRepresentationDescription : DialectManager.INSTANCE
+							.getAvailableRepresentationDescriptions(Collections.singleton(systemViewpoint),
+									newSystem)) {
+						representationDescription = possibleRepresentationDescription;
+						break;
+					}
+					if (representationDescription == null) {
+						throw new RuntimeException("No suitable RepresentationDescription has been found");
+					}
+
+					DRepresentation representation = DialectManager.INSTANCE.createRepresentation(representationName,
+							newSystem, representationDescription, session, progressMonitor);
+
+					DialectUIManager.INSTANCE.openEditor(session, representation, progressMonitor);
+				}
 
 			} catch (final IOException e) {
 				e.printStackTrace();
-			} finally {
 				progressMonitor.done();
-			}
+			} /*
+				 * finally { progressMonitor.done(); }
+				 */
+			progressMonitor.done();
 		}
 
 	}
