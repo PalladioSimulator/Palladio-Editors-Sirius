@@ -61,7 +61,7 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 		final IRunnableWithProgress operation = new WorkspaceModifyOperation() {
 
 			@Override
-			protected void execute(IProgressMonitor monitor)
+			protected void execute(final IProgressMonitor monitor)
 					throws CoreException, InvocationTargetException, InterruptedException {
 				final Session session = SessionManager.INSTANCE.getSession(
 						URI.createPlatformResourceURI("/" + systemURI.segment(1) + "/representations.aird", true),
@@ -132,10 +132,12 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 		private static final String PAGE_NAME = "PAGE_NAME";
 		private static final String INITIAL_FILE_NAME = "newSystem";
 		private static final String FILE_EXTENSION = "system"; // $NON-NLS-N$
+		private static final String MESSAGE = "Chose a file name and location";
 
 		public SystemModelCreationPage(IStructuredSelection selection) {
 			super(PAGE_NAME, selection);
 			setFileName(INITIAL_FILE_NAME);
+			setMessage(MESSAGE);
 			setFileExtension(FILE_EXTENSION);
 		}
 
