@@ -57,6 +57,7 @@ public class ValidateModelsJob extends SequentialBlackboardInteractingJob<MDSDBl
 
                 for (final org.scaledl.architecturaltemplates.type.Constraint constraint : constraints) {
                     try {
+                    	//FIXME: Do not use the entity name to store the OCL constraints
                         invariant = helper.createInvariant(constraint.getEntityName());
                         final Query constraintEvaluation = ocl.createQuery(invariant);
                         if (!constraintEvaluation.check(stereotypeApplication)) {
