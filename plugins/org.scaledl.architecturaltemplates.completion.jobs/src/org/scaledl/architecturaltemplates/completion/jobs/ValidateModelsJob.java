@@ -29,46 +29,47 @@ import de.uka.ipd.sdq.workflow.mdsd.blackboard.MDSDBlackboard;
 
 /**
  * Validates blackboard models according to the given AT constraints.
- * 
- * TODO Implement
- * 
- * @author Sebastian Lehrig
+ *
+ * @author Sebastian Lehrig, Daria Giacinto
  */
 public class ValidateModelsJob extends SequentialBlackboardInteractingJob<MDSDBlackboard> {
+
     public ValidateModelsJob(final ATExtensionJobConfiguration configuration) {
     }
-    
+
+    @Override
     public void execute(final IProgressMonitor monitor) throws JobFailedException, UserCanceledException {
-    		super.execute(monitor);
-        	logger.info("Validating AT Constraints.");
-        	final ProfileApplication systemProfileApplication = this.getProfileApplicationFromSystem();
-        	if(systemProfileApplication!=null){
-	        	EList<StereotypeApplication> stereotypeApplications = systemProfileApplication.getStereotypeApplications();
-	        	OCL ocl = OCL.newInstance(EcoreEnvironmentFactory.INSTANCE);
-	        
-	        	OCLHelper<EClassifier, EOperation, EStructuralFeature, Constraint> helper = ocl.createOCLHelper();
-	        	for(StereotypeApplication stereotypeApplication : stereotypeApplications){
-	
-		        	EList<org.scaledl.architecturaltemplates.type.Constraint> constraints = this.getConstraintsFromStereotypeApplication(stereotypeApplication);
-		        	helper.setInstanceContext(stereotypeApplication);
-		        	 Constraint invariant = null;
-		        	
-		        	for(org.scaledl.architecturaltemplates.type.Constraint constraint : constraints){
-		        		 try{
-		             		invariant = helper.createInvariant(constraint.getEntityName());
-		             		Query constraintEvaluation = ocl.createQuery(invariant);
-		             		if(!constraintEvaluation.check(stereotypeApplication)){
-		             			logger.error("Constraint: " + invariant.toString()+" failed.");
-				        	 }
-		             	 }catch(ParserException e){
-		             		 logger.error("Unable to parse expression \"" + e.getMessage());
-		             	 }
-		        	}
-	        	}
-        	}
-    	}
-    
-    
+        super.execute(monitor);
+        this.logger.info("Validating AT Constraints.");
+        final ProfileApplication systemProfileApplication = this.getProfileApplicationFromSystem();
+        if (systemProfileApplication != null) {
+            final EList<StereotypeApplication> stereotypeApplications = systemProfileApplication
+                    .getStereotypeApplications();
+            final OCL ocl = OCL.newInstance(EcoreEnvironmentFactory.INSTANCE);
+
+            final OCLHelper<EClassifier, EOperation, EStructuralFeature, Constraint> helper = ocl.createOCLHelper();
+            for (final StereotypeApplication stereotypeApplication : stereotypeApplications) {
+
+                final EList<org.scaledl.architecturaltemplates.type.Constraint> constraints = this
+                        .getConstraintsFromStereotypeApplication(stereotypeApplication);
+                helper.setInstanceContext(stereotypeApplication);
+                Constraint invariant = null;
+
+                for (final org.scaledl.architecturaltemplates.type.Constraint constraint : constraints) {
+                    try {
+                        invariant = helper.createInvariant(constraint.getEntityName());
+                        final Query constraintEvaluation = ocl.createQuery(invariant);
+                        if (!constraintEvaluation.check(stereotypeApplication)) {
+                            this.logger.error("Constraint: " + invariant.toString() + " failed.");
+                        }
+                    } catch (final ParserException e) {
+                        this.logger.error("Unable to parse expression \"" + e.getMessage());
+                    }
+                }
+            }
+        }
+    }
+
     private ProfileApplication getProfileApplicationFromSystem() {
         final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) this.myBlackboard
                 .getPartition(ATPartitionConstants.Partition.PCM.getPartitionId());
@@ -78,20 +79,21 @@ public class ValidateModelsJob extends SequentialBlackboardInteractingJob<MDSDBl
         } catch (final IndexOutOfBoundsException e) {
         }
         if (system != null & ProfileAPI.hasProfileApplication(system.eResource())) {
-        
-        	return ProfileAPI.getProfileApplication(system.eResource());
-        	}
+
+            return ProfileAPI.getProfileApplication(system.eResource());
+        }
         return null;
     }
-    
-    private EList<org.scaledl.architecturaltemplates.type.Constraint> getConstraintsFromStereotypeApplication(StereotypeApplication stereotypeApplication){
-    	Stereotype stereotype = stereotypeApplication.getStereotype();
-    	   final EStructuralFeature roleURI = stereotype.getTaggedValue("roleURI");
-           if (roleURI != null) {
-               final EObject eObject = EMFLoadHelper.loadAndResolveEObject(roleURI.getDefaultValueLiteral());
-               final Role stereotypeRole = (Role) eObject;
-               return stereotypeRole.getConstraints();
-           }
-    	return null;
+
+    private EList<org.scaledl.architecturaltemplates.type.Constraint> getConstraintsFromStereotypeApplication(
+            final StereotypeApplication stereotypeApplication) {
+        final Stereotype stereotype = stereotypeApplication.getStereotype();
+        final EStructuralFeature roleURI = stereotype.getTaggedValue("roleURI");
+        if (roleURI != null) {
+            final EObject eObject = EMFLoadHelper.loadAndResolveEObject(roleURI.getDefaultValueLiteral());
+            final Role stereotypeRole = (Role) eObject;
+            return stereotypeRole.getConstraints();
+        }
+        return null;
     }
 }
