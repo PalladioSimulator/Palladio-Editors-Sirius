@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Palladio Editor Utilities
 Bundle-SymbolicName: org.palladiosimulator.editors.util;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.9.0
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.palladiosimulator.commons;bundle-version="1.0.0",
  de.uka.ipd.sdq.dialogs;bundle-version="2.0.1",
@@ -13,7 +13,6 @@ Require-Bundle: org.palladiosimulator.commons;bundle-version="1.0.0",
  org.scaledl.architecturaltemplates.api;bundle-version="1.0.0",
  org.modelversioning.emfprofile,
  org.eclipse.emf.ecore
-Export-Package: org.palladiosimulator.editors.util.api.services
 Bundle-Activator: org.palladiosimulator.editors.util.Activator
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: palladiosimulator.org
