@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.palladiosimulator.editors.composedprovidingrequiringentity.design
+Bundle-Name: Palladio ComposedProvidingRequiringEntity Editor
 Bundle-SymbolicName: org.palladiosimulator.editors.composedprovidingrequiringentity.design;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.palladiosimulator.editors.composedprovidingrequiringentity.design.Activator
@@ -18,3 +18,4 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.ide;bundle-version="3.11.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Vendor: palladiosimulator.org
