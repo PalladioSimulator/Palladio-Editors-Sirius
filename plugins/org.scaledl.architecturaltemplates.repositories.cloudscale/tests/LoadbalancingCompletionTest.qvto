@@ -37,11 +37,12 @@ log('Test started');
 	testNumberOfLoadbalancersRequiredRolesEqualsNumberOfReplicas(oldSystem,newSystem);
 	testLoadbalancerProvidedRolesEqualReplicableProvidedRoles(oldSystem, newSystem);
 	testLoadbalancerSeffCallsRequiredRoles();
-	testNumberOfNewResourceContainer(oldAllocation,newAllocation);
-	testDuplicatesAllocatedToNewResourceContainer(oldAllocation,newAllocation);
-	testLoadbalancerAllocatedToNewResourceContainer(oldAllocation,newAllocation);
-	testDuplicateResourceContainerConnectedToSameLinkingResource(oldAllocation,newAllocation);
-	testLoadblancerResourceContainerConntectedToSameLinkingResource(oldAllocation,newAllocation);
+	testNumberOfNewResourceContainer();
+	testDuplicatesAllocatedToNewResourceContainer();
+	testLoadbalancerAllocatedToNewResourceContainer();
+	testDuplicateResourceContainerConnectedToSameLinkingResource();
+	testLoadblancerResourceContainerConntectedToSameLinkingResource();
+	testNewResContainerSpecificationsEqualReplicableResContainer();
 	
 log('Test finished');
 }
@@ -327,7 +328,7 @@ query testLoadbalancerSeffCallsRequiredRoles(){
 /**
 * Tests whether there are number of replicas many new resource container
 **/
-query testNumberOfNewResourceContainer(oldAllocation : Allocation, newAllocation : Allocation){
+query testNumberOfNewResourceContainer(){
 	var replicableAssemblyContext : AssemblyContext := getStereotypedAssemblyContextBeforeCompletion("ReplicableAssemblyContext");
 		getStereotypedAssemblyContextBeforeCompletion("ReplicableAssemblyContext");
 	var numberOfReplicas : Integer := getIntTaggedValue(replicableAssemblyContext,"numberOfReplicas","ReplicableAssemblyContext");
@@ -344,7 +345,7 @@ query testNumberOfNewResourceContainer(oldAllocation : Allocation, newAllocation
 /**
 * Tests whether each duplicate is allocated to a newly created resource container
 **/
-query testDuplicatesAllocatedToNewResourceContainer(oldAllocation : Allocation, newAllocation : Allocation){
+query testDuplicatesAllocatedToNewResourceContainer(){
 	var duplicateAssemblyContexts : Set(AssemblyContext) := getStereotypedAssemblyContextsAfterCompletion("DuplicateAssemblyContext");
 	var oldResContainer : Set(ResourceContainer) := getOldResourceContainer();
 	var newResContainer: Set(ResourceContainer) := getNewResourceContainer();
@@ -362,7 +363,7 @@ query testDuplicatesAllocatedToNewResourceContainer(oldAllocation : Allocation, 
 /**
 * Tests whether the loadbalancer is allocated to a newly created resource container
 **/
-query testLoadbalancerAllocatedToNewResourceContainer(oldAllocation : Allocation, newAllocation : Allocation){
+query testLoadbalancerAllocatedToNewResourceContainer(){
 	var loadbalancerAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("LoadbalancerAssemblyContext");
 	var oldResContainer : Set(ResourceContainer) := getOldResourceContainer();
 	var newResContainer: Set(ResourceContainer) := getNewResourceContainer();
@@ -379,7 +380,7 @@ query testLoadbalancerAllocatedToNewResourceContainer(oldAllocation : Allocation
 * Tests whether the duplicated resource container are connected to the same linking 
 * resource as the replicable's resource container
 **/
-query testDuplicateResourceContainerConnectedToSameLinkingResource(oldAllocation : Allocation, newAllocation : Allocation){
+query testDuplicateResourceContainerConnectedToSameLinkingResource(){
 	var duplicateAssemblyContexts : Set(AssemblyContext) := getStereotypedAssemblyContextsAfterCompletion("DuplicateAssemblyContext");
 	var duplicateAllocationContexts : Set(AllocationContext) := getAllocationContextsFromAssemblyContextsAfterCompletion(duplicateAssemblyContexts);
 	var duplicateResContainers : Bag(ResourceContainer) := duplicateAllocationContexts.resourceContainer_AllocationContext;
@@ -391,18 +392,18 @@ query testDuplicateResourceContainerConnectedToSameLinkingResource(oldAllocation
 	var notConnectedResContainer : Bag(ResourceContainer);
 	originalLinkingResources->forEach(originalLinkingResource){
 		originalLinkingResourceContainer := originalLinkingResource.connectedResourceContainers_LinkingResource;
-		 notConnectedResContainer := duplicateResContainers->select(duplicateResContainer : ResourceContainer| originalLinkingResourceContainer->excludes(duplicateResContainer));
-	var delim : String := "";
-	assert error(notConnectedResContainer->isEmpty())
-		with log('The duplicate resource container ['+notConnectedResContainer->forEach(resContainer){delim+resContainer.id; delim :=";";}
-				+'] are not connected with the replicable linking resource '+originalLinkingResource.id);
+		notConnectedResContainer := duplicateResContainers->select(duplicateResContainer : ResourceContainer| originalLinkingResourceContainer->excludes(duplicateResContainer));
+		var delim : String := "";
+		assert error(notConnectedResContainer->isEmpty())
+			with log('The duplicate resource container ['+notConnectedResContainer->forEach(resContainer){delim+resContainer.id; delim :=";";}
+					+'] are not connected with the replicable linking resource '+originalLinkingResource.id);
 	};
 }
 
 /**
 * Tests whether  the loadbalancers resource container is connected with the replicable linking resource
 **/
-query testLoadblancerResourceContainerConntectedToSameLinkingResource(oldAllocation : Allocation, newAllocation : Allocation){
+query testLoadblancerResourceContainerConntectedToSameLinkingResource(){
 	var loadbalancerAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("LoadbalancerAssemblyContext");
 	var loadbalancerAllocationContext : AllocationContext := getAllocationContextFromAssemblyContextAfterCompletion(loadbalancerAssemblyContext);
 	var loadbalancerResourceContainer : ResourceContainer:= loadbalancerAllocationContext.resourceContainer_AllocationContext;
@@ -414,6 +415,32 @@ query testLoadblancerResourceContainerConntectedToSameLinkingResource(oldAllocat
 	assert error(originalLinkingResources.connectedResourceContainers_LinkingResource->includes(loadbalancerResourceContainer))
 		with log('The loadbalancer resource container '+loadbalancerResourceContainer.id+' is not connected with one of the replicable linking resource: ['
 		+originalLinkingResources->forEach(originalLinkingResource){delim+originalLinkingResource.id; delim :=";";}+']');
+}
+
+query testNewResContainerSpecificationsEqualReplicableResContainer(){
+	var originalAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("OriginalAssemblyContext");
+	var originalAllocationContext : AllocationContext := getAllocationContextFromAssemblyContextAfterCompletion(originalAssemblyContext);
+	var originalResourceContainer : ResourceContainer := originalAllocationContext.resourceContainer_AllocationContext;
+	var originalResourceContainerSpecifications : Set(ProcessingResourceSpecification) := originalResourceContainer.activeResourceSpecifications_ResourceContainer;
+	var newResourceContainer : Set(ResourceContainer) := getNewResourceContainer();
+	var oldResourceContainer : Set(ResourceContainer) := getOldResourceContainer();
+	var newlyCreatedResourceContainer : Set(ResourceContainer) := newResourceContainer->select(resourceContainer : ResourceContainer | oldResourceContainer.id->excludes(resourceContainer.id));
+	var newlyCreatedResContainerSpecifications : Set(ProcessingResourceSpecification);
+	newlyCreatedResourceContainer->forEach(newlyCreatedResContainer){
+		newlyCreatedResContainerSpecifications := newlyCreatedResContainer.activeResourceSpecifications_ResourceContainer;
+		assert error(newlyCreatedResContainerSpecifications.MTTR = originalResourceContainerSpecifications.MTTR)
+			with log('The MTTR of the newly created resource container '+ newlyCreatedResContainer.id + ' does not conform to the expected value of the original resource container ' +originalResourceContainer.id);
+		assert error(newlyCreatedResContainerSpecifications.MTTF = originalResourceContainerSpecifications.MTTF)
+			with log('The MTTF of the newly created resource container '+ newlyCreatedResContainer.id + ' does not conform to the expected value of the original resource container ' +originalResourceContainer.id);
+		assert error(newlyCreatedResContainerSpecifications.schedulingPolicy = originalResourceContainerSpecifications.schedulingPolicy)
+			with log('The scheduling policy of the newly created resource container '+ newlyCreatedResContainer.id + ' does not conform to the expected value of the original resource container ' +originalResourceContainer.id);
+		assert error(newlyCreatedResContainerSpecifications.activeResourceType_ActiveResourceSpecification = originalResourceContainerSpecifications.activeResourceType_ActiveResourceSpecification)
+			with log('The active resource type of the newly created resource container '+ newlyCreatedResContainer.id + ' does not conform to the expected value of the original resource container ' +originalResourceContainer.id);
+		assert error(newlyCreatedResContainerSpecifications.processingRate_ProcessingResourceSpecification.specification = originalResourceContainerSpecifications.processingRate_ProcessingResourceSpecification.specification)
+			with log('The processing rate of the newly created resource container '+ newlyCreatedResContainer.id + ' does not conform to the expected value of the original resource container ' +originalResourceContainer.id);
+		assert error(newlyCreatedResContainerSpecifications.numberOfReplicas = originalResourceContainerSpecifications.numberOfReplicas)
+			with log('The number of replicas of the newly created resource container '+ newlyCreatedResContainer.id + ' does not conform to the expected value of the original resource container ' +originalResourceContainer.id);
+	};
 }
 
 query getStereotypedAssemblyContextAfterCompletion(stereotypeName : String):AssemblyContext{
