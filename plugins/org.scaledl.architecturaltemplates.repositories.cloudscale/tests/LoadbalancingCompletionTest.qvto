@@ -417,6 +417,9 @@ query testLoadblancerResourceContainerConntectedToSameLinkingResource(){
 		+originalLinkingResources->forEach(originalLinkingResource){delim+originalLinkingResource.id; delim :=";";}+']');
 }
 
+/**
+* Tests whether the newly created resource container specifications conforms to the resource container specifications on which the Original Assembly Context is allocated
+**/
 query testNewResContainerSpecificationsEqualReplicableResContainer(){
 	var originalAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("OriginalAssemblyContext");
 	var originalAllocationContext : AllocationContext := getAllocationContextFromAssemblyContextAfterCompletion(originalAssemblyContext);
@@ -443,45 +446,79 @@ query testNewResContainerSpecificationsEqualReplicableResContainer(){
 	};
 }
 
+/**
+* Returns the Assembly Context with the given Stereotype after Completion
+**/
 query getStereotypedAssemblyContextAfterCompletion(stereotypeName : String):AssemblyContext{
 	return newAllocation.system_Allocation.assemblyContexts__ComposedStructure->selectOne(assemblyContext : AssemblyContext|hasAppliedStereotype(assemblyContext,stereotypeName));
 }
 
+/**
+* Returns a set of Assembly Contexts with the given Stereotype after Completion
+**/
 query getStereotypedAssemblyContextsAfterCompletion(stereotypeName : String):Set(AssemblyContext){
 	return newAllocation.system_Allocation.assemblyContexts__ComposedStructure->select(assemblyContext : AssemblyContext|hasAppliedStereotype(assemblyContext,stereotypeName));
 }
 
+/**
+* Returns the Allocation Context from the given Assembly Context after Completion
+**/
 query getAllocationContextFromAssemblyContextAfterCompletion(assemblyContext : AssemblyContext):AllocationContext{
 	return newAllocation.allocationContexts_Allocation->selectOne(allocationContext : AllocationContext | allocationContext.assemblyContext_AllocationContext = assemblyContext);
 }
 
+/**
+* Returns a set of Allocation Contexts from the given set of assembly contexts after Completion
+**/
 query getAllocationContextsFromAssemblyContextsAfterCompletion(assemblyContexts:Set(AssemblyContext)):Set(AllocationContext) {
 	return newAllocation.allocationContexts_Allocation->select(allocationContext : AllocationContext | assemblyContexts->includes(allocationContext.assemblyContext_AllocationContext));
 }
+
+/**
+* Returns the Assembly Context with the given Stereotype before Completion
+**/
 query getStereotypedAssemblyContextBeforeCompletion(stereotypeName : String):AssemblyContext{
 	return oldAllocation.system_Allocation.assemblyContexts__ComposedStructure->selectOne(assemblyContext : AssemblyContext|hasAppliedStereotype(assemblyContext,stereotypeName));
 }
 
+/**
+* Returns the Allocation Context from the given Assembly Context before Completion
+**/
 query getAllocationContextFromStereotypedAssemblyContextBeforeCompletion(stereotypeName : String):AllocationContext{
 	return oldAllocation.allocationContexts_Allocation->selectOne(allocationContext : AllocationContext | allocationContext.assemblyContext_AllocationContext = getStereotypedAssemblyContextBeforeCompletion(stereotypeName));
 }
 
+/**
+* Returns a set of Linking Resources from the given Resource Container after Completion
+**/
 query getLinkingResourcesFromResourceContainerAfterCompletion(resourceContainer : ResourceContainer):Set(LinkingResource){
 	return newAllocation.targetResourceEnvironment_Allocation.linkingResources__ResourceEnvironment->select(linkingResource : LinkingResource| linkingResource.connectedResourceContainers_LinkingResource->includes(resourceContainer));
 }
 
+/**
+* Returns the Resource Environment before Completion
+**/
 query getOldResourceEnvironment():ResourceEnvironment{
 	return oldAllocation.targetResourceEnvironment_Allocation;
 }
 
+/**
+* Returns the Resource Environment after Completion
+**/
 query getNewResourceEnvironment():ResourceEnvironment{
 	return newAllocation.targetResourceEnvironment_Allocation;
 }
 
+/**
+* Returns the Resource Container before Completion
+**/
 query getOldResourceContainer():Set(ResourceContainer){
 	return getOldResourceEnvironment().resourceContainer_ResourceEnvironment;
 }
 
+/**
+* Returns the Resource Container after Completion
+**/
 query getNewResourceContainer():Set(ResourceContainer){
 	return getNewResourceEnvironment().resourceContainer_ResourceEnvironment;
 }
