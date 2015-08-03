@@ -1,0 +1,269 @@
+import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
+
+modeltype PCM_ALLOC uses 'http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1';
+modeltype PCM_REP uses 'http://palladiosimulator.org/PalladioComponentModel/Repository/5.1';
+modeltype PCM_SYS uses 'http://palladiosimulator.org/PalladioComponentModel/System/5.1';
+modeltype PCM_RES_ENV uses 'http://palladiosimulator.org/PalladioComponentModel/ResourceEnvironment/5.1';
+modeltype PCM_CORE uses 'http://palladiosimulator.org/PalladioComponentModel/Core/5.1';
+modeltype PCMComposition uses pcm::core::composition('http://palladiosimulator.org/PalladioComponentModel/5.1');
+modeltype PCMSEFF uses pcm::seff('http://palladiosimulator.org/PalladioComponentModel/SEFF/5.1');
+modeltype PCM_COMPLETION uses 'http://palladiosimulator.org/AnalyzerFramework/Completions/1.0';
+
+transformation StaticResourceContainerLoadbalancingCompletionTest(inout allocationBeforeCompletion : PCM_ALLOC, inout allocationAfterCompletion : PCM_ALLOC);
+
+property oldResEnvironment : ResourceEnvironment;
+property newResEnvironment : ResourceEnvironment;
+
+main() {
+	log('Test started');
+	
+		var oldAllocation : Allocation := allocationBeforeCompletion.rootObjects()![Allocation];
+		var newAllocation : Allocation := allocationAfterCompletion.rootObjects()![Allocation];
+		var oldSystem : System := oldAllocation.system_Allocation;
+		var newSystem : System := newAllocation.system_Allocation;
+		oldResEnvironment := oldAllocation.targetResourceEnvironment_Allocation;
+		newResEnvironment := newAllocation.targetResourceEnvironment_Allocation;
+		
+		testOriginalAndDuplicateResourceContainerEqualsNumberOfReplicas();
+		testNumberOfLoadbalancerResourceContainer(oldSystem,oldAllocation);
+		testNumberOfNewResourceContainer(oldSystem);
+		testDuplicateResourceContainerConnectedWithOriginalLinkingResource();
+		testLoadbalancerResourceContainerConnectedWithOriginalLinkingResource();
+		testNewResContainerSpecificationsEqualReplicableResContainer();
+		
+	log('Test finished');
+}
+
+/**
+* Tests whether the original and duplicates number of resource container equals the predefined number of replicas
+**/
+query testOriginalAndDuplicateResourceContainerEqualsNumberOfReplicas(){
+	var replicableResourceContainer : ResourceContainer := getStereotypedResourceContainerBeforeCompletion("ReplicableResourceContainer");
+	var numberOfReplicas : Integer := getIntTaggedValue(replicableResourceContainer,"numberOfReplicas","ReplicableResourceContainer");
+	var duplicateResourceContainer : Set(ResourceContainer) := getStereotypedResourceContainersAferCompletion("DuplicateResourceContainer");
+	var stereotypedResContainerSize : Integer := duplicateResourceContainer->size() + 1;
+	assert error (stereotypedResContainerSize = numberOfReplicas) 
+		with log('The number of the replicable resource container and its duplicates('+stereotypedResContainerSize.toString()+') 
+					does not equal the expected number of replicas('+numberOfReplicas.toString()+')');
+}
+
+/**
+* Tests whether the loadbalancers number of resource container equals the number of assemblies that has to be loadbalanced, i.e.,
+* all assemblies that are target of connectors required from assemblies on another resource container
+**/
+query testNumberOfLoadbalancerResourceContainer(oldSystem : System, oldAllocation : Allocation){
+	var loadbalancerResContainers : Set(ResourceContainer) := getStereotypedResourceContainersAferCompletion("LoadbalancerResourceContainer");
+	var loadbalancerResContainersSize : Integer := loadbalancerResContainers->size();
+	var replicableConnectors : Set(Connector) := getAllConnectorsToReplicableAssemblies(oldSystem);
+	var replicableConnectorsSize : Integer := replicableConnectors->size();
+	assert error (replicableConnectorsSize = loadbalancerResContainersSize) 
+		with log('The number of the loadbalancer resource container ('+loadbalancerResContainersSize.toString()+') 
+					does not equal the expected number of assemblies that should be loadbalanced('+replicableConnectorsSize.toString()+')');
+}
+
+/**
+* Tests whether the resource container of the loadbalancers and duplicates are newly created and conforms to the expected number 
+**/
+query testNumberOfNewResourceContainer(oldSystem:System){
+	var oldResContainer : Set(ResourceContainer) := getOldResourceContainer();
+	var newResContainer : Set(ResourceContainer) := getNewResourceContainer();
+	var newlyCreatedResourceContainer : Set(ResourceContainer) := newResContainer->select(resourceContainer : ResourceContainer | oldResContainer.id->excludes(resourceContainer.id));
+	var newlyCreatedResContainerSize : Integer := newlyCreatedResourceContainer->size();
+	var replicableConnectors : Set(Connector) := getAllConnectorsToReplicableAssemblies(oldSystem);
+	var replicableConnectorsSize : Integer := replicableConnectors->size();
+	var replicableResourceContainer : ResourceContainer := getStereotypedResourceContainerBeforeCompletion("ReplicableResourceContainer");
+	var numberOfReplicas : Integer := getIntTaggedValue(replicableResourceContainer,"numberOfReplicas","ReplicableResourceContainer");
+	var expectedNewResContainer : Integer := replicableConnectorsSize + numberOfReplicas -1;
+	assert error (expectedNewResContainer = newlyCreatedResContainerSize) 
+		with log('The number of newly created resource container ('+newlyCreatedResContainerSize.toString()+') 
+					does not equal the expected number of newly created resource container ('+expectedNewResContainer.toString()+')');
+}
+
+/**
+* Tests whether the resource container of the duplicates are connected with the same linking resources as the original resource container
+**/
+query testDuplicateResourceContainerConnectedWithOriginalLinkingResource(){
+	var originalResourceContainer : ResourceContainer := getStereotypedResourceContainerAfterCompletion("OriginalResourceContainer");
+	var originalLinkingResources : Set(LinkingResource) := getLinkingResourcesFromResourceContainerAfterCompletion(originalResourceContainer);
+	var duplicateResourceContainer : Set(ResourceContainer) := getStereotypedResourceContainersAferCompletion("DuplicateResourceContainer");	
+	var notConnectedResContainer : Set(ResourceContainer);
+	var originalLinkingResourceContainer : Set(ResourceContainer);
+	originalLinkingResources->forEach(linkingResource){
+		originalLinkingResourceContainer := linkingResource.connectedResourceContainers_LinkingResource;
+		notConnectedResContainer := duplicateResourceContainer->select(duplicateResContainer : ResourceContainer| originalLinkingResourceContainer->excludes(duplicateResContainer));
+		var delim : String := "";
+		assert error(notConnectedResContainer->isEmpty())
+			with log('The duplicate resource container ['+notConnectedResContainer->forEach(resContainer){delim+resContainer.id; delim :=";";}
+					+'] are not connected with the replicable linking resource '+linkingResource.id);
+	};
+}
+
+/**
+* Tests whether the resource container of the loadbalancers are connected with the same linking resources as the original resource container
+**/
+query testLoadbalancerResourceContainerConnectedWithOriginalLinkingResource(){
+	var loadbalancerResourceContainer : ResourceContainer:= getStereotypedResourceContainerAfterCompletion("LoadbalancerResourceContainer");
+	var originalResourceContainer : ResourceContainer := getStereotypedResourceContainerAfterCompletion("OriginalResourceContainer");
+	var originalLinkingResources : Set(LinkingResource) := getLinkingResourcesFromResourceContainerAfterCompletion(originalResourceContainer);
+	var notConnectedResContainer : Set(ResourceContainer);
+	var originalLinkingResourceContainer : Set(ResourceContainer);
+	originalLinkingResources->forEach(linkingResource){
+		originalLinkingResourceContainer := linkingResource.connectedResourceContainers_LinkingResource;
+		notConnectedResContainer := loadbalancerResourceContainer->select(loadbalancerResContainer : ResourceContainer| originalLinkingResourceContainer->excludes(loadbalancerResContainer));
+		var delim : String := "";
+		assert error(notConnectedResContainer->isEmpty())
+			with log('The loadbalancer resource container ['+notConnectedResContainer->forEach(resContainer){delim+resContainer.id; delim :=";";}
+					+'] are not connected with the replicable linking resource '+linkingResource.id);
+	};
+}
+
+/**
+* Tests whether the newly created resource container specifications conforms to the original resource container specifications
+**/
+query testNewResContainerSpecificationsEqualReplicableResContainer(){
+	var originalResourceContainer : ResourceContainer := getStereotypedResourceContainerAfterCompletion("OriginalResourceContainer");
+	var originalResourceContainerSpecifications : Set(ProcessingResourceSpecification) := originalResourceContainer.activeResourceSpecifications_ResourceContainer;
+	var newResourceContainer : Set(ResourceContainer) := getNewResourceContainer();
+	var oldResourceContainer : Set(ResourceContainer) := getOldResourceContainer();
+	var newlyCreatedResourceContainer : Set(ResourceContainer) := newResourceContainer->select(resourceContainer : ResourceContainer | oldResourceContainer.id->excludes(resourceContainer.id));
+	var newlyCreatedResContainerSpecifications : Set(ProcessingResourceSpecification);
+	newlyCreatedResourceContainer->forEach(newlyCreatedResContainer){
+		newlyCreatedResContainerSpecifications := newlyCreatedResContainer.activeResourceSpecifications_ResourceContainer;
+		assert error(newlyCreatedResContainerSpecifications.MTTR = originalResourceContainerSpecifications.MTTR)
+			with log('The MTTR of the newly created resource container '+ newlyCreatedResContainer.id + ' does not conform to the expected value of the original resource container ' +originalResourceContainer.id);
+		assert error(newlyCreatedResContainerSpecifications.MTTF = originalResourceContainerSpecifications.MTTF)
+			with log('The MTTF of the newly created resource container '+ newlyCreatedResContainer.id + ' does not conform to the expected value of the original resource container ' +originalResourceContainer.id);
+		assert error(newlyCreatedResContainerSpecifications.schedulingPolicy = originalResourceContainerSpecifications.schedulingPolicy)
+			with log('The scheduling policy of the newly created resource container '+ newlyCreatedResContainer.id + ' does not conform to the expected value of the original resource container ' +originalResourceContainer.id);
+		assert error(newlyCreatedResContainerSpecifications.activeResourceType_ActiveResourceSpecification = originalResourceContainerSpecifications.activeResourceType_ActiveResourceSpecification)
+			with log('The active resource type of the newly created resource container '+ newlyCreatedResContainer.id + ' does not conform to the expected value of the original resource container ' +originalResourceContainer.id);
+		assert error(newlyCreatedResContainerSpecifications.processingRate_ProcessingResourceSpecification.specification = originalResourceContainerSpecifications.processingRate_ProcessingResourceSpecification.specification)
+			with log('The processing rate of the newly created resource container '+ newlyCreatedResContainer.id + ' does not conform to the expected value of the original resource container ' +originalResourceContainer.id);
+		assert error(newlyCreatedResContainerSpecifications.numberOfReplicas = originalResourceContainerSpecifications.numberOfReplicas)
+			with log('The number of replicas of the newly created resource container '+ newlyCreatedResContainer.id + ' does not conform to the expected value of the original resource container ' +originalResourceContainer.id);
+	};
+}
+
+/**
+* Returns 
+**/
+query testNumberOfLoadbalancerAssemblyContexts(){
+}
+
+/**
+* Returns the Resource Container with the given Stereotype after Completion
+**/
+query getStereotypedResourceContainerAfterCompletion(stereotypeName : String):ResourceContainer{
+	return newResEnvironment.resourceContainer_ResourceEnvironment->selectOne(resourceContainer : ResourceContainer | hasAppliedStereotype(resourceContainer,stereotypeName));
+}
+
+/**
+* Returns a set of Resource Container with the given Stereotype after Completion
+**/
+query getStereotypedResourceContainersAferCompletion(stereotypeName : String):Set(ResourceContainer){
+	return newResEnvironment.resourceContainer_ResourceEnvironment->select(resourceContainer : ResourceContainer| hasAppliedStereotype(resourceContainer,stereotypeName));
+}
+
+/**
+* Returns the Resource Container with the given Stereotype before Completion
+**/
+query getStereotypedResourceContainerBeforeCompletion(stereotypeName : String ):ResourceContainer{
+	return oldResEnvironment.resourceContainer_ResourceEnvironment->selectOne(resourceContainer : ResourceContainer | hasAppliedStereotype(resourceContainer,stereotypeName));
+}
+
+/**
+* Returns a set of Linking Resources from the given Resource Container after Completion
+**/
+query getLinkingResourcesFromResourceContainerAfterCompletion(resourceContainer : ResourceContainer):Set(LinkingResource){
+	return newResEnvironment.linkingResources__ResourceEnvironment->select(linkingResource : LinkingResource| linkingResource.connectedResourceContainers_LinkingResource->includes(resourceContainer));
+}
+
+/**
+ * Returns all connectors whose target is an Assembly Context allocated to the replicable Resource Container and its source is allocated to another Resource Container
+ */
+query getAllConnectorsToReplicableAssemblies(oldSystem:System):Set(Connector){
+	var connectors : Set(Connector) := oldSystem.connectors__ComposedStructure;
+	var replicableResContainer : ResourceContainer := getStereotypedResourceContainerBeforeCompletion("ReplicableResourceContainer");
+	var connectorsToReplicableAssemblies : Set(Connector);
+	var providingAssemblyContext : AssemblyContext;
+	var targetResContainer : ResourceContainer;
+	connectors->forEach(connector){
+		if(connector.oclIsTypeOf(AssemblyConnector)){
+			var assemblyConnector : AssemblyConnector := connector.oclAsType(AssemblyConnector);
+			providingAssemblyContext := getProvidingAssemblyContext(assemblyConnector);
+			var requiringAssemblyContext : AssemblyContext := getRequiringAssemblyContext(assemblyConnector);
+			var sourceResContainer : ResourceContainer := findResourceContainerBeforeCompletion(requiringAssemblyContext);
+			targetResContainer := findResourceContainerBeforeCompletion(providingAssemblyContext);
+			if(sourceResContainer.id != targetResContainer.id and targetResContainer.id = replicableResContainer.id){
+				connectorsToReplicableAssemblies+=assemblyConnector;
+			};
+		}
+		else if(connector.oclIsTypeOf(ProvidedDelegationConnector)){
+			var providedDelegationConnector : ProvidedDelegationConnector := connector.oclAsType(ProvidedDelegationConnector);
+			providingAssemblyContext := getProvidingAssemblyContext(providedDelegationConnector);
+			targetResContainer := findResourceContainerBeforeCompletion(providingAssemblyContext);
+			if(targetResContainer.id = replicableResContainer.id){
+				connectorsToReplicableAssemblies += providedDelegationConnector;
+			};
+		};
+	};
+	
+	return connectorsToReplicableAssemblies;
+}
+
+/**
+ * Returns the providing component of a given connector.
+ */
+query getProvidingAssemblyContext(providedDelegationConnector : ProvidedDelegationConnector) : AssemblyContext {
+	return providedDelegationConnector.assemblyContext_ProvidedDelegationConnector;
+}
+
+/**
+ * Returns the requiring component of a given connector.
+ */
+query getRequiringAssemblyContext(assemblyConnector : AssemblyConnector) : AssemblyContext {
+	return assemblyConnector.requiringAssemblyContext_AssemblyConnector;
+}
+
+/**
+ * Returns the providing component of a given connector.
+ */
+query getProvidingAssemblyContext(assemblyConnector : AssemblyConnector) : AssemblyContext {
+	return assemblyConnector.providingAssemblyContext_AssemblyConnector;
+}
+
+/**
+ * Returns the ResourceContainer the AllocationContext corresponds to in the Allocation before Completion
+ */
+query findResourceContainerBeforeCompletion(assemblyContext : AssemblyContext) : ResourceContainer {
+	var acs : Bag(AllocationContext) := allocationBeforeCompletion.rootObjects().subobjects()[AllocationContext];
+	return acs->selectOne(
+		ac : AllocationContext | 
+		ac.assemblyContext_AllocationContext.id = assemblyContext.id
+		).resourceContainer_AllocationContext;
+}
+
+/**
+ * Returns the ResourceContainer the AllocationContext corresponds to in the Allocation after Completion
+ */
+query findResourceContainerAfterCompletion(assemblyContext : AssemblyContext) : ResourceContainer {
+	var acs : Bag(AllocationContext) := allocationAfterCompletion.rootObjects().subobjects()[AllocationContext];
+	return acs->selectOne(
+		ac : AllocationContext | 
+		ac.assemblyContext_AllocationContext.id = assemblyContext.id
+		).resourceContainer_AllocationContext;
+}
+
+/**
+ * Returns the ResourceContainer of the ResourceEnvironment before Completion
+ */
+query getOldResourceContainer():Set(ResourceContainer){
+	return oldResEnvironment.resourceContainer_ResourceEnvironment;
+}
+
+/**
+ * Returns the ResourceContainer of the ResourceEnvironment after Completion
+ */
+query getNewResourceContainer():Set(ResourceContainer){
+	return newResEnvironment.resourceContainer_ResourceEnvironment;
+}
