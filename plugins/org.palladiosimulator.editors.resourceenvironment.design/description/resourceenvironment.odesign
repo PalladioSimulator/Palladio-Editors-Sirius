@@ -121,7 +121,6 @@
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newCommunicationLinkingResource"/>
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AddLinkingResourceAction" label="Add Linking Resource" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.addLinkingResource">
                       <parameters name="newCommunicationLinkResourceSpecification" value="[instance/]"/>
-                      <parameters name="self" value="[self/]"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
