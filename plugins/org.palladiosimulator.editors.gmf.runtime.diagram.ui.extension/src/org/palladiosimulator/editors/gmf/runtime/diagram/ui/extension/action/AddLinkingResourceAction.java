@@ -25,10 +25,6 @@ import org.palladiosimulator.pcm.resourceenvironment.ResourceenvironmentPackage;
 
 public class AddLinkingResourceAction implements  IExternalJavaAction  {
 
-
-	private static final String DIALOG_MESSAGE = "Add a Linking Resource";
-	private static final String RESOURCE_COMMUNICATION_LINK_RESOURCE_SPECIFICATION = "org.palladiosimulator.pcm.resourceenvironment.CommunicationLinkResourceSpecification";
-
 	public AddLinkingResourceAction(){
 		super();
 	}
@@ -37,7 +33,7 @@ public class AddLinkingResourceAction implements  IExternalJavaAction  {
 	@Override
 	public boolean canExecute(Collection<? extends EObject> selections) {
 		for (EObject object : selections) {
-			if( object instanceof ResourceEnvironment)
+			if( object instanceof LinkingResource || object instanceof ResourceEnvironment)
 				return true;
 		}
 		return false;
@@ -45,46 +41,20 @@ public class AddLinkingResourceAction implements  IExternalJavaAction  {
 	
 	@Override
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
-		java.lang.System.out.println("actual execute befehl");
+				
 		
-		final ResourceEnvironment resourceEnvironment = (ResourceEnvironment) selections.iterator().next();
-      
-		
-		/* IElementType elementType = ElementTypeRegistry.getInstance().getType( RESOURCE_COMMUNICATION_LINK_RESOURCE_SPECIFICATION);
-        
-
-        CreateElementRequest createElementRequest = new CreateElementRequest(resourceEnvironment,elementType);
-        createElementRequest.setContainmentFeature(ResourceenvironmentPackage.eINSTANCE
-                .getLinkingResource_CommunicationLinkResourceSpecifications_LinkingResource());
-        CreateElementCommand createElementCommand = new CreateElementCommand(createElementRequest);
-
-       
-
-        CompositeCommand compositeCommand = new CompositeCommand("");
-        compositeCommand.add(createElementCommand);
-        //compositeCommand.add(new SetLatencyThroughputAndLanTypeCommand(request));
-*/
-		
-		final Object parameter = parameters.get("newLinkingResource");
-	        if (parameter == null || !(parameter instanceof CommunicationLinkResourceSpecification)) {
+		final Object lparameter = parameters.get("newLinkingResource");
+		final Object cparameter = parameters.get("newCommunicationLinkResourceSpecification");
+	        if (lparameter == null || !(lparameter instanceof LinkingResource ) || !(cparameter instanceof CommunicationLinkResourceSpecification)) {
 	        	return;
 	        }
-			//final EditingDomain edomain = SessionManager.INSTANCE.getSession((EObject) parameter).getTransactionalEditingDomain();
-			//new org.eclipse.emf.edit.ui.action.LoadResourceAction(edomain).run();
-    	final TransactionalEditingDomain domain = SessionManager.INSTANCE.getSession((EObject)parameter).getTransactionalEditingDomain();
+	        
+	    	      
+		final TransactionalEditingDomain domain = SessionManager.INSTANCE.getSession((EObject)cparameter).getTransactionalEditingDomain();
     	
     	
     	
-    	//CommunicationLinkRes mit Factory erstellen
-    	//CommunicationLinkResourceSpecification communicationLinkingResource = ResourceenvironmentFactory.eINSTANCE.createCommunicationLinkResourceSpecification();
-    	
-    	//communicationLinkingResource befüllen...
-    	//TODO
-    	
-    	//oder von sirius erstellte LR nutzen ?
-    	//CommunicationLinkResourceSpecification communicationLinkingResource = (CommunicationLinkResourceSpecification) parameters.get("newLinkingResource");
-		
-    	AddLatencyAndThroughputRecordingCommand acommand = new AddLatencyAndThroughputRecordingCommand(domain,(CommunicationLinkResourceSpecification) parameter);
+    	AddLatencyAndThroughputRecordingCommand acommand = new AddLatencyAndThroughputRecordingCommand(domain,(CommunicationLinkResourceSpecification) cparameter);
 		
 		domain.getCommandStack().execute(acommand);
     	
