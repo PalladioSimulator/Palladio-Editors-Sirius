@@ -58,8 +58,8 @@ public class GenericBlackboardCompletionParameterItemProvider extends Completion
     protected void addFileExtensionPropertyDescriptor(final Object object) {
         this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
                 ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_GenericBlackboardCompletionParameter_fileExtension_feature"), this.getString(
-                        "_UI_PropertyDescriptor_description",
+                this.getString("_UI_GenericBlackboardCompletionParameter_fileExtension_feature"),
+                this.getString("_UI_PropertyDescriptor_description",
                         "_UI_GenericBlackboardCompletionParameter_fileExtension_feature",
                         "_UI_GenericBlackboardCompletionParameter_type"),
                 TypePackage.Literals.GENERIC_BLACKBOARD_COMPLETION_PARAMETER__FILE_EXTENSION, true, false, false,

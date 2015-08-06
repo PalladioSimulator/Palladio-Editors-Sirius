@@ -18,15 +18,12 @@ import org.palladiosimulator.pcm.core.composition.AssemblyContext;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.scaledl.architecturaltemplates.instance.impl.Role2ComponentImpl#getComponent <em>
- * Component</em>}</li>
- * <li>{@link org.scaledl.architecturaltemplates.instance.impl.Role2ComponentImpl#getRole <em>Role
- * </em>}</li>
- * <li>{@link org.scaledl.architecturaltemplates.instance.impl.Role2ComponentImpl#getATInstance <em>
- * AT Instance</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.scaledl.architecturaltemplates.instance.impl.Role2ComponentImpl#getComponent <em>Component</em>}</li>
+ *   <li>{@link org.scaledl.architecturaltemplates.instance.impl.Role2ComponentImpl#getRole <em>Role</em>}</li>
+ *   <li>{@link org.scaledl.architecturaltemplates.instance.impl.Role2ComponentImpl#getATInstance <em>AT Instance</em>}</li>
+ * </ul>
  *
  * @generated
  */
@@ -34,7 +31,6 @@ public class Role2ComponentImpl extends CDOObjectImpl implements Role2Component 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected Role2ComponentImpl() {
@@ -43,7 +39,6 @@ public class Role2ComponentImpl extends CDOObjectImpl implements Role2Component 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -53,7 +48,6 @@ public class Role2ComponentImpl extends CDOObjectImpl implements Role2Component 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -63,142 +57,127 @@ public class Role2ComponentImpl extends CDOObjectImpl implements Role2Component 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public AssemblyContext getComponent() {
-        return (AssemblyContext) this.eDynamicGet(InstancePackage.ROLE2_COMPONENT__COMPONENT,
+        return (AssemblyContext) eDynamicGet(InstancePackage.ROLE2_COMPONENT__COMPONENT,
                 InstancePackage.Literals.ROLE2_COMPONENT__COMPONENT, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public AssemblyContext basicGetComponent() {
-        return (AssemblyContext) this.eDynamicGet(InstancePackage.ROLE2_COMPONENT__COMPONENT,
+        return (AssemblyContext) eDynamicGet(InstancePackage.ROLE2_COMPONENT__COMPONENT,
                 InstancePackage.Literals.ROLE2_COMPONENT__COMPONENT, false, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void setComponent(final AssemblyContext newComponent) {
-        this.eDynamicSet(InstancePackage.ROLE2_COMPONENT__COMPONENT,
-                InstancePackage.Literals.ROLE2_COMPONENT__COMPONENT, newComponent);
+    public void setComponent(AssemblyContext newComponent) {
+        eDynamicSet(InstancePackage.ROLE2_COMPONENT__COMPONENT, InstancePackage.Literals.ROLE2_COMPONENT__COMPONENT,
+                newComponent);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Role getRole() {
-        return (Role) this.eDynamicGet(InstancePackage.ROLE2_COMPONENT__ROLE,
-                InstancePackage.Literals.ROLE2_COMPONENT__ROLE, true, true);
+        return (Role) eDynamicGet(InstancePackage.ROLE2_COMPONENT__ROLE, InstancePackage.Literals.ROLE2_COMPONENT__ROLE,
+                true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public Role basicGetRole() {
-        return (Role) this.eDynamicGet(InstancePackage.ROLE2_COMPONENT__ROLE,
-                InstancePackage.Literals.ROLE2_COMPONENT__ROLE, false, true);
+        return (Role) eDynamicGet(InstancePackage.ROLE2_COMPONENT__ROLE, InstancePackage.Literals.ROLE2_COMPONENT__ROLE,
+                false, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void setRole(final Role newRole) {
-        this.eDynamicSet(InstancePackage.ROLE2_COMPONENT__ROLE, InstancePackage.Literals.ROLE2_COMPONENT__ROLE, newRole);
+    public void setRole(Role newRole) {
+        eDynamicSet(InstancePackage.ROLE2_COMPONENT__ROLE, InstancePackage.Literals.ROLE2_COMPONENT__ROLE, newRole);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public ATInstance getATInstance() {
-        return (ATInstance) this.eDynamicGet(InstancePackage.ROLE2_COMPONENT__AT_INSTANCE,
+        return (ATInstance) eDynamicGet(InstancePackage.ROLE2_COMPONENT__AT_INSTANCE,
                 InstancePackage.Literals.ROLE2_COMPONENT__AT_INSTANCE, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
-    public NotificationChain basicSetATInstance(final ATInstance newATInstance, NotificationChain msgs) {
-        msgs = this.eBasicSetContainer((InternalEObject) newATInstance, InstancePackage.ROLE2_COMPONENT__AT_INSTANCE,
-                msgs);
+    public NotificationChain basicSetATInstance(ATInstance newATInstance, NotificationChain msgs) {
+        msgs = eBasicSetContainer((InternalEObject) newATInstance, InstancePackage.ROLE2_COMPONENT__AT_INSTANCE, msgs);
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void setATInstance(final ATInstance newATInstance) {
-        this.eDynamicSet(InstancePackage.ROLE2_COMPONENT__AT_INSTANCE,
-                InstancePackage.Literals.ROLE2_COMPONENT__AT_INSTANCE, newATInstance);
+    public void setATInstance(ATInstance newATInstance) {
+        eDynamicSet(InstancePackage.ROLE2_COMPONENT__AT_INSTANCE, InstancePackage.Literals.ROLE2_COMPONENT__AT_INSTANCE,
+                newATInstance);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eInverseAdd(final InternalEObject otherEnd, final int featureID, NotificationChain msgs) {
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case InstancePackage.ROLE2_COMPONENT__AT_INSTANCE:
-            if (this.eInternalContainer() != null) {
-                msgs = this.eBasicRemoveFromContainer(msgs);
-            }
-            return this.basicSetATInstance((ATInstance) otherEnd, msgs);
+            if (eInternalContainer() != null)
+                msgs = eBasicRemoveFromContainer(msgs);
+            return basicSetATInstance((ATInstance) otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eInverseRemove(final InternalEObject otherEnd, final int featureID,
-            final NotificationChain msgs) {
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case InstancePackage.ROLE2_COMPONENT__AT_INSTANCE:
-            return this.basicSetATInstance(null, msgs);
+            return basicSetATInstance(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eBasicRemoveFromContainerFeature(final NotificationChain msgs) {
-        switch (this.eContainerFeatureID()) {
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+        switch (eContainerFeatureID()) {
         case InstancePackage.ROLE2_COMPONENT__AT_INSTANCE:
-            return this.eInternalContainer().eInverseRemove(this, InstancePackage.AT_INSTANCE__ROLE2COMPONENTS,
+            return eInternalContainer().eInverseRemove(this, InstancePackage.AT_INSTANCE__ROLE2COMPONENTS,
                     ATInstance.class, msgs);
         }
         return super.eBasicRemoveFromContainerFeature(msgs);
@@ -206,44 +185,40 @@ public class Role2ComponentImpl extends CDOObjectImpl implements Role2Component 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public Object eGet(final int featureID, final boolean resolve, final boolean coreType) {
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case InstancePackage.ROLE2_COMPONENT__COMPONENT:
-            if (resolve) {
-                return this.getComponent();
-            }
-            return this.basicGetComponent();
+            if (resolve)
+                return getComponent();
+            return basicGetComponent();
         case InstancePackage.ROLE2_COMPONENT__ROLE:
-            if (resolve) {
-                return this.getRole();
-            }
-            return this.basicGetRole();
+            if (resolve)
+                return getRole();
+            return basicGetRole();
         case InstancePackage.ROLE2_COMPONENT__AT_INSTANCE:
-            return this.getATInstance();
+            return getATInstance();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void eSet(final int featureID, final Object newValue) {
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
         case InstancePackage.ROLE2_COMPONENT__COMPONENT:
-            this.setComponent((AssemblyContext) newValue);
+            setComponent((AssemblyContext) newValue);
             return;
         case InstancePackage.ROLE2_COMPONENT__ROLE:
-            this.setRole((Role) newValue);
+            setRole((Role) newValue);
             return;
         case InstancePackage.ROLE2_COMPONENT__AT_INSTANCE:
-            this.setATInstance((ATInstance) newValue);
+            setATInstance((ATInstance) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -251,20 +226,19 @@ public class Role2ComponentImpl extends CDOObjectImpl implements Role2Component 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void eUnset(final int featureID) {
+    public void eUnset(int featureID) {
         switch (featureID) {
         case InstancePackage.ROLE2_COMPONENT__COMPONENT:
-            this.setComponent((AssemblyContext) null);
+            setComponent((AssemblyContext) null);
             return;
         case InstancePackage.ROLE2_COMPONENT__ROLE:
-            this.setRole((Role) null);
+            setRole((Role) null);
             return;
         case InstancePackage.ROLE2_COMPONENT__AT_INSTANCE:
-            this.setATInstance((ATInstance) null);
+            setATInstance((ATInstance) null);
             return;
         }
         super.eUnset(featureID);
@@ -272,18 +246,17 @@ public class Role2ComponentImpl extends CDOObjectImpl implements Role2Component 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public boolean eIsSet(final int featureID) {
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
         case InstancePackage.ROLE2_COMPONENT__COMPONENT:
-            return this.basicGetComponent() != null;
+            return basicGetComponent() != null;
         case InstancePackage.ROLE2_COMPONENT__ROLE:
-            return this.basicGetRole() != null;
+            return basicGetRole() != null;
         case InstancePackage.ROLE2_COMPONENT__AT_INSTANCE:
-            return this.getATInstance() != null;
+            return getATInstance() != null;
         }
         return super.eIsSet(featureID);
     }

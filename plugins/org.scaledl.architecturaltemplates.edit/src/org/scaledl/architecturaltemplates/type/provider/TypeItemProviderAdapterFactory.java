@@ -30,8 +30,8 @@ import org.scaledl.architecturaltemplates.type.util.TypeAdapterFactory;
  *
  * @generated
  */
-public class TypeItemProviderAdapterFactory extends TypeAdapterFactory implements ComposeableAdapterFactory,
-        IChangeNotifier, IDisposable {
+public class TypeItemProviderAdapterFactory extends TypeAdapterFactory
+        implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
 
     /**
      * This keeps track of the root adapter factory that delegates to this adapter factory. <!--

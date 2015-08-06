@@ -228,8 +228,8 @@ public class TypeActionBarContributor extends EditingDomainActionBarContributor 
             // Fake a selection changed event to update the menus.
             //
             if (this.selectionProvider.getSelection() != null) {
-                this.selectionChanged(new SelectionChangedEvent(this.selectionProvider, this.selectionProvider
-                        .getSelection()));
+                this.selectionChanged(
+                        new SelectionChangedEvent(this.selectionProvider, this.selectionProvider.getSelection()));
             }
         }
     }
@@ -290,7 +290,8 @@ public class TypeActionBarContributor extends EditingDomainActionBarContributor 
      * 
      * @generated
      */
-    protected Collection<IAction> generateCreateChildActions(final Collection<?> descriptors, final ISelection selection) {
+    protected Collection<IAction> generateCreateChildActions(final Collection<?> descriptors,
+            final ISelection selection) {
         final Collection<IAction> actions = new ArrayList<IAction>();
         if (descriptors != null) {
             for (final Object descriptor : descriptors) {

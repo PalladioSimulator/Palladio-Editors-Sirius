@@ -24,22 +24,21 @@ import org.palladiosimulator.pcm.core.entity.NamedElement;
 /**
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides an adapter
  * <code>createXXX</code> method for each class of the model. <!-- end-user-doc -->
- * 
  * @see org.scaledl.architecturaltemplates.instance.InstancePackage
  * @generated
  */
 public class InstanceAdapterFactory extends AdapterFactoryImpl {
 
     /**
-     * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The cached model package.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     protected static InstancePackage modelPackage;
 
     /**
-     * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Creates an instance of the adapter factory.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     public InstanceAdapterFactory() {
@@ -49,15 +48,15 @@ public class InstanceAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Returns whether this factory is applicable for the type of the object. <!-- begin-user-doc
+     * Returns whether this factory is applicable for the type of the object.
+     * <!-- begin-user-doc
      * --> This implementation returns <code>true</code> if the object is either the model's package
      * or is an instance object of the model. <!-- end-user-doc -->
-     * 
      * @return whether this factory is applicable for the type of the object.
      * @generated
      */
     @Override
-    public boolean isFactoryForType(final Object object) {
+    public boolean isFactoryForType(Object object) {
         if (object == modelPackage) {
             return true;
         }
@@ -68,90 +67,89 @@ public class InstanceAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * The switch that delegates to the <code>createXXX</code> methods. <!-- begin-user-doc --> <!--
+     * The switch that delegates to the <code>createXXX</code> methods.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @generated
      */
     protected InstanceSwitch<Adapter> modelSwitch = new InstanceSwitch<Adapter>() {
 
         @Override
-        public Adapter caseATInstance(final ATInstance object) {
-            return InstanceAdapterFactory.this.createATInstanceAdapter();
+        public Adapter caseATInstance(ATInstance object) {
+            return createATInstanceAdapter();
         }
 
         @Override
-        public Adapter caseComponent2Role(final Component2Role object) {
-            return InstanceAdapterFactory.this.createComponent2RoleAdapter();
+        public Adapter caseComponent2Role(Component2Role object) {
+            return createComponent2RoleAdapter();
         }
 
         @Override
-        public Adapter caseRole2Component(final Role2Component object) {
-            return InstanceAdapterFactory.this.createRole2ComponentAdapter();
+        public Adapter caseRole2Component(Role2Component object) {
+            return createRole2ComponentAdapter();
         }
 
         @Override
-        public Adapter caseParameterValue(final ParameterValue object) {
-            return InstanceAdapterFactory.this.createParameterValueAdapter();
+        public Adapter caseParameterValue(ParameterValue object) {
+            return createParameterValueAdapter();
         }
 
         @Override
-        public Adapter caseEnumParameter(final EnumParameter object) {
-            return InstanceAdapterFactory.this.createEnumParameterAdapter();
+        public Adapter caseEnumParameter(EnumParameter object) {
+            return createEnumParameterAdapter();
         }
 
         @Override
-        public Adapter caseIntegerParameter(final IntegerParameter object) {
-            return InstanceAdapterFactory.this.createIntegerParameterAdapter();
+        public Adapter caseIntegerParameter(IntegerParameter object) {
+            return createIntegerParameterAdapter();
         }
 
         @Override
-        public Adapter caseFloatParameter(final FloatParameter object) {
-            return InstanceAdapterFactory.this.createFloatParameterAdapter();
+        public Adapter caseFloatParameter(FloatParameter object) {
+            return createFloatParameterAdapter();
         }
 
         @Override
-        public <T> Adapter caseStringParameter(final StringParameter<T> object) {
-            return InstanceAdapterFactory.this.createStringParameterAdapter();
+        public <T> Adapter caseStringParameter(StringParameter<T> object) {
+            return createStringParameterAdapter();
         }
 
         @Override
-        public Adapter caseRole2Resource(final Role2Resource object) {
-            return InstanceAdapterFactory.this.createRole2ResourceAdapter();
+        public Adapter caseRole2Resource(Role2Resource object) {
+            return createRole2ResourceAdapter();
         }
 
         @Override
-        public Adapter caseIdentifier(final Identifier object) {
-            return InstanceAdapterFactory.this.createIdentifierAdapter();
+        public Adapter caseIdentifier(Identifier object) {
+            return createIdentifierAdapter();
         }
 
         @Override
-        public Adapter caseNamedElement(final NamedElement object) {
-            return InstanceAdapterFactory.this.createNamedElementAdapter();
+        public Adapter caseNamedElement(NamedElement object) {
+            return createNamedElementAdapter();
         }
 
         @Override
-        public Adapter caseEntity(final Entity object) {
-            return InstanceAdapterFactory.this.createEntityAdapter();
+        public Adapter caseEntity(Entity object) {
+            return createEntityAdapter();
         }
 
         @Override
-        public Adapter defaultCase(final EObject object) {
-            return InstanceAdapterFactory.this.createEObjectAdapter();
+        public Adapter defaultCase(EObject object) {
+            return createEObjectAdapter();
         }
     };
 
     /**
-     * Creates an adapter for the <code>target</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @param target
-     *            the object to adapt.
+     * Creates an adapter for the <code>target</code>.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param target the object to adapt.
      * @return the adapter for the <code>target</code>.
      * @generated
      */
     @Override
-    public Adapter createAdapter(final Notifier target) {
-        return this.modelSwitch.doSwitch((EObject) target);
+    public Adapter createAdapter(Notifier target) {
+        return modelSwitch.doSwitch((EObject) target);
     }
 
     /**
@@ -170,12 +168,10 @@ public class InstanceAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.scaledl.architecturaltemplates.instance.Component2Role <em>Component2 Role</em>}'.
+     * Creates a new adapter for an object of class '{@link org.scaledl.architecturaltemplates.instance.Component2Role <em>Component2 Role</em>}'.
      * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
      * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
      * end-user-doc -->
-     * 
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.instance.Component2Role
      * @generated
@@ -185,12 +181,10 @@ public class InstanceAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.scaledl.architecturaltemplates.instance.Role2Component <em>Role2 Component</em>}'.
+     * Creates a new adapter for an object of class '{@link org.scaledl.architecturaltemplates.instance.Role2Component <em>Role2 Component</em>}'.
      * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
      * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
      * end-user-doc -->
-     * 
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.instance.Role2Component
      * @generated
@@ -200,12 +194,10 @@ public class InstanceAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.scaledl.architecturaltemplates.instance.ParameterValue <em>Parameter Value</em>}'.
+     * Creates a new adapter for an object of class '{@link org.scaledl.architecturaltemplates.instance.ParameterValue <em>Parameter Value</em>}'.
      * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
      * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
      * end-user-doc -->
-     * 
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.instance.ParameterValue
      * @generated
@@ -215,12 +207,10 @@ public class InstanceAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.scaledl.architecturaltemplates.instance.EnumParameter <em>Enum Parameter</em>}'.
+     * Creates a new adapter for an object of class '{@link org.scaledl.architecturaltemplates.instance.EnumParameter <em>Enum Parameter</em>}'.
      * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
      * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
      * end-user-doc -->
-     * 
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.instance.EnumParameter
      * @generated
@@ -230,12 +220,10 @@ public class InstanceAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.scaledl.architecturaltemplates.instance.IntegerParameter
-     * <em>Integer Parameter</em>}'. <!-- begin-user-doc --> This default implementation returns
+     * Creates a new adapter for an object of class '{@link org.scaledl.architecturaltemplates.instance.IntegerParameter <em>Integer Parameter</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns
      * null so that we can easily ignore cases; it's useful to ignore a case when inheritance will
      * catch all the cases anyway. <!-- end-user-doc -->
-     * 
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.instance.IntegerParameter
      * @generated
@@ -245,12 +233,10 @@ public class InstanceAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.scaledl.architecturaltemplates.instance.FloatParameter <em>Float Parameter</em>}'.
+     * Creates a new adapter for an object of class '{@link org.scaledl.architecturaltemplates.instance.FloatParameter <em>Float Parameter</em>}'.
      * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
      * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
      * end-user-doc -->
-     * 
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.instance.FloatParameter
      * @generated
@@ -260,12 +246,10 @@ public class InstanceAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.scaledl.architecturaltemplates.instance.StringParameter <em>String Parameter</em>}
-     * '. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+     * Creates a new adapter for an object of class '{@link org.scaledl.architecturaltemplates.instance.StringParameter <em>String Parameter</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that we can easily
      * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
-     * 
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.instance.StringParameter
      * @generated
@@ -275,12 +259,10 @@ public class InstanceAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '
-     * {@link org.scaledl.architecturaltemplates.instance.Role2Resource <em>Role2 Resource</em>}'.
+     * Creates a new adapter for an object of class '{@link org.scaledl.architecturaltemplates.instance.Role2Resource <em>Role2 Resource</em>}'.
      * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
      * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
      * end-user-doc -->
-     * 
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.instance.Role2Resource
      * @generated
@@ -290,11 +272,10 @@ public class InstanceAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link de.uka.ipd.sdq.identifier.Identifier
-     * <em>Identifier</em>}'. <!-- begin-user-doc --> This default implementation returns null so
+     * Creates a new adapter for an object of class '{@link de.uka.ipd.sdq.identifier.Identifier <em>Identifier</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so
      * that we can easily ignore cases; it's useful to ignore a case when inheritance will catch all
      * the cases anyway. <!-- end-user-doc -->
-     * 
      * @return the new adapter.
      * @see de.uka.ipd.sdq.identifier.Identifier
      * @generated
@@ -319,11 +300,10 @@ public class InstanceAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.palladiosimulator.pcm.core.entity.Entity
-     * <em>Entity</em>}'. <!-- begin-user-doc --> This default implementation returns null so that
+     * Creates a new adapter for an object of class '{@link org.palladiosimulator.pcm.core.entity.Entity <em>Entity</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that
      * we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the
      * cases anyway. <!-- end-user-doc -->
-     * 
      * @return the new adapter.
      * @see org.palladiosimulator.pcm.core.entity.Entity
      * @generated
@@ -333,9 +313,9 @@ public class InstanceAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for the default case. <!-- begin-user-doc --> This default
+     * Creates a new adapter for the default case.
+     * <!-- begin-user-doc --> This default
      * implementation returns null. <!-- end-user-doc -->
-     * 
      * @return the new adapter.
      * @generated
      */

@@ -59,9 +59,9 @@ public class PCMTemplateCompletionParameterItemProvider extends PCMBlackboardCom
     protected void addTemplateFileURIPropertyDescriptor(final Object object) {
         this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
                 ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_TemplateProvidingEntity_templateFileURI_feature"), this.getString(
-                        "_UI_PropertyDescriptor_description", "_UI_TemplateProvidingEntity_templateFileURI_feature",
-                        "_UI_TemplateProvidingEntity_type"),
+                this.getString("_UI_TemplateProvidingEntity_templateFileURI_feature"),
+                this.getString("_UI_PropertyDescriptor_description",
+                        "_UI_TemplateProvidingEntity_templateFileURI_feature", "_UI_TemplateProvidingEntity_type"),
                 TypePackage.Literals.TEMPLATE_PROVIDING_ENTITY__TEMPLATE_FILE_URI, true, false, false,
                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
@@ -74,8 +74,8 @@ public class PCMTemplateCompletionParameterItemProvider extends PCMBlackboardCom
      */
     @Override
     public Object getImage(final Object object) {
-        return this.overlayImage(object, this.getResourceLocator()
-                .getImage("full/obj16/PCMTemplateCompletionParameter"));
+        return this.overlayImage(object,
+                this.getResourceLocator().getImage("full/obj16/PCMTemplateCompletionParameter"));
     }
 
     /**
@@ -88,8 +88,8 @@ public class PCMTemplateCompletionParameterItemProvider extends PCMBlackboardCom
     public String getText(final Object object) {
         final PCMFileExtensions labelValue = ((PCMTemplateCompletionParameter) object).getFileExtension();
         final String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? this.getString("_UI_PCMTemplateCompletionParameter_type") : this
-                .getString("_UI_PCMTemplateCompletionParameter_type") + " " + label;
+        return label == null || label.length() == 0 ? this.getString("_UI_PCMTemplateCompletionParameter_type")
+                : this.getString("_UI_PCMTemplateCompletionParameter_type") + " " + label;
     }
 
     /**

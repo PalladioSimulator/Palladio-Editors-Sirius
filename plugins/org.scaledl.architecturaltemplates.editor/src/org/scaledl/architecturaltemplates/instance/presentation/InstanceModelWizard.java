@@ -72,9 +72,9 @@ public class InstanceModelWizard extends Wizard implements INewWizard {
      * 
      * @generated
      */
-    public static final List<String> FILE_EXTENSIONS = Collections.unmodifiableList(Arrays
-            .asList(ArchitecturaltemplatesEditorPlugin.INSTANCE.getString("_UI_InstanceEditorFilenameExtensions")
-                    .split("\\s*,\\s*")));
+    public static final List<String> FILE_EXTENSIONS = Collections
+            .unmodifiableList(Arrays.asList(ArchitecturaltemplatesEditorPlugin.INSTANCE
+                    .getString("_UI_InstanceEditorFilenameExtensions").split("\\s*,\\s*")));
 
     /**
      * A formatted list of supported file extensions, suitable for display. <!-- begin-user-doc -->
@@ -82,8 +82,8 @@ public class InstanceModelWizard extends Wizard implements INewWizard {
      * 
      * @generated
      */
-    public static final String FORMATTED_FILE_EXTENSIONS = ArchitecturaltemplatesEditorPlugin.INSTANCE.getString(
-            "_UI_InstanceEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
+    public static final String FORMATTED_FILE_EXTENSIONS = ArchitecturaltemplatesEditorPlugin.INSTANCE
+            .getString("_UI_InstanceEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
 
     /**
      * This caches an instance of the model package. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -178,8 +178,8 @@ public class InstanceModelWizard extends Wizard implements INewWizard {
      * @generated
      */
     protected EObject createInitialModel() {
-        final EClass eClass = (EClass) this.instancePackage.getEClassifier(this.initialObjectCreationPage
-                .getInitialObjectName());
+        final EClass eClass = (EClass) this.instancePackage
+                .getEClassifier(this.initialObjectCreationPage.getInitialObjectName());
         final EObject rootObject = this.instanceFactory.create(eClass);
         return rootObject;
     }
@@ -257,8 +257,8 @@ public class InstanceModelWizard extends Wizard implements INewWizard {
             // Open an editor on the new file.
             //
             try {
-                page.openEditor(new FileEditorInput(modelFile),
-                        this.workbench.getEditorRegistry().getDefaultEditor(modelFile.getFullPath().toString()).getId());
+                page.openEditor(new FileEditorInput(modelFile), this.workbench.getEditorRegistry()
+                        .getDefaultEditor(modelFile.getFullPath().toString()).getId());
             } catch (final PartInitException exception) {
                 MessageDialog.openError(workbenchWindow.getShell(),
                         ArchitecturaltemplatesEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"),
@@ -523,8 +523,8 @@ public class InstanceModelWizard extends Wizard implements INewWizard {
             if (this.encodings == null) {
                 this.encodings = new ArrayList<String>();
                 for (final StringTokenizer stringTokenizer = new StringTokenizer(
-                        ArchitecturaltemplatesEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer
-                        .hasMoreTokens();) {
+                        ArchitecturaltemplatesEditorPlugin.INSTANCE
+                                .getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens();) {
                     this.encodings.add(stringTokenizer.nextToken());
                 }
             }
@@ -543,12 +543,13 @@ public class InstanceModelWizard extends Wizard implements INewWizard {
         // Create a page, set the title, and the initial model file name.
         //
         this.newFileCreationPage = new InstanceModelWizardNewFileCreationPage("Whatever", this.selection);
-        this.newFileCreationPage.setTitle(ArchitecturaltemplatesEditorPlugin.INSTANCE
-                .getString("_UI_InstanceModelWizard_label"));
-        this.newFileCreationPage.setDescription(ArchitecturaltemplatesEditorPlugin.INSTANCE
-                .getString("_UI_InstanceModelWizard_description"));
-        this.newFileCreationPage.setFileName(ArchitecturaltemplatesEditorPlugin.INSTANCE
-                .getString("_UI_InstanceEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0));
+        this.newFileCreationPage
+                .setTitle(ArchitecturaltemplatesEditorPlugin.INSTANCE.getString("_UI_InstanceModelWizard_label"));
+        this.newFileCreationPage.setDescription(
+                ArchitecturaltemplatesEditorPlugin.INSTANCE.getString("_UI_InstanceModelWizard_description"));
+        this.newFileCreationPage.setFileName(
+                ArchitecturaltemplatesEditorPlugin.INSTANCE.getString("_UI_InstanceEditorFilenameDefaultBase") + "."
+                        + FILE_EXTENSIONS.get(0));
         this.addPage(this.newFileCreationPage);
 
         // Try and get the resource selection to determine a current directory for the file dialog.
@@ -586,10 +587,10 @@ public class InstanceModelWizard extends Wizard implements INewWizard {
             }
         }
         this.initialObjectCreationPage = new InstanceModelWizardInitialObjectCreationPage("Whatever2");
-        this.initialObjectCreationPage.setTitle(ArchitecturaltemplatesEditorPlugin.INSTANCE
-                .getString("_UI_InstanceModelWizard_label"));
-        this.initialObjectCreationPage.setDescription(ArchitecturaltemplatesEditorPlugin.INSTANCE
-                .getString("_UI_Wizard_initial_object_description"));
+        this.initialObjectCreationPage
+                .setTitle(ArchitecturaltemplatesEditorPlugin.INSTANCE.getString("_UI_InstanceModelWizard_label"));
+        this.initialObjectCreationPage.setDescription(
+                ArchitecturaltemplatesEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
         this.addPage(this.initialObjectCreationPage);
     }
 

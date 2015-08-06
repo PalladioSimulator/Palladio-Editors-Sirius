@@ -65,10 +65,10 @@ public class Role2ResourceItemProvider extends ItemProviderAdapter implements IE
     protected void addResourcePropertyDescriptor(final Object object) {
         this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
                 ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_Role2Resource_resource_feature"), this.getString(
-                        "_UI_PropertyDescriptor_description", "_UI_Role2Resource_resource_feature",
-                        "_UI_Role2Resource_type"), InstancePackage.Literals.ROLE2_RESOURCE__RESOURCE, true, false,
-                true, null, null, null));
+                this.getString("_UI_Role2Resource_resource_feature"),
+                this.getString("_UI_PropertyDescriptor_description", "_UI_Role2Resource_resource_feature",
+                        "_UI_Role2Resource_type"),
+                InstancePackage.Literals.ROLE2_RESOURCE__RESOURCE, true, false, true, null, null, null));
     }
 
     /**
@@ -80,9 +80,10 @@ public class Role2ResourceItemProvider extends ItemProviderAdapter implements IE
     protected void addRolePropertyDescriptor(final Object object) {
         this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
                 ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_Role2Resource_role_feature"), this.getString("_UI_PropertyDescriptor_description",
-                        "_UI_Role2Resource_role_feature", "_UI_Role2Resource_type"),
-                        InstancePackage.Literals.ROLE2_RESOURCE__ROLE, true, false, true, null, null, null));
+                this.getString("_UI_Role2Resource_role_feature"),
+                this.getString("_UI_PropertyDescriptor_description", "_UI_Role2Resource_role_feature",
+                        "_UI_Role2Resource_type"),
+                InstancePackage.Literals.ROLE2_RESOURCE__ROLE, true, false, true, null, null, null));
     }
 
     /**

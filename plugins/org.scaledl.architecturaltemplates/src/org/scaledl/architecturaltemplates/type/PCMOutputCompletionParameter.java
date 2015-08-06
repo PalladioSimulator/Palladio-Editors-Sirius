@@ -6,16 +6,16 @@ package org.scaledl.architecturaltemplates.type;
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>PCM Output Completion Parameter</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> The output of a completion is a PCM model, characterized by its typical
- * file extension. A user can select from available PCM extensions. <!-- end-model-doc -->
+ * <!-- begin-model-doc -->
+ * The output of a completion is a PCM model, characterized by its typical file extension. A user can select from available PCM extensions.
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter#getFileExtension
- * <em>File Extension</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter#getFileExtension <em>File Extension</em>}</li>
+ * </ul>
  *
  * @see org.scaledl.architecturaltemplates.type.TypePackage#getPCMOutputCompletionParameter()
  * @model
@@ -43,12 +43,9 @@ public interface PCMOutputCompletionParameter extends CompletionParameter {
     PCMFileExtensions getFileExtension();
 
     /**
-     * Sets the value of the '
-     * {@link org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter#getFileExtension
-     * <em>File Extension</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>File Extension</em>' attribute.
+     * Sets the value of the '{@link org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter#getFileExtension <em>File Extension</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>File Extension</em>' attribute.
      * @see org.scaledl.architecturaltemplates.type.PCMFileExtensions
      * @see #getFileExtension()
      * @generated

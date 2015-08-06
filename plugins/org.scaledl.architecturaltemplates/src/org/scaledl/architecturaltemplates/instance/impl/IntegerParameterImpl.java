@@ -9,8 +9,6 @@ import org.scaledl.architecturaltemplates.instance.IntegerParameter;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Integer Parameter</b></em>
  * '. <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
@@ -18,7 +16,6 @@ public class IntegerParameterImpl extends ParameterValueImpl implements IntegerP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected IntegerParameterImpl() {
@@ -27,7 +24,6 @@ public class IntegerParameterImpl extends ParameterValueImpl implements IntegerP
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

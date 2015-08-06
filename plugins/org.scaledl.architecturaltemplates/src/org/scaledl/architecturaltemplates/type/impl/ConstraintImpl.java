@@ -21,11 +21,11 @@ import org.palladiosimulator.pcm.core.entity.impl.EntityImpl;
  * end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.scaledl.architecturaltemplates.type.impl.ConstraintImpl#getAT <em>AT</em>}</li>
- * <li>{@link org.scaledl.architecturaltemplates.type.impl.ConstraintImpl#getRoles <em>Roles</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.scaledl.architecturaltemplates.type.impl.ConstraintImpl#getAT <em>AT</em>}</li>
+ *   <li>{@link org.scaledl.architecturaltemplates.type.impl.ConstraintImpl#getRoles <em>Roles</em>}</li>
+ * </ul>
  *
  * @generated
  */
@@ -33,7 +33,6 @@ public abstract class ConstraintImpl extends EntityImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected ConstraintImpl() {
@@ -42,7 +41,6 @@ public abstract class ConstraintImpl extends EntityImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -52,128 +50,117 @@ public abstract class ConstraintImpl extends EntityImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public AT getAT() {
-        return (AT) this.eDynamicGet(TypePackage.CONSTRAINT__AT, TypePackage.Literals.CONSTRAINT__AT, true, true);
+        return (AT) eDynamicGet(TypePackage.CONSTRAINT__AT, TypePackage.Literals.CONSTRAINT__AT, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
-    public NotificationChain basicSetAT(final AT newAT, NotificationChain msgs) {
-        msgs = this.eBasicSetContainer((InternalEObject) newAT, TypePackage.CONSTRAINT__AT, msgs);
+    public NotificationChain basicSetAT(AT newAT, NotificationChain msgs) {
+        msgs = eBasicSetContainer((InternalEObject) newAT, TypePackage.CONSTRAINT__AT, msgs);
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void setAT(final AT newAT) {
-        this.eDynamicSet(TypePackage.CONSTRAINT__AT, TypePackage.Literals.CONSTRAINT__AT, newAT);
+    public void setAT(AT newAT) {
+        eDynamicSet(TypePackage.CONSTRAINT__AT, TypePackage.Literals.CONSTRAINT__AT, newAT);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public EList<Role> getRoles() {
-        return (EList<Role>) this.eDynamicGet(TypePackage.CONSTRAINT__ROLES, TypePackage.Literals.CONSTRAINT__ROLES,
-                true, true);
+        return (EList<Role>) eDynamicGet(TypePackage.CONSTRAINT__ROLES, TypePackage.Literals.CONSTRAINT__ROLES, true,
+                true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
-    public NotificationChain eInverseAdd(final InternalEObject otherEnd, final int featureID, NotificationChain msgs) {
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case TypePackage.CONSTRAINT__AT:
-            if (this.eInternalContainer() != null) {
-                msgs = this.eBasicRemoveFromContainer(msgs);
-            }
-            return this.basicSetAT((AT) otherEnd, msgs);
+            if (eInternalContainer() != null)
+                msgs = eBasicRemoveFromContainer(msgs);
+            return basicSetAT((AT) otherEnd, msgs);
         case TypePackage.CONSTRAINT__ROLES:
-            return ((InternalEList<InternalEObject>) (InternalEList<?>) this.getRoles()).basicAdd(otherEnd, msgs);
+            return ((InternalEList<InternalEObject>) (InternalEList<?>) getRoles()).basicAdd(otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eInverseRemove(final InternalEObject otherEnd, final int featureID,
-            final NotificationChain msgs) {
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case TypePackage.CONSTRAINT__AT:
-            return this.basicSetAT(null, msgs);
+            return basicSetAT(null, msgs);
         case TypePackage.CONSTRAINT__ROLES:
-            return ((InternalEList<?>) this.getRoles()).basicRemove(otherEnd, msgs);
+            return ((InternalEList<?>) getRoles()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eBasicRemoveFromContainerFeature(final NotificationChain msgs) {
-        switch (this.eContainerFeatureID()) {
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+        switch (eContainerFeatureID()) {
         case TypePackage.CONSTRAINT__AT:
-            return this.eInternalContainer().eInverseRemove(this, TypePackage.AT__CONSTRAINTS, AT.class, msgs);
+            return eInternalContainer().eInverseRemove(this, TypePackage.AT__CONSTRAINTS, AT.class, msgs);
         }
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public Object eGet(final int featureID, final boolean resolve, final boolean coreType) {
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case TypePackage.CONSTRAINT__AT:
-            return this.getAT();
+            return getAT();
         case TypePackage.CONSTRAINT__ROLES:
-            return this.getRoles();
+            return getRoles();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
-    public void eSet(final int featureID, final Object newValue) {
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
         case TypePackage.CONSTRAINT__AT:
-            this.setAT((AT) newValue);
+            setAT((AT) newValue);
             return;
         case TypePackage.CONSTRAINT__ROLES:
-            this.getRoles().clear();
-            this.getRoles().addAll((Collection<? extends Role>) newValue);
+            getRoles().clear();
+            getRoles().addAll((Collection<? extends Role>) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -181,17 +168,16 @@ public abstract class ConstraintImpl extends EntityImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void eUnset(final int featureID) {
+    public void eUnset(int featureID) {
         switch (featureID) {
         case TypePackage.CONSTRAINT__AT:
-            this.setAT((AT) null);
+            setAT((AT) null);
             return;
         case TypePackage.CONSTRAINT__ROLES:
-            this.getRoles().clear();
+            getRoles().clear();
             return;
         }
         super.eUnset(featureID);
@@ -199,16 +185,15 @@ public abstract class ConstraintImpl extends EntityImpl implements Constraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public boolean eIsSet(final int featureID) {
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TypePackage.CONSTRAINT__AT:
-            return this.getAT() != null;
+            return getAT() != null;
         case TypePackage.CONSTRAINT__ROLES:
-            return !this.getRoles().isEmpty();
+            return !getRoles().isEmpty();
         }
         return super.eIsSet(featureID);
     }

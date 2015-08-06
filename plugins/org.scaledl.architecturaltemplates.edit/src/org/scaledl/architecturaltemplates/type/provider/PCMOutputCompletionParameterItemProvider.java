@@ -59,8 +59,9 @@ public class PCMOutputCompletionParameterItemProvider extends CompletionParamete
     protected void addFileExtensionPropertyDescriptor(final Object object) {
         this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
                 ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_PCMOutputCompletionParameter_fileExtension_feature"), this.getString(
-                        "_UI_PropertyDescriptor_description", "_UI_PCMOutputCompletionParameter_fileExtension_feature",
+                this.getString("_UI_PCMOutputCompletionParameter_fileExtension_feature"),
+                this.getString("_UI_PropertyDescriptor_description",
+                        "_UI_PCMOutputCompletionParameter_fileExtension_feature",
                         "_UI_PCMOutputCompletionParameter_type"),
                 TypePackage.Literals.PCM_OUTPUT_COMPLETION_PARAMETER__FILE_EXTENSION, true, false, false,
                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
@@ -86,8 +87,8 @@ public class PCMOutputCompletionParameterItemProvider extends CompletionParamete
     public String getText(final Object object) {
         final PCMFileExtensions labelValue = ((PCMOutputCompletionParameter) object).getFileExtension();
         final String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? this.getString("_UI_PCMOutputCompletionParameter_type") : this
-                .getString("_UI_PCMOutputCompletionParameter_type") + " " + label;
+        return label == null || label.length() == 0 ? this.getString("_UI_PCMOutputCompletionParameter_type")
+                : this.getString("_UI_PCMOutputCompletionParameter_type") + " " + label;
     }
 
     /**

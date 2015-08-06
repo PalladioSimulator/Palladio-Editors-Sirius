@@ -12,13 +12,13 @@ import org.palladiosimulator.pcm.core.entity.Entity;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.scaledl.architecturaltemplates.type.AT#getRepository <em>Repository</em>}</li>
- * <li>{@link org.scaledl.architecturaltemplates.type.AT#getRoles <em>Roles</em>}</li>
- * <li>{@link org.scaledl.architecturaltemplates.type.AT#getConstraints <em>Constraints</em>}</li>
- * <li>{@link org.scaledl.architecturaltemplates.type.AT#getCompletion <em>Completion</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.scaledl.architecturaltemplates.type.AT#getRepository <em>Repository</em>}</li>
+ *   <li>{@link org.scaledl.architecturaltemplates.type.AT#getRoles <em>Roles</em>}</li>
+ *   <li>{@link org.scaledl.architecturaltemplates.type.AT#getConstraints <em>Constraints</em>}</li>
+ *   <li>{@link org.scaledl.architecturaltemplates.type.AT#getCompletion <em>Completion</em>}</li>
+ * </ul>
  *
  * @see org.scaledl.architecturaltemplates.type.TypePackage#getAT()
  * @model
@@ -47,27 +47,24 @@ public interface AT extends Entity {
     Repository getRepository();
 
     /**
-     * Sets the value of the '{@link org.scaledl.architecturaltemplates.type.AT#getRepository
-     * <em>Repository</em>}' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Repository</em>' container reference.
+     * Sets the value of the '{@link org.scaledl.architecturaltemplates.type.AT#getRepository <em>Repository</em>}' container reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>Repository</em>' container reference.
      * @see #getRepository()
      * @generated
      */
     void setRepository(Repository value);
 
     /**
-     * Returns the value of the '<em><b>Roles</b></em>' containment reference list. The list
-     * contents are of type {@link org.scaledl.architecturaltemplates.type.Role}. It is
-     * bidirectional and its opposite is '{@link org.scaledl.architecturaltemplates.type.Role#getAT
-     * <em>AT</em>}'. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Roles</b></em>' containment reference list.
+     * The list contents are of type {@link org.scaledl.architecturaltemplates.type.Role}.
+     * It is bidirectional and its opposite is '{@link org.scaledl.architecturaltemplates.type.Role#getAT <em>AT</em>}'.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Roles</em>' containment reference list isn't clear, there really
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Roles</em>' containment reference list.
      * @see org.scaledl.architecturaltemplates.type.TypePackage#getAT_Roles()
      * @see org.scaledl.architecturaltemplates.type.Role#getAT
@@ -117,11 +114,9 @@ public interface AT extends Entity {
     Completion getCompletion();
 
     /**
-     * Sets the value of the '{@link org.scaledl.architecturaltemplates.type.AT#getCompletion
-     * <em>Completion</em>}' containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Completion</em>' containment reference.
+     * Sets the value of the '{@link org.scaledl.architecturaltemplates.type.AT#getCompletion <em>Completion</em>}' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>Completion</em>' containment reference.
      * @see #getCompletion()
      * @generated
      */

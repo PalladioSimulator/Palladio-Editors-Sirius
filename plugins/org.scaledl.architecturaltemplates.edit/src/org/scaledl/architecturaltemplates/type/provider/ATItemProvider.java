@@ -11,11 +11,10 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.palladiosimulator.pcm.core.entity.provider.EntityItemProvider;
 import org.scaledl.architecturaltemplates.type.AT;
 import org.scaledl.architecturaltemplates.type.TypeFactory;
 import org.scaledl.architecturaltemplates.type.TypePackage;
-
-import org.palladiosimulator.pcm.core.entity.provider.EntityItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.scaledl.architecturaltemplates.type.AT}
@@ -102,8 +101,8 @@ public class ATItemProvider extends EntityItemProvider {
     @Override
     public String getText(final Object object) {
         final String label = ((AT) object).getEntityName();
-        return label == null || label.length() == 0 ? this.getString("_UI_AT_type") : this.getString("_UI_AT_type")
-                + " " + label;
+        return label == null || label.length() == 0 ? this.getString("_UI_AT_type")
+                : this.getString("_UI_AT_type") + " " + label;
     }
 
     /**
@@ -137,8 +136,8 @@ public class ATItemProvider extends EntityItemProvider {
     protected void collectNewChildDescriptors(final Collection<Object> newChildDescriptors, final Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(this.createChildParameter(TypePackage.Literals.AT__ROLES,
-                TypeFactory.eINSTANCE.createRole()));
+        newChildDescriptors
+                .add(this.createChildParameter(TypePackage.Literals.AT__ROLES, TypeFactory.eINSTANCE.createRole()));
 
         newChildDescriptors.add(this.createChildParameter(TypePackage.Literals.AT__CONSTRAINTS,
                 TypeFactory.eINSTANCE.createOCLConstraint()));

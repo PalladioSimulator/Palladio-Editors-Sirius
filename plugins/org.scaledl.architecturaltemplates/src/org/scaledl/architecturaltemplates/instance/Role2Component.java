@@ -13,14 +13,12 @@ import org.palladiosimulator.pcm.core.composition.AssemblyContext;
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.scaledl.architecturaltemplates.instance.Role2Component#getComponent <em>Component
- * </em>}</li>
- * <li>{@link org.scaledl.architecturaltemplates.instance.Role2Component#getRole <em>Role</em>}</li>
- * <li>{@link org.scaledl.architecturaltemplates.instance.Role2Component#getATInstance <em>AT
- * Instance</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.scaledl.architecturaltemplates.instance.Role2Component#getComponent <em>Component</em>}</li>
+ *   <li>{@link org.scaledl.architecturaltemplates.instance.Role2Component#getRole <em>Role</em>}</li>
+ *   <li>{@link org.scaledl.architecturaltemplates.instance.Role2Component#getATInstance <em>AT Instance</em>}</li>
+ * </ul>
  *
  * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getRole2Component()
  * @model
@@ -30,13 +28,13 @@ import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 public interface Role2Component extends CDOObject {
 
     /**
-     * Returns the value of the '<em><b>Component</b></em>' reference. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Component</b></em>' reference.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Component</em>' reference isn't clear, there really should be more
      * of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Component</em>' reference.
      * @see #setComponent(AssemblyContext)
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getRole2Component_Component()
@@ -46,25 +44,22 @@ public interface Role2Component extends CDOObject {
     AssemblyContext getComponent();
 
     /**
-     * Sets the value of the '
-     * {@link org.scaledl.architecturaltemplates.instance.Role2Component#getComponent
-     * <em>Component</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Component</em>' reference.
+     * Sets the value of the '{@link org.scaledl.architecturaltemplates.instance.Role2Component#getComponent <em>Component</em>}' reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>Component</em>' reference.
      * @see #getComponent()
      * @generated
      */
     void setComponent(AssemblyContext value);
 
     /**
-     * Returns the value of the '<em><b>Role</b></em>' reference. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Role</b></em>' reference.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Role</em>' reference isn't clear, there really should be more of a
      * description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>Role</em>' reference.
      * @see #setRole(Role)
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getRole2Component_Role()
@@ -74,28 +69,23 @@ public interface Role2Component extends CDOObject {
     Role getRole();
 
     /**
-     * Sets the value of the '
-     * {@link org.scaledl.architecturaltemplates.instance.Role2Component#getRole <em>Role</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Role</em>' reference.
+     * Sets the value of the '{@link org.scaledl.architecturaltemplates.instance.Role2Component#getRole <em>Role</em>}' reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>Role</em>' reference.
      * @see #getRole()
      * @generated
      */
     void setRole(Role value);
 
     /**
-     * Returns the value of the '<em><b>AT Instance</b></em>' container reference. It is
-     * bidirectional and its opposite is '
-     * {@link org.scaledl.architecturaltemplates.instance.ATInstance#getRole2components
-     * <em>Role2components</em>}'. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>AT Instance</b></em>' container reference.
+     * It is bidirectional and its opposite is '{@link org.scaledl.architecturaltemplates.instance.ATInstance#getRole2components <em>Role2components</em>}'.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>AT Instance</em>' container reference isn't clear, there really
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>AT Instance</em>' container reference.
      * @see #setATInstance(ATInstance)
      * @see org.scaledl.architecturaltemplates.instance.InstancePackage#getRole2Component_ATInstance()
@@ -106,12 +96,9 @@ public interface Role2Component extends CDOObject {
     ATInstance getATInstance();
 
     /**
-     * Sets the value of the '
-     * {@link org.scaledl.architecturaltemplates.instance.Role2Component#getATInstance
-     * <em>AT Instance</em>}' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>AT Instance</em>' container reference.
+     * Sets the value of the '{@link org.scaledl.architecturaltemplates.instance.Role2Component#getATInstance <em>AT Instance</em>}' container reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>AT Instance</em>' container reference.
      * @see #getATInstance()
      * @generated
      */

@@ -3,7 +3,6 @@
 package org.scaledl.architecturaltemplates.type.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.ocl.expressions.OCLExpression;
 import org.scaledl.architecturaltemplates.type.OCLConstraint;
 import org.scaledl.architecturaltemplates.type.TypePackage;
 
@@ -12,19 +11,27 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.scaledl.architecturaltemplates.type.impl.OCLConstraintImpl#getConstraint <em>
- * Constraint</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.scaledl.architecturaltemplates.type.impl.OCLConstraintImpl#getConstraint <em>Constraint</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class OCLConstraintImpl extends ConstraintImpl implements OCLConstraint {
 
     /**
+     * The default value of the '{@link #getConstraint() <em>Constraint</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getConstraint()
+     * @generated
+     * @ordered
+     */
+    protected static final String CONSTRAINT_EDEFAULT = null;
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected OCLConstraintImpl() {
@@ -33,7 +40,6 @@ public class OCLConstraintImpl extends ConstraintImpl implements OCLConstraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -43,63 +49,46 @@ public class OCLConstraintImpl extends ConstraintImpl implements OCLConstraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public OCLExpression<?> getConstraint() {
-        return (OCLExpression<?>) this.eDynamicGet(TypePackage.OCL_CONSTRAINT__CONSTRAINT,
+    public String getConstraint() {
+        return (String) eDynamicGet(TypePackage.OCL_CONSTRAINT__CONSTRAINT,
                 TypePackage.Literals.OCL_CONSTRAINT__CONSTRAINT, true, true);
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-    public OCLExpression<?> basicGetConstraint() {
-        return (OCLExpression<?>) this.eDynamicGet(TypePackage.OCL_CONSTRAINT__CONSTRAINT,
-                TypePackage.Literals.OCL_CONSTRAINT__CONSTRAINT, false, true);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public void setConstraint(final OCLExpression<?> newConstraint) {
-        this.eDynamicSet(TypePackage.OCL_CONSTRAINT__CONSTRAINT, TypePackage.Literals.OCL_CONSTRAINT__CONSTRAINT,
+    public void setConstraint(String newConstraint) {
+        eDynamicSet(TypePackage.OCL_CONSTRAINT__CONSTRAINT, TypePackage.Literals.OCL_CONSTRAINT__CONSTRAINT,
                 newConstraint);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public Object eGet(final int featureID, final boolean resolve, final boolean coreType) {
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case TypePackage.OCL_CONSTRAINT__CONSTRAINT:
-            if (resolve) {
-                return this.getConstraint();
-            }
-            return this.basicGetConstraint();
+            return getConstraint();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void eSet(final int featureID, final Object newValue) {
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
         case TypePackage.OCL_CONSTRAINT__CONSTRAINT:
-            this.setConstraint((OCLExpression<?>) newValue);
+            setConstraint((String) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -107,14 +96,13 @@ public class OCLConstraintImpl extends ConstraintImpl implements OCLConstraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void eUnset(final int featureID) {
+    public void eUnset(int featureID) {
         switch (featureID) {
         case TypePackage.OCL_CONSTRAINT__CONSTRAINT:
-            this.setConstraint((OCLExpression<?>) null);
+            setConstraint(CONSTRAINT_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -122,14 +110,13 @@ public class OCLConstraintImpl extends ConstraintImpl implements OCLConstraint {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public boolean eIsSet(final int featureID) {
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TypePackage.OCL_CONSTRAINT__CONSTRAINT:
-            return this.basicGetConstraint() != null;
+            return CONSTRAINT_EDEFAULT == null ? getConstraint() != null : !CONSTRAINT_EDEFAULT.equals(getConstraint());
         }
         return super.eIsSet(featureID);
     }

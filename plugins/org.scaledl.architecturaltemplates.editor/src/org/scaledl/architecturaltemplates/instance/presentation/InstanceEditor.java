@@ -121,11 +121,6 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.modelversioning.emfprofile.provider.EMFProfileItemProviderAdapterFactory;
-import org.scaledl.architecturaltemplates.instance.provider.InstanceItemProviderAdapterFactory;
-import org.scaledl.architecturaltemplates.type.presentation.ArchitecturaltemplatesEditorPlugin;
-import org.scaledl.architecturaltemplates.type.provider.TypeItemProviderAdapterFactory;
-
-import de.uka.ipd.sdq.identifier.provider.IdentifierItemProviderAdapterFactory;
 import org.palladiosimulator.pcm.allocation.provider.AllocationItemProviderAdapterFactory;
 import org.palladiosimulator.pcm.core.composition.provider.CompositionItemProviderAdapterFactory;
 import org.palladiosimulator.pcm.core.entity.provider.EntityItemProviderAdapterFactory;
@@ -146,6 +141,11 @@ import org.palladiosimulator.pcm.seff.seff_reliability.provider.SeffReliabilityI
 import org.palladiosimulator.pcm.subsystem.provider.SubsystemItemProviderAdapterFactory;
 import org.palladiosimulator.pcm.system.provider.SystemItemProviderAdapterFactory;
 import org.palladiosimulator.pcm.usagemodel.provider.UsagemodelItemProviderAdapterFactory;
+import org.scaledl.architecturaltemplates.instance.provider.InstanceItemProviderAdapterFactory;
+import org.scaledl.architecturaltemplates.type.presentation.ArchitecturaltemplatesEditorPlugin;
+import org.scaledl.architecturaltemplates.type.provider.TypeItemProviderAdapterFactory;
+
+import de.uka.ipd.sdq.identifier.provider.IdentifierItemProviderAdapterFactory;
 import de.uka.ipd.sdq.probfunction.provider.ProbfunctionItemProviderAdapterFactory;
 import de.uka.ipd.sdq.stoex.provider.StoexItemProviderAdapterFactory;
 import de.uka.ipd.sdq.units.provider.UnitsItemProviderAdapterFactory;
@@ -155,8 +155,8 @@ import de.uka.ipd.sdq.units.provider.UnitsItemProviderAdapterFactory;
  * 
  * @generated
  */
-public class InstanceEditor extends MultiPageEditorPart implements IEditingDomainProvider, ISelectionProvider,
-IMenuListener, IViewerProvider, IGotoMarker {
+public class InstanceEditor extends MultiPageEditorPart
+        implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, IGotoMarker {
 
     /**
      * This keeps track of the editing domain that is used to track all changes to the model. <!--
@@ -920,8 +920,8 @@ IMenuListener, IViewerProvider, IGotoMarker {
 
             // Set the editors selection based on the current viewer's selection.
             //
-            this.setSelection(this.currentViewer == null ? StructuredSelection.EMPTY : this.currentViewer
-                    .getSelection());
+            this.setSelection(
+                    this.currentViewer == null ? StructuredSelection.EMPTY : this.currentViewer.getSelection());
         }
     }
 
@@ -952,8 +952,8 @@ IMenuListener, IViewerProvider, IGotoMarker {
         this.getSite().registerContextMenu(contextMenu, new UnwrappingSelectionProvider(viewer));
 
         final int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
-        final Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance(),
-                LocalSelectionTransfer.getTransfer(), FileTransfer.getInstance() };
+        final Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance(), LocalSelectionTransfer.getTransfer(),
+                FileTransfer.getInstance() };
         viewer.addDragSupport(dndOperations, transfers, new ViewerDragAdapter(viewer));
         viewer.addDropSupport(dndOperations, transfers, new EditingDomainViewerDropAdapter(this.editingDomain, viewer));
     }
@@ -965,7 +965,8 @@ IMenuListener, IViewerProvider, IGotoMarker {
      * @generated
      */
     public void createModel() {
-        final URI resourceURI = EditUIUtil.getURI(this.getEditorInput());
+        final URI resourceURI = EditUIUtil.getURI(this.getEditorInput(),
+                this.editingDomain.getResourceSet().getURIConverter());
         Exception exception = null;
         Resource resource = null;
         try {
@@ -991,15 +992,17 @@ IMenuListener, IViewerProvider, IGotoMarker {
      * @generated
      */
     public Diagnostic analyzeResourceProblems(final Resource resource, final Exception exception) {
-        if (!resource.getErrors().isEmpty() || !resource.getWarnings().isEmpty()) {
-            final BasicDiagnostic basicDiagnostic = new BasicDiagnostic(Diagnostic.ERROR,
-                    "org.scaledl.architecturaltemplates.editor", 0, getString("_UI_CreateModelError_message",
-                            resource.getURI()), new Object[] { exception == null ? (Object) resource : exception });
+        final boolean hasErrors = !resource.getErrors().isEmpty();
+        if (hasErrors || !resource.getWarnings().isEmpty()) {
+            final BasicDiagnostic basicDiagnostic = new BasicDiagnostic(
+                    hasErrors ? Diagnostic.ERROR : Diagnostic.WARNING, "org.scaledl.architecturaltemplates.editor", 0,
+                    getString("_UI_CreateModelError_message", resource.getURI()),
+                    new Object[] { exception == null ? (Object) resource : exception });
             basicDiagnostic.merge(EcoreUtil.computeDiagnostic(resource, true));
             return basicDiagnostic;
         } else if (exception != null) {
-            return new BasicDiagnostic(Diagnostic.ERROR, "org.scaledl.architecturaltemplates.editor", 0, getString(
-                    "_UI_CreateModelError_message", resource.getURI()), new Object[] { exception });
+            return new BasicDiagnostic(Diagnostic.ERROR, "org.scaledl.architecturaltemplates.editor", 0,
+                    getString("_UI_CreateModelError_message", resource.getURI()), new Object[] { exception });
         } else {
             return Diagnostic.OK_INSTANCE;
         }
@@ -1045,8 +1048,8 @@ IMenuListener, IViewerProvider, IGotoMarker {
 
                 this.selectionViewer.setLabelProvider(new AdapterFactoryLabelProvider(this.adapterFactory));
                 this.selectionViewer.setInput(this.editingDomain.getResourceSet());
-                this.selectionViewer.setSelection(new StructuredSelection(this.editingDomain.getResourceSet()
-                        .getResources().get(0)), true);
+                this.selectionViewer.setSelection(
+                        new StructuredSelection(this.editingDomain.getResourceSet().getResources().get(0)), true);
                 viewerPane.setTitle(this.editingDomain.getResourceSet());
 
                 new AdapterFactoryTreeEditor(this.selectionViewer.getTree(), this.adapterFactory);
@@ -1351,12 +1354,12 @@ IMenuListener, IViewerProvider, IGotoMarker {
 
                     // Set up the tree viewer.
                     //
-                    InstanceEditor.this.contentOutlineViewer.setContentProvider(new AdapterFactoryContentProvider(
-                            InstanceEditor.this.adapterFactory));
-                    InstanceEditor.this.contentOutlineViewer.setLabelProvider(new AdapterFactoryLabelProvider(
-                            InstanceEditor.this.adapterFactory));
-                    InstanceEditor.this.contentOutlineViewer.setInput(InstanceEditor.this.editingDomain
-                            .getResourceSet());
+                    InstanceEditor.this.contentOutlineViewer
+                            .setContentProvider(new AdapterFactoryContentProvider(InstanceEditor.this.adapterFactory));
+                    InstanceEditor.this.contentOutlineViewer
+                            .setLabelProvider(new AdapterFactoryLabelProvider(InstanceEditor.this.adapterFactory));
+                    InstanceEditor.this.contentOutlineViewer
+                            .setInput(InstanceEditor.this.editingDomain.getResourceSet());
 
                     // Make sure our popups work.
                     //
@@ -1365,8 +1368,10 @@ IMenuListener, IViewerProvider, IGotoMarker {
                     if (!InstanceEditor.this.editingDomain.getResourceSet().getResources().isEmpty()) {
                         // Select the root object in the view.
                         //
-                        InstanceEditor.this.contentOutlineViewer.setSelection(new StructuredSelection(
-                                InstanceEditor.this.editingDomain.getResourceSet().getResources().get(0)), true);
+                        InstanceEditor.this.contentOutlineViewer.setSelection(
+                                new StructuredSelection(
+                                        InstanceEditor.this.editingDomain.getResourceSet().getResources().get(0)),
+                                true);
                     }
                 }
 
@@ -1589,8 +1594,8 @@ IMenuListener, IViewerProvider, IGotoMarker {
         if (path != null) {
             final IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
             if (file != null) {
-                this.doSaveAs(URI.createPlatformResourceURI(file.getFullPath().toString(), true), new FileEditorInput(
-                        file));
+                this.doSaveAs(URI.createPlatformResourceURI(file.getFullPath().toString(), true),
+                        new FileEditorInput(file));
             }
         }
     }
@@ -1604,9 +1609,9 @@ IMenuListener, IViewerProvider, IGotoMarker {
         (this.editingDomain.getResourceSet().getResources().get(0)).setURI(uri);
         this.setInputWithNotify(editorInput);
         this.setPartName(editorInput.getName());
-        final IProgressMonitor progressMonitor = this.getActionBars().getStatusLineManager() != null ? this
-                .getActionBars().getStatusLineManager().getProgressMonitor() : new NullProgressMonitor();
-                this.doSave(progressMonitor);
+        final IProgressMonitor progressMonitor = this.getActionBars().getStatusLineManager() != null
+                ? this.getActionBars().getStatusLineManager().getProgressMonitor() : new NullProgressMonitor();
+        this.doSave(progressMonitor);
     }
 
     /**
@@ -1709,8 +1714,8 @@ IMenuListener, IViewerProvider, IGotoMarker {
      */
     public void setStatusLineManager(final ISelection selection) {
         final IStatusLineManager statusLineManager = this.currentViewer != null
-                && this.currentViewer == this.contentOutlineViewer ? this.contentOutlineStatusLineManager : this
-                .getActionBars().getStatusLineManager();
+                && this.currentViewer == this.contentOutlineViewer ? this.contentOutlineStatusLineManager
+                        : this.getActionBars().getStatusLineManager();
 
         if (statusLineManager != null) {
             if (selection instanceof IStructuredSelection) {
@@ -1721,14 +1726,14 @@ IMenuListener, IViewerProvider, IGotoMarker {
                     break;
                 }
                 case 1: {
-                    final String text = new AdapterFactoryItemDelegator(this.adapterFactory).getText(collection
-                            .iterator().next());
+                    final String text = new AdapterFactoryItemDelegator(this.adapterFactory)
+                            .getText(collection.iterator().next());
                     statusLineManager.setMessage(getString("_UI_SingleObjectSelected", text));
                     break;
                 }
                 default: {
-                    statusLineManager.setMessage(getString("_UI_MultiObjectSelected",
-                            Integer.toString(collection.size())));
+                    statusLineManager
+                            .setMessage(getString("_UI_MultiObjectSelected", Integer.toString(collection.size())));
                     break;
                 }
                 }

@@ -10,10 +10,9 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.palladiosimulator.pcm.core.entity.provider.EntityItemProvider;
 import org.scaledl.architecturaltemplates.type.Parameter;
 import org.scaledl.architecturaltemplates.type.TypePackage;
-
-import org.palladiosimulator.pcm.core.entity.provider.EntityItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.scaledl.architecturaltemplates.type.Parameter}
@@ -58,9 +57,10 @@ public class ParameterItemProvider extends EntityItemProvider {
     protected void addDataTypePropertyDescriptor(final Object object) {
         this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
                 ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_Parameter_dataType_feature"), this.getString("_UI_PropertyDescriptor_description",
-                        "_UI_Parameter_dataType_feature", "_UI_Parameter_type"),
-                        TypePackage.Literals.PARAMETER__DATA_TYPE, true, false, true, null, null, null));
+                this.getString("_UI_Parameter_dataType_feature"),
+                this.getString("_UI_PropertyDescriptor_description", "_UI_Parameter_dataType_feature",
+                        "_UI_Parameter_type"),
+                TypePackage.Literals.PARAMETER__DATA_TYPE, true, false, true, null, null, null));
     }
 
     /**
@@ -82,8 +82,8 @@ public class ParameterItemProvider extends EntityItemProvider {
     @Override
     public String getText(final Object object) {
         final String label = ((Parameter) object).getId();
-        return label == null || label.length() == 0 ? this.getString("_UI_Parameter_type") : this
-                .getString("_UI_Parameter_type") + " " + label;
+        return label == null || label.length() == 0 ? this.getString("_UI_Parameter_type")
+                : this.getString("_UI_Parameter_type") + " " + label;
     }
 
     /**

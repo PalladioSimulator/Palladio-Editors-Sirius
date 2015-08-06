@@ -11,11 +11,10 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.scaledl.architecturaltemplates.type.impl.QVTOCompletionImpl#getQvtoFileURI <em>
- * Qvto File URI</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.scaledl.architecturaltemplates.type.impl.QVTOCompletionImpl#getQvtoFileURI <em>Qvto File URI</em>}</li>
+ * </ul>
  *
  * @generated
  */
@@ -33,7 +32,6 @@ public class QVTOCompletionImpl extends CompletionImpl implements QVTOCompletion
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected QVTOCompletionImpl() {
@@ -42,7 +40,6 @@ public class QVTOCompletionImpl extends CompletionImpl implements QVTOCompletion
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -52,50 +49,46 @@ public class QVTOCompletionImpl extends CompletionImpl implements QVTOCompletion
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getQvtoFileURI() {
-        return (String) this.eDynamicGet(TypePackage.QVTO_COMPLETION__QVTO_FILE_URI,
+        return (String) eDynamicGet(TypePackage.QVTO_COMPLETION__QVTO_FILE_URI,
                 TypePackage.Literals.QVTO_COMPLETION__QVTO_FILE_URI, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void setQvtoFileURI(final String newQvtoFileURI) {
-        this.eDynamicSet(TypePackage.QVTO_COMPLETION__QVTO_FILE_URI,
-                TypePackage.Literals.QVTO_COMPLETION__QVTO_FILE_URI, newQvtoFileURI);
+    public void setQvtoFileURI(String newQvtoFileURI) {
+        eDynamicSet(TypePackage.QVTO_COMPLETION__QVTO_FILE_URI, TypePackage.Literals.QVTO_COMPLETION__QVTO_FILE_URI,
+                newQvtoFileURI);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public Object eGet(final int featureID, final boolean resolve, final boolean coreType) {
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case TypePackage.QVTO_COMPLETION__QVTO_FILE_URI:
-            return this.getQvtoFileURI();
+            return getQvtoFileURI();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void eSet(final int featureID, final Object newValue) {
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
         case TypePackage.QVTO_COMPLETION__QVTO_FILE_URI:
-            this.setQvtoFileURI((String) newValue);
+            setQvtoFileURI((String) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -103,14 +96,13 @@ public class QVTOCompletionImpl extends CompletionImpl implements QVTOCompletion
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void eUnset(final int featureID) {
+    public void eUnset(int featureID) {
         switch (featureID) {
         case TypePackage.QVTO_COMPLETION__QVTO_FILE_URI:
-            this.setQvtoFileURI(QVTO_FILE_URI_EDEFAULT);
+            setQvtoFileURI(QVTO_FILE_URI_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -118,15 +110,14 @@ public class QVTOCompletionImpl extends CompletionImpl implements QVTOCompletion
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public boolean eIsSet(final int featureID) {
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TypePackage.QVTO_COMPLETION__QVTO_FILE_URI:
-            return QVTO_FILE_URI_EDEFAULT == null ? this.getQvtoFileURI() != null : !QVTO_FILE_URI_EDEFAULT.equals(this
-                    .getQvtoFileURI());
+            return QVTO_FILE_URI_EDEFAULT == null ? getQvtoFileURI() != null
+                    : !QVTO_FILE_URI_EDEFAULT.equals(getQvtoFileURI());
         }
         return super.eIsSet(featureID);
     }

@@ -9,24 +9,19 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Completion</b></em>'. <!--
  * end-user-doc -->
  *
- * <!-- begin-model-doc --> A completion is a refinement transformation from AT-annotated model into
- * a model with well-defined semantics (thus, specifying the semantics of a given AT). This
- * particularly includes a refinement transformation to another AT-annotated model as well (the
- * second AT also includes a completion for defining its semantics, thus, has well-defined
- * semantics).
- * 
- * As an example, consider a component annotated with an AT role "3-times loabalanced". A completion
- * could refine this component into a model with 4 components: 1 loadbalancer plus 3 replica of the
- * originally annotated component. The loadbalancer then evenly distributes load over the 3 replica.
+ * <!-- begin-model-doc -->
+ * A completion is a refinement transformation from AT-annotated model into a model with well-defined semantics (thus, specifying the semantics of a given AT). This particularly includes a refinement transformation to another AT-annotated model as well (the second AT also includes a completion for defining its semantics, thus, has well-defined semantics).
+ *  
+ * As an example, consider a component annotated with an AT role "3-times loabalanced". A completion could refine this component into a model with 4 components: 1 loadbalancer plus 3 replica of the originally annotated component. The loadbalancer then evenly distributes load over the 3 replica.
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
- * <ul>
- * <li>{@link org.scaledl.architecturaltemplates.type.Completion#getAT <em>AT</em>}</li>
- * <li>{@link org.scaledl.architecturaltemplates.type.Completion#getParameters <em>Parameters</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.scaledl.architecturaltemplates.type.Completion#getAT <em>AT</em>}</li>
+ *   <li>{@link org.scaledl.architecturaltemplates.type.Completion#getParameters <em>Parameters</em>}</li>
+ * </ul>
  *
  * @see org.scaledl.architecturaltemplates.type.TypePackage#getCompletion()
  * @model abstract="true"
@@ -36,15 +31,14 @@ import org.eclipse.emf.common.util.EList;
 public interface Completion extends CDOObject {
 
     /**
-     * Returns the value of the '<em><b>AT</b></em>' container reference. It is bidirectional and
-     * its opposite is '{@link org.scaledl.architecturaltemplates.type.AT#getCompletion
-     * <em>Completion</em>}'. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>AT</b></em>' container reference.
+     * It is bidirectional and its opposite is '{@link org.scaledl.architecturaltemplates.type.AT#getCompletion <em>Completion</em>}'.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>AT</em>' container reference isn't clear, there really should be
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * 
      * @return the value of the '<em>AT</em>' container reference.
      * @see #setAT(AT)
      * @see org.scaledl.architecturaltemplates.type.TypePackage#getCompletion_AT()
@@ -55,11 +49,9 @@ public interface Completion extends CDOObject {
     AT getAT();
 
     /**
-     * Sets the value of the '{@link org.scaledl.architecturaltemplates.type.Completion#getAT
-     * <em>AT</em>}' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>AT</em>' container reference.
+     * Sets the value of the '{@link org.scaledl.architecturaltemplates.type.Completion#getAT <em>AT</em>}' container reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @param value the new value of the '<em>AT</em>' container reference.
      * @see #getAT()
      * @generated
      */

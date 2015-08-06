@@ -20,10 +20,10 @@ import org.palladiosimulator.pcm.core.entity.impl.EntityImpl;
  * end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.scaledl.architecturaltemplates.type.impl.RepositoryImpl#getATs <em>ATs</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.scaledl.architecturaltemplates.type.impl.RepositoryImpl#getATs <em>ATs</em>}</li>
+ * </ul>
  *
  * @generated
  */
@@ -31,7 +31,6 @@ public class RepositoryImpl extends EntityImpl implements Repository {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected RepositoryImpl() {
@@ -40,7 +39,6 @@ public class RepositoryImpl extends EntityImpl implements Repository {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -50,73 +48,65 @@ public class RepositoryImpl extends EntityImpl implements Repository {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public EList<AT> getATs() {
-        return (EList<AT>) this.eDynamicGet(TypePackage.REPOSITORY__ATS, TypePackage.Literals.REPOSITORY__ATS, true,
-                true);
+        return (EList<AT>) eDynamicGet(TypePackage.REPOSITORY__ATS, TypePackage.Literals.REPOSITORY__ATS, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
-    public NotificationChain eInverseAdd(final InternalEObject otherEnd, final int featureID,
-            final NotificationChain msgs) {
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case TypePackage.REPOSITORY__ATS:
-            return ((InternalEList<InternalEObject>) (InternalEList<?>) this.getATs()).basicAdd(otherEnd, msgs);
+            return ((InternalEList<InternalEObject>) (InternalEList<?>) getATs()).basicAdd(otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eInverseRemove(final InternalEObject otherEnd, final int featureID,
-            final NotificationChain msgs) {
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case TypePackage.REPOSITORY__ATS:
-            return ((InternalEList<?>) this.getATs()).basicRemove(otherEnd, msgs);
+            return ((InternalEList<?>) getATs()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public Object eGet(final int featureID, final boolean resolve, final boolean coreType) {
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case TypePackage.REPOSITORY__ATS:
-            return this.getATs();
+            return getATs();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
-    public void eSet(final int featureID, final Object newValue) {
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
         case TypePackage.REPOSITORY__ATS:
-            this.getATs().clear();
-            this.getATs().addAll((Collection<? extends AT>) newValue);
+            getATs().clear();
+            getATs().addAll((Collection<? extends AT>) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -124,14 +114,13 @@ public class RepositoryImpl extends EntityImpl implements Repository {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void eUnset(final int featureID) {
+    public void eUnset(int featureID) {
         switch (featureID) {
         case TypePackage.REPOSITORY__ATS:
-            this.getATs().clear();
+            getATs().clear();
             return;
         }
         super.eUnset(featureID);
@@ -139,14 +128,13 @@ public class RepositoryImpl extends EntityImpl implements Repository {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public boolean eIsSet(final int featureID) {
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TypePackage.REPOSITORY__ATS:
-            return !this.getATs().isEmpty();
+            return !getATs().isEmpty();
         }
         return super.eIsSet(featureID);
     }

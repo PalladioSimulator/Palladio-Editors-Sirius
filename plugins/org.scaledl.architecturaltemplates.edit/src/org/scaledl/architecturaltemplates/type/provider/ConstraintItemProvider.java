@@ -10,10 +10,9 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.palladiosimulator.pcm.core.entity.provider.EntityItemProvider;
 import org.scaledl.architecturaltemplates.type.Constraint;
 import org.scaledl.architecturaltemplates.type.TypePackage;
-
-import org.palladiosimulator.pcm.core.entity.provider.EntityItemProvider;
 
 /**
  * This is the item provider adapter for a
@@ -59,9 +58,10 @@ public class ConstraintItemProvider extends EntityItemProvider {
     protected void addRolesPropertyDescriptor(final Object object) {
         this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
                 ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_Constraint_roles_feature"), this.getString("_UI_PropertyDescriptor_description",
-                        "_UI_Constraint_roles_feature", "_UI_Constraint_type"), TypePackage.Literals.CONSTRAINT__ROLES,
-                        true, false, true, null, null, null));
+                this.getString("_UI_Constraint_roles_feature"),
+                this.getString("_UI_PropertyDescriptor_description", "_UI_Constraint_roles_feature",
+                        "_UI_Constraint_type"),
+                TypePackage.Literals.CONSTRAINT__ROLES, true, false, true, null, null, null));
     }
 
     /**
@@ -73,8 +73,8 @@ public class ConstraintItemProvider extends EntityItemProvider {
     @Override
     public String getText(final Object object) {
         final String label = ((Constraint) object).getId();
-        return label == null || label.length() == 0 ? this.getString("_UI_Constraint_type") : this
-                .getString("_UI_Constraint_type") + " " + label;
+        return label == null || label.length() == 0 ? this.getString("_UI_Constraint_type")
+                : this.getString("_UI_Constraint_type") + " " + label;
     }
 
     /**

@@ -58,10 +58,11 @@ public class QVTOCompletionItemProvider extends CompletionItemProvider {
     protected void addQvtoFileURIPropertyDescriptor(final Object object) {
         this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
                 ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_QVTOCompletion_qvtoFileURI_feature"), this.getString(
-                        "_UI_PropertyDescriptor_description", "_UI_QVTOCompletion_qvtoFileURI_feature",
-                        "_UI_QVTOCompletion_type"), TypePackage.Literals.QVTO_COMPLETION__QVTO_FILE_URI, true, false,
-                false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                this.getString("_UI_QVTOCompletion_qvtoFileURI_feature"),
+                this.getString("_UI_PropertyDescriptor_description", "_UI_QVTOCompletion_qvtoFileURI_feature",
+                        "_UI_QVTOCompletion_type"),
+                TypePackage.Literals.QVTO_COMPLETION__QVTO_FILE_URI, true, false, false,
+                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -83,8 +84,8 @@ public class QVTOCompletionItemProvider extends CompletionItemProvider {
     @Override
     public String getText(final Object object) {
         final String label = ((QVTOCompletion) object).getQvtoFileURI();
-        return label == null || label.length() == 0 ? this.getString("_UI_QVTOCompletion_type") : this
-                .getString("_UI_QVTOCompletion_type") + " " + label;
+        return label == null || label.length() == 0 ? this.getString("_UI_QVTOCompletion_type")
+                : this.getString("_UI_QVTOCompletion_type") + " " + label;
     }
 
     /**

@@ -41,8 +41,8 @@ import org.scaledl.architecturaltemplates.type.presentation.Architecturaltemplat
  * 
  * @generated
  */
-public class InstanceActionBarContributor extends EditingDomainActionBarContributor implements
-ISelectionChangedListener {
+public class InstanceActionBarContributor extends EditingDomainActionBarContributor
+        implements ISelectionChangedListener {
 
     /**
      * This keeps track of the active editor. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -231,8 +231,8 @@ ISelectionChangedListener {
             // Fake a selection changed event to update the menus.
             //
             if (this.selectionProvider.getSelection() != null) {
-                this.selectionChanged(new SelectionChangedEvent(this.selectionProvider, this.selectionProvider
-                        .getSelection()));
+                this.selectionChanged(
+                        new SelectionChangedEvent(this.selectionProvider, this.selectionProvider.getSelection()));
             }
         }
     }
@@ -293,7 +293,8 @@ ISelectionChangedListener {
      * 
      * @generated
      */
-    protected Collection<IAction> generateCreateChildActions(final Collection<?> descriptors, final ISelection selection) {
+    protected Collection<IAction> generateCreateChildActions(final Collection<?> descriptors,
+            final ISelection selection) {
         final Collection<IAction> actions = new ArrayList<IAction>();
         if (descriptors != null) {
             for (final Object descriptor : descriptors) {

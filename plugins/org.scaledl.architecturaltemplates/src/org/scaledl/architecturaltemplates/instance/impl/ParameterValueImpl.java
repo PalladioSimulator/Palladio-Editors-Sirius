@@ -16,14 +16,11 @@ import org.scaledl.architecturaltemplates.type.Parameter;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.scaledl.architecturaltemplates.instance.impl.ParameterValueImpl#getType <em>Type
- * </em>}</li>
- * <li>
- * {@link org.scaledl.architecturaltemplates.instance.impl.ParameterValueImpl#getArchitecturalTemplateInstance
- * <em>Architectural Template Instance</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.scaledl.architecturaltemplates.instance.impl.ParameterValueImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.scaledl.architecturaltemplates.instance.impl.ParameterValueImpl#getArchitecturalTemplateInstance <em>Architectural Template Instance</em>}</li>
+ * </ul>
  *
  * @generated
  */
@@ -31,7 +28,6 @@ public abstract class ParameterValueImpl extends CDOObjectImpl implements Parame
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected ParameterValueImpl() {
@@ -40,7 +36,6 @@ public abstract class ParameterValueImpl extends CDOObjectImpl implements Parame
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -50,7 +45,6 @@ public abstract class ParameterValueImpl extends CDOObjectImpl implements Parame
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -60,112 +54,101 @@ public abstract class ParameterValueImpl extends CDOObjectImpl implements Parame
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Parameter getType() {
-        return (Parameter) this.eDynamicGet(InstancePackage.PARAMETER_VALUE__TYPE,
+        return (Parameter) eDynamicGet(InstancePackage.PARAMETER_VALUE__TYPE,
                 InstancePackage.Literals.PARAMETER_VALUE__TYPE, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public Parameter basicGetType() {
-        return (Parameter) this.eDynamicGet(InstancePackage.PARAMETER_VALUE__TYPE,
+        return (Parameter) eDynamicGet(InstancePackage.PARAMETER_VALUE__TYPE,
                 InstancePackage.Literals.PARAMETER_VALUE__TYPE, false, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void setType(final Parameter newType) {
-        this.eDynamicSet(InstancePackage.PARAMETER_VALUE__TYPE, InstancePackage.Literals.PARAMETER_VALUE__TYPE, newType);
+    public void setType(Parameter newType) {
+        eDynamicSet(InstancePackage.PARAMETER_VALUE__TYPE, InstancePackage.Literals.PARAMETER_VALUE__TYPE, newType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public ATInstance getArchitecturalTemplateInstance() {
-        return (ATInstance) this.eDynamicGet(InstancePackage.PARAMETER_VALUE__ARCHITECTURAL_TEMPLATE_INSTANCE,
+        return (ATInstance) eDynamicGet(InstancePackage.PARAMETER_VALUE__ARCHITECTURAL_TEMPLATE_INSTANCE,
                 InstancePackage.Literals.PARAMETER_VALUE__ARCHITECTURAL_TEMPLATE_INSTANCE, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
-    public NotificationChain basicSetArchitecturalTemplateInstance(final ATInstance newArchitecturalTemplateInstance,
+    public NotificationChain basicSetArchitecturalTemplateInstance(ATInstance newArchitecturalTemplateInstance,
             NotificationChain msgs) {
-        msgs = this.eBasicSetContainer((InternalEObject) newArchitecturalTemplateInstance,
+        msgs = eBasicSetContainer((InternalEObject) newArchitecturalTemplateInstance,
                 InstancePackage.PARAMETER_VALUE__ARCHITECTURAL_TEMPLATE_INSTANCE, msgs);
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void setArchitecturalTemplateInstance(final ATInstance newArchitecturalTemplateInstance) {
-        this.eDynamicSet(InstancePackage.PARAMETER_VALUE__ARCHITECTURAL_TEMPLATE_INSTANCE,
+    public void setArchitecturalTemplateInstance(ATInstance newArchitecturalTemplateInstance) {
+        eDynamicSet(InstancePackage.PARAMETER_VALUE__ARCHITECTURAL_TEMPLATE_INSTANCE,
                 InstancePackage.Literals.PARAMETER_VALUE__ARCHITECTURAL_TEMPLATE_INSTANCE,
                 newArchitecturalTemplateInstance);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eInverseAdd(final InternalEObject otherEnd, final int featureID, NotificationChain msgs) {
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case InstancePackage.PARAMETER_VALUE__ARCHITECTURAL_TEMPLATE_INSTANCE:
-            if (this.eInternalContainer() != null) {
-                msgs = this.eBasicRemoveFromContainer(msgs);
-            }
-            return this.basicSetArchitecturalTemplateInstance((ATInstance) otherEnd, msgs);
+            if (eInternalContainer() != null)
+                msgs = eBasicRemoveFromContainer(msgs);
+            return basicSetArchitecturalTemplateInstance((ATInstance) otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eInverseRemove(final InternalEObject otherEnd, final int featureID,
-            final NotificationChain msgs) {
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case InstancePackage.PARAMETER_VALUE__ARCHITECTURAL_TEMPLATE_INSTANCE:
-            return this.basicSetArchitecturalTemplateInstance(null, msgs);
+            return basicSetArchitecturalTemplateInstance(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eBasicRemoveFromContainerFeature(final NotificationChain msgs) {
-        switch (this.eContainerFeatureID()) {
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+        switch (eContainerFeatureID()) {
         case InstancePackage.PARAMETER_VALUE__ARCHITECTURAL_TEMPLATE_INSTANCE:
-            return this.eInternalContainer().eInverseRemove(this, InstancePackage.AT_INSTANCE__PARAMETER_VALUES,
+            return eInternalContainer().eInverseRemove(this, InstancePackage.AT_INSTANCE__PARAMETER_VALUES,
                     ATInstance.class, msgs);
         }
         return super.eBasicRemoveFromContainerFeature(msgs);
@@ -173,36 +156,33 @@ public abstract class ParameterValueImpl extends CDOObjectImpl implements Parame
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public Object eGet(final int featureID, final boolean resolve, final boolean coreType) {
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case InstancePackage.PARAMETER_VALUE__TYPE:
-            if (resolve) {
-                return this.getType();
-            }
-            return this.basicGetType();
+            if (resolve)
+                return getType();
+            return basicGetType();
         case InstancePackage.PARAMETER_VALUE__ARCHITECTURAL_TEMPLATE_INSTANCE:
-            return this.getArchitecturalTemplateInstance();
+            return getArchitecturalTemplateInstance();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void eSet(final int featureID, final Object newValue) {
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
         case InstancePackage.PARAMETER_VALUE__TYPE:
-            this.setType((Parameter) newValue);
+            setType((Parameter) newValue);
             return;
         case InstancePackage.PARAMETER_VALUE__ARCHITECTURAL_TEMPLATE_INSTANCE:
-            this.setArchitecturalTemplateInstance((ATInstance) newValue);
+            setArchitecturalTemplateInstance((ATInstance) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -210,17 +190,16 @@ public abstract class ParameterValueImpl extends CDOObjectImpl implements Parame
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void eUnset(final int featureID) {
+    public void eUnset(int featureID) {
         switch (featureID) {
         case InstancePackage.PARAMETER_VALUE__TYPE:
-            this.setType((Parameter) null);
+            setType((Parameter) null);
             return;
         case InstancePackage.PARAMETER_VALUE__ARCHITECTURAL_TEMPLATE_INSTANCE:
-            this.setArchitecturalTemplateInstance((ATInstance) null);
+            setArchitecturalTemplateInstance((ATInstance) null);
             return;
         }
         super.eUnset(featureID);
@@ -228,16 +207,15 @@ public abstract class ParameterValueImpl extends CDOObjectImpl implements Parame
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public boolean eIsSet(final int featureID) {
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
         case InstancePackage.PARAMETER_VALUE__TYPE:
-            return this.basicGetType() != null;
+            return basicGetType() != null;
         case InstancePackage.PARAMETER_VALUE__ARCHITECTURAL_TEMPLATE_INSTANCE:
-            return this.getArchitecturalTemplateInstance() != null;
+            return getArchitecturalTemplateInstance() != null;
         }
         return super.eIsSet(featureID);
     }
