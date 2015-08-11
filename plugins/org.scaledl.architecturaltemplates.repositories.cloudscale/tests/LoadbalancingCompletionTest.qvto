@@ -98,13 +98,14 @@ query testNumberOfReplicasEqualsNumberOfOriginalAndDuplicateAssemblyContexts(new
 **/
 query testConnectorFromLoadbalancerToOriginalExists(newSystem : System){
 	var originalAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("OriginalAssemblyContext");
+	var numberOfDifferentProvidedRoles : Integer := originalAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity->size();
 	var loadbalancerAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("LoadbalancerAssemblyContext");
 	var connectors : Set(Connector) := newSystem.connectors__ComposedStructure;
 	var assemblyConnectors : Bag(AssemblyConnector) := connectors->select(connector : Connector | connector.oclIsTypeOf(AssemblyConnector)).oclAsType(AssemblyConnector);
 	var loadbalancerToOriginalAssemblyConnectors : Bag(AssemblyConnector) := assemblyConnectors -> select(assemblyConnector : AssemblyConnector|
 		assemblyConnector.requiringAssemblyContext_AssemblyConnector = loadbalancerAssemblyContext and assemblyConnector.providingAssemblyContext_AssemblyConnector = originalAssemblyContext);
 	var loadbalancerToOriginalAssemblyConnectorsSize : Integer := loadbalancerToOriginalAssemblyConnectors->size(); 
-	assert error(loadbalancerToOriginalAssemblyConnectorsSize = 1) 
+	assert error(loadbalancerToOriginalAssemblyConnectorsSize = numberOfDifferentProvidedRoles) 
 		with log('The number of assembly connectors between the loadbalancer and the original assembly context('+loadbalancerToOriginalAssemblyConnectorsSize.toString()+') does not equal 1');
 }
 
@@ -147,13 +148,14 @@ query testConnectorsFromLoadbalancerToDuplicatesExist(newSystem : System){
 	var duplicateAssemblyContexts : Set(AssemblyContext) := getStereotypedAssemblyContextsAfterCompletion("DuplicateAssemblyContext");
 	var loadbalancerAssemblyContext : AssemblyContext := getStereotypedAssemblyContextAfterCompletion("LoadbalancerAssemblyContext");
 	var replicableAssemblyContext : AssemblyContext := getStereotypedAssemblyContextBeforeCompletion("ReplicableAssemblyContext");
+	var numberOfDifferentProvidedRoles : Integer := replicableAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity->size();
 	var numberOfDuplicates : Integer := getIntTaggedValue(replicableAssemblyContext,"numberOfReplicas","ReplicableAssemblyContext")-1;
 	var connectors : Set(Connector) := newSystem.connectors__ComposedStructure;
 	var assemblyConnectors : Bag(AssemblyConnector) := connectors->select(connector : Connector | connector.oclIsTypeOf(AssemblyConnector)).oclAsType(AssemblyConnector);
 	var loadbalancerToDuplicatesAssemblyConnectors : Bag(AssemblyConnector) := assemblyConnectors->select(assemblyConnector : AssemblyConnector|
 		assemblyConnector.requiringAssemblyContext_AssemblyConnector = loadbalancerAssemblyContext and duplicateAssemblyContexts->includes(assemblyConnector.providingAssemblyContext_AssemblyConnector));
 	var loadbalancerToDuplicatesAssemblyConnectorsSize : Integer := loadbalancerToDuplicatesAssemblyConnectors->size();
-	assert error(loadbalancerToDuplicatesAssemblyConnectorsSize = numberOfDuplicates) 
+	assert error(loadbalancerToDuplicatesAssemblyConnectorsSize = numberOfDuplicates * numberOfDifferentProvidedRoles) 
 		with log('The number of assembly connectors between the loadbalancer and the duplicate assembly contexts('+loadbalancerToDuplicatesAssemblyConnectorsSize.toString()+') does not equal '+numberOfDuplicates.toString());
 	
 	var loadbalancerDuplicatesMatches := duplicateAssemblyContexts->asSet() - (loadbalancerToDuplicatesAssemblyConnectors.providingAssemblyContext_AssemblyConnector->asSet());
@@ -314,10 +316,15 @@ query testLoadbalancerSeffCallsRequiredRoles(){
 		branches->forEach(branch){
 			resourceDemandingBehaviors := branch.branchBehaviour_BranchTransition->selectByType(ResourceDemandingBehaviour);
 			resourceDemandingBehaviors->forEach(resourceDemandingBehavior){
-				delegatingExternalCallAction += resourceDemandingBehavior.steps_Behaviour->selectByType(DelegatingExternalCallAction);	
+							delegatingExternalCallAction += resourceDemandingBehavior.steps_Behaviour->selectByType(DelegatingExternalCallAction);	
 			};	
 		};
-	var operationRequiredRolesMatch := loadbalancerOperationRequiredRoles-delegatingExternalCallAction.role_ExternalService->asSet();
+	var delegatingExternalCallActionInterfaces := delegatingExternalCallAction->collect(action| action.role_ExternalService.requiredInterface__OperationRequiredRole.id);
+	assert error(delegatingExternalCallActionInterfaces->forAll(interface1,interface2| interface1 = interface2))
+		with log('The resource demanding SEFF '+resourceDemandingSeff.id+' does request another interface');
+	
+	var operationRequiredRolesOfDelegatingExternalCallActionInterface : Set(OperationRequiredRole) := loadbalancerOperationRequiredRoles->select(operationRequiredRole | operationRequiredRole.requiredInterface__OperationRequiredRole.id = delegatingExternalCallActionInterfaces->any(true));
+	var operationRequiredRolesMatch := operationRequiredRolesOfDelegatingExternalCallActionInterface-(delegatingExternalCallAction.role_ExternalService->asSet());
 	var delim : String := "";
 	assert error(operationRequiredRolesMatch->isEmpty()) 
 		with log('The resource demanding SEFF '+resourceDemandingSeff.id+' does not request the required roles:[ '
