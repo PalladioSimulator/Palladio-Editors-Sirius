@@ -301,7 +301,6 @@ query testLoadbalancerSeffCallsRequiredRoles(){
 	var loadbalancerRepositoryComponent : RepositoryComponent := loadbalancerAssemblyContext.encapsulatedComponent__AssemblyContext;
 	var loadbalancerOperationRequiredRoles := loadbalancerRepositoryComponent.requiredRoles_InterfaceRequiringEntity->selectByType(OperationRequiredRole);
 	var replicableAssemblyContext : AssemblyContext := getStereotypedAssemblyContextBeforeCompletion("ReplicableAssemblyContext");
-	var replicableRepositoryComponent : RepositoryComponent := replicableAssemblyContext.encapsulatedComponent__AssemblyContext;
 	var numberOfReplicas : Integer := getIntTaggedValue(replicableAssemblyContext,"numberOfReplicas","ReplicableAssemblyContext");
 	var resourceDemandingSeffs : Bag(ResourceDemandingSEFF) := loadbalancerRepositoryComponent.oclAsType(BasicComponent).serviceEffectSpecifications__BasicComponent.oclAsType(ResourceDemandingSEFF);
 	var branchActions : Set(BranchAction);
