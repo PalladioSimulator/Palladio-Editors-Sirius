@@ -9,8 +9,6 @@ import org.scaledl.architecturaltemplates.instance.StringParameter;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>String Parameter</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
@@ -18,7 +16,6 @@ public class StringParameterImpl<T> extends ParameterValueImpl implements String
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected StringParameterImpl() {
@@ -27,7 +24,6 @@ public class StringParameterImpl<T> extends ParameterValueImpl implements String
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

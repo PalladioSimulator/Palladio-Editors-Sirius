@@ -33,22 +33,21 @@ import org.palladiosimulator.pcm.core.entity.NamedElement;
  * each class of the model, starting with the actual class of the object and proceeding up the
  * inheritance hierarchy until a non-null result is returned, which is the result of the switch.
  * <!-- end-user-doc -->
- * 
  * @see org.scaledl.architecturaltemplates.type.TypePackage
  * @generated
  */
 public class TypeSwitch<T> extends Switch<T> {
 
     /**
-     * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The cached model package
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     protected static TypePackage modelPackage;
 
     /**
-     * Creates an instance of the switch. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Creates an instance of the switch.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     public TypeSwitch() {
@@ -58,248 +57,201 @@ public class TypeSwitch<T> extends Switch<T> {
     }
 
     /**
-     * Checks whether this is a switch for the given package. <!-- begin-user-doc --> <!--
+     * Checks whether this is a switch for the given package.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
-     * @parameter ePackage the package in question.
+     * @param ePackage the package in question.
      * @return whether this is a switch for the given package.
      * @generated
      */
     @Override
-    protected boolean isSwitchFor(final EPackage ePackage) {
+    protected boolean isSwitchFor(EPackage ePackage) {
         return ePackage == modelPackage;
     }
 
     /**
-     * Calls <code>caseXXX</code> for each class of the model until one returns a non null result;
-     * it yields that result. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
     @Override
-    protected T doSwitch(final int classifierID, final EObject theEObject) {
+    protected T doSwitch(int classifierID, EObject theEObject) {
         switch (classifierID) {
         case TypePackage.AT: {
-            final AT at = (AT) theEObject;
-            T result = this.caseAT(at);
-            if (result == null) {
-                result = this.caseEntity(at);
-            }
-            if (result == null) {
-                result = this.caseIdentifier(at);
-            }
-            if (result == null) {
-                result = this.caseNamedElement(at);
-            }
-            if (result == null) {
-                result = this.defaultCase(theEObject);
-            }
+            AT at = (AT) theEObject;
+            T result = caseAT(at);
+            if (result == null)
+                result = caseEntity(at);
+            if (result == null)
+                result = caseIdentifier(at);
+            if (result == null)
+                result = caseNamedElement(at);
+            if (result == null)
+                result = defaultCase(theEObject);
             return result;
         }
         case TypePackage.CONSTRAINT: {
-            final Constraint constraint = (Constraint) theEObject;
-            T result = this.caseConstraint(constraint);
-            if (result == null) {
-                result = this.caseEntity(constraint);
-            }
-            if (result == null) {
-                result = this.caseIdentifier(constraint);
-            }
-            if (result == null) {
-                result = this.caseNamedElement(constraint);
-            }
-            if (result == null) {
-                result = this.defaultCase(theEObject);
-            }
+            Constraint constraint = (Constraint) theEObject;
+            T result = caseConstraint(constraint);
+            if (result == null)
+                result = caseEntity(constraint);
+            if (result == null)
+                result = caseIdentifier(constraint);
+            if (result == null)
+                result = caseNamedElement(constraint);
+            if (result == null)
+                result = defaultCase(theEObject);
             return result;
         }
         case TypePackage.PARAMETER: {
-            final Parameter parameter = (Parameter) theEObject;
-            T result = this.caseParameter(parameter);
-            if (result == null) {
-                result = this.caseEntity(parameter);
-            }
-            if (result == null) {
-                result = this.caseIdentifier(parameter);
-            }
-            if (result == null) {
-                result = this.caseNamedElement(parameter);
-            }
-            if (result == null) {
-                result = this.defaultCase(theEObject);
-            }
+            Parameter parameter = (Parameter) theEObject;
+            T result = caseParameter(parameter);
+            if (result == null)
+                result = caseEntity(parameter);
+            if (result == null)
+                result = caseIdentifier(parameter);
+            if (result == null)
+                result = caseNamedElement(parameter);
+            if (result == null)
+                result = defaultCase(theEObject);
             return result;
         }
         case TypePackage.REPOSITORY: {
-            final Repository repository = (Repository) theEObject;
-            T result = this.caseRepository(repository);
-            if (result == null) {
-                result = this.caseEntity(repository);
-            }
-            if (result == null) {
-                result = this.caseIdentifier(repository);
-            }
-            if (result == null) {
-                result = this.caseNamedElement(repository);
-            }
-            if (result == null) {
-                result = this.defaultCase(theEObject);
-            }
+            Repository repository = (Repository) theEObject;
+            T result = caseRepository(repository);
+            if (result == null)
+                result = caseEntity(repository);
+            if (result == null)
+                result = caseIdentifier(repository);
+            if (result == null)
+                result = caseNamedElement(repository);
+            if (result == null)
+                result = defaultCase(theEObject);
             return result;
         }
         case TypePackage.ROLE: {
-            final Role role = (Role) theEObject;
-            T result = this.caseRole(role);
-            if (result == null) {
-                result = this.caseEntity(role);
-            }
-            if (result == null) {
-                result = this.caseIdentifier(role);
-            }
-            if (result == null) {
-                result = this.caseNamedElement(role);
-            }
-            if (result == null) {
-                result = this.defaultCase(theEObject);
-            }
+            Role role = (Role) theEObject;
+            T result = caseRole(role);
+            if (result == null)
+                result = caseEntity(role);
+            if (result == null)
+                result = caseIdentifier(role);
+            if (result == null)
+                result = caseNamedElement(role);
+            if (result == null)
+                result = defaultCase(theEObject);
             return result;
         }
         case TypePackage.OCL_CONSTRAINT: {
-            final OCLConstraint oclConstraint = (OCLConstraint) theEObject;
-            T result = this.caseOCLConstraint(oclConstraint);
-            if (result == null) {
-                result = this.caseConstraint(oclConstraint);
-            }
-            if (result == null) {
-                result = this.caseEntity(oclConstraint);
-            }
-            if (result == null) {
-                result = this.caseIdentifier(oclConstraint);
-            }
-            if (result == null) {
-                result = this.caseNamedElement(oclConstraint);
-            }
-            if (result == null) {
-                result = this.defaultCase(theEObject);
-            }
+            OCLConstraint oclConstraint = (OCLConstraint) theEObject;
+            T result = caseOCLConstraint(oclConstraint);
+            if (result == null)
+                result = caseConstraint(oclConstraint);
+            if (result == null)
+                result = caseEntity(oclConstraint);
+            if (result == null)
+                result = caseIdentifier(oclConstraint);
+            if (result == null)
+                result = caseNamedElement(oclConstraint);
+            if (result == null)
+                result = defaultCase(theEObject);
             return result;
         }
         case TypePackage.QVTO_COMPLETION: {
-            final QVTOCompletion qvtoCompletion = (QVTOCompletion) theEObject;
-            T result = this.caseQVTOCompletion(qvtoCompletion);
-            if (result == null) {
-                result = this.caseCompletion(qvtoCompletion);
-            }
-            if (result == null) {
-                result = this.defaultCase(theEObject);
-            }
+            QVTOCompletion qvtoCompletion = (QVTOCompletion) theEObject;
+            T result = caseQVTOCompletion(qvtoCompletion);
+            if (result == null)
+                result = caseCompletion(qvtoCompletion);
+            if (result == null)
+                result = defaultCase(theEObject);
             return result;
         }
         case TypePackage.COMPLETION: {
-            final Completion completion = (Completion) theEObject;
-            T result = this.caseCompletion(completion);
-            if (result == null) {
-                result = this.defaultCase(theEObject);
-            }
+            Completion completion = (Completion) theEObject;
+            T result = caseCompletion(completion);
+            if (result == null)
+                result = defaultCase(theEObject);
             return result;
         }
         case TypePackage.COMPLETION_PARAMETER: {
-            final CompletionParameter completionParameter = (CompletionParameter) theEObject;
-            T result = this.caseCompletionParameter(completionParameter);
-            if (result == null) {
-                result = this.defaultCase(theEObject);
-            }
+            CompletionParameter completionParameter = (CompletionParameter) theEObject;
+            T result = caseCompletionParameter(completionParameter);
+            if (result == null)
+                result = defaultCase(theEObject);
             return result;
         }
         case TypePackage.GENERIC_TEMPLATE_COMPLETION_PARAMETER: {
-            final GenericTemplateCompletionParameter genericTemplateCompletionParameter = (GenericTemplateCompletionParameter) theEObject;
-            T result = this.caseGenericTemplateCompletionParameter(genericTemplateCompletionParameter);
-            if (result == null) {
-                result = this.caseGenericBlackboardCompletionParameter(genericTemplateCompletionParameter);
-            }
-            if (result == null) {
-                result = this.caseTemplateProvidingEntity(genericTemplateCompletionParameter);
-            }
-            if (result == null) {
-                result = this.caseCompletionParameter(genericTemplateCompletionParameter);
-            }
-            if (result == null) {
-                result = this.defaultCase(theEObject);
-            }
+            GenericTemplateCompletionParameter genericTemplateCompletionParameter = (GenericTemplateCompletionParameter) theEObject;
+            T result = caseGenericTemplateCompletionParameter(genericTemplateCompletionParameter);
+            if (result == null)
+                result = caseGenericBlackboardCompletionParameter(genericTemplateCompletionParameter);
+            if (result == null)
+                result = caseTemplateProvidingEntity(genericTemplateCompletionParameter);
+            if (result == null)
+                result = caseCompletionParameter(genericTemplateCompletionParameter);
+            if (result == null)
+                result = defaultCase(theEObject);
             return result;
         }
         case TypePackage.GENERIC_BLACKBOARD_COMPLETION_PARAMETER: {
-            final GenericBlackboardCompletionParameter genericBlackboardCompletionParameter = (GenericBlackboardCompletionParameter) theEObject;
-            T result = this.caseGenericBlackboardCompletionParameter(genericBlackboardCompletionParameter);
-            if (result == null) {
-                result = this.caseCompletionParameter(genericBlackboardCompletionParameter);
-            }
-            if (result == null) {
-                result = this.defaultCase(theEObject);
-            }
+            GenericBlackboardCompletionParameter genericBlackboardCompletionParameter = (GenericBlackboardCompletionParameter) theEObject;
+            T result = caseGenericBlackboardCompletionParameter(genericBlackboardCompletionParameter);
+            if (result == null)
+                result = caseCompletionParameter(genericBlackboardCompletionParameter);
+            if (result == null)
+                result = defaultCase(theEObject);
             return result;
         }
         case TypePackage.PCM_BLACKBOARD_COMPLETION_PARAMETER: {
-            final PCMBlackboardCompletionParameter pcmBlackboardCompletionParameter = (PCMBlackboardCompletionParameter) theEObject;
-            T result = this.casePCMBlackboardCompletionParameter(pcmBlackboardCompletionParameter);
-            if (result == null) {
-                result = this.caseCompletionParameter(pcmBlackboardCompletionParameter);
-            }
-            if (result == null) {
-                result = this.defaultCase(theEObject);
-            }
+            PCMBlackboardCompletionParameter pcmBlackboardCompletionParameter = (PCMBlackboardCompletionParameter) theEObject;
+            T result = casePCMBlackboardCompletionParameter(pcmBlackboardCompletionParameter);
+            if (result == null)
+                result = caseCompletionParameter(pcmBlackboardCompletionParameter);
+            if (result == null)
+                result = defaultCase(theEObject);
             return result;
         }
         case TypePackage.PCM_TEMPLATE_COMPLETION_PARAMETER: {
-            final PCMTemplateCompletionParameter pcmTemplateCompletionParameter = (PCMTemplateCompletionParameter) theEObject;
-            T result = this.casePCMTemplateCompletionParameter(pcmTemplateCompletionParameter);
-            if (result == null) {
-                result = this.casePCMBlackboardCompletionParameter(pcmTemplateCompletionParameter);
-            }
-            if (result == null) {
-                result = this.caseTemplateProvidingEntity(pcmTemplateCompletionParameter);
-            }
-            if (result == null) {
-                result = this.caseCompletionParameter(pcmTemplateCompletionParameter);
-            }
-            if (result == null) {
-                result = this.defaultCase(theEObject);
-            }
+            PCMTemplateCompletionParameter pcmTemplateCompletionParameter = (PCMTemplateCompletionParameter) theEObject;
+            T result = casePCMTemplateCompletionParameter(pcmTemplateCompletionParameter);
+            if (result == null)
+                result = casePCMBlackboardCompletionParameter(pcmTemplateCompletionParameter);
+            if (result == null)
+                result = caseTemplateProvidingEntity(pcmTemplateCompletionParameter);
+            if (result == null)
+                result = caseCompletionParameter(pcmTemplateCompletionParameter);
+            if (result == null)
+                result = defaultCase(theEObject);
             return result;
         }
         case TypePackage.TEMPLATE_PROVIDING_ENTITY: {
-            final TemplateProvidingEntity templateProvidingEntity = (TemplateProvidingEntity) theEObject;
-            T result = this.caseTemplateProvidingEntity(templateProvidingEntity);
-            if (result == null) {
-                result = this.defaultCase(theEObject);
-            }
+            TemplateProvidingEntity templateProvidingEntity = (TemplateProvidingEntity) theEObject;
+            T result = caseTemplateProvidingEntity(templateProvidingEntity);
+            if (result == null)
+                result = defaultCase(theEObject);
             return result;
         }
         case TypePackage.PCM_OUTPUT_COMPLETION_PARAMETER: {
-            final PCMOutputCompletionParameter pcmOutputCompletionParameter = (PCMOutputCompletionParameter) theEObject;
-            T result = this.casePCMOutputCompletionParameter(pcmOutputCompletionParameter);
-            if (result == null) {
-                result = this.caseCompletionParameter(pcmOutputCompletionParameter);
-            }
-            if (result == null) {
-                result = this.defaultCase(theEObject);
-            }
+            PCMOutputCompletionParameter pcmOutputCompletionParameter = (PCMOutputCompletionParameter) theEObject;
+            T result = casePCMOutputCompletionParameter(pcmOutputCompletionParameter);
+            if (result == null)
+                result = caseCompletionParameter(pcmOutputCompletionParameter);
+            if (result == null)
+                result = defaultCase(theEObject);
             return result;
         }
         case TypePackage.GENERIC_OUTPUT_COMPLETION_PARAMETER: {
-            final GenericOutputCompletionParameter genericOutputCompletionParameter = (GenericOutputCompletionParameter) theEObject;
-            T result = this.caseGenericOutputCompletionParameter(genericOutputCompletionParameter);
-            if (result == null) {
-                result = this.caseCompletionParameter(genericOutputCompletionParameter);
-            }
-            if (result == null) {
-                result = this.defaultCase(theEObject);
-            }
+            GenericOutputCompletionParameter genericOutputCompletionParameter = (GenericOutputCompletionParameter) theEObject;
+            T result = caseGenericOutputCompletionParameter(genericOutputCompletionParameter);
+            if (result == null)
+                result = caseCompletionParameter(genericOutputCompletionParameter);
+            if (result == null)
+                result = defaultCase(theEObject);
             return result;
         }
         default:
-            return this.defaultCase(theEObject);
+            return defaultCase(theEObject);
         }
     }
 
@@ -314,7 +266,7 @@ public class TypeSwitch<T> extends Switch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseAT(final AT object) {
+    public T caseAT(AT object) {
         return null;
     }
 
@@ -329,7 +281,7 @@ public class TypeSwitch<T> extends Switch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseConstraint(final Constraint object) {
+    public T caseConstraint(Constraint object) {
         return null;
     }
 
@@ -344,7 +296,7 @@ public class TypeSwitch<T> extends Switch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseParameter(final Parameter object) {
+    public T caseParameter(Parameter object) {
         return null;
     }
 
@@ -359,7 +311,7 @@ public class TypeSwitch<T> extends Switch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseRepository(final Repository object) {
+    public T caseRepository(Repository object) {
         return null;
     }
 
@@ -374,7 +326,7 @@ public class TypeSwitch<T> extends Switch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseRole(final Role object) {
+    public T caseRole(Role object) {
         return null;
     }
 
@@ -382,14 +334,12 @@ public class TypeSwitch<T> extends Switch<T> {
      * Returns the result of interpreting the object as an instance of '<em>OCL Constraint</em>'.
      * <!-- begin-user-doc --> This implementation returns null; returning a non-null result will
      * terminate the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
+     * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>OCL Constraint</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseOCLConstraint(final OCLConstraint object) {
+    public T caseOCLConstraint(OCLConstraint object) {
         return null;
     }
 
@@ -397,14 +347,12 @@ public class TypeSwitch<T> extends Switch<T> {
      * Returns the result of interpreting the object as an instance of '<em>QVTO Completion</em>'.
      * <!-- begin-user-doc --> This implementation returns null; returning a non-null result will
      * terminate the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
+     * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>QVTO Completion</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseQVTOCompletion(final QVTOCompletion object) {
+    public T caseQVTOCompletion(QVTOCompletion object) {
         return null;
     }
 
@@ -419,136 +367,112 @@ public class TypeSwitch<T> extends Switch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseCompletion(final Completion object) {
+    public T caseCompletion(Completion object) {
         return null;
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Completion Parameter</em>'. <!-- begin-user-doc --> This implementation returns null;
+     * Returns the result of interpreting the object as an instance of '<em>Completion Parameter</em>'.
+     * <!-- begin-user-doc --> This implementation returns null;
      * returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Completion Parameter</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Completion Parameter</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseCompletionParameter(final CompletionParameter object) {
+    public T caseCompletionParameter(CompletionParameter object) {
         return null;
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Generic Template Completion Parameter</em>'. <!-- begin-user-doc --> This implementation
+     * Returns the result of interpreting the object as an instance of '<em>Generic Template Completion Parameter</em>'.
+     * <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Generic Template Completion Parameter</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Generic Template Completion Parameter</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseGenericTemplateCompletionParameter(final GenericTemplateCompletionParameter object) {
+    public T caseGenericTemplateCompletionParameter(GenericTemplateCompletionParameter object) {
         return null;
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Generic Blackboard Completion Parameter</em>'. <!-- begin-user-doc --> This
+     * Returns the result of interpreting the object as an instance of '<em>Generic Blackboard Completion Parameter</em>'.
+     * <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Generic Blackboard Completion Parameter</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Generic Blackboard Completion Parameter</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseGenericBlackboardCompletionParameter(final GenericBlackboardCompletionParameter object) {
+    public T caseGenericBlackboardCompletionParameter(GenericBlackboardCompletionParameter object) {
         return null;
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>PCM Blackboard Completion Parameter</em>'. <!-- begin-user-doc --> This implementation
+     * Returns the result of interpreting the object as an instance of '<em>PCM Blackboard Completion Parameter</em>'.
+     * <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>PCM Blackboard Completion Parameter</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>PCM Blackboard Completion Parameter</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T casePCMBlackboardCompletionParameter(final PCMBlackboardCompletionParameter object) {
+    public T casePCMBlackboardCompletionParameter(PCMBlackboardCompletionParameter object) {
         return null;
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>PCM Template Completion Parameter</em>'. <!-- begin-user-doc --> This implementation
+     * Returns the result of interpreting the object as an instance of '<em>PCM Template Completion Parameter</em>'.
+     * <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>PCM Template Completion Parameter</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>PCM Template Completion Parameter</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T casePCMTemplateCompletionParameter(final PCMTemplateCompletionParameter object) {
+    public T casePCMTemplateCompletionParameter(PCMTemplateCompletionParameter object) {
         return null;
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Template Providing Entity</em>'. <!-- begin-user-doc --> This implementation returns
+     * Returns the result of interpreting the object as an instance of '<em>Template Providing Entity</em>'.
+     * <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Template Providing Entity</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Template Providing Entity</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseTemplateProvidingEntity(final TemplateProvidingEntity object) {
+    public T caseTemplateProvidingEntity(TemplateProvidingEntity object) {
         return null;
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>PCM Output Completion Parameter</em>'. <!-- begin-user-doc --> This implementation
+     * Returns the result of interpreting the object as an instance of '<em>PCM Output Completion Parameter</em>'.
+     * <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>PCM Output Completion Parameter</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>PCM Output Completion Parameter</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T casePCMOutputCompletionParameter(final PCMOutputCompletionParameter object) {
+    public T casePCMOutputCompletionParameter(PCMOutputCompletionParameter object) {
         return null;
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Generic Output Completion Parameter</em>'. <!-- begin-user-doc --> This implementation
+     * Returns the result of interpreting the object as an instance of '<em>Generic Output Completion Parameter</em>'.
+     * <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Generic Output Completion Parameter</em>'.
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Generic Output Completion Parameter</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseGenericOutputCompletionParameter(final GenericOutputCompletionParameter object) {
+    public T caseGenericOutputCompletionParameter(GenericOutputCompletionParameter object) {
         return null;
     }
 
@@ -563,7 +487,7 @@ public class TypeSwitch<T> extends Switch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseIdentifier(final Identifier object) {
+    public T caseIdentifier(Identifier object) {
         return null;
     }
 
@@ -571,14 +495,12 @@ public class TypeSwitch<T> extends Switch<T> {
      * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
      * <!-- begin-user-doc --> This implementation returns null; returning a non-null result will
      * terminate the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
+     * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseNamedElement(final NamedElement object) {
+    public T caseNamedElement(NamedElement object) {
         return null;
     }
 
@@ -593,7 +515,7 @@ public class TypeSwitch<T> extends Switch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseEntity(final Entity object) {
+    public T caseEntity(Entity object) {
         return null;
     }
 
@@ -609,7 +531,7 @@ public class TypeSwitch<T> extends Switch<T> {
      * @generated
      */
     @Override
-    public T defaultCase(final EObject object) {
+    public T defaultCase(EObject object) {
         return null;
     }
 

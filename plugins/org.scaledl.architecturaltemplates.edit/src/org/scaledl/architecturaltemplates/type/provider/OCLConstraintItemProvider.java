@@ -9,6 +9,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.scaledl.architecturaltemplates.type.OCLConstraint;
 import org.scaledl.architecturaltemplates.type.TypePackage;
 
@@ -56,10 +57,11 @@ public class OCLConstraintItemProvider extends ConstraintItemProvider {
     protected void addConstraintPropertyDescriptor(final Object object) {
         this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
                 ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_OCLConstraint_constraint_feature"), this.getString(
-                        "_UI_PropertyDescriptor_description", "_UI_OCLConstraint_constraint_feature",
-                        "_UI_OCLConstraint_type"), TypePackage.Literals.OCL_CONSTRAINT__CONSTRAINT, true, false, true,
-                null, null, null));
+                this.getString("_UI_OCLConstraint_constraint_feature"),
+                this.getString("_UI_PropertyDescriptor_description", "_UI_OCLConstraint_constraint_feature",
+                        "_UI_OCLConstraint_type"),
+                TypePackage.Literals.OCL_CONSTRAINT__CONSTRAINT, true, true, true,
+                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -80,9 +82,9 @@ public class OCLConstraintItemProvider extends ConstraintItemProvider {
      */
     @Override
     public String getText(final Object object) {
-        final String label = ((OCLConstraint) object).getId();
-        return label == null || label.length() == 0 ? this.getString("_UI_OCLConstraint_type") : this
-                .getString("_UI_OCLConstraint_type") + " " + label;
+        final String label = ((OCLConstraint) object).getEntityName();
+        return label == null || label.length() == 0 ? this.getString("_UI_OCLConstraint_type")
+                : this.getString("_UI_OCLConstraint_type") + " " + label;
     }
 
     /**

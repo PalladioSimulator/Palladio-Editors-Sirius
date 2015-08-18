@@ -18,15 +18,12 @@ import org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.scaledl.architecturaltemplates.instance.impl.Role2ResourceImpl#getATInstance <em>
- * AT Instance</em>}</li>
- * <li>{@link org.scaledl.architecturaltemplates.instance.impl.Role2ResourceImpl#getResource <em>
- * Resource</em>}</li>
- * <li>{@link org.scaledl.architecturaltemplates.instance.impl.Role2ResourceImpl#getRole <em>Role
- * </em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.scaledl.architecturaltemplates.instance.impl.Role2ResourceImpl#getATInstance <em>AT Instance</em>}</li>
+ *   <li>{@link org.scaledl.architecturaltemplates.instance.impl.Role2ResourceImpl#getResource <em>Resource</em>}</li>
+ *   <li>{@link org.scaledl.architecturaltemplates.instance.impl.Role2ResourceImpl#getRole <em>Role</em>}</li>
+ * </ul>
  *
  * @generated
  */
@@ -34,7 +31,6 @@ public class Role2ResourceImpl extends CDOObjectImpl implements Role2Resource {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected Role2ResourceImpl() {
@@ -43,7 +39,6 @@ public class Role2ResourceImpl extends CDOObjectImpl implements Role2Resource {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -53,7 +48,6 @@ public class Role2ResourceImpl extends CDOObjectImpl implements Role2Resource {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -63,142 +57,127 @@ public class Role2ResourceImpl extends CDOObjectImpl implements Role2Resource {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public ATInstance getATInstance() {
-        return (ATInstance) this.eDynamicGet(InstancePackage.ROLE2_RESOURCE__AT_INSTANCE,
+        return (ATInstance) eDynamicGet(InstancePackage.ROLE2_RESOURCE__AT_INSTANCE,
                 InstancePackage.Literals.ROLE2_RESOURCE__AT_INSTANCE, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
-    public NotificationChain basicSetATInstance(final ATInstance newATInstance, NotificationChain msgs) {
-        msgs = this.eBasicSetContainer((InternalEObject) newATInstance, InstancePackage.ROLE2_RESOURCE__AT_INSTANCE,
-                msgs);
+    public NotificationChain basicSetATInstance(ATInstance newATInstance, NotificationChain msgs) {
+        msgs = eBasicSetContainer((InternalEObject) newATInstance, InstancePackage.ROLE2_RESOURCE__AT_INSTANCE, msgs);
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void setATInstance(final ATInstance newATInstance) {
-        this.eDynamicSet(InstancePackage.ROLE2_RESOURCE__AT_INSTANCE,
-                InstancePackage.Literals.ROLE2_RESOURCE__AT_INSTANCE, newATInstance);
+    public void setATInstance(ATInstance newATInstance) {
+        eDynamicSet(InstancePackage.ROLE2_RESOURCE__AT_INSTANCE, InstancePackage.Literals.ROLE2_RESOURCE__AT_INSTANCE,
+                newATInstance);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public ResourceContainer getResource() {
-        return (ResourceContainer) this.eDynamicGet(InstancePackage.ROLE2_RESOURCE__RESOURCE,
+        return (ResourceContainer) eDynamicGet(InstancePackage.ROLE2_RESOURCE__RESOURCE,
                 InstancePackage.Literals.ROLE2_RESOURCE__RESOURCE, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public ResourceContainer basicGetResource() {
-        return (ResourceContainer) this.eDynamicGet(InstancePackage.ROLE2_RESOURCE__RESOURCE,
+        return (ResourceContainer) eDynamicGet(InstancePackage.ROLE2_RESOURCE__RESOURCE,
                 InstancePackage.Literals.ROLE2_RESOURCE__RESOURCE, false, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void setResource(final ResourceContainer newResource) {
-        this.eDynamicSet(InstancePackage.ROLE2_RESOURCE__RESOURCE, InstancePackage.Literals.ROLE2_RESOURCE__RESOURCE,
+    public void setResource(ResourceContainer newResource) {
+        eDynamicSet(InstancePackage.ROLE2_RESOURCE__RESOURCE, InstancePackage.Literals.ROLE2_RESOURCE__RESOURCE,
                 newResource);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Role getRole() {
-        return (Role) this.eDynamicGet(InstancePackage.ROLE2_RESOURCE__ROLE,
-                InstancePackage.Literals.ROLE2_RESOURCE__ROLE, true, true);
+        return (Role) eDynamicGet(InstancePackage.ROLE2_RESOURCE__ROLE, InstancePackage.Literals.ROLE2_RESOURCE__ROLE,
+                true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public Role basicGetRole() {
-        return (Role) this.eDynamicGet(InstancePackage.ROLE2_RESOURCE__ROLE,
-                InstancePackage.Literals.ROLE2_RESOURCE__ROLE, false, true);
+        return (Role) eDynamicGet(InstancePackage.ROLE2_RESOURCE__ROLE, InstancePackage.Literals.ROLE2_RESOURCE__ROLE,
+                false, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void setRole(final Role newRole) {
-        this.eDynamicSet(InstancePackage.ROLE2_RESOURCE__ROLE, InstancePackage.Literals.ROLE2_RESOURCE__ROLE, newRole);
+    public void setRole(Role newRole) {
+        eDynamicSet(InstancePackage.ROLE2_RESOURCE__ROLE, InstancePackage.Literals.ROLE2_RESOURCE__ROLE, newRole);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eInverseAdd(final InternalEObject otherEnd, final int featureID, NotificationChain msgs) {
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case InstancePackage.ROLE2_RESOURCE__AT_INSTANCE:
-            if (this.eInternalContainer() != null) {
-                msgs = this.eBasicRemoveFromContainer(msgs);
-            }
-            return this.basicSetATInstance((ATInstance) otherEnd, msgs);
+            if (eInternalContainer() != null)
+                msgs = eBasicRemoveFromContainer(msgs);
+            return basicSetATInstance((ATInstance) otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eInverseRemove(final InternalEObject otherEnd, final int featureID,
-            final NotificationChain msgs) {
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case InstancePackage.ROLE2_RESOURCE__AT_INSTANCE:
-            return this.basicSetATInstance(null, msgs);
+            return basicSetATInstance(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eBasicRemoveFromContainerFeature(final NotificationChain msgs) {
-        switch (this.eContainerFeatureID()) {
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+        switch (eContainerFeatureID()) {
         case InstancePackage.ROLE2_RESOURCE__AT_INSTANCE:
-            return this.eInternalContainer().eInverseRemove(this, InstancePackage.AT_INSTANCE__ROLE2RESOURCES,
+            return eInternalContainer().eInverseRemove(this, InstancePackage.AT_INSTANCE__ROLE2RESOURCES,
                     ATInstance.class, msgs);
         }
         return super.eBasicRemoveFromContainerFeature(msgs);
@@ -206,44 +185,40 @@ public class Role2ResourceImpl extends CDOObjectImpl implements Role2Resource {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public Object eGet(final int featureID, final boolean resolve, final boolean coreType) {
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case InstancePackage.ROLE2_RESOURCE__AT_INSTANCE:
-            return this.getATInstance();
+            return getATInstance();
         case InstancePackage.ROLE2_RESOURCE__RESOURCE:
-            if (resolve) {
-                return this.getResource();
-            }
-            return this.basicGetResource();
+            if (resolve)
+                return getResource();
+            return basicGetResource();
         case InstancePackage.ROLE2_RESOURCE__ROLE:
-            if (resolve) {
-                return this.getRole();
-            }
-            return this.basicGetRole();
+            if (resolve)
+                return getRole();
+            return basicGetRole();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void eSet(final int featureID, final Object newValue) {
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
         case InstancePackage.ROLE2_RESOURCE__AT_INSTANCE:
-            this.setATInstance((ATInstance) newValue);
+            setATInstance((ATInstance) newValue);
             return;
         case InstancePackage.ROLE2_RESOURCE__RESOURCE:
-            this.setResource((ResourceContainer) newValue);
+            setResource((ResourceContainer) newValue);
             return;
         case InstancePackage.ROLE2_RESOURCE__ROLE:
-            this.setRole((Role) newValue);
+            setRole((Role) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -251,20 +226,19 @@ public class Role2ResourceImpl extends CDOObjectImpl implements Role2Resource {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void eUnset(final int featureID) {
+    public void eUnset(int featureID) {
         switch (featureID) {
         case InstancePackage.ROLE2_RESOURCE__AT_INSTANCE:
-            this.setATInstance((ATInstance) null);
+            setATInstance((ATInstance) null);
             return;
         case InstancePackage.ROLE2_RESOURCE__RESOURCE:
-            this.setResource((ResourceContainer) null);
+            setResource((ResourceContainer) null);
             return;
         case InstancePackage.ROLE2_RESOURCE__ROLE:
-            this.setRole((Role) null);
+            setRole((Role) null);
             return;
         }
         super.eUnset(featureID);
@@ -272,18 +246,17 @@ public class Role2ResourceImpl extends CDOObjectImpl implements Role2Resource {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public boolean eIsSet(final int featureID) {
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
         case InstancePackage.ROLE2_RESOURCE__AT_INSTANCE:
-            return this.getATInstance() != null;
+            return getATInstance() != null;
         case InstancePackage.ROLE2_RESOURCE__RESOURCE:
-            return this.basicGetResource() != null;
+            return basicGetResource() != null;
         case InstancePackage.ROLE2_RESOURCE__ROLE:
-            return this.basicGetRole() != null;
+            return basicGetRole() != null;
         }
         return super.eIsSet(featureID);
     }

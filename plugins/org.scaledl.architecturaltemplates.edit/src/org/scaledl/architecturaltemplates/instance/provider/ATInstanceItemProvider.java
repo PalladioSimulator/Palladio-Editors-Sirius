@@ -12,12 +12,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.palladiosimulator.pcm.core.entity.provider.EntityItemProvider;
 import org.scaledl.architecturaltemplates.instance.ATInstance;
 import org.scaledl.architecturaltemplates.instance.InstanceFactory;
 import org.scaledl.architecturaltemplates.instance.InstancePackage;
 import org.scaledl.architecturaltemplates.type.provider.ArchitecturaltemplatesEditPlugin;
-
-import org.palladiosimulator.pcm.core.entity.provider.EntityItemProvider;
 
 /**
  * This is the item provider adapter for a
@@ -64,10 +63,10 @@ public class ATInstanceItemProvider extends EntityItemProvider {
     protected void addAT2ComponentsPropertyDescriptor(final Object object) {
         this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
                 ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_ATInstance_AT2Components_feature"), this.getString(
-                        "_UI_PropertyDescriptor_description", "_UI_ATInstance_AT2Components_feature",
-                        "_UI_ATInstance_type"), InstancePackage.Literals.AT_INSTANCE__AT2_COMPONENTS, true, false,
-                true, null, null, null));
+                this.getString("_UI_ATInstance_AT2Components_feature"),
+                this.getString("_UI_PropertyDescriptor_description", "_UI_ATInstance_AT2Components_feature",
+                        "_UI_ATInstance_type"),
+                InstancePackage.Literals.AT_INSTANCE__AT2_COMPONENTS, true, false, true, null, null, null));
     }
 
     /**
@@ -79,9 +78,10 @@ public class ATInstanceItemProvider extends EntityItemProvider {
     protected void addTypePropertyDescriptor(final Object object) {
         this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
                 ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_ATInstance_type_feature"), this.getString("_UI_PropertyDescriptor_description",
-                        "_UI_ATInstance_type_feature", "_UI_ATInstance_type"),
-                        InstancePackage.Literals.AT_INSTANCE__TYPE, true, false, true, null, null, null));
+                this.getString("_UI_ATInstance_type_feature"),
+                this.getString("_UI_PropertyDescriptor_description", "_UI_ATInstance_type_feature",
+                        "_UI_ATInstance_type"),
+                InstancePackage.Literals.AT_INSTANCE__TYPE, true, false, true, null, null, null));
     }
 
     /**
@@ -137,8 +137,8 @@ public class ATInstanceItemProvider extends EntityItemProvider {
     @Override
     public String getText(final Object object) {
         final String label = ((ATInstance) object).getId();
-        return label == null || label.length() == 0 ? this.getString("_UI_ATInstance_type") : this
-                .getString("_UI_ATInstance_type") + " " + label;
+        return label == null || label.length() == 0 ? this.getString("_UI_ATInstance_type")
+                : this.getString("_UI_ATInstance_type") + " " + label;
     }
 
     /**

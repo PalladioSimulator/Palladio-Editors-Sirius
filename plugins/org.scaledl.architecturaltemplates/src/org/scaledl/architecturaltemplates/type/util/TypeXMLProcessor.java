@@ -10,16 +10,16 @@ import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 import org.scaledl.architecturaltemplates.type.TypePackage;
 
 /**
- * This class contains helper methods to serialize and deserialize XML documents <!-- begin-user-doc
+ * This class contains helper methods to serialize and deserialize XML documents
+ * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class TypeXMLProcessor extends XMLProcessor {
 
     /**
-     * Public constructor to instantiate the helper. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Public constructor to instantiate the helper.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     public TypeXMLProcessor() {
@@ -35,12 +35,12 @@ public class TypeXMLProcessor extends XMLProcessor {
      */
     @Override
     protected Map<String, Resource.Factory> getRegistrations() {
-        if (this.registrations == null) {
+        if (registrations == null) {
             super.getRegistrations();
-            this.registrations.put(XML_EXTENSION, new TypeResourceFactoryImpl());
-            this.registrations.put(STAR_EXTENSION, new TypeResourceFactoryImpl());
+            registrations.put(XML_EXTENSION, new TypeResourceFactoryImpl());
+            registrations.put(STAR_EXTENSION, new TypeResourceFactoryImpl());
         }
-        return this.registrations;
+        return registrations;
     }
 
 } // TypeXMLProcessor

@@ -65,10 +65,10 @@ public class Role2ComponentItemProvider extends ItemProviderAdapter implements I
     protected void addComponentPropertyDescriptor(final Object object) {
         this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
                 ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_Role2Component_component_feature"), this.getString(
-                        "_UI_PropertyDescriptor_description", "_UI_Role2Component_component_feature",
-                        "_UI_Role2Component_type"), InstancePackage.Literals.ROLE2_COMPONENT__COMPONENT, true, false,
-                true, null, null, null));
+                this.getString("_UI_Role2Component_component_feature"),
+                this.getString("_UI_PropertyDescriptor_description", "_UI_Role2Component_component_feature",
+                        "_UI_Role2Component_type"),
+                InstancePackage.Literals.ROLE2_COMPONENT__COMPONENT, true, false, true, null, null, null));
     }
 
     /**
@@ -80,9 +80,10 @@ public class Role2ComponentItemProvider extends ItemProviderAdapter implements I
     protected void addRolePropertyDescriptor(final Object object) {
         this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
                 ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_Role2Component_role_feature"), this.getString("_UI_PropertyDescriptor_description",
-                        "_UI_Role2Component_role_feature", "_UI_Role2Component_type"),
-                        InstancePackage.Literals.ROLE2_COMPONENT__ROLE, true, false, true, null, null, null));
+                this.getString("_UI_Role2Component_role_feature"),
+                this.getString("_UI_PropertyDescriptor_description", "_UI_Role2Component_role_feature",
+                        "_UI_Role2Component_type"),
+                InstancePackage.Literals.ROLE2_COMPONENT__ROLE, true, false, true, null, null, null));
     }
 
     /**

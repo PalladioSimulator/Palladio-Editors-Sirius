@@ -15,11 +15,10 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  * <em><b>Completion Parameter</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.scaledl.architecturaltemplates.type.impl.CompletionParameterImpl#getCompletion
- * <em>Completion</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.scaledl.architecturaltemplates.type.impl.CompletionParameterImpl#getCompletion <em>Completion</em>}</li>
+ * </ul>
  *
  * @generated
  */
@@ -27,7 +26,6 @@ public abstract class CompletionParameterImpl extends CDOObjectImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected CompletionParameterImpl() {
@@ -36,7 +34,6 @@ public abstract class CompletionParameterImpl extends CDOObjectImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -46,7 +43,6 @@ public abstract class CompletionParameterImpl extends CDOObjectImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -56,79 +52,70 @@ public abstract class CompletionParameterImpl extends CDOObjectImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Completion getCompletion() {
-        return (Completion) this.eDynamicGet(TypePackage.COMPLETION_PARAMETER__COMPLETION,
+        return (Completion) eDynamicGet(TypePackage.COMPLETION_PARAMETER__COMPLETION,
                 TypePackage.Literals.COMPLETION_PARAMETER__COMPLETION, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
-    public NotificationChain basicSetCompletion(final Completion newCompletion, NotificationChain msgs) {
-        msgs = this.eBasicSetContainer((InternalEObject) newCompletion, TypePackage.COMPLETION_PARAMETER__COMPLETION,
-                msgs);
+    public NotificationChain basicSetCompletion(Completion newCompletion, NotificationChain msgs) {
+        msgs = eBasicSetContainer((InternalEObject) newCompletion, TypePackage.COMPLETION_PARAMETER__COMPLETION, msgs);
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void setCompletion(final Completion newCompletion) {
-        this.eDynamicSet(TypePackage.COMPLETION_PARAMETER__COMPLETION,
-                TypePackage.Literals.COMPLETION_PARAMETER__COMPLETION, newCompletion);
+    public void setCompletion(Completion newCompletion) {
+        eDynamicSet(TypePackage.COMPLETION_PARAMETER__COMPLETION, TypePackage.Literals.COMPLETION_PARAMETER__COMPLETION,
+                newCompletion);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eInverseAdd(final InternalEObject otherEnd, final int featureID, NotificationChain msgs) {
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case TypePackage.COMPLETION_PARAMETER__COMPLETION:
-            if (this.eInternalContainer() != null) {
-                msgs = this.eBasicRemoveFromContainer(msgs);
-            }
-            return this.basicSetCompletion((Completion) otherEnd, msgs);
+            if (eInternalContainer() != null)
+                msgs = eBasicRemoveFromContainer(msgs);
+            return basicSetCompletion((Completion) otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eInverseRemove(final InternalEObject otherEnd, final int featureID,
-            final NotificationChain msgs) {
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case TypePackage.COMPLETION_PARAMETER__COMPLETION:
-            return this.basicSetCompletion(null, msgs);
+            return basicSetCompletion(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eBasicRemoveFromContainerFeature(final NotificationChain msgs) {
-        switch (this.eContainerFeatureID()) {
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+        switch (eContainerFeatureID()) {
         case TypePackage.COMPLETION_PARAMETER__COMPLETION:
-            return this.eInternalContainer().eInverseRemove(this, TypePackage.COMPLETION__PARAMETERS, Completion.class,
+            return eInternalContainer().eInverseRemove(this, TypePackage.COMPLETION__PARAMETERS, Completion.class,
                     msgs);
         }
         return super.eBasicRemoveFromContainerFeature(msgs);
@@ -136,28 +123,26 @@ public abstract class CompletionParameterImpl extends CDOObjectImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public Object eGet(final int featureID, final boolean resolve, final boolean coreType) {
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case TypePackage.COMPLETION_PARAMETER__COMPLETION:
-            return this.getCompletion();
+            return getCompletion();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void eSet(final int featureID, final Object newValue) {
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
         case TypePackage.COMPLETION_PARAMETER__COMPLETION:
-            this.setCompletion((Completion) newValue);
+            setCompletion((Completion) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -165,14 +150,13 @@ public abstract class CompletionParameterImpl extends CDOObjectImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void eUnset(final int featureID) {
+    public void eUnset(int featureID) {
         switch (featureID) {
         case TypePackage.COMPLETION_PARAMETER__COMPLETION:
-            this.setCompletion((Completion) null);
+            setCompletion((Completion) null);
             return;
         }
         super.eUnset(featureID);
@@ -180,14 +164,13 @@ public abstract class CompletionParameterImpl extends CDOObjectImpl implements C
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public boolean eIsSet(final int featureID) {
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TypePackage.COMPLETION_PARAMETER__COMPLETION:
-            return this.getCompletion() != null;
+            return getCompletion() != null;
         }
         return super.eIsSet(featureID);
     }

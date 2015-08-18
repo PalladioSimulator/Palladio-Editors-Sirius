@@ -11,22 +11,19 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  * <em><b>Generic Blackboard Completion Parameter</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>
- * {@link org.scaledl.architecturaltemplates.type.impl.GenericBlackboardCompletionParameterImpl#getFileExtension
- * <em>File Extension</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.scaledl.architecturaltemplates.type.impl.GenericBlackboardCompletionParameterImpl#getFileExtension <em>File Extension</em>}</li>
+ * </ul>
  *
  * @generated
  */
-public class GenericBlackboardCompletionParameterImpl extends CompletionParameterImpl implements
-GenericBlackboardCompletionParameter {
+public class GenericBlackboardCompletionParameterImpl extends CompletionParameterImpl
+        implements GenericBlackboardCompletionParameter {
 
     /**
      * The default value of the '{@link #getFileExtension() <em>File Extension</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see #getFileExtension()
      * @generated
      * @ordered
@@ -35,7 +32,6 @@ GenericBlackboardCompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected GenericBlackboardCompletionParameterImpl() {
@@ -44,7 +40,6 @@ GenericBlackboardCompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -54,50 +49,46 @@ GenericBlackboardCompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getFileExtension() {
-        return (String) this.eDynamicGet(TypePackage.GENERIC_BLACKBOARD_COMPLETION_PARAMETER__FILE_EXTENSION,
+        return (String) eDynamicGet(TypePackage.GENERIC_BLACKBOARD_COMPLETION_PARAMETER__FILE_EXTENSION,
                 TypePackage.Literals.GENERIC_BLACKBOARD_COMPLETION_PARAMETER__FILE_EXTENSION, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void setFileExtension(final String newFileExtension) {
-        this.eDynamicSet(TypePackage.GENERIC_BLACKBOARD_COMPLETION_PARAMETER__FILE_EXTENSION,
+    public void setFileExtension(String newFileExtension) {
+        eDynamicSet(TypePackage.GENERIC_BLACKBOARD_COMPLETION_PARAMETER__FILE_EXTENSION,
                 TypePackage.Literals.GENERIC_BLACKBOARD_COMPLETION_PARAMETER__FILE_EXTENSION, newFileExtension);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public Object eGet(final int featureID, final boolean resolve, final boolean coreType) {
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case TypePackage.GENERIC_BLACKBOARD_COMPLETION_PARAMETER__FILE_EXTENSION:
-            return this.getFileExtension();
+            return getFileExtension();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void eSet(final int featureID, final Object newValue) {
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
         case TypePackage.GENERIC_BLACKBOARD_COMPLETION_PARAMETER__FILE_EXTENSION:
-            this.setFileExtension((String) newValue);
+            setFileExtension((String) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -105,14 +96,13 @@ GenericBlackboardCompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void eUnset(final int featureID) {
+    public void eUnset(int featureID) {
         switch (featureID) {
         case TypePackage.GENERIC_BLACKBOARD_COMPLETION_PARAMETER__FILE_EXTENSION:
-            this.setFileExtension(FILE_EXTENSION_EDEFAULT);
+            setFileExtension(FILE_EXTENSION_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -120,15 +110,14 @@ GenericBlackboardCompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public boolean eIsSet(final int featureID) {
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TypePackage.GENERIC_BLACKBOARD_COMPLETION_PARAMETER__FILE_EXTENSION:
-            return FILE_EXTENSION_EDEFAULT == null ? this.getFileExtension() != null : !FILE_EXTENSION_EDEFAULT
-            .equals(this.getFileExtension());
+            return FILE_EXTENSION_EDEFAULT == null ? getFileExtension() != null
+                    : !FILE_EXTENSION_EDEFAULT.equals(getFileExtension());
         }
         return super.eIsSet(featureID);
     }

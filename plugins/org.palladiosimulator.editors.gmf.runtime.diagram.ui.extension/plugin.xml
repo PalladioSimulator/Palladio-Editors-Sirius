@@ -69,6 +69,9 @@
       <styleConfigurationProvider
             providerClass="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.styleconfiguration.ComposedProvidingRequringEntityStyleConfiguration">
       </styleConfigurationProvider>
+      <styleConfigurationProvider
+            providerClass="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.styleconfiguration.ResourceContainerStyleConfiguration">
+      </styleConfigurationProvider>
    </extension>
    <extension
          point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">

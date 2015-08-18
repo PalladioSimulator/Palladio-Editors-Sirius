@@ -58,8 +58,8 @@ public class GenericOutputCompletionParameterItemProvider extends CompletionPara
     protected void addFileExtensionPropertyDescriptor(final Object object) {
         this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
                 ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_GenericOutputCompletionParameter_fileExtension_feature"), this.getString(
-                        "_UI_PropertyDescriptor_description",
+                this.getString("_UI_GenericOutputCompletionParameter_fileExtension_feature"),
+                this.getString("_UI_PropertyDescriptor_description",
                         "_UI_GenericOutputCompletionParameter_fileExtension_feature",
                         "_UI_GenericOutputCompletionParameter_type"),
                 TypePackage.Literals.GENERIC_OUTPUT_COMPLETION_PARAMETER__FILE_EXTENSION, true, false, false,

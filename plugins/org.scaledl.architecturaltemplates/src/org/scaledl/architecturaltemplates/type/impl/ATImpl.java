@@ -23,16 +23,13 @@ import org.palladiosimulator.pcm.core.entity.impl.EntityImpl;
  * end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.scaledl.architecturaltemplates.type.impl.ATImpl#getRepository <em>Repository</em>}
- * </li>
- * <li>{@link org.scaledl.architecturaltemplates.type.impl.ATImpl#getRoles <em>Roles</em>}</li>
- * <li>{@link org.scaledl.architecturaltemplates.type.impl.ATImpl#getConstraints <em>Constraints
- * </em>}</li>
- * <li>{@link org.scaledl.architecturaltemplates.type.impl.ATImpl#getCompletion <em>Completion</em>}
- * </li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.scaledl.architecturaltemplates.type.impl.ATImpl#getRepository <em>Repository</em>}</li>
+ *   <li>{@link org.scaledl.architecturaltemplates.type.impl.ATImpl#getRoles <em>Roles</em>}</li>
+ *   <li>{@link org.scaledl.architecturaltemplates.type.impl.ATImpl#getConstraints <em>Constraints</em>}</li>
+ *   <li>{@link org.scaledl.architecturaltemplates.type.impl.ATImpl#getCompletion <em>Completion</em>}</li>
+ * </ul>
  *
  * @generated
  */
@@ -40,7 +37,6 @@ public class ATImpl extends EntityImpl implements AT {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected ATImpl() {
@@ -49,7 +45,6 @@ public class ATImpl extends EntityImpl implements AT {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -59,195 +54,177 @@ public class ATImpl extends EntityImpl implements AT {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Repository getRepository() {
-        return (Repository) this.eDynamicGet(TypePackage.AT__REPOSITORY, TypePackage.Literals.AT__REPOSITORY, true,
-                true);
+        return (Repository) eDynamicGet(TypePackage.AT__REPOSITORY, TypePackage.Literals.AT__REPOSITORY, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
-    public NotificationChain basicSetRepository(final Repository newRepository, NotificationChain msgs) {
-        msgs = this.eBasicSetContainer((InternalEObject) newRepository, TypePackage.AT__REPOSITORY, msgs);
+    public NotificationChain basicSetRepository(Repository newRepository, NotificationChain msgs) {
+        msgs = eBasicSetContainer((InternalEObject) newRepository, TypePackage.AT__REPOSITORY, msgs);
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void setRepository(final Repository newRepository) {
-        this.eDynamicSet(TypePackage.AT__REPOSITORY, TypePackage.Literals.AT__REPOSITORY, newRepository);
+    public void setRepository(Repository newRepository) {
+        eDynamicSet(TypePackage.AT__REPOSITORY, TypePackage.Literals.AT__REPOSITORY, newRepository);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public EList<Role> getRoles() {
-        return (EList<Role>) this.eDynamicGet(TypePackage.AT__ROLES, TypePackage.Literals.AT__ROLES, true, true);
+        return (EList<Role>) eDynamicGet(TypePackage.AT__ROLES, TypePackage.Literals.AT__ROLES, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public EList<Constraint> getConstraints() {
-        return (EList<Constraint>) this.eDynamicGet(TypePackage.AT__CONSTRAINTS, TypePackage.Literals.AT__CONSTRAINTS,
-                true, true);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Completion getCompletion() {
-        return (Completion) this.eDynamicGet(TypePackage.AT__COMPLETION, TypePackage.Literals.AT__COMPLETION, true,
+        return (EList<Constraint>) eDynamicGet(TypePackage.AT__CONSTRAINTS, TypePackage.Literals.AT__CONSTRAINTS, true,
                 true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
-    public NotificationChain basicSetCompletion(final Completion newCompletion, NotificationChain msgs) {
-        msgs = this.eDynamicInverseAdd((InternalEObject) newCompletion, TypePackage.AT__COMPLETION, msgs);
+    @Override
+    public Completion getCompletion() {
+        return (Completion) eDynamicGet(TypePackage.AT__COMPLETION, TypePackage.Literals.AT__COMPLETION, true, true);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * @generated
+     */
+    public NotificationChain basicSetCompletion(Completion newCompletion, NotificationChain msgs) {
+        msgs = eDynamicInverseAdd((InternalEObject) newCompletion, TypePackage.AT__COMPLETION, msgs);
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void setCompletion(final Completion newCompletion) {
-        this.eDynamicSet(TypePackage.AT__COMPLETION, TypePackage.Literals.AT__COMPLETION, newCompletion);
+    public void setCompletion(Completion newCompletion) {
+        eDynamicSet(TypePackage.AT__COMPLETION, TypePackage.Literals.AT__COMPLETION, newCompletion);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
-    public NotificationChain eInverseAdd(final InternalEObject otherEnd, final int featureID, NotificationChain msgs) {
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case TypePackage.AT__REPOSITORY:
-            if (this.eInternalContainer() != null) {
-                msgs = this.eBasicRemoveFromContainer(msgs);
-            }
-            return this.basicSetRepository((Repository) otherEnd, msgs);
+            if (eInternalContainer() != null)
+                msgs = eBasicRemoveFromContainer(msgs);
+            return basicSetRepository((Repository) otherEnd, msgs);
         case TypePackage.AT__ROLES:
-            return ((InternalEList<InternalEObject>) (InternalEList<?>) this.getRoles()).basicAdd(otherEnd, msgs);
+            return ((InternalEList<InternalEObject>) (InternalEList<?>) getRoles()).basicAdd(otherEnd, msgs);
         case TypePackage.AT__CONSTRAINTS:
-            return ((InternalEList<InternalEObject>) (InternalEList<?>) this.getConstraints()).basicAdd(otherEnd, msgs);
+            return ((InternalEList<InternalEObject>) (InternalEList<?>) getConstraints()).basicAdd(otherEnd, msgs);
         case TypePackage.AT__COMPLETION:
-            final Completion completion = this.getCompletion();
-            if (completion != null) {
-                msgs = ((InternalEObject) completion).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-                        - TypePackage.AT__COMPLETION, null, msgs);
-            }
-            return this.basicSetCompletion((Completion) otherEnd, msgs);
+            Completion completion = getCompletion();
+            if (completion != null)
+                msgs = ((InternalEObject) completion).eInverseRemove(this,
+                        EOPPOSITE_FEATURE_BASE - TypePackage.AT__COMPLETION, null, msgs);
+            return basicSetCompletion((Completion) otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eInverseRemove(final InternalEObject otherEnd, final int featureID,
-            final NotificationChain msgs) {
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case TypePackage.AT__REPOSITORY:
-            return this.basicSetRepository(null, msgs);
+            return basicSetRepository(null, msgs);
         case TypePackage.AT__ROLES:
-            return ((InternalEList<?>) this.getRoles()).basicRemove(otherEnd, msgs);
+            return ((InternalEList<?>) getRoles()).basicRemove(otherEnd, msgs);
         case TypePackage.AT__CONSTRAINTS:
-            return ((InternalEList<?>) this.getConstraints()).basicRemove(otherEnd, msgs);
+            return ((InternalEList<?>) getConstraints()).basicRemove(otherEnd, msgs);
         case TypePackage.AT__COMPLETION:
-            return this.basicSetCompletion(null, msgs);
+            return basicSetCompletion(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eBasicRemoveFromContainerFeature(final NotificationChain msgs) {
-        switch (this.eContainerFeatureID()) {
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+        switch (eContainerFeatureID()) {
         case TypePackage.AT__REPOSITORY:
-            return this.eInternalContainer().eInverseRemove(this, TypePackage.REPOSITORY__ATS, Repository.class, msgs);
+            return eInternalContainer().eInverseRemove(this, TypePackage.REPOSITORY__ATS, Repository.class, msgs);
         }
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public Object eGet(final int featureID, final boolean resolve, final boolean coreType) {
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case TypePackage.AT__REPOSITORY:
-            return this.getRepository();
+            return getRepository();
         case TypePackage.AT__ROLES:
-            return this.getRoles();
+            return getRoles();
         case TypePackage.AT__CONSTRAINTS:
-            return this.getConstraints();
+            return getConstraints();
         case TypePackage.AT__COMPLETION:
-            return this.getCompletion();
+            return getCompletion();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
-    public void eSet(final int featureID, final Object newValue) {
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
         case TypePackage.AT__REPOSITORY:
-            this.setRepository((Repository) newValue);
+            setRepository((Repository) newValue);
             return;
         case TypePackage.AT__ROLES:
-            this.getRoles().clear();
-            this.getRoles().addAll((Collection<? extends Role>) newValue);
+            getRoles().clear();
+            getRoles().addAll((Collection<? extends Role>) newValue);
             return;
         case TypePackage.AT__CONSTRAINTS:
-            this.getConstraints().clear();
-            this.getConstraints().addAll((Collection<? extends Constraint>) newValue);
+            getConstraints().clear();
+            getConstraints().addAll((Collection<? extends Constraint>) newValue);
             return;
         case TypePackage.AT__COMPLETION:
-            this.setCompletion((Completion) newValue);
+            setCompletion((Completion) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -255,23 +232,22 @@ public class ATImpl extends EntityImpl implements AT {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void eUnset(final int featureID) {
+    public void eUnset(int featureID) {
         switch (featureID) {
         case TypePackage.AT__REPOSITORY:
-            this.setRepository((Repository) null);
+            setRepository((Repository) null);
             return;
         case TypePackage.AT__ROLES:
-            this.getRoles().clear();
+            getRoles().clear();
             return;
         case TypePackage.AT__CONSTRAINTS:
-            this.getConstraints().clear();
+            getConstraints().clear();
             return;
         case TypePackage.AT__COMPLETION:
-            this.setCompletion((Completion) null);
+            setCompletion((Completion) null);
             return;
         }
         super.eUnset(featureID);
@@ -279,20 +255,19 @@ public class ATImpl extends EntityImpl implements AT {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public boolean eIsSet(final int featureID) {
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TypePackage.AT__REPOSITORY:
-            return this.getRepository() != null;
+            return getRepository() != null;
         case TypePackage.AT__ROLES:
-            return !this.getRoles().isEmpty();
+            return !getRoles().isEmpty();
         case TypePackage.AT__CONSTRAINTS:
-            return !this.getConstraints().isEmpty();
+            return !getConstraints().isEmpty();
         case TypePackage.AT__COMPLETION:
-            return this.getCompletion() != null;
+            return getCompletion() != null;
         }
         return super.eIsSet(featureID);
     }

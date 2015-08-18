@@ -48,6 +48,9 @@ main() {
 		applyProfile(resourceEnvironment.oclAsType(EObject), "LoadbalancedProfile");
 	};
 	
+	if (not isProfileApplied(system.oclAsType(EObject), "LoadbalancedProfile")) {
+		applyProfile(system.oclAsType(EObject), "LoadbalancedProfile");
+	};
 	applyStereotype(loadbalancedResourceContainer,"OriginalResourceContainer");
 	
 	numberOfReplicas := getIntTaggedValue(loadbalancedResourceContainer,"numberOfReplicas",appliedStereotype);
@@ -100,7 +103,6 @@ mapping AssemblyContext::duplicateAssemblyContext(rc:ResourceContainer):Assembly
 	parentStructure__AssemblyContext := system;
 }
 
-
 helper createSystemAndAllocation(originalResourceContainer : ResourceContainer,resourceContainers:Bag(ResourceContainer)){
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var system : System := allocation.system_Allocation![System];
@@ -110,9 +112,12 @@ helper createSystemAndAllocation(originalResourceContainer : ResourceContainer,r
 	var targetResourceContainer : ResourceContainer;
 	var sourceAssemblyContext : AssemblyContext;
 	var sourceResourceContainer : ResourceContainer;
-	var resolvedSourceAssemblyContext :Sequence(AssemblyContext);
-	var resolvedTargetAssemblyContext :Sequence(AssemblyContext);
-	connectors->forEach(connector) {		
+	var duplicateAssemblies : Set(AssemblyContext); 
+	var duplicateTargetAssemblyContexts : Set(AssemblyContext);
+	var duplicateSourceAssemblyContexts : Set(AssemblyContext);	
+	var duplicateAssemblyContext : AssemblyContext;
+	
+	connectors->forEach(connector) {	
 		if (connector.oclIsTypeOf(AssemblyConnector)) {
 			var assemblyConnector : AssemblyConnector := connector.oclAsType(AssemblyConnector);
 		
@@ -121,152 +126,184 @@ helper createSystemAndAllocation(originalResourceContainer : ResourceContainer,r
 
 			targetAssemblyContext := getProvidingAssemblyContext(assemblyConnector);
 			targetResourceContainer := findResourceContainer(targetAssemblyContext);
-			
-			resolvedSourceAssemblyContext := sourceAssemblyContext.resolve(AssemblyContext);
-			resolvedTargetAssemblyContext := targetAssemblyContext.resolve(AssemblyContext);
-			
+			duplicateAssemblies := pcmAllocation.rootObjects()![Allocation].system_Allocation![System].assemblyContexts__ComposedStructure->select(assembly : AssemblyContext| hasAppliedStereotype(assembly,"DuplicateAssemblyContext"));
+			duplicateTargetAssemblyContexts := duplicateAssemblies->select(assembly : AssemblyContext | getStringTaggedValue(assembly,"originalAssemblyContext","DuplicateAssemblyContext")=targetAssemblyContext.id);
+			duplicateSourceAssemblyContexts := duplicateAssemblies->select(assembly : AssemblyContext | getStringTaggedValue(assembly,"originalAssemblyContext","DuplicateAssemblyContext")=sourceAssemblyContext.id);
+		
+			//both assemblies are on the same resource container and it is the replicable resource container		
 			if(sourceResourceContainer.id = targetResourceContainer.id and targetResourceContainer.id = originalResourceContainer.id){
 				var duplicatedSourceAssemblyContext : AssemblyContext;
 				var duplicatedTargetAssemblyContext : AssemblyContext;
-				
-				if(resolvedSourceAssemblyContext->size() = 0){
+				//create duplicates of the target assembly context 
+				if(duplicateTargetAssemblyContexts->size() = 0){
 					resourceContainers -> forEach(rc){
-						resolvedSourceAssemblyContext += sourceAssemblyContext.map duplicateAssemblyContext(rc);
-						new AllocationContext(resolvedSourceAssemblyContext->last(), rc);
-					}
-				};
-				if(resolvedTargetAssemblyContext->size() = 0){
+						duplicateAssemblyContext := targetAssemblyContext.map duplicateAssemblyContext(rc);
+						duplicateTargetAssemblyContexts += duplicateAssemblyContext;
+						applyStereotype(duplicateAssemblyContext, "DuplicateAssemblyContext");
+						setStringTaggedValue(duplicateAssemblyContext,targetAssemblyContext.id,"DuplicateAssemblyContext","originalAssemblyContext");
+						new AllocationContext(duplicateAssemblyContext, rc);
+					};
+				};	
+				//create duplicates of the source assembly context
+				if(duplicateSourceAssemblyContexts->size() = 0){
 					resourceContainers -> forEach(rc){
-						resolvedTargetAssemblyContext += targetAssemblyContext.map duplicateAssemblyContext(rc);
-						new AllocationContext(resolvedTargetAssemblyContext->last(), rc);
-					}
+						duplicateAssemblyContext := sourceAssemblyContext.map duplicateAssemblyContext(rc);
+						duplicateSourceAssemblyContexts += duplicateAssemblyContext;
+						applyStereotype(duplicateAssemblyContext, "DuplicateAssemblyContext");
+						setStringTaggedValue(duplicateAssemblyContext,sourceAssemblyContext.id,"DuplicateAssemblyContext","originalAssemblyContext");
+						new AllocationContext(duplicateAssemblyContext, rc);
+					};
 				};
-				
 				var allocationContextSet : Set(AllocationContext) := allocation.allocationContexts_Allocation;
 				
 				resourceContainers -> forEach(rc){
 					var allocationContextOfResourceContainer : Set(AllocationContext) := allocationContextSet ->select(ac:AllocationContext| ac.resourceContainer_AllocationContext.id = rc.id);
-					var assembliesOfResourceContainer : Set(AssemblyContext);
-					allocationContextOfResourceContainer -> forEach(ac){
-						assembliesOfResourceContainer+=ac.assemblyContext_AllocationContext;
-					};	
-					duplicatedSourceAssemblyContext := resolvedSourceAssemblyContext->selectOne(assemblyContext : AssemblyContext |assembliesOfResourceContainer->includes(assemblyContext));
-					duplicatedTargetAssemblyContext := resolvedTargetAssemblyContext->selectOne(assemblyContext : AssemblyContext |assembliesOfResourceContainer->includes(assemblyContext));	
+					var assembliesOfResourceContainer : Bag(AssemblyContext) := allocationContextOfResourceContainer->collect(allocationContext : AllocationContext| allocationContext.assemblyContext_AllocationContext);
+					duplicatedSourceAssemblyContext := assembliesOfResourceContainer->selectOne(assemblyContext : AssemblyContext |getStringTaggedValue(assemblyContext,"originalAssemblyContext","DuplicateAssemblyContext") = sourceAssemblyContext.id);
+					duplicatedTargetAssemblyContext := assembliesOfResourceContainer->selectOne(assemblyContext : AssemblyContext |getStringTaggedValue(assemblyContext,"originalAssemblyContext","DuplicateAssemblyContext") = targetAssemblyContext.id);	
 					new AssemblyConnector(duplicatedSourceAssemblyContext,assemblyConnector.requiredRole_AssemblyConnector,assemblyConnector.providedRole_AssemblyConnector,duplicatedTargetAssemblyContext);			
 				};
 			}
-			
+			//target resource container is the replicable resource container but the source assembly context is allocated on a different resource container. Hence, only the target assembly context has to be duplicated and loadbalanced
 			else if(sourceResourceContainer.id != targetResourceContainer.id and targetResourceContainer.id = originalResourceContainer.id) {
 				var loadBalancerAssemblyContext : AssemblyContext;
 				var oldAssemblyConnectorProvidedInterface := assemblyConnector.providedRole_AssemblyConnector.providedInterface__OperationProvidedRole;
-				var duplicatedAssemblyContextsAndLoadBalancedAssemblyContext : Sequence(AssemblyContext);	
-				duplicatedAssemblyContextsAndLoadBalancedAssemblyContext +=targetAssemblyContext;			
-				if(resolvedTargetAssemblyContext->size() = 0){
+				var duplicatedAssemblyContextsAndLoadBalancedAssemblyContext : Set(AssemblyContext);
+				duplicatedAssemblyContextsAndLoadBalancedAssemblyContext +=targetAssemblyContext;	
+				//no duplicates and no loadbalancer exists
+				if(duplicateTargetAssemblyContexts -> size() = 0){
 					resourceContainers -> forEach(rc){
-						resolvedTargetAssemblyContext += targetAssemblyContext.map duplicateAssemblyContext(rc);
-						new AllocationContext(resolvedTargetAssemblyContext->last(), rc);
+						duplicateAssemblyContext := targetAssemblyContext.map duplicateAssemblyContext(rc);
+						duplicateTargetAssemblyContexts += duplicateAssemblyContext;
+						applyStereotype(duplicateAssemblyContext, "DuplicateAssemblyContext");
+						setStringTaggedValue(duplicateAssemblyContext,targetAssemblyContext.id,"DuplicateAssemblyContext","originalAssemblyContext");
+						new AllocationContext(duplicateAssemblyContext, rc);
 					};
 					if (targetAssemblyContext.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity != null){
-							addRequiredRolesAssemblyConnectors(assemblyConnector,resolvedTargetAssemblyContext);
+						addRequiredRolesAssemblyConnectors(assemblyConnector,duplicateTargetAssemblyContexts);
 					};
-					duplicatedAssemblyContextsAndLoadBalancedAssemblyContext += resolvedTargetAssemblyContext;
-					loadBalancerResourceContainer := createLoadbalancerResourceContainer(oldAssemblyConnectorProvidedInterface.entityName,originalResourceContainer);
-					loadBalancerAssemblyContext := targetAssemblyContext.createLoadBalancerFromAssembly(loadBalancerResourceContainer,assemblyConnector.providedRole_AssemblyConnector);
-					
 				};
 				
-				if(targetAssemblyContext.resolve(BasicComponent)->size()=0){
+				if(duplicateTargetAssemblyContexts->size()>0 and not(hasAppliedStereotype(targetAssemblyContext,"OriginalAssemblyContext"))){
+					duplicatedAssemblyContextsAndLoadBalancedAssemblyContext += duplicateTargetAssemblyContexts;
 					loadBalancerResourceContainer := createLoadbalancerResourceContainer(oldAssemblyConnectorProvidedInterface.entityName,originalResourceContainer);
 					loadBalancerAssemblyContext := targetAssemblyContext.createLoadBalancerFromAssembly(loadBalancerResourceContainer,assemblyConnector.providedRole_AssemblyConnector);
-					duplicatedAssemblyContextsAndLoadBalancedAssemblyContext += resolvedTargetAssemblyContext;
+					applyStereotype(targetAssemblyContext, "OriginalAssemblyContext");
+					setStringTaggedValue(targetAssemblyContext,loadBalancerAssemblyContext.id,"OriginalAssemblyContext","loadbalancerAssemblyContext");
 				};
+				// duplicates and loadbalancer exists but not the connectors for a particular role
 				
-				var loadBalancerProvidedRoles : Bag(OperationProvidedRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity.oclAsType(OperationProvidedRole);
-				var commonProvidedRoleOfAssemblyConnectorAndLoadbalancer : OperationProvidedRole := loadBalancerProvidedRoles -> selectOne(op : OperationProvidedRole | op.providedInterface__OperationProvidedRole.id = assemblyConnector.providedRole_AssemblyConnector.providedInterface__OperationProvidedRole.id);
-				var loadBalancerAllRequiredRoles : Bag(OperationRequiredRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity.oclAsType(OperationRequiredRole);
-				var loadBalancerNeededRequiredRoles : Bag(OperationRequiredRole) := loadBalancerAllRequiredRoles -> select(operationRequiredRole:OperationRequiredRole|operationRequiredRole.requiredInterface__OperationRequiredRole.id=assemblyConnector.providedRole_AssemblyConnector.providedInterface__OperationProvidedRole.id);
+					duplicatedAssemblyContextsAndLoadBalancedAssemblyContext += duplicateTargetAssemblyContexts;
+					loadBalancerAssemblyContext := pcmAllocation.rootObjects()![Allocation].system_Allocation![System].assemblyContexts__ComposedStructure->selectOne(assembly:AssemblyContext| assembly.id = getStringTaggedValue(targetAssemblyContext,"loadbalancerAssemblyContext","OriginalAssemblyContext"));
+					var loadBalancerProvidedRoles : Set(OperationProvidedRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity->selectByType(OperationProvidedRole);
+					var commonProvidedRoleOfAssemblyConnectorAndLoadbalancer : OperationProvidedRole := loadBalancerProvidedRoles -> selectOne(op : OperationProvidedRole | op.providedInterface__OperationProvidedRole.id = assemblyConnector.providedRole_AssemblyConnector.providedInterface__OperationProvidedRole.id);
+					var loadBalancerAllRequiredRoles : Set(OperationRequiredRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity->selectByType(OperationRequiredRole);
+					var loadBalancerNeededRequiredRoles : Set(OperationRequiredRole) := loadBalancerAllRequiredRoles -> select(operationRequiredRole:OperationRequiredRole|operationRequiredRole.requiredInterface__OperationRequiredRole.id=assemblyConnector.providedRole_AssemblyConnector.providedInterface__OperationProvidedRole.id);
 		
-				assemblyConnector.providingAssemblyContext_AssemblyConnector := loadBalancerAssemblyContext;
-				assemblyConnector.providedRole_AssemblyConnector := commonProvidedRoleOfAssemblyConnectorAndLoadbalancer;
-				createAssemblyConnectorsBetweenLoadbalancerAndLoadbalancedAssemblyContexts(oldAssemblyConnectorProvidedInterface,loadBalancerAssemblyContext,loadBalancerNeededRequiredRoles,duplicatedAssemblyContextsAndLoadBalancedAssemblyContext);	
+					assemblyConnector.providingAssemblyContext_AssemblyConnector := loadBalancerAssemblyContext;
+					assemblyConnector.providedRole_AssemblyConnector := commonProvidedRoleOfAssemblyConnectorAndLoadbalancer;
+					createAssemblyConnectorsBetweenLoadbalancerAndLoadbalancedAssemblyContexts(oldAssemblyConnectorProvidedInterface,loadBalancerAssemblyContext,loadBalancerNeededRequiredRoles,duplicatedAssemblyContextsAndLoadBalancedAssemblyContext);	
+				
+			
 			}
+			//assembly connector is connected from an assembly context allocated to the replicable resource container to an assembly context on another resource container. Hence, connect all duplicates to the target assembly context
 			else if(sourceResourceContainer.id != targetResourceContainer.id and sourceResourceContainer.id = originalResourceContainer.id)	{
-				if(resolvedSourceAssemblyContext->size() = 0){
+				//duplicates were not created until now
+				if(duplicateSourceAssemblyContexts->size() = 0){
 					resourceContainers -> forEach(rc){
-						resolvedSourceAssemblyContext += sourceAssemblyContext.map duplicateAssemblyContext(rc);
-						new AllocationContext(resolvedSourceAssemblyContext->last(), rc);
+						duplicateAssemblyContext := sourceAssemblyContext.map duplicateAssemblyContext(rc);
+						duplicateSourceAssemblyContexts += duplicateAssemblyContext;
+						applyStereotype(duplicateAssemblyContext, "DuplicateAssemblyContext");
+						setStringTaggedValue(duplicateAssemblyContext,sourceAssemblyContext.id,"DuplicateAssemblyContext","originalAssemblyContext");
+						new AllocationContext(duplicateAssemblyContext, rc);
 					};
 				};
+				//connect the duplicates
 				if (sourceAssemblyContext.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity != null){
-							addRequiredRolesAssemblyConnectors(assemblyConnector,resolvedSourceAssemblyContext);
+						addRequiredRolesAssemblyConnectors(assemblyConnector,duplicateSourceAssemblyContexts);
 				};
 			};
-		} else if (connector.oclIsTypeOf(ProvidedDelegationConnector)) {
-			var delegationConnector : ProvidedDelegationConnector := connector.oclAsType(ProvidedDelegationConnector);
-			targetAssemblyContext := getProvidingAssemblyContext(delegationConnector);
-			targetResourceContainer := findResourceContainer(targetAssemblyContext);
-			
+		}
+	else if (connector.oclIsTypeOf(ProvidedDelegationConnector)) {
+		var delegationConnector : ProvidedDelegationConnector := connector.oclAsType(ProvidedDelegationConnector);
+		targetAssemblyContext := getProvidingAssemblyContext(delegationConnector);
+		targetResourceContainer := findResourceContainer(targetAssemblyContext);
+		duplicateAssemblies := pcmAllocation.rootObjects()![Allocation].system_Allocation![System].assemblyContexts__ComposedStructure->select(assembly : AssemblyContext| hasAppliedStereotype(assembly,"DuplicateAssemblyContext"));	
 			if(targetResourceContainer.id = originalResourceContainer.id){
 				var loadBalancerAssemblyContext : AssemblyContext;
 				var delegationConnectorProvidedInterface := delegationConnector.innerProvidedRole_ProvidedDelegationConnector.providedInterface__OperationProvidedRole;
-				var duplicatedAssemblyContextsAndLoadBalancedAssemblyContext : Sequence(AssemblyContext);	
+				var duplicatedAssemblyContextsAndLoadBalancedAssemblyContext : Set(AssemblyContext);	
 				duplicatedAssemblyContextsAndLoadBalancedAssemblyContext+= targetAssemblyContext;
-				resolvedTargetAssemblyContext := targetAssemblyContext.resolve(AssemblyContext);
-							
-				if(resolvedTargetAssemblyContext->size() = 0){
+				duplicateTargetAssemblyContexts := duplicateAssemblies->select(assembly : AssemblyContext | getStringTaggedValue(assembly,"originalAssemblyContext","DuplicateAssemblyContext")=targetAssemblyContext.id);
+				
+				//assembly context was not duplicated until now and has no loadbalancer
+				if(duplicateTargetAssemblyContexts->size() = 0){
 					resourceContainers -> forEach(rc){
-						resolvedTargetAssemblyContext += targetAssemblyContext.map duplicateAssemblyContext(rc);
-						new AllocationContext(resolvedTargetAssemblyContext->last(), rc);	
+						duplicateAssemblyContext := targetAssemblyContext.map duplicateAssemblyContext(rc);
+						duplicateTargetAssemblyContexts += duplicateAssemblyContext;
+						applyStereotype(duplicateAssemblyContext, "DuplicateAssemblyContext");
+						setStringTaggedValue(duplicateAssemblyContext,targetAssemblyContext.id,"DuplicateAssemblyContext","originalAssemblyContext");
+						new AllocationContext(duplicateAssemblyContext, rc);	
 					};
-					duplicatedAssemblyContextsAndLoadBalancedAssemblyContext += resolvedTargetAssemblyContext;				
+				};
+				if(duplicateTargetAssemblyContexts->size()>0 and not(hasAppliedStereotype(targetAssemblyContext,"OriginalAssemblyContext"))){
+					duplicatedAssemblyContextsAndLoadBalancedAssemblyContext += duplicateTargetAssemblyContexts;				
 					loadBalancerResourceContainer := createLoadbalancerResourceContainer(delegationConnectorProvidedInterface.entityName,originalResourceContainer);
 					loadBalancerAssemblyContext := targetAssemblyContext.createLoadBalancerFromAssembly(loadBalancerResourceContainer,delegationConnector.innerProvidedRole_ProvidedDelegationConnector);
+					applyStereotype(targetAssemblyContext, "OriginalAssemblyContext");
+					setStringTaggedValue(targetAssemblyContext,loadBalancerAssemblyContext.id,"OriginalAssemblyContext","loadbalancerAssemblyContext");
 				};
 				
-				if(delegationConnector.innerProvidedRole_ProvidedDelegationConnector.resolve(BasicComponent)->size()=0){
-					loadBalancerResourceContainer := createLoadbalancerResourceContainer(delegationConnectorProvidedInterface.entityName,originalResourceContainer);
-					loadBalancerAssemblyContext := targetAssemblyContext.createLoadBalancerFromAssembly(loadBalancerResourceContainer,delegationConnector.innerProvidedRole_ProvidedDelegationConnector);
-					duplicatedAssemblyContextsAndLoadBalancedAssemblyContext += resolvedTargetAssemblyContext;					
-				};
+					duplicatedAssemblyContextsAndLoadBalancedAssemblyContext += duplicateTargetAssemblyContexts;
+					loadBalancerAssemblyContext := pcmAllocation.rootObjects()![Allocation].system_Allocation![System].assemblyContexts__ComposedStructure->selectOne(assembly:AssemblyContext| assembly.id = getStringTaggedValue(targetAssemblyContext,"loadbalancerAssemblyContext","OriginalAssemblyContext"));
+					var loadBalancerProvidedRoles : Set(OperationProvidedRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity->selectByType(OperationProvidedRole);
+					var commonProvidedRoleOfDelegationConnectorAndLB : OperationProvidedRole := loadBalancerProvidedRoles -> selectOne(providedRole : OperationProvidedRole| providedRole.providedInterface__OperationProvidedRole.id = delegationConnectorProvidedInterface.id );
+					var oldDelegationConnectorProvidedRole := delegationConnector.innerProvidedRole_ProvidedDelegationConnector;
+					var loadBalancerAllRequiredRoles : Set(OperationRequiredRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity->selectByType(OperationRequiredRole);
+					var loadBalancerNeededRequiredRoles : Set(OperationRequiredRole) := loadBalancerAllRequiredRoles -> select(operationRequiredRole:OperationRequiredRole|operationRequiredRole.requiredInterface__OperationRequiredRole.id=oldDelegationConnectorProvidedRole.providedInterface__OperationProvidedRole.id);			
+					delegationConnector.innerProvidedRole_ProvidedDelegationConnector := commonProvidedRoleOfDelegationConnectorAndLB;
+					delegationConnector.assemblyContext_ProvidedDelegationConnector := loadBalancerAssemblyContext;
+					createAssemblyConnectorsBetweenLoadbalancerAndLoadbalancedAssemblyContexts(delegationConnectorProvidedInterface,loadBalancerAssemblyContext,loadBalancerNeededRequiredRoles,duplicatedAssemblyContextsAndLoadBalancedAssemblyContext);
 				
-				var loadBalancerProvidedRoles : Bag(OperationProvidedRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity.oclAsType(OperationProvidedRole);
-				var commonProvidedRoleOfDelegationConnectorAndLB : OperationProvidedRole := loadBalancerProvidedRoles -> selectOne(providedRole : OperationProvidedRole| providedRole.providedInterface__OperationProvidedRole.id = delegationConnectorProvidedInterface.id );
-				var oldDelegationConnectorProvidedRole := delegationConnector.innerProvidedRole_ProvidedDelegationConnector;
-				var loadBalancerAllRequiredRoles : Bag(OperationRequiredRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity.oclAsType(OperationRequiredRole);
-				var loadBalancerNeededRequiredRoles : Bag(OperationRequiredRole) := loadBalancerAllRequiredRoles -> select(operationRequiredRole:OperationRequiredRole|operationRequiredRole.requiredInterface__OperationRequiredRole.id=oldDelegationConnectorProvidedRole.providedInterface__OperationProvidedRole.id);			
-				delegationConnector.innerProvidedRole_ProvidedDelegationConnector := commonProvidedRoleOfDelegationConnectorAndLB;
-				delegationConnector.assemblyContext_ProvidedDelegationConnector := loadBalancerAssemblyContext;
-				createAssemblyConnectorsBetweenLoadbalancerAndLoadbalancedAssemblyContexts(delegationConnectorProvidedInterface,loadBalancerAssemblyContext,loadBalancerNeededRequiredRoles,duplicatedAssemblyContextsAndLoadBalancedAssemblyContext);
-			}
-		}
-		else if(connector.oclIsTypeOf(RequiredDelegationConnector)){
-			var requiredDelegationConnector : RequiredDelegationConnector := connector.oclAsType(RequiredDelegationConnector);
-			sourceAssemblyContext := getRequiringAssemblyContext(requiredDelegationConnector);
-			sourceResourceContainer := findResourceContainer(sourceAssemblyContext);
-			if(sourceResourceContainer.id = originalResourceContainer.id){
-				resolvedSourceAssemblyContext := sourceAssemblyContext.resolve(AssemblyContext);
-				if(resolvedSourceAssemblyContext->size() = 0){
-					resourceContainers -> forEach(rc){
-							resolvedSourceAssemblyContext += sourceAssemblyContext.map duplicateAssemblyContext(rc);
-							new AllocationContext(resolvedSourceAssemblyContext->last(), rc);
-						}	
-				};
-				resolvedSourceAssemblyContext->forEach(ac){
-					new RequiredDelegationConnector(ac,requiredDelegationConnector.innerRequiredRole_RequiredDelegationConnector,requiredDelegationConnector.outerRequiredRole_RequiredDelegationConnector);
-				};
 			};
-		}
+	}
+	else if(connector.oclIsTypeOf(RequiredDelegationConnector)){
+		var requiredDelegationConnector : RequiredDelegationConnector := connector.oclAsType(RequiredDelegationConnector);
+		sourceAssemblyContext := getRequiringAssemblyContext(requiredDelegationConnector);
+		sourceResourceContainer := findResourceContainer(sourceAssemblyContext);
+		duplicateAssemblies := pcmAllocation.rootObjects()![Allocation].system_Allocation![System].assemblyContexts__ComposedStructure->select(assembly : AssemblyContext| hasAppliedStereotype(assembly,"DuplicateAssemblyContext"));
+		if(sourceResourceContainer.id = originalResourceContainer.id){
+			duplicateSourceAssemblyContexts := duplicateAssemblies->select(assembly : AssemblyContext | getStringTaggedValue(assembly,"originalAssemblyContext","DuplicateAssemblyContext")=sourceAssemblyContext.id);
+			if(duplicateSourceAssemblyContexts->size() = 0){
+				resourceContainers -> forEach(rc){
+					duplicateAssemblyContext := sourceAssemblyContext.map duplicateAssemblyContext(rc);
+					duplicateSourceAssemblyContexts += duplicateAssemblyContext;
+					applyStereotype(duplicateAssemblyContext, "DuplicateAssemblyContext");
+					setStringTaggedValue(duplicateAssemblyContext,sourceAssemblyContext.id,"DuplicateAssemblyContext","originalAssemblyContext");
+					new AllocationContext(duplicateAssemblyContext, rc);
+				};	
+			};
+			duplicateSourceAssemblyContexts->forEach(ac){
+				new RequiredDelegationConnector(ac,requiredDelegationConnector.innerRequiredRole_RequiredDelegationConnector,requiredDelegationConnector.outerRequiredRole_RequiredDelegationConnector);
+			};
+		};
+	};
 	};
 }
 
-helper createAssemblyConnectorsBetweenLoadbalancerAndLoadbalancedAssemblyContexts(operationInterface:OperationInterface,loadBalancerAssemblyContext : AssemblyContext,loadBalancerNeededRequiredRoles : Bag(OperationRequiredRole),duplicatedAssemblyContextsAndLoadBalancedAssemblyContext : Sequence(AssemblyContext)){
+helper createAssemblyConnectorsBetweenLoadbalancerAndLoadbalancedAssemblyContexts(operationInterface:OperationInterface,loadBalancerAssemblyContext : AssemblyContext,loadBalancerNeededRequiredRoles : Set(OperationRequiredRole),duplicatedAssemblyContextsAndLoadBalancedAssemblyContext : Set(AssemblyContext)){
+	var assemblySequence: OrderedSet(AssemblyContext);
+	var assembly : AssemblyContext;
 	var counter : Integer := 1;
+	assemblySequence := duplicatedAssemblyContextsAndLoadBalancedAssemblyContext->asOrderedSet();
 	loadBalancerNeededRequiredRoles -> forEach(loadBalancerNeededRequiredRole){
-		var targetAssemblyContext : AssemblyContext := duplicatedAssemblyContextsAndLoadBalancedAssemblyContext->at(counter);
-		var targetAssemblyContextProvidedRoles : Bag(OperationProvidedRole) := targetAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity.oclAsType(OperationProvidedRole);
-		var targetAssemblyContextProvidedRole : OperationProvidedRole := targetAssemblyContextProvidedRoles -> selectOne(op:OperationProvidedRole|op.providedInterface__OperationProvidedRole.id = operationInterface.id);
-		new AssemblyConnector(loadBalancerAssemblyContext,loadBalancerNeededRequiredRole,targetAssemblyContextProvidedRole,targetAssemblyContext);						
-		counter:=counter+1;
+		assembly := assemblySequence->at(counter);
+		var targetAssemblyContextProvidedRoles : Set(OperationProvidedRole) := assembly.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity->selectByType(OperationProvidedRole);
+		var matchingTargetAssemblyContextProvidedRoles : Set(OperationProvidedRole) := targetAssemblyContextProvidedRoles -> select(op:OperationProvidedRole|op.providedInterface__OperationProvidedRole.id = operationInterface.id);
+		matchingTargetAssemblyContextProvidedRoles ->forEach(targetProvidedRole){
+			new AssemblyConnector(loadBalancerAssemblyContext,loadBalancerNeededRequiredRole,targetProvidedRole,assembly);		
+		};
+		counter := counter+1;				
 	};
 }
 
@@ -280,14 +317,23 @@ helper AssemblyContext::createLoadBalancerFromAssembly(rc:ResourceContainer,oper
 mapping AssemblyContext::AssemblyToLoadbalancerBasicComponent(operationProvidedRole : OperationProvidedRole):BasicComponent{
 	var repository := self.encapsulatedComponent__AssemblyContext.repository__RepositoryComponent;
 	var providingEntity : RepositoryComponent := operationProvidedRole.providingEntity_ProvidedRole.oclAsType(RepositoryComponent);
+	var providingEntityProvidedRoles := providingEntity.providedRoles_InterfaceProvidingEntity->selectByType(OperationProvidedRole);
 	entityName := "LoadBalancer_"+ providingEntity.entityName;
 	repository__RepositoryComponent := repository;
-	var operationProvidedRoleLB : OperationProvidedRole := new OperationProvidedRole(operationProvidedRole);
+	var operationProvidedRoleLB : Set(OperationProvidedRole);
+	var lbProvidedRole : OperationProvidedRole;
+	providingEntityProvidedRoles->forEach(providedRole){ 
+		lbProvidedRole := new OperationProvidedRole(providedRole);
+		lbProvidedRole.providingEntity_ProvidedRole:= result;
+		operationProvidedRoleLB+= lbProvidedRole;
+	};
 	providedRoles_InterfaceProvidingEntity := operationProvidedRoleLB;
+	operationProvidedRoleLB->forEach(loadbalancerProvidedRole){
 	var counter : Integer := 1;
-	while(counter<= (numberOfReplicas)){
-		requiredRoles_InterfaceRequiringEntity += new OperationRequiredRole(operationProvidedRole,counter);
-		counter := counter+1;
+		while(counter<= (numberOfReplicas)){
+			requiredRoles_InterfaceRequiringEntity += new OperationRequiredRole(loadbalancerProvidedRole,counter);
+			counter := counter+1;
+		};
 	};
 	providedRoles_InterfaceProvidingEntity -> forEach(providedRole){
 		var opRole := providedRole.oclAsType(OperationProvidedRole);
@@ -446,7 +492,7 @@ helper createLoadbalancerResourceContainer(nameOfLoadbalancedInterface:String,or
  * Creates an AssemblyConnector for each of the duplicated AssemblyContext in duplicatedAssemblyContextSet to 
  * an OperationRequiredRole specified by the loadBalancedAssemblyContext
  */
-helper addRequiredRolesAssemblyConnectors(assemblyConnector : AssemblyConnector, duplicatedAssemblyContextSet : Sequence(AssemblyContext)){
+helper addRequiredRolesAssemblyConnectors(assemblyConnector : AssemblyConnector, duplicatedAssemblyContextSet : Set(AssemblyContext)){
 	duplicatedAssemblyContextSet ->forEach(duplicatedAssemblyContext){
 			new AssemblyConnector(duplicatedAssemblyContext,assemblyConnector.requiredRole_AssemblyConnector,assemblyConnector.providedRole_AssemblyConnector,assemblyConnector.providingAssemblyContext_AssemblyConnector);
 	};

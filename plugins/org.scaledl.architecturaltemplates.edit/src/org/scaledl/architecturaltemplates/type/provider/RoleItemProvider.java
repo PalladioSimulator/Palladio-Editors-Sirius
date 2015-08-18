@@ -12,11 +12,10 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.palladiosimulator.pcm.core.entity.provider.EntityItemProvider;
 import org.scaledl.architecturaltemplates.type.Role;
 import org.scaledl.architecturaltemplates.type.TypeFactory;
 import org.scaledl.architecturaltemplates.type.TypePackage;
-
-import org.palladiosimulator.pcm.core.entity.provider.EntityItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.scaledl.architecturaltemplates.type.Role}
@@ -60,11 +59,12 @@ public class RoleItemProvider extends EntityItemProvider {
      * @generated
      */
     protected void addConstraintsPropertyDescriptor(final Object object) {
-        this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_Role_constraints_feature"),
-                this.getString("_UI_PropertyDescriptor_description", "_UI_Role_constraints_feature", "_UI_Role_type"),
-                TypePackage.Literals.ROLE__CONSTRAINTS, true, false, true, null, null, null));
+        this.itemPropertyDescriptors.add(this
+                .createItemPropertyDescriptor(((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(),
+                        this.getResourceLocator(), this.getString("_UI_Role_constraints_feature"),
+                        this.getString("_UI_PropertyDescriptor_description", "_UI_Role_constraints_feature",
+                                "_UI_Role_type"),
+                        TypePackage.Literals.ROLE__CONSTRAINTS, true, false, true, null, null, null));
     }
 
     /**
@@ -74,11 +74,12 @@ public class RoleItemProvider extends EntityItemProvider {
      * @generated
      */
     protected void addStereotypePropertyDescriptor(final Object object) {
-        this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
-                ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_Role_stereotype_feature"),
-                this.getString("_UI_PropertyDescriptor_description", "_UI_Role_stereotype_feature", "_UI_Role_type"),
-                TypePackage.Literals.ROLE__STEREOTYPE, true, false, true, null, null, null));
+        this.itemPropertyDescriptors.add(this
+                .createItemPropertyDescriptor(((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(),
+                        this.getResourceLocator(), this.getString("_UI_Role_stereotype_feature"),
+                        this.getString("_UI_PropertyDescriptor_description", "_UI_Role_stereotype_feature",
+                                "_UI_Role_type"),
+                        TypePackage.Literals.ROLE__STEREOTYPE, true, false, true, null, null, null));
     }
 
     /**
@@ -131,8 +132,8 @@ public class RoleItemProvider extends EntityItemProvider {
     @Override
     public String getText(final Object object) {
         final String label = ((Role) object).getEntityName();
-        return label == null || label.length() == 0 ? this.getString("_UI_Role_type") : this.getString("_UI_Role_type")
-                + " " + label;
+        return label == null || label.length() == 0 ? this.getString("_UI_Role_type")
+                : this.getString("_UI_Role_type") + " " + label;
     }
 
     /**

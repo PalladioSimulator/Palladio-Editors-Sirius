@@ -8,9 +8,9 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 import org.eclipse.ocl.edit.OCLEditPlugin;
 import org.modelversioning.emfprofile.provider.EMFProfileEditPlugin;
+import org.palladiosimulator.pcm.core.provider.PalladioComponentModelEditPlugin;
 
 import de.uka.ipd.sdq.identifier.provider.IdentifierEditPlugin;
-import org.palladiosimulator.pcm.core.provider.PalladioComponentModelEditPlugin;
 import de.uka.ipd.sdq.probfunction.provider.ProbabilityFunctionEditPlugin;
 import de.uka.ipd.sdq.stoex.provider.StoexEditPlugin;
 import de.uka.ipd.sdq.units.provider.UnitsEditPlugin;
@@ -43,9 +43,17 @@ public final class ArchitecturaltemplatesEditorPlugin extends EMFPlugin {
      * @generated
      */
     public ArchitecturaltemplatesEditorPlugin() {
-        super(new ResourceLocator[] { EcoreEditPlugin.INSTANCE, EMFProfileEditPlugin.INSTANCE,
-                IdentifierEditPlugin.INSTANCE, OCLEditPlugin.INSTANCE, PalladioComponentModelEditPlugin.INSTANCE,
-                ProbabilityFunctionEditPlugin.INSTANCE, StoexEditPlugin.INSTANCE, UnitsEditPlugin.INSTANCE, });
+        super(new ResourceLocator[]
+                {
+                EcoreEditPlugin.INSTANCE,
+                EMFProfileEditPlugin.INSTANCE,
+                IdentifierEditPlugin.INSTANCE,
+                OCLEditPlugin.INSTANCE,
+                PalladioComponentModelEditPlugin.INSTANCE,
+                ProbabilityFunctionEditPlugin.INSTANCE,
+                StoexEditPlugin.INSTANCE,
+                UnitsEditPlugin.INSTANCE,
+                });
     }
 
     /**

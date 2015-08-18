@@ -53,13 +53,23 @@ public class ProfilesLibrary {
             final String taggedValueName) {
         StereotypeAPI.setTaggedValue(pcmEntity, value, stereotypeName, taggedValueName);
     }
-
+    
+    public static void setStringTaggedValue(final Entity pcmEntity, final String value, final String stereotypeName,
+            final String taggedValueName) {
+        StereotypeAPI.setStringTaggedValue(pcmEntity, value, stereotypeName, taggedValueName);
+    }
+    
     public static int getIntTaggedValue(final Entity pcmEntity, final String taggedValueName,
             final String stereotypeName) {
         return StereotypeAPI.getTaggedValue(pcmEntity, taggedValueName, stereotypeName);
     }
 
     public static double getDoubleTaggedValue(final Entity pcmEntity, final String taggedValueName,
+            final String stereotypeName) {
+        return StereotypeAPI.getTaggedValue(pcmEntity, taggedValueName, stereotypeName);
+    }
+    
+    public static String getStringTaggedValue(final Entity pcmEntity, final String taggedValueName,
             final String stereotypeName) {
         return StereotypeAPI.getTaggedValue(pcmEntity, taggedValueName, stereotypeName);
     }

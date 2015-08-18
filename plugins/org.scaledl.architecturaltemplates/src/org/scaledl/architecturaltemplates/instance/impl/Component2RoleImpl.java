@@ -21,15 +21,12 @@ import org.palladiosimulator.pcm.core.composition.AssemblyContext;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.scaledl.architecturaltemplates.instance.impl.Component2RoleImpl#getComponent <em>
- * Component</em>}</li>
- * <li>{@link org.scaledl.architecturaltemplates.instance.impl.Component2RoleImpl#getRoles <em>Roles
- * </em>}</li>
- * <li>{@link org.scaledl.architecturaltemplates.instance.impl.Component2RoleImpl#getATInstance <em>
- * AT Instance</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.scaledl.architecturaltemplates.instance.impl.Component2RoleImpl#getComponent <em>Component</em>}</li>
+ *   <li>{@link org.scaledl.architecturaltemplates.instance.impl.Component2RoleImpl#getRoles <em>Roles</em>}</li>
+ *   <li>{@link org.scaledl.architecturaltemplates.instance.impl.Component2RoleImpl#getATInstance <em>AT Instance</em>}</li>
+ * </ul>
  *
  * @generated
  */
@@ -37,7 +34,6 @@ public class Component2RoleImpl extends CDOObjectImpl implements Component2Role 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected Component2RoleImpl() {
@@ -46,7 +42,6 @@ public class Component2RoleImpl extends CDOObjectImpl implements Component2Role 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -56,7 +51,6 @@ public class Component2RoleImpl extends CDOObjectImpl implements Component2Role 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -66,123 +60,110 @@ public class Component2RoleImpl extends CDOObjectImpl implements Component2Role 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public AssemblyContext getComponent() {
-        return (AssemblyContext) this.eDynamicGet(InstancePackage.COMPONENT2_ROLE__COMPONENT,
+        return (AssemblyContext) eDynamicGet(InstancePackage.COMPONENT2_ROLE__COMPONENT,
                 InstancePackage.Literals.COMPONENT2_ROLE__COMPONENT, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public AssemblyContext basicGetComponent() {
-        return (AssemblyContext) this.eDynamicGet(InstancePackage.COMPONENT2_ROLE__COMPONENT,
+        return (AssemblyContext) eDynamicGet(InstancePackage.COMPONENT2_ROLE__COMPONENT,
                 InstancePackage.Literals.COMPONENT2_ROLE__COMPONENT, false, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void setComponent(final AssemblyContext newComponent) {
-        this.eDynamicSet(InstancePackage.COMPONENT2_ROLE__COMPONENT,
-                InstancePackage.Literals.COMPONENT2_ROLE__COMPONENT, newComponent);
+    public void setComponent(AssemblyContext newComponent) {
+        eDynamicSet(InstancePackage.COMPONENT2_ROLE__COMPONENT, InstancePackage.Literals.COMPONENT2_ROLE__COMPONENT,
+                newComponent);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
     public EList<Role> getRoles() {
-        return (EList<Role>) this.eDynamicGet(InstancePackage.COMPONENT2_ROLE__ROLES,
+        return (EList<Role>) eDynamicGet(InstancePackage.COMPONENT2_ROLE__ROLES,
                 InstancePackage.Literals.COMPONENT2_ROLE__ROLES, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public ATInstance getATInstance() {
-        return (ATInstance) this.eDynamicGet(InstancePackage.COMPONENT2_ROLE__AT_INSTANCE,
+        return (ATInstance) eDynamicGet(InstancePackage.COMPONENT2_ROLE__AT_INSTANCE,
                 InstancePackage.Literals.COMPONENT2_ROLE__AT_INSTANCE, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
-    public NotificationChain basicSetATInstance(final ATInstance newATInstance, NotificationChain msgs) {
-        msgs = this.eBasicSetContainer((InternalEObject) newATInstance, InstancePackage.COMPONENT2_ROLE__AT_INSTANCE,
-                msgs);
+    public NotificationChain basicSetATInstance(ATInstance newATInstance, NotificationChain msgs) {
+        msgs = eBasicSetContainer((InternalEObject) newATInstance, InstancePackage.COMPONENT2_ROLE__AT_INSTANCE, msgs);
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void setATInstance(final ATInstance newATInstance) {
-        this.eDynamicSet(InstancePackage.COMPONENT2_ROLE__AT_INSTANCE,
-                InstancePackage.Literals.COMPONENT2_ROLE__AT_INSTANCE, newATInstance);
+    public void setATInstance(ATInstance newATInstance) {
+        eDynamicSet(InstancePackage.COMPONENT2_ROLE__AT_INSTANCE, InstancePackage.Literals.COMPONENT2_ROLE__AT_INSTANCE,
+                newATInstance);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eInverseAdd(final InternalEObject otherEnd, final int featureID, NotificationChain msgs) {
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case InstancePackage.COMPONENT2_ROLE__AT_INSTANCE:
-            if (this.eInternalContainer() != null) {
-                msgs = this.eBasicRemoveFromContainer(msgs);
-            }
-            return this.basicSetATInstance((ATInstance) otherEnd, msgs);
+            if (eInternalContainer() != null)
+                msgs = eBasicRemoveFromContainer(msgs);
+            return basicSetATInstance((ATInstance) otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eInverseRemove(final InternalEObject otherEnd, final int featureID,
-            final NotificationChain msgs) {
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case InstancePackage.COMPONENT2_ROLE__AT_INSTANCE:
-            return this.basicSetATInstance(null, msgs);
+            return basicSetATInstance(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eBasicRemoveFromContainerFeature(final NotificationChain msgs) {
-        switch (this.eContainerFeatureID()) {
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+        switch (eContainerFeatureID()) {
         case InstancePackage.COMPONENT2_ROLE__AT_INSTANCE:
-            return this.eInternalContainer().eInverseRemove(this, InstancePackage.AT_INSTANCE__COMPONENT2ROLES,
+            return eInternalContainer().eInverseRemove(this, InstancePackage.AT_INSTANCE__COMPONENT2ROLES,
                     ATInstance.class, msgs);
         }
         return super.eBasicRemoveFromContainerFeature(msgs);
@@ -190,43 +171,40 @@ public class Component2RoleImpl extends CDOObjectImpl implements Component2Role 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public Object eGet(final int featureID, final boolean resolve, final boolean coreType) {
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case InstancePackage.COMPONENT2_ROLE__COMPONENT:
-            if (resolve) {
-                return this.getComponent();
-            }
-            return this.basicGetComponent();
+            if (resolve)
+                return getComponent();
+            return basicGetComponent();
         case InstancePackage.COMPONENT2_ROLE__ROLES:
-            return this.getRoles();
+            return getRoles();
         case InstancePackage.COMPONENT2_ROLE__AT_INSTANCE:
-            return this.getATInstance();
+            return getATInstance();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
     @Override
-    public void eSet(final int featureID, final Object newValue) {
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
         case InstancePackage.COMPONENT2_ROLE__COMPONENT:
-            this.setComponent((AssemblyContext) newValue);
+            setComponent((AssemblyContext) newValue);
             return;
         case InstancePackage.COMPONENT2_ROLE__ROLES:
-            this.getRoles().clear();
-            this.getRoles().addAll((Collection<? extends Role>) newValue);
+            getRoles().clear();
+            getRoles().addAll((Collection<? extends Role>) newValue);
             return;
         case InstancePackage.COMPONENT2_ROLE__AT_INSTANCE:
-            this.setATInstance((ATInstance) newValue);
+            setATInstance((ATInstance) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -234,20 +212,19 @@ public class Component2RoleImpl extends CDOObjectImpl implements Component2Role 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void eUnset(final int featureID) {
+    public void eUnset(int featureID) {
         switch (featureID) {
         case InstancePackage.COMPONENT2_ROLE__COMPONENT:
-            this.setComponent((AssemblyContext) null);
+            setComponent((AssemblyContext) null);
             return;
         case InstancePackage.COMPONENT2_ROLE__ROLES:
-            this.getRoles().clear();
+            getRoles().clear();
             return;
         case InstancePackage.COMPONENT2_ROLE__AT_INSTANCE:
-            this.setATInstance((ATInstance) null);
+            setATInstance((ATInstance) null);
             return;
         }
         super.eUnset(featureID);
@@ -255,18 +232,17 @@ public class Component2RoleImpl extends CDOObjectImpl implements Component2Role 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public boolean eIsSet(final int featureID) {
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
         case InstancePackage.COMPONENT2_ROLE__COMPONENT:
-            return this.basicGetComponent() != null;
+            return basicGetComponent() != null;
         case InstancePackage.COMPONENT2_ROLE__ROLES:
-            return !this.getRoles().isEmpty();
+            return !getRoles().isEmpty();
         case InstancePackage.COMPONENT2_ROLE__AT_INSTANCE:
-            return this.getATInstance() != null;
+            return getATInstance() != null;
         }
         return super.eIsSet(featureID);
     }

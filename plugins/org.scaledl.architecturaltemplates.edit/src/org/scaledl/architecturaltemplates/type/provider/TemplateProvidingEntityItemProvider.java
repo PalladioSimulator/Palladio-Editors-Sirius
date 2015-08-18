@@ -66,9 +66,9 @@ public class TemplateProvidingEntityItemProvider extends ItemProviderAdapter imp
     protected void addTemplateFileURIPropertyDescriptor(final Object object) {
         this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
                 ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_TemplateProvidingEntity_templateFileURI_feature"), this.getString(
-                        "_UI_PropertyDescriptor_description", "_UI_TemplateProvidingEntity_templateFileURI_feature",
-                        "_UI_TemplateProvidingEntity_type"),
+                this.getString("_UI_TemplateProvidingEntity_templateFileURI_feature"),
+                this.getString("_UI_PropertyDescriptor_description",
+                        "_UI_TemplateProvidingEntity_templateFileURI_feature", "_UI_TemplateProvidingEntity_type"),
                 TypePackage.Literals.TEMPLATE_PROVIDING_ENTITY__TEMPLATE_FILE_URI, true, false, false,
                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
@@ -82,8 +82,8 @@ public class TemplateProvidingEntityItemProvider extends ItemProviderAdapter imp
     @Override
     public String getText(final Object object) {
         final String label = ((TemplateProvidingEntity) object).getTemplateFileURI();
-        return label == null || label.length() == 0 ? this.getString("_UI_TemplateProvidingEntity_type") : this
-                .getString("_UI_TemplateProvidingEntity_type") + " " + label;
+        return label == null || label.length() == 0 ? this.getString("_UI_TemplateProvidingEntity_type")
+                : this.getString("_UI_TemplateProvidingEntity_type") + " " + label;
     }
 
     /**

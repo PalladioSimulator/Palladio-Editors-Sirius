@@ -9,8 +9,6 @@ import org.scaledl.architecturaltemplates.instance.InstancePackage;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Enum Parameter</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
@@ -18,7 +16,6 @@ public class EnumParameterImpl extends ParameterValueImpl implements EnumParamet
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected EnumParameterImpl() {
@@ -27,7 +24,6 @@ public class EnumParameterImpl extends ParameterValueImpl implements EnumParamet
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

@@ -64,9 +64,10 @@ public class ParameterValueItemProvider extends ItemProviderAdapter implements I
     protected void addTypePropertyDescriptor(final Object object) {
         this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
                 ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_ParameterValue_type_feature"), this.getString("_UI_PropertyDescriptor_description",
-                        "_UI_ParameterValue_type_feature", "_UI_ParameterValue_type"),
-                        InstancePackage.Literals.PARAMETER_VALUE__TYPE, true, false, true, null, null, null));
+                this.getString("_UI_ParameterValue_type_feature"),
+                this.getString("_UI_PropertyDescriptor_description", "_UI_ParameterValue_type_feature",
+                        "_UI_ParameterValue_type"),
+                InstancePackage.Literals.PARAMETER_VALUE__TYPE, true, false, true, null, null, null));
     }
 
     /**

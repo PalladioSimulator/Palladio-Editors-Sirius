@@ -1,116 +1,105 @@
 package org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.action;
 
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.Map;
 
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gmf.runtime.common.core.command.CommandResult;
-import org.eclipse.gmf.runtime.common.core.command.ICommand;
-import org.eclipse.gmf.runtime.emf.type.core.IElementType;
-import org.eclipse.gmf.runtime.emf.type.core.commands.EditElementCommand;
-import org.eclipse.gmf.runtime.emf.type.core.requests.ConfigureRequest;
-import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
-import org.eclipse.gmf.runtime.emf.type.core.requests.IEditCommandRequest;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
-import org.modelversioning.emfprofile.Stereotype;
-import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
-import org.palladiosimulator.pcm.resourceenvironment.LinkingResource;
+import org.palladiosimulator.editors.dialogs.stoex.StochasticExpressionEditDialog;
+import org.palladiosimulator.pcm.core.CoreFactory;
+import org.palladiosimulator.pcm.core.PCMRandomVariable;
+import org.palladiosimulator.pcm.resourceenvironment.CommunicationLinkResourceSpecification;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
-import org.palladiosimulator.pcm.resourceenvironment.ResourceenvironmentFactory;
-import org.palladiosimulator.pcm.system.System;
-import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
-import org.scaledl.architecturaltemplates.type.AT;
-import org.scaledl.architecturaltemplates.ui.dialogs.ArchitecturalTemplateSelectionDialog;
-import org.scaledl.architecturaltemplates.ui.dialogs.RoleStereotypeSelectionDialog;
 
+import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
 
-public class AddLinkingResourceAction extends EditElementCommand implements  IExternalJavaAction  {
+/**
+ * UI-based action to create linking resources. Opens dialogs to request properties of linking
+ * resources (for setting latency and throughput).
+ * 
+ * As this action implements <link>IExternalJavaAction</link>, Sirius editors can invoke this
+ * action.
+ * 
+ * @author Sebastian Lehrig, Edith Kegel
+ */
+public class AddLinkingResourceAction implements IExternalJavaAction {
 
+    /**
+     * The latency display title.
+     */
+    private static final String LATENCY_DISPLAY_TITLE = "Set Latency";
 
-	private static final String DIALOG_MESSAGE = "Add a Linking Resource";
+    /**
+     * The throughput display title.
+     */
+    private static final String THROUGHPUT_DISPLAY_TITLE = "Set Throughput";
 
-	
-	public AddLinkingResourceAction(CreateElementRequest req){
-		super(req.getLabel(),null,req);
-	}
-	
-	public boolean getElementToEdit(Collection<? extends EObject> selections){
-	//	EObject container = ((CreateElementRequest) getRequest()).getContainer();
-		for (EObject object : selections) {
-			return object instanceof LinkingResource;
-		}
-		return true;
-	}
-	
-	
-	@Override
-	public boolean canExecute(Collection<? extends EObject> selections) {
-		/*if (selections.size() != 1) {
-			return false;
-		}
-		for (EObject object : selections) {
-			return object instanceof LinkingResource;
-		}*/
-		
-		return true;
-	}
+    /**
+     * Parameter name for the newly created communication linking resource. This name is used as a
+     * key in the parameter key-value map.
+     */
+    private static final String NEW_COMMUNICATION_LINK_RESOURCE_SPECIFICATION = "newCommunicationLinkResourceSpecification";
 
-
-	@Override
-	protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
-		LinkingResource linkingResource = ResourceenvironmentFactory.eINSTANCE.createLinkingResource();
-
-		ResourceEnvironment owner = (ResourceEnvironment) getElementToEdit();
-		owner.getLinkingResources__ResourceEnvironment().add(linkingResource);
-		
-		doConfigure(linkingResource, monitor, info);
-		return CommandResult.newOKCommandResult(linkingResource);
-	}
-	
-	
-	protected void doConfigure(LinkingResource linkingResource, IProgressMonitor monitor, IAdaptable info)
-            throws ExecutionException {
-        IElementType elementType = ((CreateElementRequest) getRequest()).getElementType();
-        ConfigureRequest configureRequest = new ConfigureRequest(getEditingDomain(), linkingResource, elementType);
-        configureRequest.setClientContext(((CreateElementRequest) getRequest()).getClientContext());
-        configureRequest.addParameters(getRequest().getParameters());
-        ICommand configureCommand = elementType.getEditCommand(configureRequest);
-        if (configureCommand != null && configureCommand.canExecute()) {
-            configureCommand.execute(monitor, info);
-        }
+    public AddLinkingResourceAction() {
+        super();
     }
-	@Override
-	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameter) {
-		//final LinkingResource linkingResource = (LinkingResource) selections.iterator().next();
-		//LinkingResource linkingResource = ResourceenvironmentFactory.eINSTANCE.createLinkingResource();
 
-		//ResourceEnvironment owner = (ResourceEnvironment) getElementToEdit()
-	  
-		/*ArchitecturalTemplateSelectionDialog profileSelectionDialog = new ArchitecturalTemplateSelectionDialog(
-				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+    @Override
+    public boolean canExecute(final Collection<? extends EObject> selections) {
+        for (final EObject object : selections) {
+            if (object instanceof ResourceEnvironment)
+                return true;
+        }
+        return false;
+    }
 
-		profileSelectionDialog.setElements((AT[]) ArchitecturalTemplateAPI.getRegisteredArchitecturalTemplates()
-				.toArray(new AT[ArchitecturalTemplateAPI.getRegisteredArchitecturalTemplates().size()]));
-		profileSelectionDialog.setMessage(DIALOG_MESSAGE);
+    @Override
+    public void execute(final Collection<? extends EObject> selections, final Map<String, Object> parameters) {
+        final Object parameter = parameters.get(NEW_COMMUNICATION_LINK_RESOURCE_SPECIFICATION);
+        if (parameter == null || !(parameter instanceof CommunicationLinkResourceSpecification)) {
+            return;
+        }
+        final CommunicationLinkResourceSpecification communicationLinkResourceSpecification = (CommunicationLinkResourceSpecification) parameter;
 
-		if (profileSelectionDialog.open() != Dialog.OK) {
-			return;
-		}
+        // latency
+        final PCMRandomVariable latency = getRandomVariableFromStoExDialog(LATENCY_DISPLAY_TITLE);
+        if (latency == null) {
+            return;
+        }
+        communicationLinkResourceSpecification.setLatency_CommunicationLinkResourceSpecification(latency);
 
-		final AT at = profileSelectionDialog.getResultArchitecturalTemplate();
+        // throughput
+        final PCMRandomVariable throughput = getRandomVariableFromStoExDialog(THROUGHPUT_DISPLAY_TITLE);
+        if (throughput == null) {
+            return;
+        }
+        communicationLinkResourceSpecification.setThroughput_CommunicationLinkResourceSpecification(throughput);
+    }
 
-		//ArchitecturalTemplateAPI.applyArchitecturalTemplate(linkingResource, at);*/
-		
-	}
+    /**
+     * Opens a StoxEx dialog and returns the resulting {@link PCMRandomVariable}.
+     * 
+     * @param displayTitle
+     *            Title of the StoEx dialog
+     * @return PCMRandomVariable if user entered valid data and confirmed. Will return null if user
+     *         canceled dialog
+     */
+    private PCMRandomVariable getRandomVariableFromStoExDialog(final String displayTitle) {
+        final PCMRandomVariable randomVariable = CoreFactory.eINSTANCE.createPCMRandomVariable();
+        randomVariable.setSpecification("");
 
+        final StochasticExpressionEditDialog dialog = new StochasticExpressionEditDialog(
+                PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), TypeEnum.DOUBLE, randomVariable);
+        dialog.setDisplayTitle(displayTitle);
+        dialog.open();
 
+        if (dialog.getReturnCode() == Dialog.CANCEL) {
+            return null;
+        }
 
-	
-
+        randomVariable.setSpecification(dialog.getResultText());
+        return randomVariable;
+    }
 }

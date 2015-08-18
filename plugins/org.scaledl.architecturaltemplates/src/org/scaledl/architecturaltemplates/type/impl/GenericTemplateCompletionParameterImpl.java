@@ -12,22 +12,19 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  * <em><b>Generic Template Completion Parameter</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>
- * {@link org.scaledl.architecturaltemplates.type.impl.GenericTemplateCompletionParameterImpl#getTemplateFileURI
- * <em>Template File URI</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.scaledl.architecturaltemplates.type.impl.GenericTemplateCompletionParameterImpl#getTemplateFileURI <em>Template File URI</em>}</li>
+ * </ul>
  *
  * @generated
  */
-public class GenericTemplateCompletionParameterImpl extends GenericBlackboardCompletionParameterImpl implements
-GenericTemplateCompletionParameter {
+public class GenericTemplateCompletionParameterImpl extends GenericBlackboardCompletionParameterImpl
+        implements GenericTemplateCompletionParameter {
 
     /**
-     * The default value of the '{@link #getTemplateFileURI() <em>Template File URI</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The default value of the '{@link #getTemplateFileURI() <em>Template File URI</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see #getTemplateFileURI()
      * @generated
      * @ordered
@@ -36,7 +33,6 @@ GenericTemplateCompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected GenericTemplateCompletionParameterImpl() {
@@ -45,7 +41,6 @@ GenericTemplateCompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -55,50 +50,46 @@ GenericTemplateCompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public String getTemplateFileURI() {
-        return (String) this.eDynamicGet(TypePackage.GENERIC_TEMPLATE_COMPLETION_PARAMETER__TEMPLATE_FILE_URI,
+        return (String) eDynamicGet(TypePackage.GENERIC_TEMPLATE_COMPLETION_PARAMETER__TEMPLATE_FILE_URI,
                 TypePackage.Literals.TEMPLATE_PROVIDING_ENTITY__TEMPLATE_FILE_URI, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void setTemplateFileURI(final String newTemplateFileURI) {
-        this.eDynamicSet(TypePackage.GENERIC_TEMPLATE_COMPLETION_PARAMETER__TEMPLATE_FILE_URI,
+    public void setTemplateFileURI(String newTemplateFileURI) {
+        eDynamicSet(TypePackage.GENERIC_TEMPLATE_COMPLETION_PARAMETER__TEMPLATE_FILE_URI,
                 TypePackage.Literals.TEMPLATE_PROVIDING_ENTITY__TEMPLATE_FILE_URI, newTemplateFileURI);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public Object eGet(final int featureID, final boolean resolve, final boolean coreType) {
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case TypePackage.GENERIC_TEMPLATE_COMPLETION_PARAMETER__TEMPLATE_FILE_URI:
-            return this.getTemplateFileURI();
+            return getTemplateFileURI();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void eSet(final int featureID, final Object newValue) {
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
         case TypePackage.GENERIC_TEMPLATE_COMPLETION_PARAMETER__TEMPLATE_FILE_URI:
-            this.setTemplateFileURI((String) newValue);
+            setTemplateFileURI((String) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -106,14 +97,13 @@ GenericTemplateCompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void eUnset(final int featureID) {
+    public void eUnset(int featureID) {
         switch (featureID) {
         case TypePackage.GENERIC_TEMPLATE_COMPLETION_PARAMETER__TEMPLATE_FILE_URI:
-            this.setTemplateFileURI(TEMPLATE_FILE_URI_EDEFAULT);
+            setTemplateFileURI(TEMPLATE_FILE_URI_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -121,26 +111,24 @@ GenericTemplateCompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public boolean eIsSet(final int featureID) {
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TypePackage.GENERIC_TEMPLATE_COMPLETION_PARAMETER__TEMPLATE_FILE_URI:
-            return TEMPLATE_FILE_URI_EDEFAULT == null ? this.getTemplateFileURI() != null : !TEMPLATE_FILE_URI_EDEFAULT
-            .equals(this.getTemplateFileURI());
+            return TEMPLATE_FILE_URI_EDEFAULT == null ? getTemplateFileURI() != null
+                    : !TEMPLATE_FILE_URI_EDEFAULT.equals(getTemplateFileURI());
         }
         return super.eIsSet(featureID);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public int eBaseStructuralFeatureID(final int derivedFeatureID, final Class<?> baseClass) {
+    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
         if (baseClass == TemplateProvidingEntity.class) {
             switch (derivedFeatureID) {
             case TypePackage.GENERIC_TEMPLATE_COMPLETION_PARAMETER__TEMPLATE_FILE_URI:
@@ -154,11 +142,10 @@ GenericTemplateCompletionParameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public int eDerivedStructuralFeatureID(final int baseFeatureID, final Class<?> baseClass) {
+    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
         if (baseClass == TemplateProvidingEntity.class) {
             switch (baseFeatureID) {
             case TypePackage.TEMPLATE_PROVIDING_ENTITY__TEMPLATE_FILE_URI:

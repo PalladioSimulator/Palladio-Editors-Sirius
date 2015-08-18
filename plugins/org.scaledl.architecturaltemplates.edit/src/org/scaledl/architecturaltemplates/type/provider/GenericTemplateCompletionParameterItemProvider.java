@@ -58,9 +58,9 @@ public class GenericTemplateCompletionParameterItemProvider extends GenericBlack
     protected void addTemplateFileURIPropertyDescriptor(final Object object) {
         this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
                 ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
-                this.getString("_UI_TemplateProvidingEntity_templateFileURI_feature"), this.getString(
-                        "_UI_PropertyDescriptor_description", "_UI_TemplateProvidingEntity_templateFileURI_feature",
-                        "_UI_TemplateProvidingEntity_type"),
+                this.getString("_UI_TemplateProvidingEntity_templateFileURI_feature"),
+                this.getString("_UI_PropertyDescriptor_description",
+                        "_UI_TemplateProvidingEntity_templateFileURI_feature", "_UI_TemplateProvidingEntity_type"),
                 TypePackage.Literals.TEMPLATE_PROVIDING_ENTITY__TEMPLATE_FILE_URI, true, false, false,
                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }

@@ -17,12 +17,11 @@ import org.palladiosimulator.pcm.core.entity.impl.EntityImpl;
  * end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- * <li>{@link org.scaledl.architecturaltemplates.type.impl.ParameterImpl#getRole <em>Role</em>}</li>
- * <li>{@link org.scaledl.architecturaltemplates.type.impl.ParameterImpl#getDataType <em>Data Type
- * </em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link org.scaledl.architecturaltemplates.type.impl.ParameterImpl#getRole <em>Role</em>}</li>
+ *   <li>{@link org.scaledl.architecturaltemplates.type.impl.ParameterImpl#getDataType <em>Data Type</em>}</li>
+ * </ul>
  *
  * @generated
  */
@@ -30,7 +29,6 @@ public class ParameterImpl extends EntityImpl implements Parameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected ParameterImpl() {
@@ -39,7 +37,6 @@ public class ParameterImpl extends EntityImpl implements Parameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -49,143 +46,129 @@ public class ParameterImpl extends EntityImpl implements Parameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public Role getRole() {
-        return (Role) this.eDynamicGet(TypePackage.PARAMETER__ROLE, TypePackage.Literals.PARAMETER__ROLE, true, true);
+        return (Role) eDynamicGet(TypePackage.PARAMETER__ROLE, TypePackage.Literals.PARAMETER__ROLE, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
-    public NotificationChain basicSetRole(final Role newRole, NotificationChain msgs) {
-        msgs = this.eBasicSetContainer((InternalEObject) newRole, TypePackage.PARAMETER__ROLE, msgs);
+    public NotificationChain basicSetRole(Role newRole, NotificationChain msgs) {
+        msgs = eBasicSetContainer((InternalEObject) newRole, TypePackage.PARAMETER__ROLE, msgs);
         return msgs;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void setRole(final Role newRole) {
-        this.eDynamicSet(TypePackage.PARAMETER__ROLE, TypePackage.Literals.PARAMETER__ROLE, newRole);
+    public void setRole(Role newRole) {
+        eDynamicSet(TypePackage.PARAMETER__ROLE, TypePackage.Literals.PARAMETER__ROLE, newRole);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
     public EDataType getDataType() {
-        return (EDataType) this.eDynamicGet(TypePackage.PARAMETER__DATA_TYPE,
-                TypePackage.Literals.PARAMETER__DATA_TYPE, true, true);
+        return (EDataType) eDynamicGet(TypePackage.PARAMETER__DATA_TYPE, TypePackage.Literals.PARAMETER__DATA_TYPE,
+                true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public EDataType basicGetDataType() {
-        return (EDataType) this.eDynamicGet(TypePackage.PARAMETER__DATA_TYPE,
-                TypePackage.Literals.PARAMETER__DATA_TYPE, false, true);
+        return (EDataType) eDynamicGet(TypePackage.PARAMETER__DATA_TYPE, TypePackage.Literals.PARAMETER__DATA_TYPE,
+                false, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void setDataType(final EDataType newDataType) {
-        this.eDynamicSet(TypePackage.PARAMETER__DATA_TYPE, TypePackage.Literals.PARAMETER__DATA_TYPE, newDataType);
+    public void setDataType(EDataType newDataType) {
+        eDynamicSet(TypePackage.PARAMETER__DATA_TYPE, TypePackage.Literals.PARAMETER__DATA_TYPE, newDataType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eInverseAdd(final InternalEObject otherEnd, final int featureID, NotificationChain msgs) {
+    public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case TypePackage.PARAMETER__ROLE:
-            if (this.eInternalContainer() != null) {
-                msgs = this.eBasicRemoveFromContainer(msgs);
-            }
-            return this.basicSetRole((Role) otherEnd, msgs);
+            if (eInternalContainer() != null)
+                msgs = eBasicRemoveFromContainer(msgs);
+            return basicSetRole((Role) otherEnd, msgs);
         }
         return super.eInverseAdd(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eInverseRemove(final InternalEObject otherEnd, final int featureID,
-            final NotificationChain msgs) {
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
         case TypePackage.PARAMETER__ROLE:
-            return this.basicSetRole(null, msgs);
+            return basicSetRole(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public NotificationChain eBasicRemoveFromContainerFeature(final NotificationChain msgs) {
-        switch (this.eContainerFeatureID()) {
+    public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+        switch (eContainerFeatureID()) {
         case TypePackage.PARAMETER__ROLE:
-            return this.eInternalContainer().eInverseRemove(this, TypePackage.ROLE__PARAMETERS, Role.class, msgs);
+            return eInternalContainer().eInverseRemove(this, TypePackage.ROLE__PARAMETERS, Role.class, msgs);
         }
         return super.eBasicRemoveFromContainerFeature(msgs);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public Object eGet(final int featureID, final boolean resolve, final boolean coreType) {
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case TypePackage.PARAMETER__ROLE:
-            return this.getRole();
+            return getRole();
         case TypePackage.PARAMETER__DATA_TYPE:
-            if (resolve) {
-                return this.getDataType();
-            }
-            return this.basicGetDataType();
+            if (resolve)
+                return getDataType();
+            return basicGetDataType();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void eSet(final int featureID, final Object newValue) {
+    public void eSet(int featureID, Object newValue) {
         switch (featureID) {
         case TypePackage.PARAMETER__ROLE:
-            this.setRole((Role) newValue);
+            setRole((Role) newValue);
             return;
         case TypePackage.PARAMETER__DATA_TYPE:
-            this.setDataType((EDataType) newValue);
+            setDataType((EDataType) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -193,17 +176,16 @@ public class ParameterImpl extends EntityImpl implements Parameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public void eUnset(final int featureID) {
+    public void eUnset(int featureID) {
         switch (featureID) {
         case TypePackage.PARAMETER__ROLE:
-            this.setRole((Role) null);
+            setRole((Role) null);
             return;
         case TypePackage.PARAMETER__DATA_TYPE:
-            this.setDataType((EDataType) null);
+            setDataType((EDataType) null);
             return;
         }
         super.eUnset(featureID);
@@ -211,16 +193,15 @@ public class ParameterImpl extends EntityImpl implements Parameter {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
-    public boolean eIsSet(final int featureID) {
+    public boolean eIsSet(int featureID) {
         switch (featureID) {
         case TypePackage.PARAMETER__ROLE:
-            return this.getRole() != null;
+            return getRole() != null;
         case TypePackage.PARAMETER__DATA_TYPE:
-            return this.basicGetDataType() != null;
+            return basicGetDataType() != null;
         }
         return super.eIsSet(featureID);
     }

@@ -11,11 +11,10 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.palladiosimulator.pcm.core.entity.provider.EntityItemProvider;
 import org.scaledl.architecturaltemplates.type.Repository;
 import org.scaledl.architecturaltemplates.type.TypeFactory;
 import org.scaledl.architecturaltemplates.type.TypePackage;
-
-import org.palladiosimulator.pcm.core.entity.provider.EntityItemProvider;
 
 /**
  * This is the item provider adapter for a
@@ -101,8 +100,8 @@ public class RepositoryItemProvider extends EntityItemProvider {
     @Override
     public String getText(final Object object) {
         final String label = ((Repository) object).getEntityName();
-        return label == null || label.length() == 0 ? this.getString("_UI_Repository_type") : this
-                .getString("_UI_Repository_type") + " " + label;
+        return label == null || label.length() == 0 ? this.getString("_UI_Repository_type")
+                : this.getString("_UI_Repository_type") + " " + label;
     }
 
     /**
@@ -134,8 +133,8 @@ public class RepositoryItemProvider extends EntityItemProvider {
     protected void collectNewChildDescriptors(final Collection<Object> newChildDescriptors, final Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(this.createChildParameter(TypePackage.Literals.REPOSITORY__ATS,
-                TypeFactory.eINSTANCE.createAT()));
+        newChildDescriptors
+                .add(this.createChildParameter(TypePackage.Literals.REPOSITORY__ATS, TypeFactory.eINSTANCE.createAT()));
     }
 
     /**
