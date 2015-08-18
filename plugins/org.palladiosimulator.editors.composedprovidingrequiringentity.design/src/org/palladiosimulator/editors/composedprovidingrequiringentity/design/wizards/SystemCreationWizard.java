@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -13,6 +14,7 @@ import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.SWT;
@@ -63,6 +65,7 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 			@Override
 			protected void execute(final IProgressMonitor monitor)
 					throws CoreException, InvocationTargetException, InterruptedException {
+				try {
 				final Session session = SessionManager.INSTANCE.getSession(
 						URI.createPlatformResourceURI("/" + systemURI.segment(1) + "/representations.aird", true),
 						monitor);
@@ -73,7 +76,7 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 				final CreateSystemModelCommand createSystemModelCommand = new CreateSystemModelCommand(domain, systemURI);
 				domain.getCommandStack().execute(createSystemModelCommand);
 				final System createdSystem = createSystemModelCommand.getCreatedSystem();
-
+				domain.getCommandStack().execute(new AddSemanticResourceCommand(session, createdSystem.eResource().getURI(), monitor));
 				monitor.worked(50);
 
 				if (createRepresentation) {
@@ -87,6 +90,7 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 					DialectUIManager.INSTANCE.openEditor(session, createdRepresentation, monitor);
 				}
 				monitor.worked(100);
+				}catch(Exception e) { e.printStackTrace(); }
 
 			}
 		};
