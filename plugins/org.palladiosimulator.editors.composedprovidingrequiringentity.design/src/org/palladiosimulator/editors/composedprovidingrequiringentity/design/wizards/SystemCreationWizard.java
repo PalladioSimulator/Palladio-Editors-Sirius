@@ -5,7 +5,6 @@ import java.lang.reflect.InvocationTargetException;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -133,16 +132,33 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 	 */
 	private class SystemModelCreationPage extends WizardNewFileCreationPage {
 
-		private static final String PAGE_NAME = "PAGE_NAME";
-		private static final String INITIAL_FILE_NAME = "newSystem";
+		private static final String PAGE_NAME = "Create System";
+		private static final String INITIAL_FILE_NAME = "newSystem"; //$NON-NLS-N$
 		private static final String FILE_EXTENSION = "system"; // $NON-NLS-N$
-		private static final String MESSAGE = "Chose a file name and location";
+		private static final String MESSAGE = "Choose a file name and location";
 
 		public SystemModelCreationPage(IStructuredSelection selection) {
 			super(PAGE_NAME, selection);
 			setFileName(INITIAL_FILE_NAME);
 			setMessage(MESSAGE);
 			setFileExtension(FILE_EXTENSION);
+		}
+		
+		@Override
+		public void createControl(Composite parent) {
+			super.createControl(parent);
+			setMessage(MESSAGE);
+			setTitle(PAGE_NAME);
+		}
+		
+		/**
+		 * Need to override this to set the correct message. The super-implementation sets it to null.
+		 */
+		@Override
+		protected boolean validatePage() {
+			boolean valid = super.validatePage();
+			if (valid) setMessage(MESSAGE);
+			return valid;
 		}
 
 		public URI getPlatformURI() {
@@ -196,7 +212,7 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 		@Override
 		public void createControl(Composite parent) {
 			// Create composite
-			final Composite composite = new Composite(parent, SWT.BORDER);
+			final Composite composite = new Composite(parent, SWT.NONE);
 			composite.setLayout(new GridLayout());
 			composite.setLayoutData(new GridData(GridData.FILL_BOTH));
 
