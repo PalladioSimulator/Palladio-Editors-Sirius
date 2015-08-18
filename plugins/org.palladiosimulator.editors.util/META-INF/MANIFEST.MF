@@ -16,3 +16,4 @@ Require-Bundle: org.palladiosimulator.commons;bundle-version="1.0.0",
 Bundle-Activator: org.palladiosimulator.editors.util.Activator
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: palladiosimulator.org
+Export-Package: org.palladiosimulator.editors.util.api.services
