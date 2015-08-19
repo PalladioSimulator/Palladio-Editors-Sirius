@@ -56,18 +56,16 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 	public boolean performFinish() {
 		final URI systemURI = fileCreationPage.getPlatformURI();
 		// TODO use optional
-		final boolean createRepresentation = representationCreationPage.isRepresentationCreationEnabled(); 
-		final String representationName = representationCreationPage.getRepresentationName(); 
+		final boolean createRepresentation = representationCreationPage.isRepresentationCreationEnabled();
+		final String representationName = representationCreationPage.getRepresentationName();
 
 		final IRunnableWithProgress operation = new WorkspaceModifyOperation() {
 
 			@Override
 			protected void execute(final IProgressMonitor monitor)
 					throws CoreException, InvocationTargetException, InterruptedException {
-				try {
 				final Session session = SessionManager.INSTANCE.getSession(
-						URI.createPlatformResourceURI("/" + systemURI.segment(1) + "/representations.aird", true),
-						monitor);
+						URI.createPlatformResourceURI("/" + systemURI.segment(1) + "/representations.aird", true), monitor);
 				final TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
 
 				monitor.worked(25);
@@ -75,7 +73,8 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 				final CreateSystemModelCommand createSystemModelCommand = new CreateSystemModelCommand(domain, systemURI);
 				domain.getCommandStack().execute(createSystemModelCommand);
 				final System createdSystem = createSystemModelCommand.getCreatedSystem();
-				domain.getCommandStack().execute(new AddSemanticResourceCommand(session, createdSystem.eResource().getURI(), monitor));
+				domain.getCommandStack()
+						.execute(new AddSemanticResourceCommand(session, createdSystem.eResource().getURI(), monitor));
 				monitor.worked(50);
 
 				if (createRepresentation) {
@@ -89,8 +88,6 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 					DialectUIManager.INSTANCE.openEditor(session, createdRepresentation, monitor);
 				}
 				monitor.worked(100);
-				}catch(Exception e) { e.printStackTrace(); }
-
 			}
 		};
 		try {
@@ -133,7 +130,7 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 	private class SystemModelCreationPage extends WizardNewFileCreationPage {
 
 		private static final String PAGE_NAME = "Create System";
-		private static final String INITIAL_FILE_NAME = "newSystem"; //$NON-NLS-N$
+		private static final String INITIAL_FILE_NAME = "newSystem"; // $NON-NLS-N$
 		private static final String FILE_EXTENSION = "system"; // $NON-NLS-N$
 		private static final String MESSAGE = "Choose a file name and location";
 
@@ -143,21 +140,23 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 			setMessage(MESSAGE);
 			setFileExtension(FILE_EXTENSION);
 		}
-		
+
 		@Override
 		public void createControl(Composite parent) {
 			super.createControl(parent);
 			setMessage(MESSAGE);
 			setTitle(PAGE_NAME);
 		}
-		
+
 		/**
-		 * Need to override this to set the correct message. The super-implementation sets it to null.
+		 * Need to override this to set the correct message. The
+		 * super-implementation sets it to null.
 		 */
 		@Override
 		protected boolean validatePage() {
 			boolean valid = super.validatePage();
-			if (valid) setMessage(MESSAGE);
+			if (valid)
+				setMessage(MESSAGE);
 			return valid;
 		}
 
