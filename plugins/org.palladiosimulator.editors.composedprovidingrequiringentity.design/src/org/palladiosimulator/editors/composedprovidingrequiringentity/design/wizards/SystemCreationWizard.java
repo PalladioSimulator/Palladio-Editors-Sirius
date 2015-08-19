@@ -1,9 +1,12 @@
 package org.palladiosimulator.editors.composedprovidingrequiringentity.design.wizards;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
+import java.util.Collections;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.operation.IRunnableWithProgress;
@@ -15,7 +18,10 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
+import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -42,6 +48,7 @@ import org.palladiosimulator.pcm.system.System;
  * @author Max Schettler
  *
  */
+@SuppressWarnings("restriction")	// TODO remove this when the Sirius API classes get added to the API.....
 public class SystemCreationWizard extends Wizard implements INewWizard {
 
 	private static final String WINDOW_TITLE = "Create System";
@@ -65,27 +72,39 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 			protected void execute(final IProgressMonitor monitor)
 					throws CoreException, InvocationTargetException, InterruptedException {
 				final Session session = SessionManager.INSTANCE.getSession(
-						URI.createPlatformResourceURI("/" + systemURI.segment(1) + "/representations.aird", true), monitor);
+						URI.createPlatformResourceURI("/" + systemURI.segment(1) + "/representations.aird", true), new SubProgressMonitor(monitor, 1));
 				final TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
 
-				monitor.worked(25);
+				monitor.worked(16);
 
 				final CreateSystemModelCommand createSystemModelCommand = new CreateSystemModelCommand(domain, systemURI);
 				domain.getCommandStack().execute(createSystemModelCommand);
+				
+				monitor.worked(33);
+				
 				final System createdSystem = createSystemModelCommand.getCreatedSystem();
 				domain.getCommandStack()
-						.execute(new AddSemanticResourceCommand(session, createdSystem.eResource().getURI(), monitor));
+						.execute(new AddSemanticResourceCommand(session, createdSystem.eResource().getURI(), new SubProgressMonitor(monitor, 1)));
+
 				monitor.worked(50);
 
 				if (createRepresentation) {
+					final Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(true);
+					if (!selectedViewpoints.contains(Activator.getDefault().SYSTEM_DESIGN)) {
+						domain.getCommandStack().execute(new ChangeViewpointSelectionCommand(session, new ViewpointSelectionCallback(),
+								Collections.singleton(Activator.getDefault().SYSTEM_DESIGN), Collections.<Viewpoint> emptySet(), new SubProgressMonitor(monitor, 1)));
+					}
+
+                    monitor.worked(66);
+
 					final CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(session,
 							Activator.getDefault().COMPOSED_PROVIDING_REQUIRING_ENTITY_DIAGRAM, createdSystem, representationName,
-							monitor);
+							new SubProgressMonitor(monitor, 1));
 					domain.getCommandStack().execute(createRepresentationCommand);
 					final DRepresentation createdRepresentation = createRepresentationCommand.getCreatedRepresentation();
-					monitor.worked(75);
+					monitor.worked(83);
 
-					DialectUIManager.INSTANCE.openEditor(session, createdRepresentation, monitor);
+					DialectUIManager.INSTANCE.openEditor(session, createdRepresentation, new SubProgressMonitor(monitor, 1));
 				}
 				monitor.worked(100);
 			}
