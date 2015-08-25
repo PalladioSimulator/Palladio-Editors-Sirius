@@ -1041,7 +1041,7 @@
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Fy_dsMfSEeSk7svVbXg8ew" name="Invalid feature as name" tooltipText="">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Fy_dsMfSEeSk7svVbXg8ew" name="fileExtension : PCMFileExtensions = system" tooltipText="">
           <target xmi:type="ecore:EAttribute" href="architecturaltemplates.ecore#//type/PCMBlackboardCompletionParameter/fileExtension"/>
           <semanticElements xmi:type="ecore:EAttribute" href="architecturaltemplates.ecore#//type/PCMBlackboardCompletionParameter/fileExtension"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_FzAEwsfSEeSk7svVbXg8ew" labelAlignment="LEFT" description="_0fTRsNF8EeScOvMGQs4lKg">
@@ -1140,7 +1140,7 @@
           <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_FzAExsfSEeSk7svVbXg8ew" name="Invalid feature as name" tooltipText="">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_FzAExsfSEeSk7svVbXg8ew" name="fileExtension : PCMFileExtensions = system" tooltipText="">
           <target xmi:type="ecore:EAttribute" href="architecturaltemplates.ecore#//type/PCMOutputCompletionParameter/fileExtension"/>
           <semanticElements xmi:type="ecore:EAttribute" href="architecturaltemplates.ecore#//type/PCMOutputCompletionParameter/fileExtension"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_FzAr1MfSEeSk7svVbXg8ew" labelAlignment="LEFT" description="_0fTRsNF8EeScOvMGQs4lKg">
