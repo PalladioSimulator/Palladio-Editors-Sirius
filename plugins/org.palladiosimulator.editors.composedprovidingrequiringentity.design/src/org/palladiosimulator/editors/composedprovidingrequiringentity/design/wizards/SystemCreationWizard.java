@@ -4,22 +4,29 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Collections;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
+import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
+import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.SWT;
@@ -35,6 +42,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 import org.palladiosimulator.editors.composedprovidingrequiringentity.design.Activator;
@@ -48,9 +56,12 @@ import org.palladiosimulator.pcm.system.System;
  * @author Max Schettler
  *
  */
-@SuppressWarnings("restriction")	// TODO remove this when the Sirius API classes get added to the API.....
+@SuppressWarnings("restriction") // TODO remove this when the Sirius API classes
+									// get added to the API.....
 public class SystemCreationWizard extends Wizard implements INewWizard {
 
+	private static final String CONFIRMATION_TITLE = "Conversion confirmation";
+	private static final String CONFIRMATION_QUESTION = "The project needs to be a Modeling Project in order to continue. Do you want to convert it now?";
 	private static final String WINDOW_TITLE = "Create System";
 
 	private SystemModelCreationPage fileCreationPage;
@@ -71,31 +82,49 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 			@Override
 			protected void execute(final IProgressMonitor monitor)
 					throws CoreException, InvocationTargetException, InterruptedException {
+				if (!systemURI.isPlatform())
+					return;
+				final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(systemURI.segment(1));
+				if (!project.hasNature(ModelingProject.NATURE_ID)) {
+					// Ask user whether he wants to add the modeling nature
+					final MessageDialog confirmationDialog = new MessageDialog(
+							PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), CONFIRMATION_TITLE, null,
+							CONFIRMATION_QUESTION,
+							MessageDialog.CONFIRM, new String[] { IDialogConstants.YES_LABEL, IDialogConstants.CANCEL_LABEL }, 0);
+					if (confirmationDialog.open() != Dialog.OK)
+						return;
+
+					ModelingProjectManager.INSTANCE.convertToModelingProject(project, monitor);
+				}
+
 				final Session session = SessionManager.INSTANCE.getSession(
-						URI.createPlatformResourceURI("/" + systemURI.segment(1) + "/representations.aird", true), new SubProgressMonitor(monitor, 1));
+						URI.createPlatformResourceURI("/" + systemURI.segment(1) + "/representations.aird", true),
+						new SubProgressMonitor(monitor, 1));
 				final TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
 
 				monitor.worked(16);
 
 				final CreateSystemModelCommand createSystemModelCommand = new CreateSystemModelCommand(domain, systemURI);
 				domain.getCommandStack().execute(createSystemModelCommand);
-				
+
 				monitor.worked(33);
-				
+
 				final System createdSystem = createSystemModelCommand.getCreatedSystem();
-				domain.getCommandStack()
-						.execute(new AddSemanticResourceCommand(session, createdSystem.eResource().getURI(), new SubProgressMonitor(monitor, 1)));
+				domain.getCommandStack().execute(new AddSemanticResourceCommand(session, createdSystem.eResource().getURI(),
+						new SubProgressMonitor(monitor, 1)));
 
 				monitor.worked(50);
 
 				if (createRepresentation) {
 					final Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(true);
 					if (!selectedViewpoints.contains(Activator.getDefault().SYSTEM_DESIGN)) {
-						domain.getCommandStack().execute(new ChangeViewpointSelectionCommand(session, new ViewpointSelectionCallback(),
-								Collections.singleton(Activator.getDefault().SYSTEM_DESIGN), Collections.<Viewpoint> emptySet(), new SubProgressMonitor(monitor, 1)));
+						domain.getCommandStack()
+								.execute(new ChangeViewpointSelectionCommand(session, new ViewpointSelectionCallback(),
+										Collections.singleton(Activator.getDefault().SYSTEM_DESIGN),
+										Collections.<Viewpoint> emptySet(), new SubProgressMonitor(monitor, 1)));
 					}
 
-                    monitor.worked(66);
+					monitor.worked(66);
 
 					final CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(session,
 							Activator.getDefault().COMPOSED_PROVIDING_REQUIRING_ENTITY_DIAGRAM, createdSystem, representationName,
