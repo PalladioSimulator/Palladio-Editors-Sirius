@@ -84,8 +84,12 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 					throws CoreException, InvocationTargetException, InterruptedException {
 				if (!systemURI.isPlatform())
 					return;
+				
+				monitor.beginTask("Create System and representation:", 100);
+				
 				final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(systemURI.segment(1));
 				if (!project.hasNature(ModelingProject.NATURE_ID)) {
+					monitor.subTask("Converting to Modeling Project");
 					// Ask user whether he wants to add the modeling nature
 					final MessageDialog confirmationDialog = new MessageDialog(
 							PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), CONFIRMATION_TITLE, null,
@@ -97,6 +101,7 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 					ModelingProjectManager.INSTANCE.convertToModelingProject(project, monitor);
 				}
 
+				monitor.subTask("Requesting Session");
 				final Session session = SessionManager.INSTANCE.getSession(
 						URI.createPlatformResourceURI("/" + systemURI.segment(1) + "/representations.aird", true),
 						new SubProgressMonitor(monitor, 1));
@@ -104,18 +109,21 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 
 				monitor.worked(16);
 
+				monitor.subTask("Creating System");
 				final CreateSystemModelCommand createSystemModelCommand = new CreateSystemModelCommand(domain, systemURI);
 				domain.getCommandStack().execute(createSystemModelCommand);
 
-				monitor.worked(33);
+				monitor.worked(16);
 
+				monitor.subTask("Adding as semantic resource");
 				final System createdSystem = createSystemModelCommand.getCreatedSystem();
 				domain.getCommandStack().execute(new AddSemanticResourceCommand(session, createdSystem.eResource().getURI(),
 						new SubProgressMonitor(monitor, 1)));
 
-				monitor.worked(50);
+				monitor.worked(16);
 
 				if (createRepresentation) {
+					monitor.subTask("Selecting viewpoint");
 					final Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(true);
 					if (!selectedViewpoints.contains(Activator.getDefault().SYSTEM_DESIGN)) {
 						domain.getCommandStack()
@@ -123,19 +131,20 @@ public class SystemCreationWizard extends Wizard implements INewWizard {
 										Collections.singleton(Activator.getDefault().SYSTEM_DESIGN),
 										Collections.<Viewpoint> emptySet(), new SubProgressMonitor(monitor, 1)));
 					}
+					monitor.worked(16);
 
-					monitor.worked(66);
-
+					monitor.subTask("Creating representation");
 					final CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(session,
 							Activator.getDefault().COMPOSED_PROVIDING_REQUIRING_ENTITY_DIAGRAM, createdSystem, representationName,
 							new SubProgressMonitor(monitor, 1));
 					domain.getCommandStack().execute(createRepresentationCommand);
 					final DRepresentation createdRepresentation = createRepresentationCommand.getCreatedRepresentation();
-					monitor.worked(83);
+					monitor.worked(16);
 
+					monitor.subTask("Opening representation");
 					DialectUIManager.INSTANCE.openEditor(session, createdRepresentation, new SubProgressMonitor(monitor, 1));
+					monitor.worked(16);
 				}
-				monitor.worked(100);
 			}
 		};
 		try {
