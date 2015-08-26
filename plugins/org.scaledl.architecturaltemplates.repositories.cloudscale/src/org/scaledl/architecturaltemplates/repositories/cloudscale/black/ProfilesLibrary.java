@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil.UsageCrossReferencer;
 import org.modelversioning.emfprofile.Stereotype;
 import org.palladiosimulator.mdsdprofiles.api.ProfileAPI;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
-
 import org.palladiosimulator.pcm.core.entity.Entity;
 import org.palladiosimulator.pcm.core.entity.NamedElement;
 
@@ -53,12 +52,12 @@ public class ProfilesLibrary {
             final String taggedValueName) {
         StereotypeAPI.setTaggedValue(pcmEntity, value, stereotypeName, taggedValueName);
     }
-    
+
     public static void setStringTaggedValue(final Entity pcmEntity, final String value, final String stereotypeName,
             final String taggedValueName) {
-        StereotypeAPI.setStringTaggedValue(pcmEntity, value, stereotypeName, taggedValueName);
+        StereotypeAPI.setTaggedValue(pcmEntity, value, stereotypeName, taggedValueName);
     }
-    
+
     public static int getIntTaggedValue(final Entity pcmEntity, final String taggedValueName,
             final String stereotypeName) {
         return StereotypeAPI.getTaggedValue(pcmEntity, taggedValueName, stereotypeName);
@@ -68,7 +67,7 @@ public class ProfilesLibrary {
             final String stereotypeName) {
         return StereotypeAPI.getTaggedValue(pcmEntity, taggedValueName, stereotypeName);
     }
-    
+
     public static String getStringTaggedValue(final Entity pcmEntity, final String taggedValueName,
             final String stereotypeName) {
         return StereotypeAPI.getTaggedValue(pcmEntity, taggedValueName, stereotypeName);
