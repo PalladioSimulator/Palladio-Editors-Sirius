@@ -9,7 +9,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.ocl.ParserException;
 import org.eclipse.ocl.Query;
 import org.eclipse.ocl.ecore.Constraint;
-import org.eclipse.ocl.ecore.EcoreEnvironmentFactory;
 import org.eclipse.ocl.ecore.OCL;
 import org.eclipse.ocl.helper.OCLHelper;
 import org.modelversioning.emfprofile.Stereotype;
@@ -20,6 +19,8 @@ import org.palladiosimulator.commons.emfutils.EMFLoadHelper;
 import org.palladiosimulator.mdsdprofiles.api.ProfileAPI;
 import org.scaledl.architecturaltemplates.completion.config.ATExtensionJobConfiguration;
 import org.scaledl.architecturaltemplates.completion.constants.ATPartitionConstants;
+import org.scaledl.architecturaltemplates.ocl.StereotypeEnvironmentFactory;
+import org.scaledl.architecturaltemplates.type.OCLConstraint;
 import org.scaledl.architecturaltemplates.type.Role;
 
 import de.uka.ipd.sdq.workflow.jobs.JobFailedException;
@@ -45,26 +46,29 @@ public class ValidateModelsJob extends SequentialBlackboardInteractingJob<MDSDBl
         if (systemProfileApplication != null) {
             final EList<StereotypeApplication> stereotypeApplications = systemProfileApplication
                     .getStereotypeApplications();
-            final OCL ocl = OCL.newInstance(EcoreEnvironmentFactory.INSTANCE);
-
+            final OCL ocl = OCL.newInstance(new StereotypeEnvironmentFactory(this.myBlackboard));
+            // create an OCL helper object
             final OCLHelper<EClassifier, EOperation, EStructuralFeature, Constraint> helper = ocl.createOCLHelper();
-            for (final StereotypeApplication stereotypeApplication : stereotypeApplications) {
 
+            for (final StereotypeApplication stereotypeApplication : stereotypeApplications) {
+                // set the OCL context classifier
+                helper.setInstanceContext(stereotypeApplication);
                 final EList<org.scaledl.architecturaltemplates.type.Constraint> constraints = this
                         .getConstraintsFromStereotypeApplication(stereotypeApplication);
-                helper.setInstanceContext(stereotypeApplication);
-                Constraint invariant = null;
 
+                Constraint invariant = null;
                 for (final org.scaledl.architecturaltemplates.type.Constraint constraint : constraints) {
-                    try {
-                    	//FIXME: Do not use the entity name to store the OCL constraints
-                        invariant = helper.createInvariant(constraint.getEntityName());
-                        final Query constraintEvaluation = ocl.createQuery(invariant);
-                        if (!constraintEvaluation.check(stereotypeApplication)) {
-                            this.logger.error("Constraint: " + invariant.toString() + " failed.");
+                    if (constraint instanceof OCLConstraint) {
+                        final OCLConstraint oclConstraint = (OCLConstraint) constraint;
+                        try {
+                            invariant = helper.createInvariant(oclConstraint.getConstraint());
+                            final Query constraintEvaluation = ocl.createQuery(invariant);
+                            if (!constraintEvaluation.check(stereotypeApplication)) {
+                                this.logger.error("Constraint: " + invariant.toString() + "failed.");
+                            }
+                        } catch (final ParserException e) {
+                            this.logger.error("Unable to parse expression \"" + e.getMessage());
                         }
-                    } catch (final ParserException e) {
-                        this.logger.error("Unable to parse expression \"" + e.getMessage());
                     }
                 }
             }
