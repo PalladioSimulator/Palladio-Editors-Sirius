@@ -21,56 +21,77 @@
     </completion>
   </ATs>
   <ATs id="_7SshcH4UEeS81uv5CnTOEw" entityName="Dynamic Horizontal Scaling Assembly Context">
-    <roles id="_-yzLIH4UEeS81uv5CnTOEw" entityName="Replicable Assembly Context">
+    <roles id="_-yzLIH4UEeS81uv5CnTOEw" entityName="Replicable Assembly Context" constraints="_2e4YAkTkEeWX9I6sz1f4mQ _IWNl8kTlEeWX9I6sz1f4mQ">
       <stereotype href="profiles/DynamicHorizontalScalingAssemblyContext.emfprofile_diagram#_T5PXYJQkEeSq-7Z_6FnzsQ"/>
     </roles>
-    <roles id="_tly_sJQlEeSq-7Z_6FnzsQ" entityName="Dynamic Horizontal Scaling Assembly Context System">
+    <roles id="_tly_sJQlEeSq-7Z_6FnzsQ" entityName="Dynamic Horizontal Scaling Assembly Context System" constraints="_2CfB0ETiEeWX9I6sz1f4mQ _VXHSoUT0EeWX9I6sz1f4mQ">
       <stereotype href="profiles/DynamicHorizontalScalingAssemblyContext.emfprofile_diagram#_DFBzUJQkEeSq-7Z_6FnzsQ"/>
     </roles>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_IWNl8kTlEeWX9I6sz1f4mQ" entityName="Replicable Assembly Context Basic Component is Stateless" roles="_-yzLIH4UEeS81uv5CnTOEw" constraint="self.appliedTo.oclAsType(pcm::core::composition::AssemblyContext).encapsulatedComponent__AssemblyContext.hasAppliedStereotype('StatelessComponent')"/>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_2e4YAkTkEeWX9I6sz1f4mQ" entityName="Assembly Context is Replicable Assembly Context" roles="_-yzLIH4UEeS81uv5CnTOEw" constraint="self.appliedTo.oclAsType(pcm::core::composition::AssemblyContext).hasAppliedStereotype('ReplicableAssemblyContext')"/>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_2CfB0ETiEeWX9I6sz1f4mQ" entityName="System is Dynamic Horizontal Scaling System" roles="_tly_sJQlEeSq-7Z_6FnzsQ" constraint="self.appliedTo.oclAsType(pcm::system::System).hasAppliedStereotype('DynamicHorizontalScalingAssemblyContextSystem')"/>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_VXHSoUT0EeWX9I6sz1f4mQ" entityName="System has only one Replicable Assembly Context" roles="_tly_sJQlEeSq-7Z_6FnzsQ" constraint="self.appliedTo.oclAsType(pcm::system::System).assemblyContexts__ComposedStructure->select(a|a.hasAppliedStereotype('ReplicableAssemblyContext'))->size()=1&#xD;&#xA;"/>
     <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion" qvtoFileURI="DynamicHorizontalScalingAssemblyContext.qvto">
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="allocation"/>
     </completion>
   </ATs>
   <ATs id="_QgydkH4aEeS81uv5CnTOEw" entityName="Dynamic Horizontal Scaling Resource Container">
-    <roles id="_c9Rl4H46EeSqFvs4kqVd7Q" entityName="Dynamic Horizontal Scaling Resource Container System">
+    <roles id="_c9Rl4H46EeSqFvs4kqVd7Q" entityName="Dynamic Horizontal Scaling Resource Container System" constraints="_OU5_sUTqEeWX9I6sz1f4mQ">
       <stereotype href="profiles/DynamicHorizontalScalingResourceContainer.emfprofile_diagram#_paph0CO_EeSbfv_s0ToTIw"/>
     </roles>
-    <roles id="_TuvAQH4aEeS81uv5CnTOEw" entityName="Replicable Resource Container">
+    <roles id="_TuvAQH4aEeS81uv5CnTOEw" entityName="Replicable Resource Container" constraints="_hdsNcUT1EeWX9I6sz1f4mQ _PJrEgUTqEeWX9I6sz1f4mQ _t9og8UTqEeWX9I6sz1f4mQ _OqgcQUTqEeWX9I6sz1f4mQ">
       <stereotype href="profiles/DynamicHorizontalScalingResourceContainer.emfprofile_diagram#_2M_hMH47EeSqFvs4kqVd7Q"/>
     </roles>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_OU5_sUTqEeWX9I6sz1f4mQ" entityName="System is Dynamic Horizontal Scaling Resource Container System" roles="_c9Rl4H46EeSqFvs4kqVd7Q" constraint="self.appliedTo.oclAsType(pcm::system::System).hasAppliedStereotype('DynamicHorizontalScalingResourceContainerSystem')"/>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_OqgcQUTqEeWX9I6sz1f4mQ" entityName="Resource Container is Replicable Resource Container" roles="_TuvAQH4aEeS81uv5CnTOEw" constraint="self.appliedTo.oclAsType(pcm::resourceenvironment::ResourceContainer).hasAppliedStereotype('ReplicableResourceContainer')"/>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_PJrEgUTqEeWX9I6sz1f4mQ" entityName="Replicable Resource Container has Assembly Contexts" roles="_TuvAQH4aEeS81uv5CnTOEw" constraint="self.appliedTo.oclAsType(pcm::resourceenvironment::ResourceContainer).getAllocation().allocationContexts_Allocation->select(a|a.resourceContainer_AllocationContext.id = self.appliedTo.oclAsType(pcm::resourceenvironment::ResourceContainer).id)->collect(a|assemblyContexts_AllocationContext)->size()>0"/>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_t9og8UTqEeWX9I6sz1f4mQ" entityName="Replicable Resource Container Assembly Contexts Basic Components are Stateless" roles="_TuvAQH4aEeS81uv5CnTOEw" constraint="self.appliedTo.oclAsType(pcm::resourceenvironment::ResourceContainer).getAllocation().allocationContexts_Allocation->select(a|a.resourceContainer_AllocationContext.id = self.appliedTo.oclAsType(pcm::resourceenvironment::ResourceContainer).id)->collect(a|assemblyContexts_AllocationContext)->forAll(a| a.encapsulatedComponent__AssemblyContext.hasAppliedStereotype('StatelessComponent'))"/>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_hdsNcUT1EeWX9I6sz1f4mQ" entityName="Resource Environment has only one Replicable Resource Container" roles="_TuvAQH4aEeS81uv5CnTOEw" constraint="self.appliedTo.oclAsType(pcm::resourceenvironment::ResourceContainer).resourceEnvironment_ResourceContainer->select(r|r.hasAppliedStereotype('ReplicableResourceContainer'))->size()=1"/>
     <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion" qvtoFileURI="DynamicHorizontalScalingResourceContainer.qvto">
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="allocation"/>
     </completion>
   </ATs>
   <ATs id="_nt1zAH4aEeS81uv5CnTOEw" entityName="Dynamic Vertical Scaling Resource Container">
-    <roles id="_fhIWgH-qEeSOTOomnDiZOg" entityName="Dynamic Vertical Scaling Resource Container System">
+    <roles id="_fhIWgH-qEeSOTOomnDiZOg" entityName="Dynamic Vertical Scaling Resource Container System" constraints="_lWA9IUTlEeWX9I6sz1f4mQ">
       <stereotype href="profiles/DynamicVerticalScalingResourceContainer.emfprofile_diagram#_paph0CO_EeSbfv_s0ToTIw"/>
     </roles>
-    <roles id="_v2XZUH4aEeS81uv5CnTOEw" entityName="Virtualized Resource Container">
+    <roles id="_v2XZUH4aEeS81uv5CnTOEw" entityName="Virtualized Resource Container" constraints="_39q0wUTlEeWX9I6sz1f4mQ _MzPVcUTmEeWX9I6sz1f4mQ">
       <stereotype href="profiles/DynamicVerticalScalingResourceContainer.emfprofile_diagram#_2M_hMH47EeSqFvs4kqVd7Q"/>
     </roles>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_lWA9IUTlEeWX9I6sz1f4mQ" entityName="System is Dynamic Vertical Scaling Resource Container System" roles="_fhIWgH-qEeSOTOomnDiZOg" constraint="self.appliedTo.oclAsType(pcm::system::System).hasAppliedStereotype('DynamicVerticalScalingResourceContainerSystem')"/>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_39q0wUTlEeWX9I6sz1f4mQ" entityName="Resource Container is Virtualized Resource Container" roles="_v2XZUH4aEeS81uv5CnTOEw" constraint="self.appliedTo.oclAsType(pcm::resourceenvironment::ResourceContainer).hasAppliedStereotype('VirtualizedResourceContainer')"/>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_MzPVcUTmEeWX9I6sz1f4mQ" entityName="Virtualized Resource Container Processing Rate greater than Min Rate" roles="_v2XZUH4aEeS81uv5CnTOEw" constraint="self.appliedTo.oclAsType(pcm::resourceenvironment::ResourceContainer).activeResourceSpecifications_ResourceContainer->forAll(a|a.processingRate_ProcessingResourceSpecification.specification.oclAsType(Real)>= self.getIntTaggedValue('minRate','VirtualizedResourceContainer'));"/>
     <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion" qvtoFileURI="DynamicVerticalScalingResourceContainer.qvto">
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter"/>
     </completion>
   </ATs>
   <ATs id="_i-ghUIHkEeSeK9JYh8VNzw" entityName="Static Assembly Context Loadbalancing">
-    <roles id="_rotRUYHkEeSeK9JYh8VNzw" entityName="StaticAssemblyContextLoadbalancingSystem">
+    <roles id="_rotRUYHkEeSeK9JYh8VNzw" entityName="StaticAssemblyContextLoadbalancingSystem" constraints="_sctZYUTtEeWX9I6sz1f4mQ _2d000UT0EeWX9I6sz1f4mQ">
       <stereotype href="profiles/StaticAssemblyContextLoadbalancing.emfprofile_diagram#_dgxFkL2VEeS8D6gGtq5evQ"/>
     </roles>
-    <roles id="_kk1l8IHkEeSeK9JYh8VNzw" entityName="StaticLoadbalancedAssemblyContext">
+    <roles id="_kk1l8IHkEeSeK9JYh8VNzw" entityName="StaticLoadbalancedAssemblyContext" constraints="_tHI2cUTtEeWX9I6sz1f4mQ _ja7iIkyIEeWru9L6DwDf4w">
       <stereotype href="profiles/StaticAssemblyContextLoadbalancing.emfprofile_diagram#_kAT74L2VEeS8D6gGtq5evQ"/>
     </roles>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_ja7iIkyIEeWru9L6DwDf4w" entityName="Static Loadbalanced Assembly Context Basic Component is Stateless" roles="_kk1l8IHkEeSeK9JYh8VNzw" constraint="self.appliedTo.oclAsType(pcm::core::composition::AssemblyContext).encapsulatedComponent__AssemblyContext.hasAppliedStereotype('StatelessComponent')"/>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_sctZYUTtEeWX9I6sz1f4mQ" entityName="System is Static Assembly Context Loadbalancing System" roles="_rotRUYHkEeSeK9JYh8VNzw" constraint="self.appliedTo.oclAsType(pcm::system::System).hasAppliedStereotype('StaticAssemblyContextLoadbalancingSystem')"/>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_tHI2cUTtEeWX9I6sz1f4mQ" entityName="Assembly Context is Static Loadbalanced Assembly Context" roles="_kk1l8IHkEeSeK9JYh8VNzw" constraint="self.appliedTo.oclAsType(pcm::core::composition::AssemblyContext).hasAppliedStereotype('StaticLoadbalancedAssemblyContext')"/>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_2d000UT0EeWX9I6sz1f4mQ" entityName="System has only one Static Loadbalanced Assembly Context" roles="_rotRUYHkEeSeK9JYh8VNzw" constraint="self.appliedTo.oclAsType(pcm::system::System).assemblyContexts__ComposedStructure->select(a|a.hasAppliedStereotype('StaticLoadbalancedAssemblyContext'))->size()=1&#xD;&#xA;"/>
     <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion" qvtoFileURI="Loadbalancing.qvto">
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="allocation"/>
     </completion>
   </ATs>
   <ATs id="_LjXtcLuIEeS4YqzUTAgFdA" entityName="Static Resource Container Loadbalancing">
-    <roles id="_OVB8wLuIEeS4YqzUTAgFdA" entityName="StaticResourceContainerLoadbalancingSystem">
+    <roles id="_OVB8wLuIEeS4YqzUTAgFdA" entityName="StaticResourceContainerLoadbalancingSystem" constraints="_iRkeQUTxEeWX9I6sz1f4mQ">
       <stereotype href="profiles/StaticResourceContainerLoadbalancing.emfprofile_diagram#_rXqFsL0NEeSXc41T9TupKQ"/>
     </roles>
-    <roles id="_QxvPwLuIEeS4YqzUTAgFdA" entityName="StaticLoadbalancedResourceContainer">
+    <roles id="_QxvPwLuIEeS4YqzUTAgFdA" entityName="StaticLoadbalancedResourceContainer" constraints="_i9qvQUTxEeWX9I6sz1f4mQ _LghLgUT1EeWX9I6sz1f4mQ _zT9QUUyIEeWru9L6DwDf4w _CYHzEUyJEeWru9L6DwDf4w">
       <stereotype href="profiles/StaticResourceContainerLoadbalancing.emfprofile_diagram#_4S2w0L0NEeSXc41T9TupKQ"/>
     </roles>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_iRkeQUTxEeWX9I6sz1f4mQ" entityName="System is Static Resource Container Loadbalancing System" roles="_OVB8wLuIEeS4YqzUTAgFdA" constraint="self.appliedTo.oclAsType(pcm::system::System).hasAppliedStereotype('StaticResourceContainerLoadbalancingSystem')"/>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_i9qvQUTxEeWX9I6sz1f4mQ" entityName="Resource Container is Static Loadbalanced Resource Container" roles="_QxvPwLuIEeS4YqzUTAgFdA" constraint="self.appliedTo.oclAsType(pcm::resourceenvironment::ResourceContainer).hasAppliedStereotype('StaticLoadbalancedResourceContainer')"/>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_LghLgUT1EeWX9I6sz1f4mQ" entityName="Resource Environment has only one Static Loadbalanced Resource Container" roles="_QxvPwLuIEeS4YqzUTAgFdA" constraint="self.appliedTo.oclAsType(pcm::resourceenvironment::ResourceContainer).resourceEnvironment_ResourceContainer->select(r|r.hasAppliedStereotype('StaticLoadbalancedResourceContainer'))->size()=1"/>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_zT9QUUyIEeWru9L6DwDf4w" entityName="Static Loadbalanced Resource Container Assembly Contexts Basic Components are Stateless" roles="_QxvPwLuIEeS4YqzUTAgFdA" constraint="self.appliedTo.oclAsType(pcm::resourceenvironment::ResourceContainer).getAllocation().allocationContexts_Allocation->select(a|a.resourceContainer_AllocationContext.id = self.appliedTo.oclAsType(pcm::resourceenvironment::ResourceContainer).id)->collect(a|assemblyContexts_AllocationContext)->forAll(a| a.encapsulatedComponent__AssemblyContext.hasAppliedStereotype('StatelessComponent'))"/>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_CYHzEUyJEeWru9L6DwDf4w" entityName="Static Loadbalanced Resource Container has Assembly Contexts" roles="_QxvPwLuIEeS4YqzUTAgFdA" constraint="self.appliedTo.oclAsType(pcm::resourceenvironment::ResourceContainer).getAllocation().allocationContexts_Allocation->select(a|a.resourceContainer_AllocationContext.id = self.appliedTo.oclAsType(pcm::resourceenvironment::ResourceContainer).id)->collect(a|assemblyContexts_AllocationContext)->size()>0"/>
     <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion" qvtoFileURI="StaticResourceContainerLoadbalancing.qvto">
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="allocation"/>
     </completion>
