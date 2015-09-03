@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -19,6 +20,10 @@ public class Activator extends AbstractUIPlugin {
     private static Activator plugin;
 
     private static Set<Viewpoint> viewpoints; 
+    
+    public Viewpoint RESOURCEENVIRONMENT_DESIGN;
+	public RepresentationDescription RESOURCEENVIRONMENT_DIAGRAM;
+
 
     /**
      * The constructor
@@ -36,6 +41,24 @@ public class Activator extends AbstractUIPlugin {
 	  plugin = this;
 	  viewpoints = new HashSet<Viewpoint>();
 	  viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/resourceenvironment.odesign")); 
+  
+	  // Set viewpoint constants
+	  for (Viewpoint viewpoint : viewpoints) {
+		  if (viewpoint.getName().equals("Resourceenvironment Design")) {
+			  RESOURCEENVIRONMENT_DESIGN = viewpoint;
+              break;
+          }
+	  }
+	  
+	  // Set diagram description constants
+	  for (RepresentationDescription representationDescription : RESOURCEENVIRONMENT_DESIGN.getOwnedRepresentations()) {
+		  if (representationDescription.getName().equals("ResourceEnvironment Diagram")) {
+			  RESOURCEENVIRONMENT_DIAGRAM = representationDescription;
+			  break;
+		  }
+		  
+	  }
+    
     }
 
     /*

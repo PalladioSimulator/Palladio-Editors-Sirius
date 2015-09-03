@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.palladiosimulator.editors.resourceenvironment.design
+Bundle-Name: Palladio ResourceEnvironment Editor
 Bundle-SymbolicName: org.palladiosimulator.editors.resourceenvironment.design;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-Activator: org.palladiosimulator.editors.resourceenvironment.design.Activator
@@ -8,6 +8,15 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,
  org.eclipse.sirius,
- org.eclipse.sirius.common.acceleo.mtl
+ org.eclipse.sirius.common.acceleo.mtl,
+ org.eclipse.emf.transaction,
+ org.palladiosimulator.pcm;bundle-version="4.0.0",
+ org.palladiosimulator.editors.util;bundle-version="0.9.0",
+ org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension;bundle-version="0.9.0",
+ org.eclipse.sirius.ui;bundle-version="3.0.0",
+ org.eclipse.ui.workbench.source;bundle-version="3.107.0",
+ org.eclipse.emf.transaction.source;bundle-version="1.9.0",
+ org.eclipse.ui.ide;bundle-version="3.11.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Vendor: palladiosimulator.org
