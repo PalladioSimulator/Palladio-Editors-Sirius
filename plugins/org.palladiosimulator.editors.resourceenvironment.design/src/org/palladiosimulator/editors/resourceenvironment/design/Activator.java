@@ -13,17 +13,17 @@ import org.osgi.framework.BundleContext;
  * The activator class controls the plug-in life cycle
  */
 public class Activator extends AbstractUIPlugin {
+
     // The plug-in ID
     public static final String PLUGIN_ID = "org.palladiosimulator.editors.resourceenvironment.design";
 
     // The shared instance
     private static Activator plugin;
 
-    private static Set<Viewpoint> viewpoints; 
-    
-    public Viewpoint RESOURCEENVIRONMENT_DESIGN;
-	public RepresentationDescription RESOURCEENVIRONMENT_DIAGRAM;
+    private static Set<Viewpoint> viewpoints;
 
+    public Viewpoint RESOURCEENVIRONMENT_DESIGN;
+    public RepresentationDescription RESOURCEENVIRONMENT_DIAGRAM;
 
     /**
      * The constructor
@@ -36,29 +36,32 @@ public class Activator extends AbstractUIPlugin {
      * 
      * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
      */
-    public void start(BundleContext context) throws Exception {
-      super.start(context);
-	  plugin = this;
-	  viewpoints = new HashSet<Viewpoint>();
-	  viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/resourceenvironment.odesign")); 
-  
-	  // Set viewpoint constants
-	  for (Viewpoint viewpoint : viewpoints) {
-		  if (viewpoint.getName().equals("Resourceenvironment Design")) {
-			  RESOURCEENVIRONMENT_DESIGN = viewpoint;
-              break;
-          }
-	  }
-	  
-	  // Set diagram description constants
-	  for (RepresentationDescription representationDescription : RESOURCEENVIRONMENT_DESIGN.getOwnedRepresentations()) {
-		  if (representationDescription.getName().equals("ResourceEnvironment Diagram")) {
-			  RESOURCEENVIRONMENT_DIAGRAM = representationDescription;
-			  break;
-		  }
-		  
-	  }
-    
+    @Override
+    public void start(final BundleContext context) throws Exception {
+        super.start(context);
+        plugin = this;
+        viewpoints = new HashSet<Viewpoint>();
+        viewpoints.addAll(ViewpointRegistry.getInstance()
+                .registerFromPlugin(PLUGIN_ID + "/description/resourceenvironment.odesign"));
+
+        // Set viewpoint constants
+        for (final Viewpoint viewpoint : viewpoints) {
+            if (viewpoint.getName().equals("Resourceenvironment")) {
+                this.RESOURCEENVIRONMENT_DESIGN = viewpoint;
+                break;
+            }
+        }
+
+        // Set diagram description constants
+        for (final RepresentationDescription representationDescription : this.RESOURCEENVIRONMENT_DESIGN
+                .getOwnedRepresentations()) {
+            if (representationDescription.getName().equals("Resourceenvironment Diagram")) {
+                this.RESOURCEENVIRONMENT_DIAGRAM = representationDescription;
+                break;
+            }
+
+        }
+
     }
 
     /*
@@ -66,16 +69,17 @@ public class Activator extends AbstractUIPlugin {
      * 
      * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
      */
-    public void stop(BundleContext context) throws Exception {
-	plugin = null;
-	if (viewpoints != null) {
-	    for (final Viewpoint viewpoint: viewpoints) {
-		ViewpointRegistry.getInstance().disposeFromPlugin(viewpoint);
-	    }
-	    viewpoints.clear();
-	    viewpoints = null; 
-	}
-	super.stop(context);
+    @Override
+    public void stop(final BundleContext context) throws Exception {
+        plugin = null;
+        if (viewpoints != null) {
+            for (final Viewpoint viewpoint : viewpoints) {
+                ViewpointRegistry.getInstance().disposeFromPlugin(viewpoint);
+            }
+            viewpoints.clear();
+            viewpoints = null;
+        }
+        super.stop(context);
     }
 
     /**
@@ -84,6 +88,6 @@ public class Activator extends AbstractUIPlugin {
      * @return the shared instance
      */
     public static Activator getDefault() {
-	return plugin;
+        return plugin;
     }
 }

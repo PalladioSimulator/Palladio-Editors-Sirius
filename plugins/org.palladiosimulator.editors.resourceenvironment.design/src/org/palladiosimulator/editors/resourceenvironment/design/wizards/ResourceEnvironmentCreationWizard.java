@@ -48,306 +48,309 @@ import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 import org.palladiosimulator.editors.resourceenvironment.design.Activator;
 import org.palladiosimulator.editors.resourceenvironment.design.commands.CreateResourceenvironmentCommand;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
-import org.palladiosimulator.pcm.system.System;
 
 /**
- * Wizard for creating a {@link System}-model. Allows creating a corresponding
- * Sirius representation.
+ * Wizard for creating a {@link ResourceEnvironment}-model. Allows creating a corresponding Sirius
+ * representation.
  * 
  * @author Edith Kegel
  *
  */
 @SuppressWarnings("restriction") // TODO remove this when the Sirius API classes
-									// get added to the API.....
+                                 // get added to the API.....
 public class ResourceEnvironmentCreationWizard extends Wizard implements INewWizard {
 
-	private static final String CONFIRMATION_TITLE = "Conversion confirmation";
-	private static final String CONFIRMATION_QUESTION = "The project needs to be a Modeling Project in order to continue. Do you want to convert it now?";
-	private static final String WINDOW_TITLE = "Create ResourceEnvironment";
+    private static final String CONFIRMATION_TITLE = "Conversion confirmation";
+    private static final String CONFIRMATION_QUESTION = "The project needs to be a Modeling Project in order to continue. Do you want to convert it now?";
+    private static final String WINDOW_TITLE = "Create ResourceEnvironment";
 
-	private SystemModelCreationPage fileCreationPage;
-	private RepresentationCreationPage representationCreationPage;
+    private ResourceEnvironmentModelCreationPage fileCreationPage;
+    private RepresentationCreationPage representationCreationPage;
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public boolean performFinish() {
-		final URI resourceURI = fileCreationPage.getPlatformURI();
-		// TODO use optional
-		final boolean createRepresentation = representationCreationPage.isRepresentationCreationEnabled();
-		final String representationName = representationCreationPage.getRepresentationName();
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean performFinish() {
+        final URI resourceURI = this.fileCreationPage.getPlatformURI();
+        // TODO use optional
+        final boolean createRepresentation = this.representationCreationPage.isRepresentationCreationEnabled();
+        final String representationName = this.representationCreationPage.getRepresentationName();
 
-		final IRunnableWithProgress operation = new WorkspaceModifyOperation() {
+        final IRunnableWithProgress operation = new WorkspaceModifyOperation() {
 
-			@Override
-			protected void execute(final IProgressMonitor monitor)
-					throws CoreException, InvocationTargetException, InterruptedException {
-				if (!resourceURI.isPlatform())
-					return;
-				
-				monitor.beginTask("Create ResourceEnvironment and representation:", 100);
-				
-				final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(resourceURI.segment(1));
-				if (!project.hasNature(ModelingProject.NATURE_ID)) {
-					monitor.subTask("Converting to Modeling Project");
-					// Ask user whether he wants to add the modeling nature
-					final MessageDialog confirmationDialog = new MessageDialog(
-							PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), CONFIRMATION_TITLE, null,
-							CONFIRMATION_QUESTION,
-							MessageDialog.CONFIRM, new String[] { IDialogConstants.YES_LABEL, IDialogConstants.CANCEL_LABEL }, 0);
-					if (confirmationDialog.open() != Dialog.OK)
-						return;
+            @Override
+            protected void execute(final IProgressMonitor monitor)
+                    throws CoreException, InvocationTargetException, InterruptedException {
+                if (!resourceURI.isPlatform())
+                    return;
 
-					ModelingProjectManager.INSTANCE.convertToModelingProject(project, monitor);
-				}
+                monitor.beginTask("Create ResourceEnvironment and representation:", 100);
 
-				monitor.subTask("Requesting Session");
-				final Session session = SessionManager.INSTANCE.getSession(
-						URI.createPlatformResourceURI("/" + resourceURI.segment(1) + "/representations.aird", true),
-						new SubProgressMonitor(monitor, 1));
-				final TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
+                final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(resourceURI.segment(1));
+                if (!project.hasNature(ModelingProject.NATURE_ID)) {
+                    monitor.subTask("Converting to Modeling Project");
+                    // Ask user whether he wants to add the modeling nature
+                    final MessageDialog confirmationDialog = new MessageDialog(
+                            PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), CONFIRMATION_TITLE, null,
+                            CONFIRMATION_QUESTION, MessageDialog.CONFIRM,
+                            new String[] { IDialogConstants.YES_LABEL, IDialogConstants.CANCEL_LABEL }, 0);
+                    if (confirmationDialog.open() != Dialog.OK)
+                        return;
 
-				monitor.worked(16);
+                    ModelingProjectManager.INSTANCE.convertToModelingProject(project, monitor);
+                }
 
-				monitor.subTask("Creating Resource Environment");
-				final CreateResourceenvironmentCommand createResourceenvironmentCommand = new CreateResourceenvironmentCommand(domain, resourceURI);
-				domain.getCommandStack().execute(createResourceenvironmentCommand);
+                monitor.subTask("Requesting Session");
+                final Session session = SessionManager.INSTANCE.getSession(
+                        URI.createPlatformResourceURI("/" + resourceURI.segment(1) + "/representations.aird", true),
+                        new SubProgressMonitor(monitor, 1));
+                final TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
 
-				monitor.worked(16);
+                monitor.worked(16);
 
-				monitor.subTask("Adding as semantic resource");
-				final ResourceEnvironment createdResEnvironment = createResourceenvironmentCommand.getcreatedResourceEnvironment();
-				domain.getCommandStack().execute(new AddSemanticResourceCommand(session, createdResEnvironment.eResource().getURI(),
-						new SubProgressMonitor(monitor, 1)));
+                monitor.subTask("Creating Resource Environment");
+                final CreateResourceenvironmentCommand createResourceenvironmentCommand = new CreateResourceenvironmentCommand(
+                        domain, resourceURI);
+                domain.getCommandStack().execute(createResourceenvironmentCommand);
 
-				monitor.worked(16);
+                monitor.worked(16);
 
-				if (createRepresentation) {
-					monitor.subTask("Selecting viewpoint");
-					final Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(true);
-					if (!selectedViewpoints.contains(Activator.getDefault().RESOURCEENVIRONMENT_DESIGN)) {
-						domain.getCommandStack()
-								.execute(new ChangeViewpointSelectionCommand(session, new ViewpointSelectionCallback(),
-										Collections.singleton(Activator.getDefault().RESOURCEENVIRONMENT_DESIGN),
-										Collections.<Viewpoint> emptySet(), new SubProgressMonitor(monitor, 1)));
-					}
-					monitor.worked(16);
+                monitor.subTask("Adding as semantic resource");
+                final ResourceEnvironment createdResEnvironment = createResourceenvironmentCommand
+                        .getcreatedResourceEnvironment();
+                domain.getCommandStack().execute(new AddSemanticResourceCommand(session,
+                        createdResEnvironment.eResource().getURI(), new SubProgressMonitor(monitor, 1)));
 
-					monitor.subTask("Creating representation");
-					final CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(session,
-							Activator.getDefault().RESOURCEENVIRONMENT_DIAGRAM, createdResEnvironment, representationName,
-							new SubProgressMonitor(monitor, 1));
-					domain.getCommandStack().execute(createRepresentationCommand);
-					final DRepresentation createdRepresentation = createRepresentationCommand.getCreatedRepresentation();
-					monitor.worked(16);
+                monitor.worked(16);
 
-					monitor.subTask("Opening representation");
-					DialectUIManager.INSTANCE.openEditor(session, createdRepresentation, new SubProgressMonitor(monitor, 1));
-					monitor.worked(16);
-				}
-			}
-		};
-		try {
-			this.getContainer().run(false, false, operation);
-		} catch (InvocationTargetException | InterruptedException e) {
-			return false;
-		}
+                if (createRepresentation) {
+                    monitor.subTask("Selecting viewpoint");
+                    final Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(true);
+                    if (!selectedViewpoints.contains(Activator.getDefault().RESOURCEENVIRONMENT_DESIGN)) {
+                        domain.getCommandStack()
+                                .execute(new ChangeViewpointSelectionCommand(session, new ViewpointSelectionCallback(),
+                                        Collections.singleton(Activator.getDefault().RESOURCEENVIRONMENT_DESIGN),
+                                        Collections.<Viewpoint> emptySet(), new SubProgressMonitor(monitor, 1)));
+                    }
+                    monitor.worked(16);
 
-		return true;
-	}
+                    monitor.subTask("Creating representation");
+                    final CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(
+                            session, Activator.getDefault().RESOURCEENVIRONMENT_DIAGRAM, createdResEnvironment,
+                            representationName, new SubProgressMonitor(monitor, 1));
+                    domain.getCommandStack().execute(createRepresentationCommand);
+                    final DRepresentation createdRepresentation = createRepresentationCommand
+                            .getCreatedRepresentation();
+                    monitor.worked(16);
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void init(IWorkbench workbench, IStructuredSelection selection) {
-		fileCreationPage = new SystemModelCreationPage(selection);
-		representationCreationPage = new RepresentationCreationPage();
-		setWindowTitle(WINDOW_TITLE);
-		setNeedsProgressMonitor(true);
-	}
+                    monitor.subTask("Opening representation");
+                    DialectUIManager.INSTANCE.openEditor(session, createdRepresentation,
+                            new SubProgressMonitor(monitor, 1));
+                    monitor.worked(16);
+                }
+            }
+        };
+        try {
+            this.getContainer().run(false, false, operation);
+        } catch (InvocationTargetException | InterruptedException e) {
+            return false;
+        }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void addPages() {
-		super.addPages();
+        return true;
+    }
 
-		addPage(fileCreationPage);
-		addPage(representationCreationPage);
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void init(final IWorkbench workbench, final IStructuredSelection selection) {
+        this.fileCreationPage = new ResourceEnvironmentModelCreationPage(selection);
+        this.representationCreationPage = new RepresentationCreationPage();
+        setWindowTitle(WINDOW_TITLE);
+        setNeedsProgressMonitor(true);
+    }
 
-	/**
-	 * Page for creating a System model file.
-	 * 
-	 * @author Edith Kegel
-	 *
-	 */
-	private class SystemModelCreationPage extends WizardNewFileCreationPage {
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void addPages() {
+        super.addPages();
 
-		private static final String PAGE_NAME = "Create Resource Environment";
-		private static final String INITIAL_FILE_NAME = "newResourceEnvironment"; // $NON-NLS-N$
-		private static final String FILE_EXTENSION = "resourceenvironment"; // $NON-NLS-N$
-		private static final String MESSAGE = "Choose a file name and location";
+        addPage(this.fileCreationPage);
+        addPage(this.representationCreationPage);
+    }
 
-		public SystemModelCreationPage(IStructuredSelection selection) {
-			super(PAGE_NAME, selection);
-			setFileName(INITIAL_FILE_NAME);
-			setMessage(MESSAGE);
-			setFileExtension(FILE_EXTENSION);
-		}
+    /**
+     * Page for creating a Resource Environment model file.
+     * 
+     * @author Edith Kegel
+     *
+     */
+    private class ResourceEnvironmentModelCreationPage extends WizardNewFileCreationPage {
 
-		@Override
-		public void createControl(Composite parent) {
-			super.createControl(parent);
-			setMessage(MESSAGE);
-			setTitle(PAGE_NAME);
-		}
+        private static final String PAGE_NAME = "Create Resource Environment";
+        private static final String INITIAL_FILE_NAME = "newResourceEnvironment"; // $NON-NLS-N$
+        private static final String FILE_EXTENSION = "resourceenvironment"; // $NON-NLS-N$
+        private static final String MESSAGE = "Choose a file name and location";
 
-		/**
-		 * Need to override this to set the correct message. The
-		 * super-implementation sets it to null.
-		 */
-		@Override
-		protected boolean validatePage() {
-			boolean valid = super.validatePage();
-			if (valid)
-				setMessage(MESSAGE);
-			return valid;
-		}
+        public ResourceEnvironmentModelCreationPage(final IStructuredSelection selection) {
+            super(PAGE_NAME, selection);
+            setFileName(INITIAL_FILE_NAME);
+            setMessage(MESSAGE);
+            setFileExtension(FILE_EXTENSION);
+        }
 
-		public URI getPlatformURI() {
-			return URI.createPlatformResourceURI(getContainerFullPath().append(getFileName()).toOSString(), true);
-		}
+        @Override
+        public void createControl(final Composite parent) {
+            super.createControl(parent);
+            setMessage(MESSAGE);
+            setTitle(PAGE_NAME);
+        }
 
-	}
+        /**
+         * Need to override this to set the correct message. The super-implementation sets it to
+         * null.
+         */
+        @Override
+        protected boolean validatePage() {
+            final boolean valid = super.validatePage();
+            if (valid)
+                setMessage(MESSAGE);
+            return valid;
+        }
 
-	/**
-	 * Class for selecting a representation name.
-	 * 
-	 * @author Edith Kegel
-	 *
-	 */
-	private class RepresentationCreationPage extends WizardPage implements SelectionListener, ModifyListener {
+        public URI getPlatformURI() {
+            return URI.createPlatformResourceURI(getContainerFullPath().append(getFileName()).toOSString(), true);
+        }
 
-		private static final String PAGE_NAME = "Model creation";
-		private static final String ENABLE = "Create representation";
-		private static final String REPRESENTATION_NAME = "Representation name:";
-		private static final String TITLE = "Create representation";
-		private static final String MESSAGE = "Select whether you want to create a representation";
-		private static final String DEFAULT_REPRESENTATION_NAME = "new Resource Environment Diagram";
+    }
 
-		private Button enabledCheckbox;
-		private Text representationNameInput;
-		private Composite representationComposite;
+    /**
+     * Class for selecting a representation name.
+     * 
+     * @author Edith Kegel
+     *
+     */
+    private class RepresentationCreationPage extends WizardPage implements SelectionListener, ModifyListener {
 
-		protected RepresentationCreationPage() {
-			super(PAGE_NAME);
-			setTitle(TITLE);
-			setMessage(MESSAGE);
-		}
+        private static final String PAGE_NAME = "Model creation";
+        private static final String ENABLE = "Create representation";
+        private static final String REPRESENTATION_NAME = "Representation name:";
+        private static final String TITLE = "Create representation";
+        private static final String MESSAGE = "Select whether you want to create a representation";
+        private static final String DEFAULT_REPRESENTATION_NAME = "new Resource Environment Diagram";
 
-		/**
-		 * {@inheritDoc}
-		 */
-		@Override
-		public boolean isPageComplete() {
-			return !enabledCheckbox.getSelection()
-					|| (representationNameInput.getText() != null && !representationNameInput.getText().equals("")); // $NON-NLS-N$
-		}
+        private Button enabledCheckbox;
+        private Text representationNameInput;
+        private Composite representationComposite;
 
-		private void setEnabled(boolean enabled) {
-			enabledCheckbox.setSelection(enabled);
-			representationComposite.setEnabled(enabled);
-		}
+        protected RepresentationCreationPage() {
+            super(PAGE_NAME);
+            setTitle(TITLE);
+            setMessage(MESSAGE);
+        }
 
-		/**
-		 * {@inheritDoc}
-		 */
-		@Override
-		public void createControl(Composite parent) {
-			// Create composite
-			final Composite composite = new Composite(parent, SWT.NONE);
-			composite.setLayout(new GridLayout());
-			composite.setLayoutData(new GridData(GridData.FILL_BOTH));
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public boolean isPageComplete() {
+            return !this.enabledCheckbox.getSelection() || (this.representationNameInput.getText() != null
+                    && !this.representationNameInput.getText().equals("")); // $NON-NLS-N$
+        }
 
-			{ // Enabled button
-				enabledCheckbox = new Button(composite, SWT.CHECK);
-				enabledCheckbox.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING));
-				enabledCheckbox.setText(ENABLE);
-				enabledCheckbox.addSelectionListener(this);
-			}
+        private void setEnabled(final boolean enabled) {
+            this.enabledCheckbox.setSelection(enabled);
+            this.representationComposite.setEnabled(enabled);
+        }
 
-			{ // Representation name
-				representationComposite = new Composite(composite, SWT.BORDER);
-				representationComposite.setEnabled(false);
-				representationComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public void createControl(final Composite parent) {
+            // Create composite
+            final Composite composite = new Composite(parent, SWT.NONE);
+            composite.setLayout(new GridLayout());
+            composite.setLayoutData(new GridData(GridData.FILL_BOTH));
 
-				final GridLayout representationLayout = new GridLayout();
-				representationLayout.marginHeight = 10;
-				representationLayout.marginWidth = 10;
-				representationComposite.setLayout(representationLayout);
+            { // Enabled button
+                this.enabledCheckbox = new Button(composite, SWT.CHECK);
+                this.enabledCheckbox.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING));
+                this.enabledCheckbox.setText(ENABLE);
+                this.enabledCheckbox.addSelectionListener(this);
+            }
 
-				final Label label = new Label(representationComposite, SWT.NONE);
-				label.setText(REPRESENTATION_NAME);
-				label.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
+            { // Representation name
+                this.representationComposite = new Composite(composite, SWT.BORDER);
+                this.representationComposite.setEnabled(false);
+                this.representationComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
-				representationNameInput = new Text(representationComposite, SWT.SINGLE | SWT.BORDER);
-				representationNameInput.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-				representationNameInput.addModifyListener(this);
-				representationNameInput.setText(DEFAULT_REPRESENTATION_NAME);
-			}
+                final GridLayout representationLayout = new GridLayout();
+                representationLayout.marginHeight = 10;
+                representationLayout.marginWidth = 10;
+                this.representationComposite.setLayout(representationLayout);
 
-			setEnabled(true);
-			setControl(composite);
-		}
+                final Label label = new Label(this.representationComposite, SWT.NONE);
+                label.setText(REPRESENTATION_NAME);
+                label.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
 
-		/**
-		 * {@inheritDoc}
-		 */
-		@Override
-		public void widgetSelected(SelectionEvent e) {
-			if (enabledCheckbox.equals(e.getSource())) {
-				setEnabled(((Button) e.getSource()).getSelection());
-			}
-			getWizard().getContainer().updateButtons();
-		}
+                this.representationNameInput = new Text(this.representationComposite, SWT.SINGLE | SWT.BORDER);
+                this.representationNameInput.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+                this.representationNameInput.addModifyListener(this);
+                this.representationNameInput.setText(DEFAULT_REPRESENTATION_NAME);
+            }
 
-		/**
-		 * {@inheritDoc}
-		 */
-		@Override
-		public void widgetDefaultSelected(SelectionEvent e) {
-		}
+            setEnabled(true);
+            setControl(composite);
+        }
 
-		/**
-		 * Returns the entered representation name. Only valid if
-		 * {@link #isRepresentationCreationEnabled()} returns true.
-		 * 
-		 * @return the representation name
-		 * 
-		 * @see #isRepresentationCreationEnabled()
-		 */
-		public String getRepresentationName() {
-			return representationNameInput.getText();
-		}
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public void widgetSelected(final SelectionEvent e) {
+            if (this.enabledCheckbox.equals(e.getSource())) {
+                setEnabled(((Button) e.getSource()).getSelection());
+            }
+            getWizard().getContainer().updateButtons();
+        }
 
-		/**
-		 * Returns whether the user wants to create a representation or not.
-		 * 
-		 * @return the decision
-		 */
-		public boolean isRepresentationCreationEnabled() {
-			return enabledCheckbox.getSelection();
-		}
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public void widgetDefaultSelected(final SelectionEvent e) {
+        }
 
-		@Override
-		public void modifyText(ModifyEvent e) {
-			getWizard().getContainer().updateButtons();
-		}
+        /**
+         * Returns the entered representation name. Only valid if
+         * {@link #isRepresentationCreationEnabled()} returns true.
+         * 
+         * @return the representation name
+         * 
+         * @see #isRepresentationCreationEnabled()
+         */
+        public String getRepresentationName() {
+            return this.representationNameInput.getText();
+        }
 
-	}
+        /**
+         * Returns whether the user wants to create a representation or not.
+         * 
+         * @return the decision
+         */
+        public boolean isRepresentationCreationEnabled() {
+            return this.enabledCheckbox.getSelection();
+        }
+
+        @Override
+        public void modifyText(final ModifyEvent e) {
+            getWizard().getContainer().updateButtons();
+        }
+
+    }
 
 }
