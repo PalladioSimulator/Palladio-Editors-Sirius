@@ -62,30 +62,10 @@ main() {
 	};
 }
 
-helper Set(RuntimeMeasurement) :: checkScaleOutCondition() : Boolean {
-	
-		self->forEach(measurement) {
-		log('Measured value is ' + measurement.measuringValue.toString());
-		
-			if (measurement.measuringValue > scaleOutThreshold) {
-				return true;
-			};
-		};
-		
-		log('No measurements match the condition. Number of measurements is ' + self->size().toString());
-		return false;
+query Set(RuntimeMeasurement) :: checkScaleOutCondition() : Boolean {
+	return self->exists(measurement | measurement.measuringValue > scaleOutThreshold)
 }
 	
-helper Set(RuntimeMeasurement) :: checkScaleInCondition() : Boolean {
-	
-		self->forEach(measurement) {
-		log('Measured value is ' + measurement.measuringValue.toString());
-		
-			if (measurement.measuringValue < scaleInThreshold) {
-				return true;
-			};
-		};
-		
-		log('No measurements match the condition. Number of measurements is ' + self->size().toString());
-		return false;
+query Set(RuntimeMeasurement) :: checkScaleInCondition() : Boolean {
+	return self->exists(measurement | measurement.measuringValue < scaleInThreshold)
 }

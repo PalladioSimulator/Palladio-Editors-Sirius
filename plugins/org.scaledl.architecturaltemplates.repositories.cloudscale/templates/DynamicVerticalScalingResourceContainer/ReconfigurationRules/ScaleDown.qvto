@@ -35,17 +35,9 @@ log ('AT Completion "ScaleDown" started');
 	log ('AT Completion "ScaleUp" finished');	
 }
 // FIXME need to check whether it's the right model element
-helper Set(RuntimeMeasurement) :: checkCondition() : Boolean
+query Set(RuntimeMeasurement) :: checkCondition() : Boolean
 {
-	self->forEach(measurement) {
-		log('Measured value is ' + measurement.measuringValue.toString());
-		if (measurement.measuringValue < scaleDownThreshold) {
-			return true;
-		};
-	};
-		
-	log('No measurements match the condition. Number of measurements is ' + self->size().toString());
-	return false;
+	return self->exists(measurement | measurement.measuringValue < scaleDownThreshold)
 }
 
 mapping ResourceContainer::scaleDownVirtualizedContainer():ResourceContainer 
