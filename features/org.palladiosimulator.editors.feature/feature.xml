@@ -18,8 +18,6 @@
       <import plugin="org.eclipse.sirius.common.acceleo.mtl" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.resources" version="3.9.1" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.pcm" version="4.0.0" match="greaterOrEqual"/>
-      <import plugin="org.palladiosimulator.editors.util" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension" version="5.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.gmf.runtime.diagram.ui" version="1.8.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.sirius.diagram.ui" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.edit.ui" version="2.10.2" match="greaterOrEqual"/>
@@ -33,6 +31,16 @@
       <import plugin="de.uka.ipd.sdq.dialogs" version="2.0.1" match="greaterOrEqual"/>
       <import plugin="org.scaledl.architecturaltemplates.edit" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.pcm.ui" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.palladiosimulator.editors.util" version="0.9.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.transaction"/>
+      <import plugin="org.eclipse.sirius.ui"/>
+      <import plugin="org.eclipse.ui.workbench"/>
+      <import plugin="org.eclipse.ui.ide" version="3.10.0" match="greaterOrEqual"/>
+      <import plugin="org.palladiosimulator.mdsdprofiles.ui"/>
+      <import plugin="org.modelversioning.emfprofile.edit"/>
+      <import plugin="de.uka.ipd.sdq.stoex.analyser" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.modelversioning.emfprofile"/>
+      <import plugin="org.eclipse.emf.ecore"/>
    </requires>
 
    <plugin
