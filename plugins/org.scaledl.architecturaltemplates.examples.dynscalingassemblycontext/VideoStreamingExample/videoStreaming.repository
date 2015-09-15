@@ -49,6 +49,6 @@
     <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles:StatelessComponent" appliedTo="_K7koAJUEEeSkwMoUcKTtwg">
       <extension href="../../org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/ComponentState.emfprofile_diagram#_6MmfoEaUEeWQL8VXv1nD6Q"/>
     </stereotypeApplications>
-    <importedProfiles nsURI="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.componentstate" location="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/ComponentState.emfprofile_diagram"/>
+    <importedProfiles nsURI="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.componentstate" location="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/ComponentState.emfprofile_diagram"/>
   </emfprofileapplication:ProfileApplication>
 </xmi:XMI>

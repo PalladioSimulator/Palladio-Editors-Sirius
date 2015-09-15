@@ -13,4 +13,11 @@
     </measurementSpecifications>
     <measuringPoint xsi:type="pcmmeasuringpoint:ResourceEnvironmentMeasuringPoint" href="videoStreaming.measuringpoint#//@measuringPoints.1"/>
   </monitors>
+  <monitors id="_C2W-EFu6EeWKjtQv7ipcDg" entityName="Operation Cost - Video Server">
+    <measurementSpecifications id="_XaBPYFu6EeWKjtQv7ipcDg" statisticalCharacterization="ArithmeticMean">
+      <temporalRestriction xsi:type="monitorrepository:Intervall" id="_kIcCwFu6EeWKjtQv7ipcDg" intervall="10.0"/>
+      <metricDescription xsi:type="metricspec:MetricSetDescription" href="pathmap://METRIC_SPEC_MODELS/models/commonMetrics.metricspec#_IiHVQdgLEeSCcbn_evnMvQ"/>
+    </measurementSpecifications>
+    <measuringPoint xsi:type="pcmmeasuringpoint:ActiveResourceMeasuringPoint" href="videoStreaming.measuringpoint#//@measuringPoints.2"/>
+  </monitors>
 </monitorrepository:MonitorRepository>

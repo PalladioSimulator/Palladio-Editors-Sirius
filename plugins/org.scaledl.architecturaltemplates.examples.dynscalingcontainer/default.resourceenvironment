@@ -24,7 +24,7 @@
     </resourceContainer_ResourceEnvironment>
   </resourceenvironment:ResourceEnvironment>
   <emfprofileapplication:ProfileApplication>
-    <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles:ReplicableResourceContainer" appliedTo="_vHW8QH4wEeSqFvs4kqVd7Q" numberOfReplicas="2" scaleInThreshold="1.0" scaleOutThreshold="2.0">
+    <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles:ReplicableResourceContainer" appliedTo="_vHW8QH4wEeSqFvs4kqVd7Q" scaleInThreshold="0.5" scaleOutThreshold="1.5">
       <extension href="../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/DynamicHorizontalScalingResourceContainer.emfprofile_diagram#_7MhWQH47EeSqFvs4kqVd7Q"/>
     </stereotypeApplications>
     <importedProfiles nsURI="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.dynamichorizontalscalingresourcecontainer" location="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/DynamicHorizontalScalingResourceContainer.emfprofile_diagram"/>
