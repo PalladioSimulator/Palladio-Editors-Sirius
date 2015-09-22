@@ -14,7 +14,6 @@ Require-Bundle: org.eclipse.ui,
  org.palladiosimulator.pcm,
  org.eclipse.emf.ecore,
  org.modelversioning.emfprofile,
- org.scaledl.architecturaltemplates.repositories.cloudscale;bundle-version="1.0.0",
  de.uka.ipd.sdq.workflow.mdsd,
  org.palladiosimulator.analyzer.workflow
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

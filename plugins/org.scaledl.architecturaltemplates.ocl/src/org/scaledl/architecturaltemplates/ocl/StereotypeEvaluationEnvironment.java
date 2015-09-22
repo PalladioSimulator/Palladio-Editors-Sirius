@@ -10,12 +10,13 @@ import org.eclipse.ocl.ecore.EcoreEnvironmentFactory;
 import org.eclipse.ocl.ecore.EcoreEvaluationEnvironment;
 import org.palladiosimulator.analyzer.workflow.blackboard.PCMResourceSetPartition;
 import org.palladiosimulator.analyzer.workflow.jobs.LoadPCMModelsIntoBlackboardJob;
+import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.palladiosimulator.pcm.core.entity.Entity;
-import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
 
 import de.uka.ipd.sdq.workflow.mdsd.blackboard.MDSDBlackboard;
 
 public class StereotypeEvaluationEnvironment extends EcoreEvaluationEnvironment {
+
     private final MDSDBlackboard blackboard;
 
     public StereotypeEvaluationEnvironment(final EcoreEnvironmentFactory factory, final MDSDBlackboard blackboard) {
@@ -31,20 +32,21 @@ public class StereotypeEvaluationEnvironment extends EcoreEvaluationEnvironment 
     }
 
     @Override
-    public Object callOperation(final EOperation operation, final int opcode, final Object source, final Object[] args) {
+    public Object callOperation(final EOperation operation, final int opcode, final Object source,
+            final Object[] args) {
         if (operation.getEAnnotation("StereotypeEnvironment") == null) {
             // not our custom stereotype test operation
             return super.callOperation(operation, opcode, source, args);
         }
 
         if ("hasAppliedStereotype".equals(operation.getName())) {
-            return ProfilesLibrary.hasAppliedStereotype((Entity) source, (String) args[0]);
+            return StereotypeAPI.isStereotypeApplied((Entity) source, (String) args[0]);
         }
         if ("getIntTaggedValue".equals(operation.getName())) {
-            return ProfilesLibrary.getIntTaggedValue((Entity) source, (String) args[0], (String) args[1]);
+            return StereotypeAPI.getTaggedValue((Entity) source, (String) args[0], (String) args[1]);
         }
         if ("getAllocation".equals(operation.getName())) {
-            final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) blackboard
+            final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) this.blackboard
                     .getPartition(LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
             org.palladiosimulator.pcm.allocation.Allocation allocation = null;
             try {
