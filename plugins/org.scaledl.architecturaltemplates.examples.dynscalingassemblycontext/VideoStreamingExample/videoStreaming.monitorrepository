@@ -18,6 +18,6 @@
       <temporalRestriction xsi:type="monitorrepository:Intervall" id="_kIcCwFu6EeWKjtQv7ipcDg" intervall="10.0"/>
       <metricDescription xsi:type="metricspec:MetricSetDescription" href="pathmap://METRIC_SPEC_MODELS/models/commonMetrics.metricspec#_IiHVQdgLEeSCcbn_evnMvQ"/>
     </measurementSpecifications>
-    <measuringPoint xsi:type="pcmmeasuringpoint:ActiveResourceMeasuringPoint" href="videoStreaming.measuringpoint#//@measuringPoints.2"/>
+    <measuringPoint xsi:type="pcmmeasuringpoint:ResourceContainerMeasuringPoint" href="videoStreaming.measuringpoint#//@measuringPoints.3"/>
   </monitors>
 </monitorrepository:MonitorRepository>

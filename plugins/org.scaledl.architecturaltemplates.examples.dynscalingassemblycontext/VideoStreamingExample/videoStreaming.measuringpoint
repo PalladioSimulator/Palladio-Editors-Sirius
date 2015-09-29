@@ -6,7 +6,7 @@
   <measuringPoints xsi:type="pcmmeasuringpoint:ResourceEnvironmentMeasuringPoint" stringRepresentation="Resource Environment: aName" resourceURIRepresentation="platform:/resource/org.scaledl.architecturaltemplates.examples.dynscalingassemblycontext/VideoStreamingExample/videoStreaming.resourceenvironment#/">
     <resourceEnvironment href="videoStreaming.resourceenvironment#/"/>
   </measuringPoints>
-  <measuringPoints xsi:type="pcmmeasuringpoint:ActiveResourceMeasuringPoint" stringRepresentation="CPU [0] in VideoProviderServer" resourceURIRepresentation="platform:/resource/org.scaledl.architecturaltemplates.examples.dynscalingassemblycontext/VideoStreamingExample/videoStreaming.resourceenvironment#_1qFVcJUFEeSkwMoUcKTtwg">
-    <activeResource href="videoStreaming.resourceenvironment#_1qFVcJUFEeSkwMoUcKTtwg"/>
+  <measuringPoints xsi:type="pcmmeasuringpoint:ResourceContainerMeasuringPoint" stringRepresentation="Resource Container VideoProviderServer [_rZyxYJUFEeSkwMoUcKTtwg]" resourceURIRepresentation="platform:/resource/org.scaledl.architecturaltemplates.examples.dynscalingassemblycontext/VideoStreamingExample/videoStreaming.resourceenvironment#_rZyxYJUFEeSkwMoUcKTtwg">
+    <resourceContainer href="videoStreaming.resourceenvironment#_rZyxYJUFEeSkwMoUcKTtwg"/>
   </measuringPoints>
 </org.palladiosimulator.edp2.models:MeasuringPointRepository>
