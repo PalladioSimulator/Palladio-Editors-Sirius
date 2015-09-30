@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -19,6 +20,9 @@ public class Activator extends AbstractUIPlugin {
     private static Activator plugin;
 
     private static Set<Viewpoint> viewpoints; 
+    
+    public Viewpoint ALLOCATION_DESIGN;
+    public RepresentationDescription ALLOCATION_DIAGRAM;
 
     /**
      * The constructor
@@ -36,7 +40,27 @@ public class Activator extends AbstractUIPlugin {
 	  plugin = this;
 	  viewpoints = new HashSet<Viewpoint>();
 	  viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/Allocation.odesign")); 
-    }
+    
+    
+	    // Set viewpoint constants
+	    for (final Viewpoint viewpoint : viewpoints) {
+	        if (viewpoint.getName().equals("Allocation Design")) {//TODO: check name
+	            this.ALLOCATION_DESIGN = viewpoint;
+	            break;
+	        }
+	    }
+	
+	    // Set diagram description constants
+	    for (final RepresentationDescription representationDescription : this.ALLOCATION_DESIGN
+	            .getOwnedRepresentations()) {
+	        if (representationDescription.getName().equals("Allocation Diagram")) {//TODO: check name
+	            this.ALLOCATION_DIAGRAM = representationDescription;
+	            break;
+	        }
+	    }
+	
+	 }
+    
 
     /*
      * (non-Javadoc)

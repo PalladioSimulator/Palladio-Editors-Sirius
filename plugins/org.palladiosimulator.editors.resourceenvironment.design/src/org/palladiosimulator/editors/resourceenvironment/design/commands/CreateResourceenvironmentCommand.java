@@ -10,7 +10,6 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceenvironmentFactory;
-import org.palladiosimulator.pcm.system.SystemFactory;
 
 /**
  * Command for creating a System at the given {@link URI}.

@@ -104,7 +104,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.ResourceContainer" referenceName="resourceenvironment.ResourceContainer">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.ResourceContainer" referenceName="parentResourceContainer__ResourceContainer">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="new ResourceContainer"/>
                 </subModelOperations>
               </firstModelOperations>
