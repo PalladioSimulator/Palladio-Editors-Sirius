@@ -14,7 +14,7 @@
            class="org.palladiosimulator.editors.resourceenvironment.design.wizards.ResourceEnvironmentCreationWizard"
            icon="icons/obj17/ResourceEnvironment.gif"
            id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.resourceEnvironmentCreationWizard"
-           name="Resource Environment and Diagram">
+           name="Resource Environment Model and Diagram">
      </wizard>
   </extension>
 </plugin>
