@@ -104,25 +104,8 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.ResourceContainer" referenceName="parentResourceContainer__ResourceContainer">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.ResourceContainer" referenceName="resourceContainer_ResourceEnvironment">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="new ResourceContainer"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="LinkingResource" label="Linking Resource" containerMappings="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.LinkingResource" referenceName="linkingResources__ResourceEnvironment">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newLinkingResource"/>
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.CommunicationLinkResourceSpecification" referenceName="communicationLinkResourceSpecifications_LinkingResource">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newCommunicationLinkingResource"/>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AddLinkingResourceAction" label="Add Linking Resource" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.addLinkingResource">
-                      <parameters name="newCommunicationLinkResourceSpecification" value="[instance/]"/>
-                    </subModelOperations>
-                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -132,20 +115,9 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.ProcessingResourceSpecification" referenceName="resourceenvironment.ProcessingResourceSpecification">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.ProcessingResourceSpecification" referenceName="activeResourceSpecifications_ResourceContainer">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="new ProcessingResourceSpecification"/>
                 </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Connector" edgeMappings="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@edgeMappings[name='Connector']" iconPath="/org.palladiosimulator.pcm.edit/icons/full/obj16/CommunicationLink.gif" connectionStartPrecondition="[self.communicationLinkResourceSpecifications_LinkingResource.linkingResource_CommunicationLinkResourceSpecification/]">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="Connector" valueExpression="var:target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -171,7 +143,7 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="numberOfReplicas" valueExpression="[arg0/]"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="numberOfReplicas" valueExpression="[&quot;Number of Replicas: &quot; ++ arg0.toString() /]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -193,6 +165,72 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="throughput_CommunicationLinkResourceSpecification" valueExpression="[arg0/]"/>
               </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Network">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="LinkingResource" label="Linking Resource" containerMappings="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.LinkingResource" referenceName="linkingResources__ResourceEnvironment">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newLinkingResource"/>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.CommunicationLinkResourceSpecification" referenceName="communicationLinkResourceSpecifications_LinkingResource">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newCommunicationLinkingResource"/>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AddLinkingResourceAction" label="Add Linking Resource" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.addLinkingResource">
+                      <parameters name="newCommunicationLinkResourceSpecification" value="[instance/]"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Connector" edgeMappings="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@edgeMappings[name='Connector']" iconPath="/org.palladiosimulator.pcm.edit/icons/full/obj16/CommunicationLink.gif" connectionStartPrecondition="[self.communicationLinkResourceSpecifications_LinkingResource.linkingResource_CommunicationLinkResourceSpecification/]">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="Connector" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Architectural Templates">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="The action is specified without a parameter, because Sirius does not allow for this right now. This bears potential for future bugs." name="AT Creation" label="Add Architectural Template" precondition="[self.eClass().name = 'System'/]" forceRefresh="true" iconPath="/org.scaledl.architecturaltemplates.edit/icons/full/obj16/ATInstance.gif">
+            <containerMappings href="../../org.palladiosimulator.editors.composedprovidingrequiringentity.design/description/composedprovidingrequiringentity.odesign#//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='System%20Role%20Container']"/>
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT SystemRole Creation" label="Add Architectural Template" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.addAT"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AT Role Creation" label="Add Role" precondition="[(self.eClass().name = 'AssemblyContext') and (self.eContainer().hasRoles())/]" forceRefresh="true" iconPath="/org.scaledl.architecturaltemplates.edit/icons/full/obj16/Role2Component.gif">
+            <containerMappings href="../../org.palladiosimulator.editors.composedprovidingrequiringentity.design/description/composedprovidingrequiringentity.odesign#//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@subContainerMappings[name='Role%20Container']"/>
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Creation" label="Add Role" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.addATRole"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="AT Role Removal" label="Remove Role" forceRefresh="true">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Removal" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.removeATRole"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="AT SystemRole Removal" label="Remove Architectural Template" forceRefresh="true">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.removeAT"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
