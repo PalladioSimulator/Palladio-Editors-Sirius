@@ -63,6 +63,11 @@ public class ProfilesLibrary {
         return StereotypeAPI.getTaggedValue(pcmEntity, taggedValueName, stereotypeName);
     }
 
+    public static long getLongTaggedValue(final Entity pcmEntity, final String taggedValueName,
+            final String stereotypeName) {
+        return StereotypeAPI.getTaggedValue(pcmEntity, taggedValueName, stereotypeName);
+    }
+
     public static double getDoubleTaggedValue(final Entity pcmEntity, final String taggedValueName,
             final String stereotypeName) {
         return StereotypeAPI.getTaggedValue(pcmEntity, taggedValueName, stereotypeName);

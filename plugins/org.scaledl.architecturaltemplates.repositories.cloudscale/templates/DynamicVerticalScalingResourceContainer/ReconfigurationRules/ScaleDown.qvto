@@ -27,8 +27,8 @@ log ('AT Completion "ScaleDown" started');
 	resourceContainers -> forEach(resourceContainer){
 		if(hasAppliedStereotype(resourceContainer,"VirtualizedResourceContainer")){
 			scaleDownThreshold := getDoubleTaggedValue(resourceContainer,"scaleDownThreshold","VirtualizedResourceContainer");
-			scaleDownStepSize := getIntTaggedValue(resourceContainer,"stepSize","VirtualizedResourceContainer");
-			minRate := getIntTaggedValue(resourceContainer,"minRate","VirtualizedResourceContainer");
+			scaleDownStepSize := getLongTaggedValue(resourceContainer,"stepSize","VirtualizedResourceContainer");
+			minRate := getLongTaggedValue(resourceContainer,"minRate","VirtualizedResourceContainer");
 			resourceContainer. map scaleDownVirtualizedContainer();
 		};
 	};

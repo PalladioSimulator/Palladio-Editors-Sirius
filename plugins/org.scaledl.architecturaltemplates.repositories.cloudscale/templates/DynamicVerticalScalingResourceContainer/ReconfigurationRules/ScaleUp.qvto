@@ -28,8 +28,8 @@ main() {
 	resourceContainers -> forEach(resourceContainer){
 		if(hasAppliedStereotype(resourceContainer,"VirtualizedResourceContainer")){
 			scaleUpThreshold := getDoubleTaggedValue(resourceContainer,"scaleUpThreshold","VirtualizedResourceContainer");
-			scaleUpStepSize := getIntTaggedValue(resourceContainer,"stepSize","VirtualizedResourceContainer");
-			maxRate := getIntTaggedValue(resourceContainer,"maxRate","VirtualizedResourceContainer");
+			scaleUpStepSize := getLongTaggedValue(resourceContainer,"stepSize","VirtualizedResourceContainer");
+			maxRate := getLongTaggedValue(resourceContainer,"maxRate","VirtualizedResourceContainer");
 			resourceContainer. map scaleUpVirtualizedContainer();
 		};
 	};
