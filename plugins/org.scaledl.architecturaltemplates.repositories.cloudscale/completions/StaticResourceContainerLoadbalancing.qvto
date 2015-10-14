@@ -16,63 +16,65 @@ property numberOfReplicas : Integer;
 
 main() {
 	log ('AT Completion "StaticResourceContainerLoadbalancing" started');	
-			
+	
+	// Get PCM models
 	assert fatal(pcmAllocation.rootObjects()[Allocation]->size() > 0)
-		with log ("Allocation Model is empty!");
-			
+		with log ("The allocation model cannot be empty!");
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var system : System := allocation.system_Allocation;
-		
 	var resourceEnvironment : ResourceEnvironment := allocation.targetResourceEnvironment_Allocation;
-	var resourceContainer : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
+	
+	// Check whether we have a static loadbalancer (i.e., with a StaticLoadbalancedResourceContainer) or a dynamic one (i.e., with a ReplicableResourceContainer)
+	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
 	var appliedStereotype : String;
+	if(hasAppliedStereotype(resourceContainers, "StaticLoadbalancedResourceContainer")){
+		assert fatal(hasAppliedStereotype(system, "StaticResourceContainerLoadbalancingSystem"))
+			with log("The system must have the AT role 'StaticResourceContainerLoadbalancingSystem' applied!");
 		
-	if(hasAppliedStereotype(resourceContainer,"StaticLoadbalancedResourceContainer")){
-		appliedStereotype := "StaticLoadbalancedResourceContainer";	
-		assert fatal(hasAppliedStereotype(system,"StaticResourceContainerLoadbalancingSystem"))
-			with log("There is no StaticResourceContainerLoadbalancingSystem Stereotype Application");
+		appliedStereotype := "StaticLoadbalancedResourceContainer";
 	}
-	else if(hasAppliedStereotype(resourceContainer,"ReplicableResourceContainer")){
+	else if(hasAppliedStereotype(resourceContainers, "ReplicableResourceContainer")){
 		appliedStereotype := "ReplicableResourceContainer";	
 	};
-		
-	assert fatal(appliedStereotypesEqualsOne(resourceContainer,appliedStereotype))
+	assert fatal(appliedStereotypesEqualsOne(resourceContainers, appliedStereotype))
 		with log ("There is more than one Stereotype Application!");
-		
-	var loadbalancedResourceContainer : ResourceContainer := resourceEnvironment.resourceContainer_ResourceEnvironment -> selectOne(rc : ResourceContainer| hasAppliedStereotype(rc, appliedStereotype));
 	
+	// Get the resource container that shall be load-balanced from the AT role
+	var loadbalancedResourceContainer : ResourceContainer := resourceEnvironment.resourceContainer_ResourceEnvironment->selectOne(container : ResourceContainer| hasAppliedStereotype(container, appliedStereotype));
 	assert fatal(loadbalancedResourceContainer != null)
-		with log ("There is no Stereotype Application!");	
+		with log ("There must be a resource container that has the AT role '"+appliedStereotype+"' applied!");
 		
+	// Ensure that resource environment and system are marked as load-balanced
 	if (not isProfileApplied(resourceEnvironment.oclAsType(EObject), "LoadbalancedProfile")) {
 		applyProfile(resourceEnvironment.oclAsType(EObject), "LoadbalancedProfile");
 	};
-	
 	if (not isProfileApplied(system.oclAsType(EObject), "LoadbalancedProfile")) {
 		applyProfile(system.oclAsType(EObject), "LoadbalancedProfile");
 	};
-	applyStereotype(loadbalancedResourceContainer,"OriginalResourceContainer");
 	
-	numberOfReplicas := getIntTaggedValue(loadbalancedResourceContainer,"numberOfReplicas",appliedStereotype);
-	
-	var replicatedResourceContainer : Bag(ResourceContainer);
-	
+	// Mark original load-balanced container
+	applyStereotype(loadbalancedResourceContainer, "OriginalResourceContainer");
+
+	// duplicate (create replica) of original (loadbalanced) resource container
+	var duplicatedResourceContainers : Bag(ResourceContainer);
 	var counter : Integer := 1;
-	while(counter<numberOfReplicas){
-	 	replicatedResourceContainer +=  duplicateReplicableResourceContainer(counter,loadbalancedResourceContainer);
+	while(counter < getIntTaggedValue(loadbalancedResourceContainer, "numberOfReplicas", appliedStereotype)){
+	 	duplicatedResourceContainers +=  duplicateReplicableResourceContainer(counter, loadbalancedResourceContainer);
 	 	counter := counter +1;
 		
 	};
-	createSystemAndAllocation(loadbalancedResourceContainer,replicatedResourceContainer);
+	
+	// Spawn assembly context replica and allocate them to duplicated resource containers
+	createSystemAndAllocation(loadbalancedResourceContainer, duplicatedResourceContainers);
 	
 	log ('AT Completion "StaticResourceContainerLoadbalancing" finished');	
 }
 
 
-helper duplicateReplicableResourceContainer(counter:Integer,originalResourceContainer:ResourceContainer):ResourceContainer 
+helper duplicateReplicableResourceContainer(counter:Integer, originalResourceContainer:ResourceContainer):ResourceContainer 
 {
 	var name : String := "_duplicate_"+counter.toString();
-	var duplicatedResourceContainer : ResourceContainer := new ResourceContainer(name,originalResourceContainer);
+	var duplicatedResourceContainer : ResourceContainer := new ResourceContainer(name, originalResourceContainer);
 	var activeResourceSpecifications : Set(ProcessingResourceSpecification) := originalResourceContainer.activeResourceSpecifications_ResourceContainer;
 	
 	duplicatedResourceContainer.activeResourceSpecifications_ResourceContainer += activeResourceSpecifications -> forEach(activeResource){
@@ -87,9 +89,10 @@ helper duplicateReplicableResourceContainer(counter:Integer,originalResourceCont
 	if (resourceContainerLinkingResources->isEmpty()){
 		resourceContainerLinkingResources += new LinkingResource(originalResourceContainer,"0","10000");
 	};
-	resourceContainerLinkingResources ->forEach(linkingResource){
+	resourceContainerLinkingResources->forEach(linkingResource){
 		linkingResource.connectedResourceContainers_LinkingResource += duplicatedResourceContainer;
 	};	
+	
 	applyStereotype(duplicatedResourceContainer,"DuplicateResourceContainer");
 	return duplicatedResourceContainer;
 	// TODO Add nested resource containers
@@ -103,7 +106,7 @@ mapping AssemblyContext::duplicateAssemblyContext(rc:ResourceContainer):Assembly
 	parentStructure__AssemblyContext := system;
 }
 
-helper createSystemAndAllocation(originalResourceContainer : ResourceContainer,resourceContainers:Bag(ResourceContainer)){
+helper createSystemAndAllocation(originalResourceContainer : ResourceContainer, resourceContainers:Bag(ResourceContainer)){
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var system : System := allocation.system_Allocation![System];
 	var connectors : Set(Connector) := system.connectors__ComposedStructure;
