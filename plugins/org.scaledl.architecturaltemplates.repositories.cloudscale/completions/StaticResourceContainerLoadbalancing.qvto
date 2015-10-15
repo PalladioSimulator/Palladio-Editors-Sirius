@@ -59,7 +59,7 @@ main() {
 	var duplicatedResourceContainers : Bag(ResourceContainer);
 	var counter : Integer := 1;
 	while(counter < getIntTaggedValue(loadbalancedResourceContainer, "numberOfReplicas", appliedStereotype)){
-	 	duplicatedResourceContainers +=  duplicateReplicableResourceContainer(counter, loadbalancedResourceContainer);
+	 	duplicatedResourceContainers += duplicateResourceContainer("_duplicate_"+counter.toString(), loadbalancedResourceContainer);
 	 	counter := counter + 1;
 	};
 	
@@ -69,32 +69,33 @@ main() {
 	log ('AT Completion "StaticResourceContainerLoadbalancing" finished');	
 }
 
+helper duplicateResourceContainer(duplicatedResourceContainerName : String, originalResourceContainer : ResourceContainer) : ResourceContainer {
+	var duplicatedResourceContainer := 
+		new ResourceContainer(duplicatedResourceContainerName, originalResourceContainer);
+	
+	duplicateLinkingResources(duplicatedResourceContainer, originalResourceContainer);
+ 	applyStereotype(duplicatedResourceContainer,"DuplicateResourceContainer");
+	
+	return duplicatedResourceContainer;
+}
 
-helper duplicateReplicableResourceContainer(counter:Integer, originalResourceContainer:ResourceContainer):ResourceContainer 
-{
-	var name : String := "_duplicate_"+counter.toString();
-	var duplicatedResourceContainer : ResourceContainer := new ResourceContainer(name, originalResourceContainer);
-	var activeResourceSpecifications : Set(ProcessingResourceSpecification) := originalResourceContainer.activeResourceSpecifications_ResourceContainer;
-	
-	duplicatedResourceContainer.activeResourceSpecifications_ResourceContainer += activeResourceSpecifications -> forEach(activeResource){
-		new ProcessingResourceSpecification(activeResource, duplicatedResourceContainer);
-	};
-	
-	var resourceContainerLinkingResources := originalResourceContainer.resourceEnvironment_ResourceContainer.linkingResources__ResourceEnvironment 
-											-> select( l :LinkingResource | l.connectedResourceContainers_LinkingResource ->includes(originalResourceContainer));
+helper duplicateLinkingResources(newResourceContainer : ResourceContainer, originalResourceContainer : ResourceContainer) {
+	var originalLinkingResources :=
+		originalResourceContainer.resourceEnvironment_ResourceContainer.linkingResources__ResourceEnvironment 
+		->select( l : LinkingResource |
+			l.connectedResourceContainers_LinkingResource
+			->includes(originalResourceContainer)
+		);
 											
 	//create a LinkingResource in the ResourcesEnvironment when none exists
 	//FIXME: parameters of latency and throughput for the CommunicationLinkResourceSpecification should be changed, or they should be defined by the user
-	if (resourceContainerLinkingResources->isEmpty()){
-		resourceContainerLinkingResources += new LinkingResource(originalResourceContainer,"0","10000");
+	if (originalLinkingResources->isEmpty()){
+		originalLinkingResources += new LinkingResource(originalResourceContainer,"0","10000");
 	};
-	resourceContainerLinkingResources->forEach(linkingResource){
-		linkingResource.connectedResourceContainers_LinkingResource += duplicatedResourceContainer;
-	};	
 	
-	applyStereotype(duplicatedResourceContainer,"DuplicateResourceContainer");
-	return duplicatedResourceContainer;
-	// TODO Add nested resource containers
+	originalLinkingResources->forEach(linkingResource){
+		linkingResource.connectedResourceContainers_LinkingResource += newResourceContainer;
+	};
 }
 
 mapping AssemblyContext::duplicateAssemblyContext(rc:ResourceContainer):AssemblyContext{
@@ -385,7 +386,7 @@ constructor RequiredDelegationConnector :: RequiredDelegationConnector(assemblyC
 	parentStructure__Connector := system;
 }
 
-constructor ProcessingResourceSpecification:: ProcessingResourceSpecification(p:ProcessingResourceSpecification, rc : ResourceContainer){
+constructor ProcessingResourceSpecification:: ProcessingResourceSpecification(p:ProcessingResourceSpecification){
 	MTTF := p.MTTR;
 	MTTR := p.MTTR;
 	schedulingPolicy := p.schedulingPolicy;
@@ -393,7 +394,6 @@ constructor ProcessingResourceSpecification:: ProcessingResourceSpecification(p:
 	processingRate_ProcessingResourceSpecification := new PCMRandomVariable(p.processingRate_ProcessingResourceSpecification);
 	numberOfReplicas := p.numberOfReplicas;
 	activeResourceType_ActiveResourceSpecification := p.activeResourceType_ActiveResourceSpecification;
-	resourceContainer_ProcessingResourceSpecification := rc;
 }
 
 constructor PCMRandomVariable :: PCMRandomVariable(pcmRandomVariable:PCMRandomVariable){
@@ -470,7 +470,7 @@ helper createLoadbalancerResourceContainer(nameOfLoadbalancedInterface:String,or
 	var activeResourceSpecifications : Set(ProcessingResourceSpecification) := originalResourceContainer.activeResourceSpecifications_ResourceContainer;
 	
 	loadbalancerResourceContainer.activeResourceSpecifications_ResourceContainer += activeResourceSpecifications -> forEach(activeResource){
-		new ProcessingResourceSpecification(activeResource,loadbalancerResourceContainer);
+		new ProcessingResourceSpecification(activeResource);
 	};
 	
 	var resourceContainerLinkingResources := originalResourceContainer.resourceEnvironment_ResourceContainer.linkingResources__ResourceEnvironment 
@@ -500,9 +500,20 @@ helper addRequiredRolesAssemblyConnectors(assemblyConnector : AssemblyConnector,
 	};
 };
 
-constructor ResourceContainer::ResourceContainer(name:String, originalResourceContainer:ResourceContainer){
-	entityName := originalResourceContainer.entityName + "_"+name;
-	resourceEnvironment_ResourceContainer := originalResourceContainer.resourceEnvironment_ResourceContainer;	
+constructor ResourceContainer::ResourceContainer(name : String, originalResourceContainer : ResourceContainer){
+	entityName :=
+		originalResourceContainer.entityName + "_"+name;
+		
+	resourceEnvironment_ResourceContainer := 
+		originalResourceContainer.resourceEnvironment_ResourceContainer;
+		
+	activeResourceSpecifications_ResourceContainer := 
+		originalResourceContainer.activeResourceSpecifications_ResourceContainer
+		->forEach (activeResource) {
+			new ProcessingResourceSpecification(activeResource);
+		};
+	
+	// TODO Add nested resource containers
 }
 
 /**
