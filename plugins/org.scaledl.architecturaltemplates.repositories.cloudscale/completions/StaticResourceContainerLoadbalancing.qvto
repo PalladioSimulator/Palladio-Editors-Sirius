@@ -187,7 +187,7 @@ helper createSystemAndAllocation(originalResourceContainer : ResourceContainer, 
 					};
 				};
 				
-				if(duplicateTargetAssemblyContexts->size()>0 and not(hasAppliedStereotype(targetAssemblyContext,"OriginalAssemblyContext"))){
+				if(not(hasAppliedStereotype(targetAssemblyContext,"OriginalAssemblyContext"))){
 					duplicatedAssemblyContextsAndLoadBalancedAssemblyContext += duplicateTargetAssemblyContexts;
 					loadBalancerResourceContainer := createLoadbalancerResourceContainer(oldAssemblyConnectorProvidedInterface.entityName,originalResourceContainer);
 					loadBalancerAssemblyContext := targetAssemblyContext.createLoadBalancerFromAssembly(loadBalancerResourceContainer,assemblyConnector.providedRole_AssemblyConnector);
