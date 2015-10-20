@@ -111,7 +111,9 @@ mapping inout AssemblyConnector::createLoadbalancerForAssemblyConnector(original
 		.providedRoles_InterfaceProvidingEntity![OperationProvidedRole];
 }
 
-mapping inout ProvidedDelegationConnector::createLoadbalancerForProvidedDelegationConnector(originalResourceContainer : ResourceContainer, loadbalancerResourceContainer : ResourceContainer) : AssemblyConnector {
+mapping inout ProvidedDelegationConnector::createLoadbalancerForProvidedDelegationConnector(originalResourceContainer : ResourceContainer, loadbalancerResourceContainer : ResourceContainer) : AssemblyConnector
+		inherits Connector::abstractCreateLoadbalancerForConnector 
+{
 	var loadBalancerAssemblyContext : AssemblyContext :=
 		self
 		.assemblyContext_ProvidedDelegationConnector
@@ -141,37 +143,17 @@ helper AssemblyContext::createLoadBalancer(operationProvidedRole : OperationProv
 }
 
 mapping AssemblyContext::assemblyToLoadbalancerBasicComponent(operationProvidedRole : OperationProvidedRole) : BasicComponent {
-	var repository := self.encapsulatedComponent__AssemblyContext.repository__RepositoryComponent;
-	var providingEntity : RepositoryComponent := operationProvidedRole.providingEntity_ProvidedRole.oclAsType(RepositoryComponent);
-	var providingEntityProvidedRoles := providingEntity.providedRoles_InterfaceProvidingEntity->selectByType(OperationProvidedRole);
-	entityName := "LoadBalancer_" + providingEntity.entityName;
-	repository__RepositoryComponent := repository;
-	
-	var operationProvidedRoleLB : Set(OperationProvidedRole);
-	var lbProvidedRole : OperationProvidedRole;
-	providingEntityProvidedRoles->forEach(providedRole){ 
-		lbProvidedRole := new OperationProvidedRole(providedRole);
-		lbProvidedRole.providingEntity_ProvidedRole := result;
-		operationProvidedRoleLB += lbProvidedRole;
-	};
-	providedRoles_InterfaceProvidingEntity := operationProvidedRoleLB;
-	
-	operationProvidedRoleLB->forEach(loadbalancerProvidedRole){
+	entityName := "LoadBalancer_" + self.entityName + "_" + operationProvidedRole.entityName;
+	providedRoles_InterfaceProvidingEntity += new OperationProvidedRole(operationProvidedRole);
 	var counter : Integer := 1;
-		while(counter<= (numberOfReplicas)){
-			requiredRoles_InterfaceRequiringEntity += new OperationRequiredRole(loadbalancerProvidedRole,counter);
-			counter := counter+1;
-		};
-	};
-	
-	providedRoles_InterfaceProvidingEntity->forEach(providedRole){
-		var opRole := providedRole.oclAsType(OperationProvidedRole);
-		var operationInterface := opRole.providedInterface__OperationProvidedRole;
-		var operationRequiredRoles : Set(OperationRequiredRole) := requiredRoles_InterfaceRequiringEntity ->selectByType(OperationRequiredRole);
-		var requiredRolesWithSameInterfaceAsProvidedRole : Set(OperationRequiredRole) := operationRequiredRoles -> select(operationRequiredRole : OperationRequiredRole | operationRequiredRole.requiredInterface__OperationRequiredRole.id = operationInterface.id);
-		operationInterface.signatures__OperationInterface->forEach(operationSignature){
-	  		serviceEffectSpecifications__BasicComponent += new ResourceDemandingSEFF(operationSignature, requiredRolesWithSameInterfaceAsProvidedRole);
-		};
+	while(counter <= numberOfReplicas){
+		requiredRoles_InterfaceRequiringEntity += new OperationRequiredRole(operationProvidedRole, counter);
+		counter := counter + 1;
+	};	
+	repository__RepositoryComponent := self.encapsulatedComponent__AssemblyContext.repository__RepositoryComponent;
+	componentParameterUsage_ImplementationComponentType := self.encapsulatedComponent__AssemblyContext[ImplementationComponentType].componentParameterUsage_ImplementationComponentType;
+	operationProvidedRole.providedInterface__OperationProvidedRole.signatures__OperationInterface->forEach(operationSignature){
+  		serviceEffectSpecifications__BasicComponent += new ResourceDemandingSEFF(operationSignature, requiredRoles_InterfaceRequiringEntity[OperationRequiredRole]);
 	};
 };
 
