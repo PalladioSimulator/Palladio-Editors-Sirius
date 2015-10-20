@@ -50,7 +50,10 @@ main() {
 	};
 	
 	// Mark original load-balanced container
-	applyStereotype(originalResourceContainer, "OriginalResourceContainer");
+	if(not hasAppliedStereotype(originalResourceContainer,"OriginalResourceContainer")){
+  		//apply Stereotype OriginalAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in    
+  		applyStereotype(originalResourceContainer,"OriginalResourceContainer");
+ 	};	
 
 	// Create load balancer
 	numberOfReplicas := getIntTaggedValue(originalResourceContainer, "numberOfReplicas", appliedStereotype);
