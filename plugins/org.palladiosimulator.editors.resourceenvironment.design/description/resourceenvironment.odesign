@@ -3,6 +3,10 @@
   <ownedViewpoints name="Resourceenvironment" modelFileExtension="*.resourceenvironment">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Resourceenvironment Diagram" domainClass="resourceenvironment.ResourceEnvironment">
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//resourceenvironment"/>
+      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//resourcetype"/>
+      <metamodel href="http://www.modelversioning.org/emfprofile/1.1#/"/>
+      <metamodel href="http://www.modelversioning.org/emfprofile/application/1.1#/"/>
+      <metamodel href="http://scaledl.org/ArchitecturalTemplates/Type/1.0#/"/>
       <defaultLayer name="Default">
         <edgeMappings name="Connector" sourceMapping="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']" targetMapping="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetFinderExpression="feature:connectedResourceContainers_LinkingResource">
           <style sizeComputationExpression="2">
@@ -99,7 +103,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings xsi:type="description_1:ContainerMappingImport" name="System Role Container" deletionDescription="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20SystemRole%20Removal']" semanticCandidatesExpression="[self.getRoleApplications()/]" domainClass="StereotypeApplication">
+        <containerMappings name="Role Container" deletionDescription="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20Role%20Removal']" semanticCandidatesExpression="[self.getRoleApplications()/]" domainClass="StereotypeApplication">
           <subNodeMappings name="RoleParameter Node" semanticCandidatesExpression="[self.getStereotype().getParameters()/]" domainClass="EStructuralFeature">
             <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -114,8 +118,8 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="Role Container" deletionDescription="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20Role%20Removal']" semanticCandidatesExpression="[self.getRoleApplications()/]" domainClass="StereotypeApplication">
-          <subNodeMappings name="RoleParameter Node" semanticCandidatesExpression="[self.getStereotype().getParameters()/]" domainClass="EStructuralFeature">
+        <containerMappings name="Resource Repository" semanticCandidatesExpression="feature:eAllContents" domainClass="resourcetype.ResourceRepository">
+          <subNodeMappings name="Resource Type" semanticCandidatesExpression="[self.availableResourceTypes_ResourceRepository/]" domainClass="resourcetype.ResourceType">
             <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -123,6 +127,14 @@
             </style>
           </subNodeMappings>
           <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="ResourceEnvironment Role Container" deletionDescription="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20SystemRole%20Removal']" semanticCandidatesExpression="[self.getProfiles()/]" domainClass="Profile" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[self.name/]" iconPath="/org.scaledl.architecturaltemplates.edit/icons/full/obj16/ATInstance.gif">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -146,17 +158,12 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.ProcessingResourceSpecification" referenceName="activeResourceSpecifications_ResourceContainer"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="Select Active Resource Type" candidatesExpression="[self.target.oclAsType(pcm::resourceenvironment::ProcessingResourceSpecification).activeResourceType_ActiveResourceSpecification/]" tree="true" rootExpression="[self.target.oclAsType(pcm::resourceenvironment::ProcessingResourceSpecification).activeResourceType_ActiveResourceSpecification.resourceRepository_ResourceType/]" childrenExpression="[self.target.oclAsType(pcm::resourceenvironment::ProcessingResourceSpecification).activeResourceType_ActiveResourceSpecification.resourceRepository_ResourceType.availableResourceTypes_ResourceRepository/]" windowTitle="Select Active Resource Type">
-            <element name="element"/>
-            <containerView name="containerView"/>
-            <container name="container"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.ProcessingResourceSpecification" referenceName="ProcessingResourceSpecification"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.ProcessingResourceSpecification" referenceName="activeResourceSpecifications_ResourceContainer">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newProcessingResourceSpecification"/>
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SW ResourceType" label="Selection Wizard Resource Type" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.ProcessingResourceSpecification">
+                    <parameters name="newProcessingResourceSpecification" value="[instance/]"/>
+                  </subModelOperations>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -246,7 +253,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Architectural Templates">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AT Creation" label="Add Architectural Template" precondition="[self.eClass().name = 'ResourceEnvironment'/]" containerMappings="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='System%20Role%20Container']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AT Creation" label="Add Architectural Template" precondition="[self.eClass().name = 'ResourceEnvironment'/]" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceEnvironment%20Role%20Container']" iconPath="/org.scaledl.architecturaltemplates.edit/icons/full/obj16/ATInstance.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -255,7 +262,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AT Role Creation" label="Add Role" precondition="[(self.eClass().name = 'AssemblyContext') and (self.eContainer().hasRoles())/]" containerMappings="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='Role%20Container']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AT Role Creation" label="Add Role" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Resourceenvironment']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='Role%20Container']" iconPath="/org.scaledl.architecturaltemplates.edit/icons/full/obj16/Role2Component.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -275,11 +282,13 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.removeAT"/>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role" forceRefresh="true" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.removeAT"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.util.api.services.ResourceEnvironmentServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.util.api.services.PCMServices"/>
   </ownedViewpoints>
 </description:Group>
