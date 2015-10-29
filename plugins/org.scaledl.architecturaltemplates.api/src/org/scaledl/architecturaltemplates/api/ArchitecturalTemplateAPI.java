@@ -267,14 +267,14 @@ public final class ArchitecturalTemplateAPI {
      *             if the Architectural Template does not define any roles.
      * @see #unapplyArchitecturalTemplate(System, Profile)
      */
-    public static void unapplyArchitecturalTemplate(final ResourceEnvironment resourcernvironment,
+    public static void unapplyArchitecturalTemplate(final ResourceEnvironment resourceenvironment,
             final AT architecturalTemplate) {
         if (architecturalTemplate.getRoles().size() == 0) {
             throw new RuntimeException(
                     "Architectural Template \"" + architecturalTemplate + "\" does not contain any roles");
         }
 
-        unapplyArchitecturalTemplate(resourcernvironment,
+        unapplyArchitecturalTemplate(resourceenvironment,
                 architecturalTemplate.getRoles().get(0).getStereotype().getProfile());
     }
 
@@ -289,12 +289,12 @@ public final class ArchitecturalTemplateAPI {
      * @throws RuntimeException
      *             if the profile does not define an Architectural Template.
      */
-    public static void unapplyArchitecturalTemplate(final ResourceEnvironment resourcernvironment,
+    public static void unapplyArchitecturalTemplate(final ResourceEnvironment resourceenvironment,
             final Profile profile) {
         if (!isArchitecturalTemplate(profile)) {
             throw new RuntimeException("Profile \"" + profile + "\" is no Architectural Template");
         }
-        ProfileAPI.unapplyProfile(resourcernvironment.eResource(), profile);
+        ProfileAPI.unapplyProfile(resourceenvironment.eResource(), profile);
     }
 
     /**

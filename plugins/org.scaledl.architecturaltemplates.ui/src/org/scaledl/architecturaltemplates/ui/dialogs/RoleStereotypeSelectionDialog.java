@@ -21,88 +21,90 @@ import org.scaledl.architecturaltemplates.type.Role;
  * 
  * @see ArchitecturalTemplateAPI#isRole(Stereotype)
  * 
- *      TODO: This dialog should be reworked to select {@link Role}s directly
- *      instead of their {@link Stereotype}s (As it is done in the
- *      {@link ArchitecturalTemplateSelectionDialog}. However, this breaks the
- *      ComposedProvidingRequiringEntity Editor (Acceleo ArgumentTypeMissmatch)
- *      at the moment...
+ *      TODO: This dialog should be reworked to select {@link Role}s directly instead of their
+ *      {@link Stereotype}s (As it is done in the {@link ArchitecturalTemplateSelectionDialog}.
+ *      However, this breaks the ComposedProvidingRequiringEntity Editor (Acceleo
+ *      ArgumentTypeMissmatch) at the moment...
  * 
  * @author Max Schettler
  *
  */
 public class RoleStereotypeSelectionDialog extends ElementListSelectionDialog {
 
-	private static final String EMPTY_LIST_MESSAGE = "No Role-Stereotypes can be selected";
-	private static final String TITLE = "Select Role-Stereotype";
-	private static final String EMPTY_SELECTION_MESSAGE = "You need to select a Role-Stereotype to continue";
+    private static final String EMPTY_LIST_MESSAGE = "No Role-Stereotypes can be selected";
+    private static final String TITLE = "Select Role-Stereotype";
+    private static final String EMPTY_SELECTION_MESSAGE = "You need to select a Role-Stereotype to continue";
 
-	public RoleStereotypeSelectionDialog(final Shell parent) {
-		super(parent, new LabelProvider() {
-			
-			
-			private Image roleImage = null;
-			
-			@Override
-			public String getText(Object element) {
-				return ((Stereotype) element).getName();
-			}
+    public RoleStereotypeSelectionDialog(final Shell parent) {
+        super(parent, new LabelProvider() {
 
-			@Override
-			public Image getImage(Object element) {
-				if (roleImage == null) {
-					try {
-						roleImage  = new Image(Display.getCurrent(), new FileInputStream(FileHelper.getFile("platform:plugin/org.scaledl.architecturaltemplates.edit/icons/full/obj16/Role.gif")));
-					} catch (FileNotFoundException e) {
-						e.printStackTrace(); 	// TODO proper error handling
-					}
-				}
-                return roleImage;
-			}
-			
-			@Override
-			public void dispose() {
-				super.dispose();
-				roleImage.dispose();
-			}
-		});
-		setValidator(new ISelectionStatusValidator() {
+            private Image roleImage = null;
 
-			@Override
-			public IStatus validate(Object[] selection) {
-				return selection.length == 1 ? Status.OK_STATUS : Status.CANCEL_STATUS;
-			}
-		});
+            @Override
+            public String getText(final Object element) {
+                return ((Stereotype) element).getName();
+            }
 
-		setTitle(TITLE);
-		setEmptySelectionMessage(EMPTY_SELECTION_MESSAGE);
-		setEmptyListMessage(EMPTY_LIST_MESSAGE);
-	}
+            @Override
+            public Image getImage(final Object element) {
+                if (this.roleImage == null) {
+                    try {
+                        this.roleImage = new Image(Display.getCurrent(), new FileInputStream(FileHelper.getFile(
+                                "platform:plugin/org.scaledl.architecturaltemplates.edit/icons/full/obj16/Role.gif")));
+                    } catch (final FileNotFoundException e) {
+                        e.printStackTrace(); // TODO proper error handling
+                    }
+                }
+                return this.roleImage;
+            }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @throws IllegalArgumentException
-	 *             if not all elements are of the type {@link Stereotype} and
-	 *             define a {@link Role}s.
-	 * @see ArchitecturalTemplateAPI#isRole(Stereotype)
-	 */
-	@Override
-	public void setElements(Object[] elements) {
-		for (Object o : elements) {
-			if (!(o instanceof Stereotype && ArchitecturalTemplateAPI.isRole((Stereotype) o))) {
-				throw new IllegalArgumentException("All elements must be of type \"Stereotype\"");
-			}
-		}
-		super.setElements(elements);
-	}
+            @Override
+            public void dispose() {
+                super.dispose();
 
-	/**
-	 * Returns the selected {@link Stereotype}.
-	 * 
-	 * @return the stereotype
-	 */
-	public Stereotype getResultRoleStereotype() {
-		return (Stereotype) getResult()[0];
-	}
+                if (this.roleImage != null) {
+                    this.roleImage.dispose();
+                }
+            }
+        });
+        setValidator(new ISelectionStatusValidator() {
+
+            @Override
+            public IStatus validate(final Object[] selection) {
+                return selection.length == 1 ? Status.OK_STATUS : Status.CANCEL_STATUS;
+            }
+        });
+
+        setTitle(TITLE);
+        setEmptySelectionMessage(EMPTY_SELECTION_MESSAGE);
+        setEmptyListMessage(EMPTY_LIST_MESSAGE);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @throws IllegalArgumentException
+     *             if not all elements are of the type {@link Stereotype} and define a {@link Role}
+     *             s.
+     * @see ArchitecturalTemplateAPI#isRole(Stereotype)
+     */
+    @Override
+    public void setElements(final Object[] elements) {
+        for (final Object o : elements) {
+            if (!(o instanceof Stereotype && ArchitecturalTemplateAPI.isRole((Stereotype) o))) {
+                throw new IllegalArgumentException("All elements must be of type \"Stereotype\"");
+            }
+        }
+        super.setElements(elements);
+    }
+
+    /**
+     * Returns the selected {@link Stereotype}.
+     * 
+     * @return the stereotype
+     */
+    public Stereotype getResultRoleStereotype() {
+        return (Stereotype) getResult()[0];
+    }
 
 }

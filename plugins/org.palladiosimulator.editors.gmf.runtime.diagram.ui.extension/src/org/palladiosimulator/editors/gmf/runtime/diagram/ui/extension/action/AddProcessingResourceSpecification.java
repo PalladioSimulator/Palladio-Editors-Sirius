@@ -54,14 +54,14 @@ public class AddProcessingResourceSpecification implements IExternalJavaAction {
         final ProcessingResourceSpecification processingResourceSpecification = (ProcessingResourceSpecification) parameter;
 
         // 1. dialog
-        processingResourceSpecification.setSchedulingPolicy(getSchedulingPolicy(processingResourceSpecification));
+        processingResourceSpecification
+                .setActiveResourceType_ActiveResourceSpecification(getResourceType(processingResourceSpecification));
 
         // 2. dialog
         processingResourceSpecification.setProcessingRate_ProcessingResourceSpecification(getProcessingRate());
 
         // 3. dialog
-        processingResourceSpecification
-                .setActiveResourceType_ActiveResourceSpecification(getResourceType(processingResourceSpecification));
+        processingResourceSpecification.setSchedulingPolicy(getSchedulingPolicy(processingResourceSpecification));
 
     }
 
