@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.modelversioning.emfprofileapplication.StereotypeApplication;
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
+import org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
 import org.palladiosimulator.pcm.system.System;
 import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
 import org.scaledl.architecturaltemplates.type.Role;
@@ -24,28 +25,25 @@ public class RemoveATRoleAction implements IExternalJavaAction {
 
     /**
      * Asks the user to select a {@link Role} and attaches it to the given {@link AssemblyContext}.
+     * 
      */
     @Override
-    public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
-        final StereotypeApplication stereotypeApplication = (StereotypeApplication) (selections.isEmpty() ? null : selections.iterator().next());
+    public void execute(final Collection<? extends EObject> selections, final Map<String, Object> parameters) {
+        final StereotypeApplication stereotypeApplication = (StereotypeApplication) (selections.isEmpty() ? null
+                : selections.iterator().next());
 
-        if (!(stereotypeApplication.getAppliedTo() instanceof AssemblyContext)) {
-            return;
-        }
-        final AssemblyContext assemblyContext = (AssemblyContext) stereotypeApplication.getAppliedTo();
-        
-        ArchitecturalTemplateAPI.unapplyRole(assemblyContext, stereotypeApplication.getStereotype());
+        ArchitecturalTemplateAPI.unapplyRole(stereotypeApplication.getAppliedTo(), stereotypeApplication.getStereotype());
     }
 
     /**
      * Tests whether the object this tool is applied to is a {@link System}.
      */
     @Override
-    public boolean canExecute(Collection<? extends EObject> selections) {
+    public boolean canExecute(final Collection<? extends EObject> selections) {
         if (selections.size() != 1) {
             return false;
         }
-        for (EObject object : selections) {
+        for (final EObject object : selections) {
             return object instanceof StereotypeApplication;
         }
         return false;
