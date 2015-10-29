@@ -14,10 +14,10 @@
     </measurementSpecifications>
     <measuringPoint xsi:type="pcmmeasuringpoint:ResourceEnvironmentMeasuringPoint" href="default.measuringpoint#//@measuringPoints.1"/>
   </monitors>
-  <monitors id="_-terAFo2EeWsV9LtPY1D6Q" entityName="Operation Cost - Replicable Resource Container">
+  <monitors id="_-terAFo2EeWsV9LtPY1D6Q" entityName="Operation Cost - Resource Environment">
     <measurementSpecifications id="_DxPf0Fo3EeWsV9LtPY1D6Q" statisticalCharacterization="ArithmeticMean">
       <metricDescription xsi:type="metricspec:MetricSetDescription" href="pathmap://METRIC_SPEC_MODELS/models/commonMetrics.metricspec#_IiHVQdgLEeSCcbn_evnMvQ"/>
     </measurementSpecifications>
-    <measuringPoint xsi:type="pcmmeasuringpoint:ActiveResourceMeasuringPoint" href="default.measuringpoint#//@measuringPoints.2"/>
+    <measuringPoint xsi:type="pcmmeasuringpoint:ResourceEnvironmentMeasuringPoint" href="default.measuringpoint#//@measuringPoints.1"/>
   </monitors>
 </monitorrepository:MonitorRepository>
