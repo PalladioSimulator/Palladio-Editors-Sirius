@@ -169,9 +169,16 @@ helper duplicateResourceContainer(counter : Integer, originalResourceContainer :
 	var duplicatedResourceContainer := 
 		new ResourceContainer("duplicate_"+counter.toString(), originalResourceContainer);
 	
+	
 	duplicateLinkingResources(duplicatedResourceContainer, originalResourceContainer);
 	duplicateAssemblyAndAllocation(counter, duplicatedResourceContainer, originalResourceContainer);
  	applyStereotype(duplicatedResourceContainer, "DuplicateResourceContainer");
+ 	if (hasAppliedStereotype(originalResourceContainer, "Price")) {
+		applyStereotype(duplicatedResourceContainer, "Price");
+		setDoubleTaggedValue(duplicatedResourceContainer, getDoubleTaggedValue(originalResourceContainer, "interval", "Price"), "Price", "interval");
+		setDoubleTaggedValue(duplicatedResourceContainer, getDoubleTaggedValue(originalResourceContainer, "amount", "Price"), "Price", "amount");
+		setStringTaggedValue(duplicatedResourceContainer, getStringTaggedValue(originalResourceContainer, "unit", "Price"), "Price", "unit");
+	};
 	
 	return duplicatedResourceContainer;
 }
