@@ -7,7 +7,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.modelversioning.emfprofileapplication.StereotypeApplication;
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
-import org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
 import org.palladiosimulator.pcm.system.System;
 import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
 import org.scaledl.architecturaltemplates.type.Role;
@@ -32,7 +31,8 @@ public class RemoveATRoleAction implements IExternalJavaAction {
         final StereotypeApplication stereotypeApplication = (StereotypeApplication) (selections.isEmpty() ? null
                 : selections.iterator().next());
 
-        ArchitecturalTemplateAPI.unapplyRole(stereotypeApplication.getAppliedTo(), stereotypeApplication.getStereotype());
+        ArchitecturalTemplateAPI.unapplyRole(stereotypeApplication.getAppliedTo(),
+                stereotypeApplication.getStereotype());
     }
 
     /**
