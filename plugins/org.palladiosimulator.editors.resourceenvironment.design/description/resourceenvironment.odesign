@@ -54,7 +54,7 @@
         </containerMappings>
         <containerMappings name="ResourceContainer" labelDirectEdit="//@ownedViewpoints[name='Resource%20Environment%20Design']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Resource%20Container%20Name']" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.ResourceContainer">
           <subContainerMappings name="Role Container" deletionDescription="//@ownedViewpoints[name='Resource%20Environment%20Design']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20Role%20Removal']" semanticCandidatesExpression="[self.getRoleApplications()/]" domainClass="StereotypeApplication" childrenPresentation="List">
-            <subNodeMappings name="RoleParameter Node" preconditionExpression="[self.changeable/]" semanticCandidatesExpression="[self.getStereotype().getParameters()/]" domainClass="EStructuralFeature">
+            <subNodeMappings name="RoleParameter Node" preconditionExpression="[self.changeable/]" semanticCandidatesExpression="[self.getStereotype().getParameters()/]" doubleClickDescription="//@ownedViewpoints[name='Resource%20Environment%20Design']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='QueryAndSetRoleParameterValue']" domainClass="EStructuralFeature">
               <style xsi:type="style:SquareDescription" labelExpression="[self.name + '=' + view.eContainer(DDiagramElementContainer).target.eGet(self)/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -186,7 +186,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="QueryAndSetRoleParameterValue" precondition="[changeable/]">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="QueryAndSetRoleParameterValue" precondition="[changeable/]" mappings="//@ownedViewpoints[name='Resource%20Environment%20Design']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='Role%20Container']/@subNodeMappings[name='RoleParameter%20Node']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
