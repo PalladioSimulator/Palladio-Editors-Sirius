@@ -18,6 +18,7 @@ import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.ui.PlatformUI;
 import org.modelversioning.emfprofile.Profile;
 import org.modelversioning.emfprofile.Stereotype;
+import org.modelversioning.emfprofileapplication.ProfileImport;
 import org.modelversioning.emfprofileapplication.StereotypeApplication;
 import org.palladiosimulator.editors.util.Activator;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
@@ -142,8 +143,8 @@ public class PCMServices {
      * @return collection of Profiles
      * @see ArchitecturalTemplateAPI#getProfiles(EObject)
      */
-    public Collection<Profile> getProfiles(final EObject eObject) {
-        return ArchitecturalTemplateAPI.getProfiles(eObject);
+    public Collection<ProfileImport> getProfileImports(final EObject eObject) {
+        return ArchitecturalTemplateAPI.getProfileImports(eObject);
     }
 
     /**

@@ -55,7 +55,7 @@
         <containerMappings name="ResourceContainer" labelDirectEdit="//@ownedViewpoints[name='Resource%20Environment%20Design']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Resource%20Container%20Name']" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.ResourceContainer">
           <subContainerMappings name="Role Container" deletionDescription="//@ownedViewpoints[name='Resource%20Environment%20Design']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20Role%20Removal']" semanticCandidatesExpression="[self.getRoleApplications()/]" domainClass="StereotypeApplication" childrenPresentation="List">
             <subNodeMappings name="RoleParameter Node" preconditionExpression="[self.changeable/]" semanticCandidatesExpression="[self.getStereotype().getParameters()/]" domainClass="EStructuralFeature">
-              <style xsi:type="style:SquareDescription" labelExpression="[self.name + '=' + view.eContainer(DDiagramElementContainer).target.eGet(self)/]" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" labelExpression="[self.name + '=' + view.eContainer(DDiagramElementContainer).target.eGet(self)/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -118,8 +118,8 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="ResourceEnvironment AT Container" deletionDescription="//@ownedViewpoints[name='Resource%20Environment%20Design']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20SystemRole%20Removal']" semanticCandidatesExpression="[self.getProfiles()/]" domainClass="Profile" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[self.name/]" iconPath="/org.scaledl.architecturaltemplates.edit/icons/full/obj16/ATInstance.gif">
+        <containerMappings name="ResourceEnvironment AT Container" deletionDescription="//@ownedViewpoints[name='Resource%20Environment%20Design']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20SystemRole%20Removal']" semanticCandidatesExpression="[self.getProfileImports()/]" domainClass="emfprofileapplication.ProfileImport" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[self.profile.name/]" iconPath="/org.scaledl.architecturaltemplates.edit/icons/full/obj16/ATInstance.gif">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>

@@ -2,6 +2,7 @@ package org.scaledl.architecturaltemplates.api;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -9,6 +10,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.modelversioning.emfprofile.Profile;
 import org.modelversioning.emfprofile.Stereotype;
 import org.modelversioning.emfprofile.registry.IProfileRegistry;
+import org.modelversioning.emfprofileapplication.ProfileImport;
 import org.modelversioning.emfprofileapplication.StereotypeApplication;
 import org.palladiosimulator.commons.emfutils.EMFLoadHelper;
 import org.palladiosimulator.mdsdprofiles.api.ProfileAPI;
@@ -436,14 +438,12 @@ public final class ArchitecturalTemplateAPI {
     /**
      * TODO documentation
      */
-    public static Collection<Profile> getProfiles(final EObject eObject) {
-        final Collection<Profile> profiles = new ArrayList<>();
-
-        for (final Profile profile : ProfileAPI.getAppliedProfiles(eObject.eResource())) {
-            profiles.add(profile);
+    public static final Collection<ProfileImport> getProfileImports(final EObject eObject) {
+        if (ProfileAPI.hasProfileApplication(eObject.eResource())) {
+            return Collections.unmodifiableCollection(
+                    ProfileAPI.getProfileApplication(eObject.eResource()).getImportedProfiles());
         }
-
-        return profiles;
+        return Collections.emptyList();
     }
 
     /**
