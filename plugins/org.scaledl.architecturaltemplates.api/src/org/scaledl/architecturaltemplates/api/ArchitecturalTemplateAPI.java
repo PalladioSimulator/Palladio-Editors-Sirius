@@ -435,7 +435,7 @@ public final class ArchitecturalTemplateAPI {
         return roleStereotypeApplications;
     }
 
-    public static Collection<StereotypeApplication> getStereotypeApplications(final EObject eObject) {
+    public static Collection<StereotypeApplication> getStereotypeApplicationsWithoutRoles(final EObject eObject) {
         final Collection<StereotypeApplication> roleStereotypeApplications = new ArrayList<>();
 
         for (final StereotypeApplication stereotypeApplication : StereotypeAPI.getStereotypeApplications(eObject)) {

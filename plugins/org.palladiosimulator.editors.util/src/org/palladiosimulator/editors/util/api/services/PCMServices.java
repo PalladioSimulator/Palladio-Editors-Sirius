@@ -135,6 +135,10 @@ public class PCMServices {
         return ArchitecturalTemplateAPI.getRoleApplications(eObject);
     }
 
+    public Collection<StereotypeApplication> getStereotypeApplicationsWithoutRoles(final EObject eObject) {
+        return ArchitecturalTemplateAPI.getStereotypeApplicationsWithoutRoles(eObject);
+    }
+
     /**
      * Returns the {@link Profile}s on the given {@link EObject}.
      * 
