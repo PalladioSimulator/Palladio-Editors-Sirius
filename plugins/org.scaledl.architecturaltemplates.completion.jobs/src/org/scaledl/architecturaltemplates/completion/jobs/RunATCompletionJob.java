@@ -21,6 +21,12 @@ import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.palladiosimulator.monitorrepository.MonitorRepository;
 import org.palladiosimulator.monitorrepository.impl.MonitorRepositoryFactoryImpl;
 import org.palladiosimulator.monitorrepository.util.MonitorRepositoryResourceImpl;
+import org.palladiosimulator.pcm.allocation.Allocation;
+import org.palladiosimulator.pcm.allocation.AllocationFactory;
+import org.palladiosimulator.pcm.allocation.util.AllocationResourceImpl;
+import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
+import org.palladiosimulator.pcm.usagemodel.UsageModel;
+import org.palladiosimulator.pcm.usagemodel.UsageScenario;
 import org.palladiosimulator.pcmmeasuringpoint.UsageScenarioMeasuringPoint;
 import org.palladiosimulator.pcmmeasuringpoint.impl.PcmmeasuringpointFactoryImpl;
 import org.palladiosimulator.pcmmeasuringpoint.util.PcmmeasuringpointResourceImpl;
@@ -37,12 +43,6 @@ import org.scaledl.architecturaltemplates.type.QVTOCompletion;
 import org.scaledl.architecturaltemplates.type.Role;
 import org.scaledl.architecturaltemplates.type.util.TypeSwitch;
 
-import org.palladiosimulator.pcm.allocation.Allocation;
-import org.palladiosimulator.pcm.allocation.AllocationFactory;
-import org.palladiosimulator.pcm.allocation.util.AllocationResourceImpl;
-import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
-import org.palladiosimulator.pcm.usagemodel.UsageModel;
-import org.palladiosimulator.pcm.usagemodel.UsageScenario;
 import de.uka.ipd.sdq.workflow.jobs.JobFailedException;
 import de.uka.ipd.sdq.workflow.jobs.SequentialBlackboardInteractingJob;
 import de.uka.ipd.sdq.workflow.jobs.UserCanceledException;
@@ -72,62 +72,75 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
         super.execute(monitor);
 
         final AT architecturalTemplate = this.getATFromSystem();
+        if (architecturalTemplate == null) {
+            return;
+        }
 
-        if (architecturalTemplate != null) {
-            // get QVT-O completion
-            final QVTOCompletion completion;
-            if (architecturalTemplate.getCompletion() instanceof QVTOCompletion) {
-                completion = (QVTOCompletion) architecturalTemplate.getCompletion();
-            } else {
-                throw new RuntimeException("This jobs assumes a QVTOCompletion");
+        // configure the QVTO Job
+        final QVTOTransformationJobConfiguration qvtoConfig = new QVTOTransformationJobConfiguration();
+        qvtoConfig.setInoutModels(getModelLocations(architecturalTemplate));
+        qvtoConfig.setTraceFileURI(URI.createURI(TRACESFOLDER));
+        qvtoConfig.setScriptFileURI(getRootURI(architecturalTemplate).appendSegment("completions")
+                .appendSegment(getCompletion(architecturalTemplate).getQvtoFileURI()));
+        qvtoConfig.setOptions(new HashMap<String, Object>());
+
+        // create and add the qvto job
+        final QVTOTransformationJob job = new QVTOTransformationJob(qvtoConfig);
+        job.setBlackboard(this.getBlackboard());
+
+        // execute transformation job
+        try {
+            job.execute(new NullProgressMonitor());
+        } catch (final JobFailedException e) {
+            if (this.logger.isEnabledFor(Level.ERROR)) {
+                this.logger.error("Failed to perform Architectural Template completion: " + e.getMessage());
             }
-
-            // Root folder of the AT
-            final URI rootATUri = architecturalTemplate.eResource().getURI().trimFragment().trimSegments(1);
-
-            // Initialize ModelLocation object for QVTo's in- and out-parameters
-            final List<ModelLocation> modelLocations = new ArrayList<ModelLocation>(completion.getParameters().size());
-            for (final CompletionParameter parameter : completion.getParameters()) {
-                modelLocations.add(getModelLocation(architecturalTemplate, rootATUri, parameter));
-            }
-
-            // build file paths for trace and transformation files
-            final URI traceFileURI = URI.createURI(TRACESFOLDER);
-            final URI scriptFileURI = rootATUri.appendSegment("completions").appendSegment(completion.getQvtoFileURI());
-
-            // configure the QVTO Job
-            final QVTOTransformationJobConfiguration qvtoConfig = new QVTOTransformationJobConfiguration();
-            qvtoConfig.setInoutModels(modelLocations.toArray(new ModelLocation[completion.getParameters().size()]));
-            qvtoConfig.setTraceFileURI(traceFileURI);
-            qvtoConfig.setScriptFileURI(scriptFileURI);
-            qvtoConfig.setOptions(new HashMap<String, Object>());
-
-            // create and add the qvto job
-            final QVTOTransformationJob job = new QVTOTransformationJob(qvtoConfig);
-            job.setBlackboard(this.getBlackboard());
-
-            // execute transformation job
-            try {
-                job.execute(new NullProgressMonitor());
-            } catch (final JobFailedException e) {
-                if (this.logger.isEnabledFor(Level.ERROR)) {
-                    this.logger.error("Failed to perform Architectural Template completion: " + e.getMessage());
-                }
-                if (this.logger.isEnabledFor(Level.INFO)) {
-                    this.logger
-                            .info("Trying to continue Architectural Template completion even though an internal failure occured");
-                }
+            if (this.logger.isEnabledFor(Level.INFO)) {
+                this.logger.info(
+                        "Trying to continue Architectural Template completion even though an internal failure occured");
             }
         }
-        // If no AT was found, let's hope the PCM model is complete...
     }
 
-    private ModelLocation getModelLocation(final AT architecturalTemplate, final URI rootATUri,
-            final CompletionParameter parameter) {
-        final ResourceSetPartition pcmPartition = this.getBlackboard().getPartition(
-                ATPartitionConstants.Partition.PCM.getPartitionId());
+    /**
+     * Initialize ModelLocation object for QVTo's in- and out-parameters.
+     * 
+     * @param architecturalTemplate
+     * @return
+     */
+    private ModelLocation[] getModelLocations(final AT architecturalTemplate) {
+        final QVTOCompletion completion = getCompletion(architecturalTemplate);
+        final List<ModelLocation> modelLocations = new ArrayList<ModelLocation>(completion.getParameters().size());
+        for (final CompletionParameter parameter : completion.getParameters()) {
+            modelLocations.add(getModelLocation(architecturalTemplate, parameter));
+        }
+        return modelLocations.toArray(new ModelLocation[modelLocations.size()]);
+    }
 
-        final URI templateFolderURI = rootATUri.appendSegment("templates");
+    /**
+     * Root folder of the AT.
+     * 
+     * @param architecturalTemplate
+     *            the AT where the root folder shall be found for.
+     * @return the root folder.
+     */
+    private URI getRootURI(final AT architecturalTemplate) {
+        return architecturalTemplate.eResource().getURI().trimFragment().trimSegments(1);
+    }
+
+    private QVTOCompletion getCompletion(final AT architecturalTemplate) {
+        if (!(architecturalTemplate.getCompletion() instanceof QVTOCompletion)) {
+            throw new RuntimeException("This jobs assumes a QVTOCompletion");
+        }
+
+        return (QVTOCompletion) architecturalTemplate.getCompletion();
+    }
+
+    private ModelLocation getModelLocation(final AT architecturalTemplate, final CompletionParameter parameter) {
+        final ResourceSetPartition pcmPartition = this.getBlackboard()
+                .getPartition(ATPartitionConstants.Partition.PCM.getPartitionId());
+
+        final URI templateFolderURI = getRootURI(architecturalTemplate).appendSegment("templates");
         final URI systemModelFolderURI = getSystemModelFolderURI();
 
         return new TypeSwitch<ModelLocation>() {
@@ -145,16 +158,16 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
 
                 for (final String fileName : ATPartitionConstants.PCM_FILES) {
                     if (lastSegment.endsWith(fileName)) {
-                        final ResourceSetPartition resourceSetPartition = getBlackboard().getPartition(
-                                ATPartitionConstants.Partition.PCM.getPartitionId());
+                        final ResourceSetPartition resourceSetPartition = getBlackboard()
+                                .getPartition(ATPartitionConstants.Partition.PCM.getPartitionId());
                         resourceSetPartition.loadModel(templateURI);
                         resourceSetPartition.resolveAllProxies();
                         return new ModelLocation(ATPartitionConstants.Partition.PCM.getPartitionId(), templateURI);
                     }
                 }
 
-                throw new IllegalArgumentException("PCM Template Completion Parameter \"" + templateURI
-                        + "\" not found");
+                throw new IllegalArgumentException(
+                        "PCM Template Completion Parameter \"" + templateURI + "\" not found");
             };
 
             /**
@@ -164,8 +177,8 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
             public ModelLocation casePCMBlackboardCompletionParameter(final PCMBlackboardCompletionParameter object) {
                 final String parameterFileExtension = object.getFileExtension().getLiteral();
 
-                final ResourceSetPartition resourceSetPartition = getBlackboard().getPartition(
-                        ATPartitionConstants.Partition.PCM.getPartitionId());
+                final ResourceSetPartition resourceSetPartition = getBlackboard()
+                        .getPartition(ATPartitionConstants.Partition.PCM.getPartitionId());
 
                 for (final Resource r : resourceSetPartition.getResourceSet().getResources()) {
                     final URI modelURI = r.getURI();
