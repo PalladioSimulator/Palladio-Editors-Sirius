@@ -63,6 +63,7 @@
     <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_MzPVcUTmEeWX9I6sz1f4mQ" entityName="Virtualized Resource Container Processing Rate greater than Min Rate" roles="_v2XZUH4aEeS81uv5CnTOEw" constraint="self.appliedTo.oclAsType(pcm::resourceenvironment::ResourceContainer).activeResourceSpecifications_ResourceContainer->forAll(a|a.processingRate_ProcessingResourceSpecification.specification.oclAsType(Real)>= self.getIntTaggedValue('minRate','VirtualizedResourceContainer'));"/>
     <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion" qvtoFileURI="DynamicVerticalScalingResourceContainer.qvto">
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter"/>
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMTemplateCompletionParameter"/>
     </completion>
   </ATs>
   <ATs id="_i-ghUIHkEeSeK9JYh8VNzw" entityName="Static Assembly Context Loadbalancing">

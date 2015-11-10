@@ -63,17 +63,13 @@ public class TypeActionBarContributor extends EditingDomainActionBarContributor 
      * @generated
      */
     protected IAction showPropertiesViewAction = new Action(
-            ArchitecturaltemplatesEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item"))
-    {
+            ArchitecturaltemplatesEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) {
+
         @Override
-        public void run()
-        {
-            try
-            {
+        public void run() {
+            try {
                 TypeActionBarContributor.this.getPage().showView("org.eclipse.ui.views.PropertySheet");
-            }
-            catch (final PartInitException exception)
-            {
+            } catch (final PartInitException exception) {
                 ArchitecturaltemplatesEditorPlugin.INSTANCE.log(exception);
             }
         }
@@ -87,22 +83,18 @@ public class TypeActionBarContributor extends EditingDomainActionBarContributor 
      * @generated
      */
     protected IAction refreshViewerAction = new Action(
-            ArchitecturaltemplatesEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item"))
-    {
+            ArchitecturaltemplatesEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) {
+
         @Override
-        public boolean isEnabled()
-        {
+        public boolean isEnabled() {
             return TypeActionBarContributor.this.activeEditorPart instanceof IViewerProvider;
         }
 
         @Override
-        public void run()
-        {
-            if (TypeActionBarContributor.this.activeEditorPart instanceof IViewerProvider)
-            {
+        public void run() {
+            if (TypeActionBarContributor.this.activeEditorPart instanceof IViewerProvider) {
                 final Viewer viewer = ((IViewerProvider) TypeActionBarContributor.this.activeEditorPart).getViewer();
-                if (viewer != null)
-                {
+                if (viewer != null) {
                     viewer.refresh();
                 }
             }
@@ -200,12 +192,10 @@ public class TypeActionBarContributor extends EditingDomainActionBarContributor 
 
         // Force an update because Eclipse hides empty menus now.
         //
-        submenuManager.addMenuListener
-        (new IMenuListener()
-        {
+        submenuManager.addMenuListener(new IMenuListener() {
+
             @Override
-            public void menuAboutToShow(final IMenuManager menuManager)
-            {
+            public void menuAboutToShow(final IMenuManager menuManager) {
                 menuManager.updateAll(true);
             }
         });
@@ -226,25 +216,20 @@ public class TypeActionBarContributor extends EditingDomainActionBarContributor 
 
         // Switch to the new selection provider.
         //
-        if (this.selectionProvider != null)
-        {
+        if (this.selectionProvider != null) {
             this.selectionProvider.removeSelectionChangedListener(this);
         }
-        if (part == null)
-        {
+        if (part == null) {
             this.selectionProvider = null;
-        }
-        else
-        {
+        } else {
             this.selectionProvider = part.getSite().getSelectionProvider();
             this.selectionProvider.addSelectionChangedListener(this);
 
             // Fake a selection changed event to update the menus.
             //
-            if (this.selectionProvider.getSelection() != null)
-            {
-                this.selectionChanged(new SelectionChangedEvent(this.selectionProvider, this.selectionProvider
-                        .getSelection()));
+            if (this.selectionProvider.getSelection() != null) {
+                this.selectionChanged(
+                        new SelectionChangedEvent(this.selectionProvider, this.selectionProvider.getSelection()));
             }
         }
     }
@@ -261,12 +246,10 @@ public class TypeActionBarContributor extends EditingDomainActionBarContributor 
     public void selectionChanged(final SelectionChangedEvent event) {
         // Remove any menu items for old selection.
         //
-        if (this.createChildMenuManager != null)
-        {
+        if (this.createChildMenuManager != null) {
             this.depopulateManager(this.createChildMenuManager, this.createChildActions);
         }
-        if (this.createSiblingMenuManager != null)
-        {
+        if (this.createSiblingMenuManager != null) {
             this.depopulateManager(this.createSiblingMenuManager, this.createSiblingActions);
         }
 
@@ -276,8 +259,7 @@ public class TypeActionBarContributor extends EditingDomainActionBarContributor 
         Collection<?> newSiblingDescriptors = null;
 
         final ISelection selection = event.getSelection();
-        if (selection instanceof IStructuredSelection && ((IStructuredSelection) selection).size() == 1)
-        {
+        if (selection instanceof IStructuredSelection && ((IStructuredSelection) selection).size() == 1) {
             final Object object = ((IStructuredSelection) selection).getFirstElement();
 
             final EditingDomain domain = ((IEditingDomainProvider) this.activeEditorPart).getEditingDomain();
@@ -291,13 +273,11 @@ public class TypeActionBarContributor extends EditingDomainActionBarContributor 
         this.createChildActions = this.generateCreateChildActions(newChildDescriptors, selection);
         this.createSiblingActions = this.generateCreateSiblingActions(newSiblingDescriptors, selection);
 
-        if (this.createChildMenuManager != null)
-        {
+        if (this.createChildMenuManager != null) {
             this.populateManager(this.createChildMenuManager, this.createChildActions, null);
             this.createChildMenuManager.update(true);
         }
-        if (this.createSiblingMenuManager != null)
-        {
+        if (this.createSiblingMenuManager != null) {
             this.populateManager(this.createSiblingMenuManager, this.createSiblingActions, null);
             this.createSiblingMenuManager.update(true);
         }
@@ -310,12 +290,11 @@ public class TypeActionBarContributor extends EditingDomainActionBarContributor 
      * 
      * @generated
      */
-    protected Collection<IAction> generateCreateChildActions(final Collection<?> descriptors, final ISelection selection) {
+    protected Collection<IAction> generateCreateChildActions(final Collection<?> descriptors,
+            final ISelection selection) {
         final Collection<IAction> actions = new ArrayList<IAction>();
-        if (descriptors != null)
-        {
-            for (final Object descriptor : descriptors)
-            {
+        if (descriptors != null) {
+            for (final Object descriptor : descriptors) {
                 actions.add(new CreateChildAction(this.activeEditorPart, selection, descriptor));
             }
         }
@@ -332,10 +311,8 @@ public class TypeActionBarContributor extends EditingDomainActionBarContributor 
     protected Collection<IAction> generateCreateSiblingActions(final Collection<?> descriptors,
             final ISelection selection) {
         final Collection<IAction> actions = new ArrayList<IAction>();
-        if (descriptors != null)
-        {
-            for (final Object descriptor : descriptors)
-            {
+        if (descriptors != null) {
+            for (final Object descriptor : descriptors) {
                 actions.add(new CreateSiblingAction(this.activeEditorPart, selection, descriptor));
             }
         }
@@ -354,16 +331,11 @@ public class TypeActionBarContributor extends EditingDomainActionBarContributor 
      */
     protected void populateManager(final IContributionManager manager, final Collection<? extends IAction> actions,
             final String contributionID) {
-        if (actions != null)
-        {
-            for (final IAction action : actions)
-            {
-                if (contributionID != null)
-                {
+        if (actions != null) {
+            for (final IAction action : actions) {
+                if (contributionID != null) {
                     manager.insertBefore(contributionID, action);
-                }
-                else
-                {
+                } else {
                     manager.add(action);
                 }
             }
@@ -379,25 +351,21 @@ public class TypeActionBarContributor extends EditingDomainActionBarContributor 
      * @generated
      */
     protected void depopulateManager(final IContributionManager manager, final Collection<? extends IAction> actions) {
-        if (actions != null)
-        {
+        if (actions != null) {
             final IContributionItem[] items = manager.getItems();
             for (final IContributionItem item : items) {
                 // Look into SubContributionItems
                 //
                 IContributionItem contributionItem = item;
-                while (contributionItem instanceof SubContributionItem)
-                {
+                while (contributionItem instanceof SubContributionItem) {
                     contributionItem = ((SubContributionItem) contributionItem).getInnerItem();
                 }
 
                 // Delete the ActionContributionItems with matching action.
                 //
-                if (contributionItem instanceof ActionContributionItem)
-                {
+                if (contributionItem instanceof ActionContributionItem) {
                     final IAction action = ((ActionContributionItem) contributionItem).getAction();
-                    if (actions.contains(action))
-                    {
+                    if (actions.contains(action)) {
                         manager.remove(contributionItem);
                     }
                 }

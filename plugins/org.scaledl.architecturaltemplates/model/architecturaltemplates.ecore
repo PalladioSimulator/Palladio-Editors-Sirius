@@ -110,6 +110,7 @@
       <eLiterals name="MONITORREPOSITORY" value="6" literal="monitorrepository"/>
       <eLiterals name="PCMMEASURINGPOINT" value="7" literal="pcmmeasuringpoint"/>
       <eLiterals name="SERVICELEVELOBJECTIVE" value="8" literal="slo"/>
+      <eLiterals name="EXPERIMENTS" value="9" literal="experiments"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="PCMTemplateCompletionParameter" eSuperTypes="#//type/PCMBlackboardCompletionParameter #//type/TemplateProvidingEntity">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

@@ -13,6 +13,8 @@ import org.eclipse.ocl.expressions.ExpressionsPackage;
 import org.eclipse.ocl.types.TypesPackage;
 import org.eclipse.ocl.utilities.UtilitiesPackage;
 import org.modelversioning.emfprofile.EMFProfilePackage;
+import org.palladiosimulator.pcm.PcmPackage;
+import org.palladiosimulator.pcm.core.entity.EntityPackage;
 import org.scaledl.architecturaltemplates.instance.InstancePackage;
 import org.scaledl.architecturaltemplates.instance.impl.InstancePackageImpl;
 import org.scaledl.architecturaltemplates.type.Completion;
@@ -34,126 +36,141 @@ import org.scaledl.architecturaltemplates.type.TemplateProvidingEntity;
 import org.scaledl.architecturaltemplates.type.TypeFactory;
 import org.scaledl.architecturaltemplates.type.TypePackage;
 
-import org.palladiosimulator.pcm.PcmPackage;
-import org.palladiosimulator.pcm.core.entity.EntityPackage;
-
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
+ *
  * @generated
  */
 public class TypePackageImpl extends EPackageImpl implements TypePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private EClass atEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private EClass constraintEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private EClass parameterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private EClass repositoryEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private EClass roleEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private EClass oclConstraintEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private EClass qvtoCompletionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private EClass completionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private EClass completionParameterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private EClass genericTemplateCompletionParameterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private EClass genericBlackboardCompletionParameterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private EClass pcmBlackboardCompletionParameterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private EClass pcmTemplateCompletionParameterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private EClass templateProvidingEntityEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private EClass pcmOutputCompletionParameterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private EClass genericOutputCompletionParameterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private EEnum pcmFileExtensionsEEnum = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
-     * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
-     * package URI value.
-     * <p>Note: the correct way to create the package is via the static
-     * factory method {@link #init init()}, which also performs
-     * initialization of the package, or returns the registered package,
-     * if one already exists.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package package URI
+     * value.
+     * <p>
+     * Note: the correct way to create the package is via the static factory method {@link #init
+     * init()}, which also performs initialization of the package, or returns the registered
+     * package, if one already exists. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.eclipse.emf.ecore.EPackage.Registry
      * @see org.scaledl.architecturaltemplates.type.TypePackage#eNS_URI
      * @see #init()
@@ -165,27 +182,32 @@ public class TypePackageImpl extends EPackageImpl implements TypePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private static boolean isInited = false;
 
     /**
-     * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-     * 
-     * <p>This method is used to initialize {@link TypePackage#eINSTANCE} when that field is accessed.
-     * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Creates, registers, and initializes the <b>Package</b> for this model, and for any others
+     * upon which it depends.
+     *
+     * <p>
+     * This method is used to initialize {@link TypePackage#eINSTANCE} when that field is accessed.
+     * Clients should not invoke it directly. Instead, they should simply access that field to
+     * obtain the package. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
      * @generated
      */
     public static TypePackage init() {
-        if (isInited)
+        if (isInited) {
             return (TypePackage) EPackage.Registry.INSTANCE.getEPackage(TypePackage.eNS_URI);
+        }
 
         // Obtain or create and register package
-        TypePackageImpl theTypePackage = (TypePackageImpl) (EPackage.Registry.INSTANCE
+        final TypePackageImpl theTypePackage = (TypePackageImpl) (EPackage.Registry.INSTANCE
                 .get(eNS_URI) instanceof TypePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
                         : new TypePackageImpl());
 
@@ -199,7 +221,7 @@ public class TypePackageImpl extends EPackageImpl implements TypePackage {
         PcmPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
-        InstancePackageImpl theInstancePackage = (InstancePackageImpl) (EPackage.Registry.INSTANCE
+        final InstancePackageImpl theInstancePackage = (InstancePackageImpl) (EPackage.Registry.INSTANCE
                 .getEPackage(InstancePackage.eNS_URI) instanceof InstancePackageImpl
                         ? EPackage.Registry.INSTANCE.getEPackage(InstancePackage.eNS_URI) : InstancePackage.eINSTANCE);
 
@@ -221,477 +243,526 @@ public class TypePackageImpl extends EPackageImpl implements TypePackage {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EClass getAT() {
-        return atEClass;
+        return this.atEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EReference getAT_Repository() {
-        return (EReference) atEClass.getEStructuralFeatures().get(0);
+        return (EReference) this.atEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EReference getAT_Roles() {
-        return (EReference) atEClass.getEStructuralFeatures().get(1);
+        return (EReference) this.atEClass.getEStructuralFeatures().get(1);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EReference getAT_Constraints() {
-        return (EReference) atEClass.getEStructuralFeatures().get(2);
+        return (EReference) this.atEClass.getEStructuralFeatures().get(2);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EReference getAT_Completion() {
-        return (EReference) atEClass.getEStructuralFeatures().get(3);
+        return (EReference) this.atEClass.getEStructuralFeatures().get(3);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EClass getConstraint() {
-        return constraintEClass;
+        return this.constraintEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EReference getConstraint_AT() {
-        return (EReference) constraintEClass.getEStructuralFeatures().get(0);
+        return (EReference) this.constraintEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EReference getConstraint_Roles() {
-        return (EReference) constraintEClass.getEStructuralFeatures().get(1);
+        return (EReference) this.constraintEClass.getEStructuralFeatures().get(1);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EClass getParameter() {
-        return parameterEClass;
+        return this.parameterEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EReference getParameter_Role() {
-        return (EReference) parameterEClass.getEStructuralFeatures().get(0);
+        return (EReference) this.parameterEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EReference getParameter_DataType() {
-        return (EReference) parameterEClass.getEStructuralFeatures().get(1);
+        return (EReference) this.parameterEClass.getEStructuralFeatures().get(1);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EClass getRepository() {
-        return repositoryEClass;
+        return this.repositoryEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EReference getRepository_ATs() {
-        return (EReference) repositoryEClass.getEStructuralFeatures().get(0);
+        return (EReference) this.repositoryEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EClass getRole() {
-        return roleEClass;
+        return this.roleEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EReference getRole_Parameters() {
-        return (EReference) roleEClass.getEStructuralFeatures().get(0);
+        return (EReference) this.roleEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EReference getRole_AT() {
-        return (EReference) roleEClass.getEStructuralFeatures().get(1);
+        return (EReference) this.roleEClass.getEStructuralFeatures().get(1);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EReference getRole_Constraints() {
-        return (EReference) roleEClass.getEStructuralFeatures().get(2);
+        return (EReference) this.roleEClass.getEStructuralFeatures().get(2);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EReference getRole_Stereotype() {
-        return (EReference) roleEClass.getEStructuralFeatures().get(3);
+        return (EReference) this.roleEClass.getEStructuralFeatures().get(3);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EClass getOCLConstraint() {
-        return oclConstraintEClass;
+        return this.oclConstraintEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EAttribute getOCLConstraint_Constraint() {
-        return (EAttribute) oclConstraintEClass.getEStructuralFeatures().get(0);
+        return (EAttribute) this.oclConstraintEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EClass getQVTOCompletion() {
-        return qvtoCompletionEClass;
+        return this.qvtoCompletionEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EAttribute getQVTOCompletion_QvtoFileURI() {
-        return (EAttribute) qvtoCompletionEClass.getEStructuralFeatures().get(0);
+        return (EAttribute) this.qvtoCompletionEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EClass getCompletion() {
-        return completionEClass;
+        return this.completionEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EReference getCompletion_AT() {
-        return (EReference) completionEClass.getEStructuralFeatures().get(0);
+        return (EReference) this.completionEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EReference getCompletion_Parameters() {
-        return (EReference) completionEClass.getEStructuralFeatures().get(1);
+        return (EReference) this.completionEClass.getEStructuralFeatures().get(1);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EClass getCompletionParameter() {
-        return completionParameterEClass;
+        return this.completionParameterEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EReference getCompletionParameter_Completion() {
-        return (EReference) completionParameterEClass.getEStructuralFeatures().get(0);
+        return (EReference) this.completionParameterEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EClass getGenericTemplateCompletionParameter() {
-        return genericTemplateCompletionParameterEClass;
+        return this.genericTemplateCompletionParameterEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EClass getGenericBlackboardCompletionParameter() {
-        return genericBlackboardCompletionParameterEClass;
+        return this.genericBlackboardCompletionParameterEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EAttribute getGenericBlackboardCompletionParameter_FileExtension() {
-        return (EAttribute) genericBlackboardCompletionParameterEClass.getEStructuralFeatures().get(0);
+        return (EAttribute) this.genericBlackboardCompletionParameterEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EClass getPCMBlackboardCompletionParameter() {
-        return pcmBlackboardCompletionParameterEClass;
+        return this.pcmBlackboardCompletionParameterEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EAttribute getPCMBlackboardCompletionParameter_FileExtension() {
-        return (EAttribute) pcmBlackboardCompletionParameterEClass.getEStructuralFeatures().get(0);
+        return (EAttribute) this.pcmBlackboardCompletionParameterEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EClass getPCMTemplateCompletionParameter() {
-        return pcmTemplateCompletionParameterEClass;
+        return this.pcmTemplateCompletionParameterEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EClass getTemplateProvidingEntity() {
-        return templateProvidingEntityEClass;
+        return this.templateProvidingEntityEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EAttribute getTemplateProvidingEntity_TemplateFileURI() {
-        return (EAttribute) templateProvidingEntityEClass.getEStructuralFeatures().get(0);
+        return (EAttribute) this.templateProvidingEntityEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EClass getPCMOutputCompletionParameter() {
-        return pcmOutputCompletionParameterEClass;
+        return this.pcmOutputCompletionParameterEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EAttribute getPCMOutputCompletionParameter_FileExtension() {
-        return (EAttribute) pcmOutputCompletionParameterEClass.getEStructuralFeatures().get(0);
+        return (EAttribute) this.pcmOutputCompletionParameterEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EClass getGenericOutputCompletionParameter() {
-        return genericOutputCompletionParameterEClass;
+        return this.genericOutputCompletionParameterEClass;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EAttribute getGenericOutputCompletionParameter_FileExtension() {
-        return (EAttribute) genericOutputCompletionParameterEClass.getEStructuralFeatures().get(0);
+        return (EAttribute) this.genericOutputCompletionParameterEClass.getEStructuralFeatures().get(0);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public EEnum getPCMFileExtensions() {
-        return pcmFileExtensionsEEnum;
+        return this.pcmFileExtensionsEEnum;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public TypeFactory getTypeFactory() {
-        return (TypeFactory) getEFactoryInstance();
+        return (TypeFactory) this.getEFactoryInstance();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private boolean isCreated = false;
 
     /**
-     * Creates the meta-model objects for the package.  This method is
-     * guarded to have no affect on any invocation but its first.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Creates the meta-model objects for the package. This method is guarded to have no affect on
+     * any invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     public void createPackageContents() {
-        if (isCreated)
+        if (this.isCreated) {
             return;
-        isCreated = true;
+        }
+        this.isCreated = true;
 
         // Create classes and their features
-        atEClass = createEClass(AT);
-        createEReference(atEClass, AT__REPOSITORY);
-        createEReference(atEClass, AT__ROLES);
-        createEReference(atEClass, AT__CONSTRAINTS);
-        createEReference(atEClass, AT__COMPLETION);
+        this.atEClass = this.createEClass(AT);
+        this.createEReference(this.atEClass, AT__REPOSITORY);
+        this.createEReference(this.atEClass, AT__ROLES);
+        this.createEReference(this.atEClass, AT__CONSTRAINTS);
+        this.createEReference(this.atEClass, AT__COMPLETION);
 
-        constraintEClass = createEClass(CONSTRAINT);
-        createEReference(constraintEClass, CONSTRAINT__AT);
-        createEReference(constraintEClass, CONSTRAINT__ROLES);
+        this.constraintEClass = this.createEClass(CONSTRAINT);
+        this.createEReference(this.constraintEClass, CONSTRAINT__AT);
+        this.createEReference(this.constraintEClass, CONSTRAINT__ROLES);
 
-        parameterEClass = createEClass(PARAMETER);
-        createEReference(parameterEClass, PARAMETER__ROLE);
-        createEReference(parameterEClass, PARAMETER__DATA_TYPE);
+        this.parameterEClass = this.createEClass(PARAMETER);
+        this.createEReference(this.parameterEClass, PARAMETER__ROLE);
+        this.createEReference(this.parameterEClass, PARAMETER__DATA_TYPE);
 
-        repositoryEClass = createEClass(REPOSITORY);
-        createEReference(repositoryEClass, REPOSITORY__ATS);
+        this.repositoryEClass = this.createEClass(REPOSITORY);
+        this.createEReference(this.repositoryEClass, REPOSITORY__ATS);
 
-        roleEClass = createEClass(ROLE);
-        createEReference(roleEClass, ROLE__PARAMETERS);
-        createEReference(roleEClass, ROLE__AT);
-        createEReference(roleEClass, ROLE__CONSTRAINTS);
-        createEReference(roleEClass, ROLE__STEREOTYPE);
+        this.roleEClass = this.createEClass(ROLE);
+        this.createEReference(this.roleEClass, ROLE__PARAMETERS);
+        this.createEReference(this.roleEClass, ROLE__AT);
+        this.createEReference(this.roleEClass, ROLE__CONSTRAINTS);
+        this.createEReference(this.roleEClass, ROLE__STEREOTYPE);
 
-        oclConstraintEClass = createEClass(OCL_CONSTRAINT);
-        createEAttribute(oclConstraintEClass, OCL_CONSTRAINT__CONSTRAINT);
+        this.oclConstraintEClass = this.createEClass(OCL_CONSTRAINT);
+        this.createEAttribute(this.oclConstraintEClass, OCL_CONSTRAINT__CONSTRAINT);
 
-        qvtoCompletionEClass = createEClass(QVTO_COMPLETION);
-        createEAttribute(qvtoCompletionEClass, QVTO_COMPLETION__QVTO_FILE_URI);
+        this.qvtoCompletionEClass = this.createEClass(QVTO_COMPLETION);
+        this.createEAttribute(this.qvtoCompletionEClass, QVTO_COMPLETION__QVTO_FILE_URI);
 
-        completionEClass = createEClass(COMPLETION);
-        createEReference(completionEClass, COMPLETION__AT);
-        createEReference(completionEClass, COMPLETION__PARAMETERS);
+        this.completionEClass = this.createEClass(COMPLETION);
+        this.createEReference(this.completionEClass, COMPLETION__AT);
+        this.createEReference(this.completionEClass, COMPLETION__PARAMETERS);
 
-        completionParameterEClass = createEClass(COMPLETION_PARAMETER);
-        createEReference(completionParameterEClass, COMPLETION_PARAMETER__COMPLETION);
+        this.completionParameterEClass = this.createEClass(COMPLETION_PARAMETER);
+        this.createEReference(this.completionParameterEClass, COMPLETION_PARAMETER__COMPLETION);
 
-        genericTemplateCompletionParameterEClass = createEClass(GENERIC_TEMPLATE_COMPLETION_PARAMETER);
+        this.genericTemplateCompletionParameterEClass = this.createEClass(GENERIC_TEMPLATE_COMPLETION_PARAMETER);
 
-        genericBlackboardCompletionParameterEClass = createEClass(GENERIC_BLACKBOARD_COMPLETION_PARAMETER);
-        createEAttribute(genericBlackboardCompletionParameterEClass,
+        this.genericBlackboardCompletionParameterEClass = this.createEClass(GENERIC_BLACKBOARD_COMPLETION_PARAMETER);
+        this.createEAttribute(this.genericBlackboardCompletionParameterEClass,
                 GENERIC_BLACKBOARD_COMPLETION_PARAMETER__FILE_EXTENSION);
 
-        pcmBlackboardCompletionParameterEClass = createEClass(PCM_BLACKBOARD_COMPLETION_PARAMETER);
-        createEAttribute(pcmBlackboardCompletionParameterEClass, PCM_BLACKBOARD_COMPLETION_PARAMETER__FILE_EXTENSION);
+        this.pcmBlackboardCompletionParameterEClass = this.createEClass(PCM_BLACKBOARD_COMPLETION_PARAMETER);
+        this.createEAttribute(this.pcmBlackboardCompletionParameterEClass,
+                PCM_BLACKBOARD_COMPLETION_PARAMETER__FILE_EXTENSION);
 
-        pcmTemplateCompletionParameterEClass = createEClass(PCM_TEMPLATE_COMPLETION_PARAMETER);
+        this.pcmTemplateCompletionParameterEClass = this.createEClass(PCM_TEMPLATE_COMPLETION_PARAMETER);
 
-        templateProvidingEntityEClass = createEClass(TEMPLATE_PROVIDING_ENTITY);
-        createEAttribute(templateProvidingEntityEClass, TEMPLATE_PROVIDING_ENTITY__TEMPLATE_FILE_URI);
+        this.templateProvidingEntityEClass = this.createEClass(TEMPLATE_PROVIDING_ENTITY);
+        this.createEAttribute(this.templateProvidingEntityEClass, TEMPLATE_PROVIDING_ENTITY__TEMPLATE_FILE_URI);
 
-        pcmOutputCompletionParameterEClass = createEClass(PCM_OUTPUT_COMPLETION_PARAMETER);
-        createEAttribute(pcmOutputCompletionParameterEClass, PCM_OUTPUT_COMPLETION_PARAMETER__FILE_EXTENSION);
+        this.pcmOutputCompletionParameterEClass = this.createEClass(PCM_OUTPUT_COMPLETION_PARAMETER);
+        this.createEAttribute(this.pcmOutputCompletionParameterEClass, PCM_OUTPUT_COMPLETION_PARAMETER__FILE_EXTENSION);
 
-        genericOutputCompletionParameterEClass = createEClass(GENERIC_OUTPUT_COMPLETION_PARAMETER);
-        createEAttribute(genericOutputCompletionParameterEClass, GENERIC_OUTPUT_COMPLETION_PARAMETER__FILE_EXTENSION);
+        this.genericOutputCompletionParameterEClass = this.createEClass(GENERIC_OUTPUT_COMPLETION_PARAMETER);
+        this.createEAttribute(this.genericOutputCompletionParameterEClass,
+                GENERIC_OUTPUT_COMPLETION_PARAMETER__FILE_EXTENSION);
 
         // Create enums
-        pcmFileExtensionsEEnum = createEEnum(PCM_FILE_EXTENSIONS);
+        this.pcmFileExtensionsEEnum = this.createEEnum(PCM_FILE_EXTENSIONS);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private boolean isInitialized = false;
 
     /**
-     * Complete the initialization of the package and its meta-model.  This
-     * method is guarded to have no affect on any invocation but its first.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Complete the initialization of the package and its meta-model. This method is guarded to have
+     * no affect on any invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     public void initializePackageContents() {
-        if (isInitialized)
+        if (this.isInitialized) {
             return;
-        isInitialized = true;
+        }
+        this.isInitialized = true;
 
         // Initialize package
-        setName(eNAME);
-        setNsPrefix(eNS_PREFIX);
-        setNsURI(eNS_URI);
+        this.setName(eNAME);
+        this.setNsPrefix(eNS_PREFIX);
+        this.setNsURI(eNS_URI);
 
         // Obtain other dependent packages
-        EntityPackage theEntityPackage = (EntityPackage) EPackage.Registry.INSTANCE.getEPackage(EntityPackage.eNS_URI);
-        EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
-        EMFProfilePackage theEMFProfilePackage = (EMFProfilePackage) EPackage.Registry.INSTANCE
+        final EntityPackage theEntityPackage = (EntityPackage) EPackage.Registry.INSTANCE
+                .getEPackage(EntityPackage.eNS_URI);
+        final EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE
+                .getEPackage(EcorePackage.eNS_URI);
+        final EMFProfilePackage theEMFProfilePackage = (EMFProfilePackage) EPackage.Registry.INSTANCE
                 .getEPackage(EMFProfilePackage.eNS_URI);
 
         // Create type parameters
@@ -699,154 +770,157 @@ public class TypePackageImpl extends EPackageImpl implements TypePackage {
         // Set bounds for type parameters
 
         // Add supertypes to classes
-        atEClass.getESuperTypes().add(theEntityPackage.getEntity());
-        constraintEClass.getESuperTypes().add(theEntityPackage.getEntity());
-        parameterEClass.getESuperTypes().add(theEntityPackage.getEntity());
-        repositoryEClass.getESuperTypes().add(theEntityPackage.getEntity());
-        roleEClass.getESuperTypes().add(theEntityPackage.getEntity());
-        oclConstraintEClass.getESuperTypes().add(this.getConstraint());
-        qvtoCompletionEClass.getESuperTypes().add(this.getCompletion());
-        genericTemplateCompletionParameterEClass.getESuperTypes().add(this.getGenericBlackboardCompletionParameter());
-        genericTemplateCompletionParameterEClass.getESuperTypes().add(this.getTemplateProvidingEntity());
-        genericBlackboardCompletionParameterEClass.getESuperTypes().add(this.getCompletionParameter());
-        pcmBlackboardCompletionParameterEClass.getESuperTypes().add(this.getCompletionParameter());
-        pcmTemplateCompletionParameterEClass.getESuperTypes().add(this.getPCMBlackboardCompletionParameter());
-        pcmTemplateCompletionParameterEClass.getESuperTypes().add(this.getTemplateProvidingEntity());
-        pcmOutputCompletionParameterEClass.getESuperTypes().add(this.getCompletionParameter());
-        genericOutputCompletionParameterEClass.getESuperTypes().add(this.getCompletionParameter());
+        this.atEClass.getESuperTypes().add(theEntityPackage.getEntity());
+        this.constraintEClass.getESuperTypes().add(theEntityPackage.getEntity());
+        this.parameterEClass.getESuperTypes().add(theEntityPackage.getEntity());
+        this.repositoryEClass.getESuperTypes().add(theEntityPackage.getEntity());
+        this.roleEClass.getESuperTypes().add(theEntityPackage.getEntity());
+        this.oclConstraintEClass.getESuperTypes().add(this.getConstraint());
+        this.qvtoCompletionEClass.getESuperTypes().add(this.getCompletion());
+        this.genericTemplateCompletionParameterEClass.getESuperTypes()
+                .add(this.getGenericBlackboardCompletionParameter());
+        this.genericTemplateCompletionParameterEClass.getESuperTypes().add(this.getTemplateProvidingEntity());
+        this.genericBlackboardCompletionParameterEClass.getESuperTypes().add(this.getCompletionParameter());
+        this.pcmBlackboardCompletionParameterEClass.getESuperTypes().add(this.getCompletionParameter());
+        this.pcmTemplateCompletionParameterEClass.getESuperTypes().add(this.getPCMBlackboardCompletionParameter());
+        this.pcmTemplateCompletionParameterEClass.getESuperTypes().add(this.getTemplateProvidingEntity());
+        this.pcmOutputCompletionParameterEClass.getESuperTypes().add(this.getCompletionParameter());
+        this.genericOutputCompletionParameterEClass.getESuperTypes().add(this.getCompletionParameter());
 
         // Initialize classes and features; add operations and parameters
-        initEClass(atEClass, org.scaledl.architecturaltemplates.type.AT.class, "AT", !IS_ABSTRACT, !IS_INTERFACE,
-                IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getAT_Repository(), this.getRepository(), this.getRepository_ATs(), "repository", null, 1, 1,
-                org.scaledl.architecturaltemplates.type.AT.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+        this.initEClass(this.atEClass, org.scaledl.architecturaltemplates.type.AT.class, "AT", !IS_ABSTRACT,
+                !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        this.initEReference(this.getAT_Repository(), this.getRepository(), this.getRepository_ATs(), "repository", null,
+                1, 1, org.scaledl.architecturaltemplates.type.AT.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getAT_Roles(), this.getRole(), this.getRole_AT(), "roles", null, 0, -1,
+        this.initEReference(this.getAT_Roles(), this.getRole(), this.getRole_AT(), "roles", null, 0, -1,
                 org.scaledl.architecturaltemplates.type.AT.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getAT_Constraints(), this.getConstraint(), this.getConstraint_AT(), "constraints", null, 0, -1,
-                org.scaledl.architecturaltemplates.type.AT.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getAT_Completion(), this.getCompletion(), this.getCompletion_AT(), "completion", null, 1, 1,
-                org.scaledl.architecturaltemplates.type.AT.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+        this.initEReference(this.getAT_Constraints(), this.getConstraint(), this.getConstraint_AT(), "constraints",
+                null, 0, -1, org.scaledl.architecturaltemplates.type.AT.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        this.initEReference(this.getAT_Completion(), this.getCompletion(), this.getCompletion_AT(), "completion", null,
+                1, 1, org.scaledl.architecturaltemplates.type.AT.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-        initEClass(constraintEClass, Constraint.class, "Constraint", IS_ABSTRACT, !IS_INTERFACE,
+        this.initEClass(this.constraintEClass, Constraint.class, "Constraint", IS_ABSTRACT, !IS_INTERFACE,
                 IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getConstraint_AT(), this.getAT(), this.getAT_Constraints(), "AT", null, 1, 1, Constraint.class,
-                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getConstraint_Roles(), this.getRole(), this.getRole_Constraints(), "roles", null, 0, -1,
-                Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+        this.initEReference(this.getConstraint_AT(), this.getAT(), this.getAT_Constraints(), "AT", null, 1, 1,
+                Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        this.initEReference(this.getConstraint_Roles(), this.getRole(), this.getRole_Constraints(), "roles", null, 0,
+                -1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
                 !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-        initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE,
+        this.initEClass(this.parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE,
                 IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getParameter_Role(), this.getRole(), this.getRole_Parameters(), "role", null, 1, 1,
+        this.initEReference(this.getParameter_Role(), this.getRole(), this.getRole_Parameters(), "role", null, 1, 1,
                 Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES,
                 !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getParameter_DataType(), theEcorePackage.getEDataType(), null, "dataType", null, 1, 1,
+        this.initEReference(this.getParameter_DataType(), theEcorePackage.getEDataType(), null, "dataType", null, 1, 1,
                 Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
                 !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-        initEClass(repositoryEClass, Repository.class, "Repository", !IS_ABSTRACT, !IS_INTERFACE,
+        this.initEClass(this.repositoryEClass, Repository.class, "Repository", !IS_ABSTRACT, !IS_INTERFACE,
                 IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getRepository_ATs(), this.getAT(), this.getAT_Repository(), "ATs", null, 0, -1, Repository.class,
-                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+        this.initEReference(this.getRepository_ATs(), this.getAT(), this.getAT_Repository(), "ATs", null, 0, -1,
+                Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        this.initEClass(this.roleEClass, Role.class, "Role", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        this.initEReference(this.getRole_Parameters(), this.getParameter(), this.getParameter_Role(), "parameters",
+                null, 0, -1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        this.initEReference(this.getRole_AT(), this.getAT(), this.getAT_Roles(), "AT", null, 1, 1, Role.class,
+                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
                 IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-        initEClass(roleEClass, Role.class, "Role", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getRole_Parameters(), this.getParameter(), this.getParameter_Role(), "parameters", null, 0, -1,
-                Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+        this.initEReference(this.getRole_Constraints(), this.getConstraint(), this.getConstraint_Roles(), "constraints",
+                null, 0, -1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
                 !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getRole_AT(), this.getAT(), this.getAT_Roles(), "AT", null, 1, 1, Role.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-                IS_ORDERED);
-        initEReference(getRole_Constraints(), this.getConstraint(), this.getConstraint_Roles(), "constraints", null, 0,
-                -1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getRole_Stereotype(), theEMFProfilePackage.getStereotype(), null, "stereotype", null, 1, 1,
-                Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+        this.initEReference(this.getRole_Stereotype(), theEMFProfilePackage.getStereotype(), null, "stereotype", null,
+                1, 1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
                 !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-        initEClass(oclConstraintEClass, OCLConstraint.class, "OCLConstraint", !IS_ABSTRACT, !IS_INTERFACE,
+        this.initEClass(this.oclConstraintEClass, OCLConstraint.class, "OCLConstraint", !IS_ABSTRACT, !IS_INTERFACE,
                 IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getOCLConstraint_Constraint(), theEcorePackage.getEString(), "constraint", null, 1, 1,
+        this.initEAttribute(this.getOCLConstraint_Constraint(), theEcorePackage.getEString(), "constraint", null, 1, 1,
                 OCLConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
                 !IS_DERIVED, IS_ORDERED);
 
-        initEClass(qvtoCompletionEClass, QVTOCompletion.class, "QVTOCompletion", !IS_ABSTRACT, !IS_INTERFACE,
+        this.initEClass(this.qvtoCompletionEClass, QVTOCompletion.class, "QVTOCompletion", !IS_ABSTRACT, !IS_INTERFACE,
                 IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getQVTOCompletion_QvtoFileURI(), theEcorePackage.getEString(), "qvtoFileURI", null, 1, 1,
-                QVTOCompletion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+        this.initEAttribute(this.getQVTOCompletion_QvtoFileURI(), theEcorePackage.getEString(), "qvtoFileURI", null, 1,
+                1, QVTOCompletion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
                 !IS_DERIVED, IS_ORDERED);
 
-        initEClass(completionEClass, Completion.class, "Completion", IS_ABSTRACT, !IS_INTERFACE,
+        this.initEClass(this.completionEClass, Completion.class, "Completion", IS_ABSTRACT, !IS_INTERFACE,
                 IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getCompletion_AT(), this.getAT(), this.getAT_Completion(), "AT", null, 1, 1, Completion.class,
-                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getCompletion_Parameters(), this.getCompletionParameter(),
+        this.initEReference(this.getCompletion_AT(), this.getAT(), this.getAT_Completion(), "AT", null, 1, 1,
+                Completion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        this.initEReference(this.getCompletion_Parameters(), this.getCompletionParameter(),
                 this.getCompletionParameter_Completion(), "parameters", null, 1, -1, Completion.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
                 IS_ORDERED);
 
-        initEClass(completionParameterEClass, CompletionParameter.class, "CompletionParameter", IS_ABSTRACT,
+        this.initEClass(this.completionParameterEClass, CompletionParameter.class, "CompletionParameter", IS_ABSTRACT,
                 !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getCompletionParameter_Completion(), this.getCompletion(), this.getCompletion_Parameters(),
-                "completion", null, 1, 1, CompletionParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        this.initEReference(this.getCompletionParameter_Completion(), this.getCompletion(),
+                this.getCompletion_Parameters(), "completion", null, 1, 1, CompletionParameter.class, !IS_TRANSIENT,
+                !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+                IS_ORDERED);
 
-        initEClass(genericTemplateCompletionParameterEClass, GenericTemplateCompletionParameter.class,
+        this.initEClass(this.genericTemplateCompletionParameterEClass, GenericTemplateCompletionParameter.class,
                 "GenericTemplateCompletionParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(genericBlackboardCompletionParameterEClass, GenericBlackboardCompletionParameter.class,
+        this.initEClass(this.genericBlackboardCompletionParameterEClass, GenericBlackboardCompletionParameter.class,
                 "GenericBlackboardCompletionParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getGenericBlackboardCompletionParameter_FileExtension(), theEcorePackage.getEString(),
+        this.initEAttribute(this.getGenericBlackboardCompletionParameter_FileExtension(), theEcorePackage.getEString(),
                 "fileExtension", null, 1, 1, GenericBlackboardCompletionParameter.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-        initEClass(pcmBlackboardCompletionParameterEClass, PCMBlackboardCompletionParameter.class,
+        this.initEClass(this.pcmBlackboardCompletionParameterEClass, PCMBlackboardCompletionParameter.class,
                 "PCMBlackboardCompletionParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getPCMBlackboardCompletionParameter_FileExtension(), this.getPCMFileExtensions(),
+        this.initEAttribute(this.getPCMBlackboardCompletionParameter_FileExtension(), this.getPCMFileExtensions(),
                 "fileExtension", null, 1, 1, PCMBlackboardCompletionParameter.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-        initEClass(pcmTemplateCompletionParameterEClass, PCMTemplateCompletionParameter.class,
+        this.initEClass(this.pcmTemplateCompletionParameterEClass, PCMTemplateCompletionParameter.class,
                 "PCMTemplateCompletionParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-        initEClass(templateProvidingEntityEClass, TemplateProvidingEntity.class, "TemplateProvidingEntity", IS_ABSTRACT,
-                !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getTemplateProvidingEntity_TemplateFileURI(), theEcorePackage.getEString(), "templateFileURI",
-                null, 1, 1, TemplateProvidingEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        this.initEClass(this.templateProvidingEntityEClass, TemplateProvidingEntity.class, "TemplateProvidingEntity",
+                IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        this.initEAttribute(this.getTemplateProvidingEntity_TemplateFileURI(), theEcorePackage.getEString(),
+                "templateFileURI", null, 1, 1, TemplateProvidingEntity.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-        initEClass(pcmOutputCompletionParameterEClass, PCMOutputCompletionParameter.class,
+        this.initEClass(this.pcmOutputCompletionParameterEClass, PCMOutputCompletionParameter.class,
                 "PCMOutputCompletionParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getPCMOutputCompletionParameter_FileExtension(), this.getPCMFileExtensions(), "fileExtension",
-                null, 1, 1, PCMOutputCompletionParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        this.initEAttribute(this.getPCMOutputCompletionParameter_FileExtension(), this.getPCMFileExtensions(),
+                "fileExtension", null, 1, 1, PCMOutputCompletionParameter.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-        initEClass(genericOutputCompletionParameterEClass, GenericOutputCompletionParameter.class,
+        this.initEClass(this.genericOutputCompletionParameterEClass, GenericOutputCompletionParameter.class,
                 "GenericOutputCompletionParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getGenericOutputCompletionParameter_FileExtension(), theEcorePackage.getEString(),
+        this.initEAttribute(this.getGenericOutputCompletionParameter_FileExtension(), theEcorePackage.getEString(),
                 "fileExtension", null, 1, 1, GenericOutputCompletionParameter.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         // Initialize enums and add enum literals
-        initEEnum(pcmFileExtensionsEEnum, PCMFileExtensions.class, "PCMFileExtensions");
-        addEEnumLiteral(pcmFileExtensionsEEnum, PCMFileExtensions.SYSTEM);
-        addEEnumLiteral(pcmFileExtensionsEEnum, PCMFileExtensions.ALLOCATION);
-        addEEnumLiteral(pcmFileExtensionsEEnum, PCMFileExtensions.RESOURCEENVIRONMENT);
-        addEEnumLiteral(pcmFileExtensionsEEnum, PCMFileExtensions.REPOSITORY);
-        addEEnumLiteral(pcmFileExtensionsEEnum, PCMFileExtensions.USAGEMODEL);
-        addEEnumLiteral(pcmFileExtensionsEEnum, PCMFileExtensions.RESOURCETYPE);
-        addEEnumLiteral(pcmFileExtensionsEEnum, PCMFileExtensions.MONITORREPOSITORY);
-        addEEnumLiteral(pcmFileExtensionsEEnum, PCMFileExtensions.PCMMEASURINGPOINT);
-        addEEnumLiteral(pcmFileExtensionsEEnum, PCMFileExtensions.SERVICELEVELOBJECTIVE);
+        this.initEEnum(this.pcmFileExtensionsEEnum, PCMFileExtensions.class, "PCMFileExtensions");
+        this.addEEnumLiteral(this.pcmFileExtensionsEEnum, PCMFileExtensions.SYSTEM);
+        this.addEEnumLiteral(this.pcmFileExtensionsEEnum, PCMFileExtensions.ALLOCATION);
+        this.addEEnumLiteral(this.pcmFileExtensionsEEnum, PCMFileExtensions.RESOURCEENVIRONMENT);
+        this.addEEnumLiteral(this.pcmFileExtensionsEEnum, PCMFileExtensions.REPOSITORY);
+        this.addEEnumLiteral(this.pcmFileExtensionsEEnum, PCMFileExtensions.USAGEMODEL);
+        this.addEEnumLiteral(this.pcmFileExtensionsEEnum, PCMFileExtensions.RESOURCETYPE);
+        this.addEEnumLiteral(this.pcmFileExtensionsEEnum, PCMFileExtensions.MONITORREPOSITORY);
+        this.addEEnumLiteral(this.pcmFileExtensionsEEnum, PCMFileExtensions.PCMMEASURINGPOINT);
+        this.addEEnumLiteral(this.pcmFileExtensionsEEnum, PCMFileExtensions.SERVICELEVELOBJECTIVE);
+        this.addEEnumLiteral(this.pcmFileExtensionsEEnum, PCMFileExtensions.EXPERIMENTS);
 
         // Create resource
-        createResource(eNS_URI);
+        this.createResource(eNS_URI);
     }
 
 } // TypePackageImpl

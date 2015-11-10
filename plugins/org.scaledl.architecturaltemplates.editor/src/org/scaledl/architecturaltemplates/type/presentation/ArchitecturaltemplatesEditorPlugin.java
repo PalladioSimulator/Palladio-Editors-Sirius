@@ -43,17 +43,9 @@ public final class ArchitecturaltemplatesEditorPlugin extends EMFPlugin {
      * @generated
      */
     public ArchitecturaltemplatesEditorPlugin() {
-        super(new ResourceLocator[]
-                {
-                EcoreEditPlugin.INSTANCE,
-                EMFProfileEditPlugin.INSTANCE,
-                IdentifierEditPlugin.INSTANCE,
-                OCLEditPlugin.INSTANCE,
-                PalladioComponentModelEditPlugin.INSTANCE,
-                ProbabilityFunctionEditPlugin.INSTANCE,
-                StoexEditPlugin.INSTANCE,
-                UnitsEditPlugin.INSTANCE,
-                });
+        super(new ResourceLocator[] { EcoreEditPlugin.INSTANCE, EMFProfileEditPlugin.INSTANCE,
+                IdentifierEditPlugin.INSTANCE, OCLEditPlugin.INSTANCE, PalladioComponentModelEditPlugin.INSTANCE,
+                ProbabilityFunctionEditPlugin.INSTANCE, StoexEditPlugin.INSTANCE, UnitsEditPlugin.INSTANCE, });
     }
 
     /**

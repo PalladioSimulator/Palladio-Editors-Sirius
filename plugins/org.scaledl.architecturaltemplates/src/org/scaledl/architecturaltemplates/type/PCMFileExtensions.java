@@ -12,14 +12,15 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>PCM File Extensions</b></em>', and utility methods for working with them. <!--
  * end-user-doc -->
+ *
  * @see org.scaledl.architecturaltemplates.type.TypePackage#getPCMFileExtensions()
  * @model
  * @generated
  */
 public enum PCMFileExtensions implements Enumerator {
     /**
-     * The '<em><b>SYSTEM</b></em>' literal object.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The '<em><b>SYSTEM</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #SYSTEM_VALUE
      * @generated
      * @ordered
@@ -37,9 +38,9 @@ public enum PCMFileExtensions implements Enumerator {
     ALLOCATION(1, "ALLOCATION", "allocation"),
 
     /**
-     * The '<em><b>RESOURCEENVIRONMENT</b></em>' literal object.
-     * <!-- begin-user-doc --> <!--
+     * The '<em><b>RESOURCEENVIRONMENT</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @see #RESOURCEENVIRONMENT_VALUE
      * @generated
      * @ordered
@@ -77,42 +78,51 @@ public enum PCMFileExtensions implements Enumerator {
     RESOURCETYPE(5, "RESOURCETYPE", "resourcetype"),
 
     /**
-     * The '<em><b>MONITORREPOSITORY</b></em>' literal object.
-     * <!-- begin-user-doc --> <!--
+     * The '<em><b>MONITORREPOSITORY</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @see #MONITORREPOSITORY_VALUE
      * @generated
      * @ordered
      */
-    MONITORREPOSITORY(6, "MONITORREPOSITORY", "monitorrepository"), /**
-                                                                    * The '
-                                                                    * <em><b>PCMMEASURINGPOINT</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc
-                                                                    * -->
-                                                                    *
-                                                                    * @see #PCMMEASURINGPOINT_VALUE
-                                                                    * @generated
-                                                                    * @ordered
-                                                                    */
+    MONITORREPOSITORY(6, "MONITORREPOSITORY", "monitorrepository"),
+    /**
+     * The ' <em><b>PCMMEASURINGPOINT</b></em>' literal object. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #PCMMEASURINGPOINT_VALUE
+     * @generated
+     * @ordered
+     */
     PCMMEASURINGPOINT(7, "PCMMEASURINGPOINT", "pcmmeasuringpoint"),
 
     /**
-     * The '<em><b>SERVICELEVELOBJECTIVE</b></em>' literal object.
-     * <!-- begin-user-doc --> <!--
+     * The '<em><b>SERVICELEVELOBJECTIVE</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @see #SERVICELEVELOBJECTIVE_VALUE
      * @generated
      * @ordered
      */
-    SERVICELEVELOBJECTIVE(8, "SERVICELEVELOBJECTIVE", "slo");
+    SERVICELEVELOBJECTIVE(8, "SERVICELEVELOBJECTIVE", "slo"),
+    /**
+     * The '<em><b>EXPERIMENTS</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @see #EXPERIMENTS_VALUE
+     * @generated
+     * @ordered
+     */
+    EXPERIMENTS(9, "EXPERIMENTS", "experiments");
 
     /**
-     * The '<em><b>SYSTEM</b></em>' literal value.
-     * <!-- begin-user-doc -->
+     * The '<em><b>SYSTEM</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
      * If the meaning of '<em><b>SYSTEM</b></em>' literal object isn't clear, there really should be
      * more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     *
      * @see #SYSTEM
      * @model literal="system"
      * @generated
@@ -121,13 +131,13 @@ public enum PCMFileExtensions implements Enumerator {
     public static final int SYSTEM_VALUE = 0;
 
     /**
-     * The '<em><b>ALLOCATION</b></em>' literal value.
-     * <!-- begin-user-doc -->
+     * The '<em><b>ALLOCATION</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
      * If the meaning of '<em><b>ALLOCATION</b></em>' literal object isn't clear, there really
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     *
      * @see #ALLOCATION
      * @model literal="allocation"
      * @generated
@@ -136,13 +146,13 @@ public enum PCMFileExtensions implements Enumerator {
     public static final int ALLOCATION_VALUE = 1;
 
     /**
-     * The '<em><b>RESOURCEENVIRONMENT</b></em>' literal value.
-     * <!-- begin-user-doc -->
+     * The '<em><b>RESOURCEENVIRONMENT</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
      * If the meaning of '<em><b>RESOURCEENVIRONMENT</b></em>' literal object isn't clear, there
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     *
      * @see #RESOURCEENVIRONMENT
      * @model literal="resourceenvironment"
      * @generated
@@ -151,13 +161,13 @@ public enum PCMFileExtensions implements Enumerator {
     public static final int RESOURCEENVIRONMENT_VALUE = 2;
 
     /**
-     * The '<em><b>REPOSITORY</b></em>' literal value.
-     * <!-- begin-user-doc -->
+     * The '<em><b>REPOSITORY</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
      * If the meaning of '<em><b>REPOSITORY</b></em>' literal object isn't clear, there really
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     *
      * @see #REPOSITORY
      * @model literal="repository"
      * @generated
@@ -166,13 +176,13 @@ public enum PCMFileExtensions implements Enumerator {
     public static final int REPOSITORY_VALUE = 3;
 
     /**
-     * The '<em><b>USAGEMODEL</b></em>' literal value.
-     * <!-- begin-user-doc -->
+     * The '<em><b>USAGEMODEL</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
      * If the meaning of '<em><b>USAGEMODEL</b></em>' literal object isn't clear, there really
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     *
      * @see #USAGEMODEL
      * @model literal="usagemodel"
      * @generated
@@ -181,13 +191,13 @@ public enum PCMFileExtensions implements Enumerator {
     public static final int USAGEMODEL_VALUE = 4;
 
     /**
-     * The '<em><b>RESOURCETYPE</b></em>' literal value.
-     * <!-- begin-user-doc -->
+     * The '<em><b>RESOURCETYPE</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
      * If the meaning of '<em><b>RESOURCETYPE</b></em>' literal object isn't clear, there really
      * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     *
      * @see #RESOURCETYPE
      * @model literal="resourcetype"
      * @generated
@@ -196,13 +206,13 @@ public enum PCMFileExtensions implements Enumerator {
     public static final int RESOURCETYPE_VALUE = 5;
 
     /**
-     * The '<em><b>MONITORREPOSITORY</b></em>' literal value.
-     * <!-- begin-user-doc -->
+     * The '<em><b>MONITORREPOSITORY</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
      * If the meaning of '<em><b>MONITORREPOSITORY</b></em>' literal object isn't clear, there
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     *
      * @see #MONITORREPOSITORY
      * @model literal="monitorrepository"
      * @generated
@@ -211,13 +221,13 @@ public enum PCMFileExtensions implements Enumerator {
     public static final int MONITORREPOSITORY_VALUE = 6;
 
     /**
-     * The '<em><b>PCMMEASURINGPOINT</b></em>' literal value.
-     * <!-- begin-user-doc -->
+     * The '<em><b>PCMMEASURINGPOINT</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
      * If the meaning of '<em><b>PCMMEASURINGPOINT</b></em>' literal object isn't clear, there
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     *
      * @see #PCMMEASURINGPOINT
      * @model literal="pcmmeasuringpoint"
      * @generated
@@ -226,13 +236,13 @@ public enum PCMFileExtensions implements Enumerator {
     public static final int PCMMEASURINGPOINT_VALUE = 7;
 
     /**
-     * The '<em><b>SERVICELEVELOBJECTIVE</b></em>' literal value.
-     * <!-- begin-user-doc -->
+     * The '<em><b>SERVICELEVELOBJECTIVE</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
      * If the meaning of '<em><b>SERVICELEVELOBJECTIVE</b></em>' literal object isn't clear, there
      * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     *
      * @see #SERVICELEVELOBJECTIVE
      * @model literal="slo"
      * @generated
@@ -241,14 +251,29 @@ public enum PCMFileExtensions implements Enumerator {
     public static final int SERVICELEVELOBJECTIVE_VALUE = 8;
 
     /**
-     * An array of all the '<em><b>PCM File Extensions</b></em>' enumerators.
-     * <!-- begin-user-doc
+     * The '<em><b>EXPERIMENTS</b></em>' literal value. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of '<em><b>EXPERIMENTS</b></em>' literal object isn't clear, there really
+     * should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @see #EXPERIMENTS
+     * @model literal="experiments"
+     * @generated
+     * @ordered
+     */
+    public static final int EXPERIMENTS_VALUE = 9;
+
+    /**
+     * An array of all the '<em><b>PCM File Extensions</b></em>' enumerators. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private static final PCMFileExtensions[] VALUES_ARRAY = new PCMFileExtensions[] { SYSTEM, ALLOCATION,
             RESOURCEENVIRONMENT, REPOSITORY, USAGEMODEL, RESOURCETYPE, MONITORREPOSITORY, PCMMEASURINGPOINT,
-            SERVICELEVELOBJECTIVE, };
+            SERVICELEVELOBJECTIVE, EXPERIMENTS, };
 
     /**
      * A public read-only list of all the '<em><b>PCM File Extensions</b></em>' enumerators. <!--
@@ -261,13 +286,14 @@ public enum PCMFileExtensions implements Enumerator {
     /**
      * Returns the '<em><b>PCM File Extensions</b></em>' literal with the specified literal value.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @param literal the literal.
+     *
+     * @param literal
+     *            the literal.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
-    public static PCMFileExtensions get(String literal) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            PCMFileExtensions result = VALUES_ARRAY[i];
+    public static PCMFileExtensions get(final String literal) {
+        for (final PCMFileExtensions result : VALUES_ARRAY) {
             if (result.toString().equals(literal)) {
                 return result;
             }
@@ -281,9 +307,8 @@ public enum PCMFileExtensions implements Enumerator {
      *
      * @generated
      */
-    public static PCMFileExtensions getByName(String name) {
-        for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-            PCMFileExtensions result = VALUES_ARRAY[i];
+    public static PCMFileExtensions getByName(final String name) {
+        for (final PCMFileExtensions result : VALUES_ARRAY) {
             if (result.getName().equals(name)) {
                 return result;
             }
@@ -294,11 +319,13 @@ public enum PCMFileExtensions implements Enumerator {
     /**
      * Returns the '<em><b>PCM File Extensions</b></em>' literal with the specified integer value.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @param value the integer value.
+     *
+     * @param value
+     *            the integer value.
      * @return the matching enumerator or <code>null</code>.
      * @generated
      */
-    public static PCMFileExtensions get(int value) {
+    public static PCMFileExtensions get(final int value) {
         switch (value) {
         case SYSTEM_VALUE:
             return SYSTEM;
@@ -318,34 +345,39 @@ public enum PCMFileExtensions implements Enumerator {
             return PCMMEASURINGPOINT;
         case SERVICELEVELOBJECTIVE_VALUE:
             return SERVICELEVELOBJECTIVE;
+        case EXPERIMENTS_VALUE:
+            return EXPERIMENTS;
         }
         return null;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private final int value;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private final String name;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     private final String literal;
 
     /**
-     * Only this class can construct instances.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
-    private PCMFileExtensions(int value, String name, String literal) {
+    private PCMFileExtensions(final int value, final String name, final String literal) {
         this.value = value;
         this.name = name;
         this.literal = literal;
@@ -353,29 +385,32 @@ public enum PCMFileExtensions implements Enumerator {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public int getValue() {
-        return value;
+        return this.value;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public String getName() {
-        return name;
+        return this.name;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public String getLiteral() {
-        return literal;
+        return this.literal;
     }
 
     /**
@@ -386,7 +421,7 @@ public enum PCMFileExtensions implements Enumerator {
      */
     @Override
     public String toString() {
-        return literal;
+        return this.literal;
     }
 
 } // PCMFileExtensions
