@@ -65,6 +65,7 @@ public class ATItemProvider extends EntityItemProvider {
             this.childrenFeatures.add(TypePackage.Literals.AT__ROLES);
             this.childrenFeatures.add(TypePackage.Literals.AT__CONSTRAINTS);
             this.childrenFeatures.add(TypePackage.Literals.AT__COMPLETION);
+            this.childrenFeatures.add(TypePackage.Literals.AT__RECONFIGURATION_RULE_FOLDER);
         }
         return this.childrenFeatures;
     }
@@ -120,6 +121,7 @@ public class ATItemProvider extends EntityItemProvider {
         case TypePackage.AT__ROLES:
         case TypePackage.AT__CONSTRAINTS:
         case TypePackage.AT__COMPLETION:
+        case TypePackage.AT__RECONFIGURATION_RULE_FOLDER:
             this.fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -144,6 +146,15 @@ public class ATItemProvider extends EntityItemProvider {
 
         newChildDescriptors.add(this.createChildParameter(TypePackage.Literals.AT__COMPLETION,
                 TypeFactory.eINSTANCE.createQVTOCompletion()));
+
+        newChildDescriptors.add(this.createChildParameter(TypePackage.Literals.AT__RECONFIGURATION_RULE_FOLDER,
+                TypeFactory.eINSTANCE.createGenericTemplateCompletionParameter()));
+
+        newChildDescriptors.add(this.createChildParameter(TypePackage.Literals.AT__RECONFIGURATION_RULE_FOLDER,
+                TypeFactory.eINSTANCE.createPCMTemplateCompletionParameter()));
+
+        newChildDescriptors.add(this.createChildParameter(TypePackage.Literals.AT__RECONFIGURATION_RULE_FOLDER,
+                TypeFactory.eINSTANCE.createTemplateProvidingEntity()));
     }
 
     /**

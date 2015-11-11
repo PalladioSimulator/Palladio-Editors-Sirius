@@ -318,6 +318,31 @@ public class TypeItemProviderAdapterFactory extends TypeAdapterFactory
 
     /**
      * This keeps track of the one adapter used for all
+     * {@link org.scaledl.architecturaltemplates.type.TemplateProvidingEntity} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected TemplateProvidingEntityItemProvider templateProvidingEntityItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.scaledl.architecturaltemplates.type.TemplateProvidingEntity}. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createTemplateProvidingEntityAdapter() {
+        if (this.templateProvidingEntityItemProvider == null) {
+            this.templateProvidingEntityItemProvider = new TemplateProvidingEntityItemProvider(this);
+        }
+
+        return this.templateProvidingEntityItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
      * {@link org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      *
@@ -364,6 +389,30 @@ public class TypeItemProviderAdapterFactory extends TypeAdapterFactory
         }
 
         return this.genericOutputCompletionParameterItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.scaledl.architecturaltemplates.type.Template} instances. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected TemplateItemProvider templateItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.scaledl.architecturaltemplates.type.Template}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createTemplateAdapter() {
+        if (this.templateItemProvider == null) {
+            this.templateItemProvider = new TemplateItemProvider(this);
+        }
+
+        return this.templateItemProvider;
     }
 
     /**
@@ -499,11 +548,17 @@ public class TypeItemProviderAdapterFactory extends TypeAdapterFactory
         if (this.pcmTemplateCompletionParameterItemProvider != null) {
             this.pcmTemplateCompletionParameterItemProvider.dispose();
         }
+        if (this.templateProvidingEntityItemProvider != null) {
+            this.templateProvidingEntityItemProvider.dispose();
+        }
         if (this.pcmOutputCompletionParameterItemProvider != null) {
             this.pcmOutputCompletionParameterItemProvider.dispose();
         }
         if (this.genericOutputCompletionParameterItemProvider != null) {
             this.genericOutputCompletionParameterItemProvider.dispose();
+        }
+        if (this.templateItemProvider != null) {
+            this.templateItemProvider.dispose();
         }
     }
 

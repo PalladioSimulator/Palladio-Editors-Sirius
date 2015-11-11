@@ -21,35 +21,39 @@ import org.scaledl.architecturaltemplates.type.Parameter;
 import org.scaledl.architecturaltemplates.type.QVTOCompletion;
 import org.scaledl.architecturaltemplates.type.Repository;
 import org.scaledl.architecturaltemplates.type.Role;
+import org.scaledl.architecturaltemplates.type.Template;
+import org.scaledl.architecturaltemplates.type.TemplateProvidingEntity;
 import org.scaledl.architecturaltemplates.type.TypeFactory;
 import org.scaledl.architecturaltemplates.type.TypePackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ *
  * @generated
  */
 public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
-     * Creates the default factory implementation.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     public static TypeFactory init() {
         try {
-            TypeFactory theTypeFactory = (TypeFactory) EPackage.Registry.INSTANCE.getEFactory(TypePackage.eNS_URI);
+            final TypeFactory theTypeFactory = (TypeFactory) EPackage.Registry.INSTANCE
+                    .getEFactory(TypePackage.eNS_URI);
             if (theTypeFactory != null) {
                 return theTypeFactory;
             }
-        } catch (Exception exception) {
+        } catch (final Exception exception) {
             EcorePlugin.INSTANCE.log(exception);
         }
         return new TypeFactoryImpl();
     }
 
     /**
-     * Creates an instance of the factory.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     public TypeFactoryImpl() {
@@ -58,35 +62,40 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
-    public EObject create(EClass eClass) {
+    public EObject create(final EClass eClass) {
         switch (eClass.getClassifierID()) {
         case TypePackage.AT:
-            return (EObject) createAT();
+            return this.createAT();
         case TypePackage.PARAMETER:
-            return (EObject) createParameter();
+            return this.createParameter();
         case TypePackage.REPOSITORY:
-            return (EObject) createRepository();
+            return this.createRepository();
         case TypePackage.ROLE:
-            return (EObject) createRole();
+            return this.createRole();
         case TypePackage.OCL_CONSTRAINT:
-            return (EObject) createOCLConstraint();
+            return this.createOCLConstraint();
         case TypePackage.QVTO_COMPLETION:
-            return (EObject) createQVTOCompletion();
+            return this.createQVTOCompletion();
         case TypePackage.GENERIC_TEMPLATE_COMPLETION_PARAMETER:
-            return (EObject) createGenericTemplateCompletionParameter();
+            return this.createGenericTemplateCompletionParameter();
         case TypePackage.GENERIC_BLACKBOARD_COMPLETION_PARAMETER:
-            return (EObject) createGenericBlackboardCompletionParameter();
+            return this.createGenericBlackboardCompletionParameter();
         case TypePackage.PCM_BLACKBOARD_COMPLETION_PARAMETER:
-            return (EObject) createPCMBlackboardCompletionParameter();
+            return this.createPCMBlackboardCompletionParameter();
         case TypePackage.PCM_TEMPLATE_COMPLETION_PARAMETER:
-            return (EObject) createPCMTemplateCompletionParameter();
+            return this.createPCMTemplateCompletionParameter();
+        case TypePackage.TEMPLATE_PROVIDING_ENTITY:
+            return this.createTemplateProvidingEntity();
         case TypePackage.PCM_OUTPUT_COMPLETION_PARAMETER:
-            return (EObject) createPCMOutputCompletionParameter();
+            return this.createPCMOutputCompletionParameter();
         case TypePackage.GENERIC_OUTPUT_COMPLETION_PARAMETER:
-            return (EObject) createGenericOutputCompletionParameter();
+            return this.createGenericOutputCompletionParameter();
+        case TypePackage.TEMPLATE:
+            return this.createTemplate();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -94,13 +103,14 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
-    public Object createFromString(EDataType eDataType, String initialValue) {
+    public Object createFromString(final EDataType eDataType, final String initialValue) {
         switch (eDataType.getClassifierID()) {
         case TypePackage.PCM_FILE_EXTENSIONS:
-            return createPCMFileExtensionsFromString(eDataType, initialValue);
+            return this.createPCMFileExtensionsFromString(eDataType, initialValue);
         default:
             throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -108,13 +118,14 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
-    public String convertToString(EDataType eDataType, Object instanceValue) {
+    public String convertToString(final EDataType eDataType, final Object instanceValue) {
         switch (eDataType.getClassifierID()) {
         case TypePackage.PCM_FILE_EXTENSIONS:
-            return convertPCMFileExtensionsToString(eDataType, instanceValue);
+            return this.convertPCMFileExtensionsToString(eDataType, instanceValue);
         default:
             throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -122,155 +133,194 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public AT createAT() {
-        ATImpl at = new ATImpl();
+        final ATImpl at = new ATImpl();
         return at;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public Parameter createParameter() {
-        ParameterImpl parameter = new ParameterImpl();
+        final ParameterImpl parameter = new ParameterImpl();
         return parameter;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public Repository createRepository() {
-        RepositoryImpl repository = new RepositoryImpl();
+        final RepositoryImpl repository = new RepositoryImpl();
         return repository;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public Role createRole() {
-        RoleImpl role = new RoleImpl();
+        final RoleImpl role = new RoleImpl();
         return role;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public OCLConstraint createOCLConstraint() {
-        OCLConstraintImpl oclConstraint = new OCLConstraintImpl();
+        final OCLConstraintImpl oclConstraint = new OCLConstraintImpl();
         return oclConstraint;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public QVTOCompletion createQVTOCompletion() {
-        QVTOCompletionImpl qvtoCompletion = new QVTOCompletionImpl();
+        final QVTOCompletionImpl qvtoCompletion = new QVTOCompletionImpl();
         return qvtoCompletion;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public GenericTemplateCompletionParameter createGenericTemplateCompletionParameter() {
-        GenericTemplateCompletionParameterImpl genericTemplateCompletionParameter = new GenericTemplateCompletionParameterImpl();
+        final GenericTemplateCompletionParameterImpl genericTemplateCompletionParameter = new GenericTemplateCompletionParameterImpl();
         return genericTemplateCompletionParameter;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public GenericBlackboardCompletionParameter createGenericBlackboardCompletionParameter() {
-        GenericBlackboardCompletionParameterImpl genericBlackboardCompletionParameter = new GenericBlackboardCompletionParameterImpl();
+        final GenericBlackboardCompletionParameterImpl genericBlackboardCompletionParameter = new GenericBlackboardCompletionParameterImpl();
         return genericBlackboardCompletionParameter;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public PCMBlackboardCompletionParameter createPCMBlackboardCompletionParameter() {
-        PCMBlackboardCompletionParameterImpl pcmBlackboardCompletionParameter = new PCMBlackboardCompletionParameterImpl();
+        final PCMBlackboardCompletionParameterImpl pcmBlackboardCompletionParameter = new PCMBlackboardCompletionParameterImpl();
         return pcmBlackboardCompletionParameter;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public PCMTemplateCompletionParameter createPCMTemplateCompletionParameter() {
-        PCMTemplateCompletionParameterImpl pcmTemplateCompletionParameter = new PCMTemplateCompletionParameterImpl();
+        final PCMTemplateCompletionParameterImpl pcmTemplateCompletionParameter = new PCMTemplateCompletionParameterImpl();
         return pcmTemplateCompletionParameter;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public TemplateProvidingEntity createTemplateProvidingEntity() {
+        final TemplateProvidingEntityImpl templateProvidingEntity = new TemplateProvidingEntityImpl();
+        return templateProvidingEntity;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public PCMOutputCompletionParameter createPCMOutputCompletionParameter() {
-        PCMOutputCompletionParameterImpl pcmOutputCompletionParameter = new PCMOutputCompletionParameterImpl();
+        final PCMOutputCompletionParameterImpl pcmOutputCompletionParameter = new PCMOutputCompletionParameterImpl();
         return pcmOutputCompletionParameter;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public GenericOutputCompletionParameter createGenericOutputCompletionParameter() {
-        GenericOutputCompletionParameterImpl genericOutputCompletionParameter = new GenericOutputCompletionParameterImpl();
+        final GenericOutputCompletionParameterImpl genericOutputCompletionParameter = new GenericOutputCompletionParameterImpl();
         return genericOutputCompletionParameter;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
-    public PCMFileExtensions createPCMFileExtensionsFromString(EDataType eDataType, String initialValue) {
-        PCMFileExtensions result = PCMFileExtensions.get(initialValue);
-        if (result == null)
+    @Override
+    public Template createTemplate() {
+        final TemplateImpl template = new TemplateImpl();
+        return template;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public PCMFileExtensions createPCMFileExtensionsFromString(final EDataType eDataType, final String initialValue) {
+        final PCMFileExtensions result = PCMFileExtensions.get(initialValue);
+        if (result == null) {
             throw new IllegalArgumentException(
                     "The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        }
         return result;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
-    public String convertPCMFileExtensionsToString(EDataType eDataType, Object instanceValue) {
+    public String convertPCMFileExtensionsToString(final EDataType eDataType, final Object instanceValue) {
         return instanceValue == null ? null : instanceValue.toString();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public TypePackage getTypePackage() {
-        return (TypePackage) getEPackage();
+        return (TypePackage) this.getEPackage();
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @deprecated
      * @generated
      */

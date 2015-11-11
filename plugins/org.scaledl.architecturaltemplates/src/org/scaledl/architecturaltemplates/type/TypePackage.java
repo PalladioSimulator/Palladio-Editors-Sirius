@@ -7,7 +7,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.palladiosimulator.pcm.core.entity.EntityPackage;
 
 /**
@@ -20,6 +19,7 @@ import org.palladiosimulator.pcm.core.entity.EntityPackage;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
+ *
  * @see org.scaledl.architecturaltemplates.type.TypeFactory
  * @model kind="package"
  * @generated
@@ -27,36 +27,37 @@ import org.palladiosimulator.pcm.core.entity.EntityPackage;
 public interface TypePackage extends EPackage {
 
     /**
-     * The package name.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     String eNAME = "type";
 
     /**
-     * The package namespace URI.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     String eNS_URI = "http://scaledl.org/ArchitecturalTemplates/Type/1.0";
 
     /**
-     * The package namespace name.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     String eNS_PREFIX = "org.scaledl.architecturaltemplates";
 
     /**
-     * The singleton instance of the package.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The singleton instance of the package. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     TypePackage eINSTANCE = org.scaledl.architecturaltemplates.type.impl.TypePackageImpl.init();
 
     /**
-     * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.impl.ATImpl <em>AT</em>}' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.impl.ATImpl
+     * <em>AT</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.scaledl.architecturaltemplates.type.impl.ATImpl
      * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getAT()
      * @generated
@@ -64,27 +65,27 @@ public interface TypePackage extends EPackage {
     int AT = 0;
 
     /**
-     * The feature id for the '<em><b>Id</b></em>' attribute.
-     * <!-- begin-user-doc --> <!--
+     * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int AT__ID = EntityPackage.ENTITY__ID;
 
     /**
-     * The feature id for the '<em><b>Entity Name</b></em>' attribute.
-     * <!-- begin-user-doc --> <!--
+     * The feature id for the '<em><b>Entity Name</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int AT__ENTITY_NAME = EntityPackage.ENTITY__ENTITY_NAME;
 
     /**
-     * The feature id for the '<em><b>Repository</b></em>' container reference.
-     * <!-- begin-user-doc
+     * The feature id for the '<em><b>Repository</b></em>' container reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
@@ -118,17 +119,28 @@ public interface TypePackage extends EPackage {
     int AT__COMPLETION = EntityPackage.ENTITY_FEATURE_COUNT + 3;
 
     /**
-     * The number of structural features of the '<em>AT</em>' class.
-     * <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The feature id for the '<em><b>Reconfiguration Rule Folder</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
-    int AT_FEATURE_COUNT = EntityPackage.ENTITY_FEATURE_COUNT + 4;
+    int AT__RECONFIGURATION_RULE_FOLDER = EntityPackage.ENTITY_FEATURE_COUNT + 4;
 
     /**
-     * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.impl.ConstraintImpl <em>Constraint</em>}' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The number of structural features of the '<em>AT</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int AT_FEATURE_COUNT = EntityPackage.ENTITY_FEATURE_COUNT + 5;
+
+    /**
+     * The meta object id for the '
+     * {@link org.scaledl.architecturaltemplates.type.impl.ConstraintImpl <em>Constraint</em>}'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.scaledl.architecturaltemplates.type.impl.ConstraintImpl
      * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getConstraint()
      * @generated
@@ -136,53 +148,54 @@ public interface TypePackage extends EPackage {
     int CONSTRAINT = 1;
 
     /**
-     * The feature id for the '<em><b>Id</b></em>' attribute.
-     * <!-- begin-user-doc --> <!--
+     * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int CONSTRAINT__ID = EntityPackage.ENTITY__ID;
 
     /**
-     * The feature id for the '<em><b>Entity Name</b></em>' attribute.
-     * <!-- begin-user-doc --> <!--
+     * The feature id for the '<em><b>Entity Name</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int CONSTRAINT__ENTITY_NAME = EntityPackage.ENTITY__ENTITY_NAME;
 
     /**
-     * The feature id for the '<em><b>AT</b></em>' container reference.
-     * <!-- begin-user-doc --> <!--
+     * The feature id for the '<em><b>AT</b></em>' container reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int CONSTRAINT__AT = EntityPackage.ENTITY_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Roles</b></em>' reference list.
-     * <!-- begin-user-doc --> <!--
+     * The feature id for the '<em><b>Roles</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int CONSTRAINT__ROLES = EntityPackage.ENTITY_FEATURE_COUNT + 1;
 
     /**
-     * The number of structural features of the '<em>Constraint</em>' class.
-     * <!-- begin-user-doc -->
+     * The number of structural features of the '<em>Constraint</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int CONSTRAINT_FEATURE_COUNT = EntityPackage.ENTITY_FEATURE_COUNT + 2;
 
     /**
-     * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.impl.ParameterImpl <em>Parameter</em>}' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.impl.ParameterImpl
+     * <em>Parameter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.scaledl.architecturaltemplates.type.impl.ParameterImpl
      * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getParameter()
      * @generated
@@ -190,53 +203,55 @@ public interface TypePackage extends EPackage {
     int PARAMETER = 2;
 
     /**
-     * The feature id for the '<em><b>Id</b></em>' attribute.
-     * <!-- begin-user-doc --> <!--
+     * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int PARAMETER__ID = EntityPackage.ENTITY__ID;
 
     /**
-     * The feature id for the '<em><b>Entity Name</b></em>' attribute.
-     * <!-- begin-user-doc --> <!--
+     * The feature id for the '<em><b>Entity Name</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int PARAMETER__ENTITY_NAME = EntityPackage.ENTITY__ENTITY_NAME;
 
     /**
-     * The feature id for the '<em><b>Role</b></em>' container reference.
-     * <!-- begin-user-doc -->
+     * The feature id for the '<em><b>Role</b></em>' container reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int PARAMETER__ROLE = EntityPackage.ENTITY_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Data Type</b></em>' reference.
-     * <!-- begin-user-doc --> <!--
+     * The feature id for the '<em><b>Data Type</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int PARAMETER__DATA_TYPE = EntityPackage.ENTITY_FEATURE_COUNT + 1;
 
     /**
-     * The number of structural features of the '<em>Parameter</em>' class.
-     * <!-- begin-user-doc -->
+     * The number of structural features of the '<em>Parameter</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int PARAMETER_FEATURE_COUNT = EntityPackage.ENTITY_FEATURE_COUNT + 2;
 
     /**
-     * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.impl.RepositoryImpl <em>Repository</em>}' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the '
+     * {@link org.scaledl.architecturaltemplates.type.impl.RepositoryImpl <em>Repository</em>}'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.scaledl.architecturaltemplates.type.impl.RepositoryImpl
      * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getRepository()
      * @generated
@@ -244,44 +259,45 @@ public interface TypePackage extends EPackage {
     int REPOSITORY = 3;
 
     /**
-     * The feature id for the '<em><b>Id</b></em>' attribute.
-     * <!-- begin-user-doc --> <!--
+     * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int REPOSITORY__ID = EntityPackage.ENTITY__ID;
 
     /**
-     * The feature id for the '<em><b>Entity Name</b></em>' attribute.
-     * <!-- begin-user-doc --> <!--
+     * The feature id for the '<em><b>Entity Name</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int REPOSITORY__ENTITY_NAME = EntityPackage.ENTITY__ENTITY_NAME;
 
     /**
-     * The feature id for the '<em><b>ATs</b></em>' containment reference list.
-     * <!-- begin-user-doc
+     * The feature id for the '<em><b>ATs</b></em>' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int REPOSITORY__ATS = EntityPackage.ENTITY_FEATURE_COUNT + 0;
 
     /**
-     * The number of structural features of the '<em>Repository</em>' class.
-     * <!-- begin-user-doc -->
+     * The number of structural features of the '<em>Repository</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int REPOSITORY_FEATURE_COUNT = EntityPackage.ENTITY_FEATURE_COUNT + 1;
 
     /**
-     * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.impl.RoleImpl <em>Role</em>}' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.impl.RoleImpl
+     * <em>Role</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.scaledl.architecturaltemplates.type.impl.RoleImpl
      * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getRole()
      * @generated
@@ -289,18 +305,18 @@ public interface TypePackage extends EPackage {
     int ROLE = 4;
 
     /**
-     * The feature id for the '<em><b>Id</b></em>' attribute.
-     * <!-- begin-user-doc --> <!--
+     * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int ROLE__ID = EntityPackage.ENTITY__ID;
 
     /**
-     * The feature id for the '<em><b>Entity Name</b></em>' attribute.
-     * <!-- begin-user-doc --> <!--
+     * The feature id for the '<em><b>Entity Name</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
@@ -316,44 +332,46 @@ public interface TypePackage extends EPackage {
     int ROLE__PARAMETERS = EntityPackage.ENTITY_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>AT</b></em>' container reference.
-     * <!-- begin-user-doc --> <!--
+     * The feature id for the '<em><b>AT</b></em>' container reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int ROLE__AT = EntityPackage.ENTITY_FEATURE_COUNT + 1;
 
     /**
-     * The feature id for the '<em><b>Constraints</b></em>' reference list.
-     * <!-- begin-user-doc -->
+     * The feature id for the '<em><b>Constraints</b></em>' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int ROLE__CONSTRAINTS = EntityPackage.ENTITY_FEATURE_COUNT + 2;
 
     /**
-     * The feature id for the '<em><b>Stereotype</b></em>' reference.
-     * <!-- begin-user-doc --> <!--
+     * The feature id for the '<em><b>Stereotype</b></em>' reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int ROLE__STEREOTYPE = EntityPackage.ENTITY_FEATURE_COUNT + 3;
 
     /**
-     * The number of structural features of the '<em>Role</em>' class.
-     * <!-- begin-user-doc --> <!--
+     * The number of structural features of the '<em>Role</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int ROLE_FEATURE_COUNT = EntityPackage.ENTITY_FEATURE_COUNT + 4;
 
     /**
-     * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.impl.OCLConstraintImpl <em>OCL Constraint</em>}' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the '
+     * {@link org.scaledl.architecturaltemplates.type.impl.OCLConstraintImpl <em>OCL Constraint</em>
+     * }' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.scaledl.architecturaltemplates.type.impl.OCLConstraintImpl
      * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getOCLConstraint()
      * @generated
@@ -361,62 +379,64 @@ public interface TypePackage extends EPackage {
     int OCL_CONSTRAINT = 5;
 
     /**
-     * The feature id for the '<em><b>Id</b></em>' attribute.
-     * <!-- begin-user-doc --> <!--
+     * The feature id for the '<em><b>Id</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int OCL_CONSTRAINT__ID = CONSTRAINT__ID;
 
     /**
-     * The feature id for the '<em><b>Entity Name</b></em>' attribute.
-     * <!-- begin-user-doc --> <!--
+     * The feature id for the '<em><b>Entity Name</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int OCL_CONSTRAINT__ENTITY_NAME = CONSTRAINT__ENTITY_NAME;
 
     /**
-     * The feature id for the '<em><b>AT</b></em>' container reference.
-     * <!-- begin-user-doc --> <!--
+     * The feature id for the '<em><b>AT</b></em>' container reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int OCL_CONSTRAINT__AT = CONSTRAINT__AT;
 
     /**
-     * The feature id for the '<em><b>Roles</b></em>' reference list.
-     * <!-- begin-user-doc --> <!--
+     * The feature id for the '<em><b>Roles</b></em>' reference list. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int OCL_CONSTRAINT__ROLES = CONSTRAINT__ROLES;
 
     /**
-     * The feature id for the '<em><b>Constraint</b></em>' attribute.
-     * <!-- begin-user-doc --> <!--
+     * The feature id for the '<em><b>Constraint</b></em>' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int OCL_CONSTRAINT__CONSTRAINT = CONSTRAINT_FEATURE_COUNT + 0;
 
     /**
-     * The number of structural features of the '<em>OCL Constraint</em>' class.
-     * <!-- begin-user-doc
+     * The number of structural features of the '<em>OCL Constraint</em>' class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int OCL_CONSTRAINT_FEATURE_COUNT = CONSTRAINT_FEATURE_COUNT + 1;
 
     /**
-     * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.impl.CompletionImpl <em>Completion</em>}' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the '
+     * {@link org.scaledl.architecturaltemplates.type.impl.CompletionImpl <em>Completion</em>}'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.scaledl.architecturaltemplates.type.impl.CompletionImpl
      * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getCompletion()
      * @generated
@@ -424,9 +444,9 @@ public interface TypePackage extends EPackage {
     int COMPLETION = 7;
 
     /**
-     * The feature id for the '<em><b>AT</b></em>' container reference.
-     * <!-- begin-user-doc --> <!--
+     * The feature id for the '<em><b>AT</b></em>' container reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
@@ -442,17 +462,19 @@ public interface TypePackage extends EPackage {
     int COMPLETION__PARAMETERS = 1;
 
     /**
-     * The number of structural features of the '<em>Completion</em>' class.
-     * <!-- begin-user-doc -->
+     * The number of structural features of the '<em>Completion</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int COMPLETION_FEATURE_COUNT = 2;
 
     /**
-     * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.impl.QVTOCompletionImpl <em>QVTO Completion</em>}' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the '
+     * {@link org.scaledl.architecturaltemplates.type.impl.QVTOCompletionImpl
+     * <em>QVTO Completion</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.scaledl.architecturaltemplates.type.impl.QVTOCompletionImpl
      * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getQVTOCompletion()
      * @generated
@@ -460,9 +482,9 @@ public interface TypePackage extends EPackage {
     int QVTO_COMPLETION = 6;
 
     /**
-     * The feature id for the '<em><b>AT</b></em>' container reference.
-     * <!-- begin-user-doc --> <!--
+     * The feature id for the '<em><b>AT</b></em>' container reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      * @ordered
      */
@@ -478,9 +500,9 @@ public interface TypePackage extends EPackage {
     int QVTO_COMPLETION__PARAMETERS = COMPLETION__PARAMETERS;
 
     /**
-     * The feature id for the '<em><b>Qvto File URI</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * The feature id for the '<em><b>Qvto File URI</b></em>' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
@@ -496,8 +518,10 @@ public interface TypePackage extends EPackage {
     int QVTO_COMPLETION_FEATURE_COUNT = COMPLETION_FEATURE_COUNT + 1;
 
     /**
-     * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.impl.CompletionParameterImpl <em>Completion Parameter</em>}' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the '
+     * {@link org.scaledl.architecturaltemplates.type.impl.CompletionParameterImpl
+     * <em>Completion Parameter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.scaledl.architecturaltemplates.type.impl.CompletionParameterImpl
      * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getCompletionParameter()
      * @generated
@@ -505,9 +529,9 @@ public interface TypePackage extends EPackage {
     int COMPLETION_PARAMETER = 8;
 
     /**
-     * The feature id for the '<em><b>Completion</b></em>' container reference.
-     * <!-- begin-user-doc
+     * The feature id for the '<em><b>Completion</b></em>' container reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
@@ -523,9 +547,11 @@ public interface TypePackage extends EPackage {
     int COMPLETION_PARAMETER_FEATURE_COUNT = 1;
 
     /**
-     * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.impl.GenericBlackboardCompletionParameterImpl <em>Generic Blackboard Completion Parameter</em>}' class.
-     * <!-- begin-user-doc --> <!--
+     * The meta object id for the '
+     * {@link org.scaledl.architecturaltemplates.type.impl.GenericBlackboardCompletionParameterImpl
+     * <em>Generic Blackboard Completion Parameter</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @see org.scaledl.architecturaltemplates.type.impl.GenericBlackboardCompletionParameterImpl
      * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getGenericBlackboardCompletionParameter()
      * @generated
@@ -533,35 +559,38 @@ public interface TypePackage extends EPackage {
     int GENERIC_BLACKBOARD_COMPLETION_PARAMETER = 10;
 
     /**
-     * The feature id for the '<em><b>Completion</b></em>' container reference.
-     * <!-- begin-user-doc
+     * The feature id for the '<em><b>Completion</b></em>' container reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int GENERIC_BLACKBOARD_COMPLETION_PARAMETER__COMPLETION = COMPLETION_PARAMETER__COMPLETION;
 
     /**
-     * The feature id for the '<em><b>File Extension</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * The feature id for the '<em><b>File Extension</b></em>' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int GENERIC_BLACKBOARD_COMPLETION_PARAMETER__FILE_EXTENSION = COMPLETION_PARAMETER_FEATURE_COUNT + 0;
 
     /**
-     * The number of structural features of the '<em>Generic Blackboard Completion Parameter</em>' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The number of structural features of the '<em>Generic Blackboard Completion Parameter</em>'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int GENERIC_BLACKBOARD_COMPLETION_PARAMETER_FEATURE_COUNT = COMPLETION_PARAMETER_FEATURE_COUNT + 1;
 
     /**
-     * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.impl.GenericTemplateCompletionParameterImpl <em>Generic Template Completion Parameter</em>}' class.
-     * <!-- begin-user-doc --> <!--
+     * The meta object id for the '
+     * {@link org.scaledl.architecturaltemplates.type.impl.GenericTemplateCompletionParameterImpl
+     * <em>Generic Template Completion Parameter</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @see org.scaledl.architecturaltemplates.type.impl.GenericTemplateCompletionParameterImpl
      * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getGenericTemplateCompletionParameter()
      * @generated
@@ -569,27 +598,27 @@ public interface TypePackage extends EPackage {
     int GENERIC_TEMPLATE_COMPLETION_PARAMETER = 9;
 
     /**
-     * The feature id for the '<em><b>Completion</b></em>' container reference.
-     * <!-- begin-user-doc
+     * The feature id for the '<em><b>Completion</b></em>' container reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int GENERIC_TEMPLATE_COMPLETION_PARAMETER__COMPLETION = GENERIC_BLACKBOARD_COMPLETION_PARAMETER__COMPLETION;
 
     /**
-     * The feature id for the '<em><b>File Extension</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * The feature id for the '<em><b>File Extension</b></em>' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int GENERIC_TEMPLATE_COMPLETION_PARAMETER__FILE_EXTENSION = GENERIC_BLACKBOARD_COMPLETION_PARAMETER__FILE_EXTENSION;
 
     /**
-     * The feature id for the '<em><b>Template File URI</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * The feature id for the '<em><b>Template File URI</b></em>' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
@@ -597,17 +626,20 @@ public interface TypePackage extends EPackage {
             + 0;
 
     /**
-     * The number of structural features of the '<em>Generic Template Completion Parameter</em>' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The number of structural features of the '<em>Generic Template Completion Parameter</em>'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int GENERIC_TEMPLATE_COMPLETION_PARAMETER_FEATURE_COUNT = GENERIC_BLACKBOARD_COMPLETION_PARAMETER_FEATURE_COUNT + 1;
 
     /**
-     * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.impl.PCMBlackboardCompletionParameterImpl <em>PCM Blackboard Completion Parameter</em>}' class.
-     * <!-- begin-user-doc --> <!--
+     * The meta object id for the '
+     * {@link org.scaledl.architecturaltemplates.type.impl.PCMBlackboardCompletionParameterImpl
+     * <em>PCM Blackboard Completion Parameter</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @see org.scaledl.architecturaltemplates.type.impl.PCMBlackboardCompletionParameterImpl
      * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getPCMBlackboardCompletionParameter()
      * @generated
@@ -615,26 +647,27 @@ public interface TypePackage extends EPackage {
     int PCM_BLACKBOARD_COMPLETION_PARAMETER = 11;
 
     /**
-     * The feature id for the '<em><b>Completion</b></em>' container reference.
-     * <!-- begin-user-doc
+     * The feature id for the '<em><b>Completion</b></em>' container reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int PCM_BLACKBOARD_COMPLETION_PARAMETER__COMPLETION = COMPLETION_PARAMETER__COMPLETION;
 
     /**
-     * The feature id for the '<em><b>File Extension</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * The feature id for the '<em><b>File Extension</b></em>' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int PCM_BLACKBOARD_COMPLETION_PARAMETER__FILE_EXTENSION = COMPLETION_PARAMETER_FEATURE_COUNT + 0;
 
     /**
-     * The number of structural features of the '<em>PCM Blackboard Completion Parameter</em>' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The number of structural features of the '<em>PCM Blackboard Completion Parameter</em>'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
@@ -653,27 +686,27 @@ public interface TypePackage extends EPackage {
     int PCM_TEMPLATE_COMPLETION_PARAMETER = 12;
 
     /**
-     * The feature id for the '<em><b>Completion</b></em>' container reference.
-     * <!-- begin-user-doc
+     * The feature id for the '<em><b>Completion</b></em>' container reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int PCM_TEMPLATE_COMPLETION_PARAMETER__COMPLETION = PCM_BLACKBOARD_COMPLETION_PARAMETER__COMPLETION;
 
     /**
-     * The feature id for the '<em><b>File Extension</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * The feature id for the '<em><b>File Extension</b></em>' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int PCM_TEMPLATE_COMPLETION_PARAMETER__FILE_EXTENSION = PCM_BLACKBOARD_COMPLETION_PARAMETER__FILE_EXTENSION;
 
     /**
-     * The feature id for the '<em><b>Template File URI</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * The feature id for the '<em><b>Template File URI</b></em>' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
@@ -682,14 +715,17 @@ public interface TypePackage extends EPackage {
     /**
      * The number of structural features of the '<em>PCM Template Completion Parameter</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int PCM_TEMPLATE_COMPLETION_PARAMETER_FEATURE_COUNT = PCM_BLACKBOARD_COMPLETION_PARAMETER_FEATURE_COUNT + 1;
 
     /**
-     * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.impl.TemplateProvidingEntityImpl <em>Template Providing Entity</em>}' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the '
+     * {@link org.scaledl.architecturaltemplates.type.impl.TemplateProvidingEntityImpl
+     * <em>Template Providing Entity</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.scaledl.architecturaltemplates.type.impl.TemplateProvidingEntityImpl
      * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getTemplateProvidingEntity()
      * @generated
@@ -697,9 +733,9 @@ public interface TypePackage extends EPackage {
     int TEMPLATE_PROVIDING_ENTITY = 13;
 
     /**
-     * The feature id for the '<em><b>Template File URI</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * The feature id for the '<em><b>Template File URI</b></em>' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
@@ -727,18 +763,18 @@ public interface TypePackage extends EPackage {
     int PCM_OUTPUT_COMPLETION_PARAMETER = 14;
 
     /**
-     * The feature id for the '<em><b>Completion</b></em>' container reference.
-     * <!-- begin-user-doc
+     * The feature id for the '<em><b>Completion</b></em>' container reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int PCM_OUTPUT_COMPLETION_PARAMETER__COMPLETION = COMPLETION_PARAMETER__COMPLETION;
 
     /**
-     * The feature id for the '<em><b>File Extension</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * The feature id for the '<em><b>File Extension</b></em>' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
@@ -747,15 +783,18 @@ public interface TypePackage extends EPackage {
     /**
      * The number of structural features of the '<em>PCM Output Completion Parameter</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int PCM_OUTPUT_COMPLETION_PARAMETER_FEATURE_COUNT = COMPLETION_PARAMETER_FEATURE_COUNT + 1;
 
     /**
-     * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.impl.GenericOutputCompletionParameterImpl <em>Generic Output Completion Parameter</em>}' class.
-     * <!-- begin-user-doc --> <!--
+     * The meta object id for the '
+     * {@link org.scaledl.architecturaltemplates.type.impl.GenericOutputCompletionParameterImpl
+     * <em>Generic Output Completion Parameter</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @see org.scaledl.architecturaltemplates.type.impl.GenericOutputCompletionParameterImpl
      * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getGenericOutputCompletionParameter()
      * @generated
@@ -763,43 +802,65 @@ public interface TypePackage extends EPackage {
     int GENERIC_OUTPUT_COMPLETION_PARAMETER = 15;
 
     /**
-     * The feature id for the '<em><b>Completion</b></em>' container reference.
-     * <!-- begin-user-doc
+     * The feature id for the '<em><b>Completion</b></em>' container reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int GENERIC_OUTPUT_COMPLETION_PARAMETER__COMPLETION = COMPLETION_PARAMETER__COMPLETION;
 
     /**
-     * The feature id for the '<em><b>File Extension</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * The feature id for the '<em><b>File Extension</b></em>' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int GENERIC_OUTPUT_COMPLETION_PARAMETER__FILE_EXTENSION = COMPLETION_PARAMETER_FEATURE_COUNT + 0;
 
     /**
-     * The number of structural features of the '<em>Generic Output Completion Parameter</em>' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The number of structural features of the '<em>Generic Output Completion Parameter</em>'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      * @ordered
      */
     int GENERIC_OUTPUT_COMPLETION_PARAMETER_FEATURE_COUNT = COMPLETION_PARAMETER_FEATURE_COUNT + 1;
 
     /**
-     * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.PCMFileExtensions <em>PCM File Extensions</em>}' enum.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.impl.TemplateImpl
+     * <em>Template</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see org.scaledl.architecturaltemplates.type.impl.TemplateImpl
+     * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getTemplate()
+     * @generated
+     */
+    int TEMPLATE = 16;
+
+    /**
+     * The number of structural features of the '<em>Template</em>' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int TEMPLATE_FEATURE_COUNT = 0;
+
+    /**
+     * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.PCMFileExtensions
+     * <em>PCM File Extensions</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see org.scaledl.architecturaltemplates.type.PCMFileExtensions
      * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getPCMFileExtensions()
      * @generated
      */
-    int PCM_FILE_EXTENSIONS = 16;
+    int PCM_FILE_EXTENSIONS = 17;
 
     /**
-     * Returns the meta object for class '{@link org.scaledl.architecturaltemplates.type.AT <em>AT</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '{@link org.scaledl.architecturaltemplates.type.AT
+     * <em>AT</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for class '<em>AT</em>'.
      * @see org.scaledl.architecturaltemplates.type.AT
      * @generated
@@ -855,8 +916,21 @@ public interface TypePackage extends EPackage {
     EReference getAT_Completion();
 
     /**
-     * Returns the meta object for class '{@link org.scaledl.architecturaltemplates.type.Constraint <em>Constraint</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the containment reference '
+     * {@link org.scaledl.architecturaltemplates.type.AT#getReconfigurationRuleFolder
+     * <em>Reconfiguration Rule Folder</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference '<em>Reconfiguration Rule Folder</em>'.
+     * @see org.scaledl.architecturaltemplates.type.AT#getReconfigurationRuleFolder()
+     * @see #getAT()
+     * @generated
+     */
+    EReference getAT_ReconfigurationRuleFolder();
+
+    /**
+     * Returns the meta object for class '{@link org.scaledl.architecturaltemplates.type.Constraint
+     * <em>Constraint</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for class '<em>Constraint</em>'.
      * @see org.scaledl.architecturaltemplates.type.Constraint
      * @generated
@@ -888,8 +962,9 @@ public interface TypePackage extends EPackage {
     EReference getConstraint_Roles();
 
     /**
-     * Returns the meta object for class '{@link org.scaledl.architecturaltemplates.type.Parameter <em>Parameter</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '{@link org.scaledl.architecturaltemplates.type.Parameter
+     * <em>Parameter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for class '<em>Parameter</em>'.
      * @see org.scaledl.architecturaltemplates.type.Parameter
      * @generated
@@ -909,8 +984,10 @@ public interface TypePackage extends EPackage {
     EReference getParameter_Role();
 
     /**
-     * Returns the meta object for the reference '{@link org.scaledl.architecturaltemplates.type.Parameter#getDataType <em>Data Type</em>}'.
+     * Returns the meta object for the reference '
+     * {@link org.scaledl.architecturaltemplates.type.Parameter#getDataType <em>Data Type</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the reference '<em>Data Type</em>'.
      * @see org.scaledl.architecturaltemplates.type.Parameter#getDataType()
      * @see #getParameter()
@@ -919,8 +996,9 @@ public interface TypePackage extends EPackage {
     EReference getParameter_DataType();
 
     /**
-     * Returns the meta object for class '{@link org.scaledl.architecturaltemplates.type.Repository <em>Repository</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '{@link org.scaledl.architecturaltemplates.type.Repository
+     * <em>Repository</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for class '<em>Repository</em>'.
      * @see org.scaledl.architecturaltemplates.type.Repository
      * @generated
@@ -940,8 +1018,9 @@ public interface TypePackage extends EPackage {
     EReference getRepository_ATs();
 
     /**
-     * Returns the meta object for class '{@link org.scaledl.architecturaltemplates.type.Role <em>Role</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '{@link org.scaledl.architecturaltemplates.type.Role
+     * <em>Role</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for class '<em>Role</em>'.
      * @see org.scaledl.architecturaltemplates.type.Role
      * @generated
@@ -961,9 +1040,10 @@ public interface TypePackage extends EPackage {
     EReference getRole_Parameters();
 
     /**
-     * Returns the meta object for the container reference '{@link org.scaledl.architecturaltemplates.type.Role#getAT <em>AT</em>}'.
-     * <!-- begin-user-doc
+     * Returns the meta object for the container reference '
+     * {@link org.scaledl.architecturaltemplates.type.Role#getAT <em>AT</em>}'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
+     *
      * @return the meta object for the container reference '<em>AT</em>'.
      * @see org.scaledl.architecturaltemplates.type.Role#getAT()
      * @see #getRole()
@@ -972,8 +1052,10 @@ public interface TypePackage extends EPackage {
     EReference getRole_AT();
 
     /**
-     * Returns the meta object for the reference list '{@link org.scaledl.architecturaltemplates.type.Role#getConstraints <em>Constraints</em>}'.
+     * Returns the meta object for the reference list '
+     * {@link org.scaledl.architecturaltemplates.type.Role#getConstraints <em>Constraints</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the reference list '<em>Constraints</em>'.
      * @see org.scaledl.architecturaltemplates.type.Role#getConstraints()
      * @see #getRole()
@@ -1005,8 +1087,10 @@ public interface TypePackage extends EPackage {
     EClass getOCLConstraint();
 
     /**
-     * Returns the meta object for the attribute '{@link org.scaledl.architecturaltemplates.type.OCLConstraint#getConstraint <em>Constraint</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '
+     * {@link org.scaledl.architecturaltemplates.type.OCLConstraint#getConstraint
+     * <em>Constraint</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the attribute '<em>Constraint</em>'.
      * @see org.scaledl.architecturaltemplates.type.OCLConstraint#getConstraint()
      * @see #getOCLConstraint()
@@ -1015,8 +1099,10 @@ public interface TypePackage extends EPackage {
     EAttribute getOCLConstraint_Constraint();
 
     /**
-     * Returns the meta object for class '{@link org.scaledl.architecturaltemplates.type.QVTOCompletion <em>QVTO Completion</em>}'.
+     * Returns the meta object for class '
+     * {@link org.scaledl.architecturaltemplates.type.QVTOCompletion <em>QVTO Completion</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for class '<em>QVTO Completion</em>'.
      * @see org.scaledl.architecturaltemplates.type.QVTOCompletion
      * @generated
@@ -1024,8 +1110,10 @@ public interface TypePackage extends EPackage {
     EClass getQVTOCompletion();
 
     /**
-     * Returns the meta object for the attribute '{@link org.scaledl.architecturaltemplates.type.QVTOCompletion#getQvtoFileURI <em>Qvto File URI</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '
+     * {@link org.scaledl.architecturaltemplates.type.QVTOCompletion#getQvtoFileURI
+     * <em>Qvto File URI</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the attribute '<em>Qvto File URI</em>'.
      * @see org.scaledl.architecturaltemplates.type.QVTOCompletion#getQvtoFileURI()
      * @see #getQVTOCompletion()
@@ -1034,8 +1122,9 @@ public interface TypePackage extends EPackage {
     EAttribute getQVTOCompletion_QvtoFileURI();
 
     /**
-     * Returns the meta object for class '{@link org.scaledl.architecturaltemplates.type.Completion <em>Completion</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '{@link org.scaledl.architecturaltemplates.type.Completion
+     * <em>Completion</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for class '<em>Completion</em>'.
      * @see org.scaledl.architecturaltemplates.type.Completion
      * @generated
@@ -1055,8 +1144,10 @@ public interface TypePackage extends EPackage {
     EReference getCompletion_AT();
 
     /**
-     * Returns the meta object for the containment reference list '{@link org.scaledl.architecturaltemplates.type.Completion#getParameters <em>Parameters</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the containment reference list '
+     * {@link org.scaledl.architecturaltemplates.type.Completion#getParameters <em>Parameters</em>}
+     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the containment reference list '<em>Parameters</em>'.
      * @see org.scaledl.architecturaltemplates.type.Completion#getParameters()
      * @see #getCompletion()
@@ -1065,8 +1156,10 @@ public interface TypePackage extends EPackage {
     EReference getCompletion_Parameters();
 
     /**
-     * Returns the meta object for class '{@link org.scaledl.architecturaltemplates.type.CompletionParameter <em>Completion Parameter</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '
+     * {@link org.scaledl.architecturaltemplates.type.CompletionParameter
+     * <em>Completion Parameter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for class '<em>Completion Parameter</em>'.
      * @see org.scaledl.architecturaltemplates.type.CompletionParameter
      * @generated
@@ -1074,8 +1167,10 @@ public interface TypePackage extends EPackage {
     EClass getCompletionParameter();
 
     /**
-     * Returns the meta object for the container reference '{@link org.scaledl.architecturaltemplates.type.CompletionParameter#getCompletion <em>Completion</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the container reference '
+     * {@link org.scaledl.architecturaltemplates.type.CompletionParameter#getCompletion
+     * <em>Completion</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the container reference '<em>Completion</em>'.
      * @see org.scaledl.architecturaltemplates.type.CompletionParameter#getCompletion()
      * @see #getCompletionParameter()
@@ -1108,8 +1203,10 @@ public interface TypePackage extends EPackage {
     EClass getGenericBlackboardCompletionParameter();
 
     /**
-     * Returns the meta object for the attribute '{@link org.scaledl.architecturaltemplates.type.GenericBlackboardCompletionParameter#getFileExtension <em>File Extension</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '
+     * {@link org.scaledl.architecturaltemplates.type.GenericBlackboardCompletionParameter#getFileExtension
+     * <em>File Extension</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the attribute '<em>File Extension</em>'.
      * @see org.scaledl.architecturaltemplates.type.GenericBlackboardCompletionParameter#getFileExtension()
      * @see #getGenericBlackboardCompletionParameter()
@@ -1118,8 +1215,10 @@ public interface TypePackage extends EPackage {
     EAttribute getGenericBlackboardCompletionParameter_FileExtension();
 
     /**
-     * Returns the meta object for class '{@link org.scaledl.architecturaltemplates.type.PCMBlackboardCompletionParameter <em>PCM Blackboard Completion Parameter</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '
+     * {@link org.scaledl.architecturaltemplates.type.PCMBlackboardCompletionParameter
+     * <em>PCM Blackboard Completion Parameter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for class '<em>PCM Blackboard Completion Parameter</em>'.
      * @see org.scaledl.architecturaltemplates.type.PCMBlackboardCompletionParameter
      * @generated
@@ -1127,8 +1226,10 @@ public interface TypePackage extends EPackage {
     EClass getPCMBlackboardCompletionParameter();
 
     /**
-     * Returns the meta object for the attribute '{@link org.scaledl.architecturaltemplates.type.PCMBlackboardCompletionParameter#getFileExtension <em>File Extension</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '
+     * {@link org.scaledl.architecturaltemplates.type.PCMBlackboardCompletionParameter#getFileExtension
+     * <em>File Extension</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the attribute '<em>File Extension</em>'.
      * @see org.scaledl.architecturaltemplates.type.PCMBlackboardCompletionParameter#getFileExtension()
      * @see #getPCMBlackboardCompletionParameter()
@@ -1137,8 +1238,10 @@ public interface TypePackage extends EPackage {
     EAttribute getPCMBlackboardCompletionParameter_FileExtension();
 
     /**
-     * Returns the meta object for class '{@link org.scaledl.architecturaltemplates.type.PCMTemplateCompletionParameter <em>PCM Template Completion Parameter</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '
+     * {@link org.scaledl.architecturaltemplates.type.PCMTemplateCompletionParameter
+     * <em>PCM Template Completion Parameter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for class '<em>PCM Template Completion Parameter</em>'.
      * @see org.scaledl.architecturaltemplates.type.PCMTemplateCompletionParameter
      * @generated
@@ -1146,8 +1249,10 @@ public interface TypePackage extends EPackage {
     EClass getPCMTemplateCompletionParameter();
 
     /**
-     * Returns the meta object for class '{@link org.scaledl.architecturaltemplates.type.TemplateProvidingEntity <em>Template Providing Entity</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '
+     * {@link org.scaledl.architecturaltemplates.type.TemplateProvidingEntity
+     * <em>Template Providing Entity</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for class '<em>Template Providing Entity</em>'.
      * @see org.scaledl.architecturaltemplates.type.TemplateProvidingEntity
      * @generated
@@ -1155,8 +1260,10 @@ public interface TypePackage extends EPackage {
     EClass getTemplateProvidingEntity();
 
     /**
-     * Returns the meta object for the attribute '{@link org.scaledl.architecturaltemplates.type.TemplateProvidingEntity#getTemplateFileURI <em>Template File URI</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '
+     * {@link org.scaledl.architecturaltemplates.type.TemplateProvidingEntity#getTemplateFileURI
+     * <em>Template File URI</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the attribute '<em>Template File URI</em>'.
      * @see org.scaledl.architecturaltemplates.type.TemplateProvidingEntity#getTemplateFileURI()
      * @see #getTemplateProvidingEntity()
@@ -1165,8 +1272,10 @@ public interface TypePackage extends EPackage {
     EAttribute getTemplateProvidingEntity_TemplateFileURI();
 
     /**
-     * Returns the meta object for class '{@link org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter <em>PCM Output Completion Parameter</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '
+     * {@link org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter
+     * <em>PCM Output Completion Parameter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for class '<em>PCM Output Completion Parameter</em>'.
      * @see org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter
      * @generated
@@ -1174,8 +1283,10 @@ public interface TypePackage extends EPackage {
     EClass getPCMOutputCompletionParameter();
 
     /**
-     * Returns the meta object for the attribute '{@link org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter#getFileExtension <em>File Extension</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '
+     * {@link org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter#getFileExtension
+     * <em>File Extension</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the attribute '<em>File Extension</em>'.
      * @see org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter#getFileExtension()
      * @see #getPCMOutputCompletionParameter()
@@ -1184,8 +1295,10 @@ public interface TypePackage extends EPackage {
     EAttribute getPCMOutputCompletionParameter_FileExtension();
 
     /**
-     * Returns the meta object for class '{@link org.scaledl.architecturaltemplates.type.GenericOutputCompletionParameter <em>Generic Output Completion Parameter</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '
+     * {@link org.scaledl.architecturaltemplates.type.GenericOutputCompletionParameter
+     * <em>Generic Output Completion Parameter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for class '<em>Generic Output Completion Parameter</em>'.
      * @see org.scaledl.architecturaltemplates.type.GenericOutputCompletionParameter
      * @generated
@@ -1193,8 +1306,10 @@ public interface TypePackage extends EPackage {
     EClass getGenericOutputCompletionParameter();
 
     /**
-     * Returns the meta object for the attribute '{@link org.scaledl.architecturaltemplates.type.GenericOutputCompletionParameter#getFileExtension <em>File Extension</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '
+     * {@link org.scaledl.architecturaltemplates.type.GenericOutputCompletionParameter#getFileExtension
+     * <em>File Extension</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for the attribute '<em>File Extension</em>'.
      * @see org.scaledl.architecturaltemplates.type.GenericOutputCompletionParameter#getFileExtension()
      * @see #getGenericOutputCompletionParameter()
@@ -1203,8 +1318,20 @@ public interface TypePackage extends EPackage {
     EAttribute getGenericOutputCompletionParameter_FileExtension();
 
     /**
-     * Returns the meta object for enum '{@link org.scaledl.architecturaltemplates.type.PCMFileExtensions <em>PCM File Extensions</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '{@link org.scaledl.architecturaltemplates.type.Template
+     * <em>Template</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for class '<em>Template</em>'.
+     * @see org.scaledl.architecturaltemplates.type.Template
+     * @generated
+     */
+    EClass getTemplate();
+
+    /**
+     * Returns the meta object for enum '
+     * {@link org.scaledl.architecturaltemplates.type.PCMFileExtensions <em>PCM File Extensions</em>
+     * }'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @return the meta object for enum '<em>PCM File Extensions</em>'.
      * @see org.scaledl.architecturaltemplates.type.PCMFileExtensions
      * @generated
@@ -1212,9 +1339,9 @@ public interface TypePackage extends EPackage {
     EEnum getPCMFileExtensions();
 
     /**
-     * Returns the factory that creates the instances of the model.
-     * <!-- begin-user-doc --> <!--
+     * Returns the factory that creates the instances of the model. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @return the factory that creates the instances of the model.
      * @generated
      */
@@ -1229,6 +1356,7 @@ public interface TypePackage extends EPackage {
      * <li>and each data type</li>
      * </ul>
      * <!-- end-user-doc -->
+     *
      * @generated
      */
     interface Literals {
@@ -1247,34 +1375,48 @@ public interface TypePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Repository</b></em>' container reference feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @generated
          */
         EReference AT__REPOSITORY = eINSTANCE.getAT_Repository();
 
         /**
-         * The meta object literal for the '<em><b>Roles</b></em>' containment reference list feature.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Roles</b></em>' containment reference list
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @generated
          */
         EReference AT__ROLES = eINSTANCE.getAT_Roles();
 
         /**
-         * The meta object literal for the '<em><b>Constraints</b></em>' containment reference list feature.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Constraints</b></em>' containment reference list
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @generated
          */
         EReference AT__CONSTRAINTS = eINSTANCE.getAT_Constraints();
 
         /**
-         * The meta object literal for the '<em><b>Completion</b></em>' containment reference feature.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Completion</b></em>' containment reference
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @generated
          */
         EReference AT__COMPLETION = eINSTANCE.getAT_Completion();
 
         /**
-         * The meta object literal for the '{@link org.scaledl.architecturaltemplates.type.impl.ConstraintImpl <em>Constraint</em>}' class.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Reconfiguration Rule Folder</b></em>' containment
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference AT__RECONFIGURATION_RULE_FOLDER = eINSTANCE.getAT_ReconfigurationRuleFolder();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.scaledl.architecturaltemplates.type.impl.ConstraintImpl <em>Constraint</em>}'
+         * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.scaledl.architecturaltemplates.type.impl.ConstraintImpl
          * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getConstraint()
          * @generated
@@ -1298,8 +1440,10 @@ public interface TypePackage extends EPackage {
         EReference CONSTRAINT__ROLES = eINSTANCE.getConstraint_Roles();
 
         /**
-         * The meta object literal for the '{@link org.scaledl.architecturaltemplates.type.impl.ParameterImpl <em>Parameter</em>}' class.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '
+         * {@link org.scaledl.architecturaltemplates.type.impl.ParameterImpl <em>Parameter</em>}'
+         * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.scaledl.architecturaltemplates.type.impl.ParameterImpl
          * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getParameter()
          * @generated
@@ -1323,8 +1467,10 @@ public interface TypePackage extends EPackage {
         EReference PARAMETER__DATA_TYPE = eINSTANCE.getParameter_DataType();
 
         /**
-         * The meta object literal for the '{@link org.scaledl.architecturaltemplates.type.impl.RepositoryImpl <em>Repository</em>}' class.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '
+         * {@link org.scaledl.architecturaltemplates.type.impl.RepositoryImpl <em>Repository</em>}'
+         * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.scaledl.architecturaltemplates.type.impl.RepositoryImpl
          * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getRepository()
          * @generated
@@ -1334,6 +1480,7 @@ public interface TypePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>ATs</b></em>' containment reference list feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @generated
          */
         EReference REPOSITORY__ATS = eINSTANCE.getRepository_ATs();
@@ -1350,8 +1497,9 @@ public interface TypePackage extends EPackage {
         EClass ROLE = eINSTANCE.getRole();
 
         /**
-         * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @generated
          */
         EReference ROLE__PARAMETERS = eINSTANCE.getRole_Parameters();
@@ -1367,6 +1515,7 @@ public interface TypePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Constraints</b></em>' reference list feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @generated
          */
         EReference ROLE__CONSTRAINTS = eINSTANCE.getRole_Constraints();
@@ -1380,8 +1529,10 @@ public interface TypePackage extends EPackage {
         EReference ROLE__STEREOTYPE = eINSTANCE.getRole_Stereotype();
 
         /**
-         * The meta object literal for the '{@link org.scaledl.architecturaltemplates.type.impl.OCLConstraintImpl <em>OCL Constraint</em>}' class.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '
+         * {@link org.scaledl.architecturaltemplates.type.impl.OCLConstraintImpl
+         * <em>OCL Constraint</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.scaledl.architecturaltemplates.type.impl.OCLConstraintImpl
          * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getOCLConstraint()
          * @generated
@@ -1397,8 +1548,10 @@ public interface TypePackage extends EPackage {
         EAttribute OCL_CONSTRAINT__CONSTRAINT = eINSTANCE.getOCLConstraint_Constraint();
 
         /**
-         * The meta object literal for the '{@link org.scaledl.architecturaltemplates.type.impl.QVTOCompletionImpl <em>QVTO Completion</em>}' class.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '
+         * {@link org.scaledl.architecturaltemplates.type.impl.QVTOCompletionImpl
+         * <em>QVTO Completion</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.scaledl.architecturaltemplates.type.impl.QVTOCompletionImpl
          * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getQVTOCompletion()
          * @generated
@@ -1414,8 +1567,10 @@ public interface TypePackage extends EPackage {
         EAttribute QVTO_COMPLETION__QVTO_FILE_URI = eINSTANCE.getQVTOCompletion_QvtoFileURI();
 
         /**
-         * The meta object literal for the '{@link org.scaledl.architecturaltemplates.type.impl.CompletionImpl <em>Completion</em>}' class.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '
+         * {@link org.scaledl.architecturaltemplates.type.impl.CompletionImpl <em>Completion</em>}'
+         * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.scaledl.architecturaltemplates.type.impl.CompletionImpl
          * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getCompletion()
          * @generated
@@ -1431,15 +1586,18 @@ public interface TypePackage extends EPackage {
         EReference COMPLETION__AT = eINSTANCE.getCompletion_AT();
 
         /**
-         * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @generated
          */
         EReference COMPLETION__PARAMETERS = eINSTANCE.getCompletion_Parameters();
 
         /**
-         * The meta object literal for the '{@link org.scaledl.architecturaltemplates.type.impl.CompletionParameterImpl <em>Completion Parameter</em>}' class.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '
+         * {@link org.scaledl.architecturaltemplates.type.impl.CompletionParameterImpl
+         * <em>Completion Parameter</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.scaledl.architecturaltemplates.type.impl.CompletionParameterImpl
          * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getCompletionParameter()
          * @generated
@@ -1449,14 +1607,17 @@ public interface TypePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Completion</b></em>' container reference feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @generated
          */
         EReference COMPLETION_PARAMETER__COMPLETION = eINSTANCE.getCompletionParameter_Completion();
 
         /**
-         * The meta object literal for the '{@link org.scaledl.architecturaltemplates.type.impl.GenericTemplateCompletionParameterImpl <em>Generic Template Completion Parameter</em>}' class.
-         * <!-- begin-user-doc --> <!--
+         * The meta object literal for the '
+         * {@link org.scaledl.architecturaltemplates.type.impl.GenericTemplateCompletionParameterImpl
+         * <em>Generic Template Completion Parameter</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
+         *
          * @see org.scaledl.architecturaltemplates.type.impl.GenericTemplateCompletionParameterImpl
          * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getGenericTemplateCompletionParameter()
          * @generated
@@ -1464,10 +1625,13 @@ public interface TypePackage extends EPackage {
         EClass GENERIC_TEMPLATE_COMPLETION_PARAMETER = eINSTANCE.getGenericTemplateCompletionParameter();
 
         /**
-         * The meta object literal for the '{@link org.scaledl.architecturaltemplates.type.impl.GenericBlackboardCompletionParameterImpl <em>Generic Blackboard Completion Parameter</em>}' class.
-         * <!-- begin-user-doc --> <!--
+         * The meta object literal for the '
+         * {@link org.scaledl.architecturaltemplates.type.impl.GenericBlackboardCompletionParameterImpl
+         * <em>Generic Blackboard Completion Parameter</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
-         * @see org.scaledl.architecturaltemplates.type.impl.GenericBlackboardCompletionParameterImpl
+         *
+         * @see org.scaledl.architecturaltemplates.type.impl.
+         *      GenericBlackboardCompletionParameterImpl
          * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getGenericBlackboardCompletionParameter()
          * @generated
          */
@@ -1483,9 +1647,11 @@ public interface TypePackage extends EPackage {
                 .getGenericBlackboardCompletionParameter_FileExtension();
 
         /**
-         * The meta object literal for the '{@link org.scaledl.architecturaltemplates.type.impl.PCMBlackboardCompletionParameterImpl <em>PCM Blackboard Completion Parameter</em>}' class.
-         * <!-- begin-user-doc --> <!--
+         * The meta object literal for the '
+         * {@link org.scaledl.architecturaltemplates.type.impl.PCMBlackboardCompletionParameterImpl
+         * <em>PCM Blackboard Completion Parameter</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
+         *
          * @see org.scaledl.architecturaltemplates.type.impl.PCMBlackboardCompletionParameterImpl
          * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getPCMBlackboardCompletionParameter()
          * @generated
@@ -1502,9 +1668,11 @@ public interface TypePackage extends EPackage {
                 .getPCMBlackboardCompletionParameter_FileExtension();
 
         /**
-         * The meta object literal for the '{@link org.scaledl.architecturaltemplates.type.impl.PCMTemplateCompletionParameterImpl <em>PCM Template Completion Parameter</em>}' class.
-         * <!-- begin-user-doc --> <!--
+         * The meta object literal for the '
+         * {@link org.scaledl.architecturaltemplates.type.impl.PCMTemplateCompletionParameterImpl
+         * <em>PCM Template Completion Parameter</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
+         *
          * @see org.scaledl.architecturaltemplates.type.impl.PCMTemplateCompletionParameterImpl
          * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getPCMTemplateCompletionParameter()
          * @generated
@@ -1512,8 +1680,10 @@ public interface TypePackage extends EPackage {
         EClass PCM_TEMPLATE_COMPLETION_PARAMETER = eINSTANCE.getPCMTemplateCompletionParameter();
 
         /**
-         * The meta object literal for the '{@link org.scaledl.architecturaltemplates.type.impl.TemplateProvidingEntityImpl <em>Template Providing Entity</em>}' class.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '
+         * {@link org.scaledl.architecturaltemplates.type.impl.TemplateProvidingEntityImpl
+         * <em>Template Providing Entity</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.scaledl.architecturaltemplates.type.impl.TemplateProvidingEntityImpl
          * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getTemplateProvidingEntity()
          * @generated
@@ -1523,15 +1693,18 @@ public interface TypePackage extends EPackage {
         /**
          * The meta object literal for the '<em><b>Template File URI</b></em>' attribute feature.
          * <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @generated
          */
         EAttribute TEMPLATE_PROVIDING_ENTITY__TEMPLATE_FILE_URI = eINSTANCE
                 .getTemplateProvidingEntity_TemplateFileURI();
 
         /**
-         * The meta object literal for the '{@link org.scaledl.architecturaltemplates.type.impl.PCMOutputCompletionParameterImpl <em>PCM Output Completion Parameter</em>}' class.
-         * <!-- begin-user-doc --> <!--
+         * The meta object literal for the '
+         * {@link org.scaledl.architecturaltemplates.type.impl.PCMOutputCompletionParameterImpl
+         * <em>PCM Output Completion Parameter</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
+         *
          * @see org.scaledl.architecturaltemplates.type.impl.PCMOutputCompletionParameterImpl
          * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getPCMOutputCompletionParameter()
          * @generated
@@ -1548,9 +1721,11 @@ public interface TypePackage extends EPackage {
                 .getPCMOutputCompletionParameter_FileExtension();
 
         /**
-         * The meta object literal for the '{@link org.scaledl.architecturaltemplates.type.impl.GenericOutputCompletionParameterImpl <em>Generic Output Completion Parameter</em>}' class.
-         * <!-- begin-user-doc --> <!--
+         * The meta object literal for the '
+         * {@link org.scaledl.architecturaltemplates.type.impl.GenericOutputCompletionParameterImpl
+         * <em>Generic Output Completion Parameter</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
+         *
          * @see org.scaledl.architecturaltemplates.type.impl.GenericOutputCompletionParameterImpl
          * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getGenericOutputCompletionParameter()
          * @generated
@@ -1567,8 +1742,21 @@ public interface TypePackage extends EPackage {
                 .getGenericOutputCompletionParameter_FileExtension();
 
         /**
-         * The meta object literal for the '{@link org.scaledl.architecturaltemplates.type.PCMFileExtensions <em>PCM File Extensions</em>}' enum.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '
+         * {@link org.scaledl.architecturaltemplates.type.impl.TemplateImpl <em>Template</em>}'
+         * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.scaledl.architecturaltemplates.type.impl.TemplateImpl
+         * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getTemplate()
+         * @generated
+         */
+        EClass TEMPLATE = eINSTANCE.getTemplate();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.scaledl.architecturaltemplates.type.PCMFileExtensions
+         * <em>PCM File Extensions</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
          * @see org.scaledl.architecturaltemplates.type.PCMFileExtensions
          * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getPCMFileExtensions()
          * @generated

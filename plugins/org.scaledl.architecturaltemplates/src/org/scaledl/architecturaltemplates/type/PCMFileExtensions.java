@@ -87,7 +87,7 @@ public enum PCMFileExtensions implements Enumerator {
      */
     MONITORREPOSITORY(6, "MONITORREPOSITORY", "monitorrepository"),
     /**
-     * The ' <em><b>PCMMEASURINGPOINT</b></em>' literal object. <!-- begin-user-doc --> <!--
+     * The '<em><b>PCMMEASURINGPOINT</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @see #PCMMEASURINGPOINT_VALUE
@@ -104,16 +104,7 @@ public enum PCMFileExtensions implements Enumerator {
      * @generated
      * @ordered
      */
-    SERVICELEVELOBJECTIVE(8, "SERVICELEVELOBJECTIVE", "slo"),
-    /**
-     * The '<em><b>EXPERIMENTS</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     *
-     * @see #EXPERIMENTS_VALUE
-     * @generated
-     * @ordered
-     */
-    EXPERIMENTS(9, "EXPERIMENTS", "experiments");
+    SERVICELEVELOBJECTIVE(8, "SERVICELEVELOBJECTIVE", "slo");
 
     /**
      * The '<em><b>SYSTEM</b></em>' literal value. <!-- begin-user-doc -->
@@ -251,21 +242,6 @@ public enum PCMFileExtensions implements Enumerator {
     public static final int SERVICELEVELOBJECTIVE_VALUE = 8;
 
     /**
-     * The '<em><b>EXPERIMENTS</b></em>' literal value. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of '<em><b>EXPERIMENTS</b></em>' literal object isn't clear, there really
-     * should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-     *
-     * @see #EXPERIMENTS
-     * @model literal="experiments"
-     * @generated
-     * @ordered
-     */
-    public static final int EXPERIMENTS_VALUE = 9;
-
-    /**
      * An array of all the '<em><b>PCM File Extensions</b></em>' enumerators. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      *
@@ -273,7 +249,7 @@ public enum PCMFileExtensions implements Enumerator {
      */
     private static final PCMFileExtensions[] VALUES_ARRAY = new PCMFileExtensions[] { SYSTEM, ALLOCATION,
             RESOURCEENVIRONMENT, REPOSITORY, USAGEMODEL, RESOURCETYPE, MONITORREPOSITORY, PCMMEASURINGPOINT,
-            SERVICELEVELOBJECTIVE, EXPERIMENTS, };
+            SERVICELEVELOBJECTIVE, };
 
     /**
      * A public read-only list of all the '<em><b>PCM File Extensions</b></em>' enumerators. <!--
@@ -345,8 +321,6 @@ public enum PCMFileExtensions implements Enumerator {
             return PCMMEASURINGPOINT;
         case SERVICELEVELOBJECTIVE_VALUE:
             return SERVICELEVELOBJECTIVE;
-        case EXPERIMENTS_VALUE:
-            return EXPERIMENTS;
         }
         return null;
     }

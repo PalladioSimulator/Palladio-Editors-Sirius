@@ -14,16 +14,19 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.scaledl.architecturaltemplates.type.impl.TemplateProvidingEntityImpl#getTemplateFileURI <em>Template File URI</em>}</li>
+ * <li>
+ * {@link org.scaledl.architecturaltemplates.type.impl.TemplateProvidingEntityImpl#getTemplateFileURI
+ * <em>Template File URI</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class TemplateProvidingEntityImpl extends CDOObjectImpl implements TemplateProvidingEntity {
+public class TemplateProvidingEntityImpl extends CDOObjectImpl implements TemplateProvidingEntity {
 
     /**
-     * The default value of the '{@link #getTemplateFileURI() <em>Template File URI</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getTemplateFileURI() <em>Template File URI</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @see #getTemplateFileURI()
      * @generated
      * @ordered
@@ -32,6 +35,7 @@ public abstract class TemplateProvidingEntityImpl extends CDOObjectImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     protected TemplateProvidingEntityImpl() {
@@ -40,6 +44,7 @@ public abstract class TemplateProvidingEntityImpl extends CDOObjectImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -49,6 +54,7 @@ public abstract class TemplateProvidingEntityImpl extends CDOObjectImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -58,46 +64,50 @@ public abstract class TemplateProvidingEntityImpl extends CDOObjectImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
     public String getTemplateFileURI() {
-        return (String) eDynamicGet(TypePackage.TEMPLATE_PROVIDING_ENTITY__TEMPLATE_FILE_URI,
+        return (String) this.eDynamicGet(TypePackage.TEMPLATE_PROVIDING_ENTITY__TEMPLATE_FILE_URI,
                 TypePackage.Literals.TEMPLATE_PROVIDING_ENTITY__TEMPLATE_FILE_URI, true, true);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
-    public void setTemplateFileURI(String newTemplateFileURI) {
-        eDynamicSet(TypePackage.TEMPLATE_PROVIDING_ENTITY__TEMPLATE_FILE_URI,
+    public void setTemplateFileURI(final String newTemplateFileURI) {
+        this.eDynamicSet(TypePackage.TEMPLATE_PROVIDING_ENTITY__TEMPLATE_FILE_URI,
                 TypePackage.Literals.TEMPLATE_PROVIDING_ENTITY__TEMPLATE_FILE_URI, newTemplateFileURI);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
-    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    public Object eGet(final int featureID, final boolean resolve, final boolean coreType) {
         switch (featureID) {
         case TypePackage.TEMPLATE_PROVIDING_ENTITY__TEMPLATE_FILE_URI:
-            return getTemplateFileURI();
+            return this.getTemplateFileURI();
         }
         return super.eGet(featureID, resolve, coreType);
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
-    public void eSet(int featureID, Object newValue) {
+    public void eSet(final int featureID, final Object newValue) {
         switch (featureID) {
         case TypePackage.TEMPLATE_PROVIDING_ENTITY__TEMPLATE_FILE_URI:
-            setTemplateFileURI((String) newValue);
+            this.setTemplateFileURI((String) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -105,13 +115,14 @@ public abstract class TemplateProvidingEntityImpl extends CDOObjectImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
-    public void eUnset(int featureID) {
+    public void eUnset(final int featureID) {
         switch (featureID) {
         case TypePackage.TEMPLATE_PROVIDING_ENTITY__TEMPLATE_FILE_URI:
-            setTemplateFileURI(TEMPLATE_FILE_URI_EDEFAULT);
+            this.setTemplateFileURI(TEMPLATE_FILE_URI_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -119,14 +130,15 @@ public abstract class TemplateProvidingEntityImpl extends CDOObjectImpl implemen
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
-    public boolean eIsSet(int featureID) {
+    public boolean eIsSet(final int featureID) {
         switch (featureID) {
         case TypePackage.TEMPLATE_PROVIDING_ENTITY__TEMPLATE_FILE_URI:
-            return TEMPLATE_FILE_URI_EDEFAULT == null ? getTemplateFileURI() != null
-                    : !TEMPLATE_FILE_URI_EDEFAULT.equals(getTemplateFileURI());
+            return TEMPLATE_FILE_URI_EDEFAULT == null ? this.getTemplateFileURI() != null
+                    : !TEMPLATE_FILE_URI_EDEFAULT.equals(this.getTemplateFileURI());
         }
         return super.eIsSet(featureID);
     }

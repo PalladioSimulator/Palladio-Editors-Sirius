@@ -6,6 +6,8 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.palladiosimulator.pcm.core.entity.Entity;
+import org.palladiosimulator.pcm.core.entity.NamedElement;
 import org.scaledl.architecturaltemplates.type.AT;
 import org.scaledl.architecturaltemplates.type.Completion;
 import org.scaledl.architecturaltemplates.type.CompletionParameter;
@@ -21,31 +23,31 @@ import org.scaledl.architecturaltemplates.type.Parameter;
 import org.scaledl.architecturaltemplates.type.QVTOCompletion;
 import org.scaledl.architecturaltemplates.type.Repository;
 import org.scaledl.architecturaltemplates.type.Role;
+import org.scaledl.architecturaltemplates.type.Template;
 import org.scaledl.architecturaltemplates.type.TemplateProvidingEntity;
 import org.scaledl.architecturaltemplates.type.TypePackage;
 
 import de.uka.ipd.sdq.identifier.Identifier;
-import org.palladiosimulator.pcm.core.entity.Entity;
-import org.palladiosimulator.pcm.core.entity.NamedElement;
 
 /**
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides an adapter
  * <code>createXXX</code> method for each class of the model. <!-- end-user-doc -->
+ *
  * @see org.scaledl.architecturaltemplates.type.TypePackage
  * @generated
  */
 public class TypeAdapterFactory extends AdapterFactoryImpl {
 
     /**
-     * The cached model package.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     protected static TypePackage modelPackage;
 
     /**
-     * Creates an instance of the adapter factory.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     public TypeAdapterFactory() {
@@ -55,15 +57,15 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Returns whether this factory is applicable for the type of the object.
-     * <!-- begin-user-doc
+     * Returns whether this factory is applicable for the type of the object. <!-- begin-user-doc
      * --> This implementation returns <code>true</code> if the object is either the model's package
      * or is an instance object of the model. <!-- end-user-doc -->
+     *
      * @return whether this factory is applicable for the type of the object.
      * @generated
      */
     @Override
-    public boolean isFactoryForType(Object object) {
+    public boolean isFactoryForType(final Object object) {
         if (object == modelPackage) {
             return true;
         }
@@ -74,131 +76,138 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * The switch that delegates to the <code>createXXX</code> methods.
-     * <!-- begin-user-doc --> <!--
+     * The switch that delegates to the <code>createXXX</code> methods. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
      * @generated
      */
     protected TypeSwitch<Adapter> modelSwitch = new TypeSwitch<Adapter>() {
 
         @Override
-        public Adapter caseAT(AT object) {
-            return createATAdapter();
+        public Adapter caseAT(final AT object) {
+            return TypeAdapterFactory.this.createATAdapter();
         }
 
         @Override
-        public Adapter caseConstraint(Constraint object) {
-            return createConstraintAdapter();
+        public Adapter caseConstraint(final Constraint object) {
+            return TypeAdapterFactory.this.createConstraintAdapter();
         }
 
         @Override
-        public Adapter caseParameter(Parameter object) {
-            return createParameterAdapter();
+        public Adapter caseParameter(final Parameter object) {
+            return TypeAdapterFactory.this.createParameterAdapter();
         }
 
         @Override
-        public Adapter caseRepository(Repository object) {
-            return createRepositoryAdapter();
+        public Adapter caseRepository(final Repository object) {
+            return TypeAdapterFactory.this.createRepositoryAdapter();
         }
 
         @Override
-        public Adapter caseRole(Role object) {
-            return createRoleAdapter();
+        public Adapter caseRole(final Role object) {
+            return TypeAdapterFactory.this.createRoleAdapter();
         }
 
         @Override
-        public Adapter caseOCLConstraint(OCLConstraint object) {
-            return createOCLConstraintAdapter();
+        public Adapter caseOCLConstraint(final OCLConstraint object) {
+            return TypeAdapterFactory.this.createOCLConstraintAdapter();
         }
 
         @Override
-        public Adapter caseQVTOCompletion(QVTOCompletion object) {
-            return createQVTOCompletionAdapter();
+        public Adapter caseQVTOCompletion(final QVTOCompletion object) {
+            return TypeAdapterFactory.this.createQVTOCompletionAdapter();
         }
 
         @Override
-        public Adapter caseCompletion(Completion object) {
-            return createCompletionAdapter();
+        public Adapter caseCompletion(final Completion object) {
+            return TypeAdapterFactory.this.createCompletionAdapter();
         }
 
         @Override
-        public Adapter caseCompletionParameter(CompletionParameter object) {
-            return createCompletionParameterAdapter();
+        public Adapter caseCompletionParameter(final CompletionParameter object) {
+            return TypeAdapterFactory.this.createCompletionParameterAdapter();
         }
 
         @Override
-        public Adapter caseGenericTemplateCompletionParameter(GenericTemplateCompletionParameter object) {
-            return createGenericTemplateCompletionParameterAdapter();
+        public Adapter caseGenericTemplateCompletionParameter(final GenericTemplateCompletionParameter object) {
+            return TypeAdapterFactory.this.createGenericTemplateCompletionParameterAdapter();
         }
 
         @Override
-        public Adapter caseGenericBlackboardCompletionParameter(GenericBlackboardCompletionParameter object) {
-            return createGenericBlackboardCompletionParameterAdapter();
+        public Adapter caseGenericBlackboardCompletionParameter(final GenericBlackboardCompletionParameter object) {
+            return TypeAdapterFactory.this.createGenericBlackboardCompletionParameterAdapter();
         }
 
         @Override
-        public Adapter casePCMBlackboardCompletionParameter(PCMBlackboardCompletionParameter object) {
-            return createPCMBlackboardCompletionParameterAdapter();
+        public Adapter casePCMBlackboardCompletionParameter(final PCMBlackboardCompletionParameter object) {
+            return TypeAdapterFactory.this.createPCMBlackboardCompletionParameterAdapter();
         }
 
         @Override
-        public Adapter casePCMTemplateCompletionParameter(PCMTemplateCompletionParameter object) {
-            return createPCMTemplateCompletionParameterAdapter();
+        public Adapter casePCMTemplateCompletionParameter(final PCMTemplateCompletionParameter object) {
+            return TypeAdapterFactory.this.createPCMTemplateCompletionParameterAdapter();
         }
 
         @Override
-        public Adapter caseTemplateProvidingEntity(TemplateProvidingEntity object) {
-            return createTemplateProvidingEntityAdapter();
+        public Adapter caseTemplateProvidingEntity(final TemplateProvidingEntity object) {
+            return TypeAdapterFactory.this.createTemplateProvidingEntityAdapter();
         }
 
         @Override
-        public Adapter casePCMOutputCompletionParameter(PCMOutputCompletionParameter object) {
-            return createPCMOutputCompletionParameterAdapter();
+        public Adapter casePCMOutputCompletionParameter(final PCMOutputCompletionParameter object) {
+            return TypeAdapterFactory.this.createPCMOutputCompletionParameterAdapter();
         }
 
         @Override
-        public Adapter caseGenericOutputCompletionParameter(GenericOutputCompletionParameter object) {
-            return createGenericOutputCompletionParameterAdapter();
+        public Adapter caseGenericOutputCompletionParameter(final GenericOutputCompletionParameter object) {
+            return TypeAdapterFactory.this.createGenericOutputCompletionParameterAdapter();
         }
 
         @Override
-        public Adapter caseIdentifier(Identifier object) {
-            return createIdentifierAdapter();
+        public Adapter caseTemplate(final Template object) {
+            return TypeAdapterFactory.this.createTemplateAdapter();
         }
 
         @Override
-        public Adapter caseNamedElement(NamedElement object) {
-            return createNamedElementAdapter();
+        public Adapter caseIdentifier(final Identifier object) {
+            return TypeAdapterFactory.this.createIdentifierAdapter();
         }
 
         @Override
-        public Adapter caseEntity(Entity object) {
-            return createEntityAdapter();
+        public Adapter caseNamedElement(final NamedElement object) {
+            return TypeAdapterFactory.this.createNamedElementAdapter();
         }
 
         @Override
-        public Adapter defaultCase(EObject object) {
-            return createEObjectAdapter();
+        public Adapter caseEntity(final Entity object) {
+            return TypeAdapterFactory.this.createEntityAdapter();
+        }
+
+        @Override
+        public Adapter defaultCase(final EObject object) {
+            return TypeAdapterFactory.this.createEObjectAdapter();
         }
     };
 
     /**
-     * Creates an adapter for the <code>target</code>.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @param target the object to adapt.
+     * Creates an adapter for the <code>target</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param target
+     *            the object to adapt.
      * @return the adapter for the <code>target</code>.
      * @generated
      */
     @Override
-    public Adapter createAdapter(Notifier target) {
-        return modelSwitch.doSwitch((EObject) target);
+    public Adapter createAdapter(final Notifier target) {
+        return this.modelSwitch.doSwitch((EObject) target);
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.scaledl.architecturaltemplates.type.AT <em>AT</em>}'.
-     * <!-- begin-user-doc --> This
+     * Creates a new adapter for an object of class '
+     * {@link org.scaledl.architecturaltemplates.type.AT <em>AT</em>}'. <!-- begin-user-doc --> This
      * default implementation returns null so that we can easily ignore cases; it's useful to ignore
      * a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.type.AT
      * @generated
@@ -253,10 +262,11 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.scaledl.architecturaltemplates.type.Role <em>Role</em>}'.
-     * <!-- begin-user-doc -->
+     * Creates a new adapter for an object of class '
+     * {@link org.scaledl.architecturaltemplates.type.Role <em>Role</em>}'. <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore cases; it's useful to
      * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.type.Role
      * @generated
@@ -281,10 +291,12 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.scaledl.architecturaltemplates.type.QVTOCompletion <em>QVTO Completion</em>}'.
+     * Creates a new adapter for an object of class '
+     * {@link org.scaledl.architecturaltemplates.type.QVTOCompletion <em>QVTO Completion</em>}'.
      * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore
      * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
      * end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.type.QVTOCompletion
      * @generated
@@ -309,10 +321,12 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.scaledl.architecturaltemplates.type.CompletionParameter <em>Completion Parameter</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns
+     * Creates a new adapter for an object of class '
+     * {@link org.scaledl.architecturaltemplates.type.CompletionParameter
+     * <em>Completion Parameter</em>}'. <!-- begin-user-doc --> This default implementation returns
      * null so that we can easily ignore cases; it's useful to ignore a case when inheritance will
      * catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.type.CompletionParameter
      * @generated
@@ -322,10 +336,12 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.scaledl.architecturaltemplates.type.GenericTemplateCompletionParameter <em>Generic Template Completion Parameter</em>}'.
-     * <!-- begin-user-doc --> This default
+     * Creates a new adapter for an object of class '
+     * {@link org.scaledl.architecturaltemplates.type.GenericTemplateCompletionParameter
+     * <em>Generic Template Completion Parameter</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's useful to ignore a case
      * when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.type.GenericTemplateCompletionParameter
      * @generated
@@ -335,10 +351,12 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.scaledl.architecturaltemplates.type.GenericBlackboardCompletionParameter <em>Generic Blackboard Completion Parameter</em>}'.
-     * <!-- begin-user-doc --> This default
+     * Creates a new adapter for an object of class '
+     * {@link org.scaledl.architecturaltemplates.type.GenericBlackboardCompletionParameter
+     * <em>Generic Blackboard Completion Parameter</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's useful to ignore a case
      * when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.type.GenericBlackboardCompletionParameter
      * @generated
@@ -348,10 +366,12 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.scaledl.architecturaltemplates.type.PCMBlackboardCompletionParameter <em>PCM Blackboard Completion Parameter</em>}'.
-     * <!-- begin-user-doc --> This default
+     * Creates a new adapter for an object of class '
+     * {@link org.scaledl.architecturaltemplates.type.PCMBlackboardCompletionParameter
+     * <em>PCM Blackboard Completion Parameter</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's useful to ignore a case
      * when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.type.PCMBlackboardCompletionParameter
      * @generated
@@ -361,10 +381,12 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.scaledl.architecturaltemplates.type.PCMTemplateCompletionParameter <em>PCM Template Completion Parameter</em>}'.
-     * <!-- begin-user-doc --> This default
+     * Creates a new adapter for an object of class '
+     * {@link org.scaledl.architecturaltemplates.type.PCMTemplateCompletionParameter
+     * <em>PCM Template Completion Parameter</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's useful to ignore a case
      * when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.type.PCMTemplateCompletionParameter
      * @generated
@@ -374,10 +396,12 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.scaledl.architecturaltemplates.type.TemplateProvidingEntity <em>Template Providing Entity</em>}'.
-     * <!-- begin-user-doc --> This default implementation
+     * Creates a new adapter for an object of class '
+     * {@link org.scaledl.architecturaltemplates.type.TemplateProvidingEntity
+     * <em>Template Providing Entity</em>}'. <!-- begin-user-doc --> This default implementation
      * returns null so that we can easily ignore cases; it's useful to ignore a case when
      * inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.type.TemplateProvidingEntity
      * @generated
@@ -387,10 +411,12 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter <em>PCM Output Completion Parameter</em>}'.
-     * <!-- begin-user-doc --> This default
+     * Creates a new adapter for an object of class '
+     * {@link org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter
+     * <em>PCM Output Completion Parameter</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's useful to ignore a case
      * when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter
      * @generated
@@ -400,10 +426,12 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.scaledl.architecturaltemplates.type.GenericOutputCompletionParameter <em>Generic Output Completion Parameter</em>}'.
-     * <!-- begin-user-doc --> This default
+     * Creates a new adapter for an object of class '
+     * {@link org.scaledl.architecturaltemplates.type.GenericOutputCompletionParameter
+     * <em>Generic Output Completion Parameter</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's useful to ignore a case
      * when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.scaledl.architecturaltemplates.type.GenericOutputCompletionParameter
      * @generated
@@ -413,10 +441,26 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link de.uka.ipd.sdq.identifier.Identifier <em>Identifier</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so
+     * Creates a new adapter for an object of class '
+     * {@link org.scaledl.architecturaltemplates.type.Template <em>Template</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+     * end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.scaledl.architecturaltemplates.type.Template
+     * @generated
+     */
+    public Adapter createTemplateAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link de.uka.ipd.sdq.identifier.Identifier
+     * <em>Identifier</em>}'. <!-- begin-user-doc --> This default implementation returns null so
      * that we can easily ignore cases; it's useful to ignore a case when inheritance will catch all
      * the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see de.uka.ipd.sdq.identifier.Identifier
      * @generated
@@ -441,10 +485,11 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.palladiosimulator.pcm.core.entity.Entity <em>Entity</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the
-     * cases anyway. <!-- end-user-doc -->
+     * Creates a new adapter for an object of class '
+     * {@link org.palladiosimulator.pcm.core.entity.Entity <em>Entity</em>}'. <!-- begin-user-doc
+     * --> This default implementation returns null so that we can easily ignore cases; it's useful
+     * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @see org.palladiosimulator.pcm.core.entity.Entity
      * @generated
@@ -454,9 +499,9 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for the default case.
-     * <!-- begin-user-doc --> This default
+     * Creates a new adapter for the default case. <!-- begin-user-doc --> This default
      * implementation returns null. <!-- end-user-doc -->
+     *
      * @return the new adapter.
      * @generated
      */
