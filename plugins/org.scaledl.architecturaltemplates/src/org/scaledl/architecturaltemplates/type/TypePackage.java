@@ -829,23 +829,33 @@ public interface TypePackage extends EPackage {
     int GENERIC_OUTPUT_COMPLETION_PARAMETER_FEATURE_COUNT = COMPLETION_PARAMETER_FEATURE_COUNT + 1;
 
     /**
-     * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.impl.TemplateImpl
-     * <em>Template</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the '
+     * {@link org.scaledl.architecturaltemplates.type.impl.ReconfigurationFolderImpl
+     * <em>Reconfiguration Folder</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @see org.scaledl.architecturaltemplates.type.impl.TemplateImpl
-     * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getTemplate()
+     * @see org.scaledl.architecturaltemplates.type.impl.ReconfigurationFolderImpl
+     * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getReconfigurationFolder()
      * @generated
      */
-    int TEMPLATE = 16;
+    int RECONFIGURATION_FOLDER = 16;
 
     /**
-     * The number of structural features of the '<em>Template</em>' class. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The feature id for the '<em><b>Folder URI</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int TEMPLATE_FEATURE_COUNT = 0;
+    int RECONFIGURATION_FOLDER__FOLDER_URI = 0;
+
+    /**
+     * The number of structural features of the '<em>Reconfiguration Folder</em>' class. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int RECONFIGURATION_FOLDER_FEATURE_COUNT = 1;
 
     /**
      * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.PCMFileExtensions
@@ -1318,14 +1328,27 @@ public interface TypePackage extends EPackage {
     EAttribute getGenericOutputCompletionParameter_FileExtension();
 
     /**
-     * Returns the meta object for class '{@link org.scaledl.architecturaltemplates.type.Template
-     * <em>Template</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '
+     * {@link org.scaledl.architecturaltemplates.type.ReconfigurationFolder
+     * <em>Reconfiguration Folder</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
-     * @return the meta object for class '<em>Template</em>'.
-     * @see org.scaledl.architecturaltemplates.type.Template
+     * @return the meta object for class '<em>Reconfiguration Folder</em>'.
+     * @see org.scaledl.architecturaltemplates.type.ReconfigurationFolder
      * @generated
      */
-    EClass getTemplate();
+    EClass getReconfigurationFolder();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.scaledl.architecturaltemplates.type.ReconfigurationFolder#getFolderURI
+     * <em>Folder URI</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Folder URI</em>'.
+     * @see org.scaledl.architecturaltemplates.type.ReconfigurationFolder#getFolderURI()
+     * @see #getReconfigurationFolder()
+     * @generated
+     */
+    EAttribute getReconfigurationFolder_FolderURI();
 
     /**
      * Returns the meta object for enum '
@@ -1743,14 +1766,22 @@ public interface TypePackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.scaledl.architecturaltemplates.type.impl.TemplateImpl <em>Template</em>}'
-         * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * {@link org.scaledl.architecturaltemplates.type.impl.ReconfigurationFolderImpl
+         * <em>Reconfiguration Folder</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
-         * @see org.scaledl.architecturaltemplates.type.impl.TemplateImpl
-         * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getTemplate()
+         * @see org.scaledl.architecturaltemplates.type.impl.ReconfigurationFolderImpl
+         * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getReconfigurationFolder()
          * @generated
          */
-        EClass TEMPLATE = eINSTANCE.getTemplate();
+        EClass RECONFIGURATION_FOLDER = eINSTANCE.getReconfigurationFolder();
+
+        /**
+         * The meta object literal for the '<em><b>Folder URI</b></em>' attribute feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute RECONFIGURATION_FOLDER__FOLDER_URI = eINSTANCE.getReconfigurationFolder_FolderURI();
 
         /**
          * The meta object literal for the '

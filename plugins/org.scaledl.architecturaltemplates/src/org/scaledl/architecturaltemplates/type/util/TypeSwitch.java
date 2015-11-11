@@ -20,9 +20,9 @@ import org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter;
 import org.scaledl.architecturaltemplates.type.PCMTemplateCompletionParameter;
 import org.scaledl.architecturaltemplates.type.Parameter;
 import org.scaledl.architecturaltemplates.type.QVTOCompletion;
+import org.scaledl.architecturaltemplates.type.ReconfigurationFolder;
 import org.scaledl.architecturaltemplates.type.Repository;
 import org.scaledl.architecturaltemplates.type.Role;
-import org.scaledl.architecturaltemplates.type.Template;
 import org.scaledl.architecturaltemplates.type.TemplateProvidingEntity;
 import org.scaledl.architecturaltemplates.type.TypePackage;
 
@@ -300,9 +300,9 @@ public class TypeSwitch<T> extends Switch<T> {
             }
             return result;
         }
-        case TypePackage.TEMPLATE: {
-            final Template template = (Template) theEObject;
-            T result = this.caseTemplate(template);
+        case TypePackage.RECONFIGURATION_FOLDER: {
+            final ReconfigurationFolder reconfigurationFolder = (ReconfigurationFolder) theEObject;
+            T result = this.caseReconfigurationFolder(reconfigurationFolder);
             if (result == null) {
                 result = this.defaultCase(theEObject);
             }
@@ -563,17 +563,18 @@ public class TypeSwitch<T> extends Switch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Template</em>'. <!--
-     * begin-user-doc --> This implementation returns null; returning a non-null result will
-     * terminate the switch. <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Reconfiguration Folder</em>'. <!-- begin-user-doc --> This implementation returns null;
+     * returning a non-null result will terminate the switch. <!-- end-user-doc -->
      *
      * @param object
      *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Template</em>'.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Reconfiguration Folder</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseTemplate(final Template object) {
+    public T caseReconfigurationFolder(final ReconfigurationFolder object) {
         return null;
     }
 

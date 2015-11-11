@@ -21,9 +21,9 @@ import org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter;
 import org.scaledl.architecturaltemplates.type.PCMTemplateCompletionParameter;
 import org.scaledl.architecturaltemplates.type.Parameter;
 import org.scaledl.architecturaltemplates.type.QVTOCompletion;
+import org.scaledl.architecturaltemplates.type.ReconfigurationFolder;
 import org.scaledl.architecturaltemplates.type.Repository;
 import org.scaledl.architecturaltemplates.type.Role;
-import org.scaledl.architecturaltemplates.type.Template;
 import org.scaledl.architecturaltemplates.type.TemplateProvidingEntity;
 import org.scaledl.architecturaltemplates.type.TypePackage;
 
@@ -164,8 +164,8 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseTemplate(final Template object) {
-            return TypeAdapterFactory.this.createTemplateAdapter();
+        public Adapter caseReconfigurationFolder(final ReconfigurationFolder object) {
+            return TypeAdapterFactory.this.createReconfigurationFolderAdapter();
         }
 
         @Override
@@ -442,16 +442,16 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.scaledl.architecturaltemplates.type.Template <em>Template</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we can easily ignore
-     * cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
-     * end-user-doc -->
+     * {@link org.scaledl.architecturaltemplates.type.ReconfigurationFolder
+     * <em>Reconfiguration Folder</em>}'. <!-- begin-user-doc --> This default implementation
+     * returns null so that we can easily ignore cases; it's useful to ignore a case when
+     * inheritance will catch all the cases anyway. <!-- end-user-doc -->
      *
      * @return the new adapter.
-     * @see org.scaledl.architecturaltemplates.type.Template
+     * @see org.scaledl.architecturaltemplates.type.ReconfigurationFolder
      * @generated
      */
-    public Adapter createTemplateAdapter() {
+    public Adapter createReconfigurationFolderAdapter() {
         return null;
     }
 

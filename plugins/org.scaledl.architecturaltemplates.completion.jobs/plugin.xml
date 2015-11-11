@@ -21,5 +21,13 @@
             workflow_id="workflow.extension.experimentautomation.tabs">
       </workflow_extension>
    </extension>
+   <extension
+         id="org.scaledl.architecturaltemplates.simulizar.configurator"
+         name="Architectural Template: SimuLizar Configurator"
+         point="org.palladiosimulator.simulizar.configurator">
+      <configurator
+            configurator="org.scaledl.architecturaltemplates.completion.config.SimuLizarConfigurator">
+      </configurator>
+   </extension>
 
 </plugin>

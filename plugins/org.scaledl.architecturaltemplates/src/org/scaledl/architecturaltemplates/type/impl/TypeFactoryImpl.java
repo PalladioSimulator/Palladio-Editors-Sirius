@@ -19,10 +19,9 @@ import org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter;
 import org.scaledl.architecturaltemplates.type.PCMTemplateCompletionParameter;
 import org.scaledl.architecturaltemplates.type.Parameter;
 import org.scaledl.architecturaltemplates.type.QVTOCompletion;
+import org.scaledl.architecturaltemplates.type.ReconfigurationFolder;
 import org.scaledl.architecturaltemplates.type.Repository;
 import org.scaledl.architecturaltemplates.type.Role;
-import org.scaledl.architecturaltemplates.type.Template;
-import org.scaledl.architecturaltemplates.type.TemplateProvidingEntity;
 import org.scaledl.architecturaltemplates.type.TypeFactory;
 import org.scaledl.architecturaltemplates.type.TypePackage;
 
@@ -88,14 +87,12 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
             return this.createPCMBlackboardCompletionParameter();
         case TypePackage.PCM_TEMPLATE_COMPLETION_PARAMETER:
             return this.createPCMTemplateCompletionParameter();
-        case TypePackage.TEMPLATE_PROVIDING_ENTITY:
-            return this.createTemplateProvidingEntity();
         case TypePackage.PCM_OUTPUT_COMPLETION_PARAMETER:
             return this.createPCMOutputCompletionParameter();
         case TypePackage.GENERIC_OUTPUT_COMPLETION_PARAMETER:
             return this.createGenericOutputCompletionParameter();
-        case TypePackage.TEMPLATE:
-            return this.createTemplate();
+        case TypePackage.RECONFIGURATION_FOLDER:
+            return this.createReconfigurationFolder();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -247,17 +244,6 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
      * @generated
      */
     @Override
-    public TemplateProvidingEntity createTemplateProvidingEntity() {
-        final TemplateProvidingEntityImpl templateProvidingEntity = new TemplateProvidingEntityImpl();
-        return templateProvidingEntity;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public PCMOutputCompletionParameter createPCMOutputCompletionParameter() {
         final PCMOutputCompletionParameterImpl pcmOutputCompletionParameter = new PCMOutputCompletionParameterImpl();
         return pcmOutputCompletionParameter;
@@ -280,9 +266,9 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
      * @generated
      */
     @Override
-    public Template createTemplate() {
-        final TemplateImpl template = new TemplateImpl();
-        return template;
+    public ReconfigurationFolder createReconfigurationFolder() {
+        final ReconfigurationFolderImpl reconfigurationFolder = new ReconfigurationFolderImpl();
+        return reconfigurationFolder;
     }
 
     /**

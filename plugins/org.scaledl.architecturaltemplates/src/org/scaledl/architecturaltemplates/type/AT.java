@@ -138,12 +138,12 @@ public interface AT extends Entity {
      * <!-- end-user-doc -->
      *
      * @return the value of the '<em>Reconfiguration Rule Folder</em>' containment reference.
-     * @see #setReconfigurationRuleFolder(TemplateProvidingEntity)
+     * @see #setReconfigurationRuleFolder(ReconfigurationFolder)
      * @see org.scaledl.architecturaltemplates.type.TypePackage#getAT_ReconfigurationRuleFolder()
      * @model containment="true"
      * @generated
      */
-    TemplateProvidingEntity getReconfigurationRuleFolder();
+    ReconfigurationFolder getReconfigurationRuleFolder();
 
     /**
      * Sets the value of the '
@@ -156,6 +156,6 @@ public interface AT extends Entity {
      * @see #getReconfigurationRuleFolder()
      * @generated
      */
-    void setReconfigurationRuleFolder(TemplateProvidingEntity value);
+    void setReconfigurationRuleFolder(ReconfigurationFolder value);
 
 } // AT

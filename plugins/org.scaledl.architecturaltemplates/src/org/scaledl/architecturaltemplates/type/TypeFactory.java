@@ -109,15 +109,6 @@ public interface TypeFactory extends EFactory {
     PCMTemplateCompletionParameter createPCMTemplateCompletionParameter();
 
     /**
-     * Returns a new object of class '<em>Template Providing Entity</em>'. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     *
-     * @return a new object of class '<em>Template Providing Entity</em>'.
-     * @generated
-     */
-    TemplateProvidingEntity createTemplateProvidingEntity();
-
-    /**
      * Returns a new object of class '<em>PCM Output Completion Parameter</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      *
@@ -136,13 +127,13 @@ public interface TypeFactory extends EFactory {
     GenericOutputCompletionParameter createGenericOutputCompletionParameter();
 
     /**
-     * Returns a new object of class '<em>Template</em>'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
+     * Returns a new object of class '<em>Reconfiguration Folder</em>'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      *
-     * @return a new object of class '<em>Template</em>'.
+     * @return a new object of class '<em>Reconfiguration Folder</em>'.
      * @generated
      */
-    Template createTemplate();
+    ReconfigurationFolder createReconfigurationFolder();
 
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->

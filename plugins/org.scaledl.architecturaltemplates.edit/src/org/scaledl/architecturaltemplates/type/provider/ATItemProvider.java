@@ -148,13 +148,7 @@ public class ATItemProvider extends EntityItemProvider {
                 TypeFactory.eINSTANCE.createQVTOCompletion()));
 
         newChildDescriptors.add(this.createChildParameter(TypePackage.Literals.AT__RECONFIGURATION_RULE_FOLDER,
-                TypeFactory.eINSTANCE.createGenericTemplateCompletionParameter()));
-
-        newChildDescriptors.add(this.createChildParameter(TypePackage.Literals.AT__RECONFIGURATION_RULE_FOLDER,
-                TypeFactory.eINSTANCE.createPCMTemplateCompletionParameter()));
-
-        newChildDescriptors.add(this.createChildParameter(TypePackage.Literals.AT__RECONFIGURATION_RULE_FOLDER,
-                TypeFactory.eINSTANCE.createTemplateProvidingEntity()));
+                TypeFactory.eINSTANCE.createReconfigurationFolder()));
     }
 
     /**

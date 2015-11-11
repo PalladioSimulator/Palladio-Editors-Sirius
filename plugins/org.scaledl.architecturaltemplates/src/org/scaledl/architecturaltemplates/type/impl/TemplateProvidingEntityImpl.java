@@ -21,7 +21,7 @@ import org.scaledl.architecturaltemplates.type.TypePackage;
  *
  * @generated
  */
-public class TemplateProvidingEntityImpl extends CDOObjectImpl implements TemplateProvidingEntity {
+public abstract class TemplateProvidingEntityImpl extends CDOObjectImpl implements TemplateProvidingEntity {
 
     /**
      * The default value of the '{@link #getTemplateFileURI() <em>Template File URI</em>}'

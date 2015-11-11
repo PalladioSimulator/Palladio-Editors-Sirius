@@ -13,9 +13,9 @@ import org.palladiosimulator.pcm.core.entity.impl.EntityImpl;
 import org.scaledl.architecturaltemplates.type.AT;
 import org.scaledl.architecturaltemplates.type.Completion;
 import org.scaledl.architecturaltemplates.type.Constraint;
+import org.scaledl.architecturaltemplates.type.ReconfigurationFolder;
 import org.scaledl.architecturaltemplates.type.Repository;
 import org.scaledl.architecturaltemplates.type.Role;
-import org.scaledl.architecturaltemplates.type.TemplateProvidingEntity;
 import org.scaledl.architecturaltemplates.type.TypePackage;
 
 /**
@@ -150,8 +150,8 @@ public class ATImpl extends EntityImpl implements AT {
      * @generated
      */
     @Override
-    public TemplateProvidingEntity getReconfigurationRuleFolder() {
-        return (TemplateProvidingEntity) this.eDynamicGet(TypePackage.AT__RECONFIGURATION_RULE_FOLDER,
+    public ReconfigurationFolder getReconfigurationRuleFolder() {
+        return (ReconfigurationFolder) this.eDynamicGet(TypePackage.AT__RECONFIGURATION_RULE_FOLDER,
                 TypePackage.Literals.AT__RECONFIGURATION_RULE_FOLDER, true, true);
     }
 
@@ -160,8 +160,8 @@ public class ATImpl extends EntityImpl implements AT {
      *
      * @generated
      */
-    public NotificationChain basicSetReconfigurationRuleFolder(
-            final TemplateProvidingEntity newReconfigurationRuleFolder, NotificationChain msgs) {
+    public NotificationChain basicSetReconfigurationRuleFolder(final ReconfigurationFolder newReconfigurationRuleFolder,
+            NotificationChain msgs) {
         msgs = this.eDynamicInverseAdd((InternalEObject) newReconfigurationRuleFolder,
                 TypePackage.AT__RECONFIGURATION_RULE_FOLDER, msgs);
         return msgs;
@@ -173,7 +173,7 @@ public class ATImpl extends EntityImpl implements AT {
      * @generated
      */
     @Override
-    public void setReconfigurationRuleFolder(final TemplateProvidingEntity newReconfigurationRuleFolder) {
+    public void setReconfigurationRuleFolder(final ReconfigurationFolder newReconfigurationRuleFolder) {
         this.eDynamicSet(TypePackage.AT__RECONFIGURATION_RULE_FOLDER,
                 TypePackage.Literals.AT__RECONFIGURATION_RULE_FOLDER, newReconfigurationRuleFolder);
     }
@@ -290,7 +290,7 @@ public class ATImpl extends EntityImpl implements AT {
             this.setCompletion((Completion) newValue);
             return;
         case TypePackage.AT__RECONFIGURATION_RULE_FOLDER:
-            this.setReconfigurationRuleFolder((TemplateProvidingEntity) newValue);
+            this.setReconfigurationRuleFolder((ReconfigurationFolder) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -317,7 +317,7 @@ public class ATImpl extends EntityImpl implements AT {
             this.setCompletion((Completion) null);
             return;
         case TypePackage.AT__RECONFIGURATION_RULE_FOLDER:
-            this.setReconfigurationRuleFolder((TemplateProvidingEntity) null);
+            this.setReconfigurationRuleFolder((ReconfigurationFolder) null);
             return;
         }
         super.eUnset(featureID);

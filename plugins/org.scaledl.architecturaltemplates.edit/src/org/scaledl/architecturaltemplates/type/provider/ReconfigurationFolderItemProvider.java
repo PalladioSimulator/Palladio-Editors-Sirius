@@ -8,21 +8,27 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.scaledl.architecturaltemplates.type.ReconfigurationFolder;
+import org.scaledl.architecturaltemplates.type.TypePackage;
 
 /**
- * This is the item provider adapter for a {@link org.scaledl.architecturaltemplates.type.Template}
- * object. <!-- begin-user-doc --> <!-- end-user-doc -->
+ * This is the item provider adapter for a
+ * {@link org.scaledl.architecturaltemplates.type.ReconfigurationFolder} object. <!-- begin-user-doc
+ * --> <!-- end-user-doc -->
  *
  * @generated
  */
-public class TemplateItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+public class ReconfigurationFolderItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
         IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 
     /**
@@ -31,7 +37,7 @@ public class TemplateItemProvider extends ItemProviderAdapter implements IEditin
      *
      * @generated
      */
-    public TemplateItemProvider(final AdapterFactory adapterFactory) {
+    public ReconfigurationFolderItemProvider(final AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -46,18 +52,35 @@ public class TemplateItemProvider extends ItemProviderAdapter implements IEditin
         if (this.itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
+            this.addFolderURIPropertyDescriptor(object);
         }
         return this.itemPropertyDescriptors;
     }
 
     /**
-     * This returns Template.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Folder URI feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addFolderURIPropertyDescriptor(final Object object) {
+        this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(
+                ((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
+                this.getString("_UI_ReconfigurationFolder_folderURI_feature"),
+                this.getString("_UI_PropertyDescriptor_description", "_UI_ReconfigurationFolder_folderURI_feature",
+                        "_UI_ReconfigurationFolder_type"),
+                TypePackage.Literals.RECONFIGURATION_FOLDER__FOLDER_URI, true, false, false,
+                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This returns ReconfigurationFolder.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      */
     @Override
     public Object getImage(final Object object) {
-        return this.overlayImage(object, this.getResourceLocator().getImage("full/obj16/Template"));
+        return this.overlayImage(object, this.getResourceLocator().getImage("full/obj16/ReconfigurationFolder"));
     }
 
     /**
@@ -68,7 +91,9 @@ public class TemplateItemProvider extends ItemProviderAdapter implements IEditin
      */
     @Override
     public String getText(final Object object) {
-        return this.getString("_UI_Template_type");
+        final String label = ((ReconfigurationFolder) object).getFolderURI();
+        return label == null || label.length() == 0 ? this.getString("_UI_ReconfigurationFolder_type")
+                : this.getString("_UI_ReconfigurationFolder_type") + " " + label;
     }
 
     /**
@@ -81,6 +106,12 @@ public class TemplateItemProvider extends ItemProviderAdapter implements IEditin
     @Override
     public void notifyChanged(final Notification notification) {
         this.updateChildren(notification);
+
+        switch (notification.getFeatureID(ReconfigurationFolder.class)) {
+        case TypePackage.RECONFIGURATION_FOLDER__FOLDER_URI:
+            this.fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
+        }
         super.notifyChanged(notification);
     }
 

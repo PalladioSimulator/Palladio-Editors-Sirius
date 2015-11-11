@@ -19,7 +19,7 @@ import org.eclipse.emf.cdo.CDOObject;
  * </ul>
  *
  * @see org.scaledl.architecturaltemplates.type.TypePackage#getTemplateProvidingEntity()
- * @model
+ * @model abstract="true"
  * @extends CDOObject
  * @generated
  */

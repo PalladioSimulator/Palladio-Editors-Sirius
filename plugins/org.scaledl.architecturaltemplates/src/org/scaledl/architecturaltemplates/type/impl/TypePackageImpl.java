@@ -30,9 +30,9 @@ import org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter;
 import org.scaledl.architecturaltemplates.type.PCMTemplateCompletionParameter;
 import org.scaledl.architecturaltemplates.type.Parameter;
 import org.scaledl.architecturaltemplates.type.QVTOCompletion;
+import org.scaledl.architecturaltemplates.type.ReconfigurationFolder;
 import org.scaledl.architecturaltemplates.type.Repository;
 import org.scaledl.architecturaltemplates.type.Role;
-import org.scaledl.architecturaltemplates.type.Template;
 import org.scaledl.architecturaltemplates.type.TemplateProvidingEntity;
 import org.scaledl.architecturaltemplates.type.TypeFactory;
 import org.scaledl.architecturaltemplates.type.TypePackage;
@@ -161,7 +161,7 @@ public class TypePackageImpl extends EPackageImpl implements TypePackage {
      *
      * @generated
      */
-    private EClass templateEClass = null;
+    private EClass reconfigurationFolderEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -655,8 +655,18 @@ public class TypePackageImpl extends EPackageImpl implements TypePackage {
      * @generated
      */
     @Override
-    public EClass getTemplate() {
-        return this.templateEClass;
+    public EClass getReconfigurationFolder() {
+        return this.reconfigurationFolderEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getReconfigurationFolder_FolderURI() {
+        return (EAttribute) this.reconfigurationFolderEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -758,7 +768,8 @@ public class TypePackageImpl extends EPackageImpl implements TypePackage {
         this.createEAttribute(this.genericOutputCompletionParameterEClass,
                 GENERIC_OUTPUT_COMPLETION_PARAMETER__FILE_EXTENSION);
 
-        this.templateEClass = this.createEClass(TEMPLATE);
+        this.reconfigurationFolderEClass = this.createEClass(RECONFIGURATION_FOLDER);
+        this.createEAttribute(this.reconfigurationFolderEClass, RECONFIGURATION_FOLDER__FOLDER_URI);
 
         // Create enums
         this.pcmFileExtensionsEEnum = this.createEEnum(PCM_FILE_EXTENSIONS);
@@ -833,7 +844,7 @@ public class TypePackageImpl extends EPackageImpl implements TypePackage {
         this.initEReference(this.getAT_Completion(), this.getCompletion(), this.getCompletion_AT(), "completion", null,
                 1, 1, org.scaledl.architecturaltemplates.type.AT.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        this.initEReference(this.getAT_ReconfigurationRuleFolder(), this.getTemplateProvidingEntity(), null,
+        this.initEReference(this.getAT_ReconfigurationRuleFolder(), this.getReconfigurationFolder(), null,
                 "reconfigurationRuleFolder", null, 0, 1, org.scaledl.architecturaltemplates.type.AT.class,
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
                 IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -924,7 +935,7 @@ public class TypePackageImpl extends EPackageImpl implements TypePackage {
                 "PCMTemplateCompletionParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         this.initEClass(this.templateProvidingEntityEClass, TemplateProvidingEntity.class, "TemplateProvidingEntity",
-                !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+                IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         this.initEAttribute(this.getTemplateProvidingEntity_TemplateFileURI(), theEcorePackage.getEString(),
                 "templateFileURI", null, 1, 1, TemplateProvidingEntity.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -941,8 +952,11 @@ public class TypePackageImpl extends EPackageImpl implements TypePackage {
                 "fileExtension", null, 1, 1, GenericOutputCompletionParameter.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-        this.initEClass(this.templateEClass, Template.class, "Template", !IS_ABSTRACT, !IS_INTERFACE,
-                IS_GENERATED_INSTANCE_CLASS);
+        this.initEClass(this.reconfigurationFolderEClass, ReconfigurationFolder.class, "ReconfigurationFolder",
+                !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        this.initEAttribute(this.getReconfigurationFolder_FolderURI(), theEcorePackage.getEString(), "folderURI", null,
+                1, 1, ReconfigurationFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         // Initialize enums and add enum literals
         this.initEEnum(this.pcmFileExtensionsEEnum, PCMFileExtensions.class, "PCMFileExtensions");
