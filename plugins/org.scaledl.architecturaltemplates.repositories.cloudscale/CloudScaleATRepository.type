@@ -19,6 +19,7 @@
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="usagemodel"/>
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMOutputCompletionParameter" fileExtension="allocation"/>
     </completion>
+    <reconfigurationRuleFolder folderURI="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/templates/ThreeLayer/ReconfigurationRules"/>
   </ATs>
   <ATs id="_7SshcH4UEeS81uv5CnTOEw" entityName="Dynamic Horizontal Scaling Assembly Context">
     <roles id="_-yzLIH4UEeS81uv5CnTOEw" entityName="Replicable Assembly Context" constraints="_2e4YAkTkEeWX9I6sz1f4mQ _IWNl8kTlEeWX9I6sz1f4mQ">
@@ -34,6 +35,7 @@
     <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion" qvtoFileURI="DynamicHorizontalScalingAssemblyContext.qvto">
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="allocation"/>
     </completion>
+    <reconfigurationRuleFolder folderURI="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/templates/DynamicHorizontalScalingAssemblyContext/ReconfigurationRules"/>
   </ATs>
   <ATs id="_QgydkH4aEeS81uv5CnTOEw" entityName="Dynamic Horizontal Scaling Resource Container">
     <roles id="_c9Rl4H46EeSqFvs4kqVd7Q" entityName="Dynamic Horizontal Scaling Resource Container System" constraints="_OU5_sUTqEeWX9I6sz1f4mQ">
@@ -50,6 +52,7 @@
     <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion" qvtoFileURI="DynamicHorizontalScalingResourceContainer.qvto">
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter" fileExtension="allocation"/>
     </completion>
+    <reconfigurationRuleFolder folderURI="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/templates/DynamicHorizontalScalingResourceContainer/ReconfigurationRules"/>
   </ATs>
   <ATs id="_nt1zAH4aEeS81uv5CnTOEw" entityName="Dynamic Vertical Scaling Resource Container">
     <roles id="_fhIWgH-qEeSOTOomnDiZOg" entityName="Dynamic Vertical Scaling Resource Container System" constraints="_lWA9IUTlEeWX9I6sz1f4mQ">
