@@ -40,6 +40,6 @@
     <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles:PresentationTier" appliedTo="_HAQbICPIEeSwPfc4EJw-WA">
       <extension href="../../profiles/ThreeLayerThreeTier.emfprofile_diagram#_-GY0YIuPEeWE_r1tdbkyww"/>
     </stereotypeApplications>
-    <importedProfiles nsURI="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.threelayerthreetier" location="platform:/resource/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/ThreeLayerThreeTier.emfprofile_diagram"/>
+    <importedProfiles nsURI="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.threelayerthreetier" location="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/ThreeLayerThreeTier.emfprofile_diagram"/>
   </emfprofileapplication:ProfileApplication>
 </xmi:XMI>
