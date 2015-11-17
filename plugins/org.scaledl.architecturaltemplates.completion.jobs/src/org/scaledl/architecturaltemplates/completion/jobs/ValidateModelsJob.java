@@ -1,6 +1,7 @@
 package org.scaledl.architecturaltemplates.completion.jobs;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
@@ -64,10 +65,13 @@ public class ValidateModelsJob extends SequentialBlackboardInteractingJob<MDSDBl
                             invariant = helper.createInvariant(oclConstraint.getConstraint());
                             final Query constraintEvaluation = ocl.createQuery(invariant);
                             if (!constraintEvaluation.check(stereotypeApplication)) {
-                                this.logger.error("Constraint: " + invariant.toString() + "failed.");
+                                this.logger.error("Constraint: " + oclConstraint.getEntityName() + " failed.");
+                            } else {
+                                this.logger.info("Constraint: " + oclConstraint.getEntityName() + " succeeded.");
                             }
                         } catch (final ParserException e) {
-                            this.logger.error("Unable to parse expression \"" + e.getMessage());
+                            this.logger.error("Unable to parse expression " + oclConstraint.getEntityName() + ": "
+                                    + e.getMessage());
                         }
                     }
                 }
@@ -93,12 +97,14 @@ public class ValidateModelsJob extends SequentialBlackboardInteractingJob<MDSDBl
     private EList<org.scaledl.architecturaltemplates.type.Constraint> getConstraintsFromStereotypeApplication(
             final StereotypeApplication stereotypeApplication) {
         final Stereotype stereotype = stereotypeApplication.getStereotype();
+        EList<org.scaledl.architecturaltemplates.type.Constraint> constraints = new BasicEList<org.scaledl.architecturaltemplates.type.Constraint>();
         final EStructuralFeature roleURI = stereotype.getTaggedValue("roleURI");
         if (roleURI != null) {
             final EObject eObject = EMFLoadHelper.loadAndResolveEObject(roleURI.getDefaultValueLiteral());
             final Role stereotypeRole = (Role) eObject;
+            constraints = stereotypeRole.getConstraints();
             return stereotypeRole.getConstraints();
         }
-        return null;
+        return constraints;
     }
 }
