@@ -7,7 +7,7 @@ modeltype PCM_ALLOC uses 'http://palladiosimulator.org/PalladioComponentModel/Al
 
 /**
  * Transforms a 3-layer PCM instance (System annotated with 3-layer 3-tier AT roles) to a PCM instance
- * fitting to a given 3-tier resource environment (Resource Container annotated with 3-layer 3-tier AT roles).
+ * fitting to a given 3-tier resource environment with exactly three resource containers (Resource Containers annotated with 3-layer 3-tier AT roles).
  * Each layer is assigned to the corresponding tier in the resulting Allocation. 
  *
  * @author Sebastian Lehrig
