@@ -14,31 +14,27 @@ modeltype PCMComposition uses pcm::core::composition('http://palladiosimulator.o
  * Moreover, the middle tier resource container is loadbalanced and 
  * replicated by the defined number of replicas. 
  *
- *
  * @author Daria Giacinto
  **/
 transformation DynamicThreeLayerThreeTier(inout pcmAllocation : PCM_ALLOC) 
-						   			 access transformation StaticResourceContainerLoadbalancing;
-property scaleInThreshold : Real;	
-property scaleOutThreshold : Real;
-property numberOfMiddleTierReplicas : Integer;		
+						   			 access transformation StaticResourceContainerLoadbalancing;	
 	   
 main() {	
 	log ('Architectural Template Transformation "Dynamic Three Layer Three Tier" started!');
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var system : System := allocation.system_Allocation;
+	var resourceEnvironment : ResourceEnvironment := allocation.targetResourceEnvironment_Allocation;
+	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
 	
 	assert fatal(hasAppliedStereotype(system,"DynamicThreeLayerThreeTierSystem"))
-		with log ("The system is not a DynamicThreeLayerThreeTierSystem");
+		with log ("The System is not a Dynamic Three Layer Three Tier System");
 		
-	scaleInThreshold  := getDoubleTaggedValue(system, "scaleInThreshold", "DynamicThreeLayerThreeTierSystem");
-	scaleOutThreshold  := getDoubleTaggedValue(system, "scaleOutThreshold","DynamicThreeLayerThreeTierSystem");
-	numberOfMiddleTierReplicas := getIntTaggedValue(system, "numberOfMiddleTierReplicas", "DynamicThreeLayerThreeTierSystem");
+	assert fatal(appliedStereotypesEqualsOne(resourceContainers,"ReplicableMiddleTier"))
+		with log ("The Resource Environment consists of zero or more than one Replicable Middle Tier Resource Containers");	
 		
-	var resourceEnvironment : ResourceEnvironment := allocation.targetResourceEnvironment_Allocation;
-	var middleLayerAllocationContext : AllocationContext := allocation.allocationContexts_Allocation ->selectOne(allocationContext| hasAppliedStereotype(allocationContext.assemblyContext_AllocationContext,"MiddleLayerAssembly"));
-	var middleTierResourceContainer : ResourceContainer := middleLayerAllocationContext.resourceContainer_AllocationContext;
+	var middleTierResourceContainer : ResourceContainer := resourceContainers->selectOne(resourceContainer | hasAppliedStereotype(resourceContainer,"ReplicableMiddleTier"));
 	convertMiddleTierIntoReplicableResourceContainer(middleTierResourceContainer,system);
+	
 	new StaticResourceContainerLoadbalancing(pcmAllocation)->transform();
 	
 	log ('Architectural Template Transformation "Dynamic Three Layer Three Tier" finished!');
@@ -55,6 +51,9 @@ helper convertMiddleTierIntoReplicableResourceContainer(middleTier : ResourceCon
 };
 
 helper setReplicableResourceContainerTaggedValues(middleTier : ResourceContainer, system : System){
+	var scaleInThreshold : Real := getDoubleTaggedValue(system, "scaleOutThreshold","DynamicThreeLayerThreeTierSystem");
+	var scaleOutThreshold : Real:= getDoubleTaggedValue(system, "scaleOutThreshold","DynamicThreeLayerThreeTierSystem");
+	var numberOfMiddleTierReplicas : Integer := getIntTaggedValue(system, "numberOfMiddleTierReplicas", "DynamicThreeLayerThreeTierSystem");	
  	setTaggedValue(middleTier, numberOfMiddleTierReplicas, "ReplicableResourceContainer", "numberOfReplicas");
  	setDoubleTaggedValue(middleTier, scaleInThreshold, "ReplicableResourceContainer", "scaleInThreshold");
  	setDoubleTaggedValue(middleTier, scaleOutThreshold, "ReplicableResourceContainer", "scaleOutThreshold");
