@@ -41,19 +41,20 @@ main() {
 }
 
 
-
+	
 helper convertMiddleTierIntoReplicableResourceContainer(middleTier : ResourceContainer, system : System){
 	applyProfile(system.oclAsType(EObject), "DynamicHorizontalScalingResourceContainerProfile");
 	applyStereotype(system, "DynamicHorizontalScalingResourceContainerSystem");
 	applyProfile(middleTier.oclAsType(EObject), "DynamicHorizontalScalingResourceContainerProfile");
 	applyStereotype(middleTier, "ReplicableResourceContainer");
-	setReplicableResourceContainerTaggedValues(middleTier, system);
-};
+	setReplicableResourceContainerTaggedValues(middleTier);
+	removeStereotypeApplications(middleTier,"ReplicableMiddleTier");
+}
 
-helper setReplicableResourceContainerTaggedValues(middleTier : ResourceContainer, system : System){
-	var scaleInThreshold : Real := getDoubleTaggedValue(system, "scaleOutThreshold","DynamicThreeLayerThreeTierSystem");
-	var scaleOutThreshold : Real:= getDoubleTaggedValue(system, "scaleOutThreshold","DynamicThreeLayerThreeTierSystem");
-	var numberOfMiddleTierReplicas : Integer := getIntTaggedValue(system, "numberOfMiddleTierReplicas", "DynamicThreeLayerThreeTierSystem");	
+helper setReplicableResourceContainerTaggedValues(middleTier : ResourceContainer){
+	var scaleInThreshold : Real := getDoubleTaggedValue(middleTier, "scaleInThreshold", "ReplicableMiddleTier");
+	var scaleOutThreshold : Real:= getDoubleTaggedValue(middleTier, "scaleOutThreshold", "ReplicableMiddleTier");
+	var numberOfMiddleTierReplicas : Integer := getIntTaggedValue(middleTier, "numberOfReplicas", "ReplicableMiddleTier");	
  	setTaggedValue(middleTier, numberOfMiddleTierReplicas, "ReplicableResourceContainer", "numberOfReplicas");
  	setDoubleTaggedValue(middleTier, scaleInThreshold, "ReplicableResourceContainer", "scaleInThreshold");
  	setDoubleTaggedValue(middleTier, scaleOutThreshold, "ReplicableResourceContainer", "scaleOutThreshold");
