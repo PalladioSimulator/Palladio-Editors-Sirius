@@ -97,6 +97,10 @@ mapping inout AssemblyConnector::createLoadbalancerForAssemblyConnector(original
 		self
 		.providingAssemblyContext_AssemblyConnector
 		.createLoadBalancer(self.providedRole_AssemblyConnector, loadbalancerResourceContainer);
+		
+	if(not(hasAppliedStereotype(loadBalancerAssemblyContext, "LoadbalancerAssemblyContext"))){
+		applyStereotype(loadBalancerAssemblyContext, "LoadbalancerAssemblyContext");
+	};
 	
 	// new assembly connector for original container: loadbalancer -> providing assembly context
 	requiringAssemblyContext_AssemblyConnector := loadBalancerAssemblyContext;
@@ -105,7 +109,15 @@ mapping inout AssemblyConnector::createLoadbalancerForAssemblyConnector(original
 	requiredRole_AssemblyConnector := loadBalancerAssemblyContext
 		.encapsulatedComponent__AssemblyContext
 		.requiredRoles_InterfaceRequiringEntity[OperationRequiredRole]->asOrderedSet()->at(1);
+		
+	if(not(hasAppliedStereotype(self.providingAssemblyContext_AssemblyConnector, "OriginalAssemblyContext"))){
+		applyStereotype(self.providingAssemblyContext_AssemblyConnector,"OriginalAssemblyContext");
+	}; 
 	
+	if(hasAppliedStereotype(loadBalancerAssemblyContext, "LoadbalancerAssemblyContext")){
+		setStringTaggedValue(loadBalancerAssemblyContext, self.providingAssemblyContext_AssemblyConnector.id, "LoadbalancerAssemblyContext", "originalAssemblyContext");
+	};
+		
 	// old assembly connector: requiring assembly context (as is!) -> loadbalancer (new!)
 	self.providingAssemblyContext_AssemblyConnector := loadBalancerAssemblyContext;
 	self.providedRole_AssemblyConnector :=
@@ -121,7 +133,10 @@ mapping inout ProvidedDelegationConnector::createLoadbalancerForProvidedDelegati
 		self
 		.assemblyContext_ProvidedDelegationConnector
 		.createLoadBalancer(self.innerProvidedRole_ProvidedDelegationConnector, loadbalancerResourceContainer);
-	
+		
+	if(not(hasAppliedStereotype(loadBalancerAssemblyContext, "LoadbalancerAssemblyContext"))){
+		applyStereotype(loadBalancerAssemblyContext, "LoadbalancerAssemblyContext");
+	};
 	// new assembly connector: loadbalancer -> providing assembly context
 	requiringAssemblyContext_AssemblyConnector := loadBalancerAssemblyContext;
 	providingAssemblyContext_AssemblyConnector := self.assemblyContext_ProvidedDelegationConnector;
@@ -130,6 +145,13 @@ mapping inout ProvidedDelegationConnector::createLoadbalancerForProvidedDelegati
 		.encapsulatedComponent__AssemblyContext
 		.requiredRoles_InterfaceRequiringEntity[OperationRequiredRole]->asOrderedSet()->at(1);
 	
+	if(not(hasAppliedStereotype(self.assemblyContext_ProvidedDelegationConnector, "OriginalAssemblyContext"))){
+		applyStereotype(self.assemblyContext_ProvidedDelegationConnector,"OriginalAssemblyContext");
+	}; 
+	
+	if(hasAppliedStereotype(loadBalancerAssemblyContext, "LoadbalancerAssemblyContext")){
+		setStringTaggedValue(loadBalancerAssemblyContext, self.assemblyContext_ProvidedDelegationConnector.id, "LoadbalancerAssemblyContext", "originalAssemblyContext");
+	};
 	// old provided delegation connector: outer provided role (as is!) -> loadbalancer (new!)
 	self.innerProvidedRole_ProvidedDelegationConnector := loadBalancerAssemblyContext
 			.encapsulatedComponent__AssemblyContext
@@ -204,16 +226,27 @@ helper duplicateAssemblyAndAllocation(counter : Integer, newResourceContainer : 
 				->forEach (connector){
 					connector
 						->map duplicateConnector(counter, assemblyContext);
-				}
+				};
 		};
+		
+		annotateAllOriginalAssemblyContexts(originalResourceContainer);
 }
 
+helper annotateAllOriginalAssemblyContexts(originalResourceContainer : ResourceContainer){
+	allocation.allocationContexts_Allocation
+			->select(allocationContext | allocationContext.resourceContainer_AllocationContext.id = originalResourceContainer.id)
+			.assemblyContext_AllocationContext->forEach(assembly){
+			if(not(hasAppliedStereotype(assembly,"OriginalAssemblyContext"))){
+				applyStereotype(assembly, "OriginalAssemblyContext");	
+				}
+			};
+}
 mapping AssemblyContext::duplicateAssemblyContext(counter : Integer, newResourceContainer : ResourceContainer) : AssemblyContext {
 	entityName := "Assembly_" + self.encapsulatedComponent__AssemblyContext.entityName+"_Replica"+counter.toString();
 	encapsulatedComponent__AssemblyContext := self.encapsulatedComponent__AssemblyContext;
 	parentStructure__AssemblyContext := self.parentStructure__AssemblyContext;
 	configParameterUsages__AssemblyContext := self.configParameterUsages__AssemblyContext;
-
+	
 	applyStereotype(result, "DuplicateAssemblyContext");
 	setStringTaggedValue(result, self.id, "DuplicateAssemblyContext", "originalAssemblyContext");
 	
