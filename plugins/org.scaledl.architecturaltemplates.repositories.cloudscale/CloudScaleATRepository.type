@@ -45,12 +45,13 @@
     <reconfigurationRuleFolder folderURI="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/templates/DynamicHorizontalScalingResourceContainer/ReconfigurationRules"/>
   </ATs>
   <ATs id="_7SshcH4UEeS81uv5CnTOEw" entityName="Dynamic Horizontal Scaling Assembly Context">
-    <roles id="_-yzLIH4UEeS81uv5CnTOEw" entityName="Replicable Assembly Context" constraints="_2e4YAkTkEeWX9I6sz1f4mQ _IWNl8kTlEeWX9I6sz1f4mQ">
+    <roles id="_-yzLIH4UEeS81uv5CnTOEw" entityName="Replicable Assembly Context" constraints="_2e4YAkTkEeWX9I6sz1f4mQ _IWNl8kTlEeWX9I6sz1f4mQ _t4FXoZSAEeW2itUQpRx7kw">
       <stereotype href="profiles/DynamicHorizontalScalingAssemblyContext.emfprofile_diagram#_T5PXYJQkEeSq-7Z_6FnzsQ"/>
     </roles>
     <roles id="_tly_sJQlEeSq-7Z_6FnzsQ" entityName="Dynamic Horizontal Scaling Assembly Context System" constraints="_2CfB0ETiEeWX9I6sz1f4mQ _VXHSoUT0EeWX9I6sz1f4mQ">
       <stereotype href="profiles/DynamicHorizontalScalingAssemblyContext.emfprofile_diagram#_DFBzUJQkEeSq-7Z_6FnzsQ"/>
     </roles>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_t4FXoZSAEeW2itUQpRx7kw" entityName="Scale Out Threshold greater than Scale In Threshold" roles="_-yzLIH4UEeS81uv5CnTOEw" constraint="self.scaleOutThreshold>self.scaleInThreshold"/>
     <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_IWNl8kTlEeWX9I6sz1f4mQ" entityName="Replicable Assembly Context Basic Component is Stateless" roles="_-yzLIH4UEeS81uv5CnTOEw" constraint="self.appliedTo.oclAsType(pcm::core::composition::AssemblyContext).encapsulatedComponent__AssemblyContext.hasAppliedStereotype('StatelessComponent')"/>
     <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_2e4YAkTkEeWX9I6sz1f4mQ" entityName="Assembly Context is Replicable Assembly Context" roles="_-yzLIH4UEeS81uv5CnTOEw" constraint="self.oclIsTypeOf(ReplicableAssemblyContext)"/>
     <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_2CfB0ETiEeWX9I6sz1f4mQ" entityName="System is Dynamic Horizontal Scaling System" roles="_tly_sJQlEeSq-7Z_6FnzsQ" constraint="self.oclIsTypeOf(DynamicHorizontalScalingAssemblyContextSystem)"/>
@@ -61,13 +62,14 @@
     <reconfigurationRuleFolder folderURI="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/templates/DynamicHorizontalScalingAssemblyContext/ReconfigurationRules"/>
   </ATs>
   <ATs id="_QgydkH4aEeS81uv5CnTOEw" entityName="Dynamic Horizontal Scaling Resource Container">
-    <roles id="_c9Rl4H46EeSqFvs4kqVd7Q" entityName="Dynamic Horizontal Scaling Resource Container System" constraints="_OU5_sUTqEeWX9I6sz1f4mQ _t9og8UTqEeWX9I6sz1f4mQ _hdsNcUT1EeWX9I6sz1f4mQ _PJrEgUTqEeWX9I6sz1f4mQ">
+    <roles id="_c9Rl4H46EeSqFvs4kqVd7Q" entityName="Dynamic Horizontal Scaling Resource Container System" constraints="_OU5_sUTqEeWX9I6sz1f4mQ _t9og8UTqEeWX9I6sz1f4mQ _hdsNcUT1EeWX9I6sz1f4mQ _PJrEgUTqEeWX9I6sz1f4mQ _SeR4cZSBEeW2itUQpRx7kw">
       <stereotype href="profiles/DynamicHorizontalScalingResourceContainer.emfprofile_diagram#_paph0CO_EeSbfv_s0ToTIw"/>
     </roles>
     <roles id="_TuvAQH4aEeS81uv5CnTOEw" entityName="Replicable Resource Container">
       <stereotype href="profiles/DynamicHorizontalScalingResourceContainer.emfprofile_diagram#_2M_hMH47EeSqFvs4kqVd7Q"/>
     </roles>
     <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_OU5_sUTqEeWX9I6sz1f4mQ" entityName="System is Dynamic Horizontal Scaling Resource Container System" roles="_c9Rl4H46EeSqFvs4kqVd7Q" constraint="self.oclIsTypeOf(DynamicHorizontalScalingResourceContainerSystem)"/>
+    <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_SeR4cZSBEeW2itUQpRx7kw" entityName="Scale Out Threshold greater than Scale In Threshold" roles="_c9Rl4H46EeSqFvs4kqVd7Q" constraint="self.appliedTo.oclAsType(pcm::system::System).getResourceEnvironment().resourceContainer_ResourceEnvironment->select(rc|rc.hasAppliedStereotype('ReplicableResourceContainer'))->forAll(replicableR|replicableR.getDoubleTaggedValue('scaleOutThreshold','ReplicableResourceContainer')> replicableR.getDoubleTaggedValue('scaleInThreshold','ReplicableResourceContainer'))"/>
     <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_PJrEgUTqEeWX9I6sz1f4mQ" entityName="Replicable Resource Container has Assembly Contexts" roles="_c9Rl4H46EeSqFvs4kqVd7Q" constraint="self.appliedTo.oclAsType(pcm::system::System).getAllocation().allocationContexts_Allocation->select(ac|ac.resourceContainer_AllocationContext.hasAppliedStereotype('ReplicableResourceContainer'))->collect(ac|ac.assemblyContext_AllocationContext)->size()>0"/>
     <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_t9og8UTqEeWX9I6sz1f4mQ" entityName="Replicable Resource Container Basic Components are Stateless" roles="_c9Rl4H46EeSqFvs4kqVd7Q" constraint="self.appliedTo.oclAsType(pcm::system::System).getAllocation().allocationContexts_Allocation->select(ac|ac.resourceContainer_AllocationContext.hasAppliedStereotype('ReplicableResourceContainer'))->collect(ac|ac.assemblyContext_AllocationContext.encapsulatedComponent__AssemblyContext)->forAll(bc|bc.hasAppliedStereotype('StatelessComponent'))"/>
     <constraints xsi:type="org.scaledl.architecturaltemplates:OCLConstraint" id="_hdsNcUT1EeWX9I6sz1f4mQ" entityName="Resource Environment has only one Replicable Resource Container" roles="_c9Rl4H46EeSqFvs4kqVd7Q" constraint="self.appliedTo.oclAsType(pcm::system::System).getResourceEnvironment().resourceContainer_ResourceEnvironment->select(r|r.hasAppliedStereotype('ReplicableResourceContainer'))->size()=1"/>
