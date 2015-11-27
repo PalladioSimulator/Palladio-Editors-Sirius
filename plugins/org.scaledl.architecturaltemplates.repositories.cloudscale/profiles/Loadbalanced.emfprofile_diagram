@@ -3,9 +3,6 @@
   <emfprofile:Profile xmi:id="_juO-IIVSEeSIDYic9BH_wA" name="LoadbalancedProfile" nsURI="http://scaledl.org/repository/Loadbalancing" nsPrefix="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles">
     <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_Bk5E0IVTEeSIDYic9BH_wA" name="OriginalAssemblyContext">
       <eSuperTypes xmi:type="ecore:EClass" href="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication"/>
-      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_WBupID6iEeWGcfPQbAu0OA" name="loadbalancerAssemblyContext" defaultValueLiteral="LoadbalancerAssemblyContextID">
-        <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eStructuralFeatures>
       <extensions xmi:type="emfprofile:Extension" xmi:id="_L5GfkIVTEeSIDYic9BH_wA" upperBound="1">
         <target xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.1#//core/composition/AssemblyContext"/>
       </extensions>
@@ -21,6 +18,9 @@
     </eClassifiers>
     <eClassifiers xmi:type="emfprofile:Stereotype" xmi:id="_GYkPMIVTEeSIDYic9BH_wA" name="LoadbalancerAssemblyContext">
       <eSuperTypes xmi:type="ecore:EClass" href="http://www.modelversioning.org/emfprofile/application/1.1#//StereotypeApplication"/>
+      <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_Kn7XIJRIEeW2itUQpRx7kw" name="originalAssemblyContext" defaultValueLiteral="originalAssemblyContextID">
+        <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eStructuralFeatures>
       <extensions xmi:type="emfprofile:Extension" xmi:id="_OESkwIVTEeSIDYic9BH_wA" upperBound="1">
         <target xmi:type="ecore:EClass" href="http://palladiosimulator.org/PalladioComponentModel/5.1#//core/composition/AssemblyContext"/>
       </extensions>
@@ -66,9 +66,6 @@
     <children xmi:type="notation:Node" xmi:id="_Bk5E0YVTEeSIDYic9BH_wA" type="2006" element="_Bk5E0IVTEeSIDYic9BH_wA">
       <children xmi:type="notation:DecorationNode" xmi:id="_Bk5E1YVTEeSIDYic9BH_wA" type="5008"/>
       <children xmi:type="notation:DecorationNode" xmi:id="_Bk5E1oVTEeSIDYic9BH_wA" type="7008">
-        <children xmi:type="notation:Node" xmi:id="_WGsosD6iEeWGcfPQbAu0OA" type="3001" element="_WBupID6iEeWGcfPQbAu0OA">
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_WGsosT6iEeWGcfPQbAu0OA"/>
-        </children>
         <styles xmi:type="notation:SortingStyle" xmi:id="_Bk5E14VTEeSIDYic9BH_wA"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_Bk5E2IVTEeSIDYic9BH_wA"/>
       </children>
@@ -87,17 +84,20 @@
       </children>
       <styles xmi:type="notation:DescriptionStyle" xmi:id="_D_Q1goVTEeSIDYic9BH_wA"/>
       <styles xmi:type="notation:FontStyle" xmi:id="_D_Q1g4VTEeSIDYic9BH_wA" fontName="Segoe UI"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_D_Q1hIVTEeSIDYic9BH_wA" x="75" y="280" width="188" height="88"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_D_Q1hIVTEeSIDYic9BH_wA" x="105" y="280" width="367" height="88"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_GYkPMYVTEeSIDYic9BH_wA" type="2006" element="_GYkPMIVTEeSIDYic9BH_wA">
       <children xmi:type="notation:DecorationNode" xmi:id="_GYtZIIVTEeSIDYic9BH_wA" type="5008"/>
       <children xmi:type="notation:DecorationNode" xmi:id="_GYtZIYVTEeSIDYic9BH_wA" type="7008">
+        <children xmi:type="notation:Node" xmi:id="_Kogl8JRIEeW2itUQpRx7kw" type="3001" element="_Kn7XIJRIEeW2itUQpRx7kw">
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_Kogl8ZRIEeW2itUQpRx7kw"/>
+        </children>
         <styles xmi:type="notation:SortingStyle" xmi:id="_GYtZIoVTEeSIDYic9BH_wA"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_GYtZI4VTEeSIDYic9BH_wA"/>
       </children>
       <styles xmi:type="notation:DescriptionStyle" xmi:id="_GYkPMoVTEeSIDYic9BH_wA"/>
       <styles xmi:type="notation:FontStyle" xmi:id="_GYkPM4VTEeSIDYic9BH_wA" fontName="Segoe UI"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GYkPNIVTEeSIDYic9BH_wA" x="-165" y="315" width="213" height="88"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GYkPNIVTEeSIDYic9BH_wA" x="-210" y="357" width="329" height="88"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="__QNAENd9EeSESO73FPFLrA" type="2002">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__QNAG9d9EeSESO73FPFLrA" source="Shortcut">
@@ -125,7 +125,7 @@
       </children>
       <styles xmi:type="notation:DescriptionStyle" xmi:id="_FTh0ctd-EeSESO73FPFLrA"/>
       <styles xmi:type="notation:FontStyle" xmi:id="_FTh0c9d-EeSESO73FPFLrA" fontName="Segoe UI"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FTh0dNd-EeSESO73FPFLrA" x="710" y="305"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FTh0dNd-EeSESO73FPFLrA" x="644" y="329"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_HHTfMdd-EeSESO73FPFLrA" type="2006" element="_HHTfMNd-EeSESO73FPFLrA">
       <children xmi:type="notation:DecorationNode" xmi:id="_HHTfNdd-EeSESO73FPFLrA" type="5008"/>
@@ -145,7 +145,7 @@
       </children>
       <styles xmi:type="notation:DescriptionStyle" xmi:id="_IUfrEtd-EeSESO73FPFLrA"/>
       <styles xmi:type="notation:FontStyle" xmi:id="_IUfrE9d-EeSESO73FPFLrA" fontName="Segoe UI"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IUfrFNd-EeSESO73FPFLrA" x="485" y="315"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IUfrFNd-EeSESO73FPFLrA" x="364" y="350"/>
     </children>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_juYvIYVSEeSIDYic9BH_wA"/>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_8BOiotd9EeSESO73FPFLrA"/>
