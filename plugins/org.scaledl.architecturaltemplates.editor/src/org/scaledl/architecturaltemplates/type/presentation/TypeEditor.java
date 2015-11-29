@@ -142,6 +142,7 @@ import org.palladiosimulator.pcm.subsystem.provider.SubsystemItemProviderAdapter
 import org.palladiosimulator.pcm.system.provider.SystemItemProviderAdapterFactory;
 import org.palladiosimulator.pcm.usagemodel.provider.UsagemodelItemProviderAdapterFactory;
 import org.scaledl.architecturaltemplates.instance.provider.InstanceItemProviderAdapterFactory;
+import org.scaledl.architecturaltemplates.ocl.editor.OCLConstraintAdapterFactoryContentProvider;
 import org.scaledl.architecturaltemplates.type.provider.TypeItemProviderAdapterFactory;
 
 import de.uka.ipd.sdq.identifier.provider.IdentifierItemProviderAdapterFactory;
@@ -1410,7 +1411,7 @@ public class TypeEditor extends MultiPageEditorPart
      * This accesses a cached version of the property sheet. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
-     * @generated
+     * @generated NOT
      */
     public IPropertySheetPage getPropertySheetPage() {
         final PropertySheetPage propertySheetPage = new ExtendedPropertySheetPage(this.editingDomain) {
@@ -1427,7 +1428,8 @@ public class TypeEditor extends MultiPageEditorPart
                 TypeEditor.this.getActionBarContributor().shareGlobalActions(this, actionBars);
             }
         };
-        propertySheetPage.setPropertySourceProvider(new AdapterFactoryContentProvider(this.adapterFactory));
+        propertySheetPage
+                .setPropertySourceProvider(new OCLConstraintAdapterFactoryContentProvider(this.adapterFactory));
         this.propertySheetPages.add(propertySheetPage);
 
         return propertySheetPage;
