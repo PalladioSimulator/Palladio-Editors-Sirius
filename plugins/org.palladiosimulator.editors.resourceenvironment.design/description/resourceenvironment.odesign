@@ -176,6 +176,9 @@
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.ProcessingResourceSpecification" referenceName="activeResourceSpecifications_ResourceContainer">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newProcessingResourceSpecification"/>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SW ResourceType" label="Selection Wizard Resource Type" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.ProcessingResourceSpecification">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.schedulingPolicy=null or self.processingRate_ProcessingResourceSpecification=null or self.activeResourceType_ActiveResourceSpecification=null/]">
+                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    </subModelOperations>
                     <parameters name="newProcessingResourceSpecification" value="[instance/]"/>
                   </subModelOperations>
                 </subModelOperations>

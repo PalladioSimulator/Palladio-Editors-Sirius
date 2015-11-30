@@ -37,15 +37,18 @@ public class AddAssemblyContext implements IExternalJavaAction {
 
         final AssemblyContext assemblyContext = (AssemblyContext) parameter;
 
-        assemblyContext.setEncapsulatedComponent__AssemblyContext(getRepositoryComponent(assemblyContext));
-
+        final RepositoryComponent repositoryComponent = getRepositoryComponent(assemblyContext);
+        if (repositoryComponent != null) {
+            assemblyContext.setEncapsulatedComponent__AssemblyContext(repositoryComponent);
+            assemblyContext.setEntityName("Assembly_" + repositoryComponent.getEntityName() + " <"
+                    + repositoryComponent.getEntityName() + ">");
+        }
     }
 
     private RepositoryComponent getRepositoryComponent(final AssemblyContext assemblyContext) {
 
         final ArrayList<Object> filterList = new ArrayList<Object>();
         filterList.add(Repository.class);
-        // filterList.add(ProvidesComponentType.class); /necessary?
         filterList.add(RepositoryComponent.class);
 
         final ArrayList<EReference> additionalReferences = new ArrayList<EReference>();
@@ -54,6 +57,15 @@ public class AddAssemblyContext implements IExternalJavaAction {
                 assemblyContext.eResource().getResourceSet());
         dialog.setProvidedService(RepositoryComponent.class);
         dialog.open();
+        if (dialog.getResult() == null) {
+            return null;
+        }
+
+        if (!(dialog.getResult() instanceof RepositoryComponent)) {
+
+            return null;
+        }
+
         return (RepositoryComponent) dialog.getResult();
     }
 

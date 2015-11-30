@@ -54,15 +54,24 @@ public class AddProcessingResourceSpecification implements IExternalJavaAction {
         final ProcessingResourceSpecification processingResourceSpecification = (ProcessingResourceSpecification) parameter;
 
         // 1. dialog
-        processingResourceSpecification
-                .setActiveResourceType_ActiveResourceSpecification(getResourceType(processingResourceSpecification));
+        final ProcessingResourceType prt = getResourceType(processingResourceSpecification);
+        if (prt != null)
+            processingResourceSpecification.setActiveResourceType_ActiveResourceSpecification(prt);
+        else
+            return;
 
         // 2. dialog
-        processingResourceSpecification.setProcessingRate_ProcessingResourceSpecification(getProcessingRate());
-
+        final PCMRandomVariable pcmrv = getProcessingRate();
+        if (pcmrv != null)
+            processingResourceSpecification.setProcessingRate_ProcessingResourceSpecification(pcmrv);
+        else
+            return;
         // 3. dialog
-        processingResourceSpecification.setSchedulingPolicy(getSchedulingPolicy(processingResourceSpecification));
-
+        final SchedulingPolicy sp = getSchedulingPolicy(processingResourceSpecification);
+        if (sp != null)
+            processingResourceSpecification.setSchedulingPolicy(sp);
+        else
+            return;
     }
 
     private ProcessingResourceType getResourceType(
@@ -83,7 +92,9 @@ public class AddProcessingResourceSpecification implements IExternalJavaAction {
 
         dialog.setProvidedService(ProcessingResourceType.class);
         dialog.open();
-
+        if (dialog.getResult() == null || !(dialog.getResult() instanceof ProcessingResourceType)) {
+            return null;
+        }
         return (ProcessingResourceType) dialog.getResult();
     }
 
@@ -103,7 +114,9 @@ public class AddProcessingResourceSpecification implements IExternalJavaAction {
                 PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), filterList, additionalReferences, set);
         dialog.setProvidedService(SchedulingPolicy.class);
         dialog.open();
-
+        if (dialog.getResult() == null || !(dialog.getResult() instanceof SchedulingPolicy)) {
+            return null;
+        }
         return (SchedulingPolicy) dialog.getResult();
     }
 
@@ -115,6 +128,9 @@ public class AddProcessingResourceSpecification implements IExternalJavaAction {
                 PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), TypeEnum.DOUBLE, pcmRandomVariable);
         dialog.setDisplayTitle(SET_PROCESSING_RATE);
         dialog.open();
+        if (dialog.getResult() == null) {
+            return null;
+        }
 
         pcmRandomVariable.setSpecification(dialog.getResultText());
 

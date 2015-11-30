@@ -147,7 +147,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subContainerMappings name="AssemblyContext Container" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="[self.assemblyContexts__ComposedStructure/]" documentation="Used for the parameter implementation until the Node can be fully migrated." domainClass="composition.AssemblyContext">
+          <subContainerMappings name="AssemblyContext Container" deletionDescription="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Deletion']/@ownedTools[name='AssemblyContext%20Deletion']" labelDirectEdit="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="[self.assemblyContexts__ComposedStructure/]" documentation="Used for the parameter implementation until the Node can be fully migrated." domainClass="composition.AssemblyContext">
             <borderedNodeMappings name="OperationProvidedRole Node" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.OperationProvidedRole">
               <style xsi:type="style:CustomStyleDescription" labelExpression="[entityName/]" hideLabelByDefault="true" id="org.palladiosimulator.editors.composedprovidingrequiringentity.operationProvidedRole">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -321,14 +321,17 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Nodes">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AssemblyContext" containerMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AssemblyContext" forceRefresh="true" containerMappings="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.AssemblyContext" referenceName="assemblyContexts__ComposedStructure">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newAssemblyContext"/>
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AC Selection Wizard" label="Selection Wizard Assembly Context" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.AssemblyContext">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AC Selection Wizard" label="Selection Wizard Assembly Context" forceRefresh="true" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.AssemblyContext">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.encapsulatedComponent__AssemblyContext=null/]">
+                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    </subModelOperations>
                     <parameters name="newAssemblyContext" value="[instance/]"/>
                   </subModelOperations>
                 </subModelOperations>
@@ -569,7 +572,7 @@
             </ownedTools>
           </subSections>
           <subSections name="Deletion">
-            <ownedTools xsi:type="tool:DeleteElementDescription" documentation="Used to prevent modification of the repository upon deletion of an assembly context. By default this would remove the encapsulatedComponent." name="AssemblyContext Deletion">
+            <ownedTools xsi:type="tool:DeleteElementDescription" documentation="Used to prevent modification of the repository upon deletion of an assembly context. By default this would remove the encapsulatedComponent." name="AssemblyContext Deletion" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <containerView name="containerView"/>
