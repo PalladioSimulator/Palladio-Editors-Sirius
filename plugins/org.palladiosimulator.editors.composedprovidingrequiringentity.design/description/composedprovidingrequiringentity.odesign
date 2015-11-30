@@ -328,6 +328,9 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.AssemblyContext" referenceName="assemblyContexts__ComposedStructure">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newAssemblyContext"/>
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AC Selection Wizard" label="Selection Wizard Assembly Context" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.AssemblyContext">
+                    <parameters name="newAssemblyContext" value="[instance/]"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
