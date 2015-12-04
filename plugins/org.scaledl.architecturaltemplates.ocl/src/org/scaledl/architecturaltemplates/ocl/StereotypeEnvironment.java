@@ -1,6 +1,7 @@
 package org.scaledl.architecturaltemplates.ocl;
 
 import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.EcoreFactory;
@@ -9,77 +10,81 @@ import org.eclipse.ocl.ecore.EcoreEnvironment;
 import org.eclipse.ocl.ecore.EcoreEnvironmentFactory;
 import org.palladiosimulator.pcm.allocation.AllocationPackage;
 import org.palladiosimulator.pcm.core.entity.EntityPackage;
+import org.palladiosimulator.pcm.resourceenvironment.ResourceenvironmentPackage;
 
 public class StereotypeEnvironment extends EcoreEnvironment {
-	EOperation hasAppliedStereotype;
-	EOperation getIntTaggedValue;
-	EOperation getAllocation;
+    EOperation hasAppliedStereotype;
+    EOperation getDoubleTaggedValue;
+    EOperation parseDouble;
+    EOperation getAllocation;
+    EOperation getResourceEnvironment;
 
-	StereotypeEnvironment(EcoreEnvironmentFactory fac, Resource resource) {
-		super(fac, resource);
-		defineCustomOperations();
-	}
+    StereotypeEnvironment(final EcoreEnvironmentFactory fac, final Resource resource) {
+        super(fac, resource);
+        defineCustomOperations();
+    }
 
-	StereotypeEnvironment(StereotypeEnvironment parent) {
-		super(parent);
-		// get the parent's custom operations
-		hasAppliedStereotype = parent.hasAppliedStereotype;
-		getIntTaggedValue = parent.getIntTaggedValue;
-		getAllocation = parent.getAllocation;
-	}
+    StereotypeEnvironment(final StereotypeEnvironment parent) {
+        super(parent);
+        // get the parent's custom operations
+        hasAppliedStereotype = parent.hasAppliedStereotype;
+        getDoubleTaggedValue = parent.getDoubleTaggedValue;
+        getAllocation = parent.getAllocation;
+        getResourceEnvironment = parent.getResourceEnvironment;
+        parseDouble = parent.parseDouble;
+    }
 
-	// use the AbstractEnvironment's mechanism for defining
-	// "additional operations" to add our custom operation to
-	// OCL's String primitive type
-	private void defineCustomOperations() {
-		// hasAppliedStereotype operation
-		hasAppliedStereotype = EcoreFactory.eINSTANCE.createEOperation();
-		hasAppliedStereotype.setName("hasAppliedStereotype");
-		hasAppliedStereotype.setEType(getOCLStandardLibrary().getBoolean());
-		EParameter stereotypeParameter = EcoreFactory.eINSTANCE.createEParameter();
-		stereotypeParameter.setName("stereotype");
-		stereotypeParameter.setEType(getOCLStandardLibrary().getString());
-		hasAppliedStereotype.getEParameters().add(stereotypeParameter);
+    // use the AbstractEnvironment's mechanism for defining
+    // "additional operations" to add our custom operation to
+    // OCL's String primitive type
+    private void defineCustomOperations() {
 
-		// annotate it so that we will recognize it
-		// in the evaluation environment
-		EAnnotation stereotypeAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
-		stereotypeAnnotation.setSource("StereotypeEnvironment");
-		hasAppliedStereotype.getEAnnotations().add(stereotypeAnnotation);
+        // hasAppliedStereotype operation
+        hasAppliedStereotype = createOperation("hasAppliedStereotype", getOCLStandardLibrary().getBoolean());
+        final EParameter stereotypeParameter = createParameter("stereotype", getOCLStandardLibrary().getString());
+        hasAppliedStereotype.getEParameters().add(stereotypeParameter);
 
-		// getIntTaggedValue operation
-		getIntTaggedValue = EcoreFactory.eINSTANCE.createEOperation();
-		getIntTaggedValue.setName("getIntTaggedValue");
-		getIntTaggedValue.setEType(getOCLStandardLibrary().getInteger());
-		EParameter intTaggedValueParameter = EcoreFactory.eINSTANCE.createEParameter();
-		EParameter stereotypeNameParameter = EcoreFactory.eINSTANCE.createEParameter();
-		intTaggedValueParameter.setName("taggedValue");
-		intTaggedValueParameter.setEType(getOCLStandardLibrary().getString());
-		stereotypeNameParameter.setName("stereotype");
-		stereotypeNameParameter.setEType(getOCLStandardLibrary().getString());
-		getIntTaggedValue.getEParameters().add(intTaggedValueParameter);
-		getIntTaggedValue.getEParameters().add(stereotypeNameParameter);
+        // getDoubleTaggedValue operation
+        getDoubleTaggedValue = createOperation("getDoubleTaggedValue", getOCLStandardLibrary().getReal());
+        final EParameter doubleTaggedValueParameter = createParameter("doubleTaggedValue",
+                getOCLStandardLibrary().getString());
+        final EParameter stereotypeNameParameter = createParameter("stereotypeName",
+                getOCLStandardLibrary().getString());
+        getDoubleTaggedValue.getEParameters().add(doubleTaggedValueParameter);
+        getDoubleTaggedValue.getEParameters().add(stereotypeNameParameter);
 
-		// annotate it so that we will recognize it
-		// in the evaluation environment
-		EAnnotation intTaggedValueAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
-		intTaggedValueAnnotation.setSource("StereotypeEnvironment");
-		getIntTaggedValue.getEAnnotations().add(intTaggedValueAnnotation);
+        // parseDouble operation
+        parseDouble = createOperation("parseDouble", getOCLStandardLibrary().getReal());
 
-		// getAllocation operation
-		getAllocation = EcoreFactory.eINSTANCE.createEOperation();
-		getAllocation.setName("getAllocation");
-		getAllocation.setEType(AllocationPackage.Literals.ALLOCATION);
+        // getAllocation operation
+        getAllocation = createOperation("getAllocation", AllocationPackage.Literals.ALLOCATION);
 
-		// annotate it so that we will recognize it
-		// in the evaluation environment
-		EAnnotation allocationAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
-		allocationAnnotation.setSource("StereotypeEnvironment");
-		getAllocation.getEAnnotations().add(allocationAnnotation);
+        // getResourceEnvironment operation
+        getResourceEnvironment = createOperation("getResourceEnvironment",
+                ResourceenvironmentPackage.Literals.RESOURCE_ENVIRONMENT);
 
-		// define it as an additional operation on OCL String
-		addHelperOperation(EntityPackage.Literals.ENTITY, getIntTaggedValue);
-		addHelperOperation(EntityPackage.Literals.ENTITY, hasAppliedStereotype);
-		addHelperOperation(EntityPackage.Literals.ENTITY, getAllocation);
-	}
+        // define it as an additional operation on OCL String
+        addHelperOperation(EntityPackage.Literals.ENTITY, getDoubleTaggedValue);
+        addHelperOperation(getOCLStandardLibrary().getString(), parseDouble);
+        addHelperOperation(EntityPackage.Literals.ENTITY, hasAppliedStereotype);
+        addHelperOperation(EntityPackage.Literals.ENTITY, getAllocation);
+        addHelperOperation(EntityPackage.Literals.ENTITY, getResourceEnvironment);
+    }
+
+    private EOperation createOperation(final String operationName, final EClassifier returnType) {
+        final EOperation operation = EcoreFactory.eINSTANCE.createEOperation();
+        operation.setName(operationName);
+        operation.setEType(returnType);
+        final EAnnotation operationAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
+        operationAnnotation.setSource("StereotypeEnvironment");
+        operation.getEAnnotations().add(operationAnnotation);
+        return operation;
+    }
+
+    private EParameter createParameter(final String parameterName, final EClassifier parameterType) {
+        final EParameter parameter = EcoreFactory.eINSTANCE.createEParameter();
+        parameter.setName(parameterName);
+        parameter.setEType(parameterType);
+        return parameter;
+    }
 }

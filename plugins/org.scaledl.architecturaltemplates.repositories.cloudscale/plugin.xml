@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension point="org.modelversioning.emfprofile.profile">
-     <profile profile_resource="profiles/ThreeLayer.emfprofile_diagram"/>
+     <profile profile_resource="profiles/DynamicThreeLayerThreeTier.emfprofile_diagram"/>
    </extension>
    <extension point="org.modelversioning.emfprofile.profile">
      <profile profile_resource="profiles/DynamicHorizontalScalingResourceContainer.emfprofile_diagram"/>
@@ -27,6 +27,12 @@
    </extension>
       <extension point="org.modelversioning.emfprofile.profile">
      <profile profile_resource="profiles/ComponentState.emfprofile_diagram"/>
+   </extension>
+   <extension point="org.modelversioning.emfprofile.profile">
+     <profile profile_resource="profiles/ThreeLayer.emfprofile_diagram"/>
+   </extension>
+   <extension point="org.modelversioning.emfprofile.profile">
+     <profile profile_resource="profiles/ThreeLayerThreeTier.emfprofile_diagram"/>
    </extension>
    <extension
          point="org.eclipse.m2m.qvt.oml.javaBlackboxUnits">

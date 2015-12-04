@@ -42,8 +42,12 @@ public class StereotypeEvaluationEnvironment extends EcoreEvaluationEnvironment 
         if ("hasAppliedStereotype".equals(operation.getName())) {
             return StereotypeAPI.isStereotypeApplied((Entity) source, (String) args[0]);
         }
-        if ("getIntTaggedValue".equals(operation.getName())) {
+        if ("getDoubleTaggedValue".equals(operation.getName())) {
             return StereotypeAPI.getTaggedValue((Entity) source, (String) args[0], (String) args[1]);
+        }
+
+        if ("parseDouble".equals(operation.getName())) {
+            return Double.parseDouble((String) source);
         }
         if ("getAllocation".equals(operation.getName())) {
             final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) this.blackboard
@@ -58,7 +62,19 @@ public class StereotypeEvaluationEnvironment extends EcoreEvaluationEnvironment 
             }
             return allocation;
         }
-
+        if ("getResourceEnvironment".equals(operation.getName())) {
+            final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) this.blackboard
+                    .getPartition(LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID);
+            org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment resEnv = null;
+            try {
+                resEnv = pcmRepositoryPartition.getResourceEnvironment();
+            } catch (final IndexOutOfBoundsException e) {
+            }
+            if (resEnv == null) {
+                throw new RuntimeException("Did not find Allocation.");
+            }
+            return resEnv;
+        }
         throw new UnsupportedOperationException(); // unknown operation
     }
 }

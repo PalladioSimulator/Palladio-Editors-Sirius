@@ -32,7 +32,7 @@ log ('AT Completion "ScaleDown" started');
 			resourceContainer. map scaleDownVirtualizedContainer();
 		};
 	};
-	log ('AT Completion "ScaleUp" finished');	
+	log ('AT Completion "ScaleDown" finished');	
 }
 // FIXME need to check whether it's the right model element
 query Set(RuntimeMeasurement) :: checkCondition() : Boolean
@@ -43,7 +43,7 @@ query Set(RuntimeMeasurement) :: checkCondition() : Boolean
 mapping ResourceContainer::scaleDownVirtualizedContainer():ResourceContainer 
 	when{prm.rootObjects()[RuntimeMeasurement]->checkCondition()}
 {
-	log ('Scaling Up ResourceContainer ' + self.entityName);
+	log ('Scaling Down ResourceContainer ' + self.entityName);
 	scaleDownProcessingResourcesRecursively(self);
 }
 
@@ -58,6 +58,8 @@ helper scaleDownProcessingResourcesRecursively(resourceContainer : ResourceConta
     	var newProcessingRate : Real := currentProcessingRate.toReal() - scaleDownStepSize;
     	if(newProcessingRate >= minRate){
     		processingResourceSpecification.processingRate_ProcessingResourceSpecification.specification := newProcessingRate.toString();
+    	}else{
+    		processingResourceSpecification.processingRate_ProcessingResourceSpecification.specification := minRate.toString();
     	};
     };
     

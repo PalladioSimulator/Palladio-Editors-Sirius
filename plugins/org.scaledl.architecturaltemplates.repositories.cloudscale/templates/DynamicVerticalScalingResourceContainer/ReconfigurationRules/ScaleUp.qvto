@@ -24,7 +24,7 @@ main() {
 	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
 	assert fatal(hasAppliedStereotype(resourceContainers,"VirtualizedResourceContainer"))
 		with log ("There is no Virtualized Stereotype Application!");
-		
+	
 	resourceContainers -> forEach(resourceContainer){
 		if(hasAppliedStereotype(resourceContainer,"VirtualizedResourceContainer")){
 			scaleUpThreshold := getDoubleTaggedValue(resourceContainer,"scaleUpThreshold","VirtualizedResourceContainer");
@@ -60,7 +60,9 @@ helper scaleUpProcessingResourcesRecursively(resourceContainer : ResourceContain
     	var newProcessingRate : Real := currentProcessingRate.toReal() + scaleUpStepSize;
     	if(newProcessingRate<=maxRate){
     		processingResourceSpecification.processingRate_ProcessingResourceSpecification.specification := newProcessingRate.toString();
-    	};
+    	}else{
+    		processingResourceSpecification.processingRate_ProcessingResourceSpecification.specification := maxRate.toString();
+    	}
     };
     
     // recursive call

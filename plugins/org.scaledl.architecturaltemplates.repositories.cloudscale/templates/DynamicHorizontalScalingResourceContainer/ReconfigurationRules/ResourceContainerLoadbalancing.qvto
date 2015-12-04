@@ -23,8 +23,7 @@ property resourceEnvironment : ResourceEnvironment = allocation.targetResourceEn
 
 main() {
 	if(reverseLoadbalanced){
-		log('AT Completion "StaticResourceContainerLoadbalancing" started');	
-		
+		log('AT Completion "ResourceContainerLoadbalancing" started');	
 		// Check whether we have a static loadbalancer (i.e., with a StaticLoadbalancedResourceContainer) or a dynamic one (i.e., with a ReplicableResourceContainer)
 		var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
 		var appliedStereotype : String;
@@ -55,16 +54,16 @@ main() {
 		
 		// Mark original load-balanced container
 		if(not hasAppliedStereotype(originalResourceContainer,"OriginalResourceContainer")){
-  			//apply Stereotype OriginalAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in    
-  			applyStereotype(originalResourceContainer,"OriginalResourceContainer");
- 		};	
- 		
+	  		//apply Stereotype OriginalAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in    
+	  		applyStereotype(originalResourceContainer,"OriginalResourceContainer");
+	 	};	
+	
 		// Create load balancer
 		numberOfReplicas := getIntTaggedValue(originalResourceContainer, "numberOfReplicas", appliedStereotype);
 		createLoadbalancer(originalResourceContainer);
 		
-		log('AT Completion "StaticResourceContainerLoadbalancing" finished');	
-		}
+		log('AT Completion "ResourceContainerLoadbalancing" finished');	
+	}
 }
 
 helper createLoadbalancer(originalResourceContainer : ResourceContainer) {	
@@ -102,6 +101,10 @@ mapping inout AssemblyConnector::createLoadbalancerForAssemblyConnector(original
 		self
 		.providingAssemblyContext_AssemblyConnector
 		.createLoadBalancer(self.providedRole_AssemblyConnector, loadbalancerResourceContainer);
+		
+	if(not(hasAppliedStereotype(loadBalancerAssemblyContext, "LoadbalancerAssemblyContext"))){
+		applyStereotype(loadBalancerAssemblyContext, "LoadbalancerAssemblyContext");
+	};
 	
 	// new assembly connector for original container: loadbalancer -> providing assembly context
 	requiringAssemblyContext_AssemblyConnector := loadBalancerAssemblyContext;
@@ -126,6 +129,10 @@ mapping inout ProvidedDelegationConnector::createLoadbalancerForProvidedDelegati
 		self
 		.assemblyContext_ProvidedDelegationConnector
 		.createLoadBalancer(self.innerProvidedRole_ProvidedDelegationConnector, loadbalancerResourceContainer);
+		
+	if(not(hasAppliedStereotype(loadBalancerAssemblyContext, "LoadbalancerAssemblyContext"))){
+		applyStereotype(loadBalancerAssemblyContext, "LoadbalancerAssemblyContext");
+	};
 	
 	// new assembly connector: loadbalancer -> providing assembly context
 	requiringAssemblyContext_AssemblyConnector := loadBalancerAssemblyContext;
@@ -135,6 +142,13 @@ mapping inout ProvidedDelegationConnector::createLoadbalancerForProvidedDelegati
 		.encapsulatedComponent__AssemblyContext
 		.requiredRoles_InterfaceRequiringEntity[OperationRequiredRole]->asOrderedSet()->at(1);
 	
+	if(not(hasAppliedStereotype(self.assemblyContext_ProvidedDelegationConnector, "OriginalAssemblyContext"))){
+		applyStereotype(self.assemblyContext_ProvidedDelegationConnector,"OriginalAssemblyContext");
+	}; 
+	
+	if(hasAppliedStereotype(loadBalancerAssemblyContext, "LoadbalancerAssemblyContext")){
+		setStringTaggedValue(loadBalancerAssemblyContext, self.assemblyContext_ProvidedDelegationConnector.id, "LoadbalancerAssemblyContext", "originalAssemblyContext");
+	};
 	// old provided delegation connector: outer provided role (as is!) -> loadbalancer (new!)
 	self.innerProvidedRole_ProvidedDelegationConnector := loadBalancerAssemblyContext
 			.encapsulatedComponent__AssemblyContext
@@ -173,7 +187,7 @@ helper duplicateResourceContainer(counter : Integer, originalResourceContainer :
 	duplicateLinkingResources(duplicatedResourceContainer, originalResourceContainer);
 	duplicateAssemblyAndAllocation(counter, duplicatedResourceContainer, originalResourceContainer);
  	applyStereotype(duplicatedResourceContainer, "DuplicateResourceContainer");
- 	if (hasAppliedStereotype(originalResourceContainer, "Price")) {
+	if (hasAppliedStereotype(originalResourceContainer, "Price")) {
 		applyStereotype(duplicatedResourceContainer, "Price");
 		setDoubleTaggedValue(duplicatedResourceContainer, getDoubleTaggedValue(originalResourceContainer, "interval", "Price"), "Price", "interval");
 		setDoubleTaggedValue(duplicatedResourceContainer, getDoubleTaggedValue(originalResourceContainer, "amount", "Price"), "Price", "amount");
@@ -216,8 +230,20 @@ helper duplicateAssemblyAndAllocation(counter : Integer, newResourceContainer : 
 				->forEach (connector){
 					connector
 						->map duplicateConnector(counter, assemblyContext);
-				}
+				};
 		};
+		
+	annotateAllOriginalAssemblyContexts(originalResourceContainer);
+}
+
+helper annotateAllOriginalAssemblyContexts(originalResourceContainer : ResourceContainer){
+	allocation.allocationContexts_Allocation
+			->select(allocationContext | allocationContext.resourceContainer_AllocationContext.id = originalResourceContainer.id)
+			.assemblyContext_AllocationContext->forEach(assembly){
+			if(not(hasAppliedStereotype(assembly,"OriginalAssemblyContext"))){
+				applyStereotype(assembly, "OriginalAssemblyContext");	
+				}
+			};
 }
 
 mapping AssemblyContext::duplicateAssemblyContext(counter : Integer, newResourceContainer : ResourceContainer) : AssemblyContext {
@@ -225,7 +251,7 @@ mapping AssemblyContext::duplicateAssemblyContext(counter : Integer, newResource
 	encapsulatedComponent__AssemblyContext := self.encapsulatedComponent__AssemblyContext;
 	parentStructure__AssemblyContext := self.parentStructure__AssemblyContext;
 	configParameterUsages__AssemblyContext := self.configParameterUsages__AssemblyContext;
-
+	
 	applyStereotype(result, "DuplicateAssemblyContext");
 	setStringTaggedValue(result, self.id, "DuplicateAssemblyContext", "originalAssemblyContext");
 	
@@ -444,4 +470,3 @@ query findResourceContainer(assemblyContext : AssemblyContext) : ResourceContain
 		).resourceContainer_AllocationContext;
 }
 		
-	
