@@ -127,10 +127,10 @@
     <roles id="_07Qu0PpWEeSRjMxcTrWsAA" entityName="Hadoop MapReduce System">
       <stereotype href="profiles/HadoopMapReduce.emfprofile_diagram#_cPD50PphEeSRjMxcTrWsAA"/>
     </roles>
-    <roles id="_tZxTUPpWEeSRjMxcTrWsAA" entityName="Map SEFF">
+    <roles id="_tZxTUPpWEeSRjMxcTrWsAA" entityName="Map Assembly Context">
       <stereotype href="profiles/HadoopMapReduce.emfprofile_diagram#_d-IqwPphEeSRjMxcTrWsAA"/>
     </roles>
-    <roles id="_y6cGkPpWEeSRjMxcTrWsAA" entityName="Reduce SEFF">
+    <roles id="_y6cGkPpWEeSRjMxcTrWsAA" entityName="Reduce Assembly Context">
       <stereotype href="profiles/HadoopMapReduce.emfprofile_diagram#_g4wBwPphEeSRjMxcTrWsAA"/>
     </roles>
     <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion" qvtoFileURI="HadoopMapReduce.qvto">
