@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system:System xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.1" xmlns:system="http://palladiosimulator.org/PalladioComponentModel/System/5.1" id="_R9RfsJ6eEeWwV9kbWFlZYg" entityName="defaultSystem">
+  <assemblyContexts__ComposedStructure id="_S-mZ0J6eEeWwV9kbWFlZYg" entityName="Assembly_Map &lt;Map>">
+    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="mapreduce.repository#_rpK9gJ6bEeWwV9kbWFlZYg"/>
+  </assemblyContexts__ComposedStructure>
+  <assemblyContexts__ComposedStructure id="_YH3ZsJ6eEeWwV9kbWFlZYg" entityName="Assembly_Reduce &lt;Reduce>">
+    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="mapreduce.repository#_sOsFYJ6bEeWwV9kbWFlZYg"/>
+  </assemblyContexts__ComposedStructure>
+  <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_aRTLYJ6eEeWwV9kbWFlZYg" entityName="Provided_JobContext">
+    <providedInterface__OperationProvidedRole href="../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/templates/HadoopMapReduce/mapreduce.repository#_3wPCEGtiEeS4wL15xn-iOQ"/>
+  </providedRoles_InterfaceProvidingEntity>
+</system:System>
