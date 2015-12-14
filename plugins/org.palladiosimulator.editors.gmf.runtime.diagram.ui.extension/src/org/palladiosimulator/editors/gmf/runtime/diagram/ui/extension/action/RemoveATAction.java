@@ -5,8 +5,9 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+import org.modelversioning.emfprofileapplication.ProfileImport;
 import org.modelversioning.emfprofileapplication.StereotypeApplication;
-import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
+import org.palladiosimulator.mdsdprofiles.api.ProfileAPI;
 import org.palladiosimulator.pcm.system.System;
 import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
 
@@ -25,23 +26,25 @@ public class RemoveATAction implements IExternalJavaAction {
      */
     @Override
     public void execute(final Collection<? extends EObject> selections, final Map<String, Object> parameters) {
-        final StereotypeApplication stereotypeApplication = (StereotypeApplication) (selections.isEmpty() ? null
-                : selections.iterator().next());
 
-        if (stereotypeApplication.getAppliedTo() instanceof System) {
-            final System system = (System) stereotypeApplication.getAppliedTo();
+        final EObject selection = selections.iterator().next();
+        if (selection instanceof StereotypeApplication) {
+            final StereotypeApplication stereotypeApplication = (StereotypeApplication) selection;
+            if (stereotypeApplication.getAppliedTo() instanceof System) {
+                final System system = (System) stereotypeApplication.getAppliedTo();
 
-            ArchitecturalTemplateAPI.unapplyArchitecturalTemplate(system,
-                    stereotypeApplication.getStereotype().getProfile());
-        } else if (stereotypeApplication.getAppliedTo() instanceof ResourceEnvironment) {
-            final ResourceEnvironment resourceEnvironment = (ResourceEnvironment) stereotypeApplication.getAppliedTo();
+                ArchitecturalTemplateAPI.unapplyArchitecturalTemplate(system,
+                        stereotypeApplication.getStereotype().getProfile());
+            } else
+                throw new RuntimeException(
+                        "Unsupported stereoApplication removal: " + stereotypeApplication.getAppliedTo());
+        } else if (selection instanceof ProfileImport) {
 
-            ArchitecturalTemplateAPI.unapplyArchitecturalTemplate(resourceEnvironment,
-                    stereotypeApplication.getStereotype().getProfile());
+            final ProfileImport profileImport = (ProfileImport) selection;
+
+            ProfileAPI.unapplyProfile(profileImport.eResource(), profileImport.getProfile());
+
         }
-
-        else
-            throw new RuntimeException("Unsupported stereoApplication removal: " + stereotypeApplication.getAppliedTo());
     }
 
     /**
@@ -53,7 +56,8 @@ public class RemoveATAction implements IExternalJavaAction {
             return false;
         }
         for (final EObject object : selections) {
-            return object instanceof StereotypeApplication;
+            return (object instanceof StereotypeApplication) || (object instanceof ProfileImport);
+
         }
         return false;
     }
