@@ -51,9 +51,15 @@
         <element xmi:type="allocation:AllocationContext" href="mapreduce.allocation#_9fi-wL7nEeSj1cU-uRVraA"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-HUJYb7nEeSj1cU-uRVraA" x="163" y="148" width="132" height="18"/>
       </children>
+      <children xmi:type="notation:Shape" xmi:id="_fLxWgKQeEeWE7doIRhzzvw" type="3002" fontName=".SF NS Text">
+        <children xmi:type="notation:DecorationNode" xmi:id="_fLx9kKQeEeWE7doIRhzzvw" type="5006"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_fLx9kaQeEeWE7doIRhzzvw" type="5007"/>
+        <element xmi:type="allocation:AllocationContext" href="mapreduce.allocation#_eZflAKQeEeWE7doIRhzzvw"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fLxWgaQeEeWE7doIRhzzvw" x="9" y="187"/>
+      </children>
     </children>
     <element xmi:type="resourceenvironment:ResourceContainer" href="mapreduce.resourceenvironment#_HkkA8GwoEeS8KpnxUVYq6Q"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W-J5xWwrEeS8KpnxUVYq6Q" x="18" y="270" width="343" height="226"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W-J5xWwrEeS8KpnxUVYq6Q" x="18" y="270" width="491" height="295"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_W-Kg0WwrEeS8KpnxUVYq6Q" type="2003" fontName="Ubuntu">
     <children xmi:type="notation:DecorationNode" xmi:id="_W-Kg02wrEeS8KpnxUVYq6Q" type="5008"/>
@@ -66,7 +72,7 @@
       </children>
     </children>
     <element xmi:type="resourceenvironment:ResourceContainer" href="mapreduce.resourceenvironment#_NEnJIGwoEeS8KpnxUVYq6Q"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W-Kg0mwrEeS8KpnxUVYq6Q" x="378" y="18" width="217" height="163"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_W-Kg0mwrEeS8KpnxUVYq6Q" x="-260" y="248" width="217" height="163"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_Fp5RMI3sEeSMPMLtEmRwsA" type="2003" fontName="Ubuntu">
     <children xmi:type="notation:DecorationNode" xmi:id="_Fp54QI3sEeSMPMLtEmRwsA" type="5008"/>
@@ -95,9 +101,15 @@
         <element xmi:type="allocation:AllocationContext" href="mapreduce.allocation#_Q_NMkL4QEeSr6_9XCGX9MA"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RYxjIb4QEeSr6_9XCGX9MA" x="75" y="176" width="122" height="23"/>
       </children>
+      <children xmi:type="notation:Shape" xmi:id="_kBST8KQeEeWE7doIRhzzvw" type="3002" fontName=".SF NS Text">
+        <children xmi:type="notation:DecorationNode" xmi:id="_kBST8qQeEeWE7doIRhzzvw" type="5006"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_kBST86QeEeWE7doIRhzzvw" type="5007"/>
+        <element xmi:type="allocation:AllocationContext" href="mapreduce.allocation#_jh30EKQeEeWE7doIRhzzvw"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kBST8aQeEeWE7doIRhzzvw" x="16" y="216"/>
+      </children>
     </children>
     <element xmi:type="resourceenvironment:ResourceContainer" href="mapreduce.resourceenvironment#_soN8cI3rEeSMPMLtEmRwsA"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Fp5RMY3sEeSMPMLtEmRwsA" x="657" y="18" width="226" height="253"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Fp5RMY3sEeSMPMLtEmRwsA" x="544" y="80" width="529" height="309"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_Fp54Qo3sEeSMPMLtEmRwsA" type="2003" fontName="Ubuntu">
     <children xmi:type="notation:DecorationNode" xmi:id="_Fp54RI3sEeSMPMLtEmRwsA" type="5008"/>
@@ -106,19 +118,19 @@
         <children xmi:type="notation:DecorationNode" xmi:id="_SmtLUL4PEeSr6_9XCGX9MA" type="5006"/>
         <children xmi:type="notation:DecorationNode" xmi:id="_SmtLUb4PEeSr6_9XCGX9MA" type="5007"/>
         <element xmi:type="allocation:AllocationContext" href="mapreduce.allocation#_R_1_oL4PEeSr6_9XCGX9MA"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_SmskQb4PEeSr6_9XCGX9MA" x="-2" y="3" width="82" height="44"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_SmskQb4PEeSr6_9XCGX9MA" x="15" y="1" width="82" height="44"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_Vr4MgL4PEeSr6_9XCGX9MA" type="3002" fontName=".Helvetica Neue DeskInterface">
         <children xmi:type="notation:DecorationNode" xmi:id="_Vr4Mgr4PEeSr6_9XCGX9MA" type="5006"/>
         <children xmi:type="notation:DecorationNode" xmi:id="_Vr4Mg74PEeSr6_9XCGX9MA" type="5007"/>
         <element xmi:type="allocation:AllocationContext" href="mapreduce.allocation#_VNKQML4PEeSr6_9XCGX9MA"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vr4Mgb4PEeSr6_9XCGX9MA" x="97" y="3" width="89" height="38"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vr4Mgb4PEeSr6_9XCGX9MA" x="111" y="1" width="89" height="38"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_XmSDsL4PEeSr6_9XCGX9MA" type="3002" fontName=".Helvetica Neue DeskInterface">
         <children xmi:type="notation:DecorationNode" xmi:id="_XmSDsr4PEeSr6_9XCGX9MA" type="5006"/>
         <children xmi:type="notation:DecorationNode" xmi:id="_XmSDs74PEeSr6_9XCGX9MA" type="5007"/>
         <element xmi:type="allocation:AllocationContext" href="mapreduce.allocation#_XPoeQL4PEeSr6_9XCGX9MA"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XmSDsb4PEeSr6_9XCGX9MA" x="196" y="3" width="98" height="41"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XmSDsb4PEeSr6_9XCGX9MA" x="248" y="3" width="98" height="41"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_aXgOIL4PEeSr6_9XCGX9MA" type="3002" fontName=".Helvetica Neue DeskInterface">
         <children xmi:type="notation:DecorationNode" xmi:id="_aXgOIr4PEeSr6_9XCGX9MA" type="5006"/>
@@ -150,9 +162,15 @@
         <element xmi:type="allocation:AllocationContext" href="mapreduce.allocation#_mP4xYL4PEeSr6_9XCGX9MA"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_mkTiMb4PEeSr6_9XCGX9MA" x="226" y="111" width="71" height="38"/>
       </children>
+      <children xmi:type="notation:Shape" xmi:id="_XeErAKQeEeWE7doIRhzzvw" type="3002" fontName=".SF NS Text">
+        <children xmi:type="notation:DecorationNode" xmi:id="_XeFSEKQeEeWE7doIRhzzvw" type="5006"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_XeFSEaQeEeWE7doIRhzzvw" type="5007"/>
+        <element xmi:type="allocation:AllocationContext" href="mapreduce.allocation#_WQrDwKQeEeWE7doIRhzzvw"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XeErAaQeEeWE7doIRhzzvw" x="19" y="161"/>
+      </children>
     </children>
     <element xmi:type="resourceenvironment:ResourceContainer" href="mapreduce.resourceenvironment#_5UsPEI3rEeSMPMLtEmRwsA"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Fp54Q43sEeSMPMLtEmRwsA" x="24" y="24" width="328" height="211"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Fp54Q43sEeSMPMLtEmRwsA" x="8" y="4" width="485" height="245"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_W6I8cmwrEeS8KpnxUVYq6Q"/>
   <element xmi:type="allocation:Allocation" href="mapreduce.allocation#_W6I8cGwrEeS8KpnxUVYq6Q"/>

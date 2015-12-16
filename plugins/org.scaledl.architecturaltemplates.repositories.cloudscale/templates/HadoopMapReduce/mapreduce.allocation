@@ -86,4 +86,16 @@
     <resourceContainer_AllocationContext href="mapreduce.resourceenvironment#_HkkA8GwoEeS8KpnxUVYq6Q"/>
     <assemblyContext_AllocationContext href="mapreduce.system#_G6vjUL7nEeSj1cU-uRVraA"/>
   </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_WQrDwKQeEeWE7doIRhzzvw" entityName="Allocation_Assembly_MapComponentType &lt;MapComponentType> &lt;MapComponentType>">
+    <resourceContainer_AllocationContext href="mapreduce.resourceenvironment#_5UsPEI3rEeSMPMLtEmRwsA"/>
+    <assemblyContext_AllocationContext href="mapreduce.system#_pU9G4J6VEeWiy9Rfn8ggZg"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_eZflAKQeEeWE7doIRhzzvw" entityName="Allocation_Assembly_MapComponentType &lt;MapComponentType> &lt;MapComponentType>">
+    <resourceContainer_AllocationContext href="mapreduce.resourceenvironment#_HkkA8GwoEeS8KpnxUVYq6Q"/>
+    <assemblyContext_AllocationContext href="mapreduce.system#_sSOwUJ6VEeWiy9Rfn8ggZg"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_jh30EKQeEeWE7doIRhzzvw" entityName="Allocation_Assembly_ReduceComponentType &lt;ReduceComponentType> &lt;ReduceComponentType>">
+    <resourceContainer_AllocationContext href="mapreduce.resourceenvironment#_soN8cI3rEeSMPMLtEmRwsA"/>
+    <assemblyContext_AllocationContext href="mapreduce.system#_uGoGIJ6VEeWiy9Rfn8ggZg"/>
+  </allocationContexts_Allocation>
 </allocation:Allocation>
