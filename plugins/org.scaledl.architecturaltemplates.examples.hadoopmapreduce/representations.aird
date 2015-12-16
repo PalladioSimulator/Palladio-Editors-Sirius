@@ -9,6 +9,7 @@
   <semanticResources>mapreduce.usagemodel</semanticResources>
   <semanticResources>mapreduce.usagemodel_diagram</semanticResources>
   <semanticResources>platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/HadoopMapReduce.emfprofile_diagram</semanticResources>
+  <semanticResources>mapreduce.measuringpoint</semanticResources>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_l9wqsKP9EeWcbd9OtfrtyQ">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_7lsMsKQOEeWAQvtAPq2LOQ" name="new ComposedProvidingRequiringEntity Diagram">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_7lsMsaQOEeWAQvtAPq2LOQ" source="DANNOTATION_CUSTOMIZATION_KEY">
