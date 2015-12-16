@@ -12,6 +12,9 @@
   <semanticResources>mapreduce.measuringpoint</semanticResources>
   <semanticResources>mapreduce.monitorrepository</semanticResources>
   <semanticResources>pathmap://METRIC_SPEC_MODELS/models/commonMetrics.metricspec</semanticResources>
+  <semanticResources>pathmap://PCM_MODELS/Glassfish.repository</semanticResources>
+  <semanticResources>pathmap://PCM_MODELS/default_event_middleware.repository</semanticResources>
+  <semanticResources>Experiments/NormalRun.experiments</semanticResources>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_l9wqsKP9EeWcbd9OtfrtyQ">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_7lsMsKQOEeWAQvtAPq2LOQ" name="new ComposedProvidingRequiringEntity Diagram">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_7lsMsaQOEeWAQvtAPq2LOQ" source="DANNOTATION_CUSTOMIZATION_KEY">
