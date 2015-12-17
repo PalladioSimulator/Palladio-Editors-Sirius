@@ -17,6 +17,14 @@ public class AddAssemblyContext implements IExternalJavaAction {
 
     private static final String NEW_ASSEMBLY_CONTEXT = "newAssemblyContext";
 
+    private static final Collection<EReference> ADDITIONAL_REFERENCES = new ArrayList<EReference>();
+    private static final Collection<Object> FILTER_LIST = new ArrayList<Object>();
+
+    static {
+        FILTER_LIST.add(Repository.class);
+        FILTER_LIST.add(RepositoryComponent.class);
+    }
+
     public AddAssemblyContext() {
         super();
     }
@@ -47,13 +55,8 @@ public class AddAssemblyContext implements IExternalJavaAction {
 
     private RepositoryComponent getRepositoryComponent(final AssemblyContext assemblyContext) {
 
-        final ArrayList<Object> filterList = new ArrayList<Object>();
-        filterList.add(Repository.class);
-        filterList.add(RepositoryComponent.class);
-
-        final ArrayList<EReference> additionalReferences = new ArrayList<EReference>();
         final PalladioSelectEObjectDialog dialog = new PalladioSelectEObjectDialog(
-                PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), filterList, additionalReferences,
+                PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), FILTER_LIST, ADDITIONAL_REFERENCES,
                 assemblyContext.eResource().getResourceSet());
         dialog.setProvidedService(RepositoryComponent.class);
         dialog.open();
