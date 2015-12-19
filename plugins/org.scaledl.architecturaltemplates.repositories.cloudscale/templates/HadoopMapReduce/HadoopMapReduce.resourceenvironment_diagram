@@ -7,7 +7,7 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_QP8Qo74BEeSr6_9XCGX9MA"/>
     </children>
     <children xmi:type="notation:DecorationNode" xmi:id="_QP8QpL4BEeSr6_9XCGX9MA" type="7007"/>
-    <element xmi:type="resourceenvironment:ResourceContainer" href="mapreduce.resourceenvironment#_HkkA8GwoEeS8KpnxUVYq6Q"/>
+    <element xmi:type="resourceenvironment:ResourceContainer" href="HadoopMapReduce.resourceenvironment#_HkkA8GwoEeS8KpnxUVYq6Q"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QP7pkb4BEeSr6_9XCGX9MA" y="310"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_QP8Qpb4BEeSr6_9XCGX9MA" type="2004" fontName=".Helvetica Neue DeskInterface">
@@ -17,7 +17,7 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_QP83s74BEeSr6_9XCGX9MA"/>
     </children>
     <children xmi:type="notation:DecorationNode" xmi:id="_QP83tL4BEeSr6_9XCGX9MA" type="7007"/>
-    <element xmi:type="resourceenvironment:ResourceContainer" href="mapreduce.resourceenvironment#_NEnJIGwoEeS8KpnxUVYq6Q"/>
+    <element xmi:type="resourceenvironment:ResourceContainer" href="HadoopMapReduce.resourceenvironment#_NEnJIGwoEeS8KpnxUVYq6Q"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QP8Qpr4BEeSr6_9XCGX9MA" x="310" y="310"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_QP83tb4BEeSr6_9XCGX9MA" type="2004" fontName=".Helvetica Neue DeskInterface">
@@ -27,7 +27,7 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_QP9ew74BEeSr6_9XCGX9MA"/>
     </children>
     <children xmi:type="notation:DecorationNode" xmi:id="_QP9exL4BEeSr6_9XCGX9MA" type="7007"/>
-    <element xmi:type="resourceenvironment:ResourceContainer" href="mapreduce.resourceenvironment#_soN8cI3rEeSMPMLtEmRwsA"/>
+    <element xmi:type="resourceenvironment:ResourceContainer" href="HadoopMapReduce.resourceenvironment#_soN8cI3rEeSMPMLtEmRwsA"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QP83tr4BEeSr6_9XCGX9MA" x="33"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_QP9exb4BEeSr6_9XCGX9MA" type="2004" fontName=".Helvetica Neue DeskInterface">
@@ -37,7 +37,7 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_QP9eyr4BEeSr6_9XCGX9MA"/>
     </children>
     <children xmi:type="notation:DecorationNode" xmi:id="_QP-F0L4BEeSr6_9XCGX9MA" type="7007"/>
-    <element xmi:type="resourceenvironment:ResourceContainer" href="mapreduce.resourceenvironment#_5UsPEI3rEeSMPMLtEmRwsA"/>
+    <element xmi:type="resourceenvironment:ResourceContainer" href="HadoopMapReduce.resourceenvironment#_5UsPEI3rEeSMPMLtEmRwsA"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QP9exr4BEeSr6_9XCGX9MA" x="620" y="310"/>
   </children>
   <children xmi:type="notation:Shape" xmi:id="_QP-F0b4BEeSr6_9XCGX9MA" type="2005" fontName=".Helvetica Neue DeskInterface">
@@ -46,11 +46,11 @@
       <styles xmi:type="notation:SortingStyle" xmi:id="_QP-F1b4BEeSr6_9XCGX9MA"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_QP-F1r4BEeSr6_9XCGX9MA"/>
     </children>
-    <element xmi:type="resourceenvironment:LinkingResource" href="mapreduce.resourceenvironment#_knlEMGwoEeS8KpnxUVYq6Q"/>
+    <element xmi:type="resourceenvironment:LinkingResource" href="HadoopMapReduce.resourceenvironment#_knlEMGwoEeS8KpnxUVYq6Q"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QP-F0r4BEeSr6_9XCGX9MA" x="377"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_QNCGkb4BEeSr6_9XCGX9MA"/>
-  <element xmi:type="resourceenvironment:ResourceEnvironment" href="mapreduce.resourceenvironment#/"/>
+  <element xmi:type="resourceenvironment:ResourceEnvironment" href="HadoopMapReduce.resourceenvironment#/"/>
   <edges xmi:type="notation:Connector" xmi:id="_QQ4EwL4BEeSr6_9XCGX9MA" type="4003" source="_QP-F0b4BEeSr6_9XCGX9MA" target="_QP8Qpb4BEeSr6_9XCGX9MA">
     <styles xmi:type="notation:FontStyle" xmi:id="_QQ4Ewb4BEeSr6_9XCGX9MA" fontName=".Helvetica Neue DeskInterface"/>
     <element xsi:nil="true"/>
