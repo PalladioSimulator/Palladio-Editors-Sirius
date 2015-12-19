@@ -8,7 +8,7 @@
       <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="mapreduce.repository#_sOsFYJ6bEeWwV9kbWFlZYg"/>
     </assemblyContexts__ComposedStructure>
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_aRTLYJ6eEeWwV9kbWFlZYg" entityName="Provided_JobContext">
-      <providedInterface__OperationProvidedRole href="../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/templates/HadoopMapReduce/mapreduce.repository#_3wPCEGtiEeS4wL15xn-iOQ"/>
+      <providedInterface__OperationProvidedRole href="../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/templates/HadoopMapReduce/HadoopMapReduce.repository#_3wPCEGtiEeS4wL15xn-iOQ"/>
     </providedRoles_InterfaceProvidingEntity>
   </system:System>
   <emfprofileapplication:ProfileApplication>
