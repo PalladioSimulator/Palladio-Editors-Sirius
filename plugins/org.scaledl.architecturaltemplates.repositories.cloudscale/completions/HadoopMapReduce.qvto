@@ -1,0 +1,56 @@
+import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
+
+modeltype PCM_SYS uses 'http://palladiosimulator.org/PalladioComponentModel/System/5.1';
+modeltype PCMComposition uses pcm::core::composition('http://palladiosimulator.org/PalladioComponentModel/5.1');
+modeltype PCM_RES_ENV uses 'http://palladiosimulator.org/PalladioComponentModel/ResourceEnvironment/5.1';
+modeltype PCM_ALLOC uses 'http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1';
+
+/**
+ * Transforms a PCM instance with a Map and a Reduce Assembly Context (annotated with Map and Reduce roles)
+ * to a PCM instance that includes these Assembly Contexts into a template for Apache's Hadoop Map Reduce.
+ * The current template is not parametrized; therefore, this template is currently only serving as a
+ * proof-of-concept.
+ *
+ * @author Sebastian Lehrig
+ **/
+ 
+transformation HadoopMapReduce(inout systemModel : PCM_SYS,
+						   	  in templateAllocationModel : PCM_ALLOC,
+						   	  out allocationModel : PCM_ALLOC);
+
+main() {
+	log ('Architectural Template Transformation "Three Layer Three Tier" started!');
+	
+	var system : System := systemModel.rootObjects()![System];
+	assert fatal(hasAppliedStereotype(system, "HadoopMapReduceSystem"))
+		with log ("The system is not a HadoopMapReduceSystem");
+	
+	templateAllocationModel.rootObjects()![Allocation].map allocation2model(system);
+
+	log ('Architectural Template Transformation "Three Layer Three Tier" finished!');
+}
+
+mapping Allocation::allocation2model(system : System) : Allocation@allocationModel {
+	entityName := self.entityName;
+	targetResourceEnvironment_Allocation := self.targetResourceEnvironment_Allocation;
+	system_Allocation := system;
+	allocationContexts_Allocation :=
+		self.allocationContexts_Allocation
+		.map allocationContext2model(system);
+}
+
+mapping AllocationContext::allocationContext2model(system : System) : AllocationContext@allocationModel {
+	entityName := self.entityName;
+	resourceContainer_AllocationContext := self.resourceContainer_AllocationContext;
+	assemblyContext_AllocationContext :=
+		self.assemblyContext_AllocationContext
+		.map assemblyContext2model(system);
+	eventChannel__AllocationContext := self.eventChannel__AllocationContext;
+}
+
+mapping AssemblyContext::assemblyContext2model(system : System) : AssemblyContext@systemModel {
+	entityName := self.entityName + "LEHRIG";
+	parentStructure__AssemblyContext := system;
+	encapsulatedComponent__AssemblyContext := self.encapsulatedComponent__AssemblyContext;
+	configParameterUsages__AssemblyContext := self.configParameterUsages__AssemblyContext;
+}
