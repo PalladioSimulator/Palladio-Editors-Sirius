@@ -144,6 +144,9 @@ public class CompletionItemProvider extends ItemProviderAdapter implements IEdit
 
         newChildDescriptors.add(this.createChildParameter(TypePackage.Literals.COMPLETION__PARAMETERS,
                 TypeFactory.eINSTANCE.createGenericOutputCompletionParameter()));
+
+        newChildDescriptors.add(this.createChildParameter(TypePackage.Literals.COMPLETION__PARAMETERS,
+                TypeFactory.eINSTANCE.createIsolatedPCMTemplateCompletionParameter()));
     }
 
     /**

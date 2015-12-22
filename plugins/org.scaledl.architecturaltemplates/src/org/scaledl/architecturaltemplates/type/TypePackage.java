@@ -858,6 +858,56 @@ public interface TypePackage extends EPackage {
     int RECONFIGURATION_FOLDER_FEATURE_COUNT = 1;
 
     /**
+     * The meta object id for the '
+     * {@link org.scaledl.architecturaltemplates.type.impl.IsolatedPCMTemplateCompletionParameterImpl
+     * <em>Isolated PCM Template Completion Parameter</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see org.scaledl.architecturaltemplates.type.impl.IsolatedPCMTemplateCompletionParameterImpl
+     * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getIsolatedPCMTemplateCompletionParameter()
+     * @generated
+     */
+    int ISOLATED_PCM_TEMPLATE_COMPLETION_PARAMETER = 17;
+
+    /**
+     * The feature id for the '<em><b>Completion</b></em>' container reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ISOLATED_PCM_TEMPLATE_COMPLETION_PARAMETER__COMPLETION = PCM_BLACKBOARD_COMPLETION_PARAMETER__COMPLETION;
+
+    /**
+     * The feature id for the '<em><b>File Extension</b></em>' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ISOLATED_PCM_TEMPLATE_COMPLETION_PARAMETER__FILE_EXTENSION = PCM_BLACKBOARD_COMPLETION_PARAMETER__FILE_EXTENSION;
+
+    /**
+     * The feature id for the '<em><b>Template File URI</b></em>' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ISOLATED_PCM_TEMPLATE_COMPLETION_PARAMETER__TEMPLATE_FILE_URI = PCM_BLACKBOARD_COMPLETION_PARAMETER_FEATURE_COUNT
+            + 0;
+
+    /**
+     * The number of structural features of the '<em>Isolated PCM Template Completion Parameter</em>
+     * ' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ISOLATED_PCM_TEMPLATE_COMPLETION_PARAMETER_FEATURE_COUNT = PCM_BLACKBOARD_COMPLETION_PARAMETER_FEATURE_COUNT
+            + 1;
+
+    /**
      * The meta object id for the '{@link org.scaledl.architecturaltemplates.type.PCMFileExtensions
      * <em>PCM File Extensions</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -865,7 +915,7 @@ public interface TypePackage extends EPackage {
      * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getPCMFileExtensions()
      * @generated
      */
-    int PCM_FILE_EXTENSIONS = 17;
+    int PCM_FILE_EXTENSIONS = 18;
 
     /**
      * Returns the meta object for class '{@link org.scaledl.architecturaltemplates.type.AT
@@ -1351,6 +1401,18 @@ public interface TypePackage extends EPackage {
     EAttribute getReconfigurationFolder_FolderURI();
 
     /**
+     * Returns the meta object for class '
+     * {@link org.scaledl.architecturaltemplates.type.IsolatedPCMTemplateCompletionParameter
+     * <em>Isolated PCM Template Completion Parameter</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @return the meta object for class '<em>Isolated PCM Template Completion Parameter</em>'.
+     * @see org.scaledl.architecturaltemplates.type.IsolatedPCMTemplateCompletionParameter
+     * @generated
+     */
+    EClass getIsolatedPCMTemplateCompletionParameter();
+
+    /**
      * Returns the meta object for enum '
      * {@link org.scaledl.architecturaltemplates.type.PCMFileExtensions <em>PCM File Extensions</em>
      * }'. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1782,6 +1844,19 @@ public interface TypePackage extends EPackage {
          * @generated
          */
         EAttribute RECONFIGURATION_FOLDER__FOLDER_URI = eINSTANCE.getReconfigurationFolder_FolderURI();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.scaledl.architecturaltemplates.type.impl.IsolatedPCMTemplateCompletionParameterImpl
+         * <em>Isolated PCM Template Completion Parameter</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @see org.scaledl.architecturaltemplates.type.impl.
+         *      IsolatedPCMTemplateCompletionParameterImpl
+         * @see org.scaledl.architecturaltemplates.type.impl.TypePackageImpl#getIsolatedPCMTemplateCompletionParameter()
+         * @generated
+         */
+        EClass ISOLATED_PCM_TEMPLATE_COMPLETION_PARAMETER = eINSTANCE.getIsolatedPCMTemplateCompletionParameter();
 
         /**
          * The meta object literal for the '

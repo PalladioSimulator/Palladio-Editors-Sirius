@@ -23,6 +23,7 @@ import org.scaledl.architecturaltemplates.type.Constraint;
 import org.scaledl.architecturaltemplates.type.GenericBlackboardCompletionParameter;
 import org.scaledl.architecturaltemplates.type.GenericOutputCompletionParameter;
 import org.scaledl.architecturaltemplates.type.GenericTemplateCompletionParameter;
+import org.scaledl.architecturaltemplates.type.IsolatedPCMTemplateCompletionParameter;
 import org.scaledl.architecturaltemplates.type.OCLConstraint;
 import org.scaledl.architecturaltemplates.type.PCMBlackboardCompletionParameter;
 import org.scaledl.architecturaltemplates.type.PCMFileExtensions;
@@ -162,6 +163,13 @@ public class TypePackageImpl extends EPackageImpl implements TypePackage {
      * @generated
      */
     private EClass reconfigurationFolderEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass isolatedPCMTemplateCompletionParameterEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -675,6 +683,16 @@ public class TypePackageImpl extends EPackageImpl implements TypePackage {
      * @generated
      */
     @Override
+    public EClass getIsolatedPCMTemplateCompletionParameter() {
+        return this.isolatedPCMTemplateCompletionParameterEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EEnum getPCMFileExtensions() {
         return this.pcmFileExtensionsEEnum;
     }
@@ -771,6 +789,9 @@ public class TypePackageImpl extends EPackageImpl implements TypePackage {
         this.reconfigurationFolderEClass = this.createEClass(RECONFIGURATION_FOLDER);
         this.createEAttribute(this.reconfigurationFolderEClass, RECONFIGURATION_FOLDER__FOLDER_URI);
 
+        this.isolatedPCMTemplateCompletionParameterEClass = this
+                .createEClass(ISOLATED_PCM_TEMPLATE_COMPLETION_PARAMETER);
+
         // Create enums
         this.pcmFileExtensionsEEnum = this.createEEnum(PCM_FILE_EXTENSIONS);
     }
@@ -828,6 +849,9 @@ public class TypePackageImpl extends EPackageImpl implements TypePackage {
         this.pcmTemplateCompletionParameterEClass.getESuperTypes().add(this.getTemplateProvidingEntity());
         this.pcmOutputCompletionParameterEClass.getESuperTypes().add(this.getCompletionParameter());
         this.genericOutputCompletionParameterEClass.getESuperTypes().add(this.getCompletionParameter());
+        this.isolatedPCMTemplateCompletionParameterEClass.getESuperTypes()
+                .add(this.getPCMBlackboardCompletionParameter());
+        this.isolatedPCMTemplateCompletionParameterEClass.getESuperTypes().add(this.getTemplateProvidingEntity());
 
         // Initialize classes and features; add operations and parameters
         this.initEClass(this.atEClass, org.scaledl.architecturaltemplates.type.AT.class, "AT", !IS_ABSTRACT,
@@ -957,6 +981,9 @@ public class TypePackageImpl extends EPackageImpl implements TypePackage {
         this.initEAttribute(this.getReconfigurationFolder_FolderURI(), theEcorePackage.getEString(), "folderURI", null,
                 1, 1, ReconfigurationFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
                 IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        this.initEClass(this.isolatedPCMTemplateCompletionParameterEClass, IsolatedPCMTemplateCompletionParameter.class,
+                "IsolatedPCMTemplateCompletionParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         // Initialize enums and add enum literals
         this.initEEnum(this.pcmFileExtensionsEEnum, PCMFileExtensions.class, "PCMFileExtensions");

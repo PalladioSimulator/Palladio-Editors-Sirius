@@ -15,6 +15,7 @@ import org.scaledl.architecturaltemplates.type.Constraint;
 import org.scaledl.architecturaltemplates.type.GenericBlackboardCompletionParameter;
 import org.scaledl.architecturaltemplates.type.GenericOutputCompletionParameter;
 import org.scaledl.architecturaltemplates.type.GenericTemplateCompletionParameter;
+import org.scaledl.architecturaltemplates.type.IsolatedPCMTemplateCompletionParameter;
 import org.scaledl.architecturaltemplates.type.OCLConstraint;
 import org.scaledl.architecturaltemplates.type.PCMBlackboardCompletionParameter;
 import org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter;
@@ -166,6 +167,11 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseReconfigurationFolder(final ReconfigurationFolder object) {
             return TypeAdapterFactory.this.createReconfigurationFolderAdapter();
+        }
+
+        @Override
+        public Adapter caseIsolatedPCMTemplateCompletionParameter(final IsolatedPCMTemplateCompletionParameter object) {
+            return TypeAdapterFactory.this.createIsolatedPCMTemplateCompletionParameterAdapter();
         }
 
         @Override
@@ -452,6 +458,21 @@ public class TypeAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createReconfigurationFolderAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.scaledl.architecturaltemplates.type.IsolatedPCMTemplateCompletionParameter
+     * <em>Isolated PCM Template Completion Parameter</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's useful to ignore a case
+     * when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see org.scaledl.architecturaltemplates.type.IsolatedPCMTemplateCompletionParameter
+     * @generated
+     */
+    public Adapter createIsolatedPCMTemplateCompletionParameterAdapter() {
         return null;
     }
 

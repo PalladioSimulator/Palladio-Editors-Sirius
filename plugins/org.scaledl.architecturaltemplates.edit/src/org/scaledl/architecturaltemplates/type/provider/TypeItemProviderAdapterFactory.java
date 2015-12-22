@@ -392,6 +392,32 @@ public class TypeItemProviderAdapterFactory extends TypeAdapterFactory
     }
 
     /**
+     * This keeps track of the one adapter used for all
+     * {@link org.scaledl.architecturaltemplates.type.IsolatedPCMTemplateCompletionParameter}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected IsolatedPCMTemplateCompletionParameterItemProvider isolatedPCMTemplateCompletionParameterItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.scaledl.architecturaltemplates.type.IsolatedPCMTemplateCompletionParameter}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createIsolatedPCMTemplateCompletionParameterAdapter() {
+        if (this.isolatedPCMTemplateCompletionParameterItemProvider == null) {
+            this.isolatedPCMTemplateCompletionParameterItemProvider = new IsolatedPCMTemplateCompletionParameterItemProvider(
+                    this);
+        }
+
+        return this.isolatedPCMTemplateCompletionParameterItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      *
@@ -532,6 +558,9 @@ public class TypeItemProviderAdapterFactory extends TypeAdapterFactory
         }
         if (this.reconfigurationFolderItemProvider != null) {
             this.reconfigurationFolderItemProvider.dispose();
+        }
+        if (this.isolatedPCMTemplateCompletionParameterItemProvider != null) {
+            this.isolatedPCMTemplateCompletionParameterItemProvider.dispose();
         }
     }
 
