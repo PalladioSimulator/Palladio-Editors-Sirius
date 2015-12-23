@@ -135,7 +135,9 @@
     </roles>
     <completion xsi:type="org.scaledl.architecturaltemplates:QVTOCompletion" qvtoFileURI="HadoopMapReduce.qvto">
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMBlackboardCompletionParameter"/>
-      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMTemplateCompletionParameter" fileExtension="allocation" templateFileURI="HadoopMapReduce/HadoopMapReduce.allocation"/>
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMTemplateCompletionParameter" fileExtension="repository" templateFileURI="HadoopMapReduce/HadoopMapReduce.repository"/>
+      <parameters xsi:type="org.scaledl.architecturaltemplates:PCMTemplateCompletionParameter" fileExtension="resourceenvironment" templateFileURI="HadoopMapReduce/HadoopMapReduce.resourceenvironment"/>
+      <parameters xsi:type="org.scaledl.architecturaltemplates:IsolatedPCMTemplateCompletionParameter" fileExtension="allocation" templateFileURI="HadoopMapReduce/HadoopMapReduce.allocation"/>
       <parameters xsi:type="org.scaledl.architecturaltemplates:PCMOutputCompletionParameter" fileExtension="allocation"/>
     </completion>
   </ATs>

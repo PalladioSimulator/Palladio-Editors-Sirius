@@ -3,6 +3,7 @@ package org.scaledl.architecturaltemplates.completion.constants;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.palladiosimulator.analyzer.workflow.blackboard.PCMResourceSetPartition;
 import org.palladiosimulator.analyzer.workflow.jobs.LoadPCMModelsIntoBlackboardJob;
 import org.palladiosimulator.experimentautomation.application.jobs.LoadModelsIntoBlackboardJob;
 import org.palladiosimulator.simulizar.launcher.jobs.LoadSimuLizarModelsIntoBlackboardJob;
@@ -33,8 +34,16 @@ public final class ATPartitionConstants {
         }
     };
 
+    /**
+     * ID of the blackboard partition containing the fully loaded PCM instance. The blackboard
+     * partition is ensured to be of type {@link PCMResourceSetPartition}
+     */
+    public static final String PCM_MODELS_PARTITION_ID = "org.palladiosimulator.pcmmodels.partition";
+
     @SuppressWarnings("serial")
     public enum Partition {
+
+        ISOLATED_TEMPLATE("Isolated Template", "org.scaledl.architecturaltemplates.completion.partition", PCM_FILES),
 
         PCM("PCM", LoadPCMModelsIntoBlackboardJob.PCM_MODELS_PARTITION_ID, PCM_FILES),
 
