@@ -16,7 +16,7 @@
   <semanticResources>pathmap://PCM_MODELS/default_event_middleware.repository</semanticResources>
   <semanticResources>Experiments/NormalRun.experiments</semanticResources>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_l9wqsKP9EeWcbd9OtfrtyQ">
-    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_7lsMsKQOEeWAQvtAPq2LOQ" name="new ComposedProvidingRequiringEntity Diagram">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_7lsMsKQOEeWAQvtAPq2LOQ" name="Hadoop MapReduce System">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_7lsMsaQOEeWAQvtAPq2LOQ" source="DANNOTATION_CUSTOMIZATION_KEY">
         <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_7lsMsqQOEeWAQvtAPq2LOQ"/>
       </ownedAnnotationEntries>
@@ -112,7 +112,7 @@
           <styles xmi:type="notation:DiagramStyle" xmi:id="_7l9ScqQOEeWAQvtAPq2LOQ"/>
         </data>
       </ownedAnnotationEntries>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_7lsMs6QOEeWAQvtAPq2LOQ" name="defaultSystem">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_7lsMs6QOEeWAQvtAPq2LOQ" name="Hadoop MapReduce System">
         <target xmi:type="system:System" href="mapreduce.system#_R9RfsJ6eEeWwV9kbWFlZYg"/>
         <semanticElements xmi:type="system:System" href="mapreduce.system#_R9RfsJ6eEeWwV9kbWFlZYg"/>
         <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7lsMtKQOEeWAQvtAPq2LOQ" name="Provided_JobContext" width="5" height="5">

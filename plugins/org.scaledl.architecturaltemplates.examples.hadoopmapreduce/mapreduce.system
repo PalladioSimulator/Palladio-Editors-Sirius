@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:emfprofileapplication="http://www.modelversioning.org/emfprofile/application/1.1" xmlns:org.scaledl.architecturaltemplates.repositories.cloudscale.profiles="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.hadoopmapreduce" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.1" xmlns:system="http://palladiosimulator.org/PalladioComponentModel/System/5.1">
-  <system:System id="_R9RfsJ6eEeWwV9kbWFlZYg" entityName="defaultSystem">
+  <system:System id="_R9RfsJ6eEeWwV9kbWFlZYg" entityName="Hadoop MapReduce System">
     <assemblyContexts__ComposedStructure id="_S-mZ0J6eEeWwV9kbWFlZYg" entityName="Assembly_Map &lt;Map>">
       <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="mapreduce.repository#_rpK9gJ6bEeWwV9kbWFlZYg"/>
     </assemblyContexts__ComposedStructure>
