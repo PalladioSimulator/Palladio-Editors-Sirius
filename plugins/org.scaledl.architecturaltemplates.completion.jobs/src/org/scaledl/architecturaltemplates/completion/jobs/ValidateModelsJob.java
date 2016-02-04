@@ -1,15 +1,18 @@
 package org.scaledl.architecturaltemplates.completion.jobs;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.ocl.ParserException;
 import org.eclipse.ocl.Query;
 import org.eclipse.ocl.ecore.Constraint;
@@ -18,9 +21,10 @@ import org.eclipse.ocl.helper.OCLHelper;
 import org.modelversioning.emfprofile.Stereotype;
 import org.modelversioning.emfprofileapplication.ProfileApplication;
 import org.modelversioning.emfprofileapplication.StereotypeApplication;
-import org.palladiosimulator.analyzer.workflow.blackboard.PCMResourceSetPartition;
 import org.palladiosimulator.commons.emfutils.EMFLoadHelper;
 import org.palladiosimulator.mdsdprofiles.api.ProfileAPI;
+import org.palladiosimulator.pcm.resourceenvironment.ResourceenvironmentPackage;
+import org.palladiosimulator.pcm.system.SystemPackage;
 import org.scaledl.architecturaltemplates.completion.config.ATExtensionJobConfiguration;
 import org.scaledl.architecturaltemplates.completion.constants.ATPartitionConstants;
 import org.scaledl.architecturaltemplates.ocl.StereotypeEnvironmentFactory;
@@ -31,6 +35,7 @@ import de.uka.ipd.sdq.workflow.jobs.JobFailedException;
 import de.uka.ipd.sdq.workflow.jobs.SequentialBlackboardInteractingJob;
 import de.uka.ipd.sdq.workflow.jobs.UserCanceledException;
 import de.uka.ipd.sdq.workflow.mdsd.blackboard.MDSDBlackboard;
+import de.uka.ipd.sdq.workflow.mdsd.blackboard.ResourceSetPartition;
 
 /**
  * Validates blackboard models according to the given AT constraints.
@@ -82,23 +87,25 @@ public class ValidateModelsJob extends SequentialBlackboardInteractingJob<MDSDBl
     }
 
     private List<ProfileApplication> getProfileApplications() {
-        final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) this.myBlackboard
-                .getPartition(ATPartitionConstants.Partition.PCM.getPartitionId());
-        org.palladiosimulator.pcm.system.System system = null;
         final List<ProfileApplication> profileApplications = new LinkedList<ProfileApplication>();
-        org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment resourceEnvironment = null;
-        try {
-            system = pcmRepositoryPartition.getSystem();
-            resourceEnvironment = pcmRepositoryPartition.getResourceEnvironment();
-        } catch (final IndexOutOfBoundsException e) {
+
+        addProfileApplicationIfPresent(profileApplications, SystemPackage.eINSTANCE.getSystem());
+        addProfileApplicationIfPresent(profileApplications,
+                ResourceenvironmentPackage.eINSTANCE.getResourceEnvironment());
+
+        return Collections.unmodifiableList(profileApplications);
+    }
+
+    private void addProfileApplicationIfPresent(final List<ProfileApplication> profileApplications,
+            final EClass eClass) {
+        final ResourceSetPartition partition = this.myBlackboard
+                .getPartition(ATPartitionConstants.Partition.PCM.getPartitionId());
+        if (partition.hasElement(eClass)) {
+            final Resource resource = partition.getElement(eClass).get(0).eResource();
+            if (ProfileAPI.hasProfileApplication(resource)) {
+                profileApplications.add(ProfileAPI.getProfileApplication(resource));
+            }
         }
-        if (system != null & ProfileAPI.hasProfileApplication(system.eResource())) {
-            profileApplications.add(ProfileAPI.getProfileApplication(system.eResource()));
-        }
-        if (resourceEnvironment != null & ProfileAPI.hasProfileApplication(resourceEnvironment.eResource())) {
-            profileApplications.add(ProfileAPI.getProfileApplication(resourceEnvironment.eResource()));
-        }
-        return profileApplications;
     }
 
     private EList<org.scaledl.architecturaltemplates.type.Constraint> getConstraintsFromStereotypeApplication(
