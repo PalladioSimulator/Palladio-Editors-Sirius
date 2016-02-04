@@ -14,6 +14,7 @@ import org.scaledl.architecturaltemplates.type.Constraint;
 import org.scaledl.architecturaltemplates.type.GenericBlackboardCompletionParameter;
 import org.scaledl.architecturaltemplates.type.GenericOutputCompletionParameter;
 import org.scaledl.architecturaltemplates.type.GenericTemplateCompletionParameter;
+import org.scaledl.architecturaltemplates.type.IsolatedPCMTemplateCompletionParameter;
 import org.scaledl.architecturaltemplates.type.OCLConstraint;
 import org.scaledl.architecturaltemplates.type.PCMBlackboardCompletionParameter;
 import org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter;
@@ -308,6 +309,23 @@ public class TypeSwitch<T> extends Switch<T> {
             }
             return result;
         }
+        case TypePackage.ISOLATED_PCM_TEMPLATE_COMPLETION_PARAMETER: {
+            final IsolatedPCMTemplateCompletionParameter isolatedPCMTemplateCompletionParameter = (IsolatedPCMTemplateCompletionParameter) theEObject;
+            T result = this.caseIsolatedPCMTemplateCompletionParameter(isolatedPCMTemplateCompletionParameter);
+            if (result == null) {
+                result = this.casePCMBlackboardCompletionParameter(isolatedPCMTemplateCompletionParameter);
+            }
+            if (result == null) {
+                result = this.caseTemplateProvidingEntity(isolatedPCMTemplateCompletionParameter);
+            }
+            if (result == null) {
+                result = this.caseCompletionParameter(isolatedPCMTemplateCompletionParameter);
+            }
+            if (result == null) {
+                result = this.defaultCase(theEObject);
+            }
+            return result;
+        }
         default:
             return this.defaultCase(theEObject);
         }
@@ -575,6 +593,23 @@ public class TypeSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseReconfigurationFolder(final ReconfigurationFolder object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Isolated PCM Template Completion Parameter</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Isolated PCM Template Completion Parameter</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseIsolatedPCMTemplateCompletionParameter(final IsolatedPCMTemplateCompletionParameter object) {
         return null;
     }
 

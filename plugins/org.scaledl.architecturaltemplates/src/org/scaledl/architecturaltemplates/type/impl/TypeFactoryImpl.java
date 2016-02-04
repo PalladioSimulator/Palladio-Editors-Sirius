@@ -12,6 +12,7 @@ import org.scaledl.architecturaltemplates.type.AT;
 import org.scaledl.architecturaltemplates.type.GenericBlackboardCompletionParameter;
 import org.scaledl.architecturaltemplates.type.GenericOutputCompletionParameter;
 import org.scaledl.architecturaltemplates.type.GenericTemplateCompletionParameter;
+import org.scaledl.architecturaltemplates.type.IsolatedPCMTemplateCompletionParameter;
 import org.scaledl.architecturaltemplates.type.OCLConstraint;
 import org.scaledl.architecturaltemplates.type.PCMBlackboardCompletionParameter;
 import org.scaledl.architecturaltemplates.type.PCMFileExtensions;
@@ -93,6 +94,8 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
             return this.createGenericOutputCompletionParameter();
         case TypePackage.RECONFIGURATION_FOLDER:
             return this.createReconfigurationFolder();
+        case TypePackage.ISOLATED_PCM_TEMPLATE_COMPLETION_PARAMETER:
+            return this.createIsolatedPCMTemplateCompletionParameter();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -269,6 +272,17 @@ public class TypeFactoryImpl extends EFactoryImpl implements TypeFactory {
     public ReconfigurationFolder createReconfigurationFolder() {
         final ReconfigurationFolderImpl reconfigurationFolder = new ReconfigurationFolderImpl();
         return reconfigurationFolder;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public IsolatedPCMTemplateCompletionParameter createIsolatedPCMTemplateCompletionParameter() {
+        final IsolatedPCMTemplateCompletionParameterImpl isolatedPCMTemplateCompletionParameter = new IsolatedPCMTemplateCompletionParameterImpl();
+        return isolatedPCMTemplateCompletionParameter;
     }
 
     /**

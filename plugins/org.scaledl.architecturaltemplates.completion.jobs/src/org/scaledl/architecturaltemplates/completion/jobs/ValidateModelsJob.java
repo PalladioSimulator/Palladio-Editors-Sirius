@@ -1,5 +1,8 @@
 package org.scaledl.architecturaltemplates.completion.jobs;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -43,10 +46,9 @@ public class ValidateModelsJob extends SequentialBlackboardInteractingJob<MDSDBl
     public void execute(final IProgressMonitor monitor) throws JobFailedException, UserCanceledException {
         super.execute(monitor);
         this.logger.info("Validating AT Constraints.");
-        final ProfileApplication systemProfileApplication = this.getProfileApplicationFromSystem();
-        if (systemProfileApplication != null) {
-            final EList<StereotypeApplication> stereotypeApplications = systemProfileApplication
-                    .getStereotypeApplications();
+        final List<ProfileApplication> profileApplications = this.getProfileApplications();
+        for (final ProfileApplication profileApplication : profileApplications) {
+            final EList<StereotypeApplication> stereotypeApplications = profileApplication.getStereotypeApplications();
             final OCL ocl = OCL.newInstance(new StereotypeEnvironmentFactory(this.myBlackboard));
             // create an OCL helper object
             final OCLHelper<EClassifier, EOperation, EStructuralFeature, Constraint> helper = ocl.createOCLHelper();
@@ -79,19 +81,24 @@ public class ValidateModelsJob extends SequentialBlackboardInteractingJob<MDSDBl
         }
     }
 
-    private ProfileApplication getProfileApplicationFromSystem() {
+    private List<ProfileApplication> getProfileApplications() {
         final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) this.myBlackboard
                 .getPartition(ATPartitionConstants.Partition.PCM.getPartitionId());
         org.palladiosimulator.pcm.system.System system = null;
+        final List<ProfileApplication> profileApplications = new LinkedList<ProfileApplication>();
+        org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment resourceEnvironment = null;
         try {
             system = pcmRepositoryPartition.getSystem();
+            resourceEnvironment = pcmRepositoryPartition.getResourceEnvironment();
         } catch (final IndexOutOfBoundsException e) {
         }
         if (system != null & ProfileAPI.hasProfileApplication(system.eResource())) {
-
-            return ProfileAPI.getProfileApplication(system.eResource());
+            profileApplications.add(ProfileAPI.getProfileApplication(system.eResource()));
         }
-        return null;
+        if (resourceEnvironment != null & ProfileAPI.hasProfileApplication(resourceEnvironment.eResource())) {
+            profileApplications.add(ProfileAPI.getProfileApplication(resourceEnvironment.eResource()));
+        }
+        return profileApplications;
     }
 
     private EList<org.scaledl.architecturaltemplates.type.Constraint> getConstraintsFromStereotypeApplication(

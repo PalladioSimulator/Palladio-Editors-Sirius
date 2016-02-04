@@ -136,6 +136,15 @@ public interface TypeFactory extends EFactory {
     ReconfigurationFolder createReconfigurationFolder();
 
     /**
+     * Returns a new object of class '<em>Isolated PCM Template Completion Parameter</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return a new object of class '<em>Isolated PCM Template Completion Parameter</em>'.
+     * @generated
+     */
+    IsolatedPCMTemplateCompletionParameter createIsolatedPCMTemplateCompletionParameter();
+
+    /**
      * Returns the package supported by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the package supported by this factory.

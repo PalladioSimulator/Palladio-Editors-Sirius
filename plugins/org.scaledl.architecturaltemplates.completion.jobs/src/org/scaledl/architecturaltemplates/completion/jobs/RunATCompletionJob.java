@@ -25,6 +25,8 @@ import org.palladiosimulator.pcm.allocation.Allocation;
 import org.palladiosimulator.pcm.allocation.AllocationFactory;
 import org.palladiosimulator.pcm.allocation.util.AllocationResourceImpl;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
+import org.palladiosimulator.pcm.resourceenvironment.ResourceenvironmentFactory;
+import org.palladiosimulator.pcm.resourceenvironment.util.ResourceenvironmentResourceImpl;
 import org.palladiosimulator.pcm.usagemodel.UsageModel;
 import org.palladiosimulator.pcm.usagemodel.UsageScenario;
 import org.palladiosimulator.pcmmeasuringpoint.UsageScenarioMeasuringPoint;
@@ -170,6 +172,28 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                         "PCM Template Completion Parameter \"" + templateURI + "\" not found");
             };
 
+            @Override
+            public ModelLocation caseIsolatedPCMTemplateCompletionParameter(
+                    final org.scaledl.architecturaltemplates.type.IsolatedPCMTemplateCompletionParameter object) {
+                final String[] segments = URI.createURI(object.getTemplateFileURI()).segments();
+                final URI templateURI = templateFolderURI.appendSegments(segments);
+                final String lastSegment = templateURI.lastSegment();
+
+                for (final String fileName : ATPartitionConstants.PCM_FILES) {
+                    if (lastSegment.endsWith(fileName)) {
+                        final ResourceSetPartition resourceSetPartition = getBlackboard()
+                                .getPartition(ATPartitionConstants.Partition.ISOLATED_TEMPLATE.getPartitionId());
+                        resourceSetPartition.loadModel(templateURI);
+                        resourceSetPartition.resolveAllProxies();
+                        return new ModelLocation(ATPartitionConstants.Partition.ISOLATED_TEMPLATE.getPartitionId(),
+                                templateURI);
+                    }
+                }
+
+                throw new IllegalArgumentException(
+                        "PCM Template Completion Parameter \"" + templateURI + "\" not found");
+            };
+
             /**
              * Find the models in blackboard
              */
@@ -194,7 +218,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
             };
 
             /**
-             * Create new output model for QVTo transformation
+             * Create new output model from QVTo transformation
              */
             @Override
             public ModelLocation casePCMOutputCompletionParameter(final PCMOutputCompletionParameter object) {
@@ -206,12 +230,16 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
                 final URI uri = outResource.getURI();
 
                 if (outResource instanceof AllocationResourceImpl) {
-                    ResourceEnvironment resourceEnvironment = null;
                     try {
-                        resourceEnvironment = pcmRepositoryPartition.getResourceEnvironment();
                         final Allocation allocation = AllocationFactory.eINSTANCE.createAllocation();
-                        allocation.setTargetResourceEnvironment_Allocation(resourceEnvironment);
                         outResource.getContents().add(allocation);
+                    } catch (final IndexOutOfBoundsException e) {
+                    }
+                } else if (outResource instanceof ResourceenvironmentResourceImpl) {
+                    try {
+                        final ResourceEnvironment resourceEnvironment = ResourceenvironmentFactory.eINSTANCE
+                                .createResourceEnvironment();
+                        outResource.getContents().add(resourceEnvironment);
                     } catch (final IndexOutOfBoundsException e) {
                     }
                 } else if (outResource instanceof PcmmeasuringpointResourceImpl) {

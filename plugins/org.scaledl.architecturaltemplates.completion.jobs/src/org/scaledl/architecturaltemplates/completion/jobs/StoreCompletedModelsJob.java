@@ -58,6 +58,7 @@ public class StoreCompletedModelsJob extends SequentialBlackboardInteractingJob<
      */
     public StoreCompletedModelsJob(final ATExtensionJobConfiguration configuration, final String folderName,
             final boolean createNewStorageFolder) {
+        super(false);
         this.configuration = configuration;
         this.folderName = folderName;
 
@@ -137,8 +138,8 @@ public class StoreCompletedModelsJob extends SequentialBlackboardInteractingJob<
      * @throws UserCanceledException
      *             the user has chosen to abort.
      */
-    private void storePartition(final IProgressMonitor monitor, final String partitionID) throws JobFailedException,
-            UserCanceledException {
+    private void storePartition(final IProgressMonitor monitor, final String partitionID)
+            throws JobFailedException, UserCanceledException {
         final SavePartitionToDiskJob savePartitionJob = new SavePartitionToDiskJob(partitionID);
         savePartitionJob.setBlackboard(this.getBlackboard());
         savePartitionJob.execute(monitor);
