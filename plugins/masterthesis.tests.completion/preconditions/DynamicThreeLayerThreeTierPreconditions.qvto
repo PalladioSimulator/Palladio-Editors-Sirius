@@ -1,0 +1,358 @@
+import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
+
+modeltype PCM_ALLOC uses 'http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1';
+modeltype PCM_SYS uses 'http://palladiosimulator.org/PalladioComponentModel/System/5.1';
+modeltype PCMComposition uses pcm::core::composition('http://palladiosimulator.org/PalladioComponentModel/5.1');
+modeltype PCM_RES_ENV uses 'http://palladiosimulator.org/PalladioComponentModel/ResourceEnvironment/5.1';
+modeltype ECORE uses 'http://www.eclipse.org/emf/2002/Ecore';
+
+transformation DynamicThreeLayerThreeTierPreconditions(in allocationBeforeCompletion : PCM_ALLOC);
+
+property oldAllocation : Allocation;
+
+main() {
+	log('------------Second Iteration------------');
+
+	log('DynamicThreeLayerThreeTierPreconditions Test started');
+
+	oldAllocation := allocationBeforeCompletion.rootObjects()![Allocation];
+	var system : System := oldAllocation.system_Allocation;
+	var assemblyContexts : Set(AssemblyContext) := system.assemblyContexts__ComposedStructure;
+	var resourceEnvironment : ResourceEnvironment := oldAllocation.targetResourceEnvironment_Allocation;
+	
+	testSystemProfileApplied(system);
+	testResourceEnvironmentProfileApplied(resourceEnvironment);
+	testSystemIsDynamicThreeLayerThreeTierSystem(system);
+	
+	
+	testSystemHasAtLeastThreeAssemblies(assemblyContexts);
+	testAllAssembliesAreThreeLayerStereotyped(assemblyContexts);
+	testSystemHasAtLeastOnePresentationLayerAssembly(assemblyContexts);
+	testSystemHasAtLeastOneMiddleLayerAssembly(assemblyContexts);
+	testSystemHasAtLeastOneDataLayerAssembly(assemblyContexts);
+	testMiddleLayerAssembliesNotRequirePresentationLayerAssembly(system);
+	testDataLayerAssembliesNotRequirePresentationLayerAssembly(system);
+	testPresentationLayerAssembliesNotRequireDataLayerAssembly(system);
+	testDataLayerAssembliesNotRequireMiddleLayerAssembly(system);
+	testNoProvidedDelegationConnectorToMiddleLayerAssemblies(system);
+	testNoProvidedDelegationConnectorToDataLayerAssemblies(system);
+	
+	testResourceEnvironmentHasAtLeastThreeResourceContainer(resourceEnvironment);
+	testAllResourceContainerAreThreeTierStereotyped(resourceEnvironment);
+	testResourceContainerExactlyOneTier(resourceEnvironment);
+	testResourceEnvironmentHasAtLeastOnePresentationTier(resourceEnvironment);
+	testResourceEnvironmentHasAtLeastOneDataTier(resourceEnvironment);
+	testResourceEnvironmentHasOnlyOneReplicableMiddleTier(resourceEnvironment);
+	testNumberOfReplicasGreaterZero(resourceEnvironment);
+	testScaleInThresholdGreaterZero(resourceEnvironment);
+	testScaleOutThresholdGreaterZeo(resourceEnvironment);
+	testReplicableMiddleTierBasicComponentAreStateless(oldAllocation);
+	testPresentationLayerAssembliesAllocatedToPresentationTier(oldAllocation, assemblyContexts);
+	testMiddleLayerAssembliesAllocatedToMiddleTier(oldAllocation, assemblyContexts);
+	testDataLayerAssembliesAllocatedToDataTier(oldAllocation, assemblyContexts);
+	testScaleInSmallerScaleOut(resourceEnvironment);
+	
+	log('DynamicThreeLayerThreeTierPreconditions Test finished');
+}
+
+query testSystemProfileApplied(system : System){
+	assert fatal(isProfileApplied(system.oclAsType(EObject),"DynamicThreeLayerThreeTierProfile"))
+		with log ("The System has no DynamicThreeLayerThreeTierProfile applied.");
+		
+}
+
+query testResourceEnvironmentProfileApplied(resourceEnvironment : ResourceEnvironment){
+	assert fatal(isProfileApplied(resourceEnvironment.oclAsType(EObject),"DynamicThreeLayerThreeTierProfile"))
+		with log ("The resource environment has no DynamicThreeLayerThreeTierProfile applied.");
+}
+
+query testSystemIsDynamicThreeLayerThreeTierSystem(system : System){
+	assert fatal(hasAppliedStereotype(system,"DynamicThreeLayerThreeTierSystem")) 
+		with log('The System is not a DynamicThreeLayerThreeTierSystem');
+}
+
+query testSystemHasAtLeastThreeAssemblies(assemblyContexts : Set(AssemblyContext)){
+	assert error(assemblyContexts->size() >= 3) 
+		with log('The System has <= 2 Assembly Contexts. At least 3 are needed.');
+}
+
+query testAllAssembliesAreThreeLayerStereotyped(assemblyContexts : Set(AssemblyContext)){
+	var allStereotyped: Boolean := assemblyContexts->forAll(assembly : AssemblyContext|
+	hasAppliedStereotype(assembly,"PresentationLayerAssembly") 
+	or hasAppliedStereotype(assembly,"MiddleLayerAssembly") 
+	or hasAppliedStereotype(assembly,"DataLayerAssembly"));
+	assert error(allStereotyped) 
+		with log('The System has at least one Assembly Context that is not stereotyped.');
+}
+
+query testSystemHasAtLeastOnePresentationLayerAssembly(assemblyContexts : Set(AssemblyContext)){
+	var presentationLayerAssemblies : Set(AssemblyContext) := assemblyContexts->select(assembly : AssemblyContext| hasAppliedStereotype(assembly,"PresentationLayerAssembly"));
+	assert error(presentationLayerAssemblies->size() >= 1) 
+		with log('The System has no Presentation Layer Assembly.');
+}
+
+query testSystemHasAtLeastOneMiddleLayerAssembly(assemblyContexts : Set(AssemblyContext)){
+	var middleLayerAssemblies : Set(AssemblyContext) := assemblyContexts->select(assembly : AssemblyContext| hasAppliedStereotype(assembly,"MiddleLayerAssembly"));
+	assert error(middleLayerAssemblies->size() >= 1) 
+		with log('The System has no Middle Layer Assembly.');
+}
+
+query testSystemHasAtLeastOneDataLayerAssembly(assemblyContexts : Set(AssemblyContext)){
+	var dataLayerAssemblies : Set(AssemblyContext) := assemblyContexts->select(assembly : AssemblyContext| hasAppliedStereotype(assembly,"DataLayerAssembly"));
+	assert error(dataLayerAssemblies->size() >= 1) 
+		with log('The System has no Data Layer Assembly.');
+}
+
+query testMiddleLayerAssembliesNotRequirePresentationLayerAssembly(system : System){
+	var assemblyConnectors : Set(AssemblyConnector) := system.connectors__ComposedStructure->selectByType(AssemblyConnector);
+	var middleNotRequirePresentation : Boolean := assemblyConnectors->forAll(ac : AssemblyConnector
+		|not(hasAppliedStereotype(ac.providingAssemblyContext_AssemblyConnector,'PresentationLayerAssembly') 
+		and ((hasAppliedStereotype(ac.requiringAssemblyContext_AssemblyConnector,'MiddleLayerAssembly')))));
+	assert error(middleNotRequirePresentation) 
+		with log('Middle Layer Assembly requires Presentation Layer Assembly.(AssemblyConntector)');	
+	var assemblyInfrastructureConnectors : Set(AssemblyInfrastructureConnector) := system.connectors__ComposedStructure->selectByType(AssemblyInfrastructureConnector);
+	 middleNotRequirePresentation := assemblyInfrastructureConnectors->forAll(ac : AssemblyInfrastructureConnector
+		|not(hasAppliedStereotype(ac.providingAssemblyContext__AssemblyInfrastructureConnector,'PresentationLayerAssembly') 
+		and ((hasAppliedStereotype(ac.requiringAssemblyContext__AssemblyInfrastructureConnector,'MiddleLayerAssembly')))));
+	assert error(middleNotRequirePresentation) 
+		with log('Middle Layer Assembly requires Presentation Layer Assembly.(AssemblyInfrastructureConntector)');	
+}
+
+query testDataLayerAssembliesNotRequirePresentationLayerAssembly(system : System){
+	var assemblyConnectors : Set(AssemblyConnector) := system.connectors__ComposedStructure->selectByType(AssemblyConnector);
+	var dataNotRequirePresentation : Boolean := assemblyConnectors->forAll(ac|not(hasAppliedStereotype(ac.providingAssemblyContext_AssemblyConnector,'PresentationLayerAssembly') 
+	and (hasAppliedStereotype(ac.requiringAssemblyContext_AssemblyConnector,'DataLayerAssembly'))));
+	assert error(dataNotRequirePresentation) 
+		with log('Data Layer Assembly requires Presentation Layer Assembly.(AssemblyConntector)');
+	var assemblyInfrastructureConnectors : Set(AssemblyInfrastructureConnector) := system.connectors__ComposedStructure->selectByType(AssemblyInfrastructureConnector);
+	dataNotRequirePresentation := assemblyInfrastructureConnectors->forAll(ac|not(hasAppliedStereotype(ac.providingAssemblyContext__AssemblyInfrastructureConnector,'PresentationLayerAssembly') 
+	and (hasAppliedStereotype(ac.requiringAssemblyContext__AssemblyInfrastructureConnector,'DataLayerAssembly'))));
+	assert error(dataNotRequirePresentation) 
+		with log('Data Layer Assembly requires Presentation Layer Assembly.(AssemblyInfrastructureConntector)');
+}
+
+query testPresentationLayerAssembliesNotRequireDataLayerAssembly(system : System){
+	var assemblyConnectors : Set(AssemblyConnector) := system.connectors__ComposedStructure->selectByType(AssemblyConnector);
+	var presentationNotRequireData : Boolean := assemblyConnectors->forAll(ac|
+	not(hasAppliedStereotype(ac.requiringAssemblyContext_AssemblyConnector,'PresentationLayerAssembly') 
+	and hasAppliedStereotype(ac.providingAssemblyContext_AssemblyConnector,'DataLayerAssembly')));
+	assert error(presentationNotRequireData) 
+		with log('Presentation Layer Assembly requires Data Layer Assembly.(AssemblyConntector)');
+	var assemblyInfrastructureConnectors : Set(AssemblyInfrastructureConnector) := system.connectors__ComposedStructure->selectByType(AssemblyInfrastructureConnector);
+	presentationNotRequireData := assemblyInfrastructureConnectors->forAll(ac|
+	not(hasAppliedStereotype(ac.requiringAssemblyContext__AssemblyInfrastructureConnector,'PresentationLayerAssembly') 
+	and hasAppliedStereotype(ac.providingAssemblyContext__AssemblyInfrastructureConnector,'DataLayerAssembly')));
+	assert error(presentationNotRequireData) 
+		with log('Presentation Layer Assembly requires Data Layer Assembly.(AssemblyInfrastructureConntector)');
+}
+
+query testDataLayerAssembliesNotRequireMiddleLayerAssembly(system : System){
+	var assemblyConnectors : Set(AssemblyConnector) := system.connectors__ComposedStructure->selectByType(AssemblyConnector);
+	var dataNotRequireMiddle : Boolean := assemblyConnectors->forAll(ac|
+	not(hasAppliedStereotype(ac.requiringAssemblyContext_AssemblyConnector,'DataLayerAssembly') 
+	and hasAppliedStereotype(ac.providingAssemblyContext_AssemblyConnector,'MiddleLayerAssembly')));
+	assert error(dataNotRequireMiddle) 
+		with log('Data Layer Assembly requires Middle Layer Assembly.(AssemblyConntector)');
+	var assemblyInfrastructureConnectors : Set(AssemblyInfrastructureConnector) := system.connectors__ComposedStructure->selectByType(AssemblyInfrastructureConnector);
+ 	dataNotRequireMiddle := assemblyInfrastructureConnectors->forAll(ac|
+	not(hasAppliedStereotype(ac.requiringAssemblyContext__AssemblyInfrastructureConnector,'DataLayerAssembly') 
+	and hasAppliedStereotype(ac.providingAssemblyContext__AssemblyInfrastructureConnector,'MiddleLayerAssembly')));
+	assert error(dataNotRequireMiddle) 
+		with log('Data Layer Assembly requires Middle Layer Assembly.(AssemblyInfrastructureConntector)');
+}
+
+
+query testNoProvidedDelegationConnectorToMiddleLayerAssemblies(system : System){
+	var providedDelegationConnectors : Set(ProvidedDelegationConnector) := system.connectors__ComposedStructure->selectByType(ProvidedDelegationConnector);
+    var noProvidedDelegationToMiddle : Boolean := providedDelegationConnectors->forAll(pdc|
+    not(hasAppliedStereotype(pdc.assemblyContext_ProvidedDelegationConnector,'MiddleLayerAssembly')));
+	assert error(noProvidedDelegationToMiddle) 
+		with log('Provided Delegation Connector to Middle Layer Assembly.(OperationProvidedDelegationConnector)');
+	var providedInfrastructureDelegationConnectors : Set(ProvidedInfrastructureDelegationConnector) := system.connectors__ComposedStructure->selectByType(ProvidedInfrastructureDelegationConnector);
+   	noProvidedDelegationToMiddle := providedInfrastructureDelegationConnectors->forAll(pdc|
+    not(hasAppliedStereotype(pdc.assemblyContext__ProvidedInfrastructureDelegationConnector,'MiddleLayerAssembly')));
+	assert error(noProvidedDelegationToMiddle) 
+		with log('Provided Delegation Connector to Middle Layer Assembly.(ProvidedInfrastructureDelegationConnector)');
+}
+
+query testNoProvidedDelegationConnectorToDataLayerAssemblies(system : System){
+	var providedDelegationConnectors : Set(ProvidedDelegationConnector) := system.connectors__ComposedStructure->selectByType(ProvidedDelegationConnector);
+    var noProvidedDelegationToData : Boolean := providedDelegationConnectors->forAll(pdc|
+    not(hasAppliedStereotype(pdc.assemblyContext_ProvidedDelegationConnector,'DataLayerAssembly')));
+	assert error(noProvidedDelegationToData) 
+		with log('Provided Delegation Connector to Middle Layer Assembly.(OperationProvidedDelegationConnector)');
+	var providedInfrastructureDelegationConnectors : Set(ProvidedInfrastructureDelegationConnector) := system.connectors__ComposedStructure->selectByType(ProvidedInfrastructureDelegationConnector);
+    noProvidedDelegationToData := providedInfrastructureDelegationConnectors->forAll(pdc|
+    not(hasAppliedStereotype(pdc.assemblyContext__ProvidedInfrastructureDelegationConnector,'DataLayerAssembly')));
+	assert error(noProvidedDelegationToData) 
+		with log('Provided Delegation Connector to Middle Layer Assembly.(ProvidedInfrastructureDelegationConnector)');
+}
+
+query testNoRequiredDelegationConnectorFromPresentationLayerAssemblies(system : System){
+	var requiredDelegationConnectors : Set(RequiredDelegationConnector) := system.connectors__ComposedStructure->selectByType(RequiredDelegationConnector);
+    var noRequiredDelegationFromPresentation : Boolean := requiredDelegationConnectors->forAll(rdc|
+    not(hasAppliedStereotype(rdc.assemblyContext_RequiredDelegationConnector,'PresentationLayerAssembly')));
+	assert error(noRequiredDelegationFromPresentation) 
+		with log('Required Delegation Connector From Presentation Layer Assembly.');
+}
+
+query testNoRequiredDelegationConnectorFromMiddleLayerAssemblies(system : System){
+	var requiredDelegationConnectors : Set(RequiredDelegationConnector) := system.connectors__ComposedStructure->selectByType(RequiredDelegationConnector);
+    var noRequiredDelegationFromMiddle : Boolean := requiredDelegationConnectors->forAll(rdc|
+    not(hasAppliedStereotype(rdc.assemblyContext_RequiredDelegationConnector,'MiddleLayerAssembly')));
+	assert error(noRequiredDelegationFromMiddle) 
+		with log('Required Delegation Connector From Middle Layer Assembly.');
+}
+
+query testResourceEnvironmentHasAtLeastOnePresentationTier(resourceEnvironment : ResourceEnvironment){
+	var loadBalancedResContainers := resourceEnvironment.resourceContainer_ResourceEnvironment->select(r|hasAppliedStereotype(r,'PresentationTier'));
+	var loadBalancedResContainersSize : Integer := loadBalancedResContainers->size();
+	assert error(loadBalancedResContainersSize >= 1) 
+		with log('There is not at least one Presentation Tier Resource Container. Instead there are ' + loadBalancedResContainersSize.toString() + '.');
+}
+
+query testResourceEnvironmentHasAtLeastOneDataTier(resourceEnvironment : ResourceEnvironment){
+	var loadBalancedResContainers := resourceEnvironment.resourceContainer_ResourceEnvironment->select(r|hasAppliedStereotype(r,'DataTier'));
+	var loadBalancedResContainersSize : Integer := loadBalancedResContainers->size();
+	assert error(loadBalancedResContainersSize >= 1) 
+		with log('There is not at least one Data  Tier Resource Container. Instead there are ' + loadBalancedResContainersSize.toString() + '.');
+}
+
+query testResourceEnvironmentHasOnlyOneReplicableMiddleTier(resourceEnvironment : ResourceEnvironment){
+	var loadBalancedResContainers := resourceEnvironment.resourceContainer_ResourceEnvironment->select(r|hasAppliedStereotype(r,'ReplicableMiddleTier'));
+	var loadBalancedResContainersSize : Integer := loadBalancedResContainers->size();
+	assert error(loadBalancedResContainersSize = 1) 
+		with log('There is not exactly one Replicable Middle Tier Resource Container. Instead there are ' + loadBalancedResContainersSize.toString() + '.');
+}
+
+query testNumberOfReplicasGreaterZero(resourceEnvironment : ResourceEnvironment){
+	var replicableResContainer := resourceEnvironment.resourceContainer_ResourceEnvironment->selectOne(r|hasAppliedStereotype(r,'ReplicableMiddleTier'));
+	if(replicableResContainer != null){
+		var numberOfReplicas : Integer := getIntTaggedValue(replicableResContainer, "numberOfReplicas", "ReplicableMiddleTier");
+		assert error(numberOfReplicas>0) 
+			with log('Number of Replicas is not greater 0.');
+	}else{
+		assert error(replicableResContainer != null) 
+			with log('No replicable Resource Container, hence no number of replicas to test.');
+	};
+		
+}
+
+query testScaleInThresholdGreaterZero(resourceEnvironment : ResourceEnvironment){
+	var replicableResContainer := resourceEnvironment.resourceContainer_ResourceEnvironment->selectOne(r|hasAppliedStereotype(r,'ReplicableMiddleTier'));
+	if(replicableResContainer != null){
+	var scaleInThreshold : Real := getDoubleTaggedValue(replicableResContainer, "scaleInThreshold", "ReplicableMiddleTier");
+		assert error(scaleInThreshold>0) 
+			with log('Scale In Threshold is not greater 0.');
+	}else{
+			assert error(replicableResContainer != null) 
+			with log('No replicable Resource Container, hence no scale in threshold to test.');
+		};
+}
+
+query testScaleOutThresholdGreaterZeo(resourceEnvironment : ResourceEnvironment){
+	var replicableResContainer := resourceEnvironment.resourceContainer_ResourceEnvironment->selectOne(r|hasAppliedStereotype(r,'ReplicableMiddleTier'));
+	if(replicableResContainer != null){
+		var scaleOutThreshold : Real := getDoubleTaggedValue(replicableResContainer, "scaleOutThreshold", "ReplicableMiddleTier");
+		assert error(scaleOutThreshold>0) 
+			with log('Scale Out Threshold is not greater 0.');
+	}else{
+		assert error(replicableResContainer != null) 
+			with log('No replicable Resource Container, hence no scale out threshold to test.');
+	};
+}
+
+query testReplicableMiddleTierBasicComponentAreStateless(allocation : Allocation){
+	var allStateless : Boolean := allocation.allocationContexts_Allocation->select(ac|
+									hasAppliedStereotype(ac.resourceContainer_AllocationContext,'ReplicableMiddleTier'))->collect(ac|
+									ac.assemblyContext_AllocationContext.encapsulatedComponent__AssemblyContext)->forAll(bc|
+									hasAppliedStereotype(bc,'StatelessComponent'));
+	assert error(allStateless) 
+		with log('Not all Basic Components, which are allocated to the Replicable Middle Tier Resource Container, are stateless.');
+}
+
+query testPresentationLayerAssembliesAllocatedToPresentationTier(allocation : Allocation, assemblies : Set(AssemblyContext)){
+	var presentationLayerAssemblies := assemblies->select(a|hasAppliedStereotype(a, 'PresentationLayerAssembly'))->asBag();
+	var presentationLayerAllocations := allocation.allocationContexts_Allocation->select(ac|(presentationLayerAssemblies->includes(ac.assemblyContext_AllocationContext)));
+	var allPresentationTier : Boolean := presentationLayerAllocations->forAll(ac|hasAppliedStereotype(ac.resourceContainer_AllocationContext,'PresentationTier'));
+	
+	assert error(allPresentationTier) 
+		with log('Not all Presentation Layer Assemblies are allocated to a Presentation Tier.');
+}
+
+query testMiddleLayerAssembliesAllocatedToMiddleTier(allocation : Allocation, assemblies : Set(AssemblyContext)){
+	var middleLayerAssemblies := assemblies->select(a|hasAppliedStereotype(a, 'MiddleLayerAssembly'))->asBag();
+	var middleLayerAllocations := allocation.allocationContexts_Allocation->select(ac|(middleLayerAssemblies->includes(ac.assemblyContext_AllocationContext)));
+	var allMiddleTier : Boolean := middleLayerAllocations->forAll(ac|hasAppliedStereotype(ac.resourceContainer_AllocationContext,'ReplicableMiddleTier'));
+	
+	assert error(allMiddleTier) 
+		with log('Not all Middle Layer Assemblies are allocated to the Replicable Middle Tier.');
+}
+
+query testDataLayerAssembliesAllocatedToDataTier(allocation : Allocation, assemblies : Set(AssemblyContext)){
+	var dataLayerAssemblies := assemblies->select(a|hasAppliedStereotype(a, 'DataLayerAssembly'))->asBag();
+	var dataLayerAllocations := allocation.allocationContexts_Allocation->select(ac|(dataLayerAssemblies->includes(ac.assemblyContext_AllocationContext)));
+	var allDataTier : Boolean := dataLayerAllocations->forAll(ac|hasAppliedStereotype(ac.resourceContainer_AllocationContext,'DataTier'));
+	
+	assert error(allDataTier) 
+		with log('Not all Data Layer Assemblies are allocated to a Data Tier.');
+}
+
+query testScaleInSmallerScaleOut(resourceEnvironment : ResourceEnvironment){
+	var replicableResourceContainer : ResourceContainer := resourceEnvironment.resourceContainer_ResourceEnvironment->selectOne(resCon|hasAppliedStereotype(resCon,'ReplicableMiddleTier'));
+	if(replicableResourceContainer != null){
+		assert error(getDoubleTaggedValue(replicableResourceContainer,'scaleInThreshold','ReplicableMiddleTier')<getDoubleTaggedValue(replicableResourceContainer,'scaleOutThreshold','ReplicableMiddleTier')) 
+			with log('Replicable Middle Tier Scale In Threshold is greater or equal than the Scale Out Threshold.');
+	}
+	else {assert error(replicableResourceContainer != null) 
+			with log('There is no Replicable Middle Tier. Hence, there is no Scale In/Scale Out Parameter to evaluate.');
+	}
+}
+
+query testResourceEnvironmentHasAtLeastThreeResourceContainer(resourceEnvironment : ResourceEnvironment){
+	var loadBalancedResContainers := resourceEnvironment.resourceContainer_ResourceEnvironment->select(r|hasAppliedStereotype(r,'ReplicableMiddleTier'));
+	assert error(resourceEnvironment.resourceContainer_ResourceEnvironment->size()>=3) 
+		with log('The Resource Environment has less than 3 Resource Container.');
+}
+
+query testAllResourceContainerAreThreeTierStereotyped(resourceEnvironment : ResourceEnvironment){
+	var allStereotyped: Boolean := resourceEnvironment.resourceContainer_ResourceEnvironment->forAll(resCon : ResourceContainer|
+	hasAppliedStereotype(resCon,"PresentationTier") 
+	or hasAppliedStereotype(resCon,"ReplicableMiddleTier") 
+	or hasAppliedStereotype(resCon,"DataTier"));
+	assert error(allStereotyped) 
+		with log('The Resource Environment has at least one Resource Container that is not stereotyped.');
+}
+
+query testResourceContainerExactlyOneTier(resourceEnvironment : ResourceEnvironment){
+	var	presentationTiers : Integer := resourceEnvironment.resourceContainer_ResourceEnvironment
+													->select(rc : ResourceContainer| 
+															hasAppliedStereotype(rc, "PresentationTier") )
+																->size();
+	var middleTiers : Integer := resourceEnvironment.resourceContainer_ResourceEnvironment
+													->select(rc : ResourceContainer| 
+															hasAppliedStereotype(rc, "ReplicableMiddleTier") )
+																->size();
+	var dataTiers : Integer := resourceEnvironment.resourceContainer_ResourceEnvironment
+													->select(rc : ResourceContainer| 
+															hasAppliedStereotype(rc, "DataTier") )
+																->size();	
+	if(presentationTiers >=1 and middleTiers >=1 and dataTiers >=1)	{																										
+		var onlyOneTier : Boolean := resourceEnvironment.resourceContainer_ResourceEnvironment->forAll(rc| 
+				((hasAppliedStereotype(rc, 'PresentationTier') 
+				and not hasAppliedStereotype(rc, 'DataTier') 
+				and not  hasAppliedStereotype(rc, 'ReplicableMiddleTier')) 
+			or (hasAppliedStereotype(rc, 'DataTier') 
+				and not hasAppliedStereotype(rc, 'PresentationTier') 
+				and not  hasAppliedStereotype(rc, 'ReplicableMiddleTier')) 
+			or(hasAppliedStereotype(rc, 'ReplicableMiddleTier') 
+				and not hasAppliedStereotype(rc, 'DataTier') 
+				and not  hasAppliedStereotype(rc, 'PresentationTier'))));
+				
+		assert error(onlyOneTier) 
+			with log('One Resource Container is related to more than one Tier');
+	}else{
+		assert error(presentationTiers >=1 and middleTiers >=1 and dataTiers >=1) 
+			with log('There are not three Tiers.');	
+	};
+}

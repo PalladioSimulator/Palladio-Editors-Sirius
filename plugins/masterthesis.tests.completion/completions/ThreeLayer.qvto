@@ -1,0 +1,30 @@
+import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
+
+modeltype ECORE uses 'http://www.eclipse.org/emf/2002/Ecore';
+modeltype PCM_ALLOC uses 'http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1';
+modeltype PCM_SYS uses 'http://palladiosimulator.org/PalladioComponentModel/System/5.1';
+modeltype PCM_RES_ENV uses 'http://palladiosimulator.org/PalladioComponentModel/ResourceEnvironment/5.1';
+modeltype PCM_REP uses 'http://palladiosimulator.org/PalladioComponentModel/Repository/5.1';
+/**
+ * Actually, the completion does nothing, except from checking whether the PCM instance
+ * is a 3-layer AT instance. 
+ *
+ * @author Daria Giacinto
+ **/
+ 
+transformation ThreeLayer(inout pcmRepo : PCM_REP, inout pcmSystem : PCM_SYS, inout pcmResEnv : PCM_RES_ENV, inout pcmAllocation : PCM_ALLOC);
+
+main() {
+
+	log ('Architectural Template Transformation "Three Layer" started!');
+	
+	var system : System := pcmSystem.rootObjects()![System];
+	
+	assert fatal(isProfileApplied(system.oclAsType(EObject),"ThreeLayerProfile"))
+		with log ("The System has no ThreeLayerProfile applied.");
+		
+	assert fatal(hasAppliedStereotype(system,"ThreeLayerSystem"))
+		with log ("The system is not a ThreeLayerSystem");
+		
+	log ('Architectural Template Transformation "Three Layer" finished!');
+}

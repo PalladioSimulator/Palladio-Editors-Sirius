@@ -1,0 +1,200 @@
+import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
+
+modeltype PCM_ALLOC uses 'http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1';
+modeltype PCM_SYS uses 'http://palladiosimulator.org/PalladioComponentModel/System/5.1';
+modeltype PCMComposition uses pcm::core::composition('http://palladiosimulator.org/PalladioComponentModel/5.1');
+modeltype PCM_RES_ENV uses 'http://palladiosimulator.org/PalladioComponentModel/ResourceEnvironment/5.1';
+modeltype ECORE uses 'http://www.eclipse.org/emf/2002/Ecore';
+
+transformation DynamicVerticalScalingResourceContainerPreconditions(in allocationBeforeCompletion : PCM_ALLOC);
+
+
+main() {
+	log('------------Second Iteration------------');
+
+	log('DynamicVerticalScalingResourceContainerPreconditions Test started');
+
+	var oldAllocation := allocationBeforeCompletion.rootObjects()![Allocation];
+	var system : System := oldAllocation.system_Allocation;
+	var resourceEnvironment : ResourceEnvironment := oldAllocation.targetResourceEnvironment_Allocation;
+	var virtualizedResourceContainers := resourceEnvironment.resourceContainer_ResourceEnvironment->select(r|hasAppliedStereotype(r, 'VirtualizedResourceContainer'));
+	
+	testSystemProfileApplied(system);
+	testResourceEnvironmentProfileApplied(resourceEnvironment);
+	testSystemIsDynamicVerticalScalingResourceContainerSystem(system);
+	
+	testResEnvHasAtLeastOneVirtualizedResourceContainer(resourceEnvironment);
+	testScaleDownThresholdGreaterZero(resourceEnvironment);
+	testScaleUpThresholdGreaterZero(resourceEnvironment);
+	testMaxRateGreaterZero(resourceEnvironment);
+	testMinRateGreaterZero(resourceEnvironment);
+	testStepSizeGreaterZero(resourceEnvironment);
+	testProcessingRateGreaterMinRate(virtualizedResourceContainers);
+	testProcessingRateSmallerEqualMaxRate(virtualizedResourceContainers);
+	testMaxRateGreaterStepSize(virtualizedResourceContainers);
+
+	log('DynamicVerticalScalingResourceContainerPreconditions Test finished');
+}
+
+query testSystemProfileApplied(system : System){
+	assert fatal(isProfileApplied(system.oclAsType(EObject),"DynamicVerticalScalingResourceContainerProfile"))
+		with log ("The System has no DynamicVerticalScalingResourceContainerProfile applied.");		
+}
+
+query testResourceEnvironmentProfileApplied(resourceEnvironment : ResourceEnvironment){
+	assert fatal(isProfileApplied(resourceEnvironment.oclAsType(EObject),"DynamicVerticalScalingResourceContainerProfile"))
+		with log ("The resource environment has no DynamicVerticalScalingResourceContainerProfile applied.");
+}
+
+query testSystemIsDynamicVerticalScalingResourceContainerSystem(system : System){
+	assert fatal(hasAppliedStereotype(system,"DynamicVerticalScalingResourceContainerSystem")) 
+		with log('The System is not a DynamicVerticalScalingResourceContainerSystem');
+}
+
+query testResEnvHasAtLeastOneVirtualizedResourceContainer(resEnv : ResourceEnvironment){
+	var atLeastOneVirtualized : Boolean := resEnv.resourceContainer_ResourceEnvironment->select(rc|hasAppliedStereotype(rc,'VirtualizedResourceContainer'))->size()>0;
+	assert error(atLeastOneVirtualized) 
+		with log('The Resource Environment has no Virtualized Resource Container');
+}
+
+query testScaleDownThresholdGreaterZero(resEnv : ResourceEnvironment){
+	var virtualizedResourceContainers := resEnv.resourceContainer_ResourceEnvironment->select(rc|hasAppliedStereotype(rc,'VirtualizedResourceContainer'));
+	var scaleDownGreaterZero : Boolean;
+	if(virtualizedResourceContainers ->size()>0){
+	scaleDownGreaterZero := 	virtualizedResourceContainers->forAll(vRC| getDoubleTaggedValue(vRC, "scaleDownThreshold", "VirtualizedResourceContainer")>0);
+				assert error(scaleDownGreaterZero) 
+						with log('The scale down threshold of one virtualized Resource Container is smaller or equal to zero.');
+	}else{
+		assert error(virtualizedResourceContainers ->size()>0) 
+					with log('There is no virtualized Resource Container, hence the scale down threshold cannot be tested.');
+	};	
+}
+
+query testScaleUpThresholdGreaterZero(resEnv : ResourceEnvironment){
+	var virtualizedResourceContainers := resEnv.resourceContainer_ResourceEnvironment->select(rc|hasAppliedStereotype(rc,'VirtualizedResourceContainer'));
+	var scaleUpGreaterZero : Boolean;
+	if(virtualizedResourceContainers->size()>0){
+		scaleUpGreaterZero:=virtualizedResourceContainers->forAll(vRC| getDoubleTaggedValue(vRC, "scaleUpThreshold", "VirtualizedResourceContainer")>0);
+			assert error(scaleUpGreaterZero) 
+						with log('The scale up threshold of one virtualized Resource Container is smaller or equal to zero.');
+	}else{
+		assert error(virtualizedResourceContainers->size()>0) 
+					with log('There is no virtualized Resource Container, hence the scale up threshold cannot be tested.');
+	};	
+}
+	
+query testMaxRateGreaterZero(resEnv : ResourceEnvironment){
+	var virtualizedResourceContainers := resEnv.resourceContainer_ResourceEnvironment->select(rc|hasAppliedStereotype(rc,'VirtualizedResourceContainer'));
+	var maxRateGreaterZero : Boolean;
+	if(virtualizedResourceContainers ->size()>0){
+		maxRateGreaterZero := virtualizedResourceContainers->forAll(vRC| getDoubleTaggedValue(vRC, "maxRate", "VirtualizedResourceContainer")>0.0);	
+			assert error(maxRateGreaterZero) 
+						with log('The max rate of one virtualized Resource Container is smaller or equal to zero.');
+	}else{
+		assert error(virtualizedResourceContainers ->size()>0) 
+					with log('There is no virtualized Resource Container, hence the max rate cannot be tested.');
+	};
+}
+
+query testMinRateGreaterZero(resEnv : ResourceEnvironment){
+	var virtualizedResourceContainers := resEnv.resourceContainer_ResourceEnvironment->select(rc|hasAppliedStereotype(rc,'VirtualizedResourceContainer'));
+	var minRateGreaterZero : Boolean;
+	if(virtualizedResourceContainers ->size()>0){
+		minRateGreaterZero := virtualizedResourceContainers->forAll(vRC| getDoubleTaggedValue(vRC, "minRate", "VirtualizedResourceContainer")>0);	
+		assert error(minRateGreaterZero) 
+						with log('The min rate of one virtualized Resource Container is smaller or equal to zero.');
+	}else{
+		assert error(virtualizedResourceContainers ->size()>0) 
+					with log('There is no virtualized Resource Container, hence the min rate cannot be tested.');
+	};
+}
+
+query testStepSizeGreaterZero(resEnv : ResourceEnvironment){
+	var virtualizedResourceContainers := resEnv.resourceContainer_ResourceEnvironment->select(rc|hasAppliedStereotype(rc,'VirtualizedResourceContainer'));
+	var stepSizeGreaterZero : Boolean;
+	if(virtualizedResourceContainers ->size()>0){
+		stepSizeGreaterZero := virtualizedResourceContainers->forAll(vRC| getDoubleTaggedValue(vRC, "stepSize", "VirtualizedResourceContainer")>0);
+		assert error(stepSizeGreaterZero) 
+					with log('The step size of one virtualized Resource Container is smaller or equal to zero.');
+	}else{
+		assert error(virtualizedResourceContainers ->size()>0) 
+					with log('There is no virtualized Resource Container, hence the step size cannot be tested.');
+	};
+}
+
+query testProcessingRateGreaterMinRate(virtualizedResourceContainers : Set(ResourceContainer)){
+	if(virtualizedResourceContainers ->size()>0){
+		var minRate : Real;
+		virtualizedResourceContainers->forEach(virtualRC){
+		minRate := getDoubleTaggedValue(virtualRC,'minRate','VirtualizedResourceContainer');
+			virtualRC.activeResourceSpecifications_ResourceContainer->forEach(a){
+					var processingRateGreaterMinRate : Boolean := a.processingRate_ProcessingResourceSpecification.specification.toReal()>= minRate;
+					assert error(processingRateGreaterMinRate) 
+						with log('The Virtualized Resource Containers' + virtualRC.id + ' processing Rate is smaller than the defined Min Rate.');
+						if(not(virtualRC.nestedResourceContainers__ResourceContainer->isEmpty())){
+							testProcessingRateGreaterMinRateRecursively(virtualRC.nestedResourceContainers__ResourceContainer, minRate);
+						};
+					};
+			};	
+	}else{
+		assert error(virtualizedResourceContainers ->size()>0) 
+					with log('There is no virtualized Resource Container, hence it cannot be tested whether the processing rate is greater min rate.');	
+	};
+}
+
+query testProcessingRateGreaterMinRateRecursively(virtualizedResourceContainers : Set(ResourceContainer), minRate : Real){
+	virtualizedResourceContainers->forEach(virtualRC){
+		virtualRC.activeResourceSpecifications_ResourceContainer->forEach(a){
+				var processingRateGreaterMinRate : Boolean := a.processingRate_ProcessingResourceSpecification.specification.toReal()>= minRate;
+				assert error(processingRateGreaterMinRate) 
+					with log('The Nested Virtualized Resource Containers' + virtualRC.id + ' processing Rate is smaller than the defined Min Rate.');
+					if(not(virtualRC.nestedResourceContainers__ResourceContainer->isEmpty())){
+						testProcessingRateGreaterMinRateRecursively(virtualRC.nestedResourceContainers__ResourceContainer, minRate);
+					};
+				};
+		};
+				 
+}
+
+query testProcessingRateSmallerEqualMaxRate(virtualizedResourceContainers : Set(ResourceContainer)){
+	if(virtualizedResourceContainers ->size()>0){
+		var maxRate : Real;
+		virtualizedResourceContainers->forEach(virtualRC){
+		maxRate := getDoubleTaggedValue(virtualRC,'maxRate','VirtualizedResourceContainer');
+			virtualRC.activeResourceSpecifications_ResourceContainer->forEach(a){
+					var processingRateSmallerEqualMaxRatee : Boolean := a.processingRate_ProcessingResourceSpecification.specification.toReal()<= maxRate;
+					assert error(processingRateSmallerEqualMaxRatee) 
+						with log('The Virtualized Resource Containers' + virtualRC.id + ' processing Rate is greater than the defined Max Rate.');
+						if(not(virtualRC.nestedResourceContainers__ResourceContainer->isEmpty())){
+							testProcessingRateSmallerEqualMaxRateRecursively(virtualRC.nestedResourceContainers__ResourceContainer, maxRate);
+						};
+					};
+			};	
+	}else{
+		assert error(virtualizedResourceContainers ->size()>0) 
+					with log('There is no virtualized Resource Container, hence it cannot be tested whether the processing rate is greater min rate.');	
+	};
+}
+query testProcessingRateSmallerEqualMaxRateRecursively(virtualizedResourceContainers : Set(ResourceContainer), maxRate : Real){
+	virtualizedResourceContainers->forEach(virtualRC){
+		virtualRC.activeResourceSpecifications_ResourceContainer->forEach(a){
+				var processingRateSmallerEqualMaxRatee : Boolean := a.processingRate_ProcessingResourceSpecification.specification.toReal()<= maxRate;
+				assert error(processingRateSmallerEqualMaxRatee) 
+					with log('The Nested Virtualized Resource Containers' + virtualRC.id + ' processing Rate is greater than the defined Max Rate.');
+					if(not(virtualRC.nestedResourceContainers__ResourceContainer->isEmpty())){
+						testProcessingRateSmallerEqualMaxRateRecursively(virtualRC.nestedResourceContainers__ResourceContainer, maxRate);
+					};
+				};
+		};	
+}
+
+query testMaxRateGreaterStepSize(virtualizedResourceContainers : Set(ResourceContainer)){
+	if(virtualizedResourceContainers->size()>0){
+		var maxRateGreaterStepSize : Boolean := virtualizedResourceContainers ->forAll(virtualRC| getDoubleTaggedValue(virtualRC,'maxRate','VirtualizedResourceContainer')> getDoubleTaggedValue(virtualRC,'stepSize','VirtualizedResourceContainer'));
+		assert error(maxRateGreaterStepSize) 
+			with log('There is a Virtualized Resource Container whose Max Rate is smaller than the defined Step Size.');
+	}else{
+		assert error(virtualizedResourceContainers ->size()>0) 
+					with log('There is no virtualized Resource Container, hence max rate greater step size cannot be tested.');
+	};		
+}

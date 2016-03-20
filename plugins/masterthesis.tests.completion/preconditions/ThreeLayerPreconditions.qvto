@@ -1,0 +1,214 @@
+import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
+
+modeltype PCM_ALLOC uses 'http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1';
+modeltype PCM_SYS uses 'http://palladiosimulator.org/PalladioComponentModel/System/5.1';
+modeltype PCMComposition uses pcm::core::composition('http://palladiosimulator.org/PalladioComponentModel/5.1');
+modeltype ECORE uses 'http://www.eclipse.org/emf/2002/Ecore';
+
+transformation ThreeLayerPreconditions(in allocationBeforeCompletion : PCM_ALLOC);
+
+property oldAllocation : Allocation;
+
+main() {
+	log('------------Second Iteration------------');
+
+	log('ThreeLayerPreconditions Test started');
+
+	oldAllocation := allocationBeforeCompletion.rootObjects()![Allocation];
+	var system : System := oldAllocation.system_Allocation;
+	var assemblyContexts : Set(AssemblyContext) := system.assemblyContexts__ComposedStructure;
+	
+	testSystemProfileApplied(system);
+	testSystemIsThreeLayerSystem(system);
+	
+	testSystemHasAtLeastThreeAssemblies(assemblyContexts);
+	testAllAssembliesAreThreeLayerStereotyped(assemblyContexts);
+	testSystemHasAtLeastOnePresentationLayerAssembly(assemblyContexts);
+	testSystemHasAtLeastOneMiddleLayerAssembly(assemblyContexts);
+	testSystemHasAtLeastOneDataLayerAssembly(assemblyContexts);
+	testAssemblyIsRelatedToOnlyOneLayer(assemblyContexts);
+	testMiddleLayerAssembliesNotRequirePresentationLayerAssembly(system);
+	testDataLayerAssembliesNotRequirePresentationLayerAssembly(system);
+	testPresentationLayerAssembliesNotRequireDataLayerAssembly(system);
+	testDataLayerAssembliesNotRequireMiddleLayerAssembly(system);
+	testNoProvidedDelegationConnectorToMiddleLayerAssemblies(system);
+	testNoProvidedDelegationConnectorToDataLayerAssemblies(system);
+	
+	log('ThreeLayerPreconditions Test finished');
+}
+
+query testSystemProfileApplied(system : System){
+	assert fatal(isProfileApplied(system.oclAsType(EObject),"ThreeLayerProfile"))
+		with log ("The System has no ThreeLayer Profile applied.");		
+}
+
+query testSystemIsThreeLayerSystem(system : System){
+	assert fatal(hasAppliedStereotype(system,"ThreeLayerSystem")) 
+		with log('The System is not a ThreeLayerSystem');
+}
+
+query testSystemHasAtLeastThreeAssemblies(assemblyContexts : Set(AssemblyContext)){
+	assert error(assemblyContexts->size() >= 3) 
+		with log('The System has <= 2 Assembly Contexts. At least 3 are needed.');
+}
+
+query testAllAssembliesAreThreeLayerStereotyped(assemblyContexts : Set(AssemblyContext)){
+	var allStereotyped: Boolean := assemblyContexts->forAll(assembly : AssemblyContext|
+	hasAppliedStereotype(assembly,"PresentationLayerAssembly") 
+	or hasAppliedStereotype(assembly,"MiddleLayerAssembly") 
+	or hasAppliedStereotype(assembly,"DataLayerAssembly"));
+	assert error(allStereotyped) 
+		with log('The System has at least one Assembly Context that is not stereotyped as PresentationLayerAssembly/MiddleLayerAssembly/DataLayerAssembly.');
+}
+
+query testSystemHasAtLeastOnePresentationLayerAssembly(assemblyContexts : Set(AssemblyContext)){
+	var presentationLayerAssemblies : Set(AssemblyContext) := assemblyContexts->select(assembly : AssemblyContext| hasAppliedStereotype(assembly,"PresentationLayerAssembly"));
+	assert error(presentationLayerAssemblies->size() >= 1) 
+		with log('The System has no Presentation Layer Assembly.');
+}
+
+query testSystemHasAtLeastOneMiddleLayerAssembly(assemblyContexts : Set(AssemblyContext)){
+	var middleLayerAssemblies : Set(AssemblyContext) := assemblyContexts->select(assembly : AssemblyContext| hasAppliedStereotype(assembly,"MiddleLayerAssembly"));
+	assert error(middleLayerAssemblies->size() >= 1) 
+		with log('The System has no Middle Layer Assembly.');
+}
+
+query testSystemHasAtLeastOneDataLayerAssembly(assemblyContexts : Set(AssemblyContext)){
+	var dataLayerAssemblies : Set(AssemblyContext) := assemblyContexts->select(assembly : AssemblyContext| hasAppliedStereotype(assembly,"DataLayerAssembly"));
+	assert error(dataLayerAssemblies->size() >= 1) 
+		with log('The System has no Data Layer Assembly.');
+}
+
+query testAssemblyIsRelatedToOnlyOneLayer(assemblyContexts : Set(AssemblyContext)){
+	var	presentationLayers : Integer := assemblyContexts
+												->select(ac : AssemblyContext| 
+														hasAppliedStereotype(ac, "PresentationLayerAssembly") )
+																->size();
+	var middleLayers : Integer := assemblyContexts
+												->select(ac : AssemblyContext| 
+														hasAppliedStereotype(ac, "MiddleLayerAssembly") )
+																->size();
+	var dataLayers : Integer := assemblyContexts
+												->select(ac : AssemblyContext| 
+														hasAppliedStereotype(ac, "DataLayerAssembly") )
+																->size();
+	if(presentationLayers >=1 and middleLayers >=1 and dataLayers >=1)	{		
+	var onlyOneLayer : Boolean := assemblyContexts->forAll(a| 
+			((hasAppliedStereotype(a, 'PresentationLayerAssembly') 
+			and not hasAppliedStereotype(a, 'DataLayerAssembly') 
+			and not  hasAppliedStereotype(a, 'MiddleLayerAssembly')) 
+		or (hasAppliedStereotype(a, 'DataLayerAssembly') 
+			and not hasAppliedStereotype(a, 'PresentationLayerAssembly') 
+			and not  hasAppliedStereotype(a, 'MiddleLayerAssembly')) 
+		or(hasAppliedStereotype(a, 'MiddleLayerAssembly') 
+			and not hasAppliedStereotype(a, 'DataLayerAssembly') 
+			and not  hasAppliedStereotype(a, 'PresentationLayerAssembly'))));
+			
+	assert error(onlyOneLayer) 
+		with log('One Assembly is related to more than one Layer.');
+	}else{
+		assert error(presentationLayers >=1 and middleLayers >=1 and dataLayers >=1) 
+		with log('There are not three Layers.');	
+		};
+}
+
+query testMiddleLayerAssembliesNotRequirePresentationLayerAssembly(system : System){
+	var assemblyConnectors : Set(AssemblyConnector) := system.connectors__ComposedStructure->selectByType(AssemblyConnector);
+	var middleNotRequirePresentation : Boolean := assemblyConnectors->forAll(ac : AssemblyConnector
+		|not(hasAppliedStereotype(ac.providingAssemblyContext_AssemblyConnector,'PresentationLayerAssembly') 
+		and ((hasAppliedStereotype(ac.requiringAssemblyContext_AssemblyConnector,'MiddleLayerAssembly')))));
+	assert error(middleNotRequirePresentation) 
+		with log('Middle Layer Assembly requires Presentation Layer Assembly.(AssemblyConntector)');	
+	var assemblyInfrastructureConnectors : Set(AssemblyInfrastructureConnector) := system.connectors__ComposedStructure->selectByType(AssemblyInfrastructureConnector);
+	 middleNotRequirePresentation := assemblyInfrastructureConnectors->forAll(ac : AssemblyInfrastructureConnector
+		|not(hasAppliedStereotype(ac.providingAssemblyContext__AssemblyInfrastructureConnector,'PresentationLayerAssembly') 
+		and ((hasAppliedStereotype(ac.requiringAssemblyContext__AssemblyInfrastructureConnector,'MiddleLayerAssembly')))));
+	assert error(middleNotRequirePresentation) 
+		with log('Middle Layer Assembly requires Presentation Layer Assembly.(AssemblyInfrastructureConntector)');	
+}
+
+query testDataLayerAssembliesNotRequirePresentationLayerAssembly(system : System){
+	var assemblyConnectors : Set(AssemblyConnector) := system.connectors__ComposedStructure->selectByType(AssemblyConnector);
+	var dataNotRequirePresentation : Boolean := assemblyConnectors->forAll(ac|not(hasAppliedStereotype(ac.providingAssemblyContext_AssemblyConnector,'PresentationLayerAssembly') 
+	and (hasAppliedStereotype(ac.requiringAssemblyContext_AssemblyConnector,'DataLayerAssembly'))));
+	assert error(dataNotRequirePresentation) 
+		with log('Data Layer Assembly requires Presentation Layer Assembly.(AssemblyConntector)');
+	var assemblyInfrastructureConnectors : Set(AssemblyInfrastructureConnector) := system.connectors__ComposedStructure->selectByType(AssemblyInfrastructureConnector);
+	dataNotRequirePresentation := assemblyInfrastructureConnectors->forAll(ac|not(hasAppliedStereotype(ac.providingAssemblyContext__AssemblyInfrastructureConnector,'PresentationLayerAssembly') 
+	and (hasAppliedStereotype(ac.requiringAssemblyContext__AssemblyInfrastructureConnector,'DataLayerAssembly'))));
+	assert error(dataNotRequirePresentation) 
+		with log('Data Layer Assembly requires Presentation Layer Assembly.(AssemblyInfrastructureConntector)');
+}
+
+query testPresentationLayerAssembliesNotRequireDataLayerAssembly(system : System){
+	var assemblyConnectors : Set(AssemblyConnector) := system.connectors__ComposedStructure->selectByType(AssemblyConnector);
+	var presentationNotRequireData : Boolean := assemblyConnectors->forAll(ac|
+	not(hasAppliedStereotype(ac.requiringAssemblyContext_AssemblyConnector,'PresentationLayerAssembly') 
+	and hasAppliedStereotype(ac.providingAssemblyContext_AssemblyConnector,'DataLayerAssembly')));
+	assert error(presentationNotRequireData) 
+		with log('Presentation Layer Assembly requires Data Layer Assembly.(AssemblyConntector)');
+	var assemblyInfrastructureConnectors : Set(AssemblyInfrastructureConnector) := system.connectors__ComposedStructure->selectByType(AssemblyInfrastructureConnector);
+	presentationNotRequireData := assemblyInfrastructureConnectors->forAll(ac|
+	not(hasAppliedStereotype(ac.requiringAssemblyContext__AssemblyInfrastructureConnector,'PresentationLayerAssembly') 
+	and hasAppliedStereotype(ac.providingAssemblyContext__AssemblyInfrastructureConnector,'DataLayerAssembly')));
+	assert error(presentationNotRequireData) 
+		with log('Presentation Layer Assembly requires Data Layer Assembly.(AssemblyInfrastructureConntector)');
+}
+
+query testDataLayerAssembliesNotRequireMiddleLayerAssembly(system : System){
+	var assemblyConnectors : Set(AssemblyConnector) := system.connectors__ComposedStructure->selectByType(AssemblyConnector);
+	var dataNotRequireMiddle : Boolean := assemblyConnectors->forAll(ac|
+	not(hasAppliedStereotype(ac.requiringAssemblyContext_AssemblyConnector,'DataLayerAssembly') 
+	and hasAppliedStereotype(ac.providingAssemblyContext_AssemblyConnector,'MiddleLayerAssembly')));
+	assert error(dataNotRequireMiddle) 
+		with log('Data Layer Assembly requires Middle Layer Assembly.(AssemblyConntector)');
+	var assemblyInfrastructureConnectors : Set(AssemblyInfrastructureConnector) := system.connectors__ComposedStructure->selectByType(AssemblyInfrastructureConnector);
+ 	dataNotRequireMiddle := assemblyInfrastructureConnectors->forAll(ac|
+	not(hasAppliedStereotype(ac.requiringAssemblyContext__AssemblyInfrastructureConnector,'DataLayerAssembly') 
+	and hasAppliedStereotype(ac.providingAssemblyContext__AssemblyInfrastructureConnector,'MiddleLayerAssembly')));
+	assert error(dataNotRequireMiddle) 
+		with log('Data Layer Assembly requires Middle Layer Assembly.(AssemblyInfrastructureConntector)');
+}
+
+
+query testNoProvidedDelegationConnectorToMiddleLayerAssemblies(system : System){
+	var providedDelegationConnectors : Set(ProvidedDelegationConnector) := system.connectors__ComposedStructure->selectByType(ProvidedDelegationConnector);
+    var noProvidedDelegationToMiddle : Boolean := providedDelegationConnectors->forAll(pdc|
+    not(hasAppliedStereotype(pdc.assemblyContext_ProvidedDelegationConnector,'MiddleLayerAssembly')));
+	assert error(noProvidedDelegationToMiddle) 
+		with log('Provided Delegation Connector to Middle Layer Assembly.(OperationProvidedDelegationConnector)');
+	var providedInfrastructureDelegationConnectors : Set(ProvidedInfrastructureDelegationConnector) := system.connectors__ComposedStructure->selectByType(ProvidedInfrastructureDelegationConnector);
+   	noProvidedDelegationToMiddle := providedInfrastructureDelegationConnectors->forAll(pdc|
+    not(hasAppliedStereotype(pdc.assemblyContext__ProvidedInfrastructureDelegationConnector,'MiddleLayerAssembly')));
+	assert error(noProvidedDelegationToMiddle) 
+		with log('Provided Delegation Connector to Middle Layer Assembly.(ProvidedInfrastructureDelegationConnector)');
+}
+
+query testNoProvidedDelegationConnectorToDataLayerAssemblies(system : System){
+	var providedDelegationConnectors : Set(ProvidedDelegationConnector) := system.connectors__ComposedStructure->selectByType(ProvidedDelegationConnector);
+    var noProvidedDelegationToData : Boolean := providedDelegationConnectors->forAll(pdc|
+    not(hasAppliedStereotype(pdc.assemblyContext_ProvidedDelegationConnector,'DataLayerAssembly')));
+	assert error(noProvidedDelegationToData) 
+		with log('Provided Delegation Connector to Middle Layer Assembly.(OperationProvidedDelegationConnector)');
+	var providedInfrastructureDelegationConnectors : Set(ProvidedInfrastructureDelegationConnector) := system.connectors__ComposedStructure->selectByType(ProvidedInfrastructureDelegationConnector);
+    noProvidedDelegationToData := providedInfrastructureDelegationConnectors->forAll(pdc|
+    not(hasAppliedStereotype(pdc.assemblyContext__ProvidedInfrastructureDelegationConnector,'DataLayerAssembly')));
+	assert error(noProvidedDelegationToData) 
+		with log('Provided Delegation Connector to Middle Layer Assembly.(ProvidedInfrastructureDelegationConnector)');
+}
+
+query testNoRequiredDelegationConnectorFromPresentationLayerAssemblies(system : System){
+	var requiredDelegationConnectors : Set(RequiredDelegationConnector) := system.connectors__ComposedStructure->selectByType(RequiredDelegationConnector);
+    var noRequiredDelegationFromPresentation : Boolean := requiredDelegationConnectors->forAll(rdc|
+    not(hasAppliedStereotype(rdc.assemblyContext_RequiredDelegationConnector,'PresentationLayerAssembly')));
+	assert error(noRequiredDelegationFromPresentation) 
+		with log('Required Delegation Connector From Presentation Layer Assembly.');
+}
+
+query testNoRequiredDelegationConnectorFromMiddleLayerAssemblies(system : System){
+	var requiredDelegationConnectors : Set(RequiredDelegationConnector) := system.connectors__ComposedStructure->selectByType(RequiredDelegationConnector);
+    var noRequiredDelegationFromMiddle : Boolean := requiredDelegationConnectors->forAll(rdc|
+    not(hasAppliedStereotype(rdc.assemblyContext_RequiredDelegationConnector,'MiddleLayerAssembly')));
+	assert error(noRequiredDelegationFromMiddle) 
+		with log('Required Delegation Connector From Middle Layer Assembly.');
+}

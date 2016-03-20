@@ -1,0 +1,6 @@
+transformation DynamicVerticalScalingPostconditions();
+
+//Dynamic Vertical Scaling has no postconditions
+main() {
+
+}

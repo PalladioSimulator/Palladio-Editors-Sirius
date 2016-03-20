@@ -1,0 +1,49 @@
+import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
+import StaticResourceContainerLoadbalancing;
+
+modeltype ECORE uses 'http://www.eclipse.org/emf/2002/Ecore';
+modeltype PCM_ALLOC uses 'http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1';
+modeltype PCM_SYS uses 'http://palladiosimulator.org/PalladioComponentModel/System/5.1';
+modeltype PCM_RES_ENV uses 'http://palladiosimulator.org/PalladioComponentModel/ResourceEnvironment/5.1';
+modeltype PCM_REP uses 'http://palladiosimulator.org/PalladioComponentModel/Repository/5.1';
+
+/**
+ * Transforms a resource environment where resource containers are annotated with the
+ * "Replicable Resource Container" AT roles to a PCM instance where each such container
+ * can be dynamically horizontal scaled. Each replicated container has all assembly context
+ * allocated to itself as the original one. Furthermore, the replicated resource container
+ * has the same specification as the original container.
+ *
+ * Replication is based on upper and lower thresholds for scaling out and in, respectively.
+ * Such thresholds related to average active resource utilization taken at the container
+ * in intervals. Intervals and thresholds can externally be set via properties.
+ *
+ * TODO How can properties be externally set?
+ *
+ * @see http://cloudscale.xlab.si/wiki/index.php/Dynamic_Horizontal_Scaling_CAT
+ *
+ * @author Sebastian Lehrig
+ **/
+transformation DynamicHorizontalScalingResourceContainer(inout pcmRepo : PCM_REP, inout pcmSystem : PCM_SYS, inout pcmResEnv : PCM_RES_ENV, inout pcmAllocation : PCM_ALLOC) 
+	access transformation StaticResourceContainerLoadbalancing;
+						   
+main() {	
+	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Resource Container" started');
+	// Get relevant PCM model elements
+	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
+	var system : System := allocation.system_Allocation;
+	var resourceEnvironment : ResourceEnvironment := allocation.targetResourceEnvironment_Allocation;
+	
+	assert fatal(isProfileApplied(system.oclAsType(EObject), "DynamicHorizontalScalingResourceContainerProfile"))
+		with log ("The system has no DynamicHorizontalScalingResourceContainerProfile applied!");
+	
+	assert fatal(isProfileApplied(resourceEnvironment.oclAsType(EObject), "DynamicHorizontalScalingResourceContainerProfile"))
+		with log ("The resource environment has no DynamicHorizontalScalingResourceContainerProfile applied!");
+	
+	assert fatal(hasAppliedStereotype(system, "DynamicHorizontalScalingResourceContainerSystem"))
+		with log ("The system is not a dynamic horizontal scaling resource container system!");
+
+	new StaticResourceContainerLoadbalancing(pcmRepo, pcmSystem , pcmResEnv, pcmAllocation)->transform();
+	
+	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Resource Container" finished');
+}
