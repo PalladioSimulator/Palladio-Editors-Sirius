@@ -1,0 +1,8 @@
+DynamicThreeLayerThreeTierPreconditions Test started
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:172) : Not all Presentation Layer Assemblies are allocated to a Presentation Tier.
+DynamicThreeLayerThreeTierPreconditions Test finished
+------------Second Iteration------------
+DynamicThreeLayerThreeTierPreconditions Test started
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:177) : There is not at least one Presentation Tier Resource Container. Instead there are 0.
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:246) : Not all Presentation Layer Assemblies are allocated to a Presentation Tier.
+DynamicThreeLayerThreeTierPreconditions Test finished

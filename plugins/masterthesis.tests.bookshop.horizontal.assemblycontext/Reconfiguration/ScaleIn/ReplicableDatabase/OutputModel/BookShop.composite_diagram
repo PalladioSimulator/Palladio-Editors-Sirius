@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:composition="http://palladiosimulator.org/PalladioComponentModel/Core/Composition/5.1" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:system="http://palladiosimulator.org/PalladioComponentModel/System/5.1" xsi:schemaLocation="http://palladiosimulator.org/PalladioComponentModel/Core/Composition/5.1 http://palladiosimulator.org/PalladioComponentModel/5.1#//core/composition http://palladiosimulator.org/PalladioComponentModel/System/5.1 http://palladiosimulator.org/PalladioComponentModel/5.1#//system" xmi:id="_xWXRsJYHEeWEuYaiIFR2ag" type="CompositeModel" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_xfpwkJYHEeWEuYaiIFR2ag" type="2002" fontName="Segoe UI">
+    <children xmi:type="notation:DecorationNode" xmi:id="_xfqXoJYHEeWEuYaiIFR2ag" type="5012"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_xfqXoZYHEeWEuYaiIFR2ag" type="7002">
+      <children xmi:type="notation:Shape" xmi:id="_xfyTcJYHEeWEuYaiIFR2ag" type="3006" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_xfy6gJYHEeWEuYaiIFR2ag" type="5009"/>
+        <element xmi:type="composition:AssemblyContext" href="BookShop.system#_ZpxTEJCBEeWzKsot20iTOw"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xfyTcZYHEeWEuYaiIFR2ag" x="-114" y="105"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_xfzhkJYHEeWEuYaiIFR2ag" type="3006" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_xf0IoJYHEeWEuYaiIFR2ag" type="5009"/>
+        <element xmi:type="composition:AssemblyContext" href="BookShop.system#_aJy28JCBEeWzKsot20iTOw"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xfzhkZYHEeWEuYaiIFR2ag" x="96" y="170"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_xf1WwJYHEeWEuYaiIFR2ag" type="3006" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_xf1WwpYHEeWEuYaiIFR2ag" type="5009"/>
+        <element xmi:type="composition:AssemblyContext" href="BookShop.system#_ayEX4JCBEeWzKsot20iTOw"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xf1WwZYHEeWEuYaiIFR2ag" x="561" y="140"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_xf2k4JYHEeWEuYaiIFR2ag" type="3006" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_xf2k4pYHEeWEuYaiIFR2ag" type="5009"/>
+        <element xmi:type="composition:AssemblyContext" href="BookShop.system#_vXslkJYHEeWEuYaiIFR2ag"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xf2k4ZYHEeWEuYaiIFR2ag" x="306" y="105"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_xf3zAJYHEeWEuYaiIFR2ag" type="3006" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_xf4aEJYHEeWEuYaiIFR2ag" type="5009"/>
+        <element xmi:type="composition:AssemblyContext" href="BookShop.system#_vXvo4JYHEeWEuYaiIFR2ag"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xf3zAZYHEeWEuYaiIFR2ag" x="800"/>
+      </children>
+    </children>
+    <element xmi:type="system:System" href="BookShop.system#_TgwGYJCBEeWzKsot20iTOw"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xfpwkZYHEeWEuYaiIFR2ag" width="1161"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_xWXRsZYHEeWEuYaiIFR2ag"/>
+  <element xmi:type="system:System" href="BookShop.system#_TgwGYJCBEeWzKsot20iTOw"/>
+</notation:Diagram>

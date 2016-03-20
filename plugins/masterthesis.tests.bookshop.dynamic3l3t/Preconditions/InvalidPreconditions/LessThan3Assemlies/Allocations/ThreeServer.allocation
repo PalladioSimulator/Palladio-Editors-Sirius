@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<allocation:Allocation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:allocation="http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1" id="_UUSxQJCDEeWzKsot20iTOw" entityName="defaultAllocation">
+  <targetResourceEnvironment_Allocation href="../ResourceEnvironments/ThreeServer.resourceenvironment#/0"/>
+  <system_Allocation href="../BookShop.system#_TgwGYJCBEeWzKsot20iTOw"/>
+  <allocationContexts_Allocation id="_eAWm4JCDEeWzKsot20iTOw" entityName="Allocation_Assembly_BookShopFrontend &lt;BookShopFrontend> &lt;BookShopFrontend>">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/ThreeServer.resourceenvironment#_wLSYMJCBEeWzKsot20iTOw"/>
+    <assemblyContext_AllocationContext href="../BookShop.system#_ZpxTEJCBEeWzKsot20iTOw"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_e3K6IJCDEeWzKsot20iTOw" entityName="Allocation_Assembly_BookShopManagement &lt;BookShopManagement> &lt;BookShopManagement>">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/ThreeServer.resourceenvironment#_x9Yn8JCBEeWzKsot20iTOw"/>
+    <assemblyContext_AllocationContext href="../BookShop.system#_aJy28JCBEeWzKsot20iTOw"/>
+  </allocationContexts_Allocation>
+</allocation:Allocation>

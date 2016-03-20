@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:resourceenvironment="http://palladiosimulator.org/PalladioComponentModel/ResourceEnvironment/5.1" xsi:schemaLocation="http://palladiosimulator.org/PalladioComponentModel/ResourceEnvironment/5.1 http://palladiosimulator.org/PalladioComponentModel/5.1#//resourceenvironment" xmi:id="_A_xzoJCDEeWzKsot20iTOw" type="ResourceEnvironmentModel" name="OneServer.resourceenvironment_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_BXK_8JCDEeWzKsot20iTOw" type="2004" fontName="Segoe UI">
+    <children xmi:type="notation:DecorationNode" xmi:id="_BXLnAJCDEeWzKsot20iTOw" type="5019"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_BXLnAZCDEeWzKsot20iTOw" type="7004">
+      <children xmi:type="notation:Shape" xmi:id="_DlGQEJCDEeWzKsot20iTOw" type="3003" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_DlGQEpCDEeWzKsot20iTOw" type="5013"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_DlGQE5CDEeWzKsot20iTOw" type="5014"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_DlGQFJCDEeWzKsot20iTOw" type="5015"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_DlGQFZCDEeWzKsot20iTOw" type="5016"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_DlGQFpCDEeWzKsot20iTOw" type="5017"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_DlGQF5CDEeWzKsot20iTOw" type="5018"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_DlGQGJCDEeWzKsot20iTOw" type="7005">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_DlGQGZCDEeWzKsot20iTOw"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_DlGQGpCDEeWzKsot20iTOw"/>
+        </children>
+        <element xmi:type="resourceenvironment:ProcessingResourceSpecification" href="OneServer.resourceenvironment#_CobzgJCDEeWzKsot20iTOw"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DlGQEZCDEeWzKsot20iTOw"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_FHvHgJCDEeWzKsot20iTOw" type="3003" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_FHvukJCDEeWzKsot20iTOw" type="5013"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_FHvukZCDEeWzKsot20iTOw" type="5014"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_FHvukpCDEeWzKsot20iTOw" type="5015"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_FHvuk5CDEeWzKsot20iTOw" type="5016"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_FHvulJCDEeWzKsot20iTOw" type="5017"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_FHvulZCDEeWzKsot20iTOw" type="5018"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_FHvulpCDEeWzKsot20iTOw" type="7005">
+          <styles xmi:type="notation:SortingStyle" xmi:id="_FHvul5CDEeWzKsot20iTOw"/>
+          <styles xmi:type="notation:FilteringStyle" xmi:id="_FHvumJCDEeWzKsot20iTOw"/>
+        </children>
+        <element xmi:type="resourceenvironment:ProcessingResourceSpecification" href="OneServer.resourceenvironment#_EGQcYJCDEeWzKsot20iTOw"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_FHvHgZCDEeWzKsot20iTOw"/>
+      </children>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_BXLnApCDEeWzKsot20iTOw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_BXLnA5CDEeWzKsot20iTOw"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_BXLnBJCDEeWzKsot20iTOw" type="7007"/>
+    <element xmi:type="resourceenvironment:ResourceContainer" href="OneServer.resourceenvironment#_BXJKwJCDEeWzKsot20iTOw"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BXK_8ZCDEeWzKsot20iTOw" x="162" y="119"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_A_xzoZCDEeWzKsot20iTOw"/>
+  <element xmi:type="resourceenvironment:ResourceEnvironment" href="OneServer.resourceenvironment#/"/>
+</notation:Diagram>

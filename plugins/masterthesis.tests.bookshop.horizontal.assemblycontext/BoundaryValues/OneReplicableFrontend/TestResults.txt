@@ -1,0 +1,6 @@
+------------First Iteration------------
+DynamicHorizontalScalingAssemblyContextPostconditions Test started
+DynamicHorizontalScalingAssemblyContextPostconditions Test finished
+------------Second Iteration------------
+DynamicHorizontalScalingAssemblyContextPostconditions Test started
+DynamicHorizontalScalingAssemblyContextPostconditions Test finished

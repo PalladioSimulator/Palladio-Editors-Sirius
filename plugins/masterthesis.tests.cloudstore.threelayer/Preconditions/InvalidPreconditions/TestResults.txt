@@ -1,0 +1,25 @@
+------------First Iteration------------
+ThreeLayerPreconditions Test started
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:53) : The System has at least one Assembly Context that is not stereotyped as PresentationLayerAssembly/MiddleLayerAssembly/DataLayerAssembly.
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:134) : Data Layer Assembly requires Presentation Layer Assembly.(AssemblyConntector)
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:139) : Data Layer Assembly requires Presentation Layer Assembly.(AssemblyInfrastructureConntector)
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:148) : Presentation Layer Assembly requires Data Layer Assembly.(AssemblyConntector)
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:154) : Presentation Layer Assembly requires Data Layer Assembly.(AssemblyInfrastructureConntector)
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:163) : Data Layer Assembly requires Middle Layer Assembly.(AssemblyConntector)
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:169) : Data Layer Assembly requires Middle Layer Assembly.(AssemblyInfrastructureConntector)
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:178) : Provided Delegation Connector to Middle Layer Assembly.(OperationProvidedDelegationConnector)
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:191) : Provided Delegation Connector to Middle Layer Assembly.(OperationProvidedDelegationConnector)
+ThreeLayerPreconditions Test finished
+------------Second Iteration------------
+ThreeLayerPreconditions Test started
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:60) : The System has at least one Assembly Context that is not stereotyped as PresentationLayerAssembly/MiddleLayerAssembly/DataLayerAssembly.
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:107) : One Assembly is related to more than one Layer.
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:134) : Data Layer Assembly requires Presentation Layer Assembly.(AssemblyConntector)
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:139) : Data Layer Assembly requires Presentation Layer Assembly.(AssemblyInfrastructureConntector)
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:148) : Presentation Layer Assembly requires Data Layer Assembly.(AssemblyConntector)
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:154) : Presentation Layer Assembly requires Data Layer Assembly.(AssemblyInfrastructureConntector)
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:163) : Data Layer Assembly requires Middle Layer Assembly.(AssemblyConntector)
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:169) : Data Layer Assembly requires Middle Layer Assembly.(AssemblyInfrastructureConntector)
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:178) : Provided Delegation Connector to Middle Layer Assembly.(OperationProvidedDelegationConnector)
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:191) : Provided Delegation Connector to Middle Layer Assembly.(OperationProvidedDelegationConnector)
+ThreeLayerPreconditions Test finished

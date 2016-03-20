@@ -1,0 +1,9 @@
+DynamicThreeLayerThreeTierPreconditions Test started
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:54) : The System has <= 2 Assembly Contexts. At least 3 are needed.
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:81) : The System has no Data Layer Assembly.
+DynamicThreeLayerThreeTierPreconditions Test finished
+------------Second Iteration------------
+DynamicThreeLayerThreeTierPreconditions Test started
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:75) : The System has <= 2 Assembly Contexts. At least 3 are needed.
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:102) : The System has no Data Layer Assembly.
+DynamicThreeLayerThreeTierPreconditions Test finished

@@ -1,0 +1,8 @@
+------------First Iteration------------
+LoadBalancerAssemblyContextPostconditions Test started
+ASSERT [error] failed at (LoadBalancerAssemblyContextPostconditions.qvto:123) : The number of assembly connectors between the loadbalancer and the original assembly context(7) does not equal 1
+ASSERT [error] failed at (LoadBalancerAssemblyContextPostconditions.qvto:215) : The number of connectors between the loadbalancer and the duplicate assembly contexts(7) does not equal 1
+LoadBalancerAssemblyContextPostconditions Test finished
+------------Second Iteration------------
+LoadbalancerAssemblyContextPostconditions Test started
+LoadbalancerAssemblyContextPostconditions Test finished

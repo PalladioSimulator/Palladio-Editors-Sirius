@@ -1,0 +1,11 @@
+DynamicThreeLayerThreeTierPreconditions Test started
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:218) : The Resource Environment has at least one Resource Container that is not stereotyped.
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:192) : Not all Data Layer Assemblies are allocated to a Data Tier.
+DynamicThreeLayerThreeTierPreconditions Test finished
+------------Second Iteration------------
+DynamicThreeLayerThreeTierPreconditions Test started
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:290) : The Resource Environment has at least one Resource Container that is not stereotyped.
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:306) : There are not three Tiers.
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:184) : There is not at least one Data Tier Resource Container. Instead there are 0.
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:264) : Not all Data Layer Assemblies are allocated to a Data Tier.
+DynamicThreeLayerThreeTierPreconditions Test finished

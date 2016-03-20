@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:emfprofileapplication="http://www.modelversioning.org/emfprofile/application/1.1" xmlns:org.scaledl.architecturaltemplates.repositories.cloudscale.profiles="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.dynamichorizontalscalingresourcecontainer" xmlns:org.scaledl.architecturaltemplates.repositories.cloudscale.profiles_1="http://scaledl.org/repository/Loadbalancing" xmlns:resourceenvironment="http://palladiosimulator.org/PalladioComponentModel/ResourceEnvironment/5.1" xsi:schemaLocation="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.dynamichorizontalscalingresourcecontainer ../../../../../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/DynamicHorizontalScalingResourceContainer.emfprofile_diagram#_W1LLkCOrEeSubfGVEKswQQ http://scaledl.org/repository/Loadbalancing ../../../../../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/Loadbalanced.emfprofile_diagram#_juO-IIVSEeSIDYic9BH_wA http://palladiosimulator.org/PalladioComponentModel/ResourceEnvironment/5.1 http://palladiosimulator.org/PalladioComponentModel/5.1#//resourceenvironment">
+  <resourceenvironment:ResourceEnvironment>
+    <linkingResources__ResourceEnvironment id="_R-Fn0LFREeWoJMYsrgGnQw" connectedResourceContainers_LinkingResource="_BXJKwJCDEeWzKsot20iTOw _R-DLkLFREeWoJMYsrgGnQw">
+      <communicationLinkResourceSpecifications_LinkingResource id="_R-Fn0bFREeWoJMYsrgGnQw">
+        <communicationLinkResourceType_CommunicationLinkResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_o3sScH2AEdyH8uerKnHYug"/>
+        <latency_CommunicationLinkResourceSpecification specification="0"/>
+        <throughput_CommunicationLinkResourceSpecification specification="10000"/>
+      </communicationLinkResourceSpecifications_LinkingResource>
+    </linkingResources__ResourceEnvironment>
+    <resourceContainer_ResourceEnvironment id="_BXJKwJCDEeWzKsot20iTOw" entityName="AllInOneServer">
+      <activeResourceSpecifications_ResourceContainer id="_CobzgJCDEeWzKsot20iTOw">
+        <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
+        <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        <processingRate_ProcessingResourceSpecification specification="1000"/>
+      </activeResourceSpecifications_ResourceContainer>
+      <activeResourceSpecifications_ResourceContainer id="_EGQcYJCDEeWzKsot20iTOw">
+        <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
+        <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_BIjHoQ3KEdyouMqirZIhzQ"/>
+        <processingRate_ProcessingResourceSpecification specification="1000"/>
+      </activeResourceSpecifications_ResourceContainer>
+    </resourceContainer_ResourceEnvironment>
+    <resourceContainer_ResourceEnvironment id="_R-DLkLFREeWoJMYsrgGnQw" entityName="AllInOneServer_AllInOneServer_Loadbalancer">
+      <activeResourceSpecifications_ResourceContainer id="_R-DyoLFREeWoJMYsrgGnQw">
+        <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
+        <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_BIjHoQ3KEdyouMqirZIhzQ"/>
+        <processingRate_ProcessingResourceSpecification specification="1000"/>
+      </activeResourceSpecifications_ResourceContainer>
+      <activeResourceSpecifications_ResourceContainer id="_R-FAwLFREeWoJMYsrgGnQw">
+        <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
+        <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        <processingRate_ProcessingResourceSpecification specification="1000"/>
+      </activeResourceSpecifications_ResourceContainer>
+    </resourceContainer_ResourceEnvironment>
+  </resourceenvironment:ResourceEnvironment>
+  <emfprofileapplication:ProfileApplication>
+    <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles:ReplicableResourceContainer" appliedTo="_BXJKwJCDEeWzKsot20iTOw">
+      <extension href="../../../../../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/DynamicHorizontalScalingResourceContainer.emfprofile_diagram#_7MhWQH47EeSqFvs4kqVd7Q"/>
+    </stereotypeApplications>
+    <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles_1:OriginalResourceContainer" appliedTo="_BXJKwJCDEeWzKsot20iTOw">
+      <extension href="../../../../../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/Loadbalanced.emfprofile_diagram#_LeTUoNd-EeSESO73FPFLrA"/>
+    </stereotypeApplications>
+    <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles_1:LoadbalancerResourceContainer" appliedTo="_R-DLkLFREeWoJMYsrgGnQw">
+      <extension href="../../../../../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/Loadbalanced.emfprofile_diagram#_KazQQNd-EeSESO73FPFLrA"/>
+    </stereotypeApplications>
+    <importedProfiles nsURI="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.dynamichorizontalscalingresourcecontainer" location="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/DynamicHorizontalScalingResourceContainer.emfprofile_diagram"/>
+    <importedProfiles nsURI="http://scaledl.org/repository/Loadbalancing" location="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/Loadbalanced.emfprofile_diagram"/>
+  </emfprofileapplication:ProfileApplication>
+</xmi:XMI>

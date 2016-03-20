@@ -1,0 +1,6 @@
+DynamicThreeLayerThreeTierPreconditions Test started
+DynamicThreeLayerThreeTierPreconditions Test finished
+------------Second Iteration------------
+DynamicThreeLayerThreeTierPreconditions Test started
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:189) : Scale In Threshold is not greater 0.
+DynamicThreeLayerThreeTierPreconditions Test finished

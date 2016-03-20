@@ -1,0 +1,8 @@
+------First Iteration------------
+LoadBalancerAssemblyContextPostconditions Test started
+ASSERT [error] failed at (LoadBalancerAssemblyContextPostconditions.qvto:462) : Nested Resource Containers are not duplicated.
+ASSERT [error] failed at (LoadBalancerAssemblyContextPostconditions.qvto:462) : Nested Resource Containers are not duplicated.
+LoadBalancerAssemblyContextPostconditions Test finished
+------Second Iteration------------
+LoadbalancerAssemblyContextPostconditions Test started
+LoadbalancerAssemblyContextPostconditions Test finished

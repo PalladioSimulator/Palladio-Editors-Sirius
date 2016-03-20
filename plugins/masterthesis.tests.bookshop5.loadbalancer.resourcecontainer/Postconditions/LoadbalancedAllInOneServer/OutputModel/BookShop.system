@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:composition="http://palladiosimulator.org/PalladioComponentModel/Core/Composition/5.1" xmlns:emfprofileapplication="http://www.modelversioning.org/emfprofile/application/1.1" xmlns:org.scaledl.architecturaltemplates.repositories.cloudscale.profiles="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.staticresourcecontainerloadbalancing" xmlns:org.scaledl.architecturaltemplates.repositories.cloudscale.profiles_1="http://scaledl.org/repository/Loadbalancing" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.1" xmlns:system="http://palladiosimulator.org/PalladioComponentModel/System/5.1" xsi:schemaLocation="http://palladiosimulator.org/PalladioComponentModel/Core/Composition/5.1 http://palladiosimulator.org/PalladioComponentModel/5.1#//core/composition org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.staticresourcecontainerloadbalancing ../../../../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/StaticResourceContainerLoadbalancing.emfprofile_diagram#_TC7WgL0NEeSXc41T9TupKQ http://scaledl.org/repository/Loadbalancing ../../../../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/Loadbalanced.emfprofile_diagram#_juO-IIVSEeSIDYic9BH_wA http://palladiosimulator.org/PalladioComponentModel/Repository/5.1 http://palladiosimulator.org/PalladioComponentModel/5.1#//repository http://palladiosimulator.org/PalladioComponentModel/System/5.1 http://palladiosimulator.org/PalladioComponentModel/5.1#//system">
+  <system:System id="_EvSRoJCLEeWYr8EfISvNBw" entityName="defaultSystem">
+    <assemblyContexts__ComposedStructure id="_HgQkcJCLEeWYr8EfISvNBw" entityName="Assembly_BookShopFrontend &lt;BookShopFrontend>">
+      <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="BookShop.repository#_5Xa38JB-EeWzKsot20iTOw"/>
+    </assemblyContexts__ComposedStructure>
+    <assemblyContexts__ComposedStructure id="_kEYsQJCLEeWYr8EfISvNBw" entityName="Assembly_BookShopManagement &lt;BookShopManagement>">
+      <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="BookShop.repository#_8ccvMJB-EeWzKsot20iTOw"/>
+    </assemblyContexts__ComposedStructure>
+    <assemblyContexts__ComposedStructure id="_khW8IJCLEeWYr8EfISvNBw" entityName="Assembly_BookShopDatabase &lt;BookShopDatabase>">
+      <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="BookShop.repository#_95WyEJB-EeWzKsot20iTOw"/>
+    </assemblyContexts__ComposedStructure>
+    <assemblyContexts__ComposedStructure id="_xF0aYJHMEeWbfLS5xAVZjA" entityName="Assembly_NewBookShopFrontend &lt;NewBookShopFrontend>">
+      <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="BookShop.repository#_og-y4JHJEeWbfLS5xAVZjA"/>
+    </assemblyContexts__ComposedStructure>
+    <assemblyContexts__ComposedStructure id="_6EBrgJHMEeWbfLS5xAVZjA" entityName="Assembly_NewBookShopManagement &lt;NewBookShopManagement>">
+      <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="BookShop.repository#_uGOkIJHJEeWbfLS5xAVZjA"/>
+    </assemblyContexts__ComposedStructure>
+    <assemblyContexts__ComposedStructure id="_6s8ssJHMEeWbfLS5xAVZjA" entityName="Assembly_NewBookShopManagement2 &lt;NewBookShopManagement2>">
+      <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="BookShop.repository#_vnydgJHJEeWbfLS5xAVZjA"/>
+    </assemblyContexts__ComposedStructure>
+    <assemblyContexts__ComposedStructure id="_7LZjQJHMEeWbfLS5xAVZjA" entityName="Assembly_NewBookShopDatabase &lt;NewBookShopDatabase>">
+      <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="BookShop.repository#_hcQ9gJHKEeWbfLS5xAVZjA"/>
+    </assemblyContexts__ComposedStructure>
+    <assemblyContexts__ComposedStructure id="_Kp8aNphKEeWODskJT-jf1w" entityName="Assembly_LoadBalancer_Assembly_BookShopFrontend &lt;BookShopFrontend>_Provided_IBookShopFrontend_BookShopFrontend">
+      <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="BookShop.repository#_Kp7MAJhKEeWODskJT-jf1w"/>
+    </assemblyContexts__ComposedStructure>
+    <assemblyContexts__ComposedStructure id="_Kp-PX5hKEeWODskJT-jf1w" entityName="Assembly_LoadBalancer_Assembly_BookShopFrontend &lt;BookShopFrontend>_Provided_IBookShopFrontend2_BookShopFrontend">
+      <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="BookShop.repository#_Kp9BMphKEeWODskJT-jf1w"/>
+    </assemblyContexts__ComposedStructure>
+    <assemblyContexts__ComposedStructure id="_Kp_deJhKEeWODskJT-jf1w" entityName="Assembly_LoadBalancer_Assembly_NewBookShopFrontend &lt;NewBookShopFrontend>_Provided_INewBookShopFrontend_NewBookShopFrontend">
+      <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="BookShop.repository#_Kp-2YJhKEeWODskJT-jf1w"/>
+    </assemblyContexts__ComposedStructure>
+    <assemblyContexts__ComposedStructure id="_KqAEgJhKEeWODskJT-jf1w" entityName="Assembly_BookShopManagement_Replica1">
+      <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="BookShop.repository#_8ccvMJB-EeWzKsot20iTOw"/>
+    </assemblyContexts__ComposedStructure>
+    <assemblyContexts__ComposedStructure id="_KqAEgphKEeWODskJT-jf1w" entityName="Assembly_NewBookShopManagement2_Replica1">
+      <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="BookShop.repository#_vnydgJHJEeWbfLS5xAVZjA"/>
+    </assemblyContexts__ComposedStructure>
+    <assemblyContexts__ComposedStructure id="_KqArkZhKEeWODskJT-jf1w" entityName="Assembly_NewBookShopFrontend_Replica1">
+      <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="BookShop.repository#_og-y4JHJEeWbfLS5xAVZjA"/>
+    </assemblyContexts__ComposedStructure>
+    <assemblyContexts__ComposedStructure id="_KqArk5hKEeWODskJT-jf1w" entityName="Assembly_BookShopDatabase_Replica1">
+      <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="BookShop.repository#_95WyEJB-EeWzKsot20iTOw"/>
+    </assemblyContexts__ComposedStructure>
+    <assemblyContexts__ComposedStructure id="_KqBSophKEeWODskJT-jf1w" entityName="Assembly_NewBookShopDatabase_Replica1">
+      <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="BookShop.repository#_hcQ9gJHKEeWbfLS5xAVZjA"/>
+    </assemblyContexts__ComposedStructure>
+    <assemblyContexts__ComposedStructure id="_KqB5sZhKEeWODskJT-jf1w" entityName="Assembly_NewBookShopManagement_Replica1">
+      <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="BookShop.repository#_uGOkIJHJEeWbfLS5xAVZjA"/>
+    </assemblyContexts__ComposedStructure>
+    <assemblyContexts__ComposedStructure id="_KqCgwZhKEeWODskJT-jf1w" entityName="Assembly_BookShopFrontend_Replica1">
+      <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="BookShop.repository#_5Xa38JB-EeWzKsot20iTOw"/>
+    </assemblyContexts__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_mAa7IJCLEeWYr8EfISvNBw" entityName="Connector Assembly_BookShopManagement &lt;BookShopManagement> -> Assembly_BookShopDatabase &lt;BookShopDatabase>" requiringAssemblyContext_AssemblyConnector="_kEYsQJCLEeWYr8EfISvNBw" providingAssemblyContext_AssemblyConnector="_khW8IJCLEeWYr8EfISvNBw">
+      <providedRole_AssemblyConnector href="BookShop.repository#_pe9l8JCIEeWzKsot20iTOw"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_sB-VQJCIEeWzKsot20iTOw"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_mgXmgJCLEeWYr8EfISvNBw" entityName="Connector Assembly_BookShopFrontend &lt;BookShopFrontend> -> Assembly_BookShopManagement &lt;BookShopManagement>" requiringAssemblyContext_AssemblyConnector="_HgQkcJCLEeWYr8EfISvNBw" providingAssemblyContext_AssemblyConnector="_kEYsQJCLEeWYr8EfISvNBw">
+      <providedRole_AssemblyConnector href="BookShop.repository#_qcGjoJCIEeWzKsot20iTOw"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_CqUKMJCAEeWzKsot20iTOw"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_qHL8MJCLEeWYr8EfISvNBw" entityName="ProvDelegation Provided_IBookShopFrontend -> Provided_IBookShopFrontend_BookShopFrontend" outerProvidedRole_ProvidedDelegationConnector="_o9eiIJCLEeWYr8EfISvNBw" assemblyContext_ProvidedDelegationConnector="_Kp8aNphKEeWODskJT-jf1w">
+      <innerProvidedRole_ProvidedDelegationConnector href="BookShop.repository#_Kp7MAZhKEeWODskJT-jf1w"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_F1M-kJCQEeWYr8EfISvNBw" entityName="ProvDelegation Provided_IBookShopFrontend2 -> Provided_IBookShopFrontend2_BookShopFrontend" outerProvidedRole_ProvidedDelegationConnector="_D8nFQJCQEeWYr8EfISvNBw" assemblyContext_ProvidedDelegationConnector="_Kp-PX5hKEeWODskJT-jf1w">
+      <innerProvidedRole_ProvidedDelegationConnector href="BookShop.repository#_Kp9BM5hKEeWODskJT-jf1w"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_Ga3QYJCQEeWYr8EfISvNBw" entityName="Connector Assembly_BookShopFrontend &lt;BookShopFrontend> -> Assembly_BookShopManagement &lt;BookShopManagement>" requiringAssemblyContext_AssemblyConnector="_HgQkcJCLEeWYr8EfISvNBw" providingAssemblyContext_AssemblyConnector="_kEYsQJCLEeWYr8EfISvNBw">
+      <providedRole_AssemblyConnector href="BookShop.repository#_PGnVAJCPEeWYr8EfISvNBw"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_R7Qm4JCPEeWYr8EfISvNBw"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_HWa5sJCQEeWYr8EfISvNBw" entityName="Connector Assembly_BookShopManagement &lt;BookShopManagement> -> Assembly_BookShopDatabase &lt;BookShopDatabase>" requiringAssemblyContext_AssemblyConnector="_kEYsQJCLEeWYr8EfISvNBw" providingAssemblyContext_AssemblyConnector="_khW8IJCLEeWYr8EfISvNBw">
+      <providedRole_AssemblyConnector href="BookShop.repository#_P-eKEJCPEeWYr8EfISvNBw"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_TQetYJCPEeWYr8EfISvNBw"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:RequiredDelegationConnector" id="_5rE1sJEsEeWwradrnLu6rA" entityName="ReqDelegation Required_IAnotherDatabase2_BookShopDatabase -> Required_IAnotherDatabase2" outerRequiredRole_RequiredDelegationConnector="_3fV98JEsEeWwradrnLu6rA" assemblyContext_RequiredDelegationConnector="_khW8IJCLEeWYr8EfISvNBw">
+      <innerRequiredRole_RequiredDelegationConnector href="BookShop.repository#_0TKV0JEsEeWwradrnLu6rA"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:RequiredDelegationConnector" id="_6RbrEJEsEeWwradrnLu6rA" entityName="ReqDelegation Required_IAnotherDatabase1_BookShopDatabase -> Required_IAnotherDatabase1" outerRequiredRole_RequiredDelegationConnector="_2wUUwJEsEeWwradrnLu6rA" assemblyContext_RequiredDelegationConnector="_khW8IJCLEeWYr8EfISvNBw">
+      <innerRequiredRole_RequiredDelegationConnector href="BookShop.repository#_z8kawJEsEeWwradrnLu6rA"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_0U1UEJHMEeWbfLS5xAVZjA" entityName="ProvDelegation Provided_INewBookShopFrontend -> Provided_INewBookShopFrontend_NewBookShopFrontend" outerProvidedRole_ProvidedDelegationConnector="_yKBpYJHMEeWbfLS5xAVZjA" assemblyContext_ProvidedDelegationConnector="_Kp_deJhKEeWODskJT-jf1w">
+      <innerProvidedRole_ProvidedDelegationConnector href="BookShop.repository#_Kp-2YZhKEeWODskJT-jf1w"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_CtNu4JHNEeWbfLS5xAVZjA" entityName="Connector Assembly_NewBookShopFrontend &lt;NewBookShopFrontend> -> Assembly_NewBookShopManagement &lt;NewBookShopManagement>" requiringAssemblyContext_AssemblyConnector="_xF0aYJHMEeWbfLS5xAVZjA" providingAssemblyContext_AssemblyConnector="_6EBrgJHMEeWbfLS5xAVZjA">
+      <providedRole_AssemblyConnector href="BookShop.repository#_McO5QJHKEeWbfLS5xAVZjA"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_M6DdsJHKEeWbfLS5xAVZjA"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_C8PCUJHNEeWbfLS5xAVZjA" entityName="Connector Assembly_NewBookShopManagement &lt;NewBookShopManagement> -> Assembly_NewBookShopManagement2 &lt;NewBookShopManagement2>" requiringAssemblyContext_AssemblyConnector="_6EBrgJHMEeWbfLS5xAVZjA" providingAssemblyContext_AssemblyConnector="_6s8ssJHMEeWbfLS5xAVZjA">
+      <providedRole_AssemblyConnector href="BookShop.repository#_O7GvcJHKEeWbfLS5xAVZjA"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_PRrcYJHKEeWbfLS5xAVZjA"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_DOyK4JHNEeWbfLS5xAVZjA" entityName="Connector Assembly_NewBookShopManagement2 &lt;NewBookShopManagement2> -> Assembly_NewBookShopDatabase &lt;NewBookShopDatabase>" requiringAssemblyContext_AssemblyConnector="_6s8ssJHMEeWbfLS5xAVZjA" providingAssemblyContext_AssemblyConnector="_7LZjQJHMEeWbfLS5xAVZjA">
+      <providedRole_AssemblyConnector href="BookShop.repository#_i4ZkUJHKEeWbfLS5xAVZjA"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_e8ZBwJHKEeWbfLS5xAVZjA"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:RequiredDelegationConnector" id="_Ec48wJHNEeWbfLS5xAVZjA" entityName="ReqDelegation Required_INewAnotherDatabase_NewBookShopDatabase -> Required_INewAnotherDatabase" outerRequiredRole_RequiredDelegationConnector="_8if5EJHMEeWbfLS5xAVZjA" assemblyContext_RequiredDelegationConnector="_7LZjQJHMEeWbfLS5xAVZjA">
+      <innerRequiredRole_RequiredDelegationConnector href="BookShop.repository#_aEFZkJHLEeWbfLS5xAVZjA"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_Kp6k8ZhKEeWODskJT-jf1w" entityName="ProvDelegation Provided_IBookShopFrontend -> Provided_IBookShopFrontend_BookShopFrontend_from_loadbalancer" requiringAssemblyContext_AssemblyConnector="_Kp8aNphKEeWODskJT-jf1w" providingAssemblyContext_AssemblyConnector="_HgQkcJCLEeWYr8EfISvNBw">
+      <providedRole_AssemblyConnector href="BookShop.repository#_rbI-wJCIEeWzKsot20iTOw"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_Kp7MAphKEeWODskJT-jf1w"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_Kp9BMZhKEeWODskJT-jf1w" entityName="ProvDelegation Provided_IBookShopFrontend2 -> Provided_IBookShopFrontend2_BookShopFrontend_from_loadbalancer" requiringAssemblyContext_AssemblyConnector="_Kp-PX5hKEeWODskJT-jf1w" providingAssemblyContext_AssemblyConnector="_HgQkcJCLEeWYr8EfISvNBw">
+      <providedRole_AssemblyConnector href="BookShop.repository#_mqBxcJCOEeWYr8EfISvNBw"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_Kp9oQJhKEeWODskJT-jf1w"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_Kp-PYZhKEeWODskJT-jf1w" entityName="ProvDelegation Provided_INewBookShopFrontend -> Provided_INewBookShopFrontend_NewBookShopFrontend_from_loadbalancer" requiringAssemblyContext_AssemblyConnector="_Kp_deJhKEeWODskJT-jf1w" providingAssemblyContext_AssemblyConnector="_xF0aYJHMEeWbfLS5xAVZjA">
+      <providedRole_AssemblyConnector href="BookShop.repository#_HCM5gJHKEeWbfLS5xAVZjA"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_Kp-2Y5hKEeWODskJT-jf1w"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_KqDH0JhKEeWODskJT-jf1w" entityName="Connector Assembly_NewBookShopFrontend &lt;NewBookShopFrontend> -> Assembly_NewBookShopManagement &lt;NewBookShopManagement>_replica_1" requiringAssemblyContext_AssemblyConnector="_xF0aYJHMEeWbfLS5xAVZjA" providingAssemblyContext_AssemblyConnector="_KqB5sZhKEeWODskJT-jf1w">
+      <providedRole_AssemblyConnector href="BookShop.repository#_McO5QJHKEeWbfLS5xAVZjA"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_KqFkEJhKEeWODskJT-jf1w" entityName="Connector Assembly_NewBookShopManagement &lt;NewBookShopManagement> -> Assembly_NewBookShopManagement2 &lt;NewBookShopManagement2>_replica_1" requiringAssemblyContext_AssemblyConnector="_KqB5sZhKEeWODskJT-jf1w" providingAssemblyContext_AssemblyConnector="_KqAEgphKEeWODskJT-jf1w">
+      <providedRole_AssemblyConnector href="BookShop.repository#_O7GvcJHKEeWbfLS5xAVZjA"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_PRrcYJHKEeWbfLS5xAVZjA"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_KqIAUJhKEeWODskJT-jf1w" entityName="Connector Assembly_NewBookShopManagement &lt;NewBookShopManagement> -> Assembly_NewBookShopManagement2 &lt;NewBookShopManagement2>_replica_1" requiringAssemblyContext_AssemblyConnector="_6EBrgJHMEeWbfLS5xAVZjA" providingAssemblyContext_AssemblyConnector="_KqAEgphKEeWODskJT-jf1w">
+      <providedRole_AssemblyConnector href="BookShop.repository#_O7GvcJHKEeWbfLS5xAVZjA"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_KqInYJhKEeWODskJT-jf1w" entityName="Connector Assembly_NewBookShopManagement2 &lt;NewBookShopManagement2> -> Assembly_NewBookShopDatabase &lt;NewBookShopDatabase>_replica_1" requiringAssemblyContext_AssemblyConnector="_KqAEgphKEeWODskJT-jf1w" providingAssemblyContext_AssemblyConnector="_KqBSophKEeWODskJT-jf1w">
+      <providedRole_AssemblyConnector href="BookShop.repository#_i4ZkUJHKEeWbfLS5xAVZjA"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_e8ZBwJHKEeWbfLS5xAVZjA"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_KqJ1gJhKEeWODskJT-jf1w" entityName="Connector Assembly_NewBookShopManagement2 &lt;NewBookShopManagement2> -> Assembly_NewBookShopDatabase &lt;NewBookShopDatabase>_replica_1" requiringAssemblyContext_AssemblyConnector="_6s8ssJHMEeWbfLS5xAVZjA" providingAssemblyContext_AssemblyConnector="_KqBSophKEeWODskJT-jf1w">
+      <providedRole_AssemblyConnector href="BookShop.repository#_i4ZkUJHKEeWbfLS5xAVZjA"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:RequiredDelegationConnector" id="_KqJ1gZhKEeWODskJT-jf1w" entityName="ReqDelegation Required_INewAnotherDatabase_NewBookShopDatabase -> Required_INewAnotherDatabase_replica_1" outerRequiredRole_RequiredDelegationConnector="_8if5EJHMEeWbfLS5xAVZjA" assemblyContext_RequiredDelegationConnector="_KqBSophKEeWODskJT-jf1w">
+      <innerRequiredRole_RequiredDelegationConnector href="BookShop.repository#_aEFZkJHLEeWbfLS5xAVZjA"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_KqLDoJhKEeWODskJT-jf1w" entityName="ProvDelegation Provided_INewBookShopFrontend -> Provided_INewBookShopFrontend_NewBookShopFrontend_from_loadbalancer_replica_1" requiringAssemblyContext_AssemblyConnector="_Kp_deJhKEeWODskJT-jf1w" providingAssemblyContext_AssemblyConnector="_KqArkZhKEeWODskJT-jf1w">
+      <providedRole_AssemblyConnector href="BookShop.repository#_HCM5gJHKEeWbfLS5xAVZjA"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_Kp-2YphKEeWODskJT-jf1w"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_KqLqsJhKEeWODskJT-jf1w" entityName="Connector Assembly_NewBookShopFrontend &lt;NewBookShopFrontend> -> Assembly_NewBookShopManagement &lt;NewBookShopManagement>_replica_1" requiringAssemblyContext_AssemblyConnector="_KqArkZhKEeWODskJT-jf1w" providingAssemblyContext_AssemblyConnector="_KqB5sZhKEeWODskJT-jf1w">
+      <providedRole_AssemblyConnector href="BookShop.repository#_McO5QJHKEeWbfLS5xAVZjA"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_M6DdsJHKEeWbfLS5xAVZjA"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_KqMRwJhKEeWODskJT-jf1w" entityName="Connector Assembly_NewBookShopFrontend &lt;NewBookShopFrontend> -> Assembly_NewBookShopManagement &lt;NewBookShopManagement>_replica_1_replica_1" requiringAssemblyContext_AssemblyConnector="_KqArkZhKEeWODskJT-jf1w" providingAssemblyContext_AssemblyConnector="_KqB5sZhKEeWODskJT-jf1w">
+      <providedRole_AssemblyConnector href="BookShop.repository#_McO5QJHKEeWbfLS5xAVZjA"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:RequiredDelegationConnector" id="_KqM40JhKEeWODskJT-jf1w" entityName="ReqDelegation Required_IAnotherDatabase1_BookShopDatabase -> Required_IAnotherDatabase1_replica_1" outerRequiredRole_RequiredDelegationConnector="_2wUUwJEsEeWwradrnLu6rA" assemblyContext_RequiredDelegationConnector="_KqArk5hKEeWODskJT-jf1w">
+      <innerRequiredRole_RequiredDelegationConnector href="BookShop.repository#_z8kawJEsEeWwradrnLu6rA"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_KqNf4JhKEeWODskJT-jf1w" entityName="Connector Assembly_BookShopManagement &lt;BookShopManagement> -> Assembly_BookShopDatabase &lt;BookShopDatabase>_replica_1" requiringAssemblyContext_AssemblyConnector="_kEYsQJCLEeWYr8EfISvNBw" providingAssemblyContext_AssemblyConnector="_KqArk5hKEeWODskJT-jf1w">
+      <providedRole_AssemblyConnector href="BookShop.repository#_pe9l8JCIEeWzKsot20iTOw"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_sB-VQJCIEeWzKsot20iTOw"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_KqOG8JhKEeWODskJT-jf1w" entityName="Connector Assembly_BookShopManagement &lt;BookShopManagement> -> Assembly_BookShopDatabase &lt;BookShopDatabase>_replica_1" requiringAssemblyContext_AssemblyConnector="_kEYsQJCLEeWYr8EfISvNBw" providingAssemblyContext_AssemblyConnector="_KqArk5hKEeWODskJT-jf1w">
+      <providedRole_AssemblyConnector href="BookShop.repository#_P-eKEJCPEeWYr8EfISvNBw"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_sB-VQJCIEeWzKsot20iTOw"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:RequiredDelegationConnector" id="_KqOuAJhKEeWODskJT-jf1w" entityName="ReqDelegation Required_IAnotherDatabase2_BookShopDatabase -> Required_IAnotherDatabase2_replica_1" outerRequiredRole_RequiredDelegationConnector="_3fV98JEsEeWwradrnLu6rA" assemblyContext_RequiredDelegationConnector="_KqArk5hKEeWODskJT-jf1w">
+      <innerRequiredRole_RequiredDelegationConnector href="BookShop.repository#_0TKV0JEsEeWwradrnLu6rA"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_KqRKQJhKEeWODskJT-jf1w" entityName="Connector Assembly_BookShopFrontend &lt;BookShopFrontend> -> Assembly_BookShopManagement &lt;BookShopManagement>_replica_1" requiringAssemblyContext_AssemblyConnector="_KqCgwZhKEeWODskJT-jf1w" providingAssemblyContext_AssemblyConnector="_KqAEgJhKEeWODskJT-jf1w">
+      <providedRole_AssemblyConnector href="BookShop.repository#_PGnVAJCPEeWYr8EfISvNBw"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_R7Qm4JCPEeWYr8EfISvNBw"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_KqRxUJhKEeWODskJT-jf1w" entityName="ProvDelegation Provided_IBookShopFrontend -> Provided_IBookShopFrontend_BookShopFrontend_from_loadbalancer_replica_1" requiringAssemblyContext_AssemblyConnector="_Kp8aNphKEeWODskJT-jf1w" providingAssemblyContext_AssemblyConnector="_KqCgwZhKEeWODskJT-jf1w">
+      <providedRole_AssemblyConnector href="BookShop.repository#_rbI-wJCIEeWzKsot20iTOw"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_Kp7MA5hKEeWODskJT-jf1w"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_KqRxUZhKEeWODskJT-jf1w" entityName="ProvDelegation Provided_IBookShopFrontend2 -> Provided_IBookShopFrontend2_BookShopFrontend_from_loadbalancer_replica_1" requiringAssemblyContext_AssemblyConnector="_Kp-PX5hKEeWODskJT-jf1w" providingAssemblyContext_AssemblyConnector="_KqCgwZhKEeWODskJT-jf1w">
+      <providedRole_AssemblyConnector href="BookShop.repository#_mqBxcJCOEeWYr8EfISvNBw"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_Kp9oQZhKEeWODskJT-jf1w"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_KqSYYJhKEeWODskJT-jf1w" entityName="Connector Assembly_BookShopFrontend &lt;BookShopFrontend> -> Assembly_BookShopManagement &lt;BookShopManagement>_replica_1" requiringAssemblyContext_AssemblyConnector="_KqCgwZhKEeWODskJT-jf1w" providingAssemblyContext_AssemblyConnector="_KqAEgJhKEeWODskJT-jf1w">
+      <providedRole_AssemblyConnector href="BookShop.repository#_qcGjoJCIEeWzKsot20iTOw"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_CqUKMJCAEeWzKsot20iTOw"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_KqS_cJhKEeWODskJT-jf1w" entityName="Connector Assembly_BookShopManagement &lt;BookShopManagement> -> Assembly_BookShopDatabase &lt;BookShopDatabase>_replica_1_replica_1" requiringAssemblyContext_AssemblyConnector="_KqAEgJhKEeWODskJT-jf1w" providingAssemblyContext_AssemblyConnector="_KqArk5hKEeWODskJT-jf1w">
+      <providedRole_AssemblyConnector href="BookShop.repository#_P-eKEJCPEeWYr8EfISvNBw"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_sB-VQJCIEeWzKsot20iTOw"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_KqTmgJhKEeWODskJT-jf1w" entityName="Connector Assembly_BookShopManagement &lt;BookShopManagement> -> Assembly_BookShopDatabase &lt;BookShopDatabase>_replica_1_replica_1" requiringAssemblyContext_AssemblyConnector="_KqAEgJhKEeWODskJT-jf1w" providingAssemblyContext_AssemblyConnector="_KqArk5hKEeWODskJT-jf1w">
+      <providedRole_AssemblyConnector href="BookShop.repository#_pe9l8JCIEeWzKsot20iTOw"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_sB-VQJCIEeWzKsot20iTOw"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_KqUNkJhKEeWODskJT-jf1w" entityName="Connector Assembly_BookShopManagement &lt;BookShopManagement> -> Assembly_BookShopDatabase &lt;BookShopDatabase>_replica_1" requiringAssemblyContext_AssemblyConnector="_KqAEgJhKEeWODskJT-jf1w" providingAssemblyContext_AssemblyConnector="_KqArk5hKEeWODskJT-jf1w">
+      <providedRole_AssemblyConnector href="BookShop.repository#_pe9l8JCIEeWzKsot20iTOw"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_sB-VQJCIEeWzKsot20iTOw"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_KqU0oJhKEeWODskJT-jf1w" entityName="Connector Assembly_BookShopFrontend &lt;BookShopFrontend> -> Assembly_BookShopManagement &lt;BookShopManagement>_replica_1" requiringAssemblyContext_AssemblyConnector="_HgQkcJCLEeWYr8EfISvNBw" providingAssemblyContext_AssemblyConnector="_KqAEgJhKEeWODskJT-jf1w">
+      <providedRole_AssemblyConnector href="BookShop.repository#_PGnVAJCPEeWYr8EfISvNBw"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_CqUKMJCAEeWzKsot20iTOw"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_KqVbsJhKEeWODskJT-jf1w" entityName="Connector Assembly_BookShopManagement &lt;BookShopManagement> -> Assembly_BookShopDatabase &lt;BookShopDatabase>_replica_1" requiringAssemblyContext_AssemblyConnector="_KqAEgJhKEeWODskJT-jf1w" providingAssemblyContext_AssemblyConnector="_KqArk5hKEeWODskJT-jf1w">
+      <providedRole_AssemblyConnector href="BookShop.repository#_P-eKEJCPEeWYr8EfISvNBw"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_TQetYJCPEeWYr8EfISvNBw"/>
+    </connectors__ComposedStructure>
+    <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_KqWCwJhKEeWODskJT-jf1w" entityName="Connector Assembly_BookShopFrontend &lt;BookShopFrontend> -> Assembly_BookShopManagement &lt;BookShopManagement>_replica_1" requiringAssemblyContext_AssemblyConnector="_HgQkcJCLEeWYr8EfISvNBw" providingAssemblyContext_AssemblyConnector="_KqAEgJhKEeWODskJT-jf1w">
+      <providedRole_AssemblyConnector href="BookShop.repository#_qcGjoJCIEeWzKsot20iTOw"/>
+      <requiredRole_AssemblyConnector href="BookShop.repository#_CqUKMJCAEeWzKsot20iTOw"/>
+    </connectors__ComposedStructure>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_o9eiIJCLEeWYr8EfISvNBw" entityName="Provided_IBookShopFrontend">
+      <providedInterface__OperationProvidedRole href="BookShop.repository#_rgS6oJB_EeWzKsot20iTOw"/>
+    </providedRoles_InterfaceProvidingEntity>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_D8nFQJCQEeWYr8EfISvNBw" entityName="Provided_IBookShopFrontend2">
+      <providedInterface__OperationProvidedRole href="BookShop.repository#_hjIwIJCOEeWYr8EfISvNBw"/>
+    </providedRoles_InterfaceProvidingEntity>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_yKBpYJHMEeWbfLS5xAVZjA" entityName="Provided_INewBookShopFrontend">
+      <providedInterface__OperationProvidedRole href="BookShop.repository#_ym2PoJHJEeWbfLS5xAVZjA"/>
+    </providedRoles_InterfaceProvidingEntity>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_2wUUwJEsEeWwradrnLu6rA" entityName="Required_IAnotherDatabase1">
+      <requiredInterface__OperationRequiredRole href="BookShop.repository#_qInNYJEsEeWwradrnLu6rA"/>
+    </requiredRoles_InterfaceRequiringEntity>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_3fV98JEsEeWwradrnLu6rA" entityName="Required_IAnotherDatabase2">
+      <requiredInterface__OperationRequiredRole href="BookShop.repository#_rSltMJEsEeWwradrnLu6rA"/>
+    </requiredRoles_InterfaceRequiringEntity>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_8if5EJHMEeWbfLS5xAVZjA" entityName="Required_INewAnotherDatabase">
+      <requiredInterface__OperationRequiredRole href="BookShop.repository#_N1_FAJHLEeWbfLS5xAVZjA"/>
+    </requiredRoles_InterfaceRequiringEntity>
+  </system:System>
+  <emfprofileapplication:ProfileApplication>
+    <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles:StaticResourceContainerLoadbalancingSystem" appliedTo="_EvSRoJCLEeWYr8EfISvNBw">
+      <extension href="../../../../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/StaticResourceContainerLoadbalancing.emfprofile_diagram#_tveRoL0NEeSXc41T9TupKQ"/>
+    </stereotypeApplications>
+    <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles_1:DuplicateAssemblyContext" appliedTo="_KqAEgJhKEeWODskJT-jf1w" originalAssemblyContext="_kEYsQJCLEeWYr8EfISvNBw">
+      <extension href="../../../../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/Loadbalanced.emfprofile_diagram#_NQESgIVTEeSIDYic9BH_wA"/>
+    </stereotypeApplications>
+    <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles_1:DuplicateAssemblyContext" appliedTo="_KqAEgphKEeWODskJT-jf1w" originalAssemblyContext="_6s8ssJHMEeWbfLS5xAVZjA">
+      <extension href="../../../../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/Loadbalanced.emfprofile_diagram#_NQESgIVTEeSIDYic9BH_wA"/>
+    </stereotypeApplications>
+    <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles_1:DuplicateAssemblyContext" appliedTo="_KqArkZhKEeWODskJT-jf1w" originalAssemblyContext="_xF0aYJHMEeWbfLS5xAVZjA">
+      <extension href="../../../../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/Loadbalanced.emfprofile_diagram#_NQESgIVTEeSIDYic9BH_wA"/>
+    </stereotypeApplications>
+    <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles_1:DuplicateAssemblyContext" appliedTo="_KqArk5hKEeWODskJT-jf1w" originalAssemblyContext="_khW8IJCLEeWYr8EfISvNBw">
+      <extension href="../../../../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/Loadbalanced.emfprofile_diagram#_NQESgIVTEeSIDYic9BH_wA"/>
+    </stereotypeApplications>
+    <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles_1:DuplicateAssemblyContext" appliedTo="_KqBSophKEeWODskJT-jf1w" originalAssemblyContext="_7LZjQJHMEeWbfLS5xAVZjA">
+      <extension href="../../../../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/Loadbalanced.emfprofile_diagram#_NQESgIVTEeSIDYic9BH_wA"/>
+    </stereotypeApplications>
+    <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles_1:DuplicateAssemblyContext" appliedTo="_KqB5sZhKEeWODskJT-jf1w" originalAssemblyContext="_6EBrgJHMEeWbfLS5xAVZjA">
+      <extension href="../../../../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/Loadbalanced.emfprofile_diagram#_NQESgIVTEeSIDYic9BH_wA"/>
+    </stereotypeApplications>
+    <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles_1:DuplicateAssemblyContext" appliedTo="_KqCgwZhKEeWODskJT-jf1w" originalAssemblyContext="_HgQkcJCLEeWYr8EfISvNBw">
+      <extension href="../../../../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/Loadbalanced.emfprofile_diagram#_NQESgIVTEeSIDYic9BH_wA"/>
+    </stereotypeApplications>
+    <importedProfiles nsURI="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.staticresourcecontainerloadbalancing" location="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/StaticResourceContainerLoadbalancing.emfprofile_diagram"/>
+    <importedProfiles nsURI="http://scaledl.org/repository/Loadbalancing" location="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/Loadbalanced.emfprofile_diagram"/>
+  </emfprofileapplication:ProfileApplication>
+</xmi:XMI>

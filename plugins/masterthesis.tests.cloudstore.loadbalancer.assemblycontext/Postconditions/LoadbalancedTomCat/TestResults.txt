@@ -1,0 +1,16 @@
+------------First Iteration------------
+LoadBalancerAssemblyContextPostconditions Test started
+ASSERT [error] failed at (LoadBalancerAssemblyContextPostconditions.qvto:123) : The number of assembly connectors between the loadbalancer and the original assembly context(0) does not equal 1
+ASSERT [error] failed at (LoadBalancerAssemblyContextPostconditions.qvto:215) : The number of connectors between the loadbalancer and the duplicate assembly contexts(0) does not equal 1
+ASSERT [error] failed at (LoadBalancerAssemblyContextPostconditions.qvto:283) : The loadbalancer _hvuLQ50eEeWOxZbf05hzxg is not target of the connector _Odeq6r4HEeKApo_Aso_Onw previously connected with the replicable assembly context
+ASSERT [error] failed at (LoadBalancerAssemblyContextPostconditions.qvto:283) : The loadbalancer _hvuLQ50eEeWOxZbf05hzxg is not target of the connector _Azdx-L4HEeKApo_Aso_Onw previously connected with the replicable assembly context
+ASSERT [error] failed at (LoadBalancerAssemblyContextPostconditions.qvto:283) : The loadbalancer _hvuLQ50eEeWOxZbf05hzxg is not target of the connector _KnMV2r4HEeKApo_Aso_Onw previously connected with the replicable assembly context
+ASSERT [error] failed at (LoadBalancerAssemblyContextPostconditions.qvto:283) : The loadbalancer _hvuLQ50eEeWOxZbf05hzxg is not target of the connector _ib4k-r4FEeKApo_Aso_Onw previously connected with the replicable assembly context
+ASSERT [error] failed at (LoadBalancerAssemblyContextPostconditions.qvto:342) : The loadbalancer repository component provides 0 required roles for the provided role _Je2LoKjoEeKwx82kckLl3w but 2 are needed.
+ASSERT [error] failed at (LoadBalancerAssemblyContextPostconditions.qvto:376) : The loadbalancer repository component _hvtkMJ0eEeWOxZbf05hzxg does not provide the 
+					provided role _Je2LoKjoEeKwx82kckLl3w provided by the replicable repository component.
+ASSERT [error] failed at (LoadBalancerAssemblyContextPostconditions.qvto:388) : The loadbalancer repository component _hvtkMJ0eEeWOxZbf05hzxg provides 1 provided roles instead of 1 as the replicable repository component _MbRV8KjnEeKwx82kckLl3w.
+LoadBalancerAssemblyContextPostconditions Test finished
+------------Second Iteration-------------
+LoadbalancerAssemblyContextPostconditions Test started
+LoadbalancerAssemblyContextPostconditions Test finished

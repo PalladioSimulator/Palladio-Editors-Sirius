@@ -1,0 +1,8 @@
+DynamicThreeLayerThreeTierPreconditions Test started
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:209) : The Resource Environment has less than 3 Resource Container.
+DynamicThreeLayerThreeTierPreconditions Test finished
+------------Second Iteration------------
+DynamicThreeLayerThreeTierPreconditions Test started
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:281) : The Resource Environment has less than 3 Resource Container.
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:306) : There are not three Tiers.
+DynamicThreeLayerThreeTierPreconditions Test finished

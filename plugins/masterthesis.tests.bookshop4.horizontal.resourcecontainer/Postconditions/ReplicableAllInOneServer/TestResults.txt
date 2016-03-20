@@ -1,0 +1,6 @@
+------------First Iteration------------
+DynamicHorizontalScalingResourceContainerPostconditions Test started
+DynamicHorizontalScalingResourceContainerPostconditions Test finished
+------------Second Iteration------------
+DynamicHorizontalScalingResourceContainerPostconditions Test started
+DynamicHorizontalScalingResourceContainerPostconditions Test finished

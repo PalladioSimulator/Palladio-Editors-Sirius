@@ -1,0 +1,12 @@
+------------First Iteration------------
+DynamicVerticalScalingResourceContainerPreconditions Test started
+ASSERT [error] failed at (DynamicVerticalScalingResourceContainerPreconditions.qvto:67) : There is a Virtualized Resource Container whose processing Rate is smaller than the defined Min Rate.
+ASSERT [error] failed at (DynamicVerticalScalingResourceContainerPreconditions.qvto:87) : There is a Virtualized Resource Container whose Max Rate is smaller than the defined Step Size.
+DynamicVerticalScalingResourceContainerPreconditions Test finished
+------------Second Iteration------------
+DynamicVerticalScalingResourceContainerPreconditions Test started
+ASSERT [error] failed at (DynamicVerticalScalingResourceContainerPreconditions.qvto:91) : The max rate of one virtualized Resource Container is smaller or equal to zero.
+ASSERT [error] failed at (DynamicVerticalScalingResourceContainerPreconditions.qvto:166) : The Virtualized Resource Containers_BXJKwJCDEeWzKsot20iTOw processing Rate is greater than the defined Max Rate.
+ASSERT [error] failed at (DynamicVerticalScalingResourceContainerPreconditions.qvto:166) : The Virtualized Resource Containers_BXJKwJCDEeWzKsot20iTOw processing Rate is greater than the defined Max Rate.
+ASSERT [error] failed at (DynamicVerticalScalingResourceContainerPreconditions.qvto:194) : There is a Virtualized Resource Container whose Max Rate is smaller than the defined Step Size.
+DynamicVerticalScalingResourceContainerPreconditions Test finished

@@ -1,0 +1,15 @@
+------------First Iteration------------
+DynamicHorizontalScalingResourceContainerPostconditions Test started
+ASSERT [error] failed at (DynamicHorizontalScalingResourceContainerPostconditions.qvto:279) : The duplicate Assembly_M1IbILC7EeWJtvHMw6Lk7Q is connected 0 times with the Assembly Context _CMIngKDbEeKjDcfkNgs1Gg
+ASSERT [error] failed at (DynamicHorizontalScalingResourceContainerPostconditions.qvto:279) : The duplicate Assembly_M1IbILC7EeWJtvHMw6Lk7Q is connected 0 times with the Assembly Context _CMIngKDbEeKjDcfkNgs1Gg
+ASSERT [error] failed at (DynamicHorizontalScalingResourceContainerPostconditions.qvto:279) : The duplicate Assembly_M1IbILC7EeWJtvHMw6Lk7Q is connected 0 times with the Assembly Context _YyTA4GPPEeOoburSBwQF3A
+ASSERT [error] failed at (DynamicHorizontalScalingResourceContainerPostconditions.qvto:279) : The duplicate Assembly_M1K3YbC7EeWJtvHMw6Lk7Q is connected 0 times with the Assembly Context _Kkg_ULCgEeKIWOrWDhimvQ
+ASSERT [error] failed at (DynamicHorizontalScalingResourceContainerPostconditions.qvto:279) : The duplicate Assembly_M1Y50bC7EeWJtvHMw6Lk7Q is connected 0 times with the Assembly Context _Kkg_ULCgEeKIWOrWDhimvQ
+ASSERT [error] failed at (DynamicHorizontalScalingResourceContainerPostconditions.qvto:279) : The duplicate Assembly_M1XrsLC7EeWJtvHMw6Lk7Q is connected 0 times with the Assembly Context _CMIngKDbEeKjDcfkNgs1Gg
+ASSERT [error] failed at (DynamicHorizontalScalingResourceContainerPostconditions.qvto:279) : The duplicate Assembly_M1VPcLC7EeWJtvHMw6Lk7Q is connected 0 times with the Assembly Context _Kkg_ULCgEeKIWOrWDhimvQ
+ASSERT [error] failed at (DynamicHorizontalScalingResourceContainerPostconditions.qvto:279) : The duplicate Assembly_M1KQULC7EeWJtvHMw6Lk7Q is connected 0 times with the Assembly Context _Kkg_ULCgEeKIWOrWDhimvQ
+DynamicHorizontalScalingResourceContainerPostconditions Test finished
+------------Second Iteration------------
+DynamicHorizontalScalingResourceContainerPostconditions Test started
+DynamicHorizontalScalingResourceContainerPostconditions Test finished
+

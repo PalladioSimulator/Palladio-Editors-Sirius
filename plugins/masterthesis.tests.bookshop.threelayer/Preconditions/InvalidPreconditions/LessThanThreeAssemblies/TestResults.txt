@@ -1,0 +1,11 @@
+------------First Iteration------------
+ThreeLayerPreconditions Test started
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:44) : The System has <= 2 Assembly Contexts. At least 3 are needed.
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:71) : The System has no Data Layer Assembly.
+ThreeLayerPreconditions Test finished
+------------Second Iteration------------
+ThreeLayerPreconditions Test started
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:51) : The System has <= 2 Assembly Contexts. At least 3 are needed.
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:78) : The System has no Data Layer Assembly.
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:110) : There are not three Layers.
+ThreeLayerPreconditions Test finished

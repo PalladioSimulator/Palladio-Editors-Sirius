@@ -1,0 +1,8 @@
+------------First Iteration------------
+DynamicHorizontalScalingAssemblyContextPostconditions Test started
+ASSERT [error] failed at (DynamicHorizontalScalingAssemblyContextPostconditions.qvto:124) : The number of assembly connectors between the loadbalancer and the original assembly context(7) does not equal 1
+ASSERT [error] failed at (DynamicHorizontalScalingAssemblyContextPostconditions.qvto:216) : The number of connectors between the loadbalancer and the duplicate assembly contexts(14) does not equal 2
+DynamicHorizontalScalingAssemblyContextPostconditions Test finished
+------------Second Iteration------------
+DynamicHorizontalScalingAssemblyContextPostconditions Test started
+DynamicHorizontalScalingAssemblyContextPostconditions Test finished

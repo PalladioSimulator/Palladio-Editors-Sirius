@@ -1,0 +1,7 @@
+DynamicThreeLayerThreeTierPreconditions Test started
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:199) : Replicable Middle Tier Scale In Threshold is greater or equal than the Scale Out Threshold.
+DynamicThreeLayerThreeTierPreconditions Test finished
+------------Second Iteration------------
+DynamicThreeLayerThreeTierPreconditions Test started
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:271) : Replicable Middle Tier Scale In Threshold is greater or equal than the Scale Out Threshold.
+DynamicThreeLayerThreeTierPreconditions Test finished

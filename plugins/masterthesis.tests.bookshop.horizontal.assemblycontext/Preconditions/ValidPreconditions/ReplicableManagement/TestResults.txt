@@ -1,0 +1,2 @@
+DynamicHorizontalScalingAssemblyContextPreconditions Test started
+DynamicHorizontalScalingAssemblyContextPreconditions Test finished

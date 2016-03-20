@@ -1,0 +1,16 @@
+------------First Iteration------------One Server Allocation
+LoadBalancerResourceContainerPreconditions Test started
+ASSERT [error] failed at (LoadBalancerResourceContainerPreconditions.qvto:43) : Not all Basic Components, which are allocated to the Static Load Balanced Resource Container, are stateless.
+LoadBalancerResourceContainerPreconditions Test finished
+------------First Iteration------------Three Server Allocation
+LoadBalancerResourceContainerPreconditions Test started
+ASSERT [error] failed at (LoadBalancerResourceContainerPreconditions.qvto:43) : Not all Basic Components, which are allocated to the Static Load Balanced Resource Container, are stateless.
+LoadBalancerResourceContainerPreconditions Test finished
+------------Second Iteration------------One Server Allocation
+LoadBalancerResourceContainerPreconditions Test started
+ASSERT [error] failed at (LoadBalancerResourceContainerPreconditions.qvto:73) : Not all Basic Components, which are allocated to the Static Load Balanced Resource Container, are stateless.
+LoadBalancerResourceContainerPreconditions Test finished
+------------Second Iteration------------Three Server Allocation
+LoadBalancerResourceContainerPreconditions Test started
+ASSERT [error] failed at (LoadBalancerResourceContainerPreconditions.qvto:73) : Not all Basic Components, which are allocated to the Static Load Balanced Resource Container, are stateless.
+LoadBalancerResourceContainerPreconditions Test finished

@@ -1,0 +1,12 @@
+------------First Iteration------------
+DynamicVerticalScalingResourceContainerPreconditions Test started
+ASSERT [error] failed at (DynamicVerticalScalingResourceContainerPreconditions.qvto:28) : The System is not a DynamicVerticalScalingResourceContainerSystem
+ASSERT [error] failed at (DynamicVerticalScalingResourceContainerPreconditions.qvto:34) : The Resource Environment has no Virtualized Resource Container
+DynamicVerticalScalingResourceContainerPreconditions Test finished
+------------Second Iteration------------
+DynamicVerticalScalingResourceContainerPreconditions Test started
+ASSERT [fatal] failed at (DynamicVerticalScalingResourceContainerPreconditions.qvto:40) : The System has no DynamicVerticalScalingResourceContainerProfile applied.
+Terminating execution...
+org.eclipse.m2m.internal.qvt.oml.evaluator.QvtAssertionFailed: The System has no DynamicVerticalScalingResourceContainerProfile applied.
+	at DynamicVerticalScalingResourceContainerPreconditions::testSystemProfileApplied(DynamicVerticalScalingResourceContainerPreconditions.qvto:41)
+	at DynamicVerticalScalingResourceContainerPreconditions::main(DynamicVerticalScalingResourceContainerPreconditions.qvto:22)

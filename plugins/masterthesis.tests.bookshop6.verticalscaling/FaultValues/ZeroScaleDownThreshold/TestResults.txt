@@ -1,0 +1,7 @@
+------------First Iteration------------
+DynamicVerticalScalingResourceContainerPreconditions Test started
+DynamicVerticalScalingResourceContainerPreconditions Test finished
+------------Second Iteration------------
+DynamicVerticalScalingResourceContainerPreconditions Test started
+ASSERT [error] failed at (DynamicVerticalScalingResourceContainerPreconditions.qvto:65) : The scale down threshold of one virtualized Resource Container is smaller or equal to zero.
+DynamicVerticalScalingResourceContainerPreconditions Test finished

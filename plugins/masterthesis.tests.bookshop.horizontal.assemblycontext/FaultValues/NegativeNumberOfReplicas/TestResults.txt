@@ -1,0 +1,7 @@
+------------First Iteration------------
+DynamicHorizontalScalingAssemblyContextPreconditions Test started
+DynamicHorizontalScalingAssemblyContextPreconditions Test finished
+------------Second Iteration------------
+DynamicHorizontalScalingAssemblyContextPreconditions Test started
+ASSERT [error] failed at (DynamicHorizontalScalingAssemblyContextPreconditions.qvto:54) : Number of Replicas is not greater 0.
+DynamicHorizontalScalingAssemblyContextPreconditions Test finished

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:emfprofileapplication="http://www.modelversioning.org/emfprofile/application/1.1" xmlns:org.scaledl.architecturaltemplates.repositories.cloudscale.profiles="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.dynamicverticalscalingresourcecontainer" xmlns:resourceenvironment="http://palladiosimulator.org/PalladioComponentModel/ResourceEnvironment/5.1">
+  <resourceenvironment:ResourceEnvironment>
+    <linkingResources__ResourceEnvironment id="_q8zYgJEuEeWwradrnLu6rA" connectedResourceContainers_LinkingResource="_ZEViIJEuEeWwradrnLu6rA _fzKKkJEuEeWwradrnLu6rA _w6h7MJEuEeWwradrnLu6rA">
+      <communicationLinkResourceSpecifications_LinkingResource id="_q844EJEuEeWwradrnLu6rA">
+        <communicationLinkResourceType_CommunicationLinkResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_o3sScH2AEdyH8uerKnHYug"/>
+        <latency_CommunicationLinkResourceSpecification specification="0"/>
+        <throughput_CommunicationLinkResourceSpecification specification="1000"/>
+      </communicationLinkResourceSpecifications_LinkingResource>
+    </linkingResources__ResourceEnvironment>
+    <resourceContainer_ResourceEnvironment id="_ZEViIJEuEeWwradrnLu6rA" entityName="FrontendServer">
+      <activeResourceSpecifications_ResourceContainer id="_aFNwUJEuEeWwradrnLu6rA" MTTR="5.0" MTTF="2.0">
+        <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#FCFS"/>
+        <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        <processingRate_ProcessingResourceSpecification specification="1000"/>
+      </activeResourceSpecifications_ResourceContainer>
+      <activeResourceSpecifications_ResourceContainer id="_dMBJMJEuEeWwradrnLu6rA">
+        <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
+        <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        <processingRate_ProcessingResourceSpecification specification="1000"/>
+      </activeResourceSpecifications_ResourceContainer>
+    </resourceContainer_ResourceEnvironment>
+    <resourceContainer_ResourceEnvironment id="_fzKKkJEuEeWwradrnLu6rA" entityName="ManagementServer">
+      <activeResourceSpecifications_ResourceContainer id="_gtivMJEuEeWwradrnLu6rA">
+        <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
+        <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        <processingRate_ProcessingResourceSpecification specification="1000"/>
+      </activeResourceSpecifications_ResourceContainer>
+      <activeResourceSpecifications_ResourceContainer id="_iMs00JEuEeWwradrnLu6rA" MTTR="11.0" MTTF="10.0">
+        <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
+        <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_BIjHoQ3KEdyouMqirZIhzQ"/>
+        <processingRate_ProcessingResourceSpecification specification="1000"/>
+      </activeResourceSpecifications_ResourceContainer>
+      <nestedResourceContainers__ResourceContainer id="_mELcsJEuEeWwradrnLu6rA" entityName="RecursiveManagementServer">
+        <activeResourceSpecifications_ResourceContainer id="_oO8rIJEuEeWwradrnLu6rA">
+          <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
+          <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+          <processingRate_ProcessingResourceSpecification specification="1000"/>
+        </activeResourceSpecifications_ResourceContainer>
+        <activeResourceSpecifications_ResourceContainer id="_pdIVgJEuEeWwradrnLu6rA">
+          <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#FCFS"/>
+          <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_BIjHoQ3KEdyouMqirZIhzQ"/>
+          <processingRate_ProcessingResourceSpecification specification="1000"/>
+        </activeResourceSpecifications_ResourceContainer>
+      </nestedResourceContainers__ResourceContainer>
+    </resourceContainer_ResourceEnvironment>
+    <resourceContainer_ResourceEnvironment id="_w6h7MJEuEeWwradrnLu6rA" entityName="DatabaserServer">
+      <activeResourceSpecifications_ResourceContainer id="_yFD0oJEuEeWwradrnLu6rA">
+        <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#Delay"/>
+        <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_nvHX4KkREdyEA_b89s7q9w"/>
+        <processingRate_ProcessingResourceSpecification specification="1000"/>
+      </activeResourceSpecifications_ResourceContainer>
+      <activeResourceSpecifications_ResourceContainer id="_0NPCEJEuEeWwradrnLu6rA" numberOfReplicas="4">
+        <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#ProcessorSharing"/>
+        <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        <processingRate_ProcessingResourceSpecification specification="1000"/>
+      </activeResourceSpecifications_ResourceContainer>
+      <activeResourceSpecifications_ResourceContainer id="_2n6UwJEuEeWwradrnLu6rA">
+        <schedulingPolicy href="pathmap://PCM_MODELS/Palladio.resourcetype#FCFS"/>
+        <activeResourceType_ActiveResourceSpecification href="pathmap://PCM_MODELS/Palladio.resourcetype#_BIjHoQ3KEdyouMqirZIhzQ"/>
+        <processingRate_ProcessingResourceSpecification specification="1000"/>
+      </activeResourceSpecifications_ResourceContainer>
+    </resourceContainer_ResourceEnvironment>
+  </resourceenvironment:ResourceEnvironment>
+  <emfprofileapplication:ProfileApplication>
+    <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles:VirtualizedResourceContainer" appliedTo="_ZEViIJEuEeWwradrnLu6rA" maxRate="10000">
+      <extension href="../../../../../../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/DynamicVerticalScalingResourceContainer.emfprofile_diagram#_7MhWQH47EeSqFvs4kqVd7Q"/>
+    </stereotypeApplications>
+    <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles:VirtualizedResourceContainer" appliedTo="_fzKKkJEuEeWwradrnLu6rA" maxRate="10000">
+      <extension href="../../../../../../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/DynamicVerticalScalingResourceContainer.emfprofile_diagram#_7MhWQH47EeSqFvs4kqVd7Q"/>
+    </stereotypeApplications>
+    <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles:VirtualizedResourceContainer" appliedTo="_w6h7MJEuEeWwradrnLu6rA">
+      <extension href="../../../../../../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/DynamicVerticalScalingResourceContainer.emfprofile_diagram#_7MhWQH47EeSqFvs4kqVd7Q"/>
+    </stereotypeApplications>
+    <importedProfiles nsURI="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.dynamicverticalscalingresourcecontainer" location="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/DynamicVerticalScalingResourceContainer.emfprofile_diagram"/>
+  </emfprofileapplication:ProfileApplication>
+</xmi:XMI>

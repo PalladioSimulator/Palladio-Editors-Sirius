@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:allocation="http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:resourceenvironment="http://palladiosimulator.org/PalladioComponentModel/ResourceEnvironment/5.1" xsi:schemaLocation="http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1 http://palladiosimulator.org/PalladioComponentModel/5.1#//allocation http://palladiosimulator.org/PalladioComponentModel/ResourceEnvironment/5.1 http://palladiosimulator.org/PalladioComponentModel/5.1#//resourceenvironment" xmi:id="_XPnnsJHoEeWN8c3jziyzpA" type="allocation" name="ThreeServerMix.allocation_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_XXTkEJHoEeWN8c3jziyzpA" type="2003" fontName="Segoe UI">
+    <children xmi:type="notation:DecorationNode" xmi:id="_XXULIJHoEeWN8c3jziyzpA" type="5008"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_XXULIZHoEeWN8c3jziyzpA" type="7003">
+      <children xmi:type="notation:Shape" xmi:id="_X6l3UJHoEeWN8c3jziyzpA" type="3002" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_X6l3UpHoEeWN8c3jziyzpA" type="5006"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_X6meYJHoEeWN8c3jziyzpA" type="5007"/>
+        <element xmi:type="allocation:AllocationContext" href="ThreeServerMix.allocation#_XriHoJHoEeWN8c3jziyzpA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_X6l3UZHoEeWN8c3jziyzpA" x="31" y="1"/>
+      </children>
+    </children>
+    <element xmi:type="resourceenvironment:ResourceContainer" href="../ResourceEnvironments/ThreeServerMix.resourceenvironment#_ZEViIJEuEeWwradrnLu6rA"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XXTkEZHoEeWN8c3jziyzpA"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_XXUyMJHoEeWN8c3jziyzpA" type="2003" fontName="Segoe UI">
+    <children xmi:type="notation:DecorationNode" xmi:id="_XXUyMpHoEeWN8c3jziyzpA" type="5008"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_XXUyM5HoEeWN8c3jziyzpA" type="7003">
+      <children xmi:type="notation:Shape" xmi:id="_Yl9vkJHoEeWN8c3jziyzpA" type="3002" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_Yl9vkpHoEeWN8c3jziyzpA" type="5006"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_Yl9vk5HoEeWN8c3jziyzpA" type="5007"/>
+        <element xmi:type="allocation:AllocationContext" href="ThreeServerMix.allocation#_YYO1kJHoEeWN8c3jziyzpA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Yl9vkZHoEeWN8c3jziyzpA" x="74" y="4"/>
+      </children>
+    </children>
+    <element xmi:type="resourceenvironment:ResourceContainer" href="../ResourceEnvironments/ThreeServerMix.resourceenvironment#_fzKKkJEuEeWwradrnLu6rA"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XXUyMZHoEeWN8c3jziyzpA" x="225" y="175"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_XXVZQJHoEeWN8c3jziyzpA" type="2003" fontName="Segoe UI">
+    <children xmi:type="notation:DecorationNode" xmi:id="_XXVZQpHoEeWN8c3jziyzpA" type="5008"/>
+    <children xmi:type="notation:DecorationNode" xmi:id="_XXVZQ5HoEeWN8c3jziyzpA" type="7003">
+      <children xmi:type="notation:Shape" xmi:id="_ZTnfwJHoEeWN8c3jziyzpA" type="3002" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_ZToG0JHoEeWN8c3jziyzpA" type="5006"/>
+        <children xmi:type="notation:DecorationNode" xmi:id="_ZToG0ZHoEeWN8c3jziyzpA" type="5007"/>
+        <element xmi:type="allocation:AllocationContext" href="ThreeServerMix.allocation#_ZAIjEJHoEeWN8c3jziyzpA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ZTnfwZHoEeWN8c3jziyzpA" x="51" y="5"/>
+      </children>
+    </children>
+    <element xmi:type="resourceenvironment:ResourceContainer" href="../ResourceEnvironments/ThreeServerMix.resourceenvironment#_w6h7MJEuEeWwradrnLu6rA"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XXVZQZHoEeWN8c3jziyzpA" x="395" y="300"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_XPnnsZHoEeWN8c3jziyzpA"/>
+  <element xmi:type="allocation:Allocation" href="ThreeServerMix.allocation#_XPlygJHoEeWN8c3jziyzpA"/>
+</notation:Diagram>

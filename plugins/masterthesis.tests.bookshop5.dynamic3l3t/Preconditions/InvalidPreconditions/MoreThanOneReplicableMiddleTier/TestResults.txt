@@ -1,0 +1,8 @@
+------------First Iteration------------
+DynamicThreeLayerThreeTierPreconditions Test started
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:156) : There is not exactly one Replicable Middle Tier Resource Container. Instead there are 2.
+DynamicThreeLayerThreeTierPreconditions Test finished
+------------Second Iteration------------
+DynamicThreeLayerThreeTierPreconditions Test started
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:191) : There is not exactly one Replicable Middle Tier Resource Container. Instead there are 2.
+DynamicThreeLayerThreeTierPreconditions Test finished

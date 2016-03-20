@@ -1,0 +1,9 @@
+------------First Iteration------------
+LoadBalancerResourceContainerPreconditions Test started
+ASSERT [error] failed at (LoadBalancerResourceContainerPreconditions.qvto:35) : There is not exactly one Static Load Balanced Resource Container. Instead there are 0.
+LoadBalancerResourceContainerPreconditions Test finished
+------------Second Iteration------------
+LoadBalancerResourceContainerPreconditions Test started
+ASSERT [error] failed at (LoadBalancerResourceContainerPreconditions.qvto:52) : There is not exactly one Static Load Balanced Resource Container. Instead there are 0.
+ASSERT [error] failed at (LoadBalancerResourceContainerPreconditions.qvto:63) : There is no replicable Resource Container, hence the number of replicas cannot be tested.
+LoadBalancerResourceContainerPreconditions Test finished

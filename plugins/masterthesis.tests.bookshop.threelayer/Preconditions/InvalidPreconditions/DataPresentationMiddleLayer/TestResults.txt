@@ -1,0 +1,10 @@
+------------First Iteration------------
+ThreeLayerPreconditions Test started
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:88) : Data Layer Assembly requires Presentation Layer Assembly.
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:122) : Provided Delegation Connector to Data Layer Assembly.
+ThreeLayerPreconditions Test finished
+------------Second Iteration------------
+ThreeLayerPreconditions Test started
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:128) : Data Layer Assembly requires Presentation Layer Assembly.
+ASSERT [error] failed at (ThreeLayerPreconditions.qvto:162) : Provided Delegation Connector to Data Layer Assembly.
+ThreeLayerPreconditions Test finished

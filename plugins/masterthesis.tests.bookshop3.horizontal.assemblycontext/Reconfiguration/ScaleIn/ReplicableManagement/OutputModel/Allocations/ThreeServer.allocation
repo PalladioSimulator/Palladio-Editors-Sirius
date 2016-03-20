@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<allocation:Allocation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:allocation="http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1" xsi:schemaLocation="http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1 http://palladiosimulator.org/PalladioComponentModel/5.1#//allocation" id="_GLzdgJCMEeWYr8EfISvNBw" entityName="defaultAllocation">
+  <targetResourceEnvironment_Allocation href="../ResourceEnvironments/ThreeServer.resourceenvironment#/"/>
+  <system_Allocation href="../BookShop.system#_EvSRoJCLEeWYr8EfISvNBw"/>
+  <allocationContexts_Allocation id="_GlWl8JCMEeWYr8EfISvNBw" entityName="Allocation_Assembly_BookShopFrontend &lt;BookShopFrontend> &lt;BookShopFrontend>">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/ThreeServer.resourceenvironment#_wLSYMJCBEeWzKsot20iTOw"/>
+    <assemblyContext_AllocationContext href="../BookShop.system#_HgQkcJCLEeWYr8EfISvNBw"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_Hl4O0JCMEeWYr8EfISvNBw" entityName="Allocation_Assembly_BookShopManagement &lt;BookShopManagement> &lt;BookShopManagement>">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/ThreeServer.resourceenvironment#_x9Yn8JCBEeWzKsot20iTOw"/>
+    <assemblyContext_AllocationContext href="../BookShop.system#_kEYsQJCLEeWYr8EfISvNBw"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_IVaOUJCMEeWYr8EfISvNBw" entityName="Allocation_Assembly_BookShopDatabase &lt;BookShopDatabase> &lt;BookShopDatabase>">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/ThreeServer.resourceenvironment#_0kmh0JCBEeWzKsot20iTOw"/>
+    <assemblyContext_AllocationContext href="../BookShop.system#_khW8IJCLEeWYr8EfISvNBw"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_UjkUYZYKEeWEuYaiIFR2ag" entityName="Allocation_Assembly_LoadBalancer_BookShopManagement">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/ThreeServer.resourceenvironment#_Ujh4IZYKEeWEuYaiIFR2ag"/>
+    <assemblyContext_AllocationContext href="../BookShop.system#_UjgC9ZYKEeWEuYaiIFR2ag"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_UjkUYpYKEeWEuYaiIFR2ag" entityName="Allocation_Assembly_BookShopManagement">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/ThreeServer.resourceenvironment#_UjjtUZYKEeWEuYaiIFR2ag"/>
+    <assemblyContext_AllocationContext href="../BookShop.system#_UjgqAJYKEeWEuYaiIFR2ag"/>
+  </allocationContexts_Allocation>
+</allocation:Allocation>

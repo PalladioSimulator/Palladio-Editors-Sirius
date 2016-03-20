@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.m2m.qvt.oml.QvtTransformation">
+<booleanAttribute key="org.eclipse.debug.ui.ATTR_APPEND_TO_FILE" value="true"/>
+<stringAttribute key="org.eclipse.debug.ui.ATTR_CAPTURE_IN_FILE" value="${workspace_loc:/masterthesis.tests.bookshop6.verticalscaling/Preconditions/InvalidPreconditions/MaxRateSmallerProcessingRate/TestResults.txt}"/>
+<booleanAttribute key="org.eclipse.m2m.qvt.oml.interpreter.clearContents1" value="true"/>
+<mapAttribute key="org.eclipse.m2m.qvt.oml.interpreter.configurationProperties"/>
+<intAttribute key="org.eclipse.m2m.qvt.oml.interpreter.elemCount" value="1"/>
+<stringAttribute key="org.eclipse.m2m.qvt.oml.interpreter.featureName1" value=""/>
+<booleanAttribute key="org.eclipse.m2m.qvt.oml.interpreter.isInrementalUpdate" value="false"/>
+<stringAttribute key="org.eclipse.m2m.qvt.oml.interpreter.module" value="platform:/resource/masterthesis.tests.completion/preconditions/DynamicVerticalScalingResourceContainerPreconditions.qvto"/>
+<stringAttribute key="org.eclipse.m2m.qvt.oml.interpreter.targetModel1" value="platform:/resource/masterthesis.tests.bookshop6.verticalscaling/Preconditions/InvalidPreconditions/MaxRateSmallerProcessingRate/Allocations/ThreeServerMix.allocation"/>
+<stringAttribute key="org.eclipse.m2m.qvt.oml.interpreter.targetType1" value="NEW_MODEL"/>
+<stringAttribute key="org.eclipse.m2m.qvt.oml.interpreter.traceFile" value="platform:/resource/masterthesis.tests.completion/preconditions/DynamicVerticalScalingResourceContainerPreconditions.qvtotrace"/>
+<booleanAttribute key="org.eclipse.m2m.qvt.oml.interpreter.useTraceFile" value="false"/>
+</launchConfiguration>

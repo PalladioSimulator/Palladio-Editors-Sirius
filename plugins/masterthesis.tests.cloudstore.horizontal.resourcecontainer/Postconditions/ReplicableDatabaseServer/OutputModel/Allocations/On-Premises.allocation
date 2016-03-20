@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<allocation:Allocation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:allocation="http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1" xsi:schemaLocation="http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1 http://palladiosimulator.org/PalladioComponentModel/5.1#//allocation" id="_ZOoU8KDqEeKjDcfkNgs1Gg" entityName="On-Premises Allocation">
+  <targetResourceEnvironment_Allocation href="../ResourceEnvironments/On-Premises.resourceenvironment#/0"/>
+  <system_Allocation href="../CloudStore.system#_JxtuQKDaEeKjDcfkNgs1Gg"/>
+  <allocationContexts_Allocation id="_4nEXcKDqEeKjDcfkNgs1Gg" entityName="Allocation_Assembly_BookPages &lt;BookPages> &lt;BookPages>">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/On-Premises.resourceenvironment#_yv9PkKDpEeKjDcfkNgs1Gg"/>
+    <assemblyContext_AllocationContext href="../CloudStore.system#_eqpE8KDaEeKjDcfkNgs1Gg"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_-FYaQKDqEeKjDcfkNgs1Gg" entityName="Allocation_Assembly_Hello &lt;Hello> &lt;Hello>">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/On-Premises.resourceenvironment#_yv9PkKDpEeKjDcfkNgs1Gg"/>
+    <assemblyContext_AllocationContext href="../CloudStore.system#_1e9xUKDaEeKjDcfkNgs1Gg"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_1rjBgKDqEeKjDcfkNgs1Gg" entityName="Allocation_Assembly_HomePage &lt;HomePage> &lt;HomePage>">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/On-Premises.resourceenvironment#_yv9PkKDpEeKjDcfkNgs1Gg"/>
+    <assemblyContext_AllocationContext href="../CloudStore.system#_cVaS8KDaEeKjDcfkNgs1Gg"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_sQjGsKDqEeKjDcfkNgs1Gg" entityName="Allocation_Assembly_NTFSImageLoading &lt;NTFSImageLoading> &lt;NTFSImageLoading>">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/On-Premises.resourceenvironment#_oFWbIKD2EeKjDcfkNgs1Gg"/>
+    <assemblyContext_AllocationContext href="../CloudStore.system#_D3BcAKDbEeKjDcfkNgs1Gg"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_5-AVMKDqEeKjDcfkNgs1Gg" entityName="Allocation_Assembly_OrderPages &lt;OrderPages> &lt;OrderPages>">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/On-Premises.resourceenvironment#_yv9PkKDpEeKjDcfkNgs1Gg"/>
+    <assemblyContext_AllocationContext href="../CloudStore.system#_lECP8KDaEeKjDcfkNgs1Gg"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_Af5U4KDrEeKjDcfkNgs1Gg" entityName="Allocation_Assembly_PromotionalProcessing &lt;PromotionalProcessing> &lt;PromotionalProcessing>">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/On-Premises.resourceenvironment#_yv9PkKDpEeKjDcfkNgs1Gg"/>
+    <assemblyContext_AllocationContext href="../CloudStore.system#_4EN8UKDaEeKjDcfkNgs1Gg"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_5RiQwKDqEeKjDcfkNgs1Gg" entityName="Allocation_Assembly_ShoppingCartPages &lt;ShoppingCartPages> &lt;ShoppingCartPages>">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/On-Premises.resourceenvironment#_yv9PkKDpEeKjDcfkNgs1Gg"/>
+    <assemblyContext_AllocationContext href="../CloudStore.system#_iVKO4KDaEeKjDcfkNgs1Gg"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_9ChOQM99EeKivalbJUhnYg" entityName="Allocation_Assembly_Tomcat_v7_0_30 &lt;Tomcat_v7_0_30>&lt;Tomcat_v7_0_30>">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/On-Premises.resourceenvironment#_yv9PkKDpEeKjDcfkNgs1Gg"/>
+    <assemblyContext_AllocationContext href="../CloudStore.system#_Kkg_ULCgEeKIWOrWDhimvQ"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_6hyhcM9-EeKivalbJUhnYg" entityName="Allocation_Assembly_Tomcat_v7_0_30_Img &lt;Tomcat_v7_0_30> &lt;Tomcat_v7_0_30>">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/On-Premises.resourceenvironment#_oFWbIKD2EeKjDcfkNgs1Gg"/>
+    <assemblyContext_AllocationContext href="../CloudStore.system#_iPaTQMRoEeK-fsVVlYXCDQ"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_XKoSAGC6EeOyBvpwll1J2w" entityName="Allocation_Assembly_MySQL_v5_5_27 &lt;MySQL_v5_5_27> &lt;MySQL_v5_5_27>">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/On-Premises.resourceenvironment#_1guuEKDpEeKjDcfkNgs1Gg"/>
+    <assemblyContext_AllocationContext href="../CloudStore.system#_pr3DcGC4EeOyBvpwll1J2w"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_ZXnuAGC6EeOyBvpwll1J2w" entityName="Allocation_Assembly_Database_Access &lt;Database_Access> &lt;Database_Access>">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/On-Premises.resourceenvironment#_yv9PkKDpEeKjDcfkNgs1Gg"/>
+    <assemblyContext_AllocationContext href="../CloudStore.system#_-c7K0KDaEeKjDcfkNgs1Gg"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_el1fUGC6EeOyBvpwll1J2w" entityName="Allocation_Assembly_Util &lt;Util> &lt;Util>">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/On-Premises.resourceenvironment#_yv9PkKDpEeKjDcfkNgs1Gg"/>
+    <assemblyContext_AllocationContext href="../CloudStore.system#_CMIngKDbEeKjDcfkNgs1Gg"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_hs0E0GPPEeOoburSBwQF3A" entityName="Allocation_Assembly_MySQL_Connector_Java_v5_1_24 &lt;MySQL_Connector_Java_v5_1_24> &lt;MySQL_Connector_Java_v5_1_24>">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/On-Premises.resourceenvironment#_yv9PkKDpEeKjDcfkNgs1Gg"/>
+    <assemblyContext_AllocationContext href="../CloudStore.system#_YyTA4GPPEeOoburSBwQF3A"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_ULKNgbC7EeWJtvHMw6Lk7Q" entityName="Allocation_Assembly_LoadBalancer_Assembly_MySQL_v5_5_27 &lt;MySQL_v5_5_27>_Provided_IDBOrder_MySQL_v5_5_27">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/On-Premises.resourceenvironment#_UKthkLC7EeWJtvHMw6Lk7Q"/>
+    <assemblyContext_AllocationContext href="../CloudStore.system#_ULKNgLC7EeWJtvHMw6Lk7Q"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_ULYP8rC7EeWJtvHMw6Lk7Q" entityName="Allocation_Assembly_LoadBalancer_Assembly_MySQL_v5_5_27 &lt;MySQL_v5_5_27>_Provided_IDBShoppingCart_MySQL_v5_5_27">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/On-Premises.resourceenvironment#_UKthkLC7EeWJtvHMw6Lk7Q"/>
+    <assemblyContext_AllocationContext href="../CloudStore.system#_ULYP8bC7EeWJtvHMw6Lk7Q"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_ULjPEbC7EeWJtvHMw6Lk7Q" entityName="Allocation_Assembly_LoadBalancer_Assembly_MySQL_v5_5_27 &lt;MySQL_v5_5_27>_Provided_IDBCustomer_MySQL_v5_5_27">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/On-Premises.resourceenvironment#_UKthkLC7EeWJtvHMw6Lk7Q"/>
+    <assemblyContext_AllocationContext href="../CloudStore.system#_ULjPELC7EeWJtvHMw6Lk7Q"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_ULwDY7C7EeWJtvHMw6Lk7Q" entityName="Allocation_Assembly_LoadBalancer_Assembly_MySQL_v5_5_27 &lt;MySQL_v5_5_27>_Provided_IDBBook_MySQL_v5_5_27">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/On-Premises.resourceenvironment#_UKthkLC7EeWJtvHMw6Lk7Q"/>
+    <assemblyContext_AllocationContext href="../CloudStore.system#_ULwDYrC7EeWJtvHMw6Lk7Q"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_ULyfoLC7EeWJtvHMw6Lk7Q" entityName="Allocation_Assembly_MySQL_v5_5_27_Replica1">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/On-Premises.resourceenvironment#_ULxRgLC7EeWJtvHMw6Lk7Q"/>
+    <assemblyContext_AllocationContext href="../CloudStore.system#_ULx4kbC7EeWJtvHMw6Lk7Q"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_UL4mQLC7EeWJtvHMw6Lk7Q" entityName="Allocation_Assembly_MySQL_v5_5_27_Replica2">
+    <resourceContainer_AllocationContext href="../ResourceEnvironments/On-Premises.resourceenvironment#_UL2xELC7EeWJtvHMw6Lk7Q"/>
+    <assemblyContext_AllocationContext href="../CloudStore.system#_UL3_MLC7EeWJtvHMw6Lk7Q"/>
+  </allocationContexts_Allocation>
+</allocation:Allocation>

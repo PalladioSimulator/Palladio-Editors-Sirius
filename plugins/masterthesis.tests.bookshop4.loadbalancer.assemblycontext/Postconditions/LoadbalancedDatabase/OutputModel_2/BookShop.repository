@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:completions="http://palladiosimulator.org/AnalyzerFramework/Completions/1.0" xmlns:emfprofileapplication="http://www.modelversioning.org/emfprofile/application/1.1" xmlns:org.scaledl.architecturaltemplates.repositories.cloudscale.profiles="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.componentstate" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.1" xmlns:seff="http://palladiosimulator.org/PalladioComponentModel/SEFF/5.1" xsi:schemaLocation="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.componentstate ../../../../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/ComponentState.emfprofile_diagram#_EXYQgETzEeW7_O9y-2s0SA http://palladiosimulator.org/PalladioComponentModel/Repository/5.1 http://palladiosimulator.org/PalladioComponentModel/5.1#//repository http://palladiosimulator.org/PalladioComponentModel/SEFF/5.1 http://palladiosimulator.org/PalladioComponentModel/5.1#//seff">
+  <repository:Repository id="_4fwQIJB-EeWzKsot20iTOw" entityName="defaultRepository">
+    <components__Repository xsi:type="repository:BasicComponent" id="_5Xa38JB-EeWzKsot20iTOw" entityName="BookShopFrontend">
+      <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_rbI-wJCIEeWzKsot20iTOw" entityName="Provided_IBookShopFrontend_BookShopFrontend" providedInterface__OperationProvidedRole="_rgS6oJB_EeWzKsot20iTOw"/>
+      <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_mqBxcJCOEeWYr8EfISvNBw" entityName="Provided_IBookShopFrontend2_BookShopFrontend" providedInterface__OperationProvidedRole="_hjIwIJCOEeWYr8EfISvNBw"/>
+      <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_CqUKMJCAEeWzKsot20iTOw" entityName="Required_IBookShopManagement_BookShopFrontend" requiredInterface__OperationRequiredRole="_0XouwJB_EeWzKsot20iTOw"/>
+      <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_R7Qm4JCPEeWYr8EfISvNBw" entityName="Required_IBookShopManagement2_BookShopFrontend" requiredInterface__OperationRequiredRole="_tSprQJCOEeWYr8EfISvNBw"/>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_rbKM4JCIEeWzKsot20iTOw" describedService__SEFF="_tWMFQJB_EeWzKsot20iTOw">
+        <steps_Behaviour xsi:type="seff:StartAction" id="_rbKM4ZCIEeWzKsot20iTOw" entityName="start" successor_AbstractAction="_GdeHMJCKEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:StopAction" id="_rbKM4pCIEeWzKsot20iTOw" entityName="stop" predecessor_AbstractAction="_GdeHMJCKEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_GdeHMJCKEeWYr8EfISvNBw" predecessor_AbstractAction="_rbKM4ZCIEeWzKsot20iTOw" successor_AbstractAction="_rbKM4pCIEeWzKsot20iTOw" calledService_ExternalService="_14rDsJB_EeWzKsot20iTOw" role_ExternalService="_CqUKMJCAEeWzKsot20iTOw"/>
+      </serviceEffectSpecifications__BasicComponent>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_rbKM45CIEeWzKsot20iTOw" describedService__SEFF="_UdNqcJCIEeWzKsot20iTOw">
+        <steps_Behaviour xsi:type="seff:StartAction" id="_rbKz8JCIEeWzKsot20iTOw" entityName="start" successor_AbstractAction="_LEYA4JCKEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:StopAction" id="_rbKz8ZCIEeWzKsot20iTOw" entityName="stop" predecessor_AbstractAction="_LEYA4JCKEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_LEYA4JCKEeWYr8EfISvNBw" predecessor_AbstractAction="_rbKz8JCIEeWzKsot20iTOw" successor_AbstractAction="_rbKz8ZCIEeWzKsot20iTOw" calledService_ExternalService="_fEytIJCIEeWzKsot20iTOw" role_ExternalService="_CqUKMJCAEeWzKsot20iTOw"/>
+      </serviceEffectSpecifications__BasicComponent>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_mqCYgJCOEeWYr8EfISvNBw" describedService__SEFF="_jFSfYJCOEeWYr8EfISvNBw">
+        <steps_Behaviour xsi:type="seff:StartAction" id="_mqC_kJCOEeWYr8EfISvNBw" entityName="start" successor_AbstractAction="_mqC_kZCOEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:StopAction" id="_mqC_kZCOEeWYr8EfISvNBw" entityName="stop" predecessor_AbstractAction="_mqC_kJCOEeWYr8EfISvNBw"/>
+      </serviceEffectSpecifications__BasicComponent>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_mqC_kpCOEeWYr8EfISvNBw" describedService__SEFF="_kexa0JCOEeWYr8EfISvNBw">
+        <steps_Behaviour xsi:type="seff:StartAction" id="_mqC_k5COEeWYr8EfISvNBw" entityName="start" successor_AbstractAction="_mqC_lJCOEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:StopAction" id="_mqC_lJCOEeWYr8EfISvNBw" entityName="stop" predecessor_AbstractAction="_mqC_k5COEeWYr8EfISvNBw"/>
+      </serviceEffectSpecifications__BasicComponent>
+    </components__Repository>
+    <components__Repository xsi:type="repository:BasicComponent" id="_8ccvMJB-EeWzKsot20iTOw" entityName="BookShopManagement">
+      <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_qcGjoJCIEeWzKsot20iTOw" entityName="Provided_IBookShopManagement_BookShopManagement" providedInterface__OperationProvidedRole="_0XouwJB_EeWzKsot20iTOw"/>
+      <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_PGnVAJCPEeWYr8EfISvNBw" entityName="Provided_IBookShopManagement2_BookShopManagement" providedInterface__OperationProvidedRole="_tSprQJCOEeWYr8EfISvNBw"/>
+      <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_sB-VQJCIEeWzKsot20iTOw" entityName="Required_IBookShopDatabase_BookShopManagement" requiredInterface__OperationRequiredRole="_3ReCoJB_EeWzKsot20iTOw"/>
+      <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_TQetYJCPEeWYr8EfISvNBw" entityName="Required_IBookShopDatabase2_BookShopManagement" requiredInterface__OperationRequiredRole="_uwgJUJCOEeWYr8EfISvNBw"/>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_qcGjoZCIEeWzKsot20iTOw" describedService__SEFF="_14rDsJB_EeWzKsot20iTOw">
+        <steps_Behaviour xsi:type="seff:StartAction" id="_qcGjopCIEeWzKsot20iTOw" entityName="start" successor_AbstractAction="_OBkKwJCKEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:StopAction" id="_qcGjo5CIEeWzKsot20iTOw" entityName="stop" predecessor_AbstractAction="_Ox6poJCKEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_OBkKwJCKEeWYr8EfISvNBw" predecessor_AbstractAction="_qcGjopCIEeWzKsot20iTOw" successor_AbstractAction="_Ox6poJCKEeWYr8EfISvNBw" calledService_ExternalService="_GRRCwJCAEeWzKsot20iTOw" role_ExternalService="_sB-VQJCIEeWzKsot20iTOw"/>
+        <steps_Behaviour xsi:type="seff:InternalAction" id="_Ox6poJCKEeWYr8EfISvNBw" entityName="BookShopManagementInternally" predecessor_AbstractAction="_OBkKwJCKEeWYr8EfISvNBw" successor_AbstractAction="_qcGjo5CIEeWzKsot20iTOw">
+          <resourceDemand_Action>
+            <specification_ParametericResourceDemand specification="300"/>
+            <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+          </resourceDemand_Action>
+          <resourceDemand_Action>
+            <specification_ParametericResourceDemand specification="300"/>
+            <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_BIjHoQ3KEdyouMqirZIhzQ"/>
+          </resourceDemand_Action>
+        </steps_Behaviour>
+      </serviceEffectSpecifications__BasicComponent>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_qcHKsJCIEeWzKsot20iTOw" describedService__SEFF="_fEytIJCIEeWzKsot20iTOw">
+        <steps_Behaviour xsi:type="seff:StartAction" id="_qcHKsZCIEeWzKsot20iTOw" entityName="start" successor_AbstractAction="_Y8p_UJCKEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:StopAction" id="_qcHKspCIEeWzKsot20iTOw" entityName="stop" predecessor_AbstractAction="_aFcMUJCKEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_Y8p_UJCKEeWYr8EfISvNBw" predecessor_AbstractAction="_qcHKsZCIEeWzKsot20iTOw" successor_AbstractAction="_aFcMUJCKEeWYr8EfISvNBw" calledService_ExternalService="_gSa94JCIEeWzKsot20iTOw" role_ExternalService="_sB-VQJCIEeWzKsot20iTOw"/>
+        <steps_Behaviour xsi:type="seff:InternalAction" id="_aFcMUJCKEeWYr8EfISvNBw" entityName="BookShopManagementInternally" predecessor_AbstractAction="_Y8p_UJCKEeWYr8EfISvNBw" successor_AbstractAction="_qcHKspCIEeWzKsot20iTOw">
+          <resourceDemand_Action>
+            <specification_ParametericResourceDemand specification="300"/>
+            <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+          </resourceDemand_Action>
+          <resourceDemand_Action>
+            <specification_ParametericResourceDemand specification="300"/>
+            <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_BIjHoQ3KEdyouMqirZIhzQ"/>
+          </resourceDemand_Action>
+        </steps_Behaviour>
+      </serviceEffectSpecifications__BasicComponent>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_PGnVAZCPEeWYr8EfISvNBw" describedService__SEFF="_GXS0cJCPEeWYr8EfISvNBw">
+        <steps_Behaviour xsi:type="seff:StartAction" id="_PGnVApCPEeWYr8EfISvNBw" entityName="start" successor_AbstractAction="_U_B54JCPEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:StopAction" id="_PGnVA5CPEeWYr8EfISvNBw" entityName="stop" predecessor_AbstractAction="_gi7a4JCPEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_U_B54JCPEeWYr8EfISvNBw" predecessor_AbstractAction="_PGnVApCPEeWYr8EfISvNBw" successor_AbstractAction="_gi7a4JCPEeWYr8EfISvNBw" calledService_ExternalService="_Hg0BQJCPEeWYr8EfISvNBw" role_ExternalService="_TQetYJCPEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:InternalAction" id="_gi7a4JCPEeWYr8EfISvNBw" entityName="BookShopManagementInternally" predecessor_AbstractAction="_U_B54JCPEeWYr8EfISvNBw" successor_AbstractAction="_PGnVA5CPEeWYr8EfISvNBw">
+          <resourceDemand_Action>
+            <specification_ParametericResourceDemand specification="300"/>
+            <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+          </resourceDemand_Action>
+          <resourceDemand_Action>
+            <specification_ParametericResourceDemand specification="300"/>
+            <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_BIjHoQ3KEdyouMqirZIhzQ"/>
+          </resourceDemand_Action>
+        </steps_Behaviour>
+      </serviceEffectSpecifications__BasicComponent>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_PGn8EJCPEeWYr8EfISvNBw" describedService__SEFF="_JehEEJCPEeWYr8EfISvNBw">
+        <steps_Behaviour xsi:type="seff:StartAction" id="_PGn8EZCPEeWYr8EfISvNBw" entityName="start" successor_AbstractAction="_YfnrwJCPEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:StopAction" id="_PGn8EpCPEeWYr8EfISvNBw" entityName="stop" predecessor_AbstractAction="_oTlTwJCPEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_YfnrwJCPEeWYr8EfISvNBw" predecessor_AbstractAction="_PGn8EZCPEeWYr8EfISvNBw" successor_AbstractAction="_oTlTwJCPEeWYr8EfISvNBw" calledService_ExternalService="_L3KWcJCPEeWYr8EfISvNBw" role_ExternalService="_TQetYJCPEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:InternalAction" id="_oTlTwJCPEeWYr8EfISvNBw" entityName="BookShopManagementInternally" predecessor_AbstractAction="_YfnrwJCPEeWYr8EfISvNBw" successor_AbstractAction="_PGn8EpCPEeWYr8EfISvNBw">
+          <resourceDemand_Action>
+            <specification_ParametericResourceDemand specification="300"/>
+            <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+          </resourceDemand_Action>
+          <resourceDemand_Action>
+            <specification_ParametericResourceDemand specification="300"/>
+            <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_BIjHoQ3KEdyouMqirZIhzQ"/>
+          </resourceDemand_Action>
+        </steps_Behaviour>
+      </serviceEffectSpecifications__BasicComponent>
+    </components__Repository>
+    <components__Repository xsi:type="repository:BasicComponent" id="_95WyEJB-EeWzKsot20iTOw" entityName="BookShopDatabase">
+      <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_pe9l8JCIEeWzKsot20iTOw" entityName="Provided_IBookShopDatabase_BookShopDatabase" providedInterface__OperationProvidedRole="_3ReCoJB_EeWzKsot20iTOw"/>
+      <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_P-eKEJCPEeWYr8EfISvNBw" entityName="Provided_IBookShopDatabase2_BookShopDatabase" providedInterface__OperationProvidedRole="_uwgJUJCOEeWYr8EfISvNBw"/>
+      <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_z8kawJEsEeWwradrnLu6rA" entityName="Required_IAnotherDatabase1_BookShopDatabase" requiredInterface__OperationRequiredRole="_qInNYJEsEeWwradrnLu6rA"/>
+      <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_0TKV0JEsEeWwradrnLu6rA" entityName="Required_IAnotherDatabase2_BookShopDatabase" requiredInterface__OperationRequiredRole="_rSltMJEsEeWwradrnLu6rA"/>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_pe-0EJCIEeWzKsot20iTOw" describedService__SEFF="_GRRCwJCAEeWzKsot20iTOw">
+        <steps_Behaviour xsi:type="seff:StartAction" id="_pe-0EZCIEeWzKsot20iTOw" entityName="start" successor_AbstractAction="_icU-wJCKEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:StopAction" id="_pe-0EpCIEeWzKsot20iTOw" entityName="stop" predecessor_AbstractAction="_icU-wJCKEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:InternalAction" id="_icU-wJCKEeWYr8EfISvNBw" entityName="BookShopDatabaseInternally" predecessor_AbstractAction="_pe-0EZCIEeWzKsot20iTOw" successor_AbstractAction="_pe-0EpCIEeWzKsot20iTOw">
+          <resourceDemand_Action>
+            <specification_ParametericResourceDemand specification="100"/>
+            <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+          </resourceDemand_Action>
+          <resourceDemand_Action>
+            <specification_ParametericResourceDemand specification="100"/>
+            <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_BIjHoQ3KEdyouMqirZIhzQ"/>
+          </resourceDemand_Action>
+        </steps_Behaviour>
+      </serviceEffectSpecifications__BasicComponent>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_pe-0E5CIEeWzKsot20iTOw" describedService__SEFF="_gSa94JCIEeWzKsot20iTOw">
+        <steps_Behaviour xsi:type="seff:StartAction" id="_pe_bIJCIEeWzKsot20iTOw" entityName="start" successor_AbstractAction="_pSnhIJCKEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:StopAction" id="_pe_bIZCIEeWzKsot20iTOw" entityName="stop" predecessor_AbstractAction="_pSnhIJCKEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:InternalAction" id="_pSnhIJCKEeWYr8EfISvNBw" entityName="BookShopDatabaseInternally" predecessor_AbstractAction="_pe_bIJCIEeWzKsot20iTOw" successor_AbstractAction="_pe_bIZCIEeWzKsot20iTOw">
+          <resourceDemand_Action>
+            <specification_ParametericResourceDemand specification="100"/>
+            <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+          </resourceDemand_Action>
+          <resourceDemand_Action>
+            <specification_ParametericResourceDemand specification="100"/>
+            <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_BIjHoQ3KEdyouMqirZIhzQ"/>
+          </resourceDemand_Action>
+        </steps_Behaviour>
+      </serviceEffectSpecifications__BasicComponent>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_P-eKEZCPEeWYr8EfISvNBw" describedService__SEFF="_Hg0BQJCPEeWYr8EfISvNBw">
+        <steps_Behaviour xsi:type="seff:StartAction" id="_P-eKEpCPEeWYr8EfISvNBw" entityName="start" successor_AbstractAction="_ujaTEJCPEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:StopAction" id="_P-eKE5CPEeWYr8EfISvNBw" entityName="stop" predecessor_AbstractAction="_ujaTEJCPEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:InternalAction" id="_ujaTEJCPEeWYr8EfISvNBw" entityName="BookShopDatabaseInternally" predecessor_AbstractAction="_P-eKEpCPEeWYr8EfISvNBw" successor_AbstractAction="_P-eKE5CPEeWYr8EfISvNBw">
+          <resourceDemand_Action>
+            <specification_ParametericResourceDemand specification="100"/>
+            <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+          </resourceDemand_Action>
+          <resourceDemand_Action>
+            <specification_ParametericResourceDemand specification="100"/>
+            <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_BIjHoQ3KEdyouMqirZIhzQ"/>
+          </resourceDemand_Action>
+        </steps_Behaviour>
+      </serviceEffectSpecifications__BasicComponent>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_P-exIJCPEeWYr8EfISvNBw" describedService__SEFF="_L3KWcJCPEeWYr8EfISvNBw">
+        <steps_Behaviour xsi:type="seff:StartAction" id="_P-exIZCPEeWYr8EfISvNBw" entityName="start" successor_AbstractAction="_7WdHwJCPEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:StopAction" id="_P-exIpCPEeWYr8EfISvNBw" entityName="stop" predecessor_AbstractAction="_7WdHwJCPEeWYr8EfISvNBw"/>
+        <steps_Behaviour xsi:type="seff:InternalAction" id="_7WdHwJCPEeWYr8EfISvNBw" entityName="BookShopDatabaseInternally" predecessor_AbstractAction="_P-exIZCPEeWYr8EfISvNBw" successor_AbstractAction="_P-exIpCPEeWYr8EfISvNBw">
+          <resourceDemand_Action>
+            <specification_ParametericResourceDemand specification="100"/>
+            <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+          </resourceDemand_Action>
+          <resourceDemand_Action>
+            <specification_ParametericResourceDemand specification="100"/>
+            <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_BIjHoQ3KEdyouMqirZIhzQ"/>
+          </resourceDemand_Action>
+        </steps_Behaviour>
+      </serviceEffectSpecifications__BasicComponent>
+    </components__Repository>
+    <components__Repository xsi:type="repository:BasicComponent" id="_Pgn-gLFfEeWbM7hO9z8RVQ" entityName="LoadBalancer_BookShopDatabase">
+      <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_PgolkLFfEeWbM7hO9z8RVQ" entityName="Provided_IBookShopDatabase_LoadBalancer" providedInterface__OperationProvidedRole="_3ReCoJB_EeWzKsot20iTOw"/>
+      <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_PgpMobFfEeWbM7hO9z8RVQ" entityName="Provided_IBookShopDatabase2_LoadBalancer" providedInterface__OperationProvidedRole="_uwgJUJCOEeWYr8EfISvNBw"/>
+      <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_PgolkbFfEeWbM7hO9z8RVQ" entityName="Required_IBookShopDatabase_LoadBalancer_1" requiredInterface__OperationRequiredRole="_3ReCoJB_EeWzKsot20iTOw"/>
+      <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_PgpMoLFfEeWbM7hO9z8RVQ" entityName="Required_IBookShopDatabase_LoadBalancer_2" requiredInterface__OperationRequiredRole="_3ReCoJB_EeWzKsot20iTOw"/>
+      <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_PgpMorFfEeWbM7hO9z8RVQ" entityName="Required_IBookShopDatabase2_LoadBalancer_1" requiredInterface__OperationRequiredRole="_uwgJUJCOEeWYr8EfISvNBw"/>
+      <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_PgpMo7FfEeWbM7hO9z8RVQ" entityName="Required_IBookShopDatabase2_LoadBalancer_2" requiredInterface__OperationRequiredRole="_uwgJUJCOEeWYr8EfISvNBw"/>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_PgpzsLFfEeWbM7hO9z8RVQ" describedService__SEFF="_gSa94JCIEeWzKsot20iTOw">
+        <steps_Behaviour xsi:type="seff:StartAction" id="_PgpzsbFfEeWbM7hO9z8RVQ" successor_AbstractAction="_PgpzsrFfEeWbM7hO9z8RVQ"/>
+        <steps_Behaviour xsi:type="seff:BranchAction" id="_PgpzsrFfEeWbM7hO9z8RVQ" entityName="LoadBalancer Branch" predecessor_AbstractAction="_PgpzsbFfEeWbM7hO9z8RVQ" successor_AbstractAction="_PgqawLFfEeWbM7hO9z8RVQ">
+          <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_Pgpzs7FfEeWbM7hO9z8RVQ" entityName="Branch for Required_IBookShopDatabase_LoadBalancer_1" branchProbability="0.5">
+            <branchBehaviour_BranchTransition id="_PgpztLFfEeWbM7hO9z8RVQ">
+              <steps_Behaviour xsi:type="seff:StartAction" id="_PgpztbFfEeWbM7hO9z8RVQ" successor_AbstractAction="_PgpztrFfEeWbM7hO9z8RVQ"/>
+              <steps_Behaviour xsi:type="completions:DelegatingExternalCallAction" id="_PgpztrFfEeWbM7hO9z8RVQ" entityName="Call getBestsellerFromDB" predecessor_AbstractAction="_PgpztbFfEeWbM7hO9z8RVQ" successor_AbstractAction="_Pgpzt7FfEeWbM7hO9z8RVQ" calledService_ExternalService="_gSa94JCIEeWzKsot20iTOw" role_ExternalService="_PgolkbFfEeWbM7hO9z8RVQ"/>
+              <steps_Behaviour xsi:type="seff:StopAction" id="_Pgpzt7FfEeWbM7hO9z8RVQ" predecessor_AbstractAction="_PgpztrFfEeWbM7hO9z8RVQ"/>
+            </branchBehaviour_BranchTransition>
+          </branches_Branch>
+          <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_PgpzuLFfEeWbM7hO9z8RVQ" entityName="Branch for Required_IBookShopDatabase_LoadBalancer_2" branchProbability="0.5">
+            <branchBehaviour_BranchTransition id="_PgpzubFfEeWbM7hO9z8RVQ">
+              <steps_Behaviour xsi:type="seff:StartAction" id="_PgpzurFfEeWbM7hO9z8RVQ" successor_AbstractAction="_Pgpzu7FfEeWbM7hO9z8RVQ"/>
+              <steps_Behaviour xsi:type="completions:DelegatingExternalCallAction" id="_Pgpzu7FfEeWbM7hO9z8RVQ" entityName="Call getBestsellerFromDB" predecessor_AbstractAction="_PgpzurFfEeWbM7hO9z8RVQ" successor_AbstractAction="_PgpzvLFfEeWbM7hO9z8RVQ" calledService_ExternalService="_gSa94JCIEeWzKsot20iTOw" role_ExternalService="_PgpMoLFfEeWbM7hO9z8RVQ"/>
+              <steps_Behaviour xsi:type="seff:StopAction" id="_PgpzvLFfEeWbM7hO9z8RVQ" predecessor_AbstractAction="_Pgpzu7FfEeWbM7hO9z8RVQ"/>
+            </branchBehaviour_BranchTransition>
+          </branches_Branch>
+        </steps_Behaviour>
+        <steps_Behaviour xsi:type="seff:StopAction" id="_PgqawLFfEeWbM7hO9z8RVQ" predecessor_AbstractAction="_PgpzsrFfEeWbM7hO9z8RVQ"/>
+      </serviceEffectSpecifications__BasicComponent>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_PgqawbFfEeWbM7hO9z8RVQ" describedService__SEFF="_GRRCwJCAEeWzKsot20iTOw">
+        <steps_Behaviour xsi:type="seff:StartAction" id="_PgqawrFfEeWbM7hO9z8RVQ" successor_AbstractAction="_Pgqaw7FfEeWbM7hO9z8RVQ"/>
+        <steps_Behaviour xsi:type="seff:BranchAction" id="_Pgqaw7FfEeWbM7hO9z8RVQ" entityName="LoadBalancer Branch" predecessor_AbstractAction="_PgqawrFfEeWbM7hO9z8RVQ" successor_AbstractAction="_PgqazrFfEeWbM7hO9z8RVQ">
+          <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_PgqaxLFfEeWbM7hO9z8RVQ" entityName="Branch for Required_IBookShopDatabase_LoadBalancer_1" branchProbability="0.5">
+            <branchBehaviour_BranchTransition id="_PgqaxbFfEeWbM7hO9z8RVQ">
+              <steps_Behaviour xsi:type="seff:StartAction" id="_PgqaxrFfEeWbM7hO9z8RVQ" successor_AbstractAction="_Pgqax7FfEeWbM7hO9z8RVQ"/>
+              <steps_Behaviour xsi:type="completions:DelegatingExternalCallAction" id="_Pgqax7FfEeWbM7hO9z8RVQ" entityName="Call getNewBooksFromDB" predecessor_AbstractAction="_PgqaxrFfEeWbM7hO9z8RVQ" successor_AbstractAction="_PgqayLFfEeWbM7hO9z8RVQ" calledService_ExternalService="_GRRCwJCAEeWzKsot20iTOw" role_ExternalService="_PgolkbFfEeWbM7hO9z8RVQ"/>
+              <steps_Behaviour xsi:type="seff:StopAction" id="_PgqayLFfEeWbM7hO9z8RVQ" predecessor_AbstractAction="_Pgqax7FfEeWbM7hO9z8RVQ"/>
+            </branchBehaviour_BranchTransition>
+          </branches_Branch>
+          <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_PgqaybFfEeWbM7hO9z8RVQ" entityName="Branch for Required_IBookShopDatabase_LoadBalancer_2" branchProbability="0.5">
+            <branchBehaviour_BranchTransition id="_PgqayrFfEeWbM7hO9z8RVQ">
+              <steps_Behaviour xsi:type="seff:StartAction" id="_Pgqay7FfEeWbM7hO9z8RVQ" successor_AbstractAction="_PgqazLFfEeWbM7hO9z8RVQ"/>
+              <steps_Behaviour xsi:type="completions:DelegatingExternalCallAction" id="_PgqazLFfEeWbM7hO9z8RVQ" entityName="Call getNewBooksFromDB" predecessor_AbstractAction="_Pgqay7FfEeWbM7hO9z8RVQ" successor_AbstractAction="_PgqazbFfEeWbM7hO9z8RVQ" calledService_ExternalService="_GRRCwJCAEeWzKsot20iTOw" role_ExternalService="_PgpMoLFfEeWbM7hO9z8RVQ"/>
+              <steps_Behaviour xsi:type="seff:StopAction" id="_PgqazbFfEeWbM7hO9z8RVQ" predecessor_AbstractAction="_PgqazLFfEeWbM7hO9z8RVQ"/>
+            </branchBehaviour_BranchTransition>
+          </branches_Branch>
+        </steps_Behaviour>
+        <steps_Behaviour xsi:type="seff:StopAction" id="_PgqazrFfEeWbM7hO9z8RVQ" predecessor_AbstractAction="_Pgqaw7FfEeWbM7hO9z8RVQ"/>
+      </serviceEffectSpecifications__BasicComponent>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_Pgqaz7FfEeWbM7hO9z8RVQ" describedService__SEFF="_L3KWcJCPEeWYr8EfISvNBw">
+        <steps_Behaviour xsi:type="seff:StartAction" id="_Pgqa0LFfEeWbM7hO9z8RVQ" successor_AbstractAction="_Pgqa0bFfEeWbM7hO9z8RVQ"/>
+        <steps_Behaviour xsi:type="seff:BranchAction" id="_Pgqa0bFfEeWbM7hO9z8RVQ" entityName="LoadBalancer Branch" predecessor_AbstractAction="_Pgqa0LFfEeWbM7hO9z8RVQ" successor_AbstractAction="_PgrB2LFfEeWbM7hO9z8RVQ">
+          <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_Pgqa0rFfEeWbM7hO9z8RVQ" entityName="Branch for Required_IBookShopDatabase2_LoadBalancer_2" branchProbability="0.5">
+            <branchBehaviour_BranchTransition id="_Pgqa07FfEeWbM7hO9z8RVQ">
+              <steps_Behaviour xsi:type="seff:StartAction" id="_PgrB0LFfEeWbM7hO9z8RVQ" successor_AbstractAction="_PgrB0bFfEeWbM7hO9z8RVQ"/>
+              <steps_Behaviour xsi:type="completions:DelegatingExternalCallAction" id="_PgrB0bFfEeWbM7hO9z8RVQ" entityName="Call getShoppingCartItems" predecessor_AbstractAction="_PgrB0LFfEeWbM7hO9z8RVQ" successor_AbstractAction="_PgrB0rFfEeWbM7hO9z8RVQ" calledService_ExternalService="_L3KWcJCPEeWYr8EfISvNBw" role_ExternalService="_PgpMo7FfEeWbM7hO9z8RVQ"/>
+              <steps_Behaviour xsi:type="seff:StopAction" id="_PgrB0rFfEeWbM7hO9z8RVQ" predecessor_AbstractAction="_PgrB0bFfEeWbM7hO9z8RVQ"/>
+            </branchBehaviour_BranchTransition>
+          </branches_Branch>
+          <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_PgrB07FfEeWbM7hO9z8RVQ" entityName="Branch for Required_IBookShopDatabase2_LoadBalancer_1" branchProbability="0.5">
+            <branchBehaviour_BranchTransition id="_PgrB1LFfEeWbM7hO9z8RVQ">
+              <steps_Behaviour xsi:type="seff:StartAction" id="_PgrB1bFfEeWbM7hO9z8RVQ" successor_AbstractAction="_PgrB1rFfEeWbM7hO9z8RVQ"/>
+              <steps_Behaviour xsi:type="completions:DelegatingExternalCallAction" id="_PgrB1rFfEeWbM7hO9z8RVQ" entityName="Call getShoppingCartItems" predecessor_AbstractAction="_PgrB1bFfEeWbM7hO9z8RVQ" successor_AbstractAction="_PgrB17FfEeWbM7hO9z8RVQ" calledService_ExternalService="_L3KWcJCPEeWYr8EfISvNBw" role_ExternalService="_PgpMorFfEeWbM7hO9z8RVQ"/>
+              <steps_Behaviour xsi:type="seff:StopAction" id="_PgrB17FfEeWbM7hO9z8RVQ" predecessor_AbstractAction="_PgrB1rFfEeWbM7hO9z8RVQ"/>
+            </branchBehaviour_BranchTransition>
+          </branches_Branch>
+        </steps_Behaviour>
+        <steps_Behaviour xsi:type="seff:StopAction" id="_PgrB2LFfEeWbM7hO9z8RVQ" predecessor_AbstractAction="_Pgqa0bFfEeWbM7hO9z8RVQ"/>
+      </serviceEffectSpecifications__BasicComponent>
+      <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_PgrB2bFfEeWbM7hO9z8RVQ" describedService__SEFF="_Hg0BQJCPEeWYr8EfISvNBw">
+        <steps_Behaviour xsi:type="seff:StartAction" id="_PgrB2rFfEeWbM7hO9z8RVQ" successor_AbstractAction="_PgrB27FfEeWbM7hO9z8RVQ"/>
+        <steps_Behaviour xsi:type="seff:BranchAction" id="_PgrB27FfEeWbM7hO9z8RVQ" entityName="LoadBalancer Branch" predecessor_AbstractAction="_PgrB2rFfEeWbM7hO9z8RVQ" successor_AbstractAction="_Pgro4LFfEeWbM7hO9z8RVQ">
+          <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_PgrB3LFfEeWbM7hO9z8RVQ" entityName="Branch for Required_IBookShopDatabase2_LoadBalancer_2" branchProbability="0.5">
+            <branchBehaviour_BranchTransition id="_PgrB3bFfEeWbM7hO9z8RVQ">
+              <steps_Behaviour xsi:type="seff:StartAction" id="_PgrB3rFfEeWbM7hO9z8RVQ" successor_AbstractAction="_PgrB37FfEeWbM7hO9z8RVQ"/>
+              <steps_Behaviour xsi:type="completions:DelegatingExternalCallAction" id="_PgrB37FfEeWbM7hO9z8RVQ" entityName="Call confirmCheckOut" predecessor_AbstractAction="_PgrB3rFfEeWbM7hO9z8RVQ" successor_AbstractAction="_PgrB4LFfEeWbM7hO9z8RVQ" calledService_ExternalService="_Hg0BQJCPEeWYr8EfISvNBw" role_ExternalService="_PgpMo7FfEeWbM7hO9z8RVQ"/>
+              <steps_Behaviour xsi:type="seff:StopAction" id="_PgrB4LFfEeWbM7hO9z8RVQ" predecessor_AbstractAction="_PgrB37FfEeWbM7hO9z8RVQ"/>
+            </branchBehaviour_BranchTransition>
+          </branches_Branch>
+          <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_PgrB4bFfEeWbM7hO9z8RVQ" entityName="Branch for Required_IBookShopDatabase2_LoadBalancer_1" branchProbability="0.5">
+            <branchBehaviour_BranchTransition id="_PgrB4rFfEeWbM7hO9z8RVQ">
+              <steps_Behaviour xsi:type="seff:StartAction" id="_PgrB47FfEeWbM7hO9z8RVQ" successor_AbstractAction="_PgrB5LFfEeWbM7hO9z8RVQ"/>
+              <steps_Behaviour xsi:type="completions:DelegatingExternalCallAction" id="_PgrB5LFfEeWbM7hO9z8RVQ" entityName="Call confirmCheckOut" predecessor_AbstractAction="_PgrB47FfEeWbM7hO9z8RVQ" successor_AbstractAction="_PgrB5bFfEeWbM7hO9z8RVQ" calledService_ExternalService="_Hg0BQJCPEeWYr8EfISvNBw" role_ExternalService="_PgpMorFfEeWbM7hO9z8RVQ"/>
+              <steps_Behaviour xsi:type="seff:StopAction" id="_PgrB5bFfEeWbM7hO9z8RVQ" predecessor_AbstractAction="_PgrB5LFfEeWbM7hO9z8RVQ"/>
+            </branchBehaviour_BranchTransition>
+          </branches_Branch>
+        </steps_Behaviour>
+        <steps_Behaviour xsi:type="seff:StopAction" id="_Pgro4LFfEeWbM7hO9z8RVQ" predecessor_AbstractAction="_PgrB27FfEeWbM7hO9z8RVQ"/>
+      </serviceEffectSpecifications__BasicComponent>
+    </components__Repository>
+    <interfaces__Repository xsi:type="repository:OperationInterface" id="_rgS6oJB_EeWzKsot20iTOw" entityName="IBookShopFrontend">
+      <signatures__OperationInterface id="_tWMFQJB_EeWzKsot20iTOw" entityName="showNewBooks"/>
+      <signatures__OperationInterface id="_UdNqcJCIEeWzKsot20iTOw" entityName="showBestseller"/>
+    </interfaces__Repository>
+    <interfaces__Repository xsi:type="repository:OperationInterface" id="_0XouwJB_EeWzKsot20iTOw" entityName="IBookShopManagement">
+      <signatures__OperationInterface id="_14rDsJB_EeWzKsot20iTOw" entityName="getNewBooks"/>
+      <signatures__OperationInterface id="_fEytIJCIEeWzKsot20iTOw" entityName="getBestseller"/>
+    </interfaces__Repository>
+    <interfaces__Repository xsi:type="repository:OperationInterface" id="_3ReCoJB_EeWzKsot20iTOw" entityName="IBookShopDatabase">
+      <signatures__OperationInterface id="_GRRCwJCAEeWzKsot20iTOw" entityName="getNewBooksFromDB"/>
+      <signatures__OperationInterface id="_gSa94JCIEeWzKsot20iTOw" entityName="getBestsellerFromDB"/>
+    </interfaces__Repository>
+    <interfaces__Repository xsi:type="repository:OperationInterface" id="_hjIwIJCOEeWYr8EfISvNBw" entityName="IBookShopFrontend2">
+      <signatures__OperationInterface id="_jFSfYJCOEeWYr8EfISvNBw" entityName="getShoppingCart"/>
+      <signatures__OperationInterface id="_kexa0JCOEeWYr8EfISvNBw" entityName="checkOut"/>
+    </interfaces__Repository>
+    <interfaces__Repository xsi:type="repository:OperationInterface" id="_tSprQJCOEeWYr8EfISvNBw" entityName="IBookShopManagement2">
+      <signatures__OperationInterface id="_GXS0cJCPEeWYr8EfISvNBw" entityName="checkOut"/>
+      <signatures__OperationInterface id="_JehEEJCPEeWYr8EfISvNBw" entityName="getShoppingCart"/>
+    </interfaces__Repository>
+    <interfaces__Repository xsi:type="repository:OperationInterface" id="_uwgJUJCOEeWYr8EfISvNBw" entityName="IBookShopDatabase2">
+      <signatures__OperationInterface id="_Hg0BQJCPEeWYr8EfISvNBw" entityName="confirmCheckOut"/>
+      <signatures__OperationInterface id="_L3KWcJCPEeWYr8EfISvNBw" entityName="getShoppingCartItems"/>
+    </interfaces__Repository>
+    <interfaces__Repository xsi:type="repository:OperationInterface" id="_qInNYJEsEeWwradrnLu6rA" entityName="IAnotherDatabase1">
+      <signatures__OperationInterface id="_tq8EoJEsEeWwradrnLu6rA" entityName="getSaleOffer"/>
+      <signatures__OperationInterface id="_wn92cJEsEeWwradrnLu6rA" entityName="getSalePrice"/>
+    </interfaces__Repository>
+    <interfaces__Repository xsi:type="repository:OperationInterface" id="_rSltMJEsEeWwradrnLu6rA" entityName="IAnotherDatabase2">
+      <signatures__OperationInterface id="_xgWP8JEsEeWwradrnLu6rA" entityName="getVipOffer"/>
+      <signatures__OperationInterface id="_ybb_MJEsEeWwradrnLu6rA" entityName="getVipPrice"/>
+    </interfaces__Repository>
+  </repository:Repository>
+  <emfprofileapplication:ProfileApplication>
+    <stereotypeApplications xsi:type="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles:StatelessComponent" appliedTo="_8ccvMJB-EeWzKsot20iTOw">
+      <extension href="../../../../../plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/ComponentState.emfprofile_diagram#_6MmfoEaUEeWQL8VXv1nD6Q"/>
+    </stereotypeApplications>
+    <importedProfiles nsURI="org.scaledl.architecturaltemplates.repositories.cloudscale.profiles.componentstate" location="platform:/plugin/org.scaledl.architecturaltemplates.repositories.cloudscale/profiles/ComponentState.emfprofile_diagram"/>
+  </emfprofileapplication:ProfileApplication>
+</xmi:XMI>

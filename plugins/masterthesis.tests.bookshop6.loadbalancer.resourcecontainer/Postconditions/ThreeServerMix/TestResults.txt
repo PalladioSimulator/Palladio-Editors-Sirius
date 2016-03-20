@@ -1,0 +1,9 @@
+------------First Iteration------------
+LoadBalancerResourceContainerPostconditions Test started
+ASSERT [error] failed at (LoadBalancerResourceContainerPostconditions.qvto:134) : The MTTF of the newly created resource container _8h8BsK_DEeWY4MFmxBWB0w does not conform to the expected value of the original resource container _fzKKkJEuEeWwradrnLu6rA
+ASSERT [error] failed at (LoadBalancerResourceContainerPostconditions.qvto:151) : Nested Resource Containers are not duplicated.
+ASSERT [error] failed at (LoadBalancerResourceContainerPostconditions.qvto:134) : The MTTF of the newly created resource container _8iL5UK_DEeWY4MFmxBWB0w does not conform to the expected value of the original resource container _fzKKkJEuEeWwradrnLu6rA
+ASSERT [error] failed at (LoadBalancerResourceContainerPostconditions.qvto:151) : Nested Resource Containers are not duplicated.
+LoadBalancerResourceContainerPostconditions Test finished
+------------Second Iteration------------LoadBalancerResourceContainerPostconditions Test started
+LoadBalancerResourceContainerPostconditions Test finished

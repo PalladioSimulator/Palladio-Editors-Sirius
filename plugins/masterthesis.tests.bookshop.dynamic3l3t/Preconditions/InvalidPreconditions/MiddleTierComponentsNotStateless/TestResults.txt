@@ -1,0 +1,7 @@
+DynamicThreeLayerThreeTierPreconditions Test started
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:165) : Not all Basic Components, which are allocated to the Replicable Middle Tier Resource Container, are stateless.
+DynamicThreeLayerThreeTierPreconditions Test finished
+------------Second Iteration------------
+DynamicThreeLayerThreeTierPreconditions Test started
+ASSERT [error] failed at (DynamicThreeLayerThreeTierPreconditions.qvto:237) : Not all Basic Components, which are allocated to the Replicable Middle Tier Resource Container, are stateless.
+DynamicThreeLayerThreeTierPreconditions Test finished
