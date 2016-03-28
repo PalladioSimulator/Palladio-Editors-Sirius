@@ -9,10 +9,33 @@ modeltype PCM_CORE uses 'http://palladiosimulator.org/PalladioComponentModel/Cor
 modeltype PCMComposition uses pcm::core::composition('http://palladiosimulator.org/PalladioComponentModel/5.1');
 modeltype PCMSEFF uses pcm::seff('http://palladiosimulator.org/PalladioComponentModel/SEFF/5.1');
 modeltype PCM_COMPLETION uses 'http://palladiosimulator.org/AnalyzerFramework/Completions/1.0';
+modeltype PCMSEFF_PERFORMANCE uses pcm::seff::seff_performance('http://palladiosimulator.org/PalladioComponentModel/SEFF/5.1');
+modeltype PCM_RESOURCETYPE uses pcm::resourcetype('http://palladiosimulator.org/PalladioComponentModel/5.1');
 
 transformation Loadbalancing(inout pcmAllocation : PCM_ALLOC);
 
+//String constants of the Static Assembly Context Loadbalancing Profile					   			 
+property staticAssemblyContextLoadbalancingProfile : String = "StaticAssemblyContextLoadbalancingProfile";
+property staticAssemblyContextLoadbalancingSystemStereotype : String = "StaticAssemblyContextLoadbalancingSystem";
+property staticLoadbalancedAssemblyContextStereotype : String = "StaticLoadbalancedAssemblyContext";
+
+//String constants of the Dynamic Horizontal Scaling Assembly Context  Profile	
+property dynamicHorizontalScalingAssemblyContextProfile : String = "DynamicHorizontalScalingAssemblyContextProfile";
+property dynamicHorizontalScalingAssemblyContextSystemStereotype : String = "DynamicHorizontalScalingAssemblyContextSystem";
+property replicableAssemblyContextStereotype : String = "ReplicableAssemblyContext"; 
+
+//String constants of the Dynamic Horizontal Scaling Assembly Context  and Static Assembly Context Loadbalancing Profile	
+property numberOfReplicasTaggedValue : String = "numberOfReplicas";
+
+//String constants of the Loadbalanced Profile	
+property loadbalancedProfile : String = "LoadbalancedProfile";
+property originalAssemblyContextStereotype : String = "OriginalAssemblyContext";
+property loadbalancerAssemblyContextStereotype : String = "LoadbalancerAssemblyContext";
+property duplicateAssemblyContextStereotype : String = "DuplicateAssemblyContext";
+
+
 property numberOfReplicas : Integer;
+
 main() {
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var allocationContexts : Set(AllocationContext) := allocation.allocationContexts_Allocation;
@@ -21,14 +44,23 @@ main() {
 	var system : System := allocation.system_Allocation;
 	var appliedStereotype : String;
 	
-	if(hasAppliedStereotype(assemblyContexts,"StaticLoadbalancedAssemblyContext")){
-					appliedStereotype := "StaticLoadbalancedAssemblyContext";	
-		assert fatal(hasAppliedStereotype(system,"StaticAssemblyContextLoadbalancingSystem"))
-			with log("There is not StaticAssemblyContextLoadbalancingSystem Stereotype Application");
+	if(isProfileApplied(system.oclAsType(EObject), dynamicHorizontalScalingAssemblyContextProfile) and
+		hasAppliedStereotype(system, dynamicHorizontalScalingAssemblyContextSystemStereotype) and
+		hasAppliedStereotype(assemblyContexts,replicableAssemblyContextStereotype)){
+			appliedStereotype := replicableAssemblyContextStereotype;	
 	}
-	else if(hasAppliedStereotype(assemblyContexts,"ReplicableAssemblyContext")){
-				appliedStereotype := "ReplicableAssemblyContext";	
+	else{				
+		assert fatal(isProfileApplied(system.oclAsType(EObject), staticAssemblyContextLoadbalancingProfile))
+			with log ("The system has no " + staticAssemblyContextLoadbalancingProfile + " applied!");	
+		
+		assert fatal(hasAppliedStereotype(system,staticAssemblyContextLoadbalancingSystemStereotype))
+			with log("The System is not a" + staticAssemblyContextLoadbalancingSystemStereotype + "!");
+			
+		if(hasAppliedStereotype(assemblyContexts,staticLoadbalancedAssemblyContextStereotype)){
+				appliedStereotype := staticLoadbalancedAssemblyContextStereotype;
+		};
 	};
+
 	
 	//get the stereotyped AssemblyContext
 	var loadBalancedAssemblyContext : AssemblyContext := assemblyContexts -> selectOne(assemblyContext : AssemblyContext |
@@ -38,14 +70,15 @@ main() {
 		with log ("There is no Stereotype Application!");	
 		
 	assert fatal(appliedStereotypesEqualsOne(assemblyContexts,appliedStereotype))
-		with log ("There is more than one Stereotype Application!");	
-	numberOfReplicas := getIntTaggedValue(loadBalancedAssemblyContext, "numberOfReplicas", appliedStereotype);
+		with log ("There is more than one Stereotype Application that defines a replicable Assembly!");	
+		
+	numberOfReplicas := getIntTaggedValue(loadBalancedAssemblyContext, numberOfReplicasTaggedValue, appliedStereotype);
 	
 	//apply Stereotype OriginalAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
-	if (not isProfileApplied(system.oclAsType(EObject), "LoadbalancedProfile")) {
-		applyProfile(system.oclAsType(EObject), "LoadbalancedProfile");
+	if (not isProfileApplied(system.oclAsType(EObject), loadbalancedProfile)) {
+		applyProfile(system.oclAsType(EObject), loadbalancedProfile);
 	};
-	applyStereotype(loadBalancedAssemblyContext, "OriginalAssemblyContext");
+	applyStereotype(loadBalancedAssemblyContext, originalAssemblyContextStereotype);
 	
 	//remove Stereotype Application ReplicableAssemblyContext from the AssemblyContext
 	//removeStereotypeApplications(loadBalancedAssemblyContext,"ReplicableAssemblyContext");
@@ -58,7 +91,7 @@ main() {
 	var loadBalancerComponent : RepositoryComponent := new BasicComponent(loadBalancedAssemblyContext.encapsulatedComponent__AssemblyContext);
 	var loadBalancerAssemblyContext : AssemblyContext := new AssemblyContext(loadBalancerComponent);
 	//apply Stereotype LoadbalancerAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
-	applyStereotype(loadBalancerAssemblyContext,"LoadbalancerAssemblyContext");	
+	applyStereotype(loadBalancerAssemblyContext,loadbalancerAssemblyContextStereotype);	
 	//duplicate the stereotyped AssemblyContext
 	var duplicatedAssemblyContexts : OrderedSet(AssemblyContext) := createDuplicatedAssemblyContexts(loadBalancedAssemblyContext);
 	
@@ -110,7 +143,7 @@ helper createDuplicatedAssemblyContexts(loadbalancedAssemblyContext : AssemblyCo
 	while(counter < numberOfReplicas){
 		duplicateAssemblyContext := new AssemblyContext(loadbalancedAssemblyContext.encapsulatedComponent__AssemblyContext);
 		//apply Stereotype LoadbalancerAssemblyContext from the Loadbalanced Profile. Needed when the system should be scaled in				
-		applyStereotype(duplicateAssemblyContext,"DuplicateAssemblyContext");
+		applyStereotype(duplicateAssemblyContext,duplicateAssemblyContextStereotype);
 		duplicatedAssemblyContextSet +=duplicateAssemblyContext;
 		counter := counter+1;
 	};
@@ -138,14 +171,14 @@ helper connectLoadBalancerAndAssemblyContexts(loadBalancedAssemblyContext : Asse
 				var oldAssemblyConnectorProvidedInterface := assemblyConnector.providedRole_AssemblyConnector.providedInterface__OperationProvidedRole;
 				
 				//get all ProvidedRoles of the LoadBalancer component and then get this one whose interface equals the interface of the ProvidedRole of the AssemblyConnector
-				var loadBalancerProvidedRoles : Bag(OperationProvidedRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity.oclAsType(OperationProvidedRole);
+				var loadBalancerProvidedRoles : Set(OperationProvidedRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity->selectByType(OperationProvidedRole);
 				var commonProvidedRoleOfAssemblyConnectorAndLoadbalancer : OperationProvidedRole := loadBalancerProvidedRoles -> selectOne(providedRole : OperationProvidedRole | providedRole.providedInterface__OperationProvidedRole.id = oldAssemblyConnectorProvidedInterface.id);
 				assert fatal(commonProvidedRoleOfAssemblyConnectorAndLoadbalancer != null)
 					with log ("Did not find common provided role for loadbalancer "+loadBalancerAssemblyContext.entityName+" and assembly connector "+assemblyConnector.entityName+"!");
 		
 				//get all RequiredRoles of the LoadBalancer and select these ones whose required interface equals the provided one as the calls are forwarded to the stereotyped and duplicated component
-				var loadBalancerAllRequiredRoles : Bag(OperationRequiredRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity.oclAsType(OperationRequiredRole);
-				var loadBalancerNeededRequiredRoles : Bag(OperationRequiredRole) := loadBalancerAllRequiredRoles -> select(operationRequiredRole:OperationRequiredRole|operationRequiredRole.requiredInterface__OperationRequiredRole.id=assemblyConnector.providedRole_AssemblyConnector.providedInterface__OperationProvidedRole.id);
+				var loadBalancerAllRequiredRoles : Set(OperationRequiredRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity->selectByType(OperationRequiredRole);
+				var loadBalancerNeededRequiredRoles : Set(OperationRequiredRole) := loadBalancerAllRequiredRoles -> select(operationRequiredRole:OperationRequiredRole|operationRequiredRole.requiredInterface__OperationRequiredRole.id=assemblyConnector.providedRole_AssemblyConnector.providedInterface__OperationProvidedRole.id);
 				
 				//change the ProvidedRole and the ProvidingAssemblyContext of the AssemblyConnector to the LoadBalancer
 				assemblyConnector.providingAssemblyContext_AssemblyConnector := loadBalancerAssemblyContext;
@@ -153,16 +186,57 @@ helper connectLoadBalancerAndAssemblyContexts(loadBalancedAssemblyContext : Asse
 				createAssemblyConnectorsBetweenLoadbalancerAndLoadbalancedAssemblyContexts(oldAssemblyConnectorProvidedInterface,loadBalancerAssemblyContext,loadBalancerNeededRequiredRoles,duplicatedAssemblyContextsAndLoadBalancedAssemblyContext);
 			}
 		}
+		else if(connector.oclIsTypeOf(AssemblyInfrastructureConnector)){
+			var assemblyInfrastructureConnector : AssemblyInfrastructureConnector := connector.oclAsType(AssemblyInfrastructureConnector);
+			var requiringAssemblyContext : AssemblyContext := getRequiringAssemblyContext(assemblyInfrastructureConnector);
+			var providingAssemblyContext : AssemblyContext := getProvidingAssemblyContext(assemblyInfrastructureConnector);
+			if(providingAssemblyContext = loadBalancedAssemblyContext){
+				var oldAssemblyConnectorProvidedInterface := assemblyInfrastructureConnector.providedRole__AssemblyInfrastructureConnector.providedInterface__InfrastructureProvidedRole;
+				
+				//get all ProvidedRoles of the LoadBalancer component and then get this one whose interface equals the interface of the ProvidedRole of the AssemblyConnector
+				var loadBalancerProvidedRoles : Set(InfrastructureProvidedRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity->selectByType(InfrastructureProvidedRole);
+				var commonProvidedRoleOfAssemblyConnectorAndLoadbalancer : InfrastructureProvidedRole := loadBalancerProvidedRoles -> selectOne(providedRole : InfrastructureProvidedRole | providedRole.providedInterface__InfrastructureProvidedRole.id = oldAssemblyConnectorProvidedInterface.id);
+				assert fatal(commonProvidedRoleOfAssemblyConnectorAndLoadbalancer != null)
+					with log ("Did not find common provided role for loadbalancer "+loadBalancerAssemblyContext.entityName+" and assembly connector "+assemblyInfrastructureConnector.entityName+"!");
+		
+				//get all RequiredRoles of the LoadBalancer and select these ones whose required interface equals the provided one as the calls are forwarded to the stereotyped and duplicated component
+				var loadBalancerAllRequiredRoles : Set(InfrastructureRequiredRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity->selectByType(InfrastructureRequiredRole);
+				var loadBalancerNeededRequiredRoles : Set(InfrastructureRequiredRole) := loadBalancerAllRequiredRoles -> select(infrastructureRequiredRole:InfrastructureRequiredRole|
+					infrastructureRequiredRole.requiredInterface__InfrastructureRequiredRole.id=assemblyInfrastructureConnector.providedRole__AssemblyInfrastructureConnector.providedInterface__InfrastructureProvidedRole.id);
+				
+				//change the ProvidedRole and the ProvidingAssemblyContext of the AssemblyConnector to the LoadBalancer
+				assemblyInfrastructureConnector.providingAssemblyContext__AssemblyInfrastructureConnector := loadBalancerAssemblyContext;
+				assemblyInfrastructureConnector.providedRole__AssemblyInfrastructureConnector := commonProvidedRoleOfAssemblyConnectorAndLoadbalancer;
+				createAssemblyConnectorsBetweenLoadbalancerAndLoadbalancedAssemblyContexts(oldAssemblyConnectorProvidedInterface,loadBalancerAssemblyContext,loadBalancerNeededRequiredRoles,duplicatedAssemblyContextsAndLoadBalancedAssemblyContext);
+			}
+		}
+		else if(connector.oclIsTypeOf(ProvidedInfrastructureDelegationConnector)){
+			var delegationConnector : ProvidedInfrastructureDelegationConnector := connector.oclAsType(ProvidedInfrastructureDelegationConnector);
+			var providingAssemblyContext : AssemblyContext := getProvidingAssemblyContext(delegationConnector);
+			if(providingAssemblyContext = loadBalancedAssemblyContext){
+				var delegationConnectorProvidedInterface := delegationConnector.innerProvidedRole__ProvidedInfrastructureDelegationConnector.providedInterface__InfrastructureProvidedRole;
+				var loadBalancerProvidedRoles : Set(InfrastructureProvidedRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity->selectByType(InfrastructureProvidedRole);
+				var commonProvidedRoleOfDelegationConnectorAndLoadbalancer : InfrastructureProvidedRole := loadBalancerProvidedRoles -> selectOne(providedRole : InfrastructureProvidedRole| providedRole.providedInterface__InfrastructureProvidedRole.id = delegationConnectorProvidedInterface.id );
+				//get all RequiredRoles of the LoadBalancer and select these ones whose required interface equals the provided one as the calls are forwarded to the stereotyped and duplicated component
+				var loadBalancerAllRequiredRoles : Set(InfrastructureRequiredRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity->selectByType(InfrastructureRequiredRole);
+				var loadBalancerNeededRequiredRoles : Set(InfrastructureRequiredRole) := loadBalancerAllRequiredRoles -> select(infrastructureRequiredRole:InfrastructureRequiredRole|infrastructureRequiredRole.requiredInterface__InfrastructureRequiredRole.id=delegationConnectorProvidedInterface.id);
+				//change the InnerProvidedRole and the AssemblyContext of the DelegationConnector to the LoadBalancer
+				delegationConnector.innerProvidedRole__ProvidedInfrastructureDelegationConnector := commonProvidedRoleOfDelegationConnectorAndLoadbalancer;
+				delegationConnector.assemblyContext__ProvidedInfrastructureDelegationConnector := loadBalancerAssemblyContext;
+				createAssemblyConnectorsBetweenLoadbalancerAndLoadbalancedAssemblyContexts(delegationConnectorProvidedInterface,loadBalancerAssemblyContext,loadBalancerNeededRequiredRoles,duplicatedAssemblyContextsAndLoadBalancedAssemblyContext);
+			}
+			
+		}
 		else if (connector.oclIsTypeOf(ProvidedDelegationConnector)) {
 			var delegationConnector : ProvidedDelegationConnector := connector.oclAsType(ProvidedDelegationConnector);
 			var providingAssemblyContext : AssemblyContext := getProvidingAssemblyContext(delegationConnector);
 			if(providingAssemblyContext = loadBalancedAssemblyContext){
 				var delegationConnectorProvidedInterface := delegationConnector.innerProvidedRole_ProvidedDelegationConnector.providedInterface__OperationProvidedRole;
-				var loadBalancerProvidedRoles : Bag(OperationProvidedRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity.oclAsType(OperationProvidedRole);
+				var loadBalancerProvidedRoles : Set(OperationProvidedRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity->selectByType(OperationProvidedRole);
 				var commonProvidedRoleOfDelegationConnectorAndLoadbalancer : OperationProvidedRole := loadBalancerProvidedRoles -> selectOne(providedRole : OperationProvidedRole| providedRole.providedInterface__OperationProvidedRole.id = delegationConnectorProvidedInterface.id );
 				//get all RequiredRoles of the LoadBalancer and select these ones whose required interface equals the provided one as the calls are forwarded to the stereotyped and duplicated component
-				var loadBalancerAllRequiredRoles : Bag(OperationRequiredRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity.oclAsType(OperationRequiredRole);
-				var loadBalancerNeededRequiredRoles : Bag(OperationRequiredRole) := loadBalancerAllRequiredRoles -> select(operationRequiredRole:OperationRequiredRole|operationRequiredRole.requiredInterface__OperationRequiredRole.id=delegationConnectorProvidedInterface.id);
+				var loadBalancerAllRequiredRoles : Set(OperationRequiredRole) := loadBalancerAssemblyContext.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity->selectByType(OperationRequiredRole);
+				var loadBalancerNeededRequiredRoles : Set(OperationRequiredRole) := loadBalancerAllRequiredRoles -> select(operationRequiredRole:OperationRequiredRole|operationRequiredRole.requiredInterface__OperationRequiredRole.id=delegationConnectorProvidedInterface.id);
 				//change the InnerProvidedRole and the AssemblyContext of the DelegationConnector to the LoadBalancer
 				delegationConnector.innerProvidedRole_ProvidedDelegationConnector := commonProvidedRoleOfDelegationConnectorAndLoadbalancer;
 				delegationConnector.assemblyContext_ProvidedDelegationConnector := loadBalancerAssemblyContext;
@@ -172,22 +246,50 @@ helper connectLoadBalancerAndAssemblyContexts(loadBalancedAssemblyContext : Asse
 	};
 	//Connect the duplicated AssemblyContext with required AssemblyContexts 
 	if (loadBalancedAssemblyContext.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity != null){
-					addRequiredRolesAssemblyConnectors(loadBalancedAssemblyContext,duplicatedAssemblyContextSet);
-					addRequiredRolesSystemDelegationConnectors(loadBalancedAssemblyContext,duplicatedAssemblyContextSet);
+					addRequiredRolesAssemblyConnectors(loadBalancedAssemblyContext, duplicatedAssemblyContextSet);
+					addRequiredRolesSystemDelegationConnectors(loadBalancedAssemblyContext, duplicatedAssemblyContextSet);
+					addRequiredRolesAssemblyInfrastructureConnectors(loadBalancedAssemblyContext, duplicatedAssemblyContextSet);
+				    addRequiredRolesInfrastructureDelegationConnectors(loadBalancedAssemblyContext, duplicatedAssemblyContextSet);
 	};
 }
 
-helper createAssemblyConnectorsBetweenLoadbalancerAndLoadbalancedAssemblyContexts(operationInterface:OperationInterface,loadBalancerAssemblyContext : AssemblyContext,loadBalancerNeededRequiredRoles : Bag(OperationRequiredRole),duplicatedAssemblyContextsAndLoadBalancedAssemblyContext : OrderedSet(AssemblyContext)){
+helper createAssemblyConnectorsBetweenLoadbalancerAndLoadbalancedAssemblyContexts(operationInterface:OperationInterface,loadBalancerAssemblyContext : AssemblyContext,loadBalancerNeededRequiredRoles : Set(OperationRequiredRole),duplicatedAssemblyContextsAndLoadBalancedAssemblyContext : OrderedSet(AssemblyContext)){
 	var counter : Integer := 1;
 	loadBalancerNeededRequiredRoles -> forEach(loadBalancerNeededRequiredRole){
+		var system : System := loadBalancerAssemblyContext.parentStructure__AssemblyContext![System];
 		var targetAssemblyContext : AssemblyContext := duplicatedAssemblyContextsAndLoadBalancedAssemblyContext->at(counter);
-		var targetAssemblyContextProvidedRoles : Bag(OperationProvidedRole) := targetAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity.oclAsType(OperationProvidedRole);
+		var targetAssemblyContextProvidedRoles : Set(OperationProvidedRole) := targetAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity->selectByType(OperationProvidedRole);
 		var targetAssemblyContextProvidedRole : OperationProvidedRole := targetAssemblyContextProvidedRoles -> selectOne(op:OperationProvidedRole|op.providedInterface__OperationProvidedRole.id = operationInterface.id);
-		new AssemblyConnector(loadBalancerAssemblyContext,loadBalancerNeededRequiredRole,targetAssemblyContextProvidedRole,targetAssemblyContext);						
+		if(system.connectors__ComposedStructure[AssemblyConnector]->select(assemblyConnector | 
+																		assemblyConnector.providingAssemblyContext_AssemblyConnector.id = targetAssemblyContext.id 
+																		and assemblyConnector.requiringAssemblyContext_AssemblyConnector.id = loadBalancerAssemblyContext.id 
+																		and assemblyConnector.providedRole_AssemblyConnector.id = targetAssemblyContextProvidedRole.id
+																		and assemblyConnector.requiredRole_AssemblyConnector.id = loadBalancerNeededRequiredRole.id)->isEmpty()){
+			new AssemblyConnector(loadBalancerAssemblyContext,loadBalancerNeededRequiredRole,targetAssemblyContextProvidedRole,targetAssemblyContext);		
+		};				
+		targetAssemblyContextProvidedRoles := targetAssemblyContextProvidedRoles->excluding(targetAssemblyContextProvidedRole);
 		counter:=counter+1;
 	};
 }
 
+helper createAssemblyConnectorsBetweenLoadbalancerAndLoadbalancedAssemblyContexts(infrastructureInterface:InfrastructureInterface,loadBalancerAssemblyContext : AssemblyContext,loadBalancerNeededRequiredRoles : Set(InfrastructureRequiredRole),duplicatedAssemblyContextsAndLoadBalancedAssemblyContext : OrderedSet(AssemblyContext)){
+	var counter : Integer := 1;
+	loadBalancerNeededRequiredRoles -> forEach(loadBalancerNeededRequiredRole){
+		var system : System := loadBalancerAssemblyContext.parentStructure__AssemblyContext![System];
+		var targetAssemblyContext : AssemblyContext := duplicatedAssemblyContextsAndLoadBalancedAssemblyContext->at(counter);
+		var targetAssemblyContextProvidedRoles : Set(InfrastructureProvidedRole) := targetAssemblyContext.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity->selectByType(InfrastructureProvidedRole);
+		var targetAssemblyContextProvidedRole : InfrastructureProvidedRole := targetAssemblyContextProvidedRoles -> selectOne(op:InfrastructureProvidedRole|op.providedInterface__InfrastructureProvidedRole.id = infrastructureInterface.id);
+		if(system.connectors__ComposedStructure[AssemblyInfrastructureConnector]->select(assemblyInfrastructureConnector | 
+																						assemblyInfrastructureConnector.providingAssemblyContext__AssemblyInfrastructureConnector.id = targetAssemblyContext.id 
+																						and assemblyInfrastructureConnector.requiringAssemblyContext__AssemblyInfrastructureConnector.id = loadBalancerAssemblyContext.id
+																						and assemblyInfrastructureConnector.providedRole__AssemblyInfrastructureConnector.id = targetAssemblyContextProvidedRole.id
+																						and assemblyInfrastructureConnector.requiredRole__AssemblyInfrastructureConnector.id = loadBalancerNeededRequiredRole.id)->isEmpty()){
+			new AssemblyInfrastructureConnector(loadBalancerAssemblyContext,loadBalancerNeededRequiredRole,targetAssemblyContextProvidedRole,targetAssemblyContext);	
+		};					
+		targetAssemblyContextProvidedRoles := targetAssemblyContextProvidedRoles->excluding(targetAssemblyContextProvidedRole);
+		counter:=counter+1;
+	}
+}
 
 /**
  * Creates an AssemblyConnector for each of the duplicated AssemblyContext in duplicatedAssemblyContextSet to 
@@ -202,6 +304,24 @@ helper addRequiredRolesAssemblyConnectors(loadBalancedAssemblyContext : Assembly
 	requiredRoleLoadBalancedAssemblyContextConnectors -> forEach(assemblyConnector){
 		duplicatedAssemblyContextSet ->forEach(duplicatedAssemblyContext){
 			new AssemblyConnector(duplicatedAssemblyContext,assemblyConnector.requiredRole_AssemblyConnector,assemblyConnector.providedRole_AssemblyConnector,assemblyConnector.providingAssemblyContext_AssemblyConnector);
+			
+		}
+	};
+};
+
+/**
+ * Creates an AssemblyInfrastructureConnector for each of the duplicated AssemblyContext in duplicatedAssemblyContextSet to 
+ * an InfrastructureRequiredRole specified by the loadBalancedAssemblyContext
+ */
+helper addRequiredRolesAssemblyInfrastructureConnectors(loadBalancedAssemblyContext : AssemblyContext, duplicatedAssemblyContextSet : OrderedSet(AssemblyContext)){
+	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
+	var system : System := allocation.system_Allocation![System];
+	var assemblyInfrastructureConnectors : Collection(AssemblyInfrastructureConnector) := system.connectors__ComposedStructure ->selectByType(AssemblyInfrastructureConnector);
+	var loadBalancedRequiredRoles : Set(RequiredRole) := loadBalancedAssemblyContext.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity;
+	var requiredRoleLoadBalancedAssemblyContextConnectors : Collection(AssemblyInfrastructureConnector) := assemblyInfrastructureConnectors -> select(assemblyInfrastructureConnector : AssemblyInfrastructureConnector | loadBalancedRequiredRoles -> includes(assemblyInfrastructureConnector.requiredRole__AssemblyInfrastructureConnector));
+	requiredRoleLoadBalancedAssemblyContextConnectors -> forEach(assemblyConnector){
+		duplicatedAssemblyContextSet ->forEach(duplicatedAssemblyContext){
+			new AssemblyInfrastructureConnector(duplicatedAssemblyContext,assemblyConnector.requiredRole__AssemblyInfrastructureConnector,assemblyConnector.providedRole__AssemblyInfrastructureConnector,assemblyConnector.providingAssemblyContext__AssemblyInfrastructureConnector);
 			
 		}
 	};
@@ -225,10 +345,34 @@ helper addRequiredRolesSystemDelegationConnectors(loadBalancedAssemblyContext : 
 };
 
 /**
+ * Creates a RequiredInfrastructureDelegationConnector for each of the duplicated AssemblyContext in duplicatedAssemblyContextSet to 
+ * the InfrastructureRequiredRole specified by the loadBalancedAssemblyContext
+ */
+helper addRequiredRolesInfrastructureDelegationConnectors(loadBalancedAssemblyContext : AssemblyContext, duplicatedAssemblyContextSet : OrderedSet(AssemblyContext)){
+	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
+	var system : System := allocation.system_Allocation![System];
+	var delegationConnectors : Collection(RequiredInfrastructureDelegationConnector) := system.connectors__ComposedStructure -> selectByType(RequiredInfrastructureDelegationConnector);
+	var loadBalancedRequiredRoles : Set(RequiredRole) := loadBalancedAssemblyContext.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity;
+	var requiredRoleLoadBalancedAssemblyContextDelegationConnectors : Collection(RequiredInfrastructureDelegationConnector) := delegationConnectors -> select(delegationConnector : RequiredInfrastructureDelegationConnector | loadBalancedRequiredRoles -> includes(delegationConnector.innerRequiredRole__RequiredInfrastructureDelegationConnector));
+	requiredRoleLoadBalancedAssemblyContextDelegationConnectors -> forEach(delegationConnector){
+	duplicatedAssemblyContextSet ->forEach(duplicatedAssemblyContext){
+		new RequiredInfrastructureDelegationConnector(duplicatedAssemblyContext,delegationConnector.innerRequiredRole__RequiredInfrastructureDelegationConnector,delegationConnector.outerRequiredRole__RequiredInfrastructureDelegationConnector);
+		}
+	};
+};
+
+/**
  * Returns the providing component of a given connector.
  */
 query getProvidingAssemblyContext(providedDelegationConnector : ProvidedDelegationConnector) : AssemblyContext {
 	return providedDelegationConnector.assemblyContext_ProvidedDelegationConnector;
+}
+
+/**
+ * Returns the providing component of a given connector.
+ */
+query getProvidingAssemblyContext(providedDelegationConnector : ProvidedInfrastructureDelegationConnector) : AssemblyContext {
+	return providedDelegationConnector.assemblyContext__ProvidedInfrastructureDelegationConnector;
 }
 
 /**
@@ -244,15 +388,25 @@ query getRequiringAssemblyContext(assemblyConnector : AssemblyConnector) : Assem
 query getProvidingAssemblyContext(assemblyConnector : AssemblyConnector) : AssemblyContext {
 	return assemblyConnector.providingAssemblyContext_AssemblyConnector;
 }
+
+/**
+ * Returns the requiring component of a given connector.
+ */
+query getRequiringAssemblyContext(assemblyInfrastructureConnector : AssemblyInfrastructureConnector) : AssemblyContext {
+	return assemblyInfrastructureConnector.requiringAssemblyContext__AssemblyInfrastructureConnector;
+}
+
+/**
+ * Returns the providing component of a given connector.
+ */
+query getProvidingAssemblyContext(assemblyInfrastructureConnector : AssemblyInfrastructureConnector) : AssemblyContext {
+	return assemblyInfrastructureConnector.providingAssemblyContext__AssemblyInfrastructureConnector;
+}
+
 /** Returns a new ResourceContainer that equals the ResourceContainer specifications'' of the input parameter. It is also connected with the same LinkingResource
 */
 helper createResourceContainerAndConnectionToLinkingResources(originalResourceContainer:ResourceContainer, name:String):ResourceContainer{
 	var resourceContainer : ResourceContainer := new ResourceContainer(originalResourceContainer,name);
-	var activeResourceSpecifications : Set(ProcessingResourceSpecification) := originalResourceContainer.activeResourceSpecifications_ResourceContainer;
-	
-	resourceContainer.activeResourceSpecifications_ResourceContainer += activeResourceSpecifications -> forEach(activeResource){
-		new ProcessingResourceSpecification(activeResource, resourceContainer);
-	};
 	var resourceContainerLinkingResources :=
 			originalResourceContainer.resourceEnvironment_ResourceContainer.linkingResources__ResourceEnvironment 
 			-> select( l :LinkingResource |
@@ -264,6 +418,7 @@ helper createResourceContainerAndConnectionToLinkingResources(originalResourceCo
 	if (resourceContainerLinkingResources->isEmpty()){
 		resourceContainerLinkingResources += new LinkingResource(originalResourceContainer,"0","10000");
 	};
+	
 	resourceContainerLinkingResources
 		->forEach(linkingResource){
 			linkingResource.connectedResourceContainers_LinkingResource += resourceContainer;
@@ -282,6 +437,16 @@ constructor RequiredDelegationConnector :: RequiredDelegationConnector(assemblyC
 	parentStructure__Connector := system;
 }
 
+constructor RequiredInfrastructureDelegationConnector :: RequiredInfrastructureDelegationConnector(assemblyContext : AssemblyContext, innerRequiredRole : InfrastructureRequiredRole, outerRequiredRole : InfrastructureRequiredRole){
+	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
+	var system : System := allocation.system_Allocation![System];
+	entityName := "RequiredDelegation " + innerRequiredRole.entityName + "_" + outerRequiredRole.entityName;
+	assemblyContext__RequiredInfrastructureDelegationConnector := assemblyContext;
+	innerRequiredRole__RequiredInfrastructureDelegationConnector := innerRequiredRole;
+	outerRequiredRole__RequiredInfrastructureDelegationConnector := outerRequiredRole;
+	parentStructure__Connector := system;
+}
+
 constructor AssemblyConnector :: AssemblyConnector(requiringAssemblyContext : AssemblyContext,requiredRole:OperationRequiredRole, providedRole: OperationProvidedRole, providingAssemblyContext : AssemblyContext){
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var system : System := allocation.system_Allocation![System];
@@ -292,14 +457,28 @@ constructor AssemblyConnector :: AssemblyConnector(requiringAssemblyContext : As
 	requiredRole_AssemblyConnector := requiredRole;
 	parentStructure__Connector := system;
 }
+
+constructor AssemblyInfrastructureConnector :: AssemblyInfrastructureConnector(requiringAssemblyContext : AssemblyContext,requiredRole:InfrastructureRequiredRole, providedRole: InfrastructureProvidedRole, providingAssemblyContext : AssemblyContext){
+	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
+	var system : System := allocation.system_Allocation![System];
+	entityName := requiringAssemblyContext.entityName + "_" + providingAssemblyContext.entityName;
+	providingAssemblyContext__AssemblyInfrastructureConnector := providingAssemblyContext;
+	requiringAssemblyContext__AssemblyInfrastructureConnector := requiringAssemblyContext;
+	providedRole__AssemblyInfrastructureConnector := providedRole;
+	requiredRole__AssemblyInfrastructureConnector := requiredRole;
+	parentStructure__Connector := system;
+}
+
 constructor LinkingResource :: LinkingResource (resourceContainer : ResourceContainer, latency : String, throughput : String){
 	connectedResourceContainers_LinkingResource := resourceContainer;
 	resourceEnvironment_LinkingResource := resourceContainer.resourceEnvironment_ResourceContainer;
-	communicationLinkResourceSpecifications_LinkingResource := new CommunicationLinkResourceSpecification(latency,throughput);
+	communicationLinkResourceSpecifications_LinkingResource := new CommunicationLinkResourceSpecification(resourceContainer,latency,throughput);
 }
-constructor CommunicationLinkResourceSpecification :: CommunicationLinkResourceSpecification(latency:String,throughput:String){
+
+constructor CommunicationLinkResourceSpecification :: CommunicationLinkResourceSpecification(resourceContainer : ResourceContainer, latency : String, throughput : String){
 	latency_CommunicationLinkResourceSpecification := new PCMRandomVariable(latency);
 	throughput_CommunicationLinkResourceSpecification := new PCMRandomVariable(throughput);
+	communicationLinkResourceType_CommunicationLinkResourceSpecification := resourceContainer.activeResourceSpecifications_ResourceContainer.activeResourceType_ActiveResourceSpecification.resourceRepository_ResourceType.availableResourceTypes_ResourceRepository->selectByType(CommunicationLinkResourceType)->selectOne(resourceType : ResourceType |resourceType.id = "_o3sScH2AEdyH8uerKnHYug");
 }
 
 constructor AllocationContext :: AllocationContext (ac : AssemblyContext, rc: ResourceContainer){
@@ -311,7 +490,7 @@ constructor AllocationContext :: AllocationContext (ac : AssemblyContext, rc: Re
 }
 
 constructor ProcessingResourceSpecification:: ProcessingResourceSpecification(p:ProcessingResourceSpecification, rc : ResourceContainer){
-	MTTF := p.MTTR;
+	MTTF := p.MTTF;
 	MTTR := p.MTTR;
 	schedulingPolicy := p.schedulingPolicy;
 	requiredByContainer := p.requiredByContainer;
@@ -335,8 +514,25 @@ constructor PCMRandomVariable :: PCMRandomVariable(spec:String){
 
 constructor ResourceContainer :: ResourceContainer(originalResourceContainer : ResourceContainer, rcName : String){
 	entityName := originalResourceContainer.entityName + rcName;
-	resourceEnvironment_ResourceContainer := originalResourceContainer.resourceEnvironment_ResourceContainer;	
+	resourceEnvironment_ResourceContainer := originalResourceContainer.resourceEnvironment_ResourceContainer;
+	
+	if(originalResourceContainer.nestedResourceContainers__ResourceContainer->size()>0)	{
+		nestedResourceContainers__ResourceContainer := originalResourceContainer.duplicateNestedResourceContainer();
+	};
+	
+	activeResourceSpecifications_ResourceContainer += originalResourceContainer.activeResourceSpecifications_ResourceContainer -> forEach(activeResource){
+		new ProcessingResourceSpecification(activeResource, result);
+	};
 } 
+
+helper ResourceContainer::duplicateNestedResourceContainer():Set(ResourceContainer){
+	var nestedResourceContainer : Set(ResourceContainer);
+	self.nestedResourceContainers__ResourceContainer->forEach(rc){
+		nestedResourceContainer += new ResourceContainer(rc, rc.entityName);	
+	};
+
+	return nestedResourceContainer;
+}
 
 constructor AssemblyContext :: AssemblyContext(bc : RepositoryComponent) {
 	entityName := "Assembly_"+bc.entityName;
@@ -353,21 +549,42 @@ constructor BasicComponent :: BasicComponent (loadBalancedComponent : Repository
 	entityName := "LoadBalancer_"+ loadBalancedComponent.entityName;
 	repository__RepositoryComponent := repository;
 	providedRoles -> forEach(providedRole){
-		var counter : Integer := 1;
-		providedRoles_InterfaceProvidingEntity += new OperationProvidedRole(providedRole.oclAsType(OperationProvidedRole));
+		if(providedRole.oclIsTypeOf(OperationProvidedRole)){
+			var counter : Integer := 1;
+			providedRoles_InterfaceProvidingEntity += new OperationProvidedRole(providedRole.oclAsType(OperationProvidedRole));
 			while(counter<= (numberOfReplicas)){
-			requiredRoles_InterfaceRequiringEntity += new OperationRequiredRole(providedRole.oclAsType(OperationProvidedRole),counter);
-			counter := counter+1;
+				requiredRoles_InterfaceRequiringEntity += new OperationRequiredRole(providedRole.oclAsType(OperationProvidedRole),counter);
+				counter := counter+1;
 			};
+		}else if(providedRole.oclIsTypeOf(InfrastructureProvidedRole)){
+			var counter : Integer := 1;
+			providedRoles_InterfaceProvidingEntity += new InfrastructureProvidedRole(providedRole.oclAsType(InfrastructureProvidedRole));
+			while(counter<= (numberOfReplicas)){
+				requiredRoles_InterfaceRequiringEntity += new InfrastructureRequiredRole(providedRole.oclAsType(InfrastructureProvidedRole),counter);
+				counter := counter+1;
+			};
+		};
 	};
 	
+	componentParameterUsage_ImplementationComponentType := loadBalancedComponent[ImplementationComponentType].componentParameterUsage_ImplementationComponentType;
+	
 	providedRoles_InterfaceProvidingEntity -> forEach(providedRole){
+	if(providedRole.oclIsTypeOf(OperationProvidedRole)){
 		var operationProvidedRole := providedRole.oclAsType(OperationProvidedRole);
 		var operationInterface := operationProvidedRole.providedInterface__OperationProvidedRole;
 		var operationRequiredRoles : Set(OperationRequiredRole) := requiredRoles_InterfaceRequiringEntity ->selectByType(OperationRequiredRole);
 		var requiredRolesWithSameInterfaceAsProvidedRole : Set(OperationRequiredRole) := operationRequiredRoles -> select(operationRequiredRole : OperationRequiredRole | operationRequiredRole.requiredInterface__OperationRequiredRole.id = operationInterface.id);
 		operationInterface.signatures__OperationInterface->forEach(operationSignature){
 	  		serviceEffectSpecifications__BasicComponent += new ResourceDemandingSEFF(operationSignature, requiredRolesWithSameInterfaceAsProvidedRole);
+		};
+		}else if(providedRole.oclIsTypeOf(InfrastructureProvidedRole)){
+			var infrastructureProvidedRole := providedRole.oclAsType(InfrastructureProvidedRole);
+			var infrastructureInterface := infrastructureProvidedRole.providedInterface__InfrastructureProvidedRole;
+			var infrastructureRequiredRoles : Set(InfrastructureRequiredRole) := requiredRoles_InterfaceRequiringEntity ->selectByType(InfrastructureRequiredRole);
+			var requiredRolesWithSameInterfaceAsProvidedRole : Set(InfrastructureRequiredRole) := infrastructureRequiredRoles -> select(infrastructureRequiredRole : InfrastructureRequiredRole | infrastructureRequiredRole.requiredInterface__InfrastructureRequiredRole.id = infrastructureInterface.id);
+			infrastructureInterface.infrastructureSignatures__InfrastructureInterface->forEach(infrastructureSignature){
+  				serviceEffectSpecifications__BasicComponent += new ResourceDemandingSEFF(infrastructureSignature, requiredRoles_InterfaceRequiringEntity[InfrastructureRequiredRole]);
+	};
 		};
 	}
 }
@@ -410,7 +627,50 @@ constructor ResourceDemandingSEFF :: ResourceDemandingSEFF (operationSignature :
 	steps_Behaviour += branchAction;
 	steps_Behaviour += stopAction;
 }
-	
+
+constructor ResourceDemandingSEFF::ResourceDemandingSEFF (infrastructureSignature : InfrastructureSignature, requiredRoles : Set(InfrastructureRequiredRole)){
+	describedService__SEFF := infrastructureSignature;
+	var startAction : StartAction := object StartAction{};
+	var branchAction : BranchAction := object BranchAction{
+		entityName := "LoadBalancer Branch";
+		predecessor_AbstractAction := startAction;
+		
+		requiredRoles->forEach(requiredRole){
+		    var probability : Real := 1.0 / requiredRoles->size();
+			branches_Branch += object ProbabilisticBranchTransition{
+			    entityName := "Branch for "+requiredRole.entityName;
+			    branchProbability := probability;
+			    branchBehaviour_BranchTransition := object ResourceDemandingBehaviour{
+			    	var innerStartAction : StartAction := object StartAction{};
+			    	var internalCallAction : InternalAction:= object InternalAction{
+			    		entityName := "Call "+infrastructureSignature.entityName;
+			    		predecessor_AbstractAction := innerStartAction;
+			    		infrastructureCall__Action := object InfrastructureCall{
+			    			entityName := "InfrastructureCall " + requiredRole.entityName;
+			    			signature__InfrastructureCall := infrastructureSignature;
+			    			requiredRole__InfrastructureCall := requiredRole;
+			    			numberOfCalls__InfrastructureCall := new PCMRandomVariable("1");
+			    		};
+			    	};
+			    	var innerStopAction : StopAction := object StopAction{
+						predecessor_AbstractAction := internalCallAction;
+					};
+					
+					steps_Behaviour += innerStartAction;
+					steps_Behaviour += internalCallAction;
+					steps_Behaviour += innerStopAction;
+			    };
+			};
+		};
+	};
+	var stopAction : StopAction := object StopAction{
+		predecessor_AbstractAction := branchAction;
+	};
+	steps_Behaviour += startAction;
+	steps_Behaviour += branchAction;
+	steps_Behaviour += stopAction;
+}	
+
 constructor OperationProvidedRole :: OperationProvidedRole(pr:OperationProvidedRole){
 	entityName := "Provided_" + pr.providedInterface__OperationProvidedRole.entityName + "_LoadBalancer";
 	providedInterface__OperationProvidedRole := pr.providedInterface__OperationProvidedRole;
@@ -419,4 +679,14 @@ constructor OperationProvidedRole :: OperationProvidedRole(pr:OperationProvidedR
 constructor OperationRequiredRole :: OperationRequiredRole(rr:OperationProvidedRole, i:Integer){
 	entityName := "Required_" + rr.providedInterface__OperationProvidedRole.entityName +"_LoadBalancer_"+i.toString();
 	requiredInterface__OperationRequiredRole := rr.providedInterface__OperationProvidedRole;
+}
+
+constructor InfrastructureProvidedRole::InfrastructureProvidedRole(providedRole : InfrastructureProvidedRole){
+	entityName := "Provided_" + providedRole.providedInterface__InfrastructureProvidedRole.entityName + "_LoadBalancer";
+	providedInterface__InfrastructureProvidedRole := providedRole.providedInterface__InfrastructureProvidedRole;
+}
+
+constructor InfrastructureRequiredRole::InfrastructureRequiredRole(providedRole : InfrastructureProvidedRole, counter : Integer){
+	entityName := "Required_" + providedRole.providedInterface__InfrastructureProvidedRole.entityName +"_LoadBalancer_"+counter.toString();
+	requiredInterface__InfrastructureRequiredRole := providedRole.providedInterface__InfrastructureProvidedRole;
 }
