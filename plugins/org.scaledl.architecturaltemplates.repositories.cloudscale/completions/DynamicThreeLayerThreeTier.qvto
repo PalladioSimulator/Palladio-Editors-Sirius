@@ -16,23 +16,46 @@ modeltype PCMComposition uses pcm::core::composition('http://palladiosimulator.o
  *
  * @author Daria Giacinto
  **/
+
 transformation DynamicThreeLayerThreeTier(inout pcmAllocation : PCM_ALLOC) 
 						   			 access transformation StaticResourceContainerLoadbalancing;	
-	   
+						   			 
+//String constants of the Dynamic Three Layer Three Tier Profile					   			 
+property dynamicThreeLayerThreeTierProfile : String = "DynamicThreeLayerThreeTierProfile";
+property dynamicThreeLayerThreeTierSystemStereotype : String = "DynamicThreeLayerThreeTierSystem";
+property replicableMiddleTierStereotype : String = "ReplicableMiddleTier";  
+
+//String constants of the Dynamic Horizontal Scaling Resource Container Profile					   			 
+property dynamicHorizontalScalingResourceContainerProfile : String = "DynamicHorizontalScalingResourceContainerProfile";
+property dynamicHorizontalScalingResourceContainerSystemStereotype : String = "DynamicHorizontalScalingResourceContainerSystem";
+property replicableResourceContainerStereotype : String = "ReplicableResourceContainer"; 
+
+//String constants of the Tagged Valued of the Dynamic Three Layer Three Tier/Dynamic Horizontal Scaling Resource Container Profile					   			 
+property scaleInThresholdTaggedValue : String = "scaleInThreshold";
+property scaleOutThresholdTaggedValue : String = "scaleOutThreshold";
+property numberOfReplicasTaggedValue : String = "numberOfReplicas";
+
 main() {	
 	log ('Architectural Template Transformation "Dynamic Three Layer Three Tier" started!');
+	
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var system : System := allocation.system_Allocation;
 	var resourceEnvironment : ResourceEnvironment := allocation.targetResourceEnvironment_Allocation;
 	var resourceContainers : Set(ResourceContainer) := resourceEnvironment.resourceContainer_ResourceEnvironment;
 	
-	assert fatal(hasAppliedStereotype(system,"DynamicThreeLayerThreeTierSystem"))
-		with log ("The System is not a Dynamic Three Layer Three Tier System");
+	assert fatal(isProfileApplied(system.oclAsType(EObject), dynamicThreeLayerThreeTierProfile))
+		with log ("The System has no " + dynamicThreeLayerThreeTierProfile + " applied.");
 		
-	assert fatal(appliedStereotypesEqualsOne(resourceContainers,"ReplicableMiddleTier"))
-		with log ("The Resource Environment consists of zero or more than one Replicable Middle Tier Resource Containers");	
+	assert fatal(isProfileApplied(resourceEnvironment.oclAsType(EObject), dynamicThreeLayerThreeTierProfile))
+		with log ("The resource environment has no " + dynamicThreeLayerThreeTierProfile + " applied.");
+	
+	assert fatal(hasAppliedStereotype(system, dynamicThreeLayerThreeTierSystemStereotype))
+		with log ("The System is not a " + dynamicThreeLayerThreeTierSystemStereotype + "!");
 		
-	var middleTierResourceContainer : ResourceContainer := resourceContainers->selectOne(resourceContainer | hasAppliedStereotype(resourceContainer,"ReplicableMiddleTier"));
+	assert fatal(appliedStereotypesEqualsOne(resourceContainers, replicableMiddleTierStereotype))
+		with log ("The Resource Environment consists of zero or more than one " + replicableMiddleTierStereotype + "!");	
+		
+	var middleTierResourceContainer : ResourceContainer := resourceContainers->selectOne(resourceContainer | hasAppliedStereotype(resourceContainer, replicableMiddleTierStereotype));
 	convertMiddleTierIntoReplicableResourceContainer(middleTierResourceContainer,system);
 	
 	new StaticResourceContainerLoadbalancing(pcmAllocation)->transform();
@@ -43,19 +66,19 @@ main() {
 
 	
 helper convertMiddleTierIntoReplicableResourceContainer(middleTier : ResourceContainer, system : System){
-	applyProfile(system.oclAsType(EObject), "DynamicHorizontalScalingResourceContainerProfile");
-	applyStereotype(system, "DynamicHorizontalScalingResourceContainerSystem");
-	applyProfile(middleTier.oclAsType(EObject), "DynamicHorizontalScalingResourceContainerProfile");
-	applyStereotype(middleTier, "ReplicableResourceContainer");
+	applyProfile(system.oclAsType(EObject), dynamicHorizontalScalingResourceContainerProfile);
+	applyStereotype(system, dynamicHorizontalScalingResourceContainerSystemStereotype);
+	applyProfile(middleTier.oclAsType(EObject), dynamicHorizontalScalingResourceContainerProfile);
+	applyStereotype(middleTier, replicableResourceContainerStereotype);
 	setReplicableResourceContainerTaggedValues(middleTier);
-	removeStereotypeApplications(middleTier,"ReplicableMiddleTier");
+	removeStereotypeApplications(middleTier, replicableMiddleTierStereotype);
 }
 
 helper setReplicableResourceContainerTaggedValues(middleTier : ResourceContainer){
-	var scaleInThreshold : Real := getDoubleTaggedValue(middleTier, "scaleInThreshold", "ReplicableMiddleTier");
-	var scaleOutThreshold : Real:= getDoubleTaggedValue(middleTier, "scaleOutThreshold", "ReplicableMiddleTier");
-	var numberOfMiddleTierReplicas : Integer := getIntTaggedValue(middleTier, "numberOfReplicas", "ReplicableMiddleTier");	
- 	setTaggedValue(middleTier, numberOfMiddleTierReplicas, "ReplicableResourceContainer", "numberOfReplicas");
- 	setDoubleTaggedValue(middleTier, scaleInThreshold, "ReplicableResourceContainer", "scaleInThreshold");
- 	setDoubleTaggedValue(middleTier, scaleOutThreshold, "ReplicableResourceContainer", "scaleOutThreshold");
+	var scaleInThreshold : Real := getDoubleTaggedValue(middleTier, scaleInThresholdTaggedValue, replicableMiddleTierStereotype);
+	var scaleOutThreshold : Real:= getDoubleTaggedValue(middleTier, scaleOutThresholdTaggedValue, replicableMiddleTierStereotype);
+	var numberOfMiddleTierReplicas : Integer := getIntTaggedValue(middleTier, numberOfReplicasTaggedValue, replicableMiddleTierStereotype);	
+ 	setTaggedValue(middleTier, numberOfMiddleTierReplicas, replicableResourceContainerStereotype, numberOfReplicasTaggedValue);
+ 	setDoubleTaggedValue(middleTier, scaleInThreshold, replicableResourceContainerStereotype, scaleInThresholdTaggedValue);
+ 	setDoubleTaggedValue(middleTier, scaleOutThreshold, replicableResourceContainerStereotype, scaleOutThresholdTaggedValue);
 }
