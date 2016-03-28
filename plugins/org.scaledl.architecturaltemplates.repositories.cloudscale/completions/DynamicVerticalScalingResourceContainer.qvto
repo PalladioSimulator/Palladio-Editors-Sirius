@@ -1,6 +1,9 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
 
+modeltype ECORE uses 'http://www.eclipse.org/emf/2002/Ecore';
 modeltype PCM_SYS uses 'http://palladiosimulator.org/PalladioComponentModel/System/5.1';
+modeltype PCM_RES_ENV uses 'http://palladiosimulator.org/PalladioComponentModel/ResourceEnvironment/5.1';
+modeltype PCM_ALLOC uses 'http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1';
 
 /**
  * Transforms a resource environment where resource containers are annotated with the
@@ -22,14 +25,27 @@ modeltype PCM_SYS uses 'http://palladiosimulator.org/PalladioComponentModel/Syst
  * @author Sebastian Lehrig
  **/
 transformation DynamicVerticalScalingResourceContainer(
-                           inout pcmSystem : PCM_SYS);
+                          inout pcmAllocation : PCM_ALLOC);
+                          
+//String constants of the Dynamic Vertical Scaling Resource Container Profile					   			 
+property dynamicVerticalScalingResourceContainerProfile : String = "DynamicVerticalScalingResourceContainerProfile";
+property dynamicVerticalScalingResourceContainerSystemStereotype : String = "DynamicVerticalScalingResourceContainerSystem";
 
 main() {	
 	log ('Architectural Template Transformation "Dynamic Vertical Scaling Resource Container" started');
-
-	var system : System := pcmSystem.rootObjects()![System];
-	assert fatal(hasAppliedStereotype(system, "DynamicVerticalScalingResourceContainerSystem"))
-		with log ("The system is not a dynamic vertical scaling resource container system!");
+	
+	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
+	var system : System := allocation.system_Allocation;
+	var resourceEnvironment : ResourceEnvironment := allocation.targetResourceEnvironment_Allocation;
+	
+	assert fatal(isProfileApplied(system.oclAsType(EObject),dynamicVerticalScalingResourceContainerProfile))
+		with log ("The System has no " + dynamicVerticalScalingResourceContainerProfile + " applied.");
+		
+	assert fatal(isProfileApplied(resourceEnvironment.oclAsType(EObject), dynamicVerticalScalingResourceContainerProfile))
+		with log ("The resource environment has no " + dynamicVerticalScalingResourceContainerProfile + " applied.");
+		
+	assert fatal(hasAppliedStereotype(system, dynamicVerticalScalingResourceContainerSystemStereotype))
+		with log ("The system is not a " + dynamicVerticalScalingResourceContainerSystemStereotype + "!");
 	
 	log ('Architectural Template Transformation "Dynamic Vertical Scaling Resource Container" finished');
 }
