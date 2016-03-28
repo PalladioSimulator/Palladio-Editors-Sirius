@@ -1,6 +1,7 @@
 import org.scaledl.architecturaltemplates.repositories.cloudscale.black.ProfilesLibrary;
 import Loadbalancing;
 
+modeltype ECORE uses 'http://www.eclipse.org/emf/2002/Ecore';
 modeltype PCM_ALLOC uses 'http://palladiosimulator.org/PalladioComponentModel/Allocation/5.1';
 modeltype PCM_SYS uses 'http://palladiosimulator.org/PalladioComponentModel/System/5.1';
 	
@@ -25,15 +26,23 @@ modeltype PCM_SYS uses 'http://palladiosimulator.org/PalladioComponentModel/Syst
  **/
 transformation DynamicHorizontalScalingAssemblyContext(inout pcmAllocation : PCM_ALLOC)
 	access transformation Loadbalancing;
-						   
+	
+//String constants of the DynamicHorizontalScalingAssemblyContext Profile					   			 
+property dynamicHorizontalScalingAssemblyContextProfile : String = "DynamicHorizontalScalingAssemblyContextProfile";
+property dynamicHorizontalScalingAssemblyContextSystemStereotype : String = "DynamicHorizontalScalingAssemblyContextSystem";
+					   
 main() {	
 	log ('Architectural Template Transformation "Dynamic Horizontal Scaling Assembly Context" started');
 	
 	// Get relevant PCM model elements
 	var allocation : Allocation := pcmAllocation.rootObjects()![Allocation];
 	var system : System := allocation.system_Allocation;
-	assert fatal(hasAppliedStereotype(system, "DynamicHorizontalScalingAssemblyContextSystem"))
-		with log ("The system is not a dynamical horizontal scaling assembly context system!");
+	
+	assert fatal(isProfileApplied(system.oclAsType(EObject), dynamicHorizontalScalingAssemblyContextProfile))
+		with log ("The system has no " + dynamicHorizontalScalingAssemblyContextProfile + " applied.");
+		
+	assert fatal(hasAppliedStereotype(system, dynamicHorizontalScalingAssemblyContextSystemStereotype))
+		with log ("The system is not a " + dynamicHorizontalScalingAssemblyContextSystemStereotype + "!");
 		
 	// apply loadbalancing profile
 	//if (not isProfileApplied(system, "LoadbalancedProfile")) {
