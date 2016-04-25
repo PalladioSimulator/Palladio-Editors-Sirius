@@ -1,6 +1,7 @@
 package org.scaledl.architecturaltemplates.completion.jobs;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,15 +10,10 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.modelversioning.emfprofile.Stereotype;
 import org.palladiosimulator.analyzer.workflow.blackboard.PCMResourceSetPartition;
-import org.palladiosimulator.commons.emfutils.EMFLoadHelper;
-import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.palladiosimulator.monitorrepository.MonitorRepository;
 import org.palladiosimulator.monitorrepository.impl.MonitorRepositoryFactoryImpl;
 import org.palladiosimulator.monitorrepository.util.MonitorRepositoryResourceImpl;
@@ -35,6 +31,7 @@ import org.palladiosimulator.pcmmeasuringpoint.util.PcmmeasuringpointResourceImp
 import org.palladiosimulator.servicelevelobjective.ServiceLevelObjectiveRepository;
 import org.palladiosimulator.servicelevelobjective.ServicelevelObjectiveFactory;
 import org.palladiosimulator.servicelevelobjective.util.ServicelevelObjectiveResourceImpl;
+import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
 import org.scaledl.architecturaltemplates.completion.config.ATExtensionJobConfiguration;
 import org.scaledl.architecturaltemplates.completion.constants.ATPartitionConstants;
 import org.scaledl.architecturaltemplates.type.AT;
@@ -42,7 +39,6 @@ import org.scaledl.architecturaltemplates.type.CompletionParameter;
 import org.scaledl.architecturaltemplates.type.PCMBlackboardCompletionParameter;
 import org.scaledl.architecturaltemplates.type.PCMOutputCompletionParameter;
 import org.scaledl.architecturaltemplates.type.QVTOCompletion;
-import org.scaledl.architecturaltemplates.type.Role;
 import org.scaledl.architecturaltemplates.type.util.TypeSwitch;
 
 import de.uka.ipd.sdq.workflow.jobs.JobFailedException;
@@ -73,33 +69,30 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
     public void execute(final IProgressMonitor monitor) throws JobFailedException, UserCanceledException {
         super.execute(monitor);
 
-        final AT architecturalTemplate = this.getATFromSystem();
-        if (architecturalTemplate == null) {
-            return;
-        }
+        for (final AT architecturalTemplate : this.getATsFromSystem()) {
+            // configure the QVTO Job
+            final QVTOTransformationJobConfiguration qvtoConfig = new QVTOTransformationJobConfiguration();
+            qvtoConfig.setInoutModels(getModelLocations(architecturalTemplate));
+            qvtoConfig.setTraceFileURI(URI.createURI(TRACESFOLDER));
+            qvtoConfig.setScriptFileURI(getRootURI(architecturalTemplate).appendSegment("completions")
+                    .appendSegment(getCompletion(architecturalTemplate).getQvtoFileURI()));
+            qvtoConfig.setOptions(new HashMap<String, Object>());
 
-        // configure the QVTO Job
-        final QVTOTransformationJobConfiguration qvtoConfig = new QVTOTransformationJobConfiguration();
-        qvtoConfig.setInoutModels(getModelLocations(architecturalTemplate));
-        qvtoConfig.setTraceFileURI(URI.createURI(TRACESFOLDER));
-        qvtoConfig.setScriptFileURI(getRootURI(architecturalTemplate).appendSegment("completions")
-                .appendSegment(getCompletion(architecturalTemplate).getQvtoFileURI()));
-        qvtoConfig.setOptions(new HashMap<String, Object>());
+            // create and add the qvto job
+            final QVTOTransformationJob job = new QVTOTransformationJob(qvtoConfig);
+            job.setBlackboard(this.getBlackboard());
 
-        // create and add the qvto job
-        final QVTOTransformationJob job = new QVTOTransformationJob(qvtoConfig);
-        job.setBlackboard(this.getBlackboard());
-
-        // execute transformation job
-        try {
-            job.execute(new NullProgressMonitor());
-        } catch (final JobFailedException e) {
-            if (this.logger.isEnabledFor(Level.ERROR)) {
-                this.logger.error("Failed to perform Architectural Template completion: " + e.getMessage());
-            }
-            if (this.logger.isEnabledFor(Level.INFO)) {
-                this.logger.info(
-                        "Trying to continue Architectural Template completion even though an internal failure occured");
+            // execute transformation job
+            try {
+                job.execute(new NullProgressMonitor());
+            } catch (final JobFailedException e) {
+                if (this.logger.isEnabledFor(Level.ERROR)) {
+                    this.logger.error("Failed to perform Architectural Template completion: " + e.getMessage());
+                }
+                if (this.logger.isEnabledFor(Level.INFO)) {
+                    this.logger.info(
+                            "Trying to continue Architectural Template completion even though an internal failure occured");
+                }
             }
         }
     }
@@ -273,14 +266,15 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
     }
 
     /**
-     * Receives the architectural template attached to a system. Such an attachment is realized via
+     * Receives the architectural templates attached to a system. Such an attachment is realized via
      * a stereotype with "roleURI" as a tagged value. The tagged value references the concrete AT
-     * role the system acts. If no such tagged value can be found, <code>null</code> is returned.
+     * role the system acts. If no such tagged value can be found, an empty <code>List</code> is
+     * returned.
      * 
-     * @return the architectural template applied to this system; <code>null</code> if no such
-     *         template can be found.
+     * @return the architectural template applied to this system; an empty <code>List</code> if no
+     *         such template can be found.
      */
-    private AT getATFromSystem() {
+    private Collection<AT> getATsFromSystem() {
         final PCMResourceSetPartition pcmRepositoryPartition = (PCMResourceSetPartition) this.myBlackboard
                 .getPartition(ATPartitionConstants.Partition.PCM.getPartitionId());
 
@@ -290,18 +284,7 @@ public class RunATCompletionJob extends SequentialBlackboardInteractingJob<MDSDB
         } catch (final IndexOutOfBoundsException e) {
         }
 
-        if (system != null) {
-            for (final Stereotype stereotype : StereotypeAPI.getAppliedStereotypes(system)) {
-                final EStructuralFeature roleURI = stereotype.getTaggedValue("roleURI");
-                if (roleURI != null) {
-                    final EObject eObject = EMFLoadHelper.loadAndResolveEObject(roleURI.getDefaultValueLiteral());
-                    final Role atRole = (Role) eObject;
-                    return atRole.getAT();
-                }
-            }
-        }
-
-        return null;
+        return ArchitecturalTemplateAPI.getATsFromSystem(system);
     }
 
     private URI getSystemModelFolderURI() {

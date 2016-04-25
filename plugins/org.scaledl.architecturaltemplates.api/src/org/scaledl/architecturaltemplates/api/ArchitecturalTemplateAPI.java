@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -385,7 +386,7 @@ public final class ArchitecturalTemplateAPI {
      * @return role-{@link StereotypeApplication}s
      */
     public static Collection<StereotypeApplication> getArchitecturalTemplateApplications(final System system) {
-        final Collection<StereotypeApplication> systemRoleStereotypeApplications = new ArrayList<>();
+        final Collection<StereotypeApplication> systemRoleStereotypeApplications = new LinkedList<>();
 
         for (final StereotypeApplication stereotypeApplication : StereotypeAPI.getStereotypeApplications(system)) {
             if (isSystemRole(stereotypeApplication.getStereotype())) {
@@ -393,7 +394,30 @@ public final class ArchitecturalTemplateAPI {
             }
         }
 
-        return systemRoleStereotypeApplications;
+        return Collections.unmodifiableCollection(systemRoleStereotypeApplications);
+    }
+
+    /**
+     * Receives the architectural templates attached to a system. Such an attachment is realized via
+     * a stereotype with "roleURI" as a tagged value. The tagged value references the concrete AT
+     * role the system acts. If no such tagged value can be found, an empty <code>List</code> is
+     * returned.
+     * 
+     * @return the architectural template applied to this system; an empty <code>List</code> if no
+     *         such template can be found.
+     */
+    public static Collection<AT> getATsFromSystem(final System system) {
+        final List<AT> ATs = new LinkedList<AT>();
+
+        if (system != null) {
+            for (final Stereotype stereotype : StereotypeAPI.getAppliedStereotypes(system)) {
+                if (isSystemRole(stereotype)) {
+                    ATs.add(getRole(stereotype).getAT());
+                }
+            }
+        }
+
+        return Collections.unmodifiableCollection(ATs);
     }
 
     /**
