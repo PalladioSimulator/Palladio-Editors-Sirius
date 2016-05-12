@@ -1,6 +1,6 @@
 Palladio-Core-Editors
 =====================
-Editors for models of the Palladio Component Model (PCM).
+Editors for models of the Palladio Component Model (PCM). All editors are based on the [Sirius][1] framework.
 
 General Information
 -----------------------------------------
@@ -41,3 +41,5 @@ Features and Plugins
 - org.palladiosimulator.editors.composedprovidingrequiringentity.design
 - org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension
 - org.palladiosimulator.editors.util
+
+[1]: https://eclipse.org/sirius/
