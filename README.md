@@ -15,7 +15,7 @@ Eclipse Update Sites
 ##### Nightly Build
 - https://sdqweb.ipd.kit.edu/eclipse/palladio/core/editors/nightly/
 
-Develop Sirius Editors
+Develop Palladio Editors
 -----------------------------------------
 
 1. Download and install Eclipse Modeling Tools
