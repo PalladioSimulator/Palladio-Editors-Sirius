@@ -1,9 +1,0 @@
-------------First Iteration------------
-DynamicHorizontalScalingResourceContainer Test started
-ASSERT [error] failed at (DynamicHorizontalScalingResourceContainerPreconditions.qvto:50) : Replicable Resource Container Scale In Threshold is greater or equal than the Scale Out Threshold.
-DynamicHorizontalScalingResourceContainer Test finished
-------------Second Iteration------------
-DynamicHorizontalScalingResourceContainer Test started
-ASSERT [error] failed at (DynamicHorizontalScalingResourceContainerPreconditions.qvto:76) : Scale Out Threshold is not greater 0.
-ASSERT [error] failed at (DynamicHorizontalScalingResourceContainerPreconditions.qvto:92) : Replicable Resource Container Scale In Threshold is greater or equal than the Scale Out Threshold.
-DynamicHorizontalScalingResourceContainer Test finished

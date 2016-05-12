@@ -1,5 +1,0 @@
-DynamicThreeLayerThreeTierPreconditions Test started
-DynamicThreeLayerThreeTierPreconditions Test finished
-------------Second Iteration------------
-DynamicThreeLayerThreeTierPreconditions Test started
-DynamicThreeLayerThreeTierPreconditions Test finished

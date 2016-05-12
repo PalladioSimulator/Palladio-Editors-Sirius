@@ -1,8 +1,0 @@
-------------First Iteration------------
-DynamicVerticalScalingResourceContainerPreconditions Test started
-ASSERT [error] failed at (DynamicVerticalScalingResourceContainerPreconditions.qvto:97) : There is a Virtualized Resource Container whose Max Rate is smaller than the defined Step Size.
-DynamicVerticalScalingResourceContainerPreconditions Test finished
-------------Second Iteration------------
-DynamicVerticalScalingResourceContainerPreconditions Test started
-ASSERT [error] failed at (DynamicVerticalScalingResourceContainerPreconditions.qvto:194) : There is a Virtualized Resource Container whose Max Rate is smaller than the defined Step Size.
-DynamicVerticalScalingResourceContainerPreconditions Test finished

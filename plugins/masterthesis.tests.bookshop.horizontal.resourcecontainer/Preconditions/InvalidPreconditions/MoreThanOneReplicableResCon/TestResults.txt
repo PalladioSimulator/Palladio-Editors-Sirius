@@ -1,8 +1,0 @@
-------------First Iteration------------
-DynamicHorizontalScalingResourceContainer Test started
-ASSERT [error] failed at (DynamicHorizontalScalingResourceContainerPreconditions.qvto:35) : There is not exactly one Replicable Resource Container. Instead there are 2.
-DynamicHorizontalScalingResourceContainer Test finished
-------------Second Iteration------------
-DynamicHorizontalScalingResourceContainer Test started
-ASSERT [error] failed at (DynamicHorizontalScalingResourceContainerPreconditions.qvto:55) : There is not exactly one Replicable Resource Container. Instead there are 2.
-DynamicHorizontalScalingResourceContainer Test finished

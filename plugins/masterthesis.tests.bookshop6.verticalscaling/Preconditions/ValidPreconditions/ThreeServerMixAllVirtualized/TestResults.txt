@@ -1,5 +1,0 @@
-DynamicVerticalScalingResourceContainerPreconditions Test started
-DynamicVerticalScalingResourceContainerPreconditions Test finished
-------------Second Iteration------------
-DynamicVerticalScalingResourceContainerPreconditions Test started
-DynamicVerticalScalingResourceContainerPreconditions Test finished

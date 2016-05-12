@@ -1,8 +1,0 @@
-------------First Iteration------------
-LoadBalancerAssemblyContextPreconditions Test started
-ASSERT [error] failed at (LoadBalancerAssemblyContextPreconditions.qvto:39) : The Static Load Balanced Assembly Context Basic Component is not stateless.
-LoadBalancerAssemblyContextPreconditions Test finished
-------------Second Iteration------------
-LoadBalancerAssemblyContextPreconditions Test started
-ASSERT [error] failed at (LoadBalancerAssemblyContextPreconditions.qvto:63) : The Static Load Balanced Assembly Context Basic Component is not stateless.
-LoadBalancerAssemblyContextPreconditions Test finished

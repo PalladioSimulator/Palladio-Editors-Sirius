@@ -1,8 +1,0 @@
-------------First Iteration------------
-DynamicHorizontalScalingAssemblyContextPostconditions Test started
-ASSERT [error] failed at (DynamicHorizontalScalingAssemblyContextPostconditions.qvto:462) : Nested Resource Containers are not duplicated.
-ASSERT [error] failed at (DynamicHorizontalScalingAssemblyContextPostconditions.qvto:462) : Nested Resource Containers are not duplicated.
-DynamicHorizontalScalingAssemblyContextPostconditions Test finished
-------------Second Iteration------------
-DynamicHorizontalScalingAssemblyContextPostconditions Test started
-DynamicHorizontalScalingAssemblyContextPostconditions Test finished

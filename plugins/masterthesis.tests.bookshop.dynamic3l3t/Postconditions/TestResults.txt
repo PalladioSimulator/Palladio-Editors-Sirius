@@ -1,6 +1,0 @@
-------------First Iteration------------
-DynamicThreeLayerThreeTierPostconditions started.
-DynamicThreeLayerThreeTierPostconditions finished.
-------------Second Iteration------------
-DynamicThreeLayerThreeTierPostconditions started.
-DynamicThreeLayerThreeTierPostconditions finished.

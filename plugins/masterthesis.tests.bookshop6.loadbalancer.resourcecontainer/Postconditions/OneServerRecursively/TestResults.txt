@@ -1,7 +1,0 @@
-------------First Iteration------------
-LoadBalancerResourceContainerPostconditions Test started
-ASSERT [error] failed at (LoadBalancerResourceContainerPostconditions.qvto:151) : Nested Resource Containers are not duplicated.
-ASSERT [error] failed at (LoadBalancerResourceContainerPostconditions.qvto:151) : Nested Resource Containers are not duplicated.
-LoadBalancerResourceContainerPostconditions Test finished
-------------Second Iteration------------LoadBalancerResourceContainerPostconditions Test started
-LoadBalancerResourceContainerPostconditions Test finished

@@ -1,6 +1,0 @@
-------------First Iteration------------
-DynamicHorizontalScalingResourceContainer Test started
-DynamicHorizontalScalingResourceContainer Test finished
-------------Second Iteration------------
-DynamicHorizontalScalingResourceContainer Test started
-DynamicHorizontalScalingResourceContainer Test finished

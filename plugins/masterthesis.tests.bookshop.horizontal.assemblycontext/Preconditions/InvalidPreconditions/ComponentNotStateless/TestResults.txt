@@ -1,8 +1,0 @@
-------------First Iteration------------
-DynamicHorizontalScalingAssemblyContextPreconditions Test started
-ASSERT [error] failed at (DynamicHorizontalScalingAssemblyContextPreconditions.qvto:41) : Replicable Assembly Context Basic Component is not stateless.
-DynamicHorizontalScalingAssemblyContextPreconditions Test finished
-------------Second Iteration------------
-DynamicHorizontalScalingAssemblyContextPreconditions Test started
-ASSERT [error] failed at (DynamicHorizontalScalingAssemblyContextPreconditions.qvto:91) : Replicable Assembly Context Basic Component is not stateless.
-DynamicHorizontalScalingAssemblyContextPreconditions Test finished

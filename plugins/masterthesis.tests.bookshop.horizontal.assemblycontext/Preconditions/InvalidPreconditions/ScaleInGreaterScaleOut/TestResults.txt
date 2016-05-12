@@ -1,8 +1,0 @@
-------------First Iteration------------
-DynamicHorizontalScalingAssemblyContextPreconditions Test started
-ASSERT [error] failed at (DynamicHorizontalScalingAssemblyContextPreconditions.qvto:52) : Replicable Assembly Context Scale In Threshold is Greater or Equal Than the Scale Out Threshold.
-DynamicHorizontalScalingAssemblyContextPreconditions Test finished
-------------Second Iteration------------
-DynamicHorizontalScalingAssemblyContextPreconditions Test started
-ASSERT [error] failed at (DynamicHorizontalScalingAssemblyContextPreconditions.qvto:102) : Replicable Assembly Context Scale In Threshold is Greater or Equal Than the Scale Out Threshold.
-DynamicHorizontalScalingAssemblyContextPreconditions Test finished
