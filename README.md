@@ -1,65 +1,39 @@
-ArchitecturalTemplates
-======================
-The Architectural Template method is an efficient design-time engineering method for analyzing scalability, elasticity, and efficiency properties of SaaS applications. This method quantifies such properties based on reusable analysis templates — so called Architectural Templates.
-CloudScale includes the Architectural Template language in ScaleDL and provides a catalogue of Architectural Templates specified in this language. CloudScale’s Architectural Templates manifest all quality-relevant characteristics intrinsic to given cloud computing environments. Architects only have to fill-in the parts specific to their concrete SaaS application.
+Palladio-Core-Editors
+=====================
+Editors for models of the Palladio Component Model (PCM).
 
+General Information
+-----------------------------------------
+https://sdqweb.ipd.kit.edu/wiki/PCM_Development/Sirius_Editors
 
 Eclipse Update Sites
 -----------------------------------------
 
+##### Latest Build
+- https://sdqweb.ipd.kit.edu/eclipse/palladio/core/editors/releases/latest/
+
 ##### Nightly Build
-- http://cloudscale.xlab.si/cse/updatesites/architecturaltemplates/nightly/
+- https://sdqweb.ipd.kit.edu/eclipse/palladio/core/editors/nightly/
 
-
-Architectural Template Catalogue
------------------------------------------
-In CloudScale, we collected Architectural Templates for designing and analyzing scalable, elastic, and efficient SaaS applications.
-
-##### Description for all templates in CloudScale Wiki:
-- http://wiki.cloudscale-project.eu/index.php/HowTos
-
-##### Plugin with all template resources:
-- org.scaledl.architecturaltemplates.repositories.cloudscale
-
-Example applications of Architectural Templates
------------------------------------------
-##### Feature
-- org.scaledl.architecturaltemplates.examples.feature
-
-##### Included Plugins
-- org.scaledl.architecturaltemplates.examples.aliceandbob
-- org.scaledl.architecturaltemplates.examples.dynscalingassemblycontext
-- org.scaledl.architecturaltemplates.examples.dynscalingcontainer
-- org.scaledl.architecturaltemplates.examples.dynverticalscaling
-- org.scaledl.architecturaltemplates.examples.staticassemblycontext
-- org.scaledl.architecturaltemplates.examples.staticresourcecontainer
-
-Develop Architectural Templates
+Develop Sirius Editors
 -----------------------------------------
 
-1. Download and install [Eclipse Modeling Tools][1]
-2. Download and install Eclipse plugin dependencies for Architectural Templates development.
+1. Download and install Eclipse Modeling Tools
+2. Download and install Eclipse plugin dependencies for Palladio development.
+	- Go to Eclipse->Help->Install New Software
+	- Add Architectural Templates nightly update site: "https://sdqweb.ipd.kit.edu/eclipse/palladiosimulator/releases/latest/".
+	- Install Palladio features.
+3. Download and install Eclipse plugin dependencies for Architectural Templates development.
 	- Go to Eclipse->Help->Install New Software
 	- Add Architectural Templates nightly update site: "http://cloudscale.xlab.si/cse/updatesites/architecturaltemplates/nightly/".
 	- Install Architectural Templates feature.
-3. Clone repository
-	$ git clone https://github.com/CloudScale-Project/ArchitecturalTemplates.git
-4. Import Architectural Templates plugins, under "plugins/" directory, into the workbench.
+4. Clone repository
+	$ git clone https://github.com/PalladioSimulator/Palladio-Core-Editors.git
+5. Import Palladio-Core-Editors plugins, under "plugins/" directory, into the workbench.
 
-Core Features of Architectural Templates
------------------------------------------
-##### Features
-- org.scaledl.architecturaltemplates.feature
-- org.scaledl.architecturaltemplates.buckminster
 
-##### Included Plugins
-- org.scaledl.architecturaltemplates
-- org.scaledl.architecturaltemplates.edit
-- org.scaledl.architecturaltemplates.editor
-- org.scaledl.architecturaltemplates.completion.jobs
-
-UI Features of Architectural Templates
------------------------------------------
+Features and Plugins
+--------------------
 ##### Features
 - org.palladiosimulator.editors.feature
 
@@ -67,5 +41,3 @@ UI Features of Architectural Templates
 - org.palladiosimulator.editors.composedprovidingrequiringentity.design
 - org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension
 - org.palladiosimulator.editors.util
-
-[1]: https://www.eclipse.org/downloads/packages/eclipse-modeling-tools/lunasr2
