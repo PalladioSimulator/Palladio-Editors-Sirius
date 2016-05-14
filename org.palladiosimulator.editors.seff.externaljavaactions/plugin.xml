@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.palladiosimulator.editors.seff.externaljavaactions.DeleteRecoveryFlow"
+            id="DeleteRecoveryFlow">
+      </javaActions>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.palladiosimulator.editors.seff.externaljavaactions.LoopIterationCountDialog"
+            id="LoopIterationCountDialog">
+      </javaActions>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.palladiosimulator.editors.seff.externaljavaactions.ResourceDemandOpenStoexDialog"
+            id="ResourceDemandOpenStoexDialog">
+      </javaActions>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.palladiosimulator.editors.seff.externaljavaactions.GuardedBranchTransistionConditionDialog"
+            id="GuardedBranchTransistionConditionDialog">
+      </javaActions>
+   </extension>
+
+</plugin>
