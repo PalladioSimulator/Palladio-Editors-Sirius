@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.repository;
+package org.palladiosimulator.editors.repository.design;
 
 import java.util.HashSet;
 import java.util.Set;
