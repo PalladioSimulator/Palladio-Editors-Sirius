@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.palladiosimulator.editors.sirius.usage.design
-Bundle-SymbolicName: org.palladiosimulator.editors.usage.design;singleton:=true
+Bundle-SymbolicName: org.palladiosimulator.editors.usage;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-Activator: org.palladiosimulator.editors.usage.design.Activator
 Require-Bundle: org.eclipse.ui,

@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: repository.design
-Bundle-SymbolicName: org.palladiosimulator.editors.repository.design;singleton:=true
+Bundle-SymbolicName: org.palladiosimulator.editors.repository;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-Activator: org.palladiosimulator.editors.repository.design.Activator
 Require-Bundle: org.eclipse.ui,
