@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
-    <component class="org.palladiosimulator.editors.repository.design.Activator"
+    <component class="org.palladiosimulator.editors.repository.Activator"
                id="repository.design"
 	       name="repository">
     </component>
