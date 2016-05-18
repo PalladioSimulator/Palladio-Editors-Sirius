@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.externaljavaactions.DeleteType"
+            id="DeleteType">
+      </javaActions>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.externaljavaactions.DeleteInnerDeclaration"
+            id="DeleteInnerDeclaration">
+      </javaActions>
+   </extension>
+
+</plugin>
