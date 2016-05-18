@@ -26,13 +26,13 @@
         <containerMappings name="usageScenario" labelDirectEdit="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="[self.usageScenario_UsageModel/]" domainClass="usagemodel.UsageScenario">
           <subContainerMappings name="scenarioBehavior" labelDirectEdit="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="[self.scenarioBehaviour_UsageScenario/]" domainClass="usagemodel.ScenarioBehaviour">
             <subNodeMappings name="start" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" domainClass="usagemodel.Start">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="" labelPosition="node" workspacePath="/org.palladiosimulator.editors.usage.design/icons/start.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="" labelPosition="node" workspacePath="/org.palladiosimulator.editors.usage/icons/start.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
             <subNodeMappings name="stop" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" domainClass="usagemodel.Stop">
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="" sizeComputationExpression="4" labelPosition="node" workspacePath="/org.palladiosimulator.editors.usage.design/icons/end.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="" sizeComputationExpression="4" labelPosition="node" workspacePath="/org.palladiosimulator.editors.usage/icons/end.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>

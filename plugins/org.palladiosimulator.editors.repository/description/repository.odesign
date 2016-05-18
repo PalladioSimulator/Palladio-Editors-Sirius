@@ -68,7 +68,7 @@
         <containerMappings name="BasicComponent" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" domainClass="repository.BasicComponent" childrenPresentation="VerticalStack">
           <subContainerMappings name="SEFFCompartment" semanticCandidatesExpression="var:self" domainClass="repository.BasicComponent" childrenPresentation="List">
             <subNodeMappings name="SEFF" semanticCandidatesExpression="feature:serviceEffectSpecifications__BasicComponent" domainClass="ResourceDemandingSEFF">
-              <style xsi:type="style:SquareDescription" labelExpression="aql:'SEFF &lt;' + self.seffTypeID + '>'" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" labelExpression="[self.describedService__SEFF.oclAsType(OperationSignature).interface__OperationSignature.entityName + '.' + self.describedService__SEFF.entityName/]" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -322,7 +322,7 @@
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:If" conditionExpression="[container.eAllContents()->selectByType(StopAction)->size() = 0/]">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StopActionAction" referenceName="steps_Behaviour"/>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
