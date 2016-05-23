@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="repository" version="10.1.0.201507271600">
   <ownedViewpoints name="repository" modelFileExtension="repository">
@@ -653,3 +654,636 @@
     </ownedRepresentations>
   </ownedViewpoints>
 </description:Group>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="repository" version="10.1.3.201511131800">
+  <ownedViewpoints name="repository" label="Repository" modelFileExtension="repository">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="repository" initialisation="true" domainClass="repository.Repository" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <edgeMappings name="RequiredRole" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']" targetFinderExpression="feature:requiredInterface__OperationRequiredRole" sourceFinderExpression="feature:requiringEntity_RequiredRole" domainClass="repository.OperationRequiredRole" useDomainElement="true">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Requires>>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ProvidedRole" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']" targetFinderExpression="feature:providedInterface__OperationProvidedRole" sourceFinderExpression="feature:providingEntity_ProvidedRole" domainClass="repository.OperationProvidedRole" useDomainElement="true">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Provides>>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="InfrastructureRequiredRole" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='InfrastructureInterface']" targetFinderExpression="feature:requiredInterface__InfrastructureRequiredRole" sourceFinderExpression="feature:requiringEntity_RequiredRole" domainClass="repository.InfrastructureRequiredRole" useDomainElement="true">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Requires>>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="InfrastructureProvidedRole" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='InfrastructureInterface']" targetFinderExpression="feature:providedInterface__InfrastructureProvidedRole" sourceFinderExpression="feature:providingEntity_ProvidedRole" domainClass="repository.InfrastructureProvidedRole" useDomainElement="true">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Provides>>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Interface" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:interfaces__Repository" domainClass="repository.OperationInterface" childrenPresentation="List">
+          <subNodeMappings name="OperationSignature" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:signatures__OperationInterface" semanticElements="feature:returnType__OperationSignature" domainClass="repository.OperationSignature">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[if(self.returnType__OperationSignature.oclAsType(PrimitiveDataType).type.oclIsInvalid()) then 'void' else self.returnType__OperationSignature.oclAsType(PrimitiveDataType).type.toString().toLowerCase() endif + ' ' + self.entityName + '()'/]" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:entityName" widthComputationExpression="20" heightComputationExpression="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="InfrastructureInterface" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:interfaces__Repository" domainClass="repository.InfrastructureInterface" childrenPresentation="List">
+          <subNodeMappings name="InfrastructureSignature" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:infrastructureSignatures__InfrastructureInterface" domainClass="repository.InfrastructureSignature">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.entityName + '()'/]" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:entityName" widthComputationExpression="20" heightComputationExpression="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="BasicComponent" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" domainClass="repository.BasicComponent" childrenPresentation="VerticalStack">
+          <subContainerMappings name="SEFFCompartment" semanticCandidatesExpression="var:self" domainClass="repository.BasicComponent" childrenPresentation="List">
+            <subNodeMappings name="SEFF" semanticCandidatesExpression="feature:serviceEffectSpecifications__BasicComponent" domainClass="ResourceDemandingSEFF">
+              <style xsi:type="style:SquareDescription" labelExpression="[self.describedService__SEFF.oclAsType(OperationSignature).interface__OperationSignature.entityName + '.' + self.describedService__SEFF.entityName/]" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="SEFFCompartment" widthComputationExpression="" heightComputationExpression="">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="PassiveResourcesCompartment" semanticCandidatesExpression="var:self" domainClass="repository.BasicComponent" childrenPresentation="List">
+            <subNodeMappings name="PassiveResource" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:passiveResource_BasicComponent" domainClass="repository.PassiveResource">
+              <style xsi:type="style:SquareDescription" labelExpression="aql:self.entityName + '&lt;Capacity: ' + self.capacity_PassiveResource.specification + '>'" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="PassiveResourcesCompartment" widthComputationExpression="" heightComputationExpression="">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="ComponentParameterCompartment" semanticCandidatesExpression="var:self" domainClass="repository.BasicComponent">
+            <subContainerMappings name="ComponentParameter" semanticCandidatesExpression="feature:componentParameterUsage_ImplementationComponentType" domainClass="parameter.VariableUsage" childrenPresentation="List">
+              <subNodeMappings name="Variable Characterisation" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" domainClass="parameter.VariableCharacterisation">
+                <style xsi:type="style:SquareDescription" labelExpression="aql:self.type + ' = ' + self.specification_VariableCharacterisation.specification" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                </style>
+              </subNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="Variable Usage" widthComputationExpression="" heightComputationExpression="">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="ComponenentParameterCompartment" widthComputationExpression="" heightComputationExpression="">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:entityName" widthComputationExpression="" heightComputationExpression="">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="CompositeComponent" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" domainClass="repository.CompositeComponent" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:entityName" widthComputationExpression="20" heightComputationExpression="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="SubSystem" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" domainClass="subsystem.SubSystem" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:entityName" widthComputationExpression="10" heightComputationExpression="5">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Basic Model Elements">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Interface" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="OperationInterface" referenceName="interfaces__Repository">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['Interface' + container.eAllContents()->selectByType(OperationInterface)->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="BasicComponent" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="BasicComponent" referenceName="components__Repository">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['BasicComponent' + container.eAllContents()->selectByType(BasicComponent)->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="CompositeComponent" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="CompositeComponent" referenceName="components__Repository">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['CompositeComponent' + container.eAllContents()->selectByType(CompositeComponent)->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit Name" inputLabelExpression="feature:entityName">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="RequiredRole" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@edgeMappings[name='RequiredRole']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.OperationRequiredRole" referenceName="requiredRoles_InterfaceRequiringEntity">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="requiredInterface__OperationRequiredRole" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['RequiredRole' + source.eAllContents()->selectByType(RequiredRole)->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="ProvidedRole" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@edgeMappings[name='ProvidedRole']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.OperationProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="providedInterface__OperationProvidedRole" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['ProvidedRole' + source.eAllContents()->selectByType(ProvidedRole)->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="SubSystem" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SubSystem" referenceName="components__Repository">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['SubSystem' + container.eAllContents()->selectByType(SubSystem)->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="InfrastructureRequiredRole" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@edgeMappings[name='InfrastructureRequiredRole']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InfrastructureRequiredRole" referenceName="requiredRoles_InterfaceRequiringEntity">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="requiredInterface__InfrastructureRequiredRole" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['InfrastructureRequiredRole' + source.eAllContents()->selectByType(InfrastructureRequiredRole)->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="InfrastructureProvidedRole" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@edgeMappings[name='InfrastructureProvidedRole']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InfrastructureProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="providedInterface__InfrastructureProvidedRole" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['InfrastructureProvidedRole' + source.eAllContents()->selectByType(InfrastructureProvidedRole)->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="InfrastructureInterface" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='InfrastructureInterface']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="InfrastructureInterface" referenceName="interfaces__Repository">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['InfrastructureInterface' + container.eAllContents()->selectByType(InfrastructureInterface)->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Internal Elements">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Signature" nodeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']/@subNodeMappings[name='OperationSignature'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='InfrastructureInterface']/@subNodeMappings[name='InfrastructureSignature']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.eClass()=repository::OperationInterface/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.OperationSignature" referenceName="signatures__OperationInterface">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['method' + container.eAllContents()->selectByType(OperationSignature)->size()/]"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.eClass()=repository::InfrastructureInterface/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InfrastructureSignature" referenceName="infrastructureSignatures__InfrastructureInterface">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['method' + container.eAllContents()->selectByType(InfrastructureSignature)->size()/]"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Passive Resource" nodeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='PassiveResourcesCompartment']/@subNodeMappings[name='PassiveResource']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.PassiveResource" referenceName="passiveResource_BasicComponent">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'PassiveResource'+container.passiveResource_BasicComponent->size()"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PCMRandomVariable" referenceName="capacity_PassiveResource"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="ComponentParameter" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='ComponentParameterCompartment']/@subContainerMappings[name='ComponentParameter']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableUsage" referenceName="componentParameterUsage_ImplementationComponentType"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="VariableCharacterisation" nodeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='ComponentParameterCompartment']/@subContainerMappings[name='ComponentParameter']/@subNodeMappings[name='Variable%20Characterisation']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableCharacterisation" referenceName="variableCharacterisation_VariableUsage"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="SEFF" nodeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='SEFFCompartment']/@subNodeMappings[name='SEFF']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="[container.eAllContents()->selectByType(StartAction)->size() = 0/]">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="[container.eAllContents()->selectByType(StopAction)->size() = 0/]">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="Component Types" activeByDefault="true">
+        <edgeMappings name="Conforms Provided Type" deletionDescription="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@toolSections.0/@ownedTools[name='Unset%20Conforms']" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType']" targetFinderExpression="feature:parentProvidesComponentTypes">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Conforms>>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Conforms Complete Type" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetFinderExpression="feature:parentCompleteComponentTypes">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Conforms>>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="ProvidesComponentType" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" domainClass="ProvidesComponentType">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:entityName" widthComputationExpression="20" heightComputationExpression="5">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="CompleteComponentType" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" domainClass="CompleteComponentType">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:entityName" widthComputationExpression="20" heightComputationExpression="5">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Componenent Types">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="ProvidesComponentType" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ProvidesComponentType" referenceName="components__Repository">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['ProvidesComponentType' + container.eAllContents()->selectByType(ProvidesComponentType)->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="CompleteComponentType" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="CompleteComponentType" referenceName="components__Repository">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['CompleteComponentType' + container.eAllContents()->selectByType(CompleteComponentType)->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Conforms Provided Type" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@edgeMappings[name='Conforms%20Provided%20Type']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="parentProvidesComponentTypes" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Conforms Complete Type" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@edgeMappings[name='Conforms%20Complete%20Type']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="parentCompleteComponentTypes" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Unset Conforms">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Delete Type" id="DeleteType">
+                <parameters name="elementView" value="[elementView/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </additionalLayers>
+      <additionalLayers name="Event-Based Communication" activeByDefault="true">
+        <edgeMappings name="SourceRole" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Event-Based%20Communication']/@containerMappings[name='EventGroup']" targetFinderExpression="feature:eventGroup__SourceRole" sourceFinderExpression="feature:requiringEntity_RequiredRole" domainClass="repository.SourceRole" useDomainElement="true">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Emits>>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="SinkRole" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Event-Based%20Communication']/@containerMappings[name='EventGroup']" targetFinderExpression="feature:eventGroup__SinkRole" sourceFinderExpression="feature:providingEntity_ProvidedRole" domainClass="repository.SinkRole" useDomainElement="true">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Handles>>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="EventGroup" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:interfaces__Repository" domainClass="repository.EventGroup" childrenPresentation="List">
+          <subNodeMappings name="EventType" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:eventTypes__EventGroup" domainClass="repository.EventType">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="feature:entityName" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:entityName" widthComputationExpression="20" heightComputationExpression="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Event-Based Communication">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Event Group" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Event-Based%20Communication']/@containerMappings[name='EventGroup']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.EventGroup" referenceName="interfaces__Repository">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['EventGroup' + container.eAllContents()->selectByType(EventGroup)->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="EventType" nodeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Event-Based%20Communication']/@containerMappings[name='EventGroup']/@subNodeMappings[name='EventType']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.EventType" referenceName="eventTypes__EventGroup">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'eventType'+container.eventTypes__EventGroup->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="SourceRole" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Event-Based%20Communication']/@edgeMappings[name='SourceRole']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.SourceRole" referenceName="requiredRoles_InterfaceRequiringEntity">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="eventGroup__SourceRole" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['SourceRole' + source.eAllContents()->selectByType(SourceRole)->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="SinkRole" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Event-Based%20Communication']/@edgeMappings[name='SinkRole']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.SinkRole" referenceName="providedRoles_InterfaceProvidingEntity">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="eventGroup__SinkRole" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['SinkeRole' + source.eAllContents()->selectByType(SinkRole)->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </additionalLayers>
+      <additionalLayers name="DataTypes" activeByDefault="true">
+        <edgeMappings name="Contains" deletionDescription="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@toolSections.0/@ownedTools[name='Unset%20Composed']" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CompositeDataType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CollectionDataType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CompositeDataType']" targetFinderExpression="aql:self.innerDeclaration_CompositeDataType.datatype_InnerDeclaration">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Contains>>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="CollectionDataType" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:dataTypes__Repository" domainClass="repository.CollectionDataType" childrenPresentation="List">
+          <subNodeMappings name="PrimitiveDataType" semanticCandidatesExpression="feature:innerType_CollectionDataType" domainClass="repository.PrimitiveDataType">
+            <style xsi:type="style:SquareDescription" labelExpression="aql:self.type.toString()" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:entityName" widthComputationExpression="10" heightComputationExpression="5">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="CompositeDataType" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:dataTypes__Repository" domainClass="repository.CompositeDataType" childrenPresentation="List">
+          <subNodeMappings name="InnerDeclaration" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:innerDeclaration_CompositeDataType" domainClass="repository.InnerDeclaration">
+            <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+            <conditionnalStyles predicateExpression="[self.datatype_InnerDeclaration.oclIsTypeOf(PrimitiveDataType)/]">
+              <style xsi:type="style:SquareDescription" labelExpression="[self.entityName + ' : ' + self.datatype_InnerDeclaration.oclAsType(repository::PrimitiveDataType).type.toString() /]" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="[self.datatype_InnerDeclaration.oclIsTypeOf(CompositeDataType)/]">
+              <style xsi:type="style:SquareDescription" labelExpression="[self.entityName + ' : ' + self.datatype_InnerDeclaration.oclAsType(repository::CompositeDataType).entityName /]" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="[self.datatype_InnerDeclaration.oclIsTypeOf(CollectionDataType)/]">
+              <style xsi:type="style:SquareDescription" labelExpression="[self.entityName + ' : ' + self.datatype_InnerDeclaration.oclAsType(repository::CollectionDataType).entityName /]" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </conditionnalStyles>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:entityName" widthComputationExpression="10" heightComputationExpression="5">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="DataTypes">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="CollectionDataType" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CollectionDataType']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.CollectionDataType" referenceName="dataTypes__Repository">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['CollectionDataType' + container.eAllContents()->selectByType(CollectionDataType)->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="CompositeDataType" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CompositeDataType']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.CompositeDataType" referenceName="dataTypes__Repository">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['CompositeDataType' + container.eAllContents()->selectByType(CompositeDataType)->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="InnerDeclaration" nodeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CompositeDataType']/@subNodeMappings[name='InnerDeclaration']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InnerDeclaration" referenceName="innerDeclaration_CompositeDataType">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['InnerDeclaration' + container.eAllContents()->selectByType(InnerDeclaration)->size()/]"/>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.PrimitiveDataType" referenceName="datatype_InnerDeclaration"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Contains" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@edgeMappings[name='Contains']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InnerDeclaration" referenceName="innerDeclaration_CompositeDataType">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="datatype_InnerDeclaration" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['InnerDeclaration' + self.compositeDataType_InnerDeclaration.innerDeclaration_CompositeDataType->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Unset Composed">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Delete InnerDeclaration" id="DeleteInnerDeclaration">
+                <parameters name="elementView" value="[elementView/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </additionalLayers>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>
+>>>>>>> branch 'master' of https://github.com/PalladioSimulator/Palladio-Core-Editors.git
