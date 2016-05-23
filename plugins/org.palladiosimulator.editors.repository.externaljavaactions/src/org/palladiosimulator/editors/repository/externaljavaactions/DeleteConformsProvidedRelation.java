@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.sirius.repository.externaljavaactions;
+package org.palladiosimulator.editors.repository.externaljavaactions;
 
 import java.util.Collection;
 import java.util.Map;
@@ -13,13 +13,8 @@ import org.palladiosimulator.pcm.repository.CompleteComponentType;
 import org.palladiosimulator.pcm.repository.ProvidesComponentType;
 
 
-public class DeleteType implements IExternalJavaAction {
+public class DeleteConformsProvidedRelation implements IExternalJavaAction {
 
-	public DeleteType() {
-		// TODO Auto-generated constructor stub
-	}
-
-	
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
 		
 		for (Entry<String, Object> entry : parameters.entrySet()) {
@@ -27,7 +22,6 @@ public class DeleteType implements IExternalJavaAction {
 
 			EObject source = value.getTarget();
 			CompleteComponentType cc = (CompleteComponentType) source;
-			
 			
 			EdgeTarget targetNode = value.getTargetNode(); 
 			ProvidesComponentType pc = (ProvidesComponentType) (((DDiagramElement) targetNode).getTarget());

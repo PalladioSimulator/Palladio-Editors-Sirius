@@ -16,3 +16,4 @@ Require-Bundle: org.eclipse.sirius;bundle-version="3.0.0",
  org.modelversioning.emfprofile,
  org.modelversioning.emfprofile.registry,
  org.eclipse.emf.edit.ui
+Export-Package: org.palladiosimulator.editors.ui.dialog

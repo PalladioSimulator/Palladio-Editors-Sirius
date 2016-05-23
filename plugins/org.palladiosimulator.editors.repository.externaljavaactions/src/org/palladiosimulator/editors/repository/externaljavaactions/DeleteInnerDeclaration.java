@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.sirius.repository.externaljavaactions;
+package org.palladiosimulator.editors.repository.externaljavaactions;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -18,10 +18,6 @@ import org.palladiosimulator.pcm.repository.InnerDeclaration;
 
 
 public class DeleteInnerDeclaration implements IExternalJavaAction {
-
-	public DeleteInnerDeclaration() {
-		// TODO Auto-generated constructor stub
-	}
 
 	
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {

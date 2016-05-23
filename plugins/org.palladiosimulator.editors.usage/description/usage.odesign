@@ -7,6 +7,7 @@
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//system"/>
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//allocation"/>
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//parameter"/>
+      <metamodel href="http://sdq.ipd.uka.de/StochasticExpressions/2.2#/"/>
       <defaultLayer name="Default">
         <nodeMappings name="userData" semanticCandidatesExpression="[self.userData_UsageModel/]" domainClass="usagemodel.UserData">
           <style xsi:type="style:NoteDescription" labelExpression="[self/]" labelPosition="node" resizeKind="NSEW">
@@ -101,7 +102,7 @@
                     <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
                   </style>
                 </subNodeMappings>
-                <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelExpression="Variable Usage">
+                <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelExpression="[self.namedReference__VariableUsage.referenceName/]">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -293,7 +294,13 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableUsage" referenceName="inputParameterUsages_EntryLevelSystemCall"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableUsage" referenceName="inputParameterUsages_EntryLevelSystemCall">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stoex.VariableReference" referenceName="namedReference__VariableUsage">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="referenceName" valueExpression="['VariableUsage' + container.inputParameterUsages_EntryLevelSystemCall->size()/]"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

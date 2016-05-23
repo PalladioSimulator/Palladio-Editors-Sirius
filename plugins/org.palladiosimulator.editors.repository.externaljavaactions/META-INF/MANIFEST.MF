@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: RepositoryExternalActions
 Bundle-SymbolicName: org.palladiosimulator.editors.repository.externaljavaactions;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: org.palladiosimulator.editors.sirius.repository.externaljavaactions.Activator
+Bundle-Activator: org.palladiosimulator.editors.repository.externaljavaactions.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.sirius,
@@ -11,3 +11,5 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.diagram;bundle-version="3.1.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
+Import-Package: org.eclipse.core.resources,
+ org.eclipse.sirius.ui.business.api.dialect;version="3.1.0"
