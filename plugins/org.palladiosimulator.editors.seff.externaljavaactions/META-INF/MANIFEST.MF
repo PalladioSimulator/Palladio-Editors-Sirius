@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: externaljavaactions
+Bundle-Name: SEFF diagram editor external java actions
 Bundle-SymbolicName: org.palladiosimulator.editors.seff.externaljavaactions;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.0
 Bundle-Activator: org.palladiosimulator.editors.seff.externaljavaactions.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
