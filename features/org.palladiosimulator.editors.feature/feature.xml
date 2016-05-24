@@ -99,21 +99,21 @@
          version="0.0.0"/>
 
    <plugin
-         id="org.palladiosimulator.editors.seff.design"
+         id="org.palladiosimulator.editors.seff"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.palladiosimulator.editors.usage.design"
+         id="org.palladiosimulator.editors.usage"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.palladiosimulator.editors.repository.design"
+         id="org.palladiosimulator.editors.repository"
          download-size="0"
          install-size="0"
          version="0.0.0"
