@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: External Java Actions
+Bundle-SymbolicName: org.palladiosimulator.editors.externaljavaactions;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: org.palladiosimulator.editors.externaljavaactions.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.sirius,
+ org.eclipse.emf.ecore,
+ org.eclipse.sirius.diagram;bundle-version="3.1.2",
+ de.uka.ipd.sdq.stoex;bundle-version="2.2.0",
+ org.palladiosimulator.editors.dialogs,
+ de.uka.ipd.sdq.stoex.analyser,
+ de.uka.ipd.sdq.pcm.stochasticexpressions,
+ org.palladiosimulator.pcm
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Export-Package: org.palladiosimulator.editors.externaljavaactions
