@@ -25,15 +25,22 @@
    <extension
          point="org.eclipse.sirius.externalJavaAction">
       <javaActions
-            actionClass="org.palladiosimulator.editors.repository.externaljavaactions.OpenEditor"
-            id="OpenEditor">
+            actionClass="org.palladiosimulator.editors.repository.externaljavaactions.DeleteConformsCompleteRelation"
+            id="DeleteConformsCompleteRelation">
       </javaActions>
    </extension>
    <extension
          point="org.eclipse.sirius.externalJavaAction">
       <javaActions
-            actionClass="org.palladiosimulator.editors.repository.externaljavaactions.DeleteConformsCompleteRelation"
-            id="DeleteConformsCompleteRelation">
+            actionClass="org.palladiosimulator.editors.repository.externaljavaactions.AddSEFF"
+            id="AddSEFF">
+      </javaActions>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.palladiosimulator.editors.repository.externaljavaactions.AddCollectionDataType"
+            id="AddCollectionDataType">
       </javaActions>
    </extension>
 

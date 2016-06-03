@@ -3,7 +3,7 @@ package org.palladiosimulator.editors.seff.externaljavaactions;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
-import org.palladiosimulator.editors.ui.dialog.OpenStoExDialog;
+import org.palladiosimulator.editors.externaljavaactions.OpenStoExDialog;
 import org.palladiosimulator.pcm.seff.GuardedBranchTransition;
 
 import de.uka.ipd.sdq.stoex.RandomVariable;

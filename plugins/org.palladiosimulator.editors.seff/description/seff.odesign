@@ -40,7 +40,7 @@
           </style>
         </edgeMappings>
         <containerMappings name="InternalAction" labelDirectEdit="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='directEditNameBySingleClick']" semanticCandidatesExpression="[steps_Behaviour/]" domainClass="seff.InternalAction" childrenPresentation="List">
-          <subNodeMappings name="ResourceDemand" semanticCandidatesExpression="[self.resourceDemand_Action/]" doubleClickDescription="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='seffOpenStoEcDialogResourceDemand']" domainClass="seff_performance.ParametricResourceDemand">
+          <subNodeMappings name="ResourceDemand" semanticCandidatesExpression="[self.resourceDemand_Action/]" doubleClickDescription="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='seffOpenStoExDialogResourceDemand']" domainClass="seff_performance.ParametricResourceDemand">
             <style xsi:type="style:SquareDescription" labelExpression="[self.specification_ParametericResourceDemand.specification + ' &lt;' + self.requiredResource_ParametricResourceDemand.entityName + '>'/]" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -474,7 +474,9 @@
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="seffLoopIterationCountDialog" id="LoopIterationCountDialog"/>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="seffLoopIterationCountDialog" id="LoopIterationCountDialog">
+                  <parameters name="element" value="var:element"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -579,6 +581,12 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:behaviour">
                         <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="start"/>
                         <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="stop"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:start">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="successor_AbstractAction" valueExpression="var:stop"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:stop">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:start"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </cases>
@@ -587,6 +595,12 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:behaviour">
                         <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="start"/>
                         <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="stop"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:start">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="successor_AbstractAction" valueExpression="var:stop"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:stop">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:start"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </cases>
@@ -595,6 +609,12 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:behaviour">
                         <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="start"/>
                         <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="stop"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:start">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="successor_AbstractAction" valueExpression="var:stop"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:stop">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:start"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </cases>
@@ -603,6 +623,12 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:behaviour">
                         <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="start"/>
                         <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="stop"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:start">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="successor_AbstractAction" valueExpression="var:stop"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:stop">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:start"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </default>
@@ -630,6 +656,12 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:behaviour">
                         <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="start"/>
                         <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="stop"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:start">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="successor_AbstractAction" valueExpression="var:stop"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:stop">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:start"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -648,6 +680,12 @@
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:behaviour">
                         <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="start"/>
                         <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="stop"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:start">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="successor_AbstractAction" valueExpression="var:stop"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:stop">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:start"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="branchCondition_GuardedBranchTransition" variableName="randomVariable">
@@ -672,16 +710,20 @@
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="seffVariableCharacterisationStoEx" id="VariableCharacterisationNameAction"/>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="seffVariableCharacterisationStoEx" id="VariableCharacterisationNameAction">
+                  <parameters name="element" value="var:element"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="seffOpenStoEcDialogResourceDemand" mappings="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='InternalAction']/@subNodeMappings[name='ResourceDemand']">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="seffOpenStoExDialogResourceDemand" mappings="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='InternalAction']/@subNodeMappings[name='ResourceDemand']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="seffResourceDemandDialog" id="ResourceDemandOpenStoexDialog"/>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="seffResourceDemandDialog" id="ResourceDemandOpenStoexDialog">
+                  <parameters name="element" value="var:element"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -690,7 +732,9 @@
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="seffGuardedBranchTransistionDialog" id="GuardedBranchTransistionConditionDialog"/>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="seffGuardedBranchTransistionDialog" id="GuardedBranchTransistionConditionDialog">
+                  <parameters name="element" value="var:element"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

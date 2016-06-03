@@ -13,6 +13,15 @@ import org.palladiosimulator.pcm.repository.PrimitiveDataType;
 import org.palladiosimulator.pcm.repository.PrimitiveTypeEnum;
 import org.palladiosimulator.pcm.repository.impl.PrimitiveDataTypeImpl;
 
+/**
+ * This external java action is used to delete the Inner Type of a
+ * CollectionDataType without deleting the corresponding PrimitiveDataType
+ * from the Model containing it. 
+ * It is used either when directly deleting the inner type or when deleting the CollectionDataType.
+ *  
+ * @author Amine Kechaou
+ *
+ */
 public class DeleteInnerType implements IExternalJavaAction {
 
 	@Override
@@ -22,10 +31,7 @@ public class DeleteInnerType implements IExternalJavaAction {
 			EObject target = node.getTarget();
 			CollectionDataType collectionDataType = (CollectionDataType) target;
 			collectionDataType.setInnerType_CollectionDataType(null);
-			
-		}
-		for (EObject o : selections) {
-			System.out.println(o.getClass());
+
 		}
 
 	}

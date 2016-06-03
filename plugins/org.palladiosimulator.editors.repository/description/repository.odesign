@@ -6,6 +6,7 @@
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//parameter"/>
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//seff"/>
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//subsystem"/>
+      <metamodel href="http://sdq.ipd.uka.de/StochasticExpressions/2.2#/"/>
       <defaultLayer name="Default">
         <edgeMappings name="RequiredRole" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']" targetFinderExpression="feature:requiredInterface__OperationRequiredRole" sourceFinderExpression="feature:requiringEntity_RequiredRole" domainClass="repository.OperationRequiredRole" useDomainElement="true">
           <style>
@@ -101,15 +102,15 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="ComponentParameterCompartment" semanticCandidatesExpression="var:self" domainClass="repository.BasicComponent">
-            <subContainerMappings name="ComponentParameter" semanticCandidatesExpression="feature:componentParameterUsage_ImplementationComponentType" domainClass="parameter.VariableUsage" childrenPresentation="List">
-              <subNodeMappings name="Variable Characterisation" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" domainClass="parameter.VariableCharacterisation">
+            <subContainerMappings name="ComponentParameter" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.1/@ownedTools[name='Variable%20Usage']" semanticCandidatesExpression="feature:componentParameterUsage_ImplementationComponentType" domainClass="parameter.VariableUsage" childrenPresentation="List">
+              <subNodeMappings name="Variable Characterisation" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" doubleClickDescription="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20VariableCharacterisation']" domainClass="parameter.VariableCharacterisation">
                 <style xsi:type="style:SquareDescription" labelExpression="aql:self.type + ' = ' + self.specification_VariableCharacterisation.specification" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
                 </style>
               </subNodeMappings>
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="Variable Usage" widthComputationExpression="" heightComputationExpression="">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql:self.namedReference__VariableUsage.referenceName" widthComputationExpression="" heightComputationExpression="">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -303,7 +304,13 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableUsage" referenceName="componentParameterUsage_ImplementationComponentType"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableUsage" referenceName="componentParameterUsage_ImplementationComponentType" variableName="variableUsage">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:VariableReference"/>
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NamedReference" id="SetNamedReference">
+                    <parameters name="VariableReference" value="var:VariableReference"/>
+                  </subModelOperations>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -312,7 +319,13 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableCharacterisation" referenceName="variableCharacterisation_VariableUsage"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableCharacterisation" referenceName="variableCharacterisation_VariableUsage" variableName="variableCharacterisation">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="aql:parameter::VariableCharacterisationType::STRUCTURE"/>
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set RandomVariable" id="VariableCharacterisationNameAction">
+                    <parameters name="element" value="var:variableCharacterisation"/>
+                  </subModelOperations>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -322,12 +335,51 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="[container.eAllContents()->selectByType(StartAction)->size() = 0/]">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour"/>
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add SEFF" id="AddSEFF">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.describedService__SEFF &lt;> null/]">
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="[instance.eContents(StartAction)->size() = 0 and instance.eContents(StopAction)->size() = 0 /]">
+                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="StartAction"/>
+                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="StopAction"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:StartAction">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="successor_AbstractAction" valueExpression="var:StopAction"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:StopAction">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:StartAction"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.describedService__SEFF = null/]">
+                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    </subModelOperations>
+                    <parameters name="instance" value="var:instance"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="[container.eAllContents()->selectByType(StopAction)->size() = 0/]">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour"/>
-                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Variable Usage" inputLabelExpression="aql:self.namedReference__VariableUsage.referenceName">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.namedReference__VariableUsage = null/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.namedReference__VariableUsage">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="referenceName" valueExpression="var:0"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Edit VariableCharacterisation" mappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='ComponentParameterCompartment']/@subContainerMappings[name='ComponentParameter']/@subNodeMappings[name='Variable%20Characterisation']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.oclAsType(VariableCharacterisation).specification_VariableCharacterisation = null/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Variable Characterisation Action" id="VariableCharacterisationNameAction">
+                  <parameters name="element" value="var:element"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -528,7 +580,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="CollectionDataType" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:dataTypes__Repository" domainClass="repository.CollectionDataType" childrenPresentation="List">
+        <containerMappings name="CollectionDataType" deletionDescription="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@toolSections.0/@ownedTools[name='Delete%20CollectionDataType']" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:dataTypes__Repository" domainClass="repository.CollectionDataType" childrenPresentation="List">
           <subNodeMappings name="PrimitiveDataType" deletionDescription="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@toolSections.0/@ownedTools[name='Delete%20Inner%20Type']" semanticCandidatesExpression="feature:innerType_CollectionDataType" domainClass="repository.PrimitiveDataType">
             <style xsi:type="style:SquareDescription" labelExpression="aql:self.type.toString()" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -587,6 +639,12 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.CollectionDataType" referenceName="dataTypes__Repository">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['CollectionDataType' + container.eAllContents()->selectByType(CollectionDataType)->size()/]"/>
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add CollectionDataType" id="AddCollectionDataType">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.innerType_CollectionDataType = null/]">
+                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    </subModelOperations>
+                    <parameters name="instance" value="var:instance"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -645,6 +703,19 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="DeleteInnerType" id="DeleteInnerType">
                 <parameters name="containerView" value="var:containerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete CollectionDataType">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Delete CollectionDataType" id="DeleteInnerType">
+                  <parameters name="elementView" value="var:elementView"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:RemoveElement"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
