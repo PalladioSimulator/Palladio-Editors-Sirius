@@ -8,11 +8,11 @@ import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
 import org.modelversioning.emfprofile.Stereotype;
+import org.palladiosimulator.architecturaltemplates.api.ArchitecturalTemplateAPI;
+import org.palladiosimulator.architecturaltemplates.AT;
+import org.palladiosimulator.architecturaltemplates.ui.dialogs.ArchitecturalTemplateSelectionDialog;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
 import org.palladiosimulator.pcm.system.System;
-import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
-import org.scaledl.architecturaltemplates.type.AT;
-import org.scaledl.architecturaltemplates.ui.dialogs.ArchitecturalTemplateSelectionDialog;
 
 /**
  * A Sirius action that is used to add an ArchitecturalTemplate Role to the {@link System} it is

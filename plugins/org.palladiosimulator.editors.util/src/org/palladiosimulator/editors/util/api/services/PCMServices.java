@@ -20,13 +20,13 @@ import org.modelversioning.emfprofile.Profile;
 import org.modelversioning.emfprofile.Stereotype;
 import org.modelversioning.emfprofileapplication.ProfileImport;
 import org.modelversioning.emfprofileapplication.StereotypeApplication;
+import org.palladiosimulator.architecturaltemplates.api.ArchitecturalTemplateAPI;
+import org.palladiosimulator.architecturaltemplates.Role;
 import org.palladiosimulator.editors.util.Activator;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.palladiosimulator.pcm.core.PCMRandomVariable;
 import org.palladiosimulator.pcm.stochasticexpressions.parser.MyPCMStoExLexer;
 import org.palladiosimulator.pcm.stochasticexpressions.parser.MyPCMStoExParser;
-import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
-import org.scaledl.architecturaltemplates.type.Role;
 
 public class PCMServices {
 

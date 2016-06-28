@@ -9,13 +9,13 @@ import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
 import org.modelversioning.emfprofile.Stereotype;
+import org.palladiosimulator.architecturaltemplates.api.ArchitecturalTemplateAPI;
+import org.palladiosimulator.architecturaltemplates.Role;
+import org.palladiosimulator.architecturaltemplates.ui.dialogs.RoleStereotypeSelectionDialog;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
 import org.palladiosimulator.pcm.system.System;
-import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
-import org.scaledl.architecturaltemplates.type.Role;
-import org.scaledl.architecturaltemplates.ui.dialogs.RoleStereotypeSelectionDialog;
 
 /**
  * This class applies an ArchitecturalTemplate to a {@link System}. It will ask the user to select

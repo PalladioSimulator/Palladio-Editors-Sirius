@@ -7,9 +7,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.modelversioning.emfprofileapplication.ProfileImport;
 import org.modelversioning.emfprofileapplication.StereotypeApplication;
+import org.palladiosimulator.architecturaltemplates.api.ArchitecturalTemplateAPI;
 import org.palladiosimulator.mdsdprofiles.api.ProfileAPI;
 import org.palladiosimulator.pcm.system.System;
-import org.scaledl.architecturaltemplates.api.ArchitecturalTemplateAPI;
 
 /**
  * A Sirius action that is used to remove an ArchitecturalTemplate Role from a {@link System}.
