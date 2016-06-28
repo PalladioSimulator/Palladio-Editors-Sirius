@@ -19,3 +19,4 @@ Import-Package: de.uka.ipd.sdq.stoex,
  org.palladiosimulator.pcm.seff,
  org.palladiosimulator.pcm.seff.seff_performance,
  org.palladiosimulator.pcm.seff.seff_reliability
+Bundle-Vendor: palladiosimulator.org

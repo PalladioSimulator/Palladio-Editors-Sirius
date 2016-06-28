@@ -12,3 +12,4 @@ Require-Bundle: org.eclipse.ui,
  org.palladiosimulator.pcm;bundle-version="4.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: palladiosimulator.org

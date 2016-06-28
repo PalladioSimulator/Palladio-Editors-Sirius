@@ -17,3 +17,4 @@ Require-Bundle: org.eclipse.ui,
  org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension;bundle-version="0.9.1"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Vendor: palladiosimulator.org
