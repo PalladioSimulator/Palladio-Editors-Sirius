@@ -4,5 +4,6 @@
     <cq:advisorNode namePattern="^org\.palladiosimulator\.branding$" sourceLevel="REQUIRE" useWorkspace="false"/>
     <cq:advisorNode namePattern="^org\.palladiosimulator\.editors.*" sourceLevel="REQUIRE" useWorkspace="false"/>
     <cq:advisorNode namePattern="^org\.palladiosimulator\.pcm.*" sourceLevel="REQUIRE" useWorkspace="false"/>
+    <cq:advisorNode namePattern="^org\.palladiosimulator\.architecturaltemplates.*" sourceLevel="REQUIRE" useWorkspace="false"/>
     <cq:advisorNode namePattern=".*" sourceLevel="REJECT"/>
 </cq:componentQuery>
