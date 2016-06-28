@@ -5,7 +5,7 @@
 
   <rm:locator pattern="^org\.palladiosimulator\.editors.*" searchPathRef="Editors-Features" failOnError="false"/>
   <rm:locator pattern="^org\.palladiosimulator\.editors.*" searchPathRef="Editors" failOnError="true"/>
-  <rm:locator pattern="^org\.palladiosimulator\.pcm.*" searchPathRef="editors" failOnError="false"/>
+  <rm:locator pattern="^org\.palladiosimulator\.pcm.*" searchPathRef="Editors" failOnError="false"/>
   <rm:locator pattern="^org\.palladiosimulator\.architecturaltemplates.*" searchPathRef="ArchitecturalTemplates" failOnError="true"/>
 
   <rm:redirect pattern=".*"
