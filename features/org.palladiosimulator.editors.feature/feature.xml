@@ -46,7 +46,7 @@
    </requires>
 
    <plugin
-         id="org.palladiosimulator.editors.composedprovidingrequiringentity.design"
+         id="org.palladiosimulator.editors.composedprovidingrequiringentity"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -74,7 +74,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.palladiosimulator.editors.resourceenvironment.design"
+         id="org.palladiosimulator.editors.resourceenvironment"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -124,5 +124,12 @@
          download-size="0"
          install-size="0"
          version="0.0.0"/>
+
+   <plugin
+         id="org.palladiosimulator.editors.allocation"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>
