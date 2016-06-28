@@ -4,15 +4,43 @@
    <extension
          point="org.eclipse.sirius.externalJavaAction">
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.repository.externaljavaactions.DeleteType"
-            id="DeleteType">
+            actionClass="org.palladiosimulator.editors.repository.externaljavaactions.DeleteConformsProvidedRelation"
+            id="DeleteConformsProvidedRelation">
       </javaActions>
    </extension>
    <extension
          point="org.eclipse.sirius.externalJavaAction">
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.repository.externaljavaactions.DeleteInnerDeclaration"
+            actionClass="org.palladiosimulator.editors.repository.externaljavaactions.DeleteInnerDeclaration"
             id="DeleteInnerDeclaration">
+      </javaActions>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.palladiosimulator.editors.repository.externaljavaactions.DeleteInnerType"
+            id="DeleteInnerType">
+      </javaActions>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.palladiosimulator.editors.repository.externaljavaactions.DeleteConformsCompleteRelation"
+            id="DeleteConformsCompleteRelation">
+      </javaActions>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.palladiosimulator.editors.repository.externaljavaactions.AddSEFF"
+            id="AddSEFF">
+      </javaActions>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.palladiosimulator.editors.repository.externaljavaactions.AddCollectionDataType"
+            id="AddCollectionDataType">
       </javaActions>
    </extension>
 

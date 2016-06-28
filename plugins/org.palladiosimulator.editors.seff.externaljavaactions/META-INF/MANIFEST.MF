@@ -1,18 +1,20 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: externaljavaactions
+Bundle-Name: SEFF diagram editor external java actions
 Bundle-SymbolicName: org.palladiosimulator.editors.seff.externaljavaactions;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.0
 Bundle-Activator: org.palladiosimulator.editors.seff.externaljavaactions.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.sirius
+ org.eclipse.sirius,
+ org.eclipse.sirius.diagram;bundle-version="3.1.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: de.uka.ipd.sdq.stoex,
- org.eclipse.sirius.diagram;version="3.1.0",
  org.eclipse.sirius.diagram.business.internal.metamodel.spec,
  org.eclipse.sirius.diagram.impl;version="3.1.0",
+ org.palladiosimulator.editors.externaljavaactions,
+ org.palladiosimulator.editors.ui.dialog,
  org.palladiosimulator.pcm.core.entity,
  org.palladiosimulator.pcm.seff,
  org.palladiosimulator.pcm.seff.seff_performance,

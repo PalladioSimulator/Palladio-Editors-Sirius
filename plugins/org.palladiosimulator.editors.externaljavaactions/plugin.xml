@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.palladiosimulator.editors.externaljavaactions.SetNamedReference"
+            id="SetNamedReference">
+      </javaActions>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.palladiosimulator.editors.externaljavaactions.VariableCharacterisationNameAction"
+            id="VariableCharacterisationNameAction">
+      </javaActions>
+   </extension>
+
+</plugin>

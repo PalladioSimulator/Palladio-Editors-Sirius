@@ -7,6 +7,7 @@
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//system"/>
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//allocation"/>
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//parameter"/>
+      <metamodel href="http://sdq.ipd.uka.de/StochasticExpressions/2.2#/"/>
       <defaultLayer name="Default">
         <nodeMappings name="userData" semanticCandidatesExpression="[self.userData_UsageModel/]" domainClass="usagemodel.UserData">
           <style xsi:type="style:NoteDescription" labelExpression="[self/]" labelPosition="node" resizeKind="NSEW">
@@ -94,7 +95,7 @@
             </subContainerMappings>
             <subContainerMappings name="entryLevelSystemCall" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" domainClass="usagemodel.EntryLevelSystemCall">
               <subContainerMappings name="variableUsage" semanticCandidatesExpression="feature:inputParameterUsages_EntryLevelSystemCall" domainClass="parameter.VariableUsage" childrenPresentation="List">
-                <subNodeMappings name="variableCharacterisation" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" doubleClickDescription="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='variableCharacterisationEditDialog']" domainClass="parameter.VariableCharacterisation">
+                <subNodeMappings name="variableCharacterisation" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" doubleClickDescription="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20VariableCharacterisation']" domainClass="parameter.VariableCharacterisation">
                   <style xsi:type="style:SquareDescription" labelExpression="aql:self.type + ' = ' + self.specification_VariableCharacterisation.specification" labelPosition="node" resizeKind="NSEW">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -241,14 +242,17 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Loop" referenceName="actions_ScenarioBehaviour">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]"/>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="loopIteration_Loop">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="specification" valueExpression="['1'/]"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.ScenarioBehaviour" referenceName="bodyBehaviour_Loop">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Start" referenceName="actions_ScenarioBehaviour"/>
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Stop" referenceName="actions_ScenarioBehaviour"/>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Start" referenceName="actions_ScenarioBehaviour" variableName="start"/>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Stop" referenceName="actions_ScenarioBehaviour" variableName="stop"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:start">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="successor" valueExpression="var:stop"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:stop">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor" valueExpression="var:start"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -276,14 +280,18 @@
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="delayTimeDialog" id="DelayTimeAction"/>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="delayTimeDialog" id="DelayTimeAction">
+                <parameters name="element" value="var:element"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DoubleClickDescription" name="doubleClickLoopIterationsDialog" mappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='loop']/@subContainerMappings[name='loopIterations']/@subNodeMappings[name='iterationsNode']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="loopIterationsAction" id="LoopIterationsAction"/>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="loopIterationsAction" id="LoopIterationsAction">
+                <parameters name="element" value="var:element"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
@@ -293,7 +301,13 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableUsage" referenceName="inputParameterUsages_EntryLevelSystemCall"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableUsage" referenceName="inputParameterUsages_EntryLevelSystemCall">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stoex.VariableReference" referenceName="namedReference__VariableUsage">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="referenceName" valueExpression="['VariableUsage' + container.inputParameterUsages_EntryLevelSystemCall->size()/]"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -316,7 +330,16 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.ScenarioBehaviour" referenceName="scenarioBehaviour_UsageScenario"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.ScenarioBehaviour" referenceName="scenarioBehaviour_UsageScenario">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Start" referenceName="actions_ScenarioBehaviour" variableName="start"/>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Stop" referenceName="actions_ScenarioBehaviour" variableName="stop"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:start">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="successor" valueExpression="var:stop"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:stop">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor" valueExpression="var:start"/>
+                  </subModelOperations>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -326,12 +349,14 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.BranchTransition" referenceName="branchTransitions_Branch">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.ScenarioBehaviour" referenceName="branchedBehaviour_BranchTransition">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Start" referenceName="actions_ScenarioBehaviour"/>
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Stop" referenceName="actions_ScenarioBehaviour"/>
-                      </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.ScenarioBehaviour" referenceName="branchedBehaviour_BranchTransition">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Start" referenceName="actions_ScenarioBehaviour" variableName="start"/>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Stop" referenceName="actions_ScenarioBehaviour" variableName="stop"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:start">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="successor" valueExpression="var:stop"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:stop">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor" valueExpression="var:start"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -346,12 +371,12 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="variableCharacterisationEditDialog" mappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall']/@subContainerMappings[name='variableUsage']/@subNodeMappings[name='variableCharacterisation']">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Edit VariableCharacterisation" mappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall']/@subContainerMappings[name='variableUsage']/@subNodeMappings[name='variableCharacterisation']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="varCharNameDialog" id="VariableCharacterisationNameAction">
-                <parameters name="elementView" value="[elementView/]"/>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Variable Characterisation Action" id="VariableCharacterisationNameAction">
+                <parameters name="element" value="var:element"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -414,14 +439,18 @@
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="thinkTimeDialog" id="ClosedWorkloadThinkTimeAction"/>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="thinkTimeDialog" id="ClosedWorkloadThinkTimeAction">
+                <parameters name="element" value="var:element"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DoubleClickDescription" name="openWorkloadInterArrivalTimeDialog" mappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='openWorkload']/@subNodeMappings[name='interArrivalTime']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="interArrivalTimeDialog" id="OpenWorkloadInterArrivalTimeAction"/>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="interArrivalTimeDialog" id="OpenWorkloadInterArrivalTimeAction">
+                <parameters name="element" value="var:element"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>

@@ -11,13 +11,6 @@
    <extension
          point="org.eclipse.sirius.externalJavaAction">
       <javaActions
-            actionClass="org.palladiosimulator.editors.usage.externaljavaactions.VariableCharacterisationNameAction"
-            id="VariableCharacterisationNameAction">
-      </javaActions>
-   </extension>
-   <extension
-         point="org.eclipse.sirius.externalJavaAction">
-      <javaActions
             actionClass="org.palladiosimulator.editors.usage.externaljavaactions.DelayTimeAction"
             id="DelayTimeAction">
       </javaActions>

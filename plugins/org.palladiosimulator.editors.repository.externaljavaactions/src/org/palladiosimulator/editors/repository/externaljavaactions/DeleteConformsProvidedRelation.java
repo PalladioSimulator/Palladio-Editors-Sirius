@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.seff.externaljavaactions;
+package org.palladiosimulator.editors.repository.externaljavaactions;
 
 import java.util.Collection;
 import java.util.Map;
@@ -9,25 +9,27 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
-import org.palladiosimulator.pcm.seff.seff_reliability.RecoveryActionBehaviour;
+import org.palladiosimulator.pcm.repository.CompleteComponentType;
+import org.palladiosimulator.pcm.repository.ProvidesComponentType;
 
-public class DeleteRecoveryFlow implements IExternalJavaAction {
 
+public class DeleteConformsProvidedRelation implements IExternalJavaAction {
 
-	@Override
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
+		
 		for (Entry<String, Object> entry : parameters.entrySet()) {
 			DEdge value = (DEdge) entry.getValue();
 
-			RecoveryActionBehaviour source = (RecoveryActionBehaviour) value.getTarget();
+			EObject source = value.getTarget();
+			CompleteComponentType cc = (CompleteComponentType) source;
 			
 			EdgeTarget targetNode = value.getTargetNode(); 
-			RecoveryActionBehaviour target = (RecoveryActionBehaviour) (((DDiagramElement) targetNode).getTarget());
-
-			source.getFailureHandlingAlternatives__RecoveryActionBehaviour().remove(target);
+			ProvidesComponentType pc = (ProvidesComponentType) (((DDiagramElement) targetNode).getTarget());
+			
+			
+			cc.getParentProvidesComponentTypes().remove(pc);
 			
 		}
-
 	}
 
 	@Override

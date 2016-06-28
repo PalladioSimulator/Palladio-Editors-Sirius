@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.palladiosimulator.editors.sirius.seff.design
+Bundle-Name: SEFF diagram editor description
 Bundle-SymbolicName: org.palladiosimulator.editors.seff;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-Activator: org.palladiosimulator.editors.seff.Activator
