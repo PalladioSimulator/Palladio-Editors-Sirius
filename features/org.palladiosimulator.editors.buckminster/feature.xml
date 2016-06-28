@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.palladiosimulator.editors.buckminster"
+      label="Palladio Component Model - Editors - Buckminster Feature"
+      version="1.0.0"
+      plugin="org.palladiosimulator.branding"
+      license-feature="org.palladiosimulator.license"
+      license-feature-version="1.0.0">
+
+   <description url="https://palladiosimulator.org">
+      This feature contains the buckminster build structure for the
+PCM Editors build.
+   </description>
+
+   <includes
+         id="org.palladiosimulator.editors.tree.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.palladiosimulator.editors.feature"
+         version="0.0.0"/>
+
+   <requires>
+      <import plugin="org.junit"/>
+   </requires>
+
+   <plugin
+         id="org.palladiosimulator.editors.tests"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.palladiosimulator.branding"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
