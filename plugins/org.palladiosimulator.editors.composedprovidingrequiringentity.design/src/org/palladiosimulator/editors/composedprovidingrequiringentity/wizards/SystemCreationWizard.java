@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.composedprovidingrequiringentity.design.wizards;
+package org.palladiosimulator.editors.composedprovidingrequiringentity.wizards;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
@@ -45,8 +45,8 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
-import org.palladiosimulator.editors.composedprovidingrequiringentity.design.Activator;
-import org.palladiosimulator.editors.composedprovidingrequiringentity.design.commands.CreateSystemModelCommand;
+import org.palladiosimulator.editors.composedprovidingrequiringentity.Activator;
+import org.palladiosimulator.editors.composedprovidingrequiringentity.commands.CreateSystemModelCommand;
 import org.palladiosimulator.pcm.system.System;
 
 /**

@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.palladiosimulator.editors.allocation.design
-Bundle-SymbolicName: org.palladiosimulator.editors.allocation.design;singleton:=true
+Bundle-SymbolicName: org.palladiosimulator.editors.allocation;singleton:=true
 Bundle-Version: 1.0.0
-Bundle-Activator: org.palladiosimulator.editors.allocation.design.Activator
+Bundle-Activator: org.palladiosimulator.editors.allocation.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,

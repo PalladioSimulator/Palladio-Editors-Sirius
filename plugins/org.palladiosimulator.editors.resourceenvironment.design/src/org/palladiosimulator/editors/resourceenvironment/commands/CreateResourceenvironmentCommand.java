@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.resourceenvironment.design.commands;
+package org.palladiosimulator.editors.resourceenvironment.commands;
 
 import java.io.IOException;
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.allocation.design.wizards;
+package org.palladiosimulator.editors.allocation.wizards;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
@@ -45,8 +45,8 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
-import org.palladiosimulator.editors.allocation.design.Activator;
-import org.palladiosimulator.editors.allocation.design.commands.CreateAllocationCommand;
+import org.palladiosimulator.editors.allocation.Activator;
+import org.palladiosimulator.editors.allocation.commands.CreateAllocationCommand;
 import org.palladiosimulator.pcm.allocation.Allocation;
 
 

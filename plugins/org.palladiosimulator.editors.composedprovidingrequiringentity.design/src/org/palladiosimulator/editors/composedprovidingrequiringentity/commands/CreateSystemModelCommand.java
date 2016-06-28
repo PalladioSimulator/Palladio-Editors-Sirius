@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.composedprovidingrequiringentity.design.commands;
+package org.palladiosimulator.editors.composedprovidingrequiringentity.commands;
 
 import java.io.IOException;
 import java.util.Collections;

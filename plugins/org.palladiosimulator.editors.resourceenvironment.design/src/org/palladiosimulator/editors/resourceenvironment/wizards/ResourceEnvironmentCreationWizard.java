@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.resourceenvironment.design.wizards;
+package org.palladiosimulator.editors.resourceenvironment.wizards;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
@@ -45,8 +45,8 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
-import org.palladiosimulator.editors.resourceenvironment.design.Activator;
-import org.palladiosimulator.editors.resourceenvironment.design.commands.CreateResourceenvironmentCommand;
+import org.palladiosimulator.editors.resourceenvironment.Activator;
+import org.palladiosimulator.editors.resourceenvironment.commands.CreateResourceenvironmentCommand;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
 
 /**

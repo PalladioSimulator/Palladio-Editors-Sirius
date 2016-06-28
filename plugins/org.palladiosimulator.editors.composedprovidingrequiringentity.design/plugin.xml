@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
-    <component class="org.palladiosimulator.editors.composedprovidingrequiringentity.design.Activator"
+    <component class="org.palladiosimulator.editors.composedprovidingrequiringentity.Activator"
                id="org.palladiosimulator.editors.composedprovidingrequiringentity.design"
 	       name="My">
     </component>
@@ -77,7 +77,7 @@
         point="org.eclipse.ui.newWizards">
      <wizard
            category="org.palladiosimulator.pcmbench.palladio_modeling_category"
-           class="org.palladiosimulator.editors.composedprovidingrequiringentity.design.wizards.SystemCreationWizard"
+           class="org.palladiosimulator.editors.composedprovidingrequiringentity.wizards.SystemCreationWizard"
            icon="icons/obj16/System.gif"
            id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.systemCreationWizard"
            name="System Model and Diagram">

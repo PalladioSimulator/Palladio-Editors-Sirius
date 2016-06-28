@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.allocation.design.commands;
+package org.palladiosimulator.editors.allocation.commands;
 
 import java.io.IOException;
 import java.util.Collections;

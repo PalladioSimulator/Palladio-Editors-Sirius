@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.composedprovidingrequiringentity.design;
+package org.palladiosimulator.editors.composedprovidingrequiringentity;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,7 +14,7 @@ import org.osgi.framework.BundleContext;
  */
 public class Activator extends AbstractUIPlugin {
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.palladiosimulator.editors.composedprovidingrequiringentity.design";
+	public static final String PLUGIN_ID = "org.palladiosimulator.editors.composedprovidingrequiringentity";
 
 	// The shared instance
 	private static Activator plugin;
