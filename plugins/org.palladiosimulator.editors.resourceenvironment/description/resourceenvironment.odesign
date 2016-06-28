@@ -289,7 +289,7 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Removal" forceRefresh="true" id="RemoveAT"/>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Removal" forceRefresh="true" id="RemoveATRole"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="AT SystemRole Removal" label="Remove Architectural Template">
@@ -297,7 +297,7 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role" forceRefresh="true" id="RemoveATRole"/>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role" forceRefresh="true" id="RemoveAT"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
