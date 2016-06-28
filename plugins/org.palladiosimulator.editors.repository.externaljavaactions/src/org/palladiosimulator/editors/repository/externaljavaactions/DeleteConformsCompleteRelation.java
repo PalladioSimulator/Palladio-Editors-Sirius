@@ -11,31 +11,29 @@ import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.repository.CompleteComponentType;
-import org.palladiosimulator.pcm.repository.ProvidesComponentType;
-
 
 public class DeleteConformsCompleteRelation implements IExternalJavaAction {
 
-	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
-		
-		for (Entry<String, Object> entry : parameters.entrySet()) {
-			DEdge value = (DEdge) entry.getValue();
+    @Override
+    public void execute(final Collection<? extends EObject> selections, final Map<String, Object> parameters) {
 
-			EObject source = value.getTarget();
-			BasicComponent bc = (BasicComponent) source;
-			
-			EdgeTarget targetNode = value.getTargetNode(); 
-			CompleteComponentType cc = (CompleteComponentType) (((DDiagramElement) targetNode).getTarget());
-			
-			
-			bc.getParentCompleteComponentTypes().remove(cc);
-			
-		}
-	}
+        for (final Entry<String, Object> entry : parameters.entrySet()) {
+            final DEdge value = (DEdge) entry.getValue();
 
-	@Override
-	public boolean canExecute(Collection<? extends EObject> selections) {
-		return true;
-	}
+            final EObject source = value.getTarget();
+            final BasicComponent bc = (BasicComponent) source;
+
+            final EdgeTarget targetNode = value.getTargetNode();
+            final CompleteComponentType cc = (CompleteComponentType) (((DDiagramElement) targetNode).getTarget());
+
+            bc.getParentCompleteComponentTypes().remove(cc);
+
+        }
+    }
+
+    @Override
+    public boolean canExecute(final Collection<? extends EObject> selections) {
+        return true;
+    }
 
 }

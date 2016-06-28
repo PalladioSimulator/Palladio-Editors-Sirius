@@ -4,14 +4,43 @@
    <extension
          point="org.eclipse.sirius.externalJavaAction">
       <javaActions
-            actionClass="org.palladiosimulator.editors.externaljavaactions.SetNamedReference"
+            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.AddATAction"
+            id="AddAT">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.AddATRoleAction"
+            id="AddATRole">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.ApplyUnapplyProfileAction"
+            id="ApplyUnapplyProfile">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.ApplyUnapplyStereotypeAction"
+            id="ApplyUnapplyStereotype">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.LoadResourceAction"
+            id="LoadResource">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.OpenStoExDialog"
+            id="OpenStoExDialog">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.RemoveATAction"
+            id="RemoveAT">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.RemoveATRoleAction"
+            id="RemoveATRole">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.SetNamedReference"
             id="SetNamedReference">
       </javaActions>
-   </extension>
-   <extension
-         point="org.eclipse.sirius.externalJavaAction">
       <javaActions
-            actionClass="org.palladiosimulator.editors.externaljavaactions.VariableCharacterisationNameAction"
+            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.VariableCharacterisationNameAction"
             id="VariableCharacterisationNameAction">
       </javaActions>
    </extension>

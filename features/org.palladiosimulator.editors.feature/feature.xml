@@ -120,13 +120,34 @@
          unpack="false"/>
 
    <plugin
-         id="org.palladiosimulator.editors.externaljavaactions"
+         id="org.palladiosimulator.editors.commons"
          download-size="0"
          install-size="0"
          version="0.0.0"/>
 
    <plugin
          id="org.palladiosimulator.editors.allocation"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.palladiosimulator.editors.resourceenvironment.externaljavaactions"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.palladiosimulator.editors.allocation.externaljavaactions"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.palladiosimulator.editors.composedprovidingrequiringentity.externaljavaactions"
          download-size="0"
          install-size="0"
          version="0.0.0"

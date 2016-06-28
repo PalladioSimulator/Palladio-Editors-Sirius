@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.palladiosimulator.editors.allocation.externaljavaactions.AddAllocationContext"
+            id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.AllocationContext">
+      </javaActions>
+   </extension>
+
+</plugin>

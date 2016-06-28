@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Palladio ComposedProvidingRequiringEntity Editor
+Bundle-Name: Composed Providing Requiring Entity editor
 Bundle-SymbolicName: org.palladiosimulator.editors.composedprovidingrequiringentity;singleton:=true
 Bundle-Version: 0.9.1.qualifier
 Bundle-Activator: org.palladiosimulator.editors.composedprovidingrequiringentity.Activator

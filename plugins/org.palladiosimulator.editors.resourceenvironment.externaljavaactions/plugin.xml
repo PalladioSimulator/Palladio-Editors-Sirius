@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.palladiosimulator.editors.resourceenvironment.externaljavaactions.AddProcessingResourceSpecification"
+            id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.ProcessingResourceSpecification">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.resourceenvironment.externaljavaactions.RemoveConnectorAction"
+            id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.RemoveConnector">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.resourceenvironment.externaljavaactions.AddLinkingResourceAction"
+            id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.addLinkingResource">
+      </javaActions>
+   </extension>
+</plugin>

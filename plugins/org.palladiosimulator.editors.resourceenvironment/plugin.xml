@@ -17,4 +17,13 @@
            name="Resource Environment Model and Diagram">
      </wizard>
   </extension>
+  <extension
+         point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
+      <editpolicyProvider
+            class="org.palladiosimulator.editors.resourceenvironment.externaljavaactions.LinkingResourceEditPolicyProvider">
+         <Priority
+               name="Highest">
+         </Priority>
+      </editpolicyProvider>
+   </extension>
 </plugin>

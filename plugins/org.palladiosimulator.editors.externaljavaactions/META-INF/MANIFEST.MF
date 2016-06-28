@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: External Java Actions
-Bundle-SymbolicName: org.palladiosimulator.editors.externaljavaactions;singleton:=true
+Bundle-Name: PCM Sirius editors: commons
+Bundle-SymbolicName: org.palladiosimulator.editors.commons;singleton:=true
 Bundle-Version: 1.0.0
-Bundle-Activator: org.palladiosimulator.editors.externaljavaactions.Activator
+Bundle-Activator: org.palladiosimulator.editors.commons.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.sirius,
@@ -13,8 +13,19 @@ Require-Bundle: org.eclipse.ui,
  org.palladiosimulator.editors.dialogs,
  de.uka.ipd.sdq.stoex.analyser,
  de.uka.ipd.sdq.pcm.stochasticexpressions,
- org.palladiosimulator.pcm
+ org.palladiosimulator.pcm,
+ org.modelversioning.emfprofile.edit;bundle-version="1.0.0",
+ org.palladiosimulator.architecturaltemplates.api;bundle-version="1.0.0",
+ org.palladiosimulator.architecturaltemplates;bundle-version="1.0.1",
+ org.palladiosimulator.architecturaltemplates.ui;bundle-version="1.0.0",
+ org.palladiosimulator.mdsdprofiles.api;bundle-version="1.0.0",
+ org.eclipse.emf.edit.ui;bundle-version="2.12.0",
+ org.eclipse.emf.transaction;bundle-version="1.9.0",
+ org.eclipse.gmf;bundle-version="1.10.0",
+ org.eclipse.gmf.runtime.common.core;bundle-version="1.7.0",
+ org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: org.palladiosimulator.editors.externaljavaactions
+Export-Package: org.palladiosimulator.editors.commons.editpolicyproviders,
+ org.palladiosimulator.editors.commons.externaljavaactions
 Bundle-Vendor: palladiosimulator.org

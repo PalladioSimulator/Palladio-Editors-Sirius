@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Usage diagram editor description
+Bundle-Name: Usage Model editor
 Bundle-SymbolicName: org.palladiosimulator.editors.usage;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-Activator: org.palladiosimulator.editors.usage.Activator

@@ -7,30 +7,18 @@
             actionClass="org.palladiosimulator.editors.usage.externaljavaactions.ClosedWorkloadThinkTimeAction"
             id="ClosedWorkloadThinkTimeAction">
       </javaActions>
-   </extension>
-   <extension
-         point="org.eclipse.sirius.externalJavaAction">
       <javaActions
             actionClass="org.palladiosimulator.editors.usage.externaljavaactions.DelayTimeAction"
             id="DelayTimeAction">
       </javaActions>
-   </extension>
-   <extension
-         point="org.eclipse.sirius.externalJavaAction">
       <javaActions
             actionClass="org.palladiosimulator.editors.usage.externaljavaactions.OpenWorkloadInterArrivalTimeAction"
             id="OpenWorkloadInterArrivalTimeAction">
       </javaActions>
-   </extension>
-   <extension
-         point="org.eclipse.sirius.externalJavaAction">
       <javaActions
             actionClass="org.palladiosimulator.editors.usage.externaljavaactions.LoopIterationsAction"
             id="LoopIterationsAction">
       </javaActions>
-   </extension>
-   <extension
-         point="org.eclipse.sirius.externalJavaAction">
       <javaActions
             actionClass="org.palladiosimulator.editors.usage.externaljavaactions.EntryLevelSystemCallCreationDialog"
             id="EntryLevelSystemCallCreationDialog">

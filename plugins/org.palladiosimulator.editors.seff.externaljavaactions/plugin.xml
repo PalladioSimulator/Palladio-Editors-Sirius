@@ -4,29 +4,20 @@
    <extension
          point="org.eclipse.sirius.externalJavaAction">
       <javaActions
-            actionClass="org.palladiosimulator.editors.seff.externaljavaactions.DeleteRecoveryFlow"
-            id="DeleteRecoveryFlow">
-      </javaActions>
-   </extension>
-   <extension
-         point="org.eclipse.sirius.externalJavaAction">
-      <javaActions
             actionClass="org.palladiosimulator.editors.seff.externaljavaactions.LoopIterationCountDialog"
             id="LoopIterationCountDialog">
       </javaActions>
-   </extension>
-   <extension
-         point="org.eclipse.sirius.externalJavaAction">
       <javaActions
             actionClass="org.palladiosimulator.editors.seff.externaljavaactions.ResourceDemandOpenStoexDialog"
             id="ResourceDemandOpenStoexDialog">
       </javaActions>
-   </extension>
-   <extension
-         point="org.eclipse.sirius.externalJavaAction">
       <javaActions
             actionClass="org.palladiosimulator.editors.seff.externaljavaactions.GuardedBranchTransistionConditionDialog"
             id="GuardedBranchTransistionConditionDialog">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.seff.externaljavaactions.DeleteRecoveryFlow"
+            id="DeleteRecoveryFlow">
       </javaActions>
    </extension>
 

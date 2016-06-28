@@ -3,7 +3,7 @@ package org.palladiosimulator.editors.usage.externaljavaactions;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
-import org.palladiosimulator.editors.externaljavaactions.OpenStoExDialog;
+import org.palladiosimulator.editors.commons.externaljavaactions.OpenStoExDialog;
 import org.palladiosimulator.pcm.core.PCMRandomVariable;
 import org.palladiosimulator.pcm.usagemodel.ClosedWorkload;
 
