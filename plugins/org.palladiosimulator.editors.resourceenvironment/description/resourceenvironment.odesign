@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="resourceenvironment" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="resourceenvironment" version="11.0.0.201601261200">
   <ownedViewpoints name="Resource Environment Design" label="Resource Environment" modelFileExtension="resourceenvironment">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Resourceenvironment Diagram" domainClass="resourceenvironment.ResourceEnvironment">
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//resourceenvironment"/>
@@ -175,7 +175,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.ProcessingResourceSpecification" referenceName="activeResourceSpecifications_ResourceContainer">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newProcessingResourceSpecification"/>
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SW ResourceType" label="Selection Wizard Resource Type" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.ProcessingResourceSpecification">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SW ResourceType" label="Selection Wizard Resource Type" id="AddProcessingResourceSpecification">
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.schedulingPolicy=null or self.processingRate_ProcessingResourceSpecification=null or self.activeResourceType_ActiveResourceSpecification=null/]">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
@@ -237,7 +237,7 @@
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newLinkingResource"/>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.CommunicationLinkResourceSpecification" referenceName="communicationLinkResourceSpecifications_LinkingResource">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newCommunicationLinkingResource"/>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AddLinkingResourceAction" label="Add Linking Resource" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.addLinkingResource">
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AddLinkingResourceAction" label="Add Linking Resource" id="AddLinkingResource">
                       <parameters name="newCommunicationLinkResourceSpecification" value="[instance/]"/>
                     </subModelOperations>
                   </subModelOperations>
@@ -261,7 +261,7 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="RemoveConnector Action" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.RemoveConnector">
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="RemoveConnector Action" id="RemoveConnector">
                 <parameters name="elementView" value="var:elementView"/>
               </firstModelOperations>
             </initialOperation>
@@ -273,7 +273,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT SystemRole Creation" label="Add Architectural Template" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.addAT"/>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT SystemRole Creation" label="Add Architectural Template" id="AddAT"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -281,7 +281,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Creation" label="Add Role" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.addATRole"/>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Creation" label="Add Role" id="AddATRole"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="AT Role Removal" label="Remove Role">
@@ -289,7 +289,7 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Removal" forceRefresh="true" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.removeATRole"/>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Removal" forceRefresh="true" id="RemoveAT"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="AT SystemRole Removal" label="Remove Architectural Template">
@@ -297,13 +297,13 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role" forceRefresh="true" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.removeAT"/>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role" forceRefresh="true" id="RemoveATRole"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Stereotypes">
-          <ownedTools xsi:type="tool_1:ExternalJavaAction" name="Apply Unapply Profile" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.applyUnapplyProfile"/>
-          <ownedTools xsi:type="tool_1:ExternalJavaAction" name="Apply Unapply Stereotype" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.applyUnapplyStereotype"/>
+          <ownedTools xsi:type="tool_1:ExternalJavaAction" name="Apply Unapply Profile" id="ApplyUnapplyProfile"/>
+          <ownedTools xsi:type="tool_1:ExternalJavaAction" name="Apply Unapply Stereotype" id="ApplyUnapplyStereotype"/>
           <ownedTools xsi:type="tool_1:PopupMenu">
             <menuItemDescription xsi:type="tool_1:ExternalJavaActionCall" name="Apply Unapply Profile" forceRefresh="true" action="//@ownedViewpoints[name='Resource%20Environment%20Design']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Apply%20Unapply%20Profile']"/>
             <menuItemDescription xsi:type="tool_1:ExternalJavaActionCall" name="Apply Unapply Stereotype" forceRefresh="true" action="//@ownedViewpoints[name='Resource%20Environment%20Design']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Apply%20Unapply%20Stereotype']"/>

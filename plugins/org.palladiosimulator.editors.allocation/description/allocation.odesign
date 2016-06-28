@@ -30,7 +30,7 @@
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="allocation.AllocationContext" referenceName="allocation_AllocationContext">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newAllocationContext"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="allocation_AllocationContext  &lt;--- TODOOOOOO System setzen" valueExpression="[self.eContainer().oclAsType(DNodeContainer).target.oclAsType(allocation::Allocation)/]  &lt;--- das klappt noch nicht"/>
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SW AllocationContext" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.AllocationContext">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SW AllocationContext" id="AddAllocationContext">
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.assemblyContext_AllocationContext=null and self.eventChannel__AllocationContext=null/]">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>

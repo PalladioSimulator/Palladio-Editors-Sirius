@@ -329,7 +329,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.AssemblyContext" referenceName="assemblyContexts__ComposedStructure">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newAssemblyContext"/>
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AC Selection Wizard" label="Selection Wizard Assembly Context" forceRefresh="true" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.AssemblyContext">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AC Selection Wizard" label="Selection Wizard Assembly Context" forceRefresh="true" id="AddAssemblyContext">
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.encapsulatedComponent__AssemblyContext=null/]">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
@@ -544,7 +544,7 @@
           <ownedTools xsi:type="tool_1:OperationAction" name="Load Resource">
             <view name="views"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Load Resource" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.loadResource">
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Load Resource" id="LoadResource">
                 <parameters name="self" value="[self/]"/>
               </firstModelOperations>
             </initialOperation>
@@ -618,7 +618,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT SystemRole Creation" label="Add Architectural Template" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.addAT"/>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT SystemRole Creation" label="Add Architectural Template" id="AddAT"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -626,7 +626,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Creation" label="Add Role" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.addATRole"/>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Creation" label="Add Role" id="AddATRole"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="AT Role Removal" label="Remove Role" forceRefresh="true">
@@ -634,7 +634,7 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Removal" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.removeATRole"/>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Removal" id="RemoveATRole"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="AT SystemRole Removal" label="Remove Architectural Template" forceRefresh="true">
@@ -642,13 +642,13 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.removeAT"/>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role" id="RemoveAT"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Stereotypes">
-          <ownedTools xsi:type="tool_1:ExternalJavaAction" name="Apply Unapply Profile" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.applyUnapplyProfile"/>
-          <ownedTools xsi:type="tool_1:ExternalJavaAction" name="Apply Unapply Stereotype" id="org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.applyUnapplyStereotype"/>
+          <ownedTools xsi:type="tool_1:ExternalJavaAction" name="Apply Unapply Profile" id="ApplyUnapplyProfile"/>
+          <ownedTools xsi:type="tool_1:ExternalJavaAction" name="Apply Unapply Stereotype" id="ApplyUnapplyStereotype"/>
           <ownedTools xsi:type="tool_1:PopupMenu" name="MDSD Profiles">
             <menuItemDescription xsi:type="tool_1:ExternalJavaActionCall" name="Apply Unapply Profile Call" action="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='Apply%20Unapply%20Profile']"/>
             <menuItemDescription xsi:type="tool_1:ExternalJavaActionCall" name="Apply Unapply Stereotype Call" action="//@ownedViewpoints[name='System%20Design']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='Apply%20Unapply%20Stereotype']"/>
