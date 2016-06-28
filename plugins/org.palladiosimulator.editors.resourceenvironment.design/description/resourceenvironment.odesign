@@ -6,7 +6,7 @@
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//resourcetype"/>
       <metamodel href="http://www.modelversioning.org/emfprofile/1.1#/"/>
       <metamodel href="http://www.modelversioning.org/emfprofile/application/1.1#/"/>
-      <metamodel href="http://palladiosimulator.org/ArchitecturalTemplates/Type/1.0#/"/>
+      <metamodel href="http://palladiosimulator.org/ArchitecturalTemplates/1.0#/"/>
       <defaultLayer name="Default">
         <edgeMappings name="Connector" deletionDescription="//@ownedViewpoints[name='Resource%20Environment%20Design']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Remove%20Connector']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Resource%20Environment%20Design']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']" targetMapping="//@ownedViewpoints[name='Resource%20Environment%20Design']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetFinderExpression="feature:connectedResourceContainers_LinkingResource">
           <style targetArrow="NoDecoration" sizeComputationExpression="2">
