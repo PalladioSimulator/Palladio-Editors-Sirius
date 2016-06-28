@@ -40,15 +40,20 @@
       <import plugin="org.eclipse.uml2.types"/>
       <import plugin="de.uka.ipd.sdq.units"/>
       <import plugin="de.uka.ipd.sdq.units.edit"/>
+      <import plugin="org.eclipse.uml2.common.edit"/>
       <import plugin="org.eclipse.emf.ecore"/>
       <import plugin="org.eclipse.emf.ecore.edit"/>
-      <import plugin="org.eclipse.uml2.common.edit"/>
       <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.eclipse.emf.ecore.xmi"/>
       <import plugin="org.eclipse.ui.ide"/>
       <import plugin="org.eclipse.core.databinding" version="1.4.2" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.databinding.property" version="1.4.200" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.mdsdprofiles.api"/>
+      <import plugin="org.palladiosimulator.pcm.edp2.measuringpoint"/>
+      <import plugin="org.palladiosimulator.edp2"/>
+      <import plugin="org.palladiosimulator.edp2.edit"/>
+      <import plugin="org.palladiosimulator.metricspec"/>
+      <import plugin="org.palladiosimulator.metricspec.edit"/>
    </requires>
 
    <plugin

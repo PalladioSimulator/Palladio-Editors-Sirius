@@ -22,6 +22,7 @@ PCM Editors build.
 
    <requires>
       <import plugin="org.junit"/>
+      <import plugin="org.eclipse.core.runtime"/>
    </requires>
 
    <plugin
