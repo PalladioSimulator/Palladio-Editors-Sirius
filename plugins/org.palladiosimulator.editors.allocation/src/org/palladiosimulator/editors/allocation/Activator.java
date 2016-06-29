@@ -13,14 +13,15 @@ import org.osgi.framework.BundleContext;
  * The activator class controls the plug-in life cycle
  */
 public class Activator extends AbstractUIPlugin {
+
     // The plug-in ID
     public static final String PLUGIN_ID = "org.palladiosimulator.editors.allocation";
 
     // The shared instance
     private static Activator plugin;
 
-    private static Set<Viewpoint> viewpoints; 
-    
+    private static Set<Viewpoint> viewpoints;
+
     public Viewpoint ALLOCATION_DESIGN;
     public RepresentationDescription ALLOCATION_DIAGRAM;
 
@@ -35,48 +36,50 @@ public class Activator extends AbstractUIPlugin {
      * 
      * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
      */
-    public void start(BundleContext context) throws Exception {
-      super.start(context);
-	  plugin = this;
-	  viewpoints = new HashSet<Viewpoint>();
-	  viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/Allocation.odesign")); 
-    
-    
-	    // Set viewpoint constants
-	    for (final Viewpoint viewpoint : viewpoints) {
-	        if (viewpoint.getName().equals("Allocation Design")) {//TODO: check name
-	            this.ALLOCATION_DESIGN = viewpoint;
-	            break;
-	        }
-	    }
-	
-	    // Set diagram description constants
-	    for (final RepresentationDescription representationDescription : this.ALLOCATION_DESIGN
-	            .getOwnedRepresentations()) {
-	        if (representationDescription.getName().equals("Allocation Diagram")) {//TODO: check name
-	            this.ALLOCATION_DIAGRAM = representationDescription;
-	            break;
-	        }
-	    }
-	
-	 }
-    
+    @Override
+    public void start(final BundleContext context) throws Exception {
+        super.start(context);
+        plugin = this;
+        viewpoints = new HashSet<Viewpoint>();
+        viewpoints.addAll(
+                ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/allocation.odesign"));
+
+        // Set viewpoint constants
+        for (final Viewpoint viewpoint : viewpoints) {
+            if (viewpoint.getName().equals("Allocation Design")) {// TODO: check name
+                this.ALLOCATION_DESIGN = viewpoint;
+                break;
+            }
+        }
+
+        // Set diagram description constants
+        for (final RepresentationDescription representationDescription : this.ALLOCATION_DESIGN
+                .getOwnedRepresentations()) {
+            if (representationDescription.getName().equals("Allocation Diagram")) {// TODO: check
+                                                                                   // name
+                this.ALLOCATION_DIAGRAM = representationDescription;
+                break;
+            }
+        }
+
+    }
 
     /*
      * (non-Javadoc)
      * 
      * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
      */
-    public void stop(BundleContext context) throws Exception {
-	plugin = null;
-	if (viewpoints != null) {
-	    for (final Viewpoint viewpoint: viewpoints) {
-		ViewpointRegistry.getInstance().disposeFromPlugin(viewpoint);
-	    }
-	    viewpoints.clear();
-	    viewpoints = null; 
-	}
-	super.stop(context);
+    @Override
+    public void stop(final BundleContext context) throws Exception {
+        plugin = null;
+        if (viewpoints != null) {
+            for (final Viewpoint viewpoint : viewpoints) {
+                ViewpointRegistry.getInstance().disposeFromPlugin(viewpoint);
+            }
+            viewpoints.clear();
+            viewpoints = null;
+        }
+        super.stop(context);
     }
 
     /**
@@ -85,6 +88,6 @@ public class Activator extends AbstractUIPlugin {
      * @return the shared instance
      */
     public static Activator getDefault() {
-	return plugin;
+        return plugin;
     }
 }
