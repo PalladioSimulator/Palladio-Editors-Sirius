@@ -20,7 +20,7 @@
   <extension
          point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
       <editpolicyProvider
-            class="org.palladiosimulator.editors.resourceenvironment.externaljavaactions.LinkingResourceEditPolicyProvider">
+            class="org.palladiosimulator.editors.resourceenvironment.editpolicyproviders.LinkingResourceEditPolicyProvider">
          <Priority
                name="Highest">
          </Priority>
