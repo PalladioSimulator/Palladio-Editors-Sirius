@@ -23,7 +23,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.transaction;bundle-version="1.9.0",
  org.eclipse.gmf,
  org.eclipse.gmf.runtime.common.core;bundle-version="1.7.0",
- org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0"
+ org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0",
+ org.palladiosimulator.commons;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.palladiosimulator.editors.commons.editpolicyproviders,

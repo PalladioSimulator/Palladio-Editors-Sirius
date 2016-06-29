@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.util.api.services;
+package org.palladiosimulator.editors.commons.javaextensions;
 
 import java.util.Collection;
 import java.util.Collections;
