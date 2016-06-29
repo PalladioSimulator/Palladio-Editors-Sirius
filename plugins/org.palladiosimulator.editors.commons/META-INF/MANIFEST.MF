@@ -27,6 +27,12 @@ Require-Bundle: org.eclipse.ui,
  org.palladiosimulator.commons;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: org.palladiosimulator.editors.commons.editpolicyproviders,
- org.palladiosimulator.editors.commons.externaljavaactions
+Export-Package: org.palladiosimulator.editors.commons.editpolicyproviders;uses:="org.eclipse.gmf.runtime.common.core.service,org.eclipse.gmf.runtime.diagram.ui.services.editpolicy",
+ org.palladiosimulator.editors.commons.externaljavaactions;
+  uses:="org.eclipse.emf.ecore,
+   org.eclipse.sirius.tools.api.ui,
+   de.uka.ipd.sdq.stoex,
+   org.eclipse.swt.widgets,
+   de.uka.ipd.sdq.stoex.analyser.visitors",
+ org.palladiosimulator.editors.commons.javaextensions;uses:="org.eclipse.emf.ecore,org.modelversioning.emfprofileapplication,org.modelversioning.emfprofile"
 Bundle-Vendor: palladiosimulator.org
