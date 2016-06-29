@@ -3,7 +3,7 @@
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
     <component class="org.palladiosimulator.editors.resourceenvironment.Activator"
-               id="org.palladiosimulator.editors.resourceenvironment.design"
+               id="org.palladiosimulator.editors.resourceenvironment"
 	       name="resourceenvironment">
     </component>
   </extension>
