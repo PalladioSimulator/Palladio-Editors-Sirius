@@ -304,7 +304,7 @@
         <toolSections name="Stereotypes">
           <ownedTools xsi:type="tool_1:ExternalJavaAction" name="Apply Unapply Profile" id="ApplyUnapplyProfile"/>
           <ownedTools xsi:type="tool_1:ExternalJavaAction" name="Apply Unapply Stereotype" id="ApplyUnapplyStereotype"/>
-          <ownedTools xsi:type="tool_1:PopupMenu">
+          <ownedTools xsi:type="tool_1:PopupMenu" name="MDSD Profiles">
             <menuItemDescription xsi:type="tool_1:ExternalJavaActionCall" name="Apply Unapply Profile" forceRefresh="true" action="//@ownedViewpoints[name='Resource%20Environment%20Design']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Apply%20Unapply%20Profile']"/>
             <menuItemDescription xsi:type="tool_1:ExternalJavaActionCall" name="Apply Unapply Stereotype" forceRefresh="true" action="//@ownedViewpoints[name='Resource%20Environment%20Design']/@ownedRepresentations[name='Resourceenvironment%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Apply%20Unapply%20Stereotype']"/>
           </ownedTools>
