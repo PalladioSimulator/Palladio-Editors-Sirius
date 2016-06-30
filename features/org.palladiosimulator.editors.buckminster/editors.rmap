@@ -13,10 +13,10 @@
 
   <rm:searchPath name="Editors-Features">
     <rm:provider resolutionFilter="(resolveFrom=nightly)" componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
-      <rm:uri format="https://sdqweb.ipd.kit.edu/eclipse/palladio/core/editors/nightly/features/"/>
+      <rm:uri format="https://sdqweb.ipd.kit.edu/eclipse/palladio/core/editors/nightly/"/>
     </rm:provider>
     <rm:provider resolutionFilter="(resolveFrom=release)" componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
-      <rm:uri format="https://sdqweb.ipd.kit.edu/eclipse/palladio/core/editors/releases/latest/features/"/>
+      <rm:uri format="https://sdqweb.ipd.kit.edu/eclipse/palladio/core/editors/releases/latest/"/>
     </rm:provider>
     <rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster" readerType="git" resolutionFilter="" source="true">
       <rm:uri format="{0}/GIT,features/{1}">
@@ -29,10 +29,10 @@
   
   <rm:searchPath name="Editors">
     <rm:provider resolutionFilter="(resolveFrom=nightly)" componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
-      <rm:uri format="https://sdqweb.ipd.kit.edu/eclipse/palladio/core/editors/nightly/plugins/"/>
+      <rm:uri format="https://sdqweb.ipd.kit.edu/eclipse/palladio/core/editors/nightly/"/>
     </rm:provider>
     <rm:provider resolutionFilter="(resolveFrom=release)" componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
-      <rm:uri format="https://sdqweb.ipd.kit.edu/eclipse/palladio/core/editors/releases/latest/plugins/"/>
+      <rm:uri format="https://sdqweb.ipd.kit.edu/eclipse/palladio/core/editors/releases/latest/"/>
     </rm:provider>
     <rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster" readerType="git" resolutionFilter="" source="true">
       <rm:uri format="{0}/GIT,plugins/{1}">
