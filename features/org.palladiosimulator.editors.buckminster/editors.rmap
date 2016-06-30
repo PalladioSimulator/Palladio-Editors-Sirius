@@ -6,8 +6,10 @@
   <rm:locator pattern="^org\.palladiosimulator\.editors.*" searchPathRef="Editors-Features" failOnError="false"/>
   <rm:locator pattern="^org\.palladiosimulator\.editors.*" searchPathRef="Editors" failOnError="true"/>
   <rm:locator pattern="^org\.palladiosimulator\.pcm.*" searchPathRef="Editors" failOnError="false"/>
-  <rm:locator pattern="^org\.palladiosimulator\.architecturaltemplates.*" searchPathRef="ArchitecturalTemplates" failOnError="true"/>
 
+  <rm:redirect pattern="^org\.palladiosimulator\.architecturaltemplates.*"
+		href="https://raw.githubusercontent.com/PalladioSimulator/Architectural-Templates/master/features/org.palladiosimulator.architecturaltemplates.buckminster/architecturaltemplates.rmap" />
+		
   <rm:redirect pattern=".*"
 		href="https://anonymous:anonymous@svnserver.informatik.kit.edu/i43/svn/code/Palladio/Core/trunk/PCM/org.palladiosimulator.pcm.buckminster/pcm.rmap" />
 
@@ -43,9 +45,4 @@
     </rm:provider>
   </rm:searchPath>
   
-  <rm:searchPath name="ArchitecturalTemplates">
-    <rm:provider componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
-      <rm:uri format="https://sdqweb.ipd.kit.edu/eclipse/architecturaltemplates/releases/latest/"/>
-    </rm:provider>
-  </rm:searchPath>
 </rm:rmap>
