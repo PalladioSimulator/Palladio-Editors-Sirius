@@ -13,7 +13,6 @@ import org.palladiosimulator.editors.dialogs.selection.PalladioSelectEObjectDial
 import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.repository.PassiveResource;
 import org.palladiosimulator.pcm.repository.Repository;
-import org.palladiosimulator.pcm.seff.AcquireAction;
 import org.palladiosimulator.pcm.seff.ReleaseAction;
 
 public class AddReleaseAction implements IExternalJavaAction {
@@ -36,7 +35,6 @@ public class AddReleaseAction implements IExternalJavaAction {
 
 		// Additional Child References
 		Collection<EReference> additionalChildReferences = new ArrayList<EReference>();
-		//additionalChildReferences.add(RepositoryPackage.Literals.PASSIVE_RESOURCE__BASIC_COMPONENT_PASSIVE_RESOURCE);
 
 		// Creating the dialog
 		PalladioSelectEObjectDialog dialog = new PalladioSelectEObjectDialog(SHELL, filter, additionalChildReferences,
@@ -51,7 +49,6 @@ public class AddReleaseAction implements IExternalJavaAction {
 	}
 	@Override
 	public boolean canExecute(Collection<? extends EObject> selections) {
-		// TODO Auto-generated method stub
 		return true;
 	}
 

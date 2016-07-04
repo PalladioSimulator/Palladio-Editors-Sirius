@@ -13,8 +13,6 @@ import org.palladiosimulator.editors.dialogs.selection.PalladioSelectEObjectDial
 import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.repository.PassiveResource;
 import org.palladiosimulator.pcm.repository.Repository;
-import org.palladiosimulator.pcm.repository.RepositoryComponent;
-import org.palladiosimulator.pcm.repository.RepositoryPackage;
 import org.palladiosimulator.pcm.seff.AcquireAction;
 
 public class AddAcquireAction implements IExternalJavaAction {

@@ -19,6 +19,18 @@
             actionClass="org.palladiosimulator.editors.seff.custom.externaljavaactions.DeleteRecoveryFlow"
             id="DeleteRecoveryFlow">
       </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.seff.custom.externaljavaactions.AddAcquireAction"
+            id="AddAcquireAction">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.seff.custom.externaljavaactions.AddReleaseAction"
+            id="AddReleaseAction">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.seff.custom.externaljavaactions.AddExternalCallAction"
+            id="AddExternalCallAction">
+      </javaActions>
    </extension>
 
 </plugin>

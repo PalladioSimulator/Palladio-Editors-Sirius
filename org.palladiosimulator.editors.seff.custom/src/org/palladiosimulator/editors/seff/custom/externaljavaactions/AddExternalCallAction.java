@@ -16,10 +16,7 @@ import org.palladiosimulator.pcm.repository.OperationRequiredRole;
 import org.palladiosimulator.pcm.repository.OperationSignature;
 import org.palladiosimulator.pcm.repository.Repository;
 import org.palladiosimulator.pcm.repository.RequiredRole;
-import org.palladiosimulator.pcm.repository.Signature;
 import org.palladiosimulator.pcm.seff.ExternalCallAction;
-import org.palladiosimulator.pcm.seff.ResourceDemandingBehaviour;
-import org.palladiosimulator.pcm.seff.ResourceDemandingSEFF;
 import org.palladiosimulator.pcm.seff.ServiceEffectSpecification;
 
 public class AddExternalCallAction implements IExternalJavaAction {
@@ -39,8 +36,6 @@ public class AddExternalCallAction implements IExternalJavaAction {
 		Collection<Object> filter = new ArrayList<Object>();
 		
 		filter.add(Repository.class);
-		//filter.add(BasicComponent.class);
-		//filter.add(OperationRequiredRole.class);  //Interfaces werden nicht wie im GMF Editor unter RequiredRole angezeigt
 		filter.add(OperationInterface.class);
 		filter.add(OperationSignature.class);
 
@@ -81,7 +76,6 @@ public class AddExternalCallAction implements IExternalJavaAction {
 
 	@Override
 	public boolean canExecute(Collection<? extends EObject> selections) {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
