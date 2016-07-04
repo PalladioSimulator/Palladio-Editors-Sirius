@@ -4,28 +4,36 @@
    <extension
          point="org.eclipse.sirius.externalJavaAction">
       <javaActions
-            actionClass="org.palladiosimulator.editors.repository.externaljavaactions.DeleteInnerDeclaration"
-            id="DeleteInnerDeclaration">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.repository.externaljavaactions.DeleteInnerType"
-            id="DeleteInnerType">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.repository.externaljavaactions.DeleteConformsCompleteRelation"
-            id="DeleteConformsCompleteRelation">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.repository.externaljavaactions.AddSEFF"
+            actionClass="org.palladiosimulator.editors.repository.custom.externaljavaactions.AddSEFF"
             id="AddSEFF">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.repository.externaljavaactions.AddCollectionDataType"
-            id="AddCollectionDataType">
+            actionClass="org.palladiosimulator.editors.repository.custom.externaljavaactions.DeleteConformsCompleteRelation"
+            id="DeleteConformsCompleteRelation">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.repository.externaljavaactions.DeleteConformsProvidedRelation"
+            actionClass="org.palladiosimulator.editors.repository.custom.externaljavaactions.DeleteConformsProvidedRelation"
             id="DeleteConformsProvidedRelation">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.repository.custom.externaljavaactions.DeleteContainsRelation"
+            id="DeleteContainsRelation">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.repository.custom.externaljavaactions.DeleteInnerType"
+            id="DeleteInnerType">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.repository.custom.externaljavaactions.SetCapacity"
+            id="SetCapacity">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.repository.custom.externaljavaactions.SetInnerDeclaration"
+            id="SetInnerDeclaration">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.repository.custom.externaljavaactions.SetInnerType"
+            id="SetInnerType">
       </javaActions>
    </extension>
 

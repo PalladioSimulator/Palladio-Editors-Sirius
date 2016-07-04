@@ -1,15 +1,16 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Repository diagram editor external java actions
-Bundle-SymbolicName: org.palladiosimulator.editors.repository.externaljavaactions;singleton:=true
+Bundle-Name: Repository Diagram Editor - Custom
+Bundle-SymbolicName: org.palladiosimulator.editors.repository.custom;singleton:=true
 Bundle-Version: 1.0.0
-Bundle-Activator: org.palladiosimulator.editors.repository.externaljavaactions.Activator
+Bundle-Activator: org.palladiosimulator.editors.repository.custom.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.sirius,
  org.palladiosimulator.pcm;bundle-version="4.0.0",
  org.eclipse.sirius.diagram,
- org.palladiosimulator.editors.dialogs;bundle-version="1.0.0"
+ org.palladiosimulator.editors.dialogs;bundle-version="1.0.0",
+ org.palladiosimulator.editors.commons
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: palladiosimulator.org

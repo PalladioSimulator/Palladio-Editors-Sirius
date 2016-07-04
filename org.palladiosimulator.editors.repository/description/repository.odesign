@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="repository" version="10.1.0.201507271600">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="repository" version="10.1.0.201507271600">
   <ownedViewpoints name="repository" modelFileExtension="repository">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="repository" initialisation="true" domainClass="repository.Repository" enablePopupBars="true">
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//repository"/>
@@ -7,6 +7,14 @@
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//seff"/>
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//subsystem"/>
       <metamodel href="http://sdq.ipd.uka.de/StochasticExpressions/2.2#/"/>
+      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//core"/>
+      <diagramInitialisation>
+        <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Load Resources" id="LoadResources">
+          <parameters name="PrimitiveTypes.repository" value="aql:'pathmap://PCM_MODELS/PrimitiveTypes.repository'"/>
+          <parameters name="Palladio.resourcetype" value="aql:'pathmap://PCM_MODELS/Palladio.resourcetype'"/>
+          <parameters name="FailureTypes.repository" value="aql:'pathmap://PCM_MODELS/FailureTypes.repository'"/>
+        </firstModelOperations>
+      </diagramInitialisation>
       <defaultLayer name="Default">
         <edgeMappings name="RequiredRole" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']" targetFinderExpression="feature:requiredInterface__OperationRequiredRole" sourceFinderExpression="feature:requiringEntity_RequiredRole" domainClass="repository.OperationRequiredRole" useDomainElement="true">
           <style>
@@ -40,13 +48,34 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="Interface" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:interfaces__Repository" domainClass="repository.OperationInterface" childrenPresentation="List">
-          <subNodeMappings name="OperationSignature" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:signatures__OperationInterface" semanticElements="feature:returnType__OperationSignature" domainClass="repository.OperationSignature">
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[if(self.returnType__OperationSignature.oclAsType(PrimitiveDataType).type.oclIsInvalid()) then 'void' else self.returnType__OperationSignature.oclAsType(PrimitiveDataType).type.toString().toLowerCase() endif + ' ' + self.entityName + '()'/]" labelPosition="node" resizeKind="NSEW">
+        <containerMappings name="Interface" deletionDescription="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='OperationInterface%20Deletion']" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:interfaces__Repository" domainClass="repository.OperationInterface" childrenPresentation="List">
+          <subNodeMappings name="OperationSignature" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:signatures__OperationInterface" domainClass="repository.OperationSignature">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="['void ' + self.entityName + '()'/]" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
+            <conditionnalStyles predicateExpression="[self.returnType__OperationSignature.oclIsTypeOf(PrimitiveDataType)/]">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.returnType__OperationSignature.oclAsType(PrimitiveDataType).type.toString().toLowerCase() + ' ' + self.entityName + '()'/]" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="[self.returnType__OperationSignature.oclIsTypeOf(CompositeDataType)/]">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.returnType__OperationSignature.oclAsType(CompositeDataType).entityName + ' ' + self.entityName + '()'/]" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="[self.returnType__OperationSignature.oclIsTypeOf(CollectionDataType)/]">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.returnType__OperationSignature.oclAsType(CollectionDataType).entityName + ' ' + self.entityName + '()'/]" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </conditionnalStyles>
           </subNodeMappings>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:entityName" widthComputationExpression="20" heightComputationExpression="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -55,7 +84,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="InfrastructureInterface" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:interfaces__Repository" domainClass="repository.InfrastructureInterface" childrenPresentation="List">
+        <containerMappings name="InfrastructureInterface" deletionDescription="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='InfrastructureInterface%20Deletion']" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:interfaces__Repository" domainClass="repository.InfrastructureInterface" childrenPresentation="List">
           <subNodeMappings name="InfrastructureSignature" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:infrastructureSignatures__InfrastructureInterface" domainClass="repository.InfrastructureSignature">
             <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="[self.entityName + '()'/]" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -87,7 +116,7 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="PassiveResourcesCompartment" semanticCandidatesExpression="var:self" domainClass="repository.BasicComponent" childrenPresentation="List">
-            <subNodeMappings name="PassiveResource" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:passiveResource_BasicComponent" domainClass="repository.PassiveResource">
+            <subNodeMappings name="PassiveResource" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:passiveResource_BasicComponent" doubleClickDescription="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Capacity']" domainClass="repository.PassiveResource">
               <style xsi:type="style:SquareDescription" labelExpression="aql:self.entityName + '&lt;Capacity: ' + self.capacity_PassiveResource.specification + '>'" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -148,208 +177,303 @@
           </style>
         </containerMappings>
         <toolSections name="Basic Model Elements">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Interface" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Interface" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="OperationInterface" referenceName="interfaces__Repository">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['Interface' + container.eAllContents()->selectByType(OperationInterface)->size()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationInterface" referenceName="interfaces__Repository">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['Interface' + container.eContents()->selectByType(OperationInterface)->size()/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="BasicComponent" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="BasicComponent" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="BasicComponent" referenceName="components__Repository">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['BasicComponent' + container.eAllContents()->selectByType(BasicComponent)->size()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="BasicComponent" referenceName="components__Repository">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['BasicComponent' + container.eAllContents()->selectByType(BasicComponent)->size()/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="CompositeComponent" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="CompositeComponent" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="CompositeComponent" referenceName="components__Repository">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['CompositeComponent' + container.eAllContents()->selectByType(CompositeComponent)->size()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="CompositeComponent" referenceName="components__Repository">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['CompositeComponent' + container.eAllContents()->selectByType(CompositeComponent)->size()/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit Name" inputLabelExpression="feature:entityName">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit Name" inputLabelExpression="feature:entityName">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="var:0"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="var:0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="RequiredRole" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@edgeMappings[name='RequiredRole']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="RequiredRole" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@edgeMappings[name='RequiredRole']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.OperationRequiredRole" referenceName="requiredRoles_InterfaceRequiringEntity">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="requiredInterface__OperationRequiredRole" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['RequiredRole' + source.eAllContents()->selectByType(RequiredRole)->size()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.OperationRequiredRole" referenceName="requiredRoles_InterfaceRequiringEntity">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="requiredInterface__OperationRequiredRole" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['OperationRequiredRole' + source.eContents()->selectByType(OperationRequiredRole)->size()/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="ProvidedRole" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@edgeMappings[name='ProvidedRole']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="ProvidedRole" precondition="[preSource.oclAsType(RepositoryComponent).providedRoles_InterfaceProvidingEntity->exists(x |  (x.oclIsTypeOf(OperationProvidedRole)) and (x.oclAsType(OperationProvidedRole).providedInterface__OperationProvidedRole = preTarget)) = false/]" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@edgeMappings[name='ProvidedRole']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.OperationProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="providedInterface__OperationProvidedRole" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['ProvidedRole' + source.eAllContents()->selectByType(ProvidedRole)->size()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.OperationProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="providedInterface__OperationProvidedRole" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['OperationProvidedRole' + source.eContents()->selectByType(OperationProvidedRole)->size()/]"/>
+                  <subModelOperations xsi:type="tool:For" expression="[target.signatures__OperationInterface/]">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="[source.oclIsTypeOf(BasicComponent)/]">
+                        <subModelOperations xsi:type="tool:If" conditionExpression="[source.oclAsType(BasicComponent).serviceEffectSpecifications__BasicComponent->exists (x | x.oclAsType(ResourceDemandingSEFF).describedService__SEFF = i) = false/]">
+                          <subModelOperations xsi:type="tool:CreateInstance" typeName="ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
+                            <subModelOperations xsi:type="tool:SetValue" featureName="describedService__SEFF" valueExpression="var:i"/>
+                            <subModelOperations xsi:type="tool:If" conditionExpression="[instance.eContents(StartAction)->size() = 0 and instance.eContents(StopAction)->size() = 0 /]">
+                              <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="StartAction"/>
+                              <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="StopAction"/>
+                              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StartAction">
+                                <subModelOperations xsi:type="tool:SetValue" featureName="successor_AbstractAction" valueExpression="var:StopAction"/>
+                              </subModelOperations>
+                              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StopAction">
+                                <subModelOperations xsi:type="tool:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:StartAction"/>
+                              </subModelOperations>
+                            </subModelOperations>
+                          </subModelOperations>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="SubSystem" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="SubSystem" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SubSystem" referenceName="components__Repository">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['SubSystem' + container.eAllContents()->selectByType(SubSystem)->size()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="SubSystem" referenceName="components__Repository">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['SubSystem' + container.eAllContents()->selectByType(SubSystem)->size()/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="InfrastructureRequiredRole" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@edgeMappings[name='InfrastructureRequiredRole']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="InfrastructureRequiredRole" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@edgeMappings[name='InfrastructureRequiredRole']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InfrastructureRequiredRole" referenceName="requiredRoles_InterfaceRequiringEntity">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="requiredInterface__InfrastructureRequiredRole" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['InfrastructureRequiredRole' + source.eAllContents()->selectByType(InfrastructureRequiredRole)->size()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InfrastructureRequiredRole" referenceName="requiredRoles_InterfaceRequiringEntity">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="requiredInterface__InfrastructureRequiredRole" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['InfrastructureRequiredRole' + source.eContents()->selectByType(InfrastructureRequiredRole)->size()/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="InfrastructureProvidedRole" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@edgeMappings[name='InfrastructureProvidedRole']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="InfrastructureProvidedRole" precondition="[preSource.oclAsType(RepositoryComponent).providedRoles_InterfaceProvidingEntity->exists(x |  (x.oclIsTypeOf(InfrastructureProvidedRole)) and (x.oclAsType(InfrastructureProvidedRole).providedInterface__InfrastructureProvidedRole = preTarget)) = false/]" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@edgeMappings[name='InfrastructureProvidedRole']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InfrastructureProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="providedInterface__InfrastructureProvidedRole" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['InfrastructureProvidedRole' + source.eAllContents()->selectByType(InfrastructureProvidedRole)->size()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InfrastructureProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="providedInterface__InfrastructureProvidedRole" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['InfrastructureProvidedRole' + source.eContents()->selectByType(InfrastructureProvidedRole)->size()/]"/>
+                  <subModelOperations xsi:type="tool:For" expression="[target.infrastructureSignatures__InfrastructureInterface/]">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="describedService__SEFF" valueExpression="var:i"/>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="[instance.eContents(StartAction)->size() = 0 and instance.eContents(StopAction)->size() = 0 /]">
+                          <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="StartAction"/>
+                          <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="StopAction"/>
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StartAction">
+                            <subModelOperations xsi:type="tool:SetValue" featureName="successor_AbstractAction" valueExpression="var:StopAction"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StopAction">
+                            <subModelOperations xsi:type="tool:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:StartAction"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="InfrastructureInterface" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='InfrastructureInterface']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="InfrastructureInterface" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='InfrastructureInterface']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="InfrastructureInterface" referenceName="interfaces__Repository">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['InfrastructureInterface' + container.eAllContents()->selectByType(InfrastructureInterface)->size()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="InfrastructureInterface" referenceName="interfaces__Repository">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['InfrastructureInterface' + container.eAllContents()->selectByType(InfrastructureInterface)->size()/]"/>
                 </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="OperationInterface Deletion">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:For" expression="[self.eContainer().eAllContents()->selectByType(OperationProvidedRole)/]">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="[i.oclAsType(OperationProvidedRole).providedInterface__OperationProvidedRole = element/]">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:i">
+                      <subModelOperations xsi:type="tool:RemoveElement"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:For" expression="[self.eContainer().eAllContents()->selectByType(OperationRequiredRole)/]">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="[i.oclAsType(OperationRequiredRole).requiredInterface__OperationRequiredRole = element/]">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:i">
+                      <subModelOperations xsi:type="tool:RemoveElement"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:RemoveElement"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="InfrastructureInterface Deletion">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:For" expression="[self.eContainer().eAllContents()->selectByType(InfrastructureProvidedRole)/]">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="[i.oclAsType(InfrastructureProvidedRole).providedInterface__InfrastructureProvidedRole = element/]">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:i">
+                      <subModelOperations xsi:type="tool:RemoveElement"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:For" expression="[self.eContainer().eAllContents()->selectByType(InfrastructureRequiredRole)/]">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="[i.oclAsType(InfrastructureRequiredRole).requiredInterface__InfrastructureRequiredRole = element/]">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:i">
+                      <subModelOperations xsi:type="tool:RemoveElement"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:RemoveElement"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:OperationAction" name="Load Primitive Data Types">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Open Editor" id="OpenEditor">
+                <parameters name="element" value="var:diagram"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Internal Elements">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Signature" nodeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']/@subNodeMappings[name='OperationSignature'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='InfrastructureInterface']/@subNodeMappings[name='InfrastructureSignature']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Signature" nodeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']/@subNodeMappings[name='OperationSignature'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='InfrastructureInterface']/@subNodeMappings[name='InfrastructureSignature']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.eClass()=repository::OperationInterface/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.OperationSignature" referenceName="signatures__OperationInterface">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['method' + container.eAllContents()->selectByType(OperationSignature)->size()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:If" conditionExpression="[self.eClass()=repository::OperationInterface/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.OperationSignature" referenceName="signatures__OperationInterface">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['method' + container.eAllContents()->selectByType(OperationSignature)->size()/]"/>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.eClass()=repository::InfrastructureInterface/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InfrastructureSignature" referenceName="infrastructureSignatures__InfrastructureInterface">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['method' + container.eAllContents()->selectByType(InfrastructureSignature)->size()/]"/>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Passive Resource" nodeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='PassiveResourcesCompartment']/@subNodeMappings[name='PassiveResource']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.PassiveResource" referenceName="passiveResource_BasicComponent">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'PassiveResource'+container.passiveResource_BasicComponent->size()"/>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="PCMRandomVariable" referenceName="capacity_PassiveResource"/>
+                <subModelOperations xsi:type="tool:If" conditionExpression="[self.eClass()=repository::InfrastructureInterface/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InfrastructureSignature" referenceName="infrastructureSignatures__InfrastructureInterface">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['method' + container.eAllContents()->selectByType(InfrastructureSignature)->size()/]"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="ComponentParameter" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='ComponentParameterCompartment']/@subContainerMappings[name='ComponentParameter']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Passive Resource" nodeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='PassiveResourcesCompartment']/@subNodeMappings[name='PassiveResource']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableUsage" referenceName="componentParameterUsage_ImplementationComponentType" variableName="variableUsage">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:VariableReference"/>
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NamedReference" id="SetNamedReference">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.PassiveResource" referenceName="passiveResource_BasicComponent" variableName="passiveResource">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="capacity_PassiveResource"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'PassiveResource'+container.passiveResource_BasicComponent->size()"/>
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set Capacity" id="SetCapacity">
+                    <parameters name="element" value="var:passiveResource"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="ComponentParameter" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='ComponentParameterCompartment']/@subContainerMappings[name='ComponentParameter']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="parameter.VariableUsage" referenceName="componentParameterUsage_ImplementationComponentType" variableName="variableUsage">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:VariableReference"/>
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set NamedReference" id="SetNamedReference">
                     <parameters name="VariableReference" value="var:VariableReference"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="VariableCharacterisation" nodeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='ComponentParameterCompartment']/@subContainerMappings[name='ComponentParameter']/@subNodeMappings[name='Variable%20Characterisation']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="VariableCharacterisation" nodeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='ComponentParameterCompartment']/@subContainerMappings[name='ComponentParameter']/@subNodeMappings[name='Variable%20Characterisation']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableCharacterisation" referenceName="variableCharacterisation_VariableUsage" variableName="variableCharacterisation">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="aql:parameter::VariableCharacterisationType::STRUCTURE"/>
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set RandomVariable" id="VariableCharacterisationNameAction">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="parameter.VariableCharacterisation" referenceName="variableCharacterisation_VariableUsage" variableName="variableCharacterisation">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="aql:parameter::VariableCharacterisationType::STRUCTURE"/>
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set Variable Characterisation Specification" id="SetVariableCharacterisationSpecification">
                     <parameters name="element" value="var:variableCharacterisation"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="SEFF" nodeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='SEFFCompartment']/@subNodeMappings[name='SEFF']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="SEFF" nodeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='SEFFCompartment']/@subNodeMappings[name='SEFF']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add SEFF" id="AddSEFF">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.describedService__SEFF &lt;> null/]">
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="[instance.eContents(StartAction)->size() = 0 and instance.eContents(StopAction)->size() = 0 /]">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="StartAction"/>
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="StopAction"/>
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:StartAction">
-                          <subModelOperations xsi:type="tool_1:SetValue" featureName="successor_AbstractAction" valueExpression="var:StopAction"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="Add SEFF" id="AddSEFF">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="[self.describedService__SEFF &lt;> null/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="[instance.eContents(StartAction)->size() = 0 and instance.eContents(StopAction)->size() = 0 /]">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="StartAction"/>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="StopAction"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StartAction">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="successor_AbstractAction" valueExpression="var:StopAction"/>
                         </subModelOperations>
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:StopAction">
-                          <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:StartAction"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StopAction">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:StartAction"/>
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.describedService__SEFF = null/]">
-                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="[self.describedService__SEFF = null/]">
+                      <subModelOperations xsi:type="tool:RemoveElement"/>
                     </subModelOperations>
                     <parameters name="instance" value="var:instance"/>
                   </subModelOperations>
@@ -357,28 +481,42 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="Variable Usage" inputLabelExpression="aql:self.namedReference__VariableUsage.referenceName">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Variable Usage" inputLabelExpression="aql:self.namedReference__VariableUsage.referenceName">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.namedReference__VariableUsage = null/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:If" conditionExpression="[self.namedReference__VariableUsage = null/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.namedReference__VariableUsage">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="referenceName" valueExpression="var:0"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.namedReference__VariableUsage">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="referenceName" valueExpression="var:0"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="Edit VariableCharacterisation" mappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='ComponentParameterCompartment']/@subContainerMappings[name='ComponentParameter']/@subNodeMappings[name='Variable%20Characterisation']">
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Edit VariableCharacterisation" mappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='ComponentParameterCompartment']/@subContainerMappings[name='ComponentParameter']/@subNodeMappings[name='Variable%20Characterisation']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.oclAsType(VariableCharacterisation).specification_VariableCharacterisation = null/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:If" conditionExpression="[self.oclAsType(VariableCharacterisation).specification_VariableCharacterisation = null/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Variable Characterisation Action" id="VariableCharacterisationNameAction">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="Edit Variable Characterisation Specification" id="SetVariableCharacterisationSpecification">
+                  <parameters name="element" value="var:element"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Edit Capacity" mappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='PassiveResourcesCompartment']/@subNodeMappings[name='PassiveResource']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:If" conditionExpression="[self.oclAsType(PassiveResource).capacity_PassiveResource = null/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="capacity_PassiveResource"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="Edit capacity" id="SetCapacity">
                   <parameters name="element" value="var:element"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -420,66 +558,66 @@
           </style>
         </containerMappings>
         <toolSections name="Componenent Types">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="ProvidesComponentType" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="ProvidesComponentType" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ProvidesComponentType" referenceName="components__Repository">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['ProvidesComponentType' + container.eAllContents()->selectByType(ProvidesComponentType)->size()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ProvidesComponentType" referenceName="components__Repository">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['ProvidesComponentType' + container.eAllContents()->selectByType(ProvidesComponentType)->size()/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="CompleteComponentType" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="CompleteComponentType" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="CompleteComponentType" referenceName="components__Repository">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['CompleteComponentType' + container.eAllContents()->selectByType(CompleteComponentType)->size()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="CompleteComponentType" referenceName="components__Repository">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['CompleteComponentType' + container.eAllContents()->selectByType(CompleteComponentType)->size()/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Conforms Provided Type" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@edgeMappings[name='Conforms%20Provided%20Type']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Conforms Provided Type" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@edgeMappings[name='Conforms%20Provided%20Type']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="parentProvidesComponentTypes" valueExpression="var:target"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:SetValue" featureName="parentProvidesComponentTypes" valueExpression="var:target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Conforms Complete Type" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@edgeMappings[name='Conforms%20Complete%20Type']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Conforms Complete Type" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@edgeMappings[name='Conforms%20Complete%20Type']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="parentCompleteComponentTypes" valueExpression="var:target"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:SetValue" featureName="parentCompleteComponentTypes" valueExpression="var:target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete Conforms Provided Relation">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Delete Conforms Provided Relation">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="DeleteConformsProvidedRelation" id="DeleteConformsProvidedRelation">
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="DeleteConformsProvidedRelation" id="DeleteConformsProvidedRelation">
                 <parameters name="elementView" value="[elementView/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete Conforms Complete Relation">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Delete Conforms Complete Relation">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="DeleteConformsCompleteRelation" id="DeleteConformsCompleteRelation">
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="DeleteConformsCompleteRelation" id="DeleteConformsCompleteRelation">
                 <parameters name="elementView" value="[elementView/]"/>
               </firstModelOperations>
             </initialOperation>
@@ -503,7 +641,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="EventGroup" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:interfaces__Repository" domainClass="repository.EventGroup" childrenPresentation="List">
+        <containerMappings name="EventGroup" deletionDescription="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Event-Based%20Communication']/@toolSections.0/@ownedTools[name='EventGroup%20Deletion']" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:interfaces__Repository" domainClass="repository.EventGroup" childrenPresentation="List">
           <subNodeMappings name="EventType" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:eventTypes__EventGroup" domainClass="repository.EventType">
             <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="feature:entityName" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -519,60 +657,101 @@
           </style>
         </containerMappings>
         <toolSections name="Event-Based Communication">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Event Group" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Event-Based%20Communication']/@containerMappings[name='EventGroup']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Event Group" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Event-Based%20Communication']/@containerMappings[name='EventGroup']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.EventGroup" referenceName="interfaces__Repository">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['EventGroup' + container.eAllContents()->selectByType(EventGroup)->size()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.EventGroup" referenceName="interfaces__Repository">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['EventGroup' + container.eAllContents()->selectByType(EventGroup)->size()/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="EventType" nodeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Event-Based%20Communication']/@containerMappings[name='EventGroup']/@subNodeMappings[name='EventType']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="EventType" nodeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Event-Based%20Communication']/@containerMappings[name='EventGroup']/@subNodeMappings[name='EventType']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.EventType" referenceName="eventTypes__EventGroup">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'eventType'+container.eventTypes__EventGroup->size()"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.EventType" referenceName="eventTypes__EventGroup">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'eventType'+container.eventTypes__EventGroup->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="SourceRole" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Event-Based%20Communication']/@edgeMappings[name='SourceRole']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="SourceRole" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Event-Based%20Communication']/@edgeMappings[name='SourceRole']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.SourceRole" referenceName="requiredRoles_InterfaceRequiringEntity">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="eventGroup__SourceRole" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['SourceRole' + source.eAllContents()->selectByType(SourceRole)->size()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.SourceRole" referenceName="requiredRoles_InterfaceRequiringEntity">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="eventGroup__SourceRole" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['SourceRole' + source.eContents()->selectByType(SourceRole)->size()/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="SinkRole" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Event-Based%20Communication']/@edgeMappings[name='SinkRole']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="SinkRole" precondition="[preSource.oclAsType(RepositoryComponent).providedRoles_InterfaceProvidingEntity->exists(x |  (x.oclIsTypeOf(SinkRole)) and (x.oclAsType(SinkRole).eventGroup__SinkRole = preTarget)) = false/]" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Event-Based%20Communication']/@edgeMappings[name='SinkRole']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.SinkRole" referenceName="providedRoles_InterfaceProvidingEntity">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="eventGroup__SinkRole" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['SinkeRole' + source.eAllContents()->selectByType(SinkRole)->size()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.SinkRole" referenceName="providedRoles_InterfaceProvidingEntity">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="eventGroup__SinkRole" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['SinkeRole' + source.eAllContents()->selectByType(SinkRole)->size()/]"/>
+                  <subModelOperations xsi:type="tool:For" expression="[target.eventTypes__EventGroup/]">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="describedService__SEFF" valueExpression="var:i"/>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="[instance.eContents(StartAction)->size() = 0 and instance.eContents(StopAction)->size() = 0 /]">
+                          <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="StartAction"/>
+                          <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="StopAction"/>
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StartAction">
+                            <subModelOperations xsi:type="tool:SetValue" featureName="successor_AbstractAction" valueExpression="var:StopAction"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StopAction">
+                            <subModelOperations xsi:type="tool:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:StartAction"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
                 </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="EventGroup Deletion">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:For" expression="[self.eContainer().eAllContents()->selectByType(SourceRole)/]">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="[i.oclAsType(SourceRole).eventGroup__SourceRole = element/]">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:i">
+                      <subModelOperations xsi:type="tool:RemoveElement"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:For" expression="[self.eContainer().eAllContents()->selectByType(SinkRole)/]">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="[i.oclAsType(SinkRole).eventGroup__SinkRole = element/]">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:i">
+                      <subModelOperations xsi:type="tool:RemoveElement"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:RemoveElement"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
       </additionalLayers>
       <additionalLayers name="DataTypes" activeByDefault="true">
-        <edgeMappings name="Contains" deletionDescription="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@toolSections.0/@ownedTools[name='Unset%20Contains']" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CompositeDataType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CollectionDataType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CompositeDataType']" targetFinderExpression="aql:self.innerDeclaration_CompositeDataType.datatype_InnerDeclaration">
+        <edgeMappings name="Contains" deletionDescription="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@toolSections.0/@ownedTools[name='Delete%20Contains']" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CompositeDataType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CollectionDataType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CompositeDataType']" targetFinderExpression="aql:self.innerDeclaration_CompositeDataType.datatype_InnerDeclaration">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Contains>>">
@@ -581,8 +760,8 @@
           </style>
         </edgeMappings>
         <containerMappings name="CollectionDataType" deletionDescription="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@toolSections.0/@ownedTools[name='Delete%20CollectionDataType']" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:dataTypes__Repository" domainClass="repository.CollectionDataType" childrenPresentation="List">
-          <subNodeMappings name="PrimitiveDataType" deletionDescription="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@toolSections.0/@ownedTools[name='Delete%20Inner%20Type']" semanticCandidatesExpression="feature:innerType_CollectionDataType" domainClass="repository.PrimitiveDataType">
-            <style xsi:type="style:SquareDescription" labelExpression="aql:self.type.toString()" labelPosition="node" resizeKind="NSEW">
+          <subNodeMappings name="InnerType" deletionDescription="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@toolSections.0/@ownedTools[name='Delete%20Inner%20Type']" semanticCandidatesExpression="feature:innerType_CollectionDataType" doubleClickDescription="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@toolSections.0/@ownedTools[name='Edit%20InnerType']" domainClass="repository.DataType">
+            <style xsi:type="style:SquareDescription" labelExpression="[if (self.oclIsTypeOf(PrimitiveDataType)) then self.oclAsType(PrimitiveDataType).type.toString() else self.oclAsType(NamedElement).entityName endif/]" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -596,7 +775,7 @@
           </style>
         </containerMappings>
         <containerMappings name="CompositeDataType" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:dataTypes__Repository" domainClass="repository.CompositeDataType" childrenPresentation="List">
-          <subNodeMappings name="InnerDeclaration" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:innerDeclaration_CompositeDataType" domainClass="repository.InnerDeclaration">
+          <subNodeMappings name="InnerDeclaration" labelDirectEdit="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:innerDeclaration_CompositeDataType" doubleClickDescription="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@toolSections.0/@ownedTools[name='Edit%20InnerDeclaration']" domainClass="repository.InnerDeclaration">
             <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -632,90 +811,119 @@
           </style>
         </containerMappings>
         <toolSections name="DataTypes">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="CollectionDataType" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CollectionDataType']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="CollectionDataType" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CollectionDataType']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.CollectionDataType" referenceName="dataTypes__Repository">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['CollectionDataType' + container.eAllContents()->selectByType(CollectionDataType)->size()/]"/>
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add CollectionDataType" id="AddCollectionDataType">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.innerType_CollectionDataType = null/]">
-                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.CollectionDataType" referenceName="dataTypes__Repository">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['CollectionDataType' + container.eAllContents()->selectByType(CollectionDataType)->size()/]"/>
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set InnerType" id="SetInnerType">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="[self.innerType_CollectionDataType = null/]">
+                      <subModelOperations xsi:type="tool:RemoveElement"/>
                     </subModelOperations>
-                    <parameters name="instance" value="var:instance"/>
+                    <parameters name="collection" value="var:instance"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="CompositeDataType" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CompositeDataType']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="CompositeDataType" containerMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CompositeDataType']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.CompositeDataType" referenceName="dataTypes__Repository">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['CompositeDataType' + container.eAllContents()->selectByType(CompositeDataType)->size()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.CompositeDataType" referenceName="dataTypes__Repository">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['CompositeDataType' + container.eAllContents()->selectByType(CompositeDataType)->size()/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="InnerDeclaration" nodeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CompositeDataType']/@subNodeMappings[name='InnerDeclaration']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="InnerDeclaration" nodeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CompositeDataType']/@subNodeMappings[name='InnerDeclaration']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InnerDeclaration" referenceName="innerDeclaration_CompositeDataType">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['InnerDeclaration' + container.eAllContents()->selectByType(InnerDeclaration)->size()/]"/>
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.PrimitiveDataType" referenceName="datatype_InnerDeclaration"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InnerDeclaration" referenceName="innerDeclaration_CompositeDataType">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['InnerDeclaration' + container.eAllContents()->selectByType(InnerDeclaration)->size()/]"/>
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set InnerDeclaration" id="SetInnerDeclaration">
+                    <parameters name="innerDeclaration" value="var:instance"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Contains" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@edgeMappings[name='Contains']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Contains" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@edgeMappings[name='Contains']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InnerDeclaration" referenceName="innerDeclaration_CompositeDataType">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="datatype_InnerDeclaration" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['InnerDeclaration' + self.compositeDataType_InnerDeclaration.innerDeclaration_CompositeDataType->size()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InnerDeclaration" referenceName="innerDeclaration_CompositeDataType">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="datatype_InnerDeclaration" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['InnerDeclaration' + self.compositeDataType_InnerDeclaration.innerDeclaration_CompositeDataType->size()/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Unset Contains">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Delete Contains">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Delete InnerDeclaration" id="DeleteInnerDeclaration">
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Delete Contains Relation" id="DeleteContainsRelation">
                 <parameters name="elementView" value="var:elementView"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete Inner Type">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Delete Inner Type">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="DeleteInnerType" id="DeleteInnerType">
-                <parameters name="containerView" value="var:containerView"/>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="DeleteInnerType" id="DeleteInnerType">
+                <parameters name="collection" value="[containerView.target/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete CollectionDataType">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Delete CollectionDataType">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Delete CollectionDataType" id="DeleteInnerType">
-                  <parameters name="elementView" value="var:elementView"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="Delete CollectionDataType" id="DeleteInnerType">
+                  <parameters name="collection" value="var:element"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                <subModelOperations xsi:type="tool:For" expression="[self.eContainer().eAllContents()->selectByType(CompositeDataType)/]">
+                  <subModelOperations xsi:type="tool:For" expression="[i.oclAsType(CompositeDataType).innerDeclaration_CompositeDataType/]" iteratorName="j">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="[j.oclAsType(InnerDeclaration).datatype_InnerDeclaration = element/]">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:j">
+                        <subModelOperations xsi:type="tool:RemoveElement"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:RemoveElement"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Edit InnerDeclaration" mappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CompositeDataType']/@subNodeMappings[name='InnerDeclaration']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Edit InnerDeclaration" id="SetInnerDeclaration">
+                <parameters name="innerDeclaration" value="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Edit InnerType" mappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CollectionDataType']/@subNodeMappings[name='InnerType']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Edit InnerType" id="SetInnerType">
+                <parameters name="collection" value="[elementView.oclAsType(DNodeListElement).eContainer().oclAsType(DNodeList).target/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

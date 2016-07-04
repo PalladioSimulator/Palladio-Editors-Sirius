@@ -24,8 +24,8 @@
             id="LoadResource">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.OpenStoExDialog"
-            id="OpenStoExDialog">
+            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.LoadResources"
+            id="LoadResources">
       </javaActions>
       <javaActions
             actionClass="org.palladiosimulator.editors.commons.externaljavaactions.RemoveATAction"
@@ -40,8 +40,8 @@
             id="SetNamedReference">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.VariableCharacterisationNameAction"
-            id="VariableCharacterisationNameAction">
+            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.SetVariableCharacterisationSpecification"
+            id="SetVariableCharacterisationSpecification">
       </javaActions>
    </extension>
 
