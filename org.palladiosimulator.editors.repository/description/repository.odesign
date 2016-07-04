@@ -380,14 +380,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:OperationAction" name="Load Primitive Data Types">
-            <view name="views"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Open Editor" id="OpenEditor">
-                <parameters name="element" value="var:diagram"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
         </toolSections>
         <toolSections name="Internal Elements">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Signature" nodeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']/@subNodeMappings[name='OperationSignature'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='InfrastructureInterface']/@subNodeMappings[name='InfrastructureSignature']">
