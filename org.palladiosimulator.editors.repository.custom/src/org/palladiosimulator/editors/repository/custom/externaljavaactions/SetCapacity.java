@@ -7,6 +7,7 @@ import org.palladiosimulator.editors.commons.externaljavaactions.SetRandomVariab
 import org.palladiosimulator.pcm.repository.PassiveResource;
 
 import de.uka.ipd.sdq.stoex.RandomVariable;
+import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
 
 public class SetCapacity extends SetRandomVariable {
 
@@ -21,6 +22,11 @@ public class SetCapacity extends SetRandomVariable {
 	public RandomVariable getRandomVariable(EObject element) {
 		PassiveResource pr = (PassiveResource) element;
 		return pr.getCapacity_PassiveResource();
+	}
+
+	@Override
+	public TypeEnum getExpectedType() {
+		return TypeEnum.DOUBLE;
 	}
 
 }

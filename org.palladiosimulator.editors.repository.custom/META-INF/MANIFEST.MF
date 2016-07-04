@@ -10,7 +10,8 @@ Require-Bundle: org.eclipse.ui,
  org.palladiosimulator.pcm;bundle-version="4.0.0",
  org.eclipse.sirius.diagram,
  org.palladiosimulator.editors.dialogs;bundle-version="1.0.0",
- org.palladiosimulator.editors.commons
+ org.palladiosimulator.editors.commons,
+ de.uka.ipd.sdq.stoex.analyser
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: palladiosimulator.org

@@ -29,7 +29,7 @@ public class ClosedWorkloadThinkTimeAction extends SetRandomVariable {
 	}
 
 	@Override
-	protected TypeEnum getExpectedType(RandomVariable rv) {
+	public TypeEnum getExpectedType() {
 		return TypeEnum.DOUBLE;
 	}
 

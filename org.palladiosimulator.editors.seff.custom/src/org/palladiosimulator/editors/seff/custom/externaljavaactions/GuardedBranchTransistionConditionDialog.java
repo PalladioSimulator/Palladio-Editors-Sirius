@@ -7,6 +7,7 @@ import org.palladiosimulator.editors.commons.externaljavaactions.SetRandomVariab
 import org.palladiosimulator.pcm.seff.GuardedBranchTransition;
 
 import de.uka.ipd.sdq.stoex.RandomVariable;
+import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
 
 public class GuardedBranchTransistionConditionDialog extends SetRandomVariable {
 
@@ -19,6 +20,11 @@ public class GuardedBranchTransistionConditionDialog extends SetRandomVariable {
 	public RandomVariable getRandomVariable(EObject element) {
 		GuardedBranchTransition gbt = (GuardedBranchTransition) element;
 		return gbt.getBranchCondition_GuardedBranchTransition();
+	}
+
+	@Override
+	public TypeEnum getExpectedType() {
+		return TypeEnum.DOUBLE;
 	}
 
 }

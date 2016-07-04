@@ -7,6 +7,7 @@ import org.palladiosimulator.editors.commons.externaljavaactions.SetRandomVariab
 import org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand;
 
 import de.uka.ipd.sdq.stoex.RandomVariable;
+import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
 
 public class ResourceDemandOpenStoexDialog extends SetRandomVariable {
 
@@ -19,6 +20,11 @@ public class ResourceDemandOpenStoexDialog extends SetRandomVariable {
 	public RandomVariable getRandomVariable(EObject element) {
 		ParametricResourceDemand rd = (ParametricResourceDemand) element;
 		return rd.getSpecification_ParametericResourceDemand();
+	}
+
+	@Override
+	public TypeEnum getExpectedType() {
+		return TypeEnum.ANY;
 	}
 
 }

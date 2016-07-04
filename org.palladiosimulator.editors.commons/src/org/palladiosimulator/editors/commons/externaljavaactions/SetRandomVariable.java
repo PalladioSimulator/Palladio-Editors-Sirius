@@ -5,28 +5,40 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.Dialog;
-import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
 import org.palladiosimulator.editors.dialogs.stoex.StochasticExpressionEditDialog;
-import org.palladiosimulator.pcm.parameter.VariableCharacterisation;
 
 import de.uka.ipd.sdq.pcm.stochasticexpressions.PCMStoExPrettyPrintVisitor;
 import de.uka.ipd.sdq.stoex.RandomVariable;
 import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
 
+/**
+ * This External Java Action opens a StochasticExpressionEditDialog and sets the
+ * RandomVariable of the object passed to getRandomVariable.
+ * 
+ * The RandomVariable instance should already be created.
+ * 
+ * This class is abstract and therefore must be extended. (See for example
+ * {@link SetVariableCharacterisationSpecification})
+ * 
+ * The RandomVariable's container (e.g. VariableCharacterisation in
+ * {@link SetVariableCharacterisationSpecification}) must be passed as parameter
+ * to the External Java Action with the name "element". (See for example
+ * repository.odesign > Section Internal Elements > Node Creation Variable
+ * Characterisation and Double Click Edit Variable Characterisation)
+ * 
+ * @author Amine Kechaou
+ *
+ */
 public abstract class SetRandomVariable implements IExternalJavaAction {
 
-	
 	@Override
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
-		//A parameter "element" containing the element is needed !
 		RandomVariable randomVariable = getRandomVariable((EObject) parameters.get("element"));
 		StochasticExpressionEditDialog dialog = new StochasticExpressionEditDialog(
-				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), getExpectedType(randomVariable));
-		
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), getExpectedType());
+
 		dialog.setInitialExpression(randomVariable);
 		dialog.open();
 		if (dialog.getReturnCode() == Dialog.OK) {
@@ -34,37 +46,17 @@ public abstract class SetRandomVariable implements IExternalJavaAction {
 			randomVariable.setSpecification(new PCMStoExPrettyPrintVisitor().prettyPrint(dialog.getResult()));
 		}
 	}
-	/*public void execute(Collection<? extends EObject> arg0, Map<String, Object> arg1) {
-		RandomVariable rv = null;
-		EObject check = arg0.iterator().next();
-		if (check instanceof DNodeListElement) {
-			rv = getRandomVariable(((DNodeListElement) check).getTarget());
-		} else if (check instanceof DNodeContainer) {
-			rv = getRandomVariable(((DNodeContainer) check).getTarget());
-		} else if (check instanceof DNode) {
-			rv = getRandomVariable(((DNode) check).getTarget());
-		}
-		StochasticExpressionEditDialog dialog = new StochasticExpressionEditDialog(
-				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), getExpectedType(rv));
-		dialog.setInitialExpression(rv);
-		dialog.open();
-		if (dialog.getReturnCode() == Dialog.OK) {
-			rv.setSpecification(dialog.getResultText());
-			rv.setSpecification(new PCMStoExPrettyPrintVisitor().prettyPrint(dialog.getResult()));
-		}
-	}*/
-	
-	protected TypeEnum getExpectedType(RandomVariable rv) {
-		TypeEnum expectedType = TypeEnum.ANY; 
-		if (rv instanceof VariableCharacterisation) {// ??
-			expectedType = StochasticExpressionEditDialog
-					.getTypeFromVariableCharacterisation((VariableCharacterisation) rv);
-		}
-		return expectedType;
-	}
 
+	/**
+	 * Gets the expected type of the RandomVariable to be set
+	 * @return the expected type of the RandomVariable to be set
+	 */
+	public abstract TypeEnum getExpectedType();
+
+	/**
+	 * Gets the RandomVariable of the element 
+	 * @param element Element containing the RandomVariable to be set
+	 * @return The RandomVariable of the given element
+	 */
 	public abstract RandomVariable getRandomVariable(EObject element);
-
-
-
 }

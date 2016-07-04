@@ -26,7 +26,7 @@ public class LoopIterationsAction extends SetRandomVariable {
 	}
 
 	@Override
-	protected TypeEnum getExpectedType(RandomVariable rv) {
+	public TypeEnum getExpectedType() {
 		return TypeEnum.INT;
 	}
 
