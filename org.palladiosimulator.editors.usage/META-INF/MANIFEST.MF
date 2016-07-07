@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Usage Diagram Editor
-Bundle-SymbolicName: org.palladiosimulator.editors.usage;singleton:=true
+Bundle-SymbolicName: org.palladiosimulator.editors.sirius.usage;singleton:=true
 Bundle-Version: 1.0.0
-Bundle-Activator: org.palladiosimulator.editors.usage.Activator
+Bundle-Activator: org.palladiosimulator.editors.sirius.usage.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,

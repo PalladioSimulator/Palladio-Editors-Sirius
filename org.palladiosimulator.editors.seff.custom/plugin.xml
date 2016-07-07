@@ -4,31 +4,31 @@
    <extension
          point="org.eclipse.sirius.externalJavaAction">
       <javaActions
-            actionClass="org.palladiosimulator.editors.seff.custom.externaljavaactions.LoopIterationCountDialog"
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.LoopIterationCountDialog"
             id="LoopIterationCountDialog">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.seff.custom.externaljavaactions.ResourceDemandOpenStoexDialog"
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.ResourceDemandOpenStoexDialog"
             id="ResourceDemandOpenStoexDialog">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.seff.custom.externaljavaactions.GuardedBranchTransistionConditionDialog"
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.GuardedBranchTransistionConditionDialog"
             id="GuardedBranchTransistionConditionDialog">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.seff.custom.externaljavaactions.DeleteRecoveryFlow"
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.DeleteRecoveryFlow"
             id="DeleteRecoveryFlow">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.seff.custom.externaljavaactions.AddAcquireAction"
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.AddAcquireAction"
             id="AddAcquireAction">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.seff.custom.externaljavaactions.AddReleaseAction"
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.AddReleaseAction"
             id="AddReleaseAction">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.seff.custom.externaljavaactions.AddExternalCallAction"
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.AddExternalCallAction"
             id="AddExternalCallAction">
       </javaActions>
    </extension>

@@ -4,15 +4,15 @@
    <extension
          point="org.eclipse.sirius.externalJavaAction">
       <javaActions
-            actionClass="org.palladiosimulator.editors.resourceenvironment.externaljavaactions.AddProcessingResourceSpecification"
+            actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.AddProcessingResourceSpecification"
             id="AddProcessingResourceSpecification">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.resourceenvironment.externaljavaactions.RemoveConnectorAction"
+            actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.RemoveConnectorAction"
             id="RemoveConnector">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.resourceenvironment.externaljavaactions.AddLinkingResourceAction"
+            actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.AddLinkingResourceAction"
             id="AddLinkingResource">
       </javaActions>
    </extension>

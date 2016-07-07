@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: SEFF Diagram Editor
-Bundle-SymbolicName: org.palladiosimulator.editors.seff;singleton:=true
+Bundle-SymbolicName: org.palladiosimulator.editors.sirius.seff;singleton:=true
 Bundle-Version: 1.0.0
-Bundle-Activator: org.palladiosimulator.editors.seff.Activator
+Bundle-Activator: org.palladiosimulator.editors.sirius.seff.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,

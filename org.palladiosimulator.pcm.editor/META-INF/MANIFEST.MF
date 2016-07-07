@@ -39,7 +39,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore.edit;visibility:=reexport,
  de.uka.ipd.sdq.probfunction.edit;visibility:=reexport,
  org.palladiosimulator.pcm.ui,
- org.palladiosimulator.editors.propertytabs,
+ org.palladiosimulator.editors.commons.propertytabs,
  org.eclipse.core.databinding;bundle-version="1.4.2",
  org.eclipse.core.databinding.property;bundle-version="1.4.200",
  org.palladiosimulator.mdsdprofiles.api

@@ -4,43 +4,43 @@
    <extension
          point="org.eclipse.sirius.externalJavaAction">
       <javaActions
-            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.AddATAction"
+            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.AddATAction"
             id="AddAT">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.AddATRoleAction"
+            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.AddATRoleAction"
             id="AddATRole">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.ApplyUnapplyProfileAction"
+            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.ApplyUnapplyProfileAction"
             id="ApplyUnapplyProfile">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.ApplyUnapplyStereotypeAction"
+            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.ApplyUnapplyStereotypeAction"
             id="ApplyUnapplyStereotype">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.LoadResourceAction"
+            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.LoadResourceAction"
             id="LoadResource">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.LoadResources"
+            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.LoadResources"
             id="LoadResources">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.RemoveATAction"
+            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.RemoveATAction"
             id="RemoveAT">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.RemoveATRoleAction"
+            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.RemoveATRoleAction"
             id="RemoveATRole">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.SetNamedReference"
+            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetNamedReference"
             id="SetNamedReference">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.commons.externaljavaactions.SetVariableCharacterisationSpecification"
+            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetVariableCharacterisationSpecification"
             id="SetVariableCharacterisationSpecification">
       </javaActions>
    </extension>

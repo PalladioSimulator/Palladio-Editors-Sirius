@@ -4,7 +4,7 @@
 	<extension
          point="org.eclipse.sirius.externalJavaAction">
       <javaActions
-            actionClass="org.palladiosimulator.editors.composedprovidingrequiringentity.externaljavaactions.AddAssemblyContext"
+            actionClass="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom.externaljavaactions.AddAssemblyContext"
             id="AddAssemblyContext">
       </javaActions>
    </extension>

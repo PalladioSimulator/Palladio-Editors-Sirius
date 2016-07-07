@@ -6,8 +6,8 @@
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
             contributorId="org.palladiosimulator.pcmbench.projectview"
-            labelProvider="org.palladiosimulator.editors.tabs.PropertyLabelProvider"
-            typeMapper="org.palladiosimulator.editors.tabs.PropertyTypeMapper">
+            labelProvider="org.palladiosimulator.editors.commons.tabs.PropertyLabelProvider"
+            typeMapper="org.palladiosimulator.editors.commons.tabs.PropertyTypeMapper">
          <propertyCategory category="component"/>
          <propertyCategory category="interface"/>
          <propertyCategory category="operations"/>
@@ -60,37 +60,37 @@
          point="org.eclipse.ui.views.properties.tabbed.propertySections">
       <propertySections contributorId="org.palladiosimulator.pcmbench.projectview">
          <propertySection
-               class="org.palladiosimulator.editors.tabs.ComponentPropertySection"
+               class="org.palladiosimulator.editors.commons.tabs.ComponentPropertySection"
                id="org.palladiosimulator.pcmbench.componentTab.section"
                tab="org.palladiosimulator.pcmbench.componentTab">
             <input type="org.palladiosimulator.pcm.repository.ProvidesComponentType"/>
          </propertySection>
          <propertySection 
-               class="org.palladiosimulator.editors.tabs.InterfacePropertySection"
+               class="org.palladiosimulator.editors.commons.tabs.InterfacePropertySection"
                id="org.palladiosimulator.pcmbench.interfaceTab.section"
                tab="org.palladiosimulator.pcmbench.interfaceTab">
             <input type="org.palladiosimulator.pcm.repository.Interface"/>
         </propertySection>
           <propertySection
-               class="org.palladiosimulator.editors.tabs.OperationsPropertySection"
+               class="org.palladiosimulator.editors.commons.tabs.OperationsPropertySection"
                id="org.palladiosimulator.pcmbench.operationsTab.section"
                tab="org.palladiosimulator.pcmbench.operationsTab">
             <input type="org.palladiosimulator.pcm.repository.OperationInterface"/>
          </propertySection>
           <propertySection
-               class="org.palladiosimulator.editors.tabs.EventTypesPropertySection"
+               class="org.palladiosimulator.editors.commons.tabs.EventTypesPropertySection"
                id="org.palladiosimulator.pcmbench.eventTypesTab.section"
                tab="org.palladiosimulator.pcmbench.eventTypesTab">
             <input type="org.palladiosimulator.pcm.repository.EventGroup"/>
          </propertySection>
          <propertySection
-               class="org.palladiosimulator.editors.tabs.AdvancedPropertySection"
+               class="org.palladiosimulator.editors.commons.tabs.AdvancedPropertySection"
                id="org.palladiosimulator.pcmbench.advancedTab.section"
                tab="org.palladiosimulator.pcmbench.advancedTab">
             <input type="org.eclipse.emf.ecore.EObject"/>
          </propertySection>
          <propertySection
-               class="org.palladiosimulator.editors.tabs.InfrastructureSignaturesPropertySection"
+               class="org.palladiosimulator.editors.commons.tabs.InfrastructureSignaturesPropertySection"
                id="org.palladiosimulator.pcmbench.infrastructureSignaturesTab.section"
                tab="org.palladiosimulator.pcmbench.infrastructureSignaturesTab">
             <input
@@ -98,7 +98,7 @@
             </input>
          </propertySection>
          <propertySection
-               class="org.palladiosimulator.editors.tabs.EventChannelSinkConnectorSection"
+               class="org.palladiosimulator.editors.commons.tabs.EventChannelSinkConnectorSection"
                id="org.palladiosimulator.pcmbench.eventConnectors.section"
                tab="org.palladiosimulator.pcmbench.eventConnectorsTab">
             <input

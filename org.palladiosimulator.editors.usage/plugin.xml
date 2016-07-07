@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
-    <component class="org.palladiosimulator.editors.usage.Activator"
+    <component class="org.palladiosimulator.editors.sirius.usage.Activator"
                id="org.palladiosimulator.editors.sirius.usage.design"
 	       name="usage">
     </component>

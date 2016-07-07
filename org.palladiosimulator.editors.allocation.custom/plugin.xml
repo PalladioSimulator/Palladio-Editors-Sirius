@@ -4,7 +4,7 @@
    <extension
          point="org.eclipse.sirius.externalJavaAction">
       <javaActions
-            actionClass="org.palladiosimulator.editors.allocation.externaljavaactions.AddAllocationContext"
+            actionClass="org.palladiosimulator.editors.sirius.allocation.custom.externaljavaactions.AddAllocationContext"
             id="AddAllocationContext">
       </javaActions>
    </extension>

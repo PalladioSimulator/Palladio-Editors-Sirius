@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
-    <component class="org.palladiosimulator.editors.allocation.Activator"
+    <component class="org.palladiosimulator.editors.sirius.allocation.Activator"
                id="org.palladiosimulator.editors.allocation.design"
 	       name="Allocation">
     </component>
@@ -11,7 +11,7 @@
         point="org.eclipse.ui.newWizards">
      <wizard
            category="org.palladiosimulator.pcmbench.palladio_modeling_category"
-           class="org.palladiosimulator.editors.allocation.wizards.AllocationCreationWizard"
+           class="org.palladiosimulator.editors.sirius.allocation.wizards.AllocationCreationWizard"
            icon="icons/obj16/Allocation.gif"
            id="org.palladiosimulator.editors.allocation.wizards.AllocationCreationWizard"
            name="Allocation Model and Diagram">

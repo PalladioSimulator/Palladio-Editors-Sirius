@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Repository Diagram Editor
-Bundle-SymbolicName: org.palladiosimulator.editors.repository;singleton:=true
+Bundle-SymbolicName: org.palladiosimulator.editors.sirius.repository;singleton:=true
 Bundle-Version: 1.0.0
-Bundle-Activator: org.palladiosimulator.editors.repository.Activator
+Bundle-Activator: org.palladiosimulator.editors.sirius.repository.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius,
  org.palladiosimulator.pcm;bundle-version="4.0.0"

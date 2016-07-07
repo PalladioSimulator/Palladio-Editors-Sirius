@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-Name: ComposedProvidingRequiringEntity-design extensions
-Bundle-SymbolicName: org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension;singleton:=true
+Bundle-SymbolicName: org.palladiosimulator.editors.sirius.custom.style;singleton:=true
 Bundle-Version: 0.9.1.qualifier
 Require-Bundle: org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0",
  org.eclipse.sirius.diagram.ui,
@@ -10,12 +10,15 @@ Require-Bundle: org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0",
  org.modelversioning.emfprofile.registry;bundle-version="1.0.0",
  org.palladiosimulator.architecturaltemplates.ui;bundle-version="1.0.0",
  org.palladiosimulator.architecturaltemplates.api;bundle-version="1.0.0",
- org.palladiosimulator.editors.dialogs;bundle-version="1.0.0",
+ org.palladiosimulator.editors.commons.dialogs;bundle-version="1.0.0",
  org.modelversioning.emfprofile.edit;bundle-version="1.0.0",
  de.uka.ipd.sdq.stoex.analyser;bundle-version="2.0.0"
-Bundle-Activator: org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.ExtensionActivator
+Bundle-Activator: org.palladiosimulator.editors.sirius.custom.style.ExtensionActivator
 Bundle-Vendor: palladiosimulator.org
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.rotatable,org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.rotatable.editPart,org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.rotatable.figure,org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension.rotatable.provider
+Export-Package: org.palladiosimulator.editors.sirius.custom.style.rotatable,
+ org.palladiosimulator.editors.sirius.custom.style.rotatable.editPart,
+ org.palladiosimulator.editors.sirius.custom.style.rotatable.figure,
+ org.palladiosimulator.editors.sirius.custom.style.rotatable.provider
 Bundle-ManifestVersion: 2

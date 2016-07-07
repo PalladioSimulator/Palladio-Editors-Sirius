@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Usage Diagram Editor - Custom
-Bundle-SymbolicName: org.palladiosimulator.editors.usage.custom;singleton:=true
+Bundle-SymbolicName: org.palladiosimulator.editors.sirius.usage.custom;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.sirius,
@@ -9,14 +9,14 @@ Require-Bundle: org.eclipse.sirius,
  org.eclipse.ui;bundle-version="3.106.1",
  org.eclipse.sirius.diagram,
  org.palladiosimulator.pcm,
- org.palladiosimulator.editors.dialogs,
+ org.palladiosimulator.editors.commons.dialogs,
  de.uka.ipd.sdq.stoex.analyser,
  de.uka.ipd.sdq.pcm.stochasticexpressions,
  org.eclipse.emf.transaction,
  org.modelversioning.emfprofile,
  org.modelversioning.emfprofile.registry,
  org.eclipse.emf.edit.ui,
- org.palladiosimulator.editors.commons
+ org.palladiosimulator.editors.sirius.custom
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: palladiosimulator.org
-Bundle-Activator: org.palladiosimulator.editors.usage.custom.Activator
+Bundle-Activator: org.palladiosimulator.editors.sirius.usage.custom.Activator
