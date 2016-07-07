@@ -17,7 +17,7 @@ PCM Editors build.
          version="0.0.0"/>
 
    <includes
-         id="org.palladiosimulator.editors.feature"
+         id="org.palladiosimulator.editors.sirius.feature"
          version="0.0.0"/>
 
    <requires>

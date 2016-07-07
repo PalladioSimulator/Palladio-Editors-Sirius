@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.palladiosimulator.editors.feature"
+      id="org.palladiosimulator.editors.sirius.feature"
       label="Palladio Component Model - Sirius Editors"
       version="5.0.0.qualifier"
       plugin="org.palladiosimulator.branding"
