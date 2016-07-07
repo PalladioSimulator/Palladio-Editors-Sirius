@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Resource Environment editor: external Java actions
-Bundle-SymbolicName: org.palladiosimulator.editors.resourceenvironment.externaljavaactions;singleton:=true
+Bundle-SymbolicName: org.palladiosimulator.editors.resourceenvironment.custom;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.palladiosimulator.editors.resourceenvironment.externaljavaactions.Activator
 Bundle-Vendor: palladiosimulator.org
