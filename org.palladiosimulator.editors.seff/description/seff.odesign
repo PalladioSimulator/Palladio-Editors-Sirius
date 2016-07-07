@@ -70,8 +70,8 @@
         </containerMappings>
         <containerMappings name="ExternalCallAction" labelDirectEdit="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='directEditNameBySingleClick']" semanticCandidatesExpression="feature:steps_Behaviour" domainClass="seff.ExternalCallAction" childrenPresentation="VerticalStack">
           <subContainerMappings name="InputVariableUsageCompartment" semanticCandidatesExpression="[self/]" domainClass="seff.ExternalCallAction">
-            <subContainerMappings name="InputVariableUsage" semanticCandidatesExpression="feature:inputVariableUsages__CallAction" domainClass="parameter.VariableUsage" childrenPresentation="List">
-              <subNodeMappings name="VariableCharacterisationInput" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" doubleClickDescription="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='seffOpenStoExDialogVariableCharacterisation']" domainClass="parameter.VariableCharacterisation">
+            <subContainerMappings name="InputVariableUsage" labelDirectEdit="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Variable%20Usage']" semanticCandidatesExpression="feature:inputVariableUsages__CallAction" domainClass="parameter.VariableUsage" childrenPresentation="List">
+              <subNodeMappings name="VariableCharacterisationInput" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" doubleClickDescription="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20VariableCharacterisation']" domainClass="parameter.VariableCharacterisation">
                 <style xsi:type="style:SquareDescription" labelExpression="[self.type + ' = ' + self.specification_VariableCharacterisation.specification/]" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -94,8 +94,8 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="OutputVariableUsageCompartment" semanticCandidatesExpression="[self/]" domainClass="seff.ExternalCallAction">
-            <subContainerMappings name="OutputVariableUsage" semanticCandidatesExpression="feature:returnVariableUsage__CallReturnAction" domainClass="parameter.VariableUsage" childrenPresentation="List">
-              <subNodeMappings name="VariableCharacterisationOutput" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" doubleClickDescription="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='seffOpenStoExDialogVariableCharacterisation']" domainClass="parameter.VariableCharacterisation">
+            <subContainerMappings name="OutputVariableUsage" labelDirectEdit="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Variable%20Usage']" semanticCandidatesExpression="feature:returnVariableUsage__CallReturnAction" domainClass="parameter.VariableUsage" childrenPresentation="List">
+              <subNodeMappings name="VariableCharacterisationOutput" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" doubleClickDescription="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20VariableCharacterisation']" domainClass="parameter.VariableCharacterisation">
                 <style xsi:type="style:SquareDescription" labelExpression="[self.type + ' = ' + self.specification_VariableCharacterisation.specification/]" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -131,7 +131,31 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="EmitEventAction" labelDirectEdit="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='directEditNameBySingleClick']" semanticCandidatesExpression="[steps_Behaviour/]" domainClass="seff.EmitEventAction">
+        <containerMappings name="EmitEventAction" labelDirectEdit="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='directEditNameBySingleClick']" semanticCandidatesExpression="[steps_Behaviour/]" domainClass="seff.EmitEventAction" childrenPresentation="VerticalStack">
+          <subContainerMappings name="InputVariableUsageCompartment" semanticCandidatesExpression="[self/]" domainClass="seff.EmitEventAction">
+            <subContainerMappings name="InputVariableUsage - EmitEvent" labelDirectEdit="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Variable%20Usage']" semanticCandidatesExpression="feature:inputVariableUsages__CallAction" domainClass="parameter.VariableUsage" childrenPresentation="List">
+              <subNodeMappings name="VariableCharacterisationInput - Emit Event" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" domainClass="parameter.VariableCharacterisation">
+                <style xsi:type="style:SquareDescription" labelExpression="[self.type + ' = ' + self.specification_VariableCharacterisation.specification/]" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+                </style>
+              </subNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[self.namedReference__VariableUsage.referenceName/]" backgroundStyle="Liquid">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+                <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.2"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="InputVariableUsageCompartment">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="[entityName/]">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -139,9 +163,9 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="SetVariableAction" labelDirectEdit="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='directEditNameBySingleClick']" semanticCandidatesExpression="[steps_Behaviour/]" domainClass="seff.SetVariableAction">
-          <subContainerMappings name="LocalVariableUsageSetVariableAction" semanticCandidatesExpression="feature:localVariableUsages_SetVariableAction" domainClass="parameter.VariableUsage" childrenPresentation="List">
-            <subNodeMappings name="VariableCharacterisationvariableSetter" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" doubleClickDescription="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='seffOpenStoExDialogVariableCharacterisation']" domainClass="parameter.VariableCharacterisation">
+        <containerMappings name="SetVariableAction" semanticCandidatesExpression="[steps_Behaviour/]" domainClass="seff.SetVariableAction">
+          <subContainerMappings name="LocalVariableUsageSetVariableAction" labelDirectEdit="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Variable%20Usage']" semanticCandidatesExpression="feature:localVariableUsages_SetVariableAction" domainClass="parameter.VariableUsage" childrenPresentation="List">
+            <subNodeMappings name="VariableCharacterisationvariableSetter" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" doubleClickDescription="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20VariableCharacterisation']" domainClass="parameter.VariableCharacterisation">
               <style xsi:type="style:SquareDescription" labelExpression="[self.type + ' = ' + self.specification_VariableCharacterisation.specification/]" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -179,7 +203,7 @@
           </style>
         </containerMappings>
         <containerMappings name="ReleaseAction" labelDirectEdit="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='directEditNameBySingleClick']" semanticCandidatesExpression="[steps_Behaviour/]" domainClass="seff.ReleaseAction">
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="&lt;&lt;ReleaseAction>>">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="[self.entityName +  '&lt;Resource : ' + self.passiveResource_ReleaseAction.entityName + '>'/]">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -219,7 +243,7 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </subContainerMappings>
-          <subContainerMappings name="ProbabilisticBranchTransition" labelDirectEdit="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='directEditNameBySingleClick']" semanticCandidatesExpression="[self.branches_Branch/]" domainClass="seff.ProbabilisticBranchTransition" childrenPresentation="VerticalStack">
+          <subContainerMappings name="ProbabilisticBranchTransition" labelDirectEdit="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='directEditNameBySingleClick']" semanticCandidatesExpression="[self.branches_Branch/]" doubleClickDescription="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Probabilty']" domainClass="seff.ProbabilisticBranchTransition" childrenPresentation="VerticalStack">
             <subContainerMappings name="BranchBehaviourProb" semanticCandidatesExpression="[self.branchBehaviour_BranchTransition/]" domainClass="seff.ResourceDemandingBehaviour" reusedNodeMappings="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@nodeMappings[name='StartNode'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@nodeMappings[name='StopNode']" reusedContainerMappings="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='AcquireAction'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='BranchAction'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='EmitEventAction'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='CollectionIteratorAction'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='ExternalCallAction'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='ForkAction'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='InternalAction'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='InternalCallAction'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='Loop'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='RecoveryAction'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='ReleaseAction'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='SetVariableAction']">
               <style xsi:type="style:FlatContainerStyleDescription" showIcon="false" labelExpression="" widthComputationExpression="14">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -314,7 +338,7 @@
           </style>
         </containerMappings>
         <containerMappings name="AcquireAction" labelDirectEdit="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='directEditNameBySingleClick']" semanticCandidatesExpression="[steps_Behaviour/]" domainClass="seff.AcquireAction">
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="[self.entityName +  '&lt;Resource : ' + self.passiveresource_AcquireAction.entityName + '>'/]">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -322,25 +346,21 @@
           </style>
         </containerMappings>
         <toolSections name="Actions">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="startActionCreation" label="startAction" nodeMappings="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@nodeMappings[name='StartNode']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="startActionCreation" label="startAction" precondition="[container.eContents()->selectByType(StartAction)->size() = 0/]" nodeMappings="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@nodeMappings[name='StartNode']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="[container.eAllContents()->selectByType(StartAction)->size() = 0/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour"/>
-                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="stopActionCreation" label="stopAction" nodeMappings="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@nodeMappings[name='StopNode']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="stopActionCreation" label="stopAction" precondition="[container.eAllContents()->selectByType(StopAction)->size() = 0/]" nodeMappings="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@nodeMappings[name='StopNode']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="[container.eAllContents()->selectByType(StopAction)->size() = 0/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour"/>
-                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -358,7 +378,14 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.ExternalCallAction" referenceName="steps_Behaviour"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.ExternalCallAction" referenceName="steps_Behaviour">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add ExternalCallAction" id="AddExternalCallAction">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.calledService_ExternalService=null/]">
+                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    </subModelOperations>
+                    <parameters name="instance" value="var:instance"/>
+                  </subModelOperations>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -385,7 +412,15 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.AcquireAction" referenceName="steps_Behaviour"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.AcquireAction" referenceName="steps_Behaviour">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add AcquireAction" id="AddAcquireAction">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.passiveresource_AcquireAction = null/]">
+                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    </subModelOperations>
+                    <parameters name="instance" value="var:instance"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['AcquireAction' + container.eContents()->selectByType(AcquireAction)->size()/]"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -394,7 +429,15 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.ReleaseAction" referenceName="steps_Behaviour"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.ReleaseAction" referenceName="steps_Behaviour">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add ReleaseAction" id="AddReleaseAction">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.passiveResource_ReleaseAction = null/]">
+                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    </subModelOperations>
+                    <parameters name="instance" value="var:instance"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['ReleaseAction' + container.eContents()->selectByType(ReleaseAction)->size()/]"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -482,35 +525,31 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Action Details">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="resourceDemandCreation" nodeMappings="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='InternalAction']/@subNodeMappings[name='ResourceDemand']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="ResourceDemandCreation" label="ResourceDemand" nodeMappings="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='InternalAction']/@subNodeMappings[name='ResourceDemand']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff_performance.ParametricResourceDemand" referenceName="resourceDemand_Action">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_ParametericResourceDemand">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="specification" valueExpression="['1'/]"/>
-                    </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_ParametericResourceDemand">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="specification" valueExpression="['1'/]"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="failureOccurrenceDescriptionCreation" nodeMappings="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='InternalAction']/@subNodeMappings[name='FailureOccurenceDescription']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="FailureOccurrenceDescriptionCreation" label="FailureOccurrenceDescription" nodeMappings="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='InternalAction']/@subNodeMappings[name='FailureOccurenceDescription']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="reliability.InternalFailureOccurrenceDescription" referenceName="internalFailureOccurrenceDescriptions__InternalAction">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="failureProbability" valueExpression="0.0"/>
-                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="failureProbability" valueExpression="0.0"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="InfrastructureCallCreation" nodeMappings="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='InternalAction']/@subNodeMappings[name='InfrastructureCall']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="InfrastructureCallCreation" label="InfrastructureCall" nodeMappings="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='InternalAction']/@subNodeMappings[name='InfrastructureCall']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -519,52 +558,51 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="VariableUsageCreation" label="Variable Usage" containerMappings="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='ExternalCallAction']/@subContainerMappings[name='InputVariableUsageCompartment']/@subContainerMappings[name='InputVariableUsage'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='ExternalCallAction']/@subContainerMappings[name='OutputVariableUsageCompartment']/@subContainerMappings[name='OutputVariableUsage'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='SetVariableAction']/@subContainerMappings[name='LocalVariableUsageSetVariableAction']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="VariableUsageCreation" label="Variable Usage" containerMappings="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='ExternalCallAction']/@subContainerMappings[name='InputVariableUsageCompartment']/@subContainerMappings[name='InputVariableUsage'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='ExternalCallAction']/@subContainerMappings[name='OutputVariableUsageCompartment']/@subContainerMappings[name='OutputVariableUsage'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='SetVariableAction']/@subContainerMappings[name='LocalVariableUsageSetVariableAction'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='EmitEventAction']/@subContainerMappings[name='InputVariableUsageCompartment']/@subContainerMappings[name='InputVariableUsage%20-%20EmitEvent']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="[containerView.toString()='InputVariableUsageCompartment'/]">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableUsage" referenceName="inputVariableUsages__CallAction">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stoex.VariableReference" referenceName="namedReference__VariableUsage">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="referenceName" valueExpression="['InputVariableUsage' + container.oclAsType(ExternalCallAction).inputVariableUsages__CallAction->size()/]"/>
-                      </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:VariableReference"/>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NamedReference" id="SetNamedReference">
+                      <parameters name="VariableReference" value="var:VariableReference"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="[containerView.toString()='OutputVariableUsageCompartment'/]">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableUsage" referenceName="returnVariableUsage__CallReturnAction">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stoex.VariableReference" referenceName="namedReference__VariableUsage">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="referenceName" valueExpression="['OutputVariableUsage' + container.oclAsType(ExternalCallAction).returnVariableUsage__CallReturnAction->size()  /]"/>
-                      </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:VariableReference"/>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NamedReference" id="SetNamedReference">
+                      <parameters name="VariableReference" value="var:VariableReference"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="[container.oclIsTypeOf(SetVariableAction)/]">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableUsage" referenceName="localVariableUsages_SetVariableAction">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stoex.VariableReference" referenceName="namedReference__VariableUsage">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="referenceName" valueExpression="['LocalVariableUsage' + container.oclAsType(SetVariableAction).localVariableUsages_SetVariableAction->size()/]"/>
-                      </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:VariableReference"/>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NamedReference" id="SetNamedReference">
+                      <parameters name="VariableReference" value="var:VariableReference"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Variable Characterisation" nodeMappings="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='ExternalCallAction']/@subContainerMappings[name='InputVariableUsageCompartment']/@subContainerMappings[name='InputVariableUsage']/@subNodeMappings[name='VariableCharacterisationInput'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='ExternalCallAction']/@subContainerMappings[name='OutputVariableUsageCompartment']/@subContainerMappings[name='OutputVariableUsage']/@subNodeMappings[name='VariableCharacterisationOutput'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='SetVariableAction']/@subContainerMappings[name='LocalVariableUsageSetVariableAction']/@subNodeMappings[name='VariableCharacterisationvariableSetter']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Variable Characterisation" nodeMappings="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='ExternalCallAction']/@subContainerMappings[name='InputVariableUsageCompartment']/@subContainerMappings[name='InputVariableUsage']/@subNodeMappings[name='VariableCharacterisationInput'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='ExternalCallAction']/@subContainerMappings[name='OutputVariableUsageCompartment']/@subContainerMappings[name='OutputVariableUsage']/@subNodeMappings[name='VariableCharacterisationOutput'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='SetVariableAction']/@subContainerMappings[name='LocalVariableUsageSetVariableAction']/@subNodeMappings[name='VariableCharacterisationvariableSetter'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='EmitEventAction']/@subContainerMappings[name='InputVariableUsageCompartment']/@subContainerMappings[name='InputVariableUsage%20-%20EmitEvent']/@subNodeMappings[name='VariableCharacterisationInput%20-%20Emit%20Event']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableCharacterisation" referenceName="variableCharacterisation_VariableUsage">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="specification" valueExpression="['1'/]"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="aql:parameter::VariableCharacterisationType::STRUCTURE"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableCharacterisation" referenceName="variableCharacterisation_VariableUsage" variableName="variableCharacterisation">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="aql:parameter::VariableCharacterisationType::STRUCTURE"/>
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set Variable Characterisation Specification" id="SetVariableCharacterisationSpecification">
+                    <parameters name="element" value="var:variableCharacterisation"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -664,6 +702,9 @@
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set Probability" id="SetBranchProbability">
+                      <parameters name="element" value="var:instance"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -705,17 +746,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="seffOpenStoExDialogVariableCharacterisation" mappings="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='ExternalCallAction']/@subContainerMappings[name='InputVariableUsageCompartment']/@subContainerMappings[name='InputVariableUsage']/@subNodeMappings[name='VariableCharacterisationInput'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='ExternalCallAction']/@subContainerMappings[name='OutputVariableUsageCompartment']/@subContainerMappings[name='OutputVariableUsage']/@subNodeMappings[name='VariableCharacterisationOutput'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='SetVariableAction']/@subContainerMappings[name='LocalVariableUsageSetVariableAction']/@subNodeMappings[name='VariableCharacterisationvariableSetter']">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="seffVariableCharacterisationStoEx" id="VariableCharacterisationNameAction">
-                  <parameters name="element" value="var:element"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool:DoubleClickDescription" name="seffOpenStoExDialogResourceDemand" mappings="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='InternalAction']/@subNodeMappings[name='ResourceDemand']">
             <element name="element"/>
             <elementView name="elementView"/>
@@ -734,6 +764,44 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="seffGuardedBranchTransistionDialog" id="GuardedBranchTransistionConditionDialog">
                   <parameters name="element" value="var:element"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Edit VariableCharacterisation" mappings="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='ExternalCallAction']/@subContainerMappings[name='InputVariableUsageCompartment']/@subContainerMappings[name='InputVariableUsage']/@subNodeMappings[name='VariableCharacterisationInput'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='ExternalCallAction']/@subContainerMappings[name='OutputVariableUsageCompartment']/@subContainerMappings[name='OutputVariableUsage']/@subNodeMappings[name='VariableCharacterisationOutput'] //@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='SetVariableAction']/@subContainerMappings[name='LocalVariableUsageSetVariableAction']/@subNodeMappings[name='VariableCharacterisationvariableSetter']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.oclAsType(VariableCharacterisation).specification_VariableCharacterisation = null/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Edit Variable Characterisation Specification " id="SetVariableCharacterisationSpecification">
+                  <parameters name="element" value="var:element"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Edit Probabilty" mappings="//@ownedViewpoints[name='seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='BranchAction']/@subContainerMappings[name='ProbabilisticBranchTransition']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set Branch Probability" id="SetBranchProbability">
+                  <parameters name="element" value="var:element"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Variable Usage">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.namedReference__VariableUsage = null/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.namedReference__VariableUsage">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="referenceName" valueExpression="var:0"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

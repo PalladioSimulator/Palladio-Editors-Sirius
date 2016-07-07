@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.palladiosimulator.editors.usage.custom.externaljavaactions.ClosedWorkloadThinkTimeAction"
+            id="ClosedWorkloadThinkTimeAction">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.usage.custom.externaljavaactions.DelayTimeAction"
+            id="DelayTimeAction">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.usage.custom.externaljavaactions.OpenWorkloadInterArrivalTimeAction"
+            id="OpenWorkloadInterArrivalTimeAction">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.usage.custom.externaljavaactions.LoopIterationsAction"
+            id="LoopIterationsAction">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.usage.custom.externaljavaactions.EntryLevelSystemCallCreationDialog"
+            id="EntryLevelSystemCallCreationDialog">
+      </javaActions>
+   </extension>
+
+</plugin>
