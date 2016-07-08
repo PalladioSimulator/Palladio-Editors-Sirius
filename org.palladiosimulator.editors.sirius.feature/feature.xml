@@ -22,30 +22,23 @@
       <import plugin="org.eclipse.sirius.ui" version="3.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.workbench"/>
       <import plugin="org.eclipse.ui.ide" version="3.10.0" match="greaterOrEqual"/>
-      <import plugin="org.palladiosimulator.editors.commons" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.palladiosimulator.editors.sirius.custom" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.gmf.runtime.diagram.ui" version="1.8.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.sirius.diagram.ui"/>
       <import plugin="org.eclipse.emf.edit.ui" version="2.10.2" match="greaterOrEqual"/>
-      <import plugin="org.palladiosimulator.architecturaltemplates" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.palladiosimulator.architecturaltemplates" version="1.0.1" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.mdsdprofiles.api" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.modelversioning.emfprofile.registry" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.architecturaltemplates.ui" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.architecturaltemplates.api" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.palladiosimulator.editors.commons.dialogs"/>
-      <import plugin="org.modelversioning.emfprofile.edit"/>
+      <import plugin="org.palladiosimulator.editors.commons.dialogs" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.modelversioning.emfprofile.edit" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="de.uka.ipd.sdq.stoex.analyser" version="2.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.sirius.diagram"/>
-      <import plugin="org.palladiosimulator.editors.commons.dialogs" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.mdsdprofiles" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.modelversioning.emfprofile.edit" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.transaction" version="1.9.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.ecore"/>
-      <import plugin="de.uka.ipd.sdq.stoex" version="2.2.0" match="greaterOrEqual"/>
       <import plugin="de.uka.ipd.sdq.pcm.stochasticexpressions"/>
-      <import plugin="org.palladiosimulator.architecturaltemplates" version="1.0.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.gmf"/>
-      <import plugin="org.eclipse.gmf.runtime.common.core" version="1.7.0" match="greaterOrEqual"/>
-      <import plugin="org.palladiosimulator.commons" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf" version="2.6.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui" version="3.107.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jface" version="3.11.1" match="greaterOrEqual"/>
@@ -53,6 +46,10 @@
       <import plugin="org.eclipse.core.runtime" version="3.10.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui" version="3.106.1" match="greaterOrEqual"/>
       <import plugin="org.modelversioning.emfprofile"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="de.uka.ipd.sdq.stoex" version="2.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.common.core" version="1.7.0" match="greaterOrEqual"/>
+      <import plugin="org.palladiosimulator.commons" version="1.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -105,7 +102,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.palladiosimulator.editors.commons"
+         id="org.palladiosimulator.editors.sirius.custom"
          download-size="0"
          install-size="0"
          version="0.0.0"/>
