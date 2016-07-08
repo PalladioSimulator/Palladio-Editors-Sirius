@@ -1,6 +1,6 @@
-Palladio-Core-Editors
-=====================
-Editors for models of the Palladio Component Model (PCM). All editors are based on the [Sirius][1] framework.
+Palladio-Editors-Sirius
+=======================
+Sirius-based editors for models of the Palladio Component Model (PCM). All editors are based on the [Sirius][1] framework.
 
 General Information
 -----------------------------------------
@@ -10,10 +10,10 @@ Eclipse Update Sites
 -----------------------------------------
 
 ##### Latest Build
-- https://sdqweb.ipd.kit.edu/eclipse/palladio/core/editors/releases/latest/
+- https://sdqweb.ipd.kit.edu/eclipse/palladio/editors/sirius/releases/latest/
 
 ##### Nightly Build
-- https://sdqweb.ipd.kit.edu/eclipse/palladio/core/editors/nightly/
+- https://sdqweb.ipd.kit.edu/eclipse/palladio/editors/sirius/nightly/
 
 Develop Palladio Editors
 -----------------------------------------
@@ -23,23 +23,8 @@ Develop Palladio Editors
 	- Go to Eclipse->Help->Install New Software
 	- Add Architectural Templates nightly update site: "https://sdqweb.ipd.kit.edu/eclipse/palladiosimulator/releases/latest/".
 	- Install Palladio features.
-3. Download and install Eclipse plugin dependencies for Architectural Templates development.
-	- Go to Eclipse->Help->Install New Software
-	- Add Architectural Templates nightly update site: "http://cloudscale.xlab.si/cse/updatesites/architecturaltemplates/nightly/".
-	- Install Architectural Templates feature.
-4. Clone repository
-	$ git clone https://github.com/PalladioSimulator/Palladio-Core-Editors.git
-5. Import Palladio-Core-Editors plugins, under "plugins/" directory, into the workbench.
-
-
-Features and Plugins
---------------------
-##### Features
-- org.palladiosimulator.editors.feature
-
-##### Included Plugins
-- org.palladiosimulator.editors.composedprovidingrequiringentity.design
-- org.palladiosimulator.editors.gmf.runtime.diagram.ui.extension
-- org.palladiosimulator.editors.util
+3. Clone repository
+	$ git clone https://github.com/PalladioSimulator/Palladio-Editors-Sirius.git
+5. Import all plugins into the workbench.
 
 [1]: https://eclipse.org/sirius/
