@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rm:rmap xmlns:bc="http://www.eclipse.org/buckminster/Common-1.0" xmlns:rm="http://www.eclipse.org/buckminster/RMap-1.0">
+
+  <rm:property key="resolveFrom" value="release"/>
+
+  <rm:locator pattern="^org\.palladiosimulator\.pcm\.editor.*" searchPathRef="TreeEditors" failOnError="true"/>
+
+  <rm:redirect pattern=".*"
+		href="https://raw.githubusercontent.com/PalladioSimulator/Palladio-Editors-Tree/master/org.palladiosimulator.editors.tree.buckminster/editors.rmap" />
+		
+  <rm:searchPath name="TreeEditors">
+    <rm:provider componentTypes="eclipse.feature,osgi.bundle,buckminster" readerType="git" resolutionFilter="" source="true">
+      <rm:uri format="{0}/GIT,{1}">
+          <bc:propertyRef key="workspace.root" />
+          <bc:propertyRef key="buckminster.component" />
+        </rm:uri>
+      <rm:property key="git.remote.uri" value="https://github.com/PalladioSimulator/Palladio-Editors-Tree"/>      
+    </rm:provider>
+    <rm:provider resolutionFilter="(resolveFrom=nightly)" componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
+      <rm:uri format="https://sdqweb.ipd.kit.edu/eclipse/palladio/editors/tree/nightly/"/>
+    </rm:provider>
+    <rm:provider resolutionFilter="(resolveFrom=release)" componentTypes="osgi.bundle,eclipse.feature" readerType="p2" source="false" mutable="false">
+      <rm:uri format="https://sdqweb.ipd.kit.edu/eclipse/palladio/editors/tree/releases/latest/"/>
+    </rm:provider>
+  </rm:searchPath>
+  
+</rm:rmap>

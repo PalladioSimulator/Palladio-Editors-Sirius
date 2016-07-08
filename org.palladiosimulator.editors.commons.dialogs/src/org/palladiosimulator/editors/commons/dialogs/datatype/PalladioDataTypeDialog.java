@@ -132,7 +132,7 @@ public class PalladioDataTypeDialog extends DataTypeDialog {
     /*
      * (non-Javadoc)
      * 
-     * @see org.palladiosimulator.editors.tabs.dialog.CreateDataTypeDialog#getLoadedReposetorys()
+     * @see org.palladiosimulator.editors.commons.tabs.dialog.CreateDataTypeDialog#getLoadedReposetorys()
      */
     @Override
     public String[] getLoadedRepositories() {
@@ -186,7 +186,7 @@ public class PalladioDataTypeDialog extends DataTypeDialog {
      * (non-Javadoc)
      * 
      * @see
-     * org.palladiosimulator.editors.tabs.dialogs.CreateDataTypeDialog#setEditedResource(java.lang.String)
+     * org.palladiosimulator.editors.commons.tabs.dialogs.CreateDataTypeDialog#setEditedResource(java.lang.String)
      */
     @Override
     public void setEditedResource(String repositoryName) {
@@ -210,7 +210,7 @@ public class PalladioDataTypeDialog extends DataTypeDialog {
      * (non-Javadoc)
      * 
      * @see
-     * org.palladiosimulator.editors.tabs.dialog.CreateDataTypeDialog#innerSectionCompositeDataType(org
+     * org.palladiosimulator.editors.commons.tabs.dialog.CreateDataTypeDialog#innerSectionCompositeDataType(org
      * .eclipse.swt.widgets.Composite)
      */
     @Override
@@ -249,7 +249,7 @@ public class PalladioDataTypeDialog extends DataTypeDialog {
      * (non-Javadoc)
      * 
      * @see
-     * org.palladiosimulator.editors.tabs.dialogs.CreateDataTypeDialog#defeniereActionTypeButton(org.eclipse
+     * org.palladiosimulator.editors.commons.tabs.dialogs.CreateDataTypeDialog#defeniereActionTypeButton(org.eclipse
      * .swt.events.SelectionEvent)
      */
     @Override
@@ -298,7 +298,7 @@ public class PalladioDataTypeDialog extends DataTypeDialog {
     /*
      * (non-Javadoc)
      * 
-     * @see org.palladiosimulator.editors.tabs.dialogs.CreateDataTypeDialog#createCollectionDataType()
+     * @see org.palladiosimulator.editors.commons.tabs.dialogs.CreateDataTypeDialog#createCollectionDataType()
      */
     @Override
     public void createCollectionDataType() {
@@ -309,7 +309,7 @@ public class PalladioDataTypeDialog extends DataTypeDialog {
     /*
      * (non-Javadoc)
      * 
-     * @see org.palladiosimulator.editors.tabs.dialogs.CreateDataTypeDialog#createCompositeDataType()
+     * @see org.palladiosimulator.editors.commons.tabs.dialogs.CreateDataTypeDialog#createCompositeDataType()
      */
     @Override
     public void createCompositeDataType() {

@@ -3,7 +3,7 @@
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
     <component class="org.palladiosimulator.editors.sirius.resourceenvironment.Activator"
-               id="org.palladiosimulator.editors.resourceenvironment"
+               id="org.palladiosimulator.editors.sirius.resourceenvironment"
 	       name="resourceenvironment">
     </component>
   </extension>
@@ -13,14 +13,14 @@
            category="org.palladiosimulator.pcmbench.palladio_modeling_category"
            class="org.palladiosimulator.editors.sirius.resourceenvironment.wizards.ResourceEnvironmentCreationWizard"
            icon="icons/obj16/ResourceEnvironment.gif"
-           id="org.palladiosimulator.editors.resourceenvironment.wizards.ResourceEnvironmentCreationWizard"
+           id="org.palladiosimulator.editors.sirius.resourceenvironment.wizards.ResourceEnvironmentCreationWizard"
            name="Resource Environment Model and Diagram">
      </wizard>
   </extension>
   <extension
          point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
       <editpolicyProvider
-            class="org.palladiosimulator.editors.resourceenvironment.editpolicyproviders.LinkingResourceEditPolicyProvider">
+            class="org.palladiosimulator.editors.sirius.resourceenvironment.editpolicyproviders.LinkingResourceEditPolicyProvider">
          <Priority
                name="Highest">
          </Priority>

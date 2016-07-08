@@ -34,7 +34,7 @@ public class DataTypeCommand {
     /*
      * (non-Javadoc)
      * 
-     * @see org.palladiosimulator.editors.tabs.dialogs.CreateDataTypeDialog#createCollectionDataType()
+     * @see org.palladiosimulator.editors.commons.tabs.dialogs.CreateDataTypeDialog#createCollectionDataType()
      */
     /**
      * Creates the collection data type.
@@ -90,7 +90,7 @@ public class DataTypeCommand {
     /*
      * (non-Javadoc)
      * 
-     * @see org.palladiosimulator.editors.tabs.dialogs.CreateDataTypeDialog#createCompositeDataType()
+     * @see org.palladiosimulator.editors.commons.tabs.dialogs.CreateDataTypeDialog#createCompositeDataType()
      */
     /**
      * Creates the composite data type.

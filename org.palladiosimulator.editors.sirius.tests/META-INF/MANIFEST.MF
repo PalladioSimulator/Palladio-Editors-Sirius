@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Palladio Component Model - Editor Tests
+Bundle-Name: Palladio Component Model - Sirius Editor Tests
 Bundle-SymbolicName: org.palladiosimulator.editors.sirius.tests
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: palladiosimulator.org

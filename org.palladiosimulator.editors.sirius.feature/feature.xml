@@ -31,11 +31,11 @@
       <import plugin="org.modelversioning.emfprofile.registry" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.architecturaltemplates.ui" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.architecturaltemplates.api" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.palladiosimulator.editors.dialogs"/>
+      <import plugin="org.palladiosimulator.editors.commons.dialogs"/>
       <import plugin="org.modelversioning.emfprofile.edit"/>
       <import plugin="de.uka.ipd.sdq.stoex.analyser" version="2.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.sirius.diagram"/>
-      <import plugin="org.palladiosimulator.editors.dialogs" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.palladiosimulator.editors.commons.dialogs" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.mdsdprofiles" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.modelversioning.emfprofile.edit" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.transaction" version="1.9.0" match="greaterOrEqual"/>
@@ -56,7 +56,7 @@
    </requires>
 
    <plugin
-         id="org.palladiosimulator.editors.composedprovidingrequiringentity"
+         id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -77,28 +77,28 @@
          unpack="false"/>
 
    <plugin
-         id="org.palladiosimulator.editors.resourceenvironment"
+         id="org.palladiosimulator.editors.sirius.resourceenvironment"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.palladiosimulator.editors.seff"
+         id="org.palladiosimulator.editors.sirius.seff"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.palladiosimulator.editors.usage"
+         id="org.palladiosimulator.editors.sirius.usage"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.palladiosimulator.editors.repository"
+         id="org.palladiosimulator.editors.sirius.repository"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -111,49 +111,49 @@
          version="0.0.0"/>
 
    <plugin
-         id="org.palladiosimulator.editors.allocation"
+         id="org.palladiosimulator.editors.sirius.allocation"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.palladiosimulator.editors.allocation.custom"
+         id="org.palladiosimulator.editors.sirius.allocation.custom"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.palladiosimulator.editors.composedprovidingrequiringentity.custom"
+         id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.palladiosimulator.editors.repository.custom"
+         id="org.palladiosimulator.editors.sirius.repository.custom"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.palladiosimulator.editors.resourceenvironment.custom"
+         id="org.palladiosimulator.editors.sirius.resourceenvironment.custom"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.palladiosimulator.editors.seff.custom"
+         id="org.palladiosimulator.editors.sirius.seff.custom"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.palladiosimulator.editors.usage.custom"
+         id="org.palladiosimulator.editors.sirius.usage.custom"
          download-size="0"
          install-size="0"
          version="0.0.0"

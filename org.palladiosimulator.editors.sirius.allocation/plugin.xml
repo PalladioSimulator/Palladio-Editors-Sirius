@@ -3,7 +3,7 @@
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
     <component class="org.palladiosimulator.editors.sirius.allocation.Activator"
-               id="org.palladiosimulator.editors.allocation.design"
+               id="org.palladiosimulator.editors.sirius.allocation.design"
 	       name="Allocation">
     </component>
   </extension>
@@ -13,7 +13,7 @@
            category="org.palladiosimulator.pcmbench.palladio_modeling_category"
            class="org.palladiosimulator.editors.sirius.allocation.wizards.AllocationCreationWizard"
            icon="icons/obj16/Allocation.gif"
-           id="org.palladiosimulator.editors.allocation.wizards.AllocationCreationWizard"
+           id="org.palladiosimulator.editors.sirius.allocation.wizards.AllocationCreationWizard"
            name="Allocation Model and Diagram">
      </wizard>
   </extension>
