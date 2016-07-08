@@ -311,7 +311,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.commons.javaextensions.ResourceEnvironmentServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.commons.javaextensions.PCMServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.custom.javaextensions.ResourceEnvironmentServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.custom.javaextensions.PCMServices"/>
   </ownedViewpoints>
 </description:Group>

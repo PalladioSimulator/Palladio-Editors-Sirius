@@ -677,7 +677,7 @@
         </customization>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.commons.javaextensions.ComposedProvidingRequiringEntityServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.commons.javaextensions.PCMServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.custom.javaextensions.ComposedProvidingRequiringEntityServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.custom.javaextensions.PCMServices"/>
   </ownedViewpoints>
 </description:Group>
