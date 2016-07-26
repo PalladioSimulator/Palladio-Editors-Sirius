@@ -20,8 +20,8 @@
             id="LoopIterationsAction">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.usage.custom.externaljavaactions.EntryLevelSystemCallCreationDialog"
-            id="EntryLevelSystemCallCreationDialog">
+            actionClass="org.palladiosimulator.editors.sirius.usage.custom.externaljavaactions.EntryLevelSystemCallDialog"
+            id="EntryLevelSystemCallDialog">
       </javaActions>
    </extension>
 

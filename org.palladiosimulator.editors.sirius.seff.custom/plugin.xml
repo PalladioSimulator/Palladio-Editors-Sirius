@@ -8,10 +8,6 @@
             id="LoopIterationCountDialog">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.ResourceDemandOpenStoexDialog"
-            id="ResourceDemandOpenStoexDialog">
-      </javaActions>
-      <javaActions
             actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.GuardedBranchTransistionConditionDialog"
             id="GuardedBranchTransistionConditionDialog">
       </javaActions>
@@ -30,6 +26,42 @@
       <javaActions
             actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.AddExternalCallAction"
             id="AddExternalCallAction">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.EditBranchProbability"
+            id="EditBranchProbability">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.AddCollectionIteratorAction"
+            id="AddCollectionIteratorAction">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.AddEmitEventAction"
+            id="AddEmitEventAction">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.SetInfrastructureSignature"
+            id="SetInfrastructureSignature">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.SetNumberOfCalls"
+            id="SetNumberOfCalls">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.SetSpecification"
+            id="SetSpecification">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.SetRequiredResource"
+            id="SetRequiredResource">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.SetFailureType"
+            id="SetFailureType">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.EditInternalFailureOccurrenceDescriptionProbability"
+            id="EditInternalFailureOccurrenceDescriptionProbability">
       </javaActions>
    </extension>
 

@@ -24,7 +24,7 @@ public class GuardedBranchTransistionConditionDialog extends SetRandomVariable {
 
 	@Override
 	public TypeEnum getExpectedType() {
-		return TypeEnum.DOUBLE;
+		return TypeEnum.BOOL;
 	}
 
 }
