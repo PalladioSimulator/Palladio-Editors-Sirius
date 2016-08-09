@@ -42,7 +42,7 @@ public class AddReleaseAction implements IExternalJavaAction {
 
 		// Setting the needed object type
 		dialog.setProvidedService(PassiveResource.class);
-
+		dialog.setTitle("Test Title for Debugging");
 		dialog.open();
 
 		return (PassiveResource) dialog.getResult();
