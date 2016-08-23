@@ -109,7 +109,7 @@
                   <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
                 </style>
               </subContainerMappings>
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelExpression="['&lt;&lt;SystemCallAction>> \n' +  self.operationSignature__EntryLevelSystemCall.interface__OperationSignature.entityName + '.' + self.operationSignature__EntryLevelSystemCall.entityName /]">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelExpression="[self.entityName + '\n&lt;&lt;EntryLevelSystemCall>> \n' +  self.operationSignature__EntryLevelSystemCall.interface__OperationSignature.entityName + '.' + self.operationSignature__EntryLevelSystemCall.entityName /]">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -117,28 +117,21 @@
               </style>
             </subContainerMappings>
             <subContainerMappings name="delay" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" domainClass="usagemodel.Delay" childrenPresentation="List">
-              <subNodeMappings name="delayName" labelDirectEdit="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='nameEdit']" semanticCandidatesExpression="[self/]" domainClass="usagemodel.Delay">
-                <style xsi:type="style:NoteDescription" labelExpression="[self.entityName/]" labelAlignment="LEFT" resizeKind="NSEW">
-                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
-                </style>
-              </subNodeMappings>
-              <subNodeMappings name="delayTime" semanticCandidatesExpression="[self/]" doubleClickDescription="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='doubleClickDelayTimeDialog']" domainClass="usagemodel.Delay">
+              <subNodeMappings name="delayTime" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='doubleClickDelayTimeDialog']" domainClass="usagemodel.Delay">
                 <style xsi:type="style:BundledImageDescription" labelExpression="['Delay Time: ' + self.timeSpecification_Delay.specification/]" labelAlignment="LEFT" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 </style>
               </subNodeMappings>
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" showIcon="false" labelExpression="&lt;&lt;UsageDelay>>">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelExpression="aql:self.entityName + '\n &lt;&lt;Delay>>'">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
               </style>
             </subContainerMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelExpression="[self.entityName/]" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" labelExpression="aql:self.entityName + '\n&lt;&lt;ScenarioBehaviour>>'" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -182,7 +175,7 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
             </style>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="[self.entityName/]" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.entityName + '\n&lt;&lt;UsageScenario>>'" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -214,11 +207,10 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Delay" referenceName="actions_ScenarioBehaviour" variableName="usageDelay">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="timeSpecification_Delay">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="specification" valueExpression="0.0"/>
-                    </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="timeSpecification_Delay">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="specification" valueExpression="0.0"/>
                   </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['Delay' +container.eContents()->selectByType(Delay)->size()/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -228,7 +220,9 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EntryLevelSystemCall" referenceName="actions_ScenarioBehaviour"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EntryLevelSystemCall" referenceName="actions_ScenarioBehaviour">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['EntryLevelSystemCall' +container.eContents()->selectByType(EntryLevelSystemCall)->size()/]"/>
+                </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="entryLevelSystemCallAction" id="EntryLevelSystemCallDialog">
                   <parameters name="instance" value="var:instance"/>
                 </subModelOperations>
@@ -259,6 +253,7 @@
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor" valueExpression="var:start"/>
                     </subModelOperations>
                   </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['Loop' +container.eContents()->selectByType(Loop)->size()/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

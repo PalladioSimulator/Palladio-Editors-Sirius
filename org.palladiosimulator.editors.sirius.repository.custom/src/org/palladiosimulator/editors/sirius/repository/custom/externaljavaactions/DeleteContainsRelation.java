@@ -3,7 +3,6 @@ package org.palladiosimulator.editors.sirius.repository.custom.externaljavaactio
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -11,7 +10,6 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
-import org.palladiosimulator.pcm.repository.CollectionDataType;
 import org.palladiosimulator.pcm.repository.CompositeDataType;
 import org.palladiosimulator.pcm.repository.DataType;
 import org.palladiosimulator.pcm.repository.InnerDeclaration;

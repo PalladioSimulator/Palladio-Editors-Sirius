@@ -2,37 +2,24 @@ package org.palladiosimulator.editors.sirius.repository.custom.externaljavaactio
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.jface.viewers.AbstractTreeViewer;
-import org.eclipse.jface.viewers.TreePath;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.dialogs.PatternFilter;
 import org.palladiosimulator.editors.commons.dialogs.selection.PalladioSelectEObjectDialog;
 import org.palladiosimulator.pcm.repository.BasicComponent;
-import org.palladiosimulator.pcm.repository.EventGroup;
-import org.palladiosimulator.pcm.repository.InfrastructureInterface;
 import org.palladiosimulator.pcm.repository.InfrastructureProvidedRole;
 import org.palladiosimulator.pcm.repository.Interface;
-import org.palladiosimulator.pcm.repository.OperationInterface;
 import org.palladiosimulator.pcm.repository.OperationProvidedRole;
-import org.palladiosimulator.pcm.repository.OperationSignature;
 import org.palladiosimulator.pcm.repository.ProvidedRole;
 import org.palladiosimulator.pcm.repository.Repository;
 import org.palladiosimulator.pcm.repository.Signature;
 import org.palladiosimulator.pcm.repository.SinkRole;
-import org.palladiosimulator.pcm.repository.SourceRole;
 import org.palladiosimulator.pcm.seff.ResourceDemandingSEFF;
-import org.palladiosimulator.pcm.seff.SeffPackage;
 import org.palladiosimulator.pcm.seff.ServiceEffectSpecification;
 
 public class AddSEFF implements IExternalJavaAction {

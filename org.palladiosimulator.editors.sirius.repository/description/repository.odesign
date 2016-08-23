@@ -16,7 +16,7 @@
         </firstModelOperations>
       </diagramInitialisation>
       <defaultLayer name="Default">
-        <edgeMappings name="RequiredRole" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']" targetFinderExpression="feature:requiredInterface__OperationRequiredRole" sourceFinderExpression="feature:requiringEntity_RequiredRole" domainClass="repository.OperationRequiredRole" useDomainElement="true">
+        <edgeMappings name="RequiredRole" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']" targetFinderExpression="feature:requiredInterface__OperationRequiredRole" sourceFinderExpression="feature:requiringEntity_RequiredRole" domainClass="repository.OperationRequiredRole" useDomainElement="true" reconnections="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='OperationRequiredRole%27s%20Target'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='RequiredRole%27s%20Source']">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Requires>>">
@@ -24,7 +24,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="ProvidedRole" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']" targetFinderExpression="feature:providedInterface__OperationProvidedRole" sourceFinderExpression="feature:providingEntity_ProvidedRole" domainClass="repository.OperationProvidedRole" useDomainElement="true">
+        <edgeMappings name="ProvidedRole" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']" targetFinderExpression="feature:providedInterface__OperationProvidedRole" sourceFinderExpression="feature:providingEntity_ProvidedRole" domainClass="repository.OperationProvidedRole" useDomainElement="true" reconnections="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='OperationProvidedRole%27s%20Target'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='OperationProvidedRole%27s%20Source']">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Provides>>">
@@ -32,7 +32,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="InfrastructureRequiredRole" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='InfrastructureInterface']" targetFinderExpression="feature:requiredInterface__InfrastructureRequiredRole" sourceFinderExpression="feature:requiringEntity_RequiredRole" domainClass="repository.InfrastructureRequiredRole" useDomainElement="true">
+        <edgeMappings name="InfrastructureRequiredRole" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='InfrastructureInterface']" targetFinderExpression="feature:requiredInterface__InfrastructureRequiredRole" sourceFinderExpression="feature:requiringEntity_RequiredRole" domainClass="repository.InfrastructureRequiredRole" useDomainElement="true" reconnections="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='RequiredRole%27s%20Source'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='InfrastructureRequiredRole%27s%20Target']">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Requires>>">
@@ -40,7 +40,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="InfrastructureProvidedRole" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='InfrastructureInterface']" targetFinderExpression="feature:providedInterface__InfrastructureProvidedRole" sourceFinderExpression="feature:providingEntity_ProvidedRole" domainClass="repository.InfrastructureProvidedRole" useDomainElement="true">
+        <edgeMappings name="InfrastructureProvidedRole" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='InfrastructureInterface']" targetFinderExpression="feature:providedInterface__InfrastructureProvidedRole" sourceFinderExpression="feature:providingEntity_ProvidedRole" domainClass="repository.InfrastructureProvidedRole" useDomainElement="true" reconnections="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='InfrastructureProvidedRole%27s%20Target'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='InfrastructureProvidedRole%27s%20Source']">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Provides>>">
@@ -237,7 +237,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="ProvidedRole" precondition="[preSource.oclAsType(RepositoryComponent).providedRoles_InterfaceProvidingEntity->exists(x |  (x.oclIsTypeOf(OperationProvidedRole)) and (x.oclAsType(OperationProvidedRole).providedInterface__OperationProvidedRole = preTarget)) = false/]" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@edgeMappings[name='ProvidedRole']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="ProvidedRole" precondition="[preSource.oclAsType(RepositoryComponent).providedRoles_InterfaceProvidingEntity->exists(x |  (x.oclIsTypeOf(OperationProvidedRole)) and (x.oclAsType(OperationProvidedRole).providedInterface__OperationProvidedRole = preTarget)) = false or preSource.oclIsTypeOf(CompositeComponent)/]" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@edgeMappings[name='ProvidedRole']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -387,6 +387,118 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="OperationProvidedRole's Target">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:If" conditionExpression="[element.providingEntity_ProvidedRole.providedRoles_InterfaceProvidingEntity->exists(x |  (x.oclIsTypeOf(OperationProvidedRole)) and (x.oclAsType(OperationProvidedRole).providedInterface__OperationProvidedRole = target)) = false or element.providingEntity_ProvidedRole.oclIsTypeOf(CompositeComponent)/]">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="providedInterface__OperationProvidedRole" valueExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="OperationProvidedRole's Source" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:If" conditionExpression="[target.oclAsType(RepositoryComponent).providedRoles_InterfaceProvidingEntity->exists(x |  (x.oclIsTypeOf(OperationProvidedRole)) and (x.oclAsType(OperationProvidedRole).providedInterface__OperationProvidedRole = element.providedInterface__OperationProvidedRole)) = false or target.oclIsTypeOf(CompositeComponent)/]">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="providingEntity_ProvidedRole" valueExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="InfrastructureProvidedRole's Target">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:If" conditionExpression="[element.providingEntity_ProvidedRole.providedRoles_InterfaceProvidingEntity->exists(x |  (x.oclIsTypeOf(InfrastructureProvidedRole)) and (x.oclAsType(InfrastructureProvidedRole).providedInterface__InfrastructureProvidedRole = target)) = false or element.providingEntity_ProvidedRole.oclIsTypeOf(CompositeComponent)/]">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="providedInterface__InfrastructureProvidedRole" valueExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="InfrastructureProvidedRole's Source" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:If" conditionExpression="[target.oclAsType(RepositoryComponent).providedRoles_InterfaceProvidingEntity->exists(x |  (x.oclIsTypeOf(InfrastructureProvidedRole)) and (x.oclAsType(InfrastructureProvidedRole).providedInterface__InfrastructureProvidedRole = element.providedInterface__InfrastructureProvidedRole)) = false or target.oclIsTypeOf(CompositeComponent)/]">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="providingEntity_ProvidedRole" valueExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="OperationRequiredRole's Target">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:SetValue" featureName="requiredInterface__OperationRequiredRole" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="RequiredRole's Source" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:SetValue" featureName="requiringEntity_RequiredRole" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="InfrastructureRequiredRole's Target">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:SetValue" featureName="requiredInterface__InfrastructureRequiredRole" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="SourceRole's Target">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:SetValue" featureName="eventGroup__SourceRole" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
         </toolSections>
         <toolSections name="Internal Elements">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Signature" nodeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='Interface']/@subNodeMappings[name='OperationSignature'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='InfrastructureInterface']/@subNodeMappings[name='InfrastructureSignature']">
@@ -524,7 +636,7 @@
         </toolSections>
       </defaultLayer>
       <additionalLayers name="Component Types" activeByDefault="true">
-        <edgeMappings name="Conforms Provided Type" deletionDescription="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@toolSections.0/@ownedTools[name='Delete%20Conforms%20Provided%20Relation']" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType']" targetFinderExpression="feature:parentProvidesComponentTypes">
+        <edgeMappings name="Conforms Provides Type" deletionDescription="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@toolSections.0/@ownedTools[name='Delete%20Conforms%20Provides%20Relation']" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType']" targetFinderExpression="feature:parentProvidesComponentTypes" reconnections="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@toolSections.0/@ownedTools[name='Conforms%20Provides%20Relation%20-%20Target'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@toolSections.0/@ownedTools[name='Conforms%20Provides%20Relation%20-%20Source']">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Conforms>>">
@@ -532,7 +644,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Conforms Complete Type" deletionDescription="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@toolSections.0/@ownedTools[name='Delete%20Conforms%20Complete%20Relation']" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetFinderExpression="feature:parentCompleteComponentTypes">
+        <edgeMappings name="Conforms Complete Type" deletionDescription="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@toolSections.0/@ownedTools[name='Delete%20Conforms%20Complete%20Relation']" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetFinderExpression="feature:parentCompleteComponentTypes" reconnections="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@toolSections.0/@ownedTools[name='Conforms%20Complete%20Relation%20-%20Target'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@toolSections.0/@ownedTools[name='Conforms%20Complete%20Relation%20-%20Source']">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Conforms>>">
@@ -579,7 +691,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Conforms Provided Type" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@edgeMappings[name='Conforms%20Provided%20Type']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Conforms Provided Type" edgeMappings="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@edgeMappings[name='Conforms%20Provides%20Type']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -601,13 +713,13 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Delete Conforms Provided Relation">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Delete Conforms Provides Relation">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="DeleteConformsProvidedRelation" id="DeleteConformsProvidedRelation">
-                <parameters name="elementView" value="[elementView/]"/>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="DeleteConformsProvidesRelation" id="DeleteConformsProvidesRelation">
+                <parameters name="elementView" value="var:elementView"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -621,10 +733,76 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="Conforms Provides Relation - Target">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="DeleteConformsProvidesRelation - Reconnection" id="DeleteConformsProvidesRelation">
+                  <parameters name="elementView" value="var:edgeView"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="parentProvidesComponentTypes" valueExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="Conforms Provides Relation - Source" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="ReconnectSourceOfConformsProvidesRelation" id="ReconnectSourceOfConformsProvidesRelation">
+                <parameters name="source" value="var:source"/>
+                <parameters name="target" value="var:target"/>
+                <parameters name="otherEnd" value="var:otherEnd"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="Conforms Complete Relation - Target">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="DeleteConformsCompleteRelation - Reconnection" id="DeleteConformsCompleteRelation">
+                  <parameters name="elementView" value="var:edgeView"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="parentCompleteComponentTypes" valueExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="Conforms Complete Relation - Source" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="ReconnectSourceOfConformsCompleteRelation" id="ReconnectSourceOfConformsCompleteRelation">
+                <parameters name="source" value="var:source"/>
+                <parameters name="target" value="var:target"/>
+                <parameters name="otherEnd" value="var:otherEnd"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
         </toolSections>
       </additionalLayers>
       <additionalLayers name="Event-Based Communication" activeByDefault="true">
-        <edgeMappings name="SourceRole" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Event-Based%20Communication']/@containerMappings[name='EventGroup']" targetFinderExpression="feature:eventGroup__SourceRole" sourceFinderExpression="feature:requiringEntity_RequiredRole" domainClass="repository.SourceRole" useDomainElement="true">
+        <edgeMappings name="SourceRole" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Event-Based%20Communication']/@containerMappings[name='EventGroup']" targetFinderExpression="feature:eventGroup__SourceRole" sourceFinderExpression="feature:requiringEntity_RequiredRole" domainClass="repository.SourceRole" useDomainElement="true" reconnections="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='RequiredRole%27s%20Source'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@toolSections.0/@ownedTools[name='SourceRole%27s%20Target']">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Emits>>">
@@ -632,7 +810,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="SinkRole" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Event-Based%20Communication']/@containerMappings[name='EventGroup']" targetFinderExpression="feature:eventGroup__SinkRole" sourceFinderExpression="feature:providingEntity_ProvidedRole" domainClass="repository.SinkRole" useDomainElement="true">
+        <edgeMappings name="SinkRole" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Event-Based%20Communication']/@containerMappings[name='EventGroup']" targetFinderExpression="feature:eventGroup__SinkRole" sourceFinderExpression="feature:providingEntity_ProvidedRole" domainClass="repository.SinkRole" useDomainElement="true" reconnections="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Event-Based%20Communication']/@toolSections.0/@ownedTools[name='SinkRole%27s%20Target'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='Event-Based%20Communication']/@toolSections.0/@ownedTools[name='SinkRole%27s%20Source']">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Handles>>">
@@ -747,10 +925,40 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="SinkRole's Target">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:If" conditionExpression="[element.providingEntity_ProvidedRole.providedRoles_InterfaceProvidingEntity->exists(x |  (x.oclIsTypeOf(SinkRole)) and (x.oclAsType(SinkRole).eventGroup__SinkRole = target)) = false or element.providingEntity_ProvidedRole.oclIsTypeOf(CompositeComponent)/]">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="eventGroup__SinkRole" valueExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="SinkRole's Source" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:If" conditionExpression="[target.oclAsType(RepositoryComponent).providedRoles_InterfaceProvidingEntity->exists(x |  (x.oclIsTypeOf(SinkRole)) and (x.oclAsType(SinkRole).eventGroup__SinkRole = element.eventGroup__SinkRole)) = false or target.oclIsTypeOf(CompositeComponent)/]">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="providingEntity_ProvidedRole" valueExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
         </toolSections>
       </additionalLayers>
       <additionalLayers name="DataTypes" activeByDefault="true">
-        <edgeMappings name="Contains" deletionDescription="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@toolSections.0/@ownedTools[name='Delete%20Contains']" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CompositeDataType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CollectionDataType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CompositeDataType']" targetFinderExpression="aql:self.innerDeclaration_CompositeDataType.datatype_InnerDeclaration">
+        <edgeMappings name="Contains" deletionDescription="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@toolSections.0/@ownedTools[name='Delete%20Contains']" sourceMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CompositeDataType']" targetMapping="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CollectionDataType'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@containerMappings[name='CompositeDataType']" targetFinderExpression="aql:self.innerDeclaration_CompositeDataType.datatype_InnerDeclaration" reconnections="//@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@toolSections.0/@ownedTools[name='Contains%20-%20Target'] //@ownedViewpoints[name='repository']/@ownedRepresentations[name='repository']/@additionalLayers[name='DataTypes']/@toolSections.0/@ownedTools[name='Contains%20-%20Source']">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Contains>>">
@@ -925,6 +1133,48 @@
                 <parameters name="collection" value="[elementView.oclAsType(DNodeListElement).eContainer().oclAsType(DNodeList).target/]"/>
               </firstModelOperations>
             </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="Contains - Target">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="Delete Contains Relation - Target Reconnection" id="DeleteContainsRelation">
+                  <parameters name="elementView" value="var:edgeView"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InnerDeclaration" referenceName="innerDeclaration_CompositeDataType">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="datatype_InnerDeclaration" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['InnerDeclaration' + self.compositeDataType_InnerDeclaration.innerDeclaration_CompositeDataType->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="Contains - Source" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
+                <subModelOperations xsi:type="tool:If">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InnerDeclaration" referenceName="innerDeclaration_CompositeDataType">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['InnerDeclaration' + self.compositeDataType_InnerDeclaration.innerDeclaration_CompositeDataType->size()/]"/>
+                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="ReconnectSourceOfContainsRelation" id="ReconnectSourceOfContainsRelation">
+                      <parameters name="source" value="var:source"/>
+                      <parameters name="target" value="var:target"/>
+                      <parameters name="otherEnd" value="var:otherEnd"/>
+                      <parameters name="instance" value="var:instance"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
           </ownedTools>
         </toolSections>
       </additionalLayers>

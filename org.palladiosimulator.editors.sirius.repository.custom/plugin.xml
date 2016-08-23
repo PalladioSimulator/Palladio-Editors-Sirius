@@ -12,8 +12,8 @@
             id="DeleteConformsCompleteRelation">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.repository.custom.externaljavaactions.DeleteConformsProvidedRelation"
-            id="DeleteConformsProvidedRelation">
+            actionClass="org.palladiosimulator.editors.sirius.repository.custom.externaljavaactions.DeleteConformsProvidesRelation"
+            id="DeleteConformsProvidesRelation">
       </javaActions>
       <javaActions
             actionClass="org.palladiosimulator.editors.sirius.repository.custom.externaljavaactions.DeleteContainsRelation"
@@ -34,6 +34,18 @@
       <javaActions
             actionClass="org.palladiosimulator.editors.sirius.repository.custom.externaljavaactions.SetInnerType"
             id="SetInnerType">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.custom.externaljavaactions.ReconnectSourceOfConformsProvidesRelation"
+            id="ReconnectSourceOfConformsProvidesRelation">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.custom.externaljavaactions.ReconnectSourceOfConformsCompleteRelation"
+            id="ReconnectSourceOfConformsCompleteRelation">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.custom.externaljavaactions.ReconnectSourceOfContainsRelation"
+            id="ReconnectSourceOfContainsRelation">
       </javaActions>
    </extension>
 

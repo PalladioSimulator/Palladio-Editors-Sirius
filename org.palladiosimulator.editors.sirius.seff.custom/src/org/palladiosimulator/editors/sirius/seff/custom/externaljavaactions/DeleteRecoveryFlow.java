@@ -2,7 +2,6 @@ package org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions;
 
 import java.util.Collection;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -16,17 +15,15 @@ public class DeleteRecoveryFlow implements IExternalJavaAction {
 
 	@Override
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
-		for (Entry<String, Object> entry : parameters.entrySet()) {
-			DEdge value = (DEdge) entry.getValue();
+			DEdge edge = (DEdge) parameters.get("elementView");
 
-			RecoveryActionBehaviour source = (RecoveryActionBehaviour) value.getTarget();
+			RecoveryActionBehaviour source = (RecoveryActionBehaviour) edge.getTarget();
 			
-			EdgeTarget targetNode = value.getTargetNode(); 
+			EdgeTarget targetNode = edge.getTargetNode(); 
 			RecoveryActionBehaviour target = (RecoveryActionBehaviour) (((DDiagramElement) targetNode).getTarget());
 
 			source.getFailureHandlingAlternatives__RecoveryActionBehaviour().remove(target);
 			
-		}
 
 	}
 

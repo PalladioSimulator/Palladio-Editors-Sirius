@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Allocation editor: external Java actions
 Bundle-SymbolicName: org.palladiosimulator.editors.sirius.allocation.custom;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: org.palladiosimulator.editors.sirius.allocation.custom.externaljavaactions.Activator
+Bundle-Activator: org.palladiosimulator.editors.sirius.allocation.custom.Activator
 Bundle-Vendor: palladiosimulator.org
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf;bundle-version="2.6.0",

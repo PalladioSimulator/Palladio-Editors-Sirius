@@ -13,7 +13,6 @@ public class SetSpecification extends SetRandomVariable {
 
 	@Override
 	public boolean canExecute(Collection<? extends EObject> selections) {
-		// TODO Auto-generated method stub
 		return true;
 	}
 

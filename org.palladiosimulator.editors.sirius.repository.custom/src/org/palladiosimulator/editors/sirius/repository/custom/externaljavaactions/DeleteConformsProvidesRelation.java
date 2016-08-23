@@ -2,7 +2,6 @@ package org.palladiosimulator.editors.sirius.repository.custom.externaljavaactio
 
 import java.util.Collection;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -13,23 +12,21 @@ import org.palladiosimulator.pcm.repository.CompleteComponentType;
 import org.palladiosimulator.pcm.repository.ProvidesComponentType;
 
 
-public class DeleteConformsProvidedRelation implements IExternalJavaAction {
+public class DeleteConformsProvidesRelation implements IExternalJavaAction {
 
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
 		
-		for (Entry<String, Object> entry : parameters.entrySet()) {
-			DEdge value = (DEdge) entry.getValue();
+			DEdge edge = (DEdge) parameters.get("elementView");
 
-			EObject source = value.getTarget();
+			EObject source = edge.getTarget();
 			CompleteComponentType cc = (CompleteComponentType) source;
 			
-			EdgeTarget targetNode = value.getTargetNode(); 
+			EdgeTarget targetNode = edge.getTargetNode(); 
 			ProvidesComponentType pc = (ProvidesComponentType) (((DDiagramElement) targetNode).getTarget());
 			
 			
 			cc.getParentProvidesComponentTypes().remove(pc);
 			
-		}
 	}
 
 	@Override

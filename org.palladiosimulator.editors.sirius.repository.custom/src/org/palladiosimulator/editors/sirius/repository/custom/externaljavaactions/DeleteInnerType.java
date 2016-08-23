@@ -2,16 +2,9 @@ package org.palladiosimulator.editors.sirius.repository.custom.externaljavaactio
 
 import java.util.Collection;
 import java.util.Map;
-import java.util.Map.Entry;
-
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.palladiosimulator.pcm.repository.CollectionDataType;
-import org.palladiosimulator.pcm.repository.PrimitiveDataType;
-import org.palladiosimulator.pcm.repository.PrimitiveTypeEnum;
-import org.palladiosimulator.pcm.repository.impl.PrimitiveDataTypeImpl;
 
 /**
  * This external java action is used to delete the Inner Type of a

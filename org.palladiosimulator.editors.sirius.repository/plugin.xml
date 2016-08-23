@@ -7,4 +7,16 @@
 	       name="repository">
     </component>
   </extension>
+  <extension
+        point="org.eclipse.ui.newWizards">
+     <wizard
+           category="org.palladiosimulator.pcmbench.palladio_modeling_category"
+           class="org.palladiosimulator.editors.sirius.repository.wizards.NewRepositoryProjectWizard"
+           id="org.palladiosimulator.editors.sirius.repository.wizard"
+           name="Repository Creation Wizard">
+        <description>
+           Create a new Reository Modeling project
+        </description>
+     </wizard>
+  </extension>
 </plugin>

@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.sirius.allocation.custom.externaljavaactions;
+package org.palladiosimulator.editors.sirius.allocation.custom;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
