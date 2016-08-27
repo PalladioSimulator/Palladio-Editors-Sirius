@@ -109,6 +109,9 @@ public class AllocationCreationWizard extends Wizard implements INewWizard {
                 final Session session = SessionManager.INSTANCE.getSession(
                         URI.createPlatformResourceURI("/" + allocationURI.segment(1) + "/representations.aird", true),
                         new SubProgressMonitor(monitor, 1));
+                System.out.println(allocationURI);
+                System.out.println("/" + allocationURI.segment(1) + "/representations.aird");
+                System.out.println(URI.createPlatformResourceURI("/" + allocationURI.segment(1) + "/representations.aird", true));
                 final TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
 
                 monitor.worked(16);

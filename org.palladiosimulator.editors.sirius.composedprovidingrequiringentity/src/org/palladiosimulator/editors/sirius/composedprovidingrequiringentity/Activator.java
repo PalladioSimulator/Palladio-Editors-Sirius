@@ -44,7 +44,7 @@ public class Activator extends AbstractUIPlugin {
 	  
 	  // Set viewpoint constants
 	  for (Viewpoint viewpoint : viewpoints) {
-		  if (viewpoint.getName().equals("System Design")) {
+		  if (viewpoint.getName().equals("System")) {
 			  SYSTEM_DESIGN = viewpoint;
               break;
           }

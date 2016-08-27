@@ -46,7 +46,7 @@ public class Activator extends AbstractUIPlugin {
 
         // Set viewpoint constants
         for (final Viewpoint viewpoint : viewpoints) {
-            if (viewpoint.getName().equals("Resource Environment Design")) {
+            if (viewpoint.getName().equals("ResourceEnvironment")) {
                 this.RESOURCEENVIRONMENT_DESIGN = viewpoint;
                 break;
             }

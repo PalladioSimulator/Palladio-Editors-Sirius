@@ -19,6 +19,8 @@ public class Activator extends AbstractUIPlugin {
     private static Activator plugin;
 
     private static Set<Viewpoint> viewpoints; 
+    
+    public Viewpoint REPOSITORY;
 
     /**
      * The constructor
@@ -36,6 +38,13 @@ public class Activator extends AbstractUIPlugin {
 	  plugin = this;
 	  viewpoints = new HashSet<Viewpoint>();
 	  viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/repository.odesign")); 
+    
+	  for (final Viewpoint viewpoint : viewpoints) {
+          if (viewpoint.getName().equals("Repository")) {// TODO: check name
+              this.REPOSITORY = viewpoint;
+              break;
+          }
+      }
     }
 
     /*

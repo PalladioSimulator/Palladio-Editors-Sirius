@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="usage" version="10.1.3.201511131800">
-  <ownedViewpoints name="usagemodel" modelFileExtension="*.usagemodel">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="usagemodel_diagram" initialisation="true" domainClass="usagemodel.UsageModel" rootExpression="[self/]" enablePopupBars="true">
+  <ownedViewpoints name="UsageModel" modelFileExtension="usagemodel">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Usagemodel  Diagram" initialisation="true" domainClass="usagemodel.UsageModel" rootExpression="[self/]" enablePopupBars="true">
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//usagemodel"/>
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//core"/>
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//system"/>
@@ -16,7 +16,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="usageFlow" deletionDescription="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='deleteUsageFlow']" sourceMapping="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subNodeMappings[name='start'] //@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='branch'] //@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall'] //@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='loop'] //@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='delay']" targetMapping="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall'] //@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subNodeMappings[name='stop'] //@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='loop'] //@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='branch'] //@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='delay']" targetFinderExpression="feature:successor">
+        <edgeMappings name="usageFlow" deletionDescription="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='deleteUsageFlow']" sourceMapping="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subNodeMappings[name='start'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='branch'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='loop'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='delay']" targetMapping="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subNodeMappings[name='stop'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='loop'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='branch'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='delay']" targetFinderExpression="feature:successor">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -24,8 +24,8 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="usageScenario" labelDirectEdit="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="[self.usageScenario_UsageModel/]" domainClass="usagemodel.UsageScenario">
-          <subContainerMappings name="scenarioBehavior" labelDirectEdit="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="[self.scenarioBehaviour_UsageScenario/]" domainClass="usagemodel.ScenarioBehaviour">
+        <containerMappings name="usageScenario" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="[self.usageScenario_UsageModel/]" domainClass="usagemodel.UsageScenario">
+          <subContainerMappings name="scenarioBehavior" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="[self.scenarioBehaviour_UsageScenario/]" domainClass="usagemodel.ScenarioBehaviour">
             <subNodeMappings name="start" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" domainClass="usagemodel.Start">
               <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="" labelPosition="node" workspacePath="/org.palladiosimulator.editors.sirius.usage/icons/start.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -39,8 +39,8 @@
               </style>
             </subNodeMappings>
             <subContainerMappings name="branch" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" domainClass="usagemodel.Branch">
-              <subContainerMappings name="branchTransition" labelDirectEdit="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='editBranchPropability']" semanticCandidatesExpression="feature:branchTransitions_Branch" domainClass="usagemodel.BranchTransition">
-                <subContainerMappings name="branchedBehaviour" semanticCandidatesExpression="feature:branchedBehaviour_BranchTransition" domainClass="usagemodel.ScenarioBehaviour" reusedNodeMappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subNodeMappings[name='start'] //@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subNodeMappings[name='stop']" reusedContainerMappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='delay'] //@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall'] //@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='loop'] //@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior'] //@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='branch']">
+              <subContainerMappings name="branchTransition" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='editBranchPropability']" semanticCandidatesExpression="feature:branchTransitions_Branch" domainClass="usagemodel.BranchTransition">
+                <subContainerMappings name="branchedBehaviour" semanticCandidatesExpression="feature:branchedBehaviour_BranchTransition" domainClass="usagemodel.ScenarioBehaviour" reusedNodeMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subNodeMappings[name='start'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subNodeMappings[name='stop']" reusedContainerMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='delay'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='loop'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='branch']">
                   <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="[' '/]">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -64,7 +64,7 @@
             </subContainerMappings>
             <subContainerMappings name="loop" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" domainClass="usagemodel.Loop" childrenPresentation="VerticalStack">
               <subContainerMappings name="loopIterations" semanticCandidatesExpression="[self/]" domainClass="usagemodel.Loop" childrenPresentation="List">
-                <subNodeMappings name="iterationsNode" semanticCandidatesExpression="[self/]" doubleClickDescription="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='doubleClickLoopIterationsDialog']" domainClass="usagemodel.Loop">
+                <subNodeMappings name="iterationsNode" semanticCandidatesExpression="[self/]" doubleClickDescription="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='doubleClickLoopIterationsDialog']" domainClass="usagemodel.Loop">
                   <style xsi:type="style:NoteDescription" showIcon="false" labelExpression="['Iterations: ' + self.loopIteration_Loop.specification/]" labelPosition="node" resizeKind="NSEW">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -78,7 +78,7 @@
                   <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
                 </style>
               </subContainerMappings>
-              <subContainerMappings name="scenarioBehaviorLoop" semanticCandidatesExpression="feature:bodyBehaviour_Loop" domainClass="usagemodel.ScenarioBehaviour" reusedNodeMappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subNodeMappings[name='start'] //@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subNodeMappings[name='stop']" reusedContainerMappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior'] //@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='branch'] //@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='delay'] //@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall'] //@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='loop']">
+              <subContainerMappings name="scenarioBehaviorLoop" semanticCandidatesExpression="feature:bodyBehaviour_Loop" domainClass="usagemodel.ScenarioBehaviour" reusedNodeMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subNodeMappings[name='start'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subNodeMappings[name='stop']" reusedContainerMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='branch'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='delay'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='loop']">
                 <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="[' '/]">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -93,9 +93,9 @@
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
               </style>
             </subContainerMappings>
-            <subContainerMappings name="entryLevelSystemCall" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" doubleClickDescription="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20EntryLevelSystemCall']" domainClass="usagemodel.EntryLevelSystemCall">
-              <subContainerMappings name="variableUsage" labelDirectEdit="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Variable%20Usage']" semanticCandidatesExpression="feature:inputParameterUsages_EntryLevelSystemCall" domainClass="parameter.VariableUsage" childrenPresentation="List">
-                <subNodeMappings name="variableCharacterisation" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" doubleClickDescription="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20VariableCharacterisation']" domainClass="parameter.VariableCharacterisation">
+            <subContainerMappings name="entryLevelSystemCall" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" doubleClickDescription="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20EntryLevelSystemCall']" domainClass="usagemodel.EntryLevelSystemCall">
+              <subContainerMappings name="variableUsage" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Variable%20Usage']" semanticCandidatesExpression="feature:inputParameterUsages_EntryLevelSystemCall" domainClass="parameter.VariableUsage" childrenPresentation="List">
+                <subNodeMappings name="variableCharacterisation" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" doubleClickDescription="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20VariableCharacterisation']" domainClass="parameter.VariableCharacterisation">
                   <style xsi:type="style:SquareDescription" labelExpression="aql:self.type + ' = ' + self.specification_VariableCharacterisation.specification" labelPosition="node" resizeKind="NSEW">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -117,7 +117,7 @@
               </style>
             </subContainerMappings>
             <subContainerMappings name="delay" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" domainClass="usagemodel.Delay" childrenPresentation="List">
-              <subNodeMappings name="delayTime" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='doubleClickDelayTimeDialog']" domainClass="usagemodel.Delay">
+              <subNodeMappings name="delayTime" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='doubleClickDelayTimeDialog']" domainClass="usagemodel.Delay">
                 <style xsi:type="style:BundledImageDescription" labelExpression="['Delay Time: ' + self.timeSpecification_Delay.specification/]" labelAlignment="LEFT" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -139,7 +139,7 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="openWorkload" semanticCandidatesExpression="feature:workload_UsageScenario" domainClass="usagemodel.OpenWorkload" childrenPresentation="List">
-            <subNodeMappings name="interArrivalTime" semanticCandidatesExpression="[self/]" doubleClickDescription="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='openWorkloadInterArrivalTimeDialog']" domainClass="usagemodel.OpenWorkload">
+            <subNodeMappings name="interArrivalTime" semanticCandidatesExpression="[self/]" doubleClickDescription="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='openWorkloadInterArrivalTimeDialog']" domainClass="usagemodel.OpenWorkload">
               <style xsi:type="style:NoteDescription" labelExpression="['Interarrival Time: ' + self.interArrivalTime_OpenWorkload.specification/]" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -154,14 +154,14 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="closedWorkload" semanticCandidatesExpression="feature:workload_UsageScenario" domainClass="usagemodel.ClosedWorkload" childrenPresentation="List">
-            <subNodeMappings name="population" labelDirectEdit="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='editClosedWorkloadPopulation']" semanticCandidatesExpression="[self/]" domainClass="usagemodel.ClosedWorkload">
+            <subNodeMappings name="population" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='editClosedWorkloadPopulation']" semanticCandidatesExpression="[self/]" domainClass="usagemodel.ClosedWorkload">
               <style xsi:type="style:NoteDescription" labelExpression="['Population: ' + self.population/]" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="thinkTime" semanticCandidatesExpression="[self/]" doubleClickDescription="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='closedWorkloadThinkTimeDialog']" domainClass="usagemodel.ClosedWorkload">
+            <subNodeMappings name="thinkTime" semanticCandidatesExpression="[self/]" doubleClickDescription="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='closedWorkloadThinkTimeDialog']" domainClass="usagemodel.ClosedWorkload">
               <style xsi:type="style:NoteDescription" labelExpression="['Think Time: ' + self.thinkTime_ClosedWorkload.specification/]" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -183,7 +183,7 @@
           </style>
         </containerMappings>
         <toolSections name="userActions" label="User Actions">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="startCreation" label="Start" precondition="[container.eContents()->selectByType(Start)->size() = 0/]" nodeMappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subNodeMappings[name='start']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="startCreation" label="Start" precondition="[container.eContents()->selectByType(Start)->size() = 0/]" nodeMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subNodeMappings[name='start']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -192,7 +192,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="stopCreation" label="Stop" precondition="[container.eContents()->selectByType(Stop)->size() = 0/]" nodeMappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subNodeMappings[name='stop']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="stopCreation" label="Stop" precondition="[container.eContents()->selectByType(Stop)->size() = 0/]" nodeMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subNodeMappings[name='stop']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -201,7 +201,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="createDelay" label="Delay" containerMappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='delay']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="createDelay" label="Delay" containerMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='delay']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -215,7 +215,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="systemCallCreation" label="EntryLevelSystemCall" containerMappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="systemCallCreation" label="EntryLevelSystemCall" containerMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -234,7 +234,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="loopCreation" label="Loop" containerMappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='loop']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="loopCreation" label="Loop" containerMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='loop']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -258,7 +258,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="branchCreation" label="Branch" containerMappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='branch']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="branchCreation" label="Branch" containerMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='branch']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -275,7 +275,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="doubleClickDelayTimeDialog" mappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='delay']/@subNodeMappings[name='delayTime']">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="doubleClickDelayTimeDialog" mappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='delay']/@subNodeMappings[name='delayTime']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -284,7 +284,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="doubleClickLoopIterationsDialog" mappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='loop']/@subContainerMappings[name='loopIterations']/@subNodeMappings[name='iterationsNode']">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="doubleClickLoopIterationsDialog" mappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='loop']/@subContainerMappings[name='loopIterations']/@subNodeMappings[name='iterationsNode']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -293,7 +293,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="Edit EntryLevelSystemCall" mappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall']">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Edit EntryLevelSystemCall" mappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -304,7 +304,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="actionDetails" label="Action Details">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="variableUsageCreation" label="Variable Usage" containerMappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall']/@subContainerMappings[name='variableUsage']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="variableUsageCreation" label="Variable Usage" containerMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall']/@subContainerMappings[name='variableUsage']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -319,7 +319,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="VariableCharacterisation" nodeMappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall']/@subContainerMappings[name='variableUsage']/@subNodeMappings[name='variableCharacterisation']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="VariableCharacterisation" nodeMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall']/@subContainerMappings[name='variableUsage']/@subNodeMappings[name='variableCharacterisation']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -334,7 +334,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="scenarioBehaviourCreation" label="Scenario Behaviour" containerMappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="scenarioBehaviourCreation" label="Scenario Behaviour" containerMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -352,7 +352,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="branchTransitionCreation" label="Branch Transition" containerMappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='branch']/@subContainerMappings[name='branchTransition']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="branchTransitionCreation" label="Branch Transition" containerMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='branch']/@subContainerMappings[name='branchTransition']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -380,7 +380,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="Edit VariableCharacterisation" mappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall']/@subContainerMappings[name='variableUsage']/@subNodeMappings[name='variableCharacterisation']">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="Edit VariableCharacterisation" mappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall']/@subContainerMappings[name='variableUsage']/@subNodeMappings[name='variableCharacterisation']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -409,7 +409,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="links" label="Links">
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="usageFlowCreation" label="Usage Flow" edgeMappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@edgeMappings[name='usageFlow']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="usageFlowCreation" label="Usage Flow" edgeMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@edgeMappings[name='usageFlow']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -434,7 +434,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="workloads" label="Workloads">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="openWorkloadCreation" label="Open Workload" precondition="aql:container.oclAsType(usagemodel::UsageScenario).workload_UsageScenario = null" containerMappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='openWorkload']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="openWorkloadCreation" label="Open Workload" precondition="aql:container.oclAsType(usagemodel::UsageScenario).workload_UsageScenario = null" containerMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='openWorkload']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -447,7 +447,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="closedWorkloadCreation" label="Closed Workload" precondition="aql:container.oclAsType(usagemodel::UsageScenario).workload_UsageScenario = null" containerMappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='closedWorkload']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="closedWorkloadCreation" label="Closed Workload" precondition="aql:container.oclAsType(usagemodel::UsageScenario).workload_UsageScenario = null" containerMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='closedWorkload']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -468,7 +468,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="closedWorkloadThinkTimeDialog" mappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='closedWorkload']/@subNodeMappings[name='thinkTime']">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="closedWorkloadThinkTimeDialog" mappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='closedWorkload']/@subNodeMappings[name='thinkTime']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -477,7 +477,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="openWorkloadInterArrivalTimeDialog" mappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='openWorkload']/@subNodeMappings[name='interArrivalTime']">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="openWorkloadInterArrivalTimeDialog" mappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='openWorkload']/@subNodeMappings[name='interArrivalTime']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -488,7 +488,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="General">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="usageScenarioCreation" label="Usage Scenario" containerMappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@containerMappings[name='usageScenario']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="usageScenarioCreation" label="Usage Scenario" containerMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -497,7 +497,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="userDataCreation" nodeMappings="//@ownedViewpoints[name='usagemodel']/@ownedRepresentations[name='usagemodel_diagram']/@defaultLayer/@nodeMappings[name='userData']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="userDataCreation" nodeMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='Usagemodel%20%20Diagram']/@defaultLayer/@nodeMappings[name='userData']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>

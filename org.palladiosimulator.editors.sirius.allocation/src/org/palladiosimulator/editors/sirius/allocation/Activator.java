@@ -46,7 +46,7 @@ public class Activator extends AbstractUIPlugin {
 
         // Set viewpoint constants
         for (final Viewpoint viewpoint : viewpoints) {
-            if (viewpoint.getName().equals("Allocation Design")) {// TODO: check name
+            if (viewpoint.getName().equals("Allocation")) {// TODO: check name
                 this.ALLOCATION_DESIGN = viewpoint;
                 break;
             }
