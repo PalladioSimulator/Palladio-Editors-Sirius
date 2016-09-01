@@ -7,13 +7,4 @@
 	       name="repository">
     </component>
   </extension>
-  <extension
-        point="org.eclipse.ui.newWizards">
-     <wizard
-           class="org.palladiosimulator.editors.sirius.repository.wizards.NewRepositoryModel"
-           id="org.palladiosimulator.editors.sirius.repository.wizard1"
-           name="Repository Model and Diagram"
-           project="false">
-     </wizard>
-  </extension>
 </plugin>
