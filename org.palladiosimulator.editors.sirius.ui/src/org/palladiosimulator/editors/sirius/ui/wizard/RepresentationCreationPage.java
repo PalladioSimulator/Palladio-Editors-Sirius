@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.sirius.custom.wizards;
+package org.palladiosimulator.editors.sirius.ui.wizard;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;

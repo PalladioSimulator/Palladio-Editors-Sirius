@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.sirius.custom.wizards;
+package org.palladiosimulator.editors.sirius.ui.wizard;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;

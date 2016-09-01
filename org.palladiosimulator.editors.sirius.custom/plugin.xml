@@ -44,20 +44,5 @@
             id="SetVariableCharacterisationSpecification">
       </javaActions>
    </extension>
-   <extension
-         point="org.eclipse.ui.newWizards">
-      <wizard
-            category="org.palladiosimulator.pcmbench.palladio_modeling_category"
-            class="org.palladiosimulator.editors.sirius.custom.wizards.NewPalladioProjectWizard"
-            hasPages="true"
-            icon="icons/palladio-icon.ico"
-            id="NewPalladioProjectWizard"
-            name="New Palladio Project - Sirius"
-            project="true">
-         <description>
-            Create a new Reository Modeling project
-         </description>
-      </wizard>
-   </extension>
 
 </plugin>

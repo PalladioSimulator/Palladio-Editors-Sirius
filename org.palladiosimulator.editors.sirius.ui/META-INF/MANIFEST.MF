@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Sirius editors UI
+Bundle-SymbolicName: org.palladiosimulator.editors.sirius.ui;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.palladiosimulator.editors.sirius.ui.Activator
+Bundle-Vendor: palladiosimulator.org
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.common,
+ org.eclipse.emf.transaction,
+ org.eclipse.ui.forms,
+ org.eclipse.ui.workbench,
+ org.eclipse.sirius.ui;bundle-version="3.1.2",
+ org.eclipse.ui.ide;bundle-version="3.11.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Export-Package: org.palladiosimulator.editors.sirius.ui.wizard

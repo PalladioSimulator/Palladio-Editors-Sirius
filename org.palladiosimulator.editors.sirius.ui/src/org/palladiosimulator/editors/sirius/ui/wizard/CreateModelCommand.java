@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.sirius.custom.wizards;
+package org.palladiosimulator.editors.sirius.ui.wizard;
 
 import java.io.IOException;
 import java.util.Collections;
