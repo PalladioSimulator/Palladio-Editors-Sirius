@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.sirius.ui.wizard;
+package org.palladiosimulator.editors.sirius.ui.wizard.project;
 
 import org.eclipse.jface.viewers.IBaseLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;

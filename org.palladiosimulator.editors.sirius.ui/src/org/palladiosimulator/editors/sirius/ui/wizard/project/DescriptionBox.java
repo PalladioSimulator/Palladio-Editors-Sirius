@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.sirius.ui.wizard;
+package org.palladiosimulator.editors.sirius.ui.wizard.project;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;

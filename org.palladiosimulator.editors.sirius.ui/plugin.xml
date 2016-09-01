@@ -6,7 +6,7 @@
          point="org.eclipse.ui.newWizards">
       <wizard
             category="org.palladiosimulator.pcmbench.palladio_modeling_category"
-            class="org.palladiosimulator.editors.sirius.ui.wizard.NewPalladioProjectWizard"
+            class="org.palladiosimulator.editors.sirius.ui.wizard.project.NewPalladioProjectWizard"
             hasPages="true"
             icon="icons/palladio-icon.ico"
             id="NewPalladioProjectWizard"

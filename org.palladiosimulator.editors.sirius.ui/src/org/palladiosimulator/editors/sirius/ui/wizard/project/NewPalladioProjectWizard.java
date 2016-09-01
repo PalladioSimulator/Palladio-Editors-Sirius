@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.sirius.ui.wizard;
+package org.palladiosimulator.editors.sirius.ui.wizard.project;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -44,6 +44,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 import org.eclipse.ui.wizards.newresource.BasicNewProjectResourceWizard;
+import org.palladiosimulator.editors.sirius.custom.util.SiriusCustomUtil;
 
 /**
  * A wizard to create a new palladio model according to a chosen template.
@@ -172,7 +173,8 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
 			ModelingProjectManager.INSTANCE.convertToModelingProject(projectHandle, monitor);
 			
 			//Activate viewpoints
-			Session session = getSession(projectHandle, monitor);
+			URI representationsURI = SiriusCustomUtil.getRepresentationsURI(projectHandle);
+			Session session = SessionManager.INSTANCE.getSession(representationsURI, monitor);;
 			activateCorrespondingViewpoints(session, monitor);
 			
 			
@@ -271,17 +273,11 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
 				viewpoints.add(viewpoint);
 			}
 		}
-		selectViewpoints(session, viewpoints, monitor);
-	}
-	
-	private void selectViewpoints(Session session, HashSet<Viewpoint> viewpoints, IProgressMonitor monitor) {
-        final ViewpointSelectionCallback selectionCallback = new ViewpointSelectionCallback();
-        final TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
-        @SuppressWarnings("restriction")
-		final Command command = new ChangeViewpointSelectionCommand(session, selectionCallback, viewpoints, new HashSet<Viewpoint>(), true, monitor);
-        domain.getCommandStack().execute(command);
+		SiriusCustomUtil.selectViewpoints(session, viewpoints, monitor);
 		
 	}
+	
+
 
 	private List<String> getExtensions(Session session) {
 		List<String> extensions = new ArrayList<String>();
@@ -294,19 +290,5 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
 		}
 		return extensions;
 	}
-	
 
-	
-	private Session getSession(IProject project, IProgressMonitor monitor) {
-		if (!ModelingProject.hasModelingProjectNature(project))
-			throw new IllegalArgumentException("Project must have Modeling nature");
-		
-		URI representationURI = getPlatformURI(project);
-		
-		return SessionManager.INSTANCE.getSession(representationURI, monitor);
-	}
-	
-	private URI getPlatformURI(IProject project) {
-		return URI.createPlatformResourceURI(project.getFullPath().append("/representations.aird").toOSString(), true);
-	}
 }
