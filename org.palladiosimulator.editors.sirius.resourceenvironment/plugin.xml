@@ -8,16 +8,6 @@
     </component>
   </extension>
   <extension
-        point="org.eclipse.ui.newWizards">
-     <wizard
-           category="org.palladiosimulator.pcmbench.palladio_modeling_category"
-           class="org.palladiosimulator.editors.sirius.resourceenvironment.wizards.ResourceEnvironmentCreationWizard"
-           icon="icons/obj16/ResourceEnvironment.gif"
-           id="org.palladiosimulator.editors.sirius.resourceenvironment.wizards.ResourceEnvironmentCreationWizard"
-           name="Resource Environment Model and Diagram">
-     </wizard>
-  </extension>
-  <extension
          point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
       <editpolicyProvider
             class="org.palladiosimulator.editors.sirius.resourceenvironment.editpolicyproviders.LinkingResourceEditPolicyProvider">
@@ -26,4 +16,14 @@
          </Priority>
       </editpolicyProvider>
    </extension>
+  <extension
+        point="org.eclipse.ui.newWizards">
+     <wizard
+           category="org.palladiosimulator.pcmbench.palladio_modeling_category"
+           class="org.palladiosimulator.editors.sirius.resourceenvironment.wizard.ResourceEnvironmentCreationWizard"
+           icon="icons/NewResourceFile.gif"
+           id="org.palladiosimulator.editors.sirius.resourceenvironment.wizard.ResourceEnvironmentCreationWizard"
+           name="ResourceEnvironment Model and Diagram - Sirius">
+     </wizard>
+  </extension>
 </plugin>

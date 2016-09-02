@@ -11,10 +11,10 @@
         point="org.eclipse.ui.newWizards">
      <wizard
            category="org.palladiosimulator.pcmbench.palladio_modeling_category"
-           class="org.palladiosimulator.editors.sirius.allocation.wizards.AllocationCreationWizard"
-           icon="icons/obj16/Allocation.gif"
-           id="org.palladiosimulator.editors.sirius.allocation.wizards.AllocationCreationWizard"
-           name="Allocation Model and Diagram">
+           class="org.palladiosimulator.editors.sirius.allocation.wizard.AllocationCreationWizard"
+           icon="icons/NewAllocationFile.gif"
+           id="org.palladiosimulator.editors.sirius.allocation.wizard.AllocationCreationWizard"
+           name="Allocation Model and Diagram - Sirius">
      </wizard>
   </extension>
 </plugin>

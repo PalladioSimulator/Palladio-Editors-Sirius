@@ -7,4 +7,14 @@
 	       name="usage">
     </component>
   </extension>
+  <extension
+        point="org.eclipse.ui.newWizards">
+     <wizard
+           category="org.palladiosimulator.pcmbench.palladio_modeling_category"
+           class="org.palladiosimulator.editors.sirius.usage.wizard.UsageModelCreationWizard"
+           icon="icons/NewUsageFile.gif"
+           id="org.palladiosimulator.editors.sirius.usage.wizard.UsageModelCreationWizard"
+           name="UsageModel Model and Diagram - Sirius">
+     </wizard>
+  </extension>
 </plugin>

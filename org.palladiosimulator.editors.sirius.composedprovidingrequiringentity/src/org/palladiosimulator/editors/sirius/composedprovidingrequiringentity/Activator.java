@@ -21,8 +21,11 @@ public class Activator extends AbstractUIPlugin {
 
 	private static Set<Viewpoint> viewpoints;
 
-	public Viewpoint SYSTEM_DESIGN;
-	public RepresentationDescription COMPOSED_PROVIDING_REQUIRING_ENTITY_DIAGRAM;
+	private Viewpoint viewpoint;
+    private RepresentationDescription representation;
+    
+    public static final String VIEWPOINT_NAME = "System";
+    public static final String REPRESENTATION_NAME= "ComposedProvidingRequiringEntity Diagram";
 
 	/**
 	 * The constructor
@@ -42,23 +45,33 @@ public class Activator extends AbstractUIPlugin {
 	  viewpoints = new HashSet<Viewpoint>();
 	  viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/composedprovidingrequiringentity.odesign")); 
 	  
-	  // Set viewpoint constants
-	  for (Viewpoint viewpoint : viewpoints) {
-		  if (viewpoint.getName().equals("System")) {
-			  SYSTEM_DESIGN = viewpoint;
+	  
+      // Set viewpoint constants
+      for (final Viewpoint v : viewpoints) {
+          if (v.getName().equals(VIEWPOINT_NAME)) {
+              this.viewpoint = v;
               break;
           }
-	  }
+      }
 
-	  // Set diagram description constants
-	  for (RepresentationDescription representationDescription : SYSTEM_DESIGN.getOwnedRepresentations()) {
-		  if (representationDescription.getName().equals("ComposedProvidingRequiringEntity Diagram")) {
-			  COMPOSED_PROVIDING_REQUIRING_ENTITY_DIAGRAM = representationDescription;
-			  break;
-		  }
-		  
-	  }
-    }
+      // Set diagram description constants
+      for (final RepresentationDescription representationDescription : this.viewpoint.getOwnedRepresentations()) {
+          if (representationDescription.getName().equals(REPRESENTATION_NAME)) {                                              
+              this.representation = representationDescription;
+              break;
+          }
+      }
+
+  }
+
+  public Viewpoint getViewpoint() {
+		return viewpoint;
+	}
+
+	public RepresentationDescription getRepresentation() {
+		return representation;
+	}
+
 
 	/*
 	 * (non-Javadoc)

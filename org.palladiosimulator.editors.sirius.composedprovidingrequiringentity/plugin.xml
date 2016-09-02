@@ -77,10 +77,10 @@
         point="org.eclipse.ui.newWizards">
      <wizard
            category="org.palladiosimulator.pcmbench.palladio_modeling_category"
-           class="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.wizards.SystemCreationWizard"
-           icon="icons/obj16/System.gif"
-           id="org.palladiosimulator.editors.sirius.custom.style.systemCreationWizard"
-           name="System Model and Diagram">
+           class="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.wizard.SystemCreationWizard"
+           icon="icons/NewCompositeFile.gif"
+           id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.wizard.SystemCreationWizard"
+           name="System Model and Diagram - Sirius">
      </wizard>
   </extension>
 </plugin>

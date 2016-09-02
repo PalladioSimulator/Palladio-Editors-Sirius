@@ -7,4 +7,14 @@
 	       name="repository">
     </component>
   </extension>
+  <extension
+        point="org.eclipse.ui.newWizards">
+     <wizard
+           category="org.palladiosimulator.pcmbench.palladio_modeling_category"
+           class="org.palladiosimulator.editors.sirius.repository.wizard.RepositoryCreationWizard"
+           icon="icons/NewRepositoryFile.gif"
+           id="org.palladiosimulator.editors.sirius.repository.wizard.RepositoryCreationWizard"
+           name="Repository Model and Diagram - Sirius">
+     </wizard>
+  </extension>
 </plugin>

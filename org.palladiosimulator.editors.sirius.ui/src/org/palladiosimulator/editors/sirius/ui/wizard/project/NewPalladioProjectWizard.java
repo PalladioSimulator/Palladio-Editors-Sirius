@@ -117,8 +117,8 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
 		try {
 			getContainer().run(true, true, op);
 		} catch (Exception e) {
-			MessageDialog.openError(getShell(), "Error",
-					e.getMessage());
+			MessageDialog.openError(getShell(), "Error", "An unexpected error occured. See stack trace");
+			e.printStackTrace();
 			return false;
 		}
 
@@ -273,7 +273,7 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
 				viewpoints.add(viewpoint);
 			}
 		}
-		SiriusCustomUtil.selectViewpoints(session, viewpoints, monitor);
+		SiriusCustomUtil.selectViewpoints(session, viewpoints, true, monitor);
 		
 	}
 	

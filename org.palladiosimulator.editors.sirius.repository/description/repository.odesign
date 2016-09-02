@@ -397,6 +397,19 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool:If" conditionExpression="[element.providingEntity_ProvidedRole.providedRoles_InterfaceProvidingEntity->exists(x |  (x.oclIsTypeOf(OperationProvidedRole)) and (x.oclAsType(OperationProvidedRole).providedInterface__OperationProvidedRole = target)) = false or element.providingEntity_ProvidedRole.oclIsTypeOf(CompositeComponent)/]">
                   <subModelOperations xsi:type="tool:SetValue" featureName="providedInterface__OperationProvidedRole" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool:For" expression="[target.signatures__OperationInterface/]">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="describedService__SEFF" valueExpression="var:i"/>
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="StartAction"/>
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="StopAction"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StartAction">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="successor_AbstractAction" valueExpression="var:StopAction"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StopAction">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:StartAction"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

@@ -12,7 +12,8 @@ Require-Bundle: org.palladiosimulator.pcm;bundle-version="4.0.0",
  org.palladiosimulator.editors.commons.dialogs;bundle-version="1.0.0",
  org.palladiosimulator.editors.sirius.custom;bundle-version="1.0.0",
  org.palladiosimulator.mdsdprofiles;bundle-version="1.0.0",
- org.modelversioning.emfprofile.edit;bundle-version="1.0.0"
+ org.modelversioning.emfprofile.edit;bundle-version="1.0.0",
+ org.palladiosimulator.editors.sirius.ui
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: palladiosimulator.org

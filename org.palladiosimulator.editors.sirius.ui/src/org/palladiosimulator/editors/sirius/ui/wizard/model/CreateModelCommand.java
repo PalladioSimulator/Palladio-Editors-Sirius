@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.sirius.ui.wizard.project;
+package org.palladiosimulator.editors.sirius.ui.wizard.model;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -26,10 +26,6 @@ public class CreateModelCommand extends RecordingCommand {
 
 	@Override
 	protected void doExecute() {
-		/*final Allocation allocation = AllocationFactory.eINSTANCE.createAllocation();
-		
-		allocation.setEntityName(modelURI.segment(modelURI.segmentCount() -1).split("\\.")[0]);*/
-		
 		final Resource resource = resourceSet.createResource(modelURI);
 		resource.getContents().add(modelObject);
 		try {

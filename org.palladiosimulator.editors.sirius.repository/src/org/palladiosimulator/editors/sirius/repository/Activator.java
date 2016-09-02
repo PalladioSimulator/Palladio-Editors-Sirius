@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -20,7 +21,11 @@ public class Activator extends AbstractUIPlugin {
 
     private static Set<Viewpoint> viewpoints; 
     
-    public Viewpoint REPOSITORY;
+    private Viewpoint viewpoint;
+    private RepresentationDescription representation;
+    
+    public static final String VIEWPOINT_NAME = "Repository";
+    public static final String REPRESENTATION_NAME= "Repository Diagram";
 
     /**
      * The constructor
@@ -38,14 +43,32 @@ public class Activator extends AbstractUIPlugin {
 	  plugin = this;
 	  viewpoints = new HashSet<Viewpoint>();
 	  viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/repository.odesign")); 
-    
-	  for (final Viewpoint viewpoint : viewpoints) {
-          if (viewpoint.getName().equals("Repository")) {// TODO: check name
-              this.REPOSITORY = viewpoint;
+	  
+      // Set viewpoint constants
+      for (final Viewpoint v : viewpoints) {
+          if (v.getName().equals(VIEWPOINT_NAME)) {
+              this.viewpoint = v;
               break;
           }
       }
-    }
+
+      // Set diagram description constants
+      for (final RepresentationDescription representationDescription : this.viewpoint.getOwnedRepresentations()) {
+          if (representationDescription.getName().equals(REPRESENTATION_NAME)) {                                              
+              this.representation = representationDescription;
+              break;
+          }
+      }
+
+  }
+
+  public Viewpoint getViewpoint() {
+		return viewpoint;
+	}
+
+	public RepresentationDescription getRepresentation() {
+		return representation;
+	}
 
     /*
      * (non-Javadoc)
