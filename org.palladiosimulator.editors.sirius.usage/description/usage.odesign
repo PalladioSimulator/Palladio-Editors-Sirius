@@ -64,14 +64,7 @@
             </subContainerMappings>
             <subContainerMappings name="loop" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" domainClass="usagemodel.Loop" childrenPresentation="VerticalStack">
               <subContainerMappings name="loopIterations" semanticCandidatesExpression="[self/]" domainClass="usagemodel.Loop" childrenPresentation="List">
-                <subNodeMappings name="iterationsNode" semanticCandidatesExpression="[self/]" doubleClickDescription="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='doubleClickLoopIterationsDialog']" domainClass="usagemodel.Loop">
-                  <style xsi:type="style:NoteDescription" showIcon="false" labelExpression="['Iterations: ' + self.loopIteration_Loop.specification/]" labelPosition="node" resizeKind="NSEW">
-                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                    <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
-                  </style>
-                </subNodeMappings>
-                <style xsi:type="style:FlatContainerStyleDescription" arcHeight="1" borderSizeComputationExpression="1" showIcon="false" labelExpression="">
+                <style xsi:type="style:FlatContainerStyleDescription" arcHeight="1" borderSizeComputationExpression="1" labelExpression="[self.loopIteration_Loop.specification/]">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -284,7 +277,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="doubleClickLoopIterationsDialog" mappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='loop']/@subContainerMappings[name='loopIterations']/@subNodeMappings[name='iterationsNode']">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="doubleClickLoopIterationsDialog">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
