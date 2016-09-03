@@ -68,7 +68,7 @@ public abstract class NewModelWizard extends Wizard implements INewWizard {
 	@Override
 	public boolean performFinish() {
 		modelURI = modelCreationPage.getPlatformURI();
-		boolean createRepresentation = this.representationCreationPage.isRepresentationCreationEnabled();
+		final boolean createRepresentation = this.representationCreationPage.isRepresentationCreationEnabled();
         final String representationName = this.representationCreationPage.getRepresentationName();
 		IRunnableWithProgress op = new WorkspaceModifyOperation() {
 			protected void execute(IProgressMonitor monitor) throws CoreException {
