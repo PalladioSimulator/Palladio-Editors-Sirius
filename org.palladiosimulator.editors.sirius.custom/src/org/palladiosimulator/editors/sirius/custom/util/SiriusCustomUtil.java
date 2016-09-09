@@ -1,5 +1,6 @@
 package org.palladiosimulator.editors.sirius.custom.util;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -36,6 +37,11 @@ public class SiriusCustomUtil {
 	public static void selectViewpoints(Session session, HashSet<Viewpoint> viewpoints, boolean createRepresentation, IProgressMonitor monitor) {
         final ViewpointSelectionCallback selectionCallback = new ViewpointSelectionCallback();
         final TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
+        Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
+        for (Viewpoint v : viewpoints) {
+        	if (selectedViewpoints.contains(v))
+        		viewpoints.remove(v);
+        }
 		@SuppressWarnings("restriction")
 		final Command command = new ChangeViewpointSelectionCommand(session, selectionCallback, viewpoints, new HashSet<Viewpoint>(), createRepresentation, monitor);
         domain.getCommandStack().execute(command);
