@@ -50,7 +50,8 @@ public class OpenRepresentation implements IExternalJavaAction {
 		Collection<DRepresentation> representations = DialectManager.INSTANCE.getRepresentations(semantic, session);
 		// create a new representation if none exists and open it
 		if (representations.isEmpty()) { 
-			DRepresentation representation = SiriusCustomUtil.createRepresentation(session, "new " + description.getName(),
+			String representationName = "new " + ((description.getLabel() == null) ? description.getName() : description.getLabel());
+			DRepresentation representation = SiriusCustomUtil.createRepresentation(session, representationName,
 					description, semantic, new NullProgressMonitor());
 			DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
 		} else { // open available representations
