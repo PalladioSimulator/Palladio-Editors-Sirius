@@ -74,8 +74,6 @@ public abstract class NewModelWizard extends Wizard implements INewWizard {
 		final String representationName = this.representationCreationPage.getRepresentationName();
 		IRunnableWithProgress op = new WorkspaceModifyOperation() {
 			protected void execute(IProgressMonitor monitor) throws CoreException {
-				System.out.println(URI.decode(modelURI.segment(1)));
-				System.out.println(modelURI.segment(1));
 				IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(URI.decode(modelURI.segment(1)));
 				createModel(project, createRepresentation, representationName, monitor);
 			}

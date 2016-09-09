@@ -3,7 +3,6 @@ package org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetRandomVariable;
 import org.palladiosimulator.pcm.seff.seff_performance.InfrastructureCall;
 
