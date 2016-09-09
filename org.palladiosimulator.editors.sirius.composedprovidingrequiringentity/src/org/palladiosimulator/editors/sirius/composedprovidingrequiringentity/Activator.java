@@ -22,7 +22,7 @@ public class Activator extends AbstractUIPlugin {
 	private static Set<Viewpoint> viewpoints;
 
 	private Viewpoint viewpoint;
-    private RepresentationDescription representation;
+    private RepresentationDescription representationDescription;
     
     public static final String VIEWPOINT_NAME = "System";
     public static final String REPRESENTATION_NAME= "ComposedProvidingRequiringEntity Diagram";
@@ -57,7 +57,7 @@ public class Activator extends AbstractUIPlugin {
       // Set diagram description constants
       for (final RepresentationDescription representationDescription : this.viewpoint.getOwnedRepresentations()) {
           if (representationDescription.getName().equals(REPRESENTATION_NAME)) {                                              
-              this.representation = representationDescription;
+              this.representationDescription = representationDescription;
               break;
           }
       }
@@ -68,8 +68,8 @@ public class Activator extends AbstractUIPlugin {
 		return viewpoint;
 	}
 
-	public RepresentationDescription getRepresentation() {
-		return representation;
+	public RepresentationDescription getRepresentationDescription() {
+		return representationDescription;
 	}
 
 

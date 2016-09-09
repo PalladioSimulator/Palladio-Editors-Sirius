@@ -101,7 +101,7 @@
         </containerMappings>
         <containerMappings name="BasicComponent" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" domainClass="repository.BasicComponent" childrenPresentation="VerticalStack">
           <subContainerMappings name="SEFFCompartment" semanticCandidatesExpression="var:self" domainClass="repository.BasicComponent" childrenPresentation="List">
-            <subNodeMappings name="SEFF" semanticCandidatesExpression="feature:serviceEffectSpecifications__BasicComponent" domainClass="seff.ResourceDemandingSEFF">
+            <subNodeMappings name="SEFF" semanticCandidatesExpression="feature:serviceEffectSpecifications__BasicComponent" doubleClickDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='SEFF%20Representation']" domainClass="seff.ResourceDemandingSEFF">
               <style xsi:type="style:SquareDescription" labelExpression="[self.describedService__SEFF.eContainer().oclAsType(Interface).entityName +  '.' + self.describedService__SEFF.entityName/]" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -167,7 +167,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="CompositeComponent" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" domainClass="repository.CompositeComponent" childrenPresentation="List">
+        <containerMappings name="CompositeComponent" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" doubleClickDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CompositeComponent%20Representation']" domainClass="repository.CompositeComponent" childrenPresentation="List">
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:entityName" widthComputationExpression="20" heightComputationExpression="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -175,7 +175,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="SubSystem" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" domainClass="subsystem.SubSystem" childrenPresentation="List">
+        <containerMappings name="SubSystem" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" doubleClickDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='SubSystem%20Representation']" domainClass="subsystem.SubSystem" childrenPresentation="List">
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="feature:entityName" widthComputationExpression="10" heightComputationExpression="5">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -247,21 +247,19 @@
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.OperationProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
                   <subModelOperations xsi:type="tool:SetValue" featureName="providedInterface__OperationProvidedRole" valueExpression="var:target"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['OperationProvidedRole' + source.eContents()->selectByType(OperationProvidedRole)->size()/]"/>
-                  <subModelOperations xsi:type="tool:For" expression="[target.signatures__OperationInterface/]">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[source.oclIsTypeOf(BasicComponent)/]">
-                        <subModelOperations xsi:type="tool:If" conditionExpression="[source.oclAsType(BasicComponent).serviceEffectSpecifications__BasicComponent->exists (x | x.oclAsType(ResourceDemandingSEFF).describedService__SEFF = i) = false/]">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="[source.oclIsTypeOf(BasicComponent)/]">
+                    <subModelOperations xsi:type="tool:For" expression="[target.signatures__OperationInterface/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="[source.oclAsType(BasicComponent).serviceEffectSpecifications__BasicComponent->exists (x | x.oclAsType(ResourceDemandingSEFF).describedService__SEFF = i) = false/]">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                           <subModelOperations xsi:type="tool:CreateInstance" typeName="ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
                             <subModelOperations xsi:type="tool:SetValue" featureName="describedService__SEFF" valueExpression="var:i"/>
-                            <subModelOperations xsi:type="tool:If" conditionExpression="[instance.eContents(StartAction)->size() = 0 and instance.eContents(StopAction)->size() = 0 /]">
-                              <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="StartAction"/>
-                              <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="StopAction"/>
-                              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StartAction">
-                                <subModelOperations xsi:type="tool:SetValue" featureName="successor_AbstractAction" valueExpression="var:StopAction"/>
-                              </subModelOperations>
-                              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StopAction">
-                                <subModelOperations xsi:type="tool:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:StartAction"/>
-                              </subModelOperations>
+                            <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="StartAction"/>
+                            <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="StopAction"/>
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StartAction">
+                              <subModelOperations xsi:type="tool:SetValue" featureName="successor_AbstractAction" valueExpression="var:StopAction"/>
+                            </subModelOperations>
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StopAction">
+                              <subModelOperations xsi:type="tool:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:StartAction"/>
                             </subModelOperations>
                           </subModelOperations>
                         </subModelOperations>
@@ -397,19 +395,6 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool:If" conditionExpression="[element.providingEntity_ProvidedRole.providedRoles_InterfaceProvidingEntity->exists(x |  (x.oclIsTypeOf(OperationProvidedRole)) and (x.oclAsType(OperationProvidedRole).providedInterface__OperationProvidedRole = target)) = false or element.providingEntity_ProvidedRole.oclIsTypeOf(CompositeComponent)/]">
                   <subModelOperations xsi:type="tool:SetValue" featureName="providedInterface__OperationProvidedRole" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool:For" expression="[target.signatures__OperationInterface/]">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="describedService__SEFF" valueExpression="var:i"/>
-                      <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="StartAction"/>
-                      <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="StopAction"/>
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StartAction">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="successor_AbstractAction" valueExpression="var:StopAction"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StopAction">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:StartAction"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -511,6 +496,28 @@
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="SubSystem Representation" mappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='SubSystem']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Open SubSystem Representation" id="OpenRepresentation">
+                <parameters name="Viewpoint" value="System"/>
+                <parameters name="RepresentationDescription" value="ComposedProvidingRequiringEntity Diagram"/>
+                <parameters name="element" value="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="CompositeComponent Representation" mappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='CompositeComponent']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Open CompositeComponent Representation" id="OpenRepresentation">
+                <parameters name="Viewpoint" value="System"/>
+                <parameters name="RepresentationDescription" value="ComposedProvidingRequiringEntity Diagram"/>
+                <parameters name="element" value="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Internal Elements">
@@ -643,6 +650,17 @@
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="Edit capacity" id="SetCapacity">
                   <parameters name="element" value="var:element"/>
                 </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="SEFF Representation" mappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='SEFFCompartment']/@subNodeMappings[name='SEFF']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Open SEFF Representation" id="OpenRepresentation">
+                <parameters name="Viewpoint" value="Seff"/>
+                <parameters name="RepresentationDescription" value="Seff Diagram"/>
+                <parameters name="element" value="var:element"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

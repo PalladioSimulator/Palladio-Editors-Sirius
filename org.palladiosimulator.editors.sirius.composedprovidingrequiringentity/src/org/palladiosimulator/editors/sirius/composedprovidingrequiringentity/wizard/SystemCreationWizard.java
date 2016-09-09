@@ -17,7 +17,7 @@ public class SystemCreationWizard extends NewModelWizard {
 		modelCreationPage = new ModelCreationPage(selection, viewpointName + " Creation Wizard", "new" + viewpointName,  ext);
 		viewpointNames = new ArrayList<String>();
 		viewpointNames.add(viewpointName);
-		representation = Activator.getDefault().getRepresentation();
+		representationDescription = Activator.getDefault().getRepresentationDescription();
 		
 
 		org.palladiosimulator.pcm.system.System obj = SystemFactory.eINSTANCE.createSystem();

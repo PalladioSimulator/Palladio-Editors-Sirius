@@ -18,7 +18,7 @@ public class RepositoryCreationWizard extends NewModelWizard {
 		modelCreationPage = new ModelCreationPage(selection, viewpointName + " Creation Wizard", "new" + viewpointName,  ext);
 		viewpointNames = new ArrayList<String>();
 		viewpointNames.add(viewpointName);
-		representation = Activator.getDefault().getRepresentation();
+		representationDescription = Activator.getDefault().getRepresentationDescription();
 
 		Repository obj = RepositoryFactory.eINSTANCE.createRepository();
 		obj.setEntityName("New Repository");

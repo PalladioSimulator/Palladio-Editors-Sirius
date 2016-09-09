@@ -6,14 +6,19 @@ import java.util.Set;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
@@ -47,4 +52,31 @@ public class SiriusCustomUtil {
 		selectViewpoints(session, viewpoints, createRepresentation, monitor);
 	}
 	
+	public static DRepresentation createRepresentation(Session session, String representationName, RepresentationDescription description, EObject semantic, IProgressMonitor monitor) {
+		monitor.subTask("Creating representation");
+		TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
+        final CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(
+                session, description, semantic,
+                representationName, new SubProgressMonitor(monitor, 1));
+        domain.getCommandStack().execute(createRepresentationCommand);
+        return createRepresentationCommand.getCreatedRepresentation();
+	}
+	
+	public static Viewpoint findViewpoint(String viewpointName) {
+		Viewpoint viewpoint = null;
+		for (Viewpoint v: ViewpointRegistry.getInstance().getViewpoints()) {
+			if (v.getName().equals(viewpointName))
+				viewpoint = v;
+		}
+		return viewpoint;
+	}
+	
+	public static RepresentationDescription findDescription(Viewpoint viewpoint, String descriptionName) {
+		RepresentationDescription description = null;
+		for (RepresentationDescription d : viewpoint.getOwnedRepresentations()) {
+			if (d.getName().equals(descriptionName))
+				description = d;
+		}
+		return description;
+	}
 }

@@ -14,7 +14,6 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -37,15 +36,15 @@ public abstract class NewModelWizard extends Wizard implements INewWizard {
 	private final int work = 16;
 	protected EObject modelObject;
 	protected List<String> viewpointNames;
-	protected RepresentationDescription representation;
+	protected RepresentationDescription representationDescription;
 
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		setWindowTitle(WINDOW_TITLE);
 		setNeedsProgressMonitor(true);
 
-        this.representationCreationPage = new RepresentationCreationPage();
-		
+		this.representationCreationPage = new RepresentationCreationPage();
+
 		init(selection);
 		if (viewpointNames == null || modelObject == null || modelCreationPage == null)
 			throw new NullPointerException("Attributes must be correctly initialized in the init method");
@@ -53,8 +52,11 @@ public abstract class NewModelWizard extends Wizard implements INewWizard {
 
 	/**
 	 * The implementation of this method must correctly initialize the
-	 * modelObject, viewpointName, representation and modelCreationPage attributes
-	 * @param selection selected element
+	 * modelObject, viewpointName, representation and modelCreationPage
+	 * attributes
+	 * 
+	 * @param selection
+	 *            selected element
 	 */
 	protected abstract void init(IStructuredSelection selection);
 
@@ -69,10 +71,12 @@ public abstract class NewModelWizard extends Wizard implements INewWizard {
 	public boolean performFinish() {
 		modelURI = modelCreationPage.getPlatformURI();
 		final boolean createRepresentation = this.representationCreationPage.isRepresentationCreationEnabled();
-        final String representationName = this.representationCreationPage.getRepresentationName();
+		final String representationName = this.representationCreationPage.getRepresentationName();
 		IRunnableWithProgress op = new WorkspaceModifyOperation() {
 			protected void execute(IProgressMonitor monitor) throws CoreException {
-				IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(modelURI.segment(1));
+				System.out.println(URI.decode(modelURI.segment(1)));
+				System.out.println(modelURI.segment(1));
+				IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(URI.decode(modelURI.segment(1)));
 				createModel(project, createRepresentation, representationName, monitor);
 			}
 		};
@@ -87,55 +91,37 @@ public abstract class NewModelWizard extends Wizard implements INewWizard {
 		return true;
 	}
 
-	
-	
-	private void createModel(IProject project, boolean createRepresentation, String representationName, IProgressMonitor monitor) throws CoreException {
+	private void createModel(IProject project, boolean createRepresentation, String representationName,
+			IProgressMonitor monitor) throws CoreException {
 
-        if (!project.hasNature(ModelingProject.NATURE_ID)) {
-            monitor.subTask("Converting to Modeling Project");
-            ModelingProjectManager.INSTANCE.convertToModelingProject(project, monitor);
-        }
-        
-        URI representationsURI = SiriusCustomUtil.getRepresentationsURI(project);
+		if (!project.hasNature(ModelingProject.NATURE_ID)) {
+			monitor.subTask("Converting to Modeling Project");
+			ModelingProjectManager.INSTANCE.convertToModelingProject(project, monitor);
+		}
+
+		URI representationsURI = SiriusCustomUtil.getRepresentationsURI(project);
 		Session session = SessionManager.INSTANCE.getSession(representationsURI, monitor);
-		
-
 
 		createResource(session, monitor);
 		SiriusCustomUtil.selectViewpoints(session, viewpointNames, false, monitor);
 		if (createRepresentation) {
-			createRepresentation(session, representationName, monitor);
+			final DRepresentation createdRepresentation = SiriusCustomUtil.createRepresentation(session,
+					representationName, representationDescription, modelObject, monitor);
+			monitor.subTask("Opening representation");
+			DialectUIManager.INSTANCE.openEditor(session, createdRepresentation, new SubProgressMonitor(monitor, 1));
+			monitor.worked(work);
 		}
-		
-	}
-	
-	private void createRepresentation(Session session, String representationName, IProgressMonitor monitor) {
-		 monitor.subTask("Creating representation");
-		 TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
-         final CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(
-                 session, representation, modelObject,
-                 representationName, new SubProgressMonitor(monitor, 1));
-         domain.getCommandStack().execute(createRepresentationCommand);
-         final DRepresentation createdRepresentation = createRepresentationCommand
-                 .getCreatedRepresentation();
-         monitor.worked(work);
 
-         monitor.subTask("Opening representation");
-         DialectUIManager.INSTANCE.openEditor(session, createdRepresentation,
-                 new SubProgressMonitor(monitor, 1));
-         monitor.worked(work);
-		
 	}
 
 	private void createResource(Session session, IProgressMonitor monitor) {
 		monitor.subTask("Setting Resource");
 		final TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
-        final CreateModelCommand createModelCommand = new CreateModelCommand(domain,  modelURI, modelObject);
-        domain.getCommandStack().execute(createModelCommand);
-		domain.getCommandStack().execute(new AddSemanticResourceCommand(session, modelObject.eResource().getURI(), new SubProgressMonitor(monitor, 1)));
+		final CreateModelCommand createModelCommand = new CreateModelCommand(domain, modelURI, modelObject);
+		domain.getCommandStack().execute(createModelCommand);
+		domain.getCommandStack().execute(new AddSemanticResourceCommand(session, modelObject.eResource().getURI(),
+				new SubProgressMonitor(monitor, 1)));
 		monitor.worked(work);
 	}
-
-
 
 }

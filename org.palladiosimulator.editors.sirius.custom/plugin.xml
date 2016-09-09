@@ -43,6 +43,10 @@
             actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetVariableCharacterisationSpecification"
             id="SetVariableCharacterisationSpecification">
       </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.OpenRepresentation"
+            id="OpenRepresentation">
+      </javaActions>
    </extension>
 
 </plugin>

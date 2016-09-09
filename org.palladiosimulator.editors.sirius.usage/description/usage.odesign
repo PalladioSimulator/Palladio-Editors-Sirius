@@ -38,7 +38,7 @@
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
-            <subContainerMappings name="branch" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" domainClass="usagemodel.Branch">
+            <subContainerMappings name="branch" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" domainClass="usagemodel.Branch">
               <subContainerMappings name="branchTransition" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='editBranchPropability']" semanticCandidatesExpression="feature:branchTransitions_Branch" domainClass="usagemodel.BranchTransition">
                 <subContainerMappings name="branchedBehaviour" semanticCandidatesExpression="feature:branchedBehaviour_BranchTransition" domainClass="usagemodel.ScenarioBehaviour" reusedNodeMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subNodeMappings[name='start'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subNodeMappings[name='stop']" reusedContainerMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='delay'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='loop'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='branch']">
                   <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="[' '/]">
@@ -55,16 +55,16 @@
                   <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
                 </style>
               </subContainerMappings>
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="['&lt;&lt;Branch>>'/]" tooltipExpression="ScenarioBehaviorStepsCompartment">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.entityName + '\n&lt;&lt;Branch>>'" tooltipExpression="ScenarioBehaviorStepsCompartment">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
               </style>
             </subContainerMappings>
-            <subContainerMappings name="loop" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" domainClass="usagemodel.Loop" childrenPresentation="VerticalStack">
-              <subContainerMappings name="loopIterations" semanticCandidatesExpression="[self/]" domainClass="usagemodel.Loop" childrenPresentation="List">
-                <style xsi:type="style:FlatContainerStyleDescription" arcHeight="1" borderSizeComputationExpression="1" labelExpression="[self.loopIteration_Loop.specification/]">
+            <subContainerMappings name="loop" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" doubleClickDescription="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='doubleClickLoopIterationsDialog']" domainClass="usagemodel.Loop" childrenPresentation="VerticalStack">
+              <subContainerMappings name="LoopIterationCount" semanticCandidatesExpression="[self/]" doubleClickDescription="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='doubleClickLoopIterationsDialog']" domainClass="usagemodel.Loop">
+                <style xsi:type="style:FlatContainerStyleDescription" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.loopIteration_Loop.specification" widthComputationExpression="20">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -79,14 +79,14 @@
                   <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
                 </style>
               </subContainerMappings>
-              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="['&lt;&lt;Loop>>'/]">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.entityName + '\n&lt;&lt;Loop>>'">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
               </style>
             </subContainerMappings>
-            <subContainerMappings name="entryLevelSystemCall" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" doubleClickDescription="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20EntryLevelSystemCall']" domainClass="usagemodel.EntryLevelSystemCall">
+            <subContainerMappings name="entryLevelSystemCall" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" doubleClickDescription="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20EntryLevelSystemCall']" domainClass="usagemodel.EntryLevelSystemCall">
               <subContainerMappings name="variableUsage" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Variable%20Usage']" semanticCandidatesExpression="feature:inputParameterUsages_EntryLevelSystemCall" domainClass="parameter.VariableUsage" childrenPresentation="List">
                 <subNodeMappings name="variableCharacterisation" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" doubleClickDescription="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20VariableCharacterisation']" domainClass="parameter.VariableCharacterisation">
                   <style xsi:type="style:SquareDescription" labelExpression="aql:self.type + ' = ' + self.specification_VariableCharacterisation.specification" labelPosition="node" resizeKind="NSEW">
@@ -109,7 +109,7 @@
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
               </style>
             </subContainerMappings>
-            <subContainerMappings name="delay" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" domainClass="usagemodel.Delay" childrenPresentation="List">
+            <subContainerMappings name="delay" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" domainClass="usagemodel.Delay" childrenPresentation="List">
               <subNodeMappings name="delayTime" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='doubleClickDelayTimeDialog']" domainClass="usagemodel.Delay">
                 <style xsi:type="style:BundledImageDescription" labelExpression="['Delay Time: ' + self.timeSpecification_Delay.specification/]" labelAlignment="LEFT" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -124,7 +124,7 @@
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
               </style>
             </subContainerMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.entityName + '\n&lt;&lt;ScenarioBehaviour>>'" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.entityName + '\n&lt;&lt;ScenarioBehaviour>>'" widthComputationExpression="20" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -234,7 +234,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Loop" referenceName="actions_ScenarioBehaviour">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="loopIteration_Loop">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="specification" valueExpression="['1'/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="specification" valueExpression="aql:'1'"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.ScenarioBehaviour" referenceName="bodyBehaviour_Loop">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Start" referenceName="actions_ScenarioBehaviour" variableName="start"/>
@@ -256,15 +256,9 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Branch" referenceName="actions_ScenarioBehaviour"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="nameEdit">
-            <mask mask="{0}"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="[arg0/]"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Branch" referenceName="actions_ScenarioBehaviour">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['Branch' +container.eContents()->selectByType(Branch)->size()/]"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -277,7 +271,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="doubleClickLoopIterationsDialog">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="doubleClickLoopIterationsDialog" mappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='loop']/@subContainerMappings[name='LoopIterationCount'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='loop']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -327,7 +321,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="scenarioBehaviourCreation" label="Scenario Behaviour" containerMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="scenarioBehaviourCreation" label="Scenario Behaviour" precondition="aql:container.oclAsType(usagemodel::UsageScenario).scenarioBehaviour_UsageScenario=null" containerMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -341,6 +335,7 @@
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:stop">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor" valueExpression="var:start"/>
                   </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="ScenarioBehaviour"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -365,14 +360,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="editBranchPropability">
-            <mask mask="{0}"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:If" conditionExpression="[arg0.matches('0?\\.{1}[0-9]*') or arg0.matches('1{1}[\\.?0+]?')/]">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="branchProbability" valueExpression="[arg0/]"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool:DoubleClickDescription" name="Edit VariableCharacterisation" mappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall']/@subContainerMappings[name='variableUsage']/@subNodeMappings[name='variableCharacterisation']">
             <element name="element"/>
             <elementView name="elementView"/>
@@ -384,6 +371,14 @@
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Edit Variable Characterisation Specification" id="SetVariableCharacterisationSpecification">
                   <parameters name="element" value="var:element"/>
                 </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="editBranchPropability">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:If" conditionExpression="[arg0.matches('0?\\.{1}[0-9]*') or arg0.matches('1{1}[\\.?0+]?')/]">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="branchProbability" valueExpression="[arg0/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -486,7 +481,9 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.UsageScenario" referenceName="usageScenario_UsageModel" variableName="defaultScenario"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.UsageScenario" referenceName="usageScenario_UsageModel" variableName="defaultScenario">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="UsageScenario"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -499,7 +496,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit Name">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit Name" inputLabelExpression="feature:entityName">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="var:0"/>

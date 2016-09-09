@@ -18,7 +18,7 @@ public class UsageModelCreationWizard extends NewModelWizard {
 		modelCreationPage = new ModelCreationPage(selection, viewpointName + " Creation Wizard", "new" + viewpointName,  ext);
 		viewpointNames = new ArrayList<String>();
 		viewpointNames.add(viewpointName);
-		representation = Activator.getDefault().getRepresentation();
+		representationDescription = Activator.getDefault().getRepresentationDescription();
 		
 
 		UsageModel obj = UsagemodelFactory.eINSTANCE.createUsageModel();
