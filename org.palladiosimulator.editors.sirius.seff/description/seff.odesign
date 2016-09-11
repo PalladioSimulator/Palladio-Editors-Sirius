@@ -44,9 +44,17 @@
             <subNodeMappings name="ResourceDemand" semanticCandidatesExpression="[self.resourceDemand_Action/]" doubleClickDescription="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='seffOpenStoExDialogResourceDemand']" domainClass="seff_performance.ParametricResourceDemand">
               <style xsi:type="style:SquareDescription" labelExpression="[self.specification_ParametericResourceDemand.specification + ' &lt;' + self.requiredResource_ParametricResourceDemand.entityName + '>'/]" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
+              <conditionnalStyles predicateExpression="[(self.specification_ParametericResourceDemand.specification + ' &lt;' + self.requiredResource_ParametricResourceDemand.entityName + '>').size() > 40/]">
+                <style xsi:type="style:SquareDescription" labelExpression="[(self.specification_ParametericResourceDemand.specification + ' &lt;' + self.requiredResource_ParametricResourceDemand.entityName + '>').substring(1, 40) + ' ...' /]" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                </style>
+              </conditionnalStyles>
             </subNodeMappings>
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="ResourceDemand">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -195,6 +203,13 @@
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
               </style>
+              <conditionnalStyles predicateExpression="[self.specification_VariableCharacterisation.specification.size() > 40/]">
+                <style xsi:type="style:SquareDescription" labelExpression="[self.type + ' = ' + self.specification_VariableCharacterisation.specification.substring(1, 40) + ' ...' /]" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                </style>
+              </conditionnalStyles>
             </subNodeMappings>
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="[self.namedReference__VariableUsage.referenceName/]">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
