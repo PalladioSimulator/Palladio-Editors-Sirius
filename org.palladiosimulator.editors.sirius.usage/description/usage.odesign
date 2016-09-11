@@ -123,6 +123,13 @@
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 </style>
+                <conditionnalStyles predicateExpression="[('Delay Time: ' + self.timeSpecification_Delay.specification).size() > 40/]">
+                  <style xsi:type="style:BundledImageDescription" labelExpression="[('Delay Time: ' + self.timeSpecification_Delay.specification).substring(1, 40) + ' ...'/]" labelAlignment="LEFT" resizeKind="NSEW">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  </style>
+                </conditionnalStyles>
               </subNodeMappings>
               <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.entityName + '\n &lt;&lt;Delay>>'">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
