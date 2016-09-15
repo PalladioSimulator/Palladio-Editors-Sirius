@@ -134,7 +134,7 @@
           </style>
         </containerMappings>
         <containerMappings name="ResourceEnvironment AT Container" deletionDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20SystemRole%20Removal']" semanticCandidatesExpression="[self.getProfileImports()/]" domainClass="emfprofileapplication.ProfileImport" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="[self.profile.name/]" iconPath="/org.palladiosimulator.architecturaltemplates.edit/icons/full/obj16/ATInstance.gif">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderLineStyle="dash" labelExpression="[self.profile.name/]" iconPath="/org.palladiosimulator.architecturaltemplates.edit/icons/full/obj16/ATInstance.gif">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
