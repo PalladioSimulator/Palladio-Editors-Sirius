@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeListSpec;
+import org.eclipse.sirius.diagram.impl.DNodeImpl;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.palladiosimulator.pcm.usagemodel.AbstractUserAction;
 import org.palladiosimulator.pcm.usagemodel.impl.AbstractUserActionImpl;
@@ -22,7 +22,7 @@ public class ReconnectSourceOfUsageFlow implements IExternalJavaAction {
         AbstractUserAction newSource = (AbstractUserAction) parameters.get("target");
 
 
-        DNodeListSpec otherEnd = (DNodeListSpec) parameters.get("otherEnd");
+        DNodeImpl otherEnd = (DNodeImpl) parameters.get("otherEnd");
 
         newSource.setSuccessor((AbstractUserActionImpl) otherEnd.getTarget());
         oldSource.setSuccessor(null);
