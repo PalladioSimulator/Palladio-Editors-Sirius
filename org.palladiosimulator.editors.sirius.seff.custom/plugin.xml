@@ -63,6 +63,10 @@
             actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.EditInternalFailureOccurrenceDescriptionProbability"
             id="EditInternalFailureOccurrenceDescriptionProbability">
       </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.ReconnectSourceOfControlFlow"
+            id="ReconnectSourceOfControlFlow">
+      </javaActions>
    </extension>
 
 </plugin>
