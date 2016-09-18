@@ -23,6 +23,10 @@
             actionClass="org.palladiosimulator.editors.sirius.usage.custom.externaljavaactions.EntryLevelSystemCallDialog"
             id="EntryLevelSystemCallDialog">
       </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.usage.custom.externaljavaactions.ReconnectSourceOfUsageFlow"
+            id="ReconnectSourceOfUsageFlow">
+      </javaActions>
    </extension>
 
 </plugin>
