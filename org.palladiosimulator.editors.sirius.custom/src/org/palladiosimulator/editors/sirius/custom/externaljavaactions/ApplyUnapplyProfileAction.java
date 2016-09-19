@@ -44,7 +44,7 @@ public class ApplyUnapplyProfileAction implements IExternalJavaAction {
                 PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), LABEL_PROVIDER, target,
                 target.eClass().getEAllStructuralFeatures().get(0).getEType(),
                 ProfileAPI.getAppliedProfiles(targetResource), SELECT_APPLIED_PROFILES_MESSAGE,
-                ProfileAPI.getApplicableProfiles(targetResource), false, true, true);
+                ProfileAPI.getApplicableProfiles(), false, true, true);
 
         if (profileSelectionDialog.open() == Dialog.OK) {
             ProfileAPI.updateProfileApplications(targetResource, (EList<Profile>) profileSelectionDialog.getResult());

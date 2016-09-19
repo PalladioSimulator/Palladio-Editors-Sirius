@@ -18,13 +18,13 @@ Require-Bundle: org.eclipse.ui,
  org.palladiosimulator.architecturaltemplates.api;bundle-version="1.0.0",
  org.palladiosimulator.architecturaltemplates;bundle-version="1.0.1",
  org.palladiosimulator.architecturaltemplates.ui;bundle-version="1.0.0",
- org.palladiosimulator.mdsdprofiles.api;bundle-version="1.0.0",
+ org.palladiosimulator.mdsdprofiles.api;bundle-version="1.0.1",
  org.eclipse.emf.edit.ui,
  org.eclipse.emf.transaction;bundle-version="1.9.0",
  org.eclipse.gmf,
  org.eclipse.gmf.runtime.common.core;bundle-version="1.7.0",
  org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0",
- org.palladiosimulator.commons;bundle-version="1.0.0",
+ org.palladiosimulator.commons;bundle-version="1.0.1",
  org.eclipse.sirius.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

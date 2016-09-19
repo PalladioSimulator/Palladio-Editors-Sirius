@@ -1,12 +1,12 @@
 package org.palladiosimulator.editors.sirius.ui.wizard.project;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.resources.IContainer;
@@ -25,6 +25,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -39,6 +40,9 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 import org.eclipse.ui.wizards.newresource.BasicNewProjectResourceWizard;
+import org.palladiosimulator.architecturaltemplates.AT;
+import org.palladiosimulator.architecturaltemplates.api.ArchitecturalTemplateAPI;
+import org.palladiosimulator.commons.eclipseutils.FileHelper;
 import org.palladiosimulator.editors.sirius.custom.util.SiriusCustomUtil;
 
 /**
@@ -46,243 +50,245 @@ import org.palladiosimulator.editors.sirius.custom.util.SiriusCustomUtil;
  */
 public class NewPalladioProjectWizard extends Wizard implements INewWizard {
 
-	private WizardNewProjectCreationPage projectCreationPage;
-	private NewPalladioTemplateWizardPage palladioTemplatePage;
-	private IProject project;
-	private IConfigurationElement config;
-	private IWorkbench workbench;
-	
-	/**
-	 * Constructor for NewPCMWizard.
-	 */
-	public NewPalladioProjectWizard() {
-		super();
-		setNeedsProgressMonitor(true);
-	}
-	
-	@Override
-	public void init(IWorkbench workbench, IStructuredSelection selection) {
-		this.workbench = workbench;
-	}
-	
+    /** An AT catalog stores initiator templates in this folder. */
+    private static final String INITIATOR_TEMPLATES_FOLDER = "initiatorTemplates";
 
-	/**
-	 * Adding the page to the wizard.
-	 */
+    private WizardNewProjectCreationPage projectCreationPage;
+    private NewPalladioTemplateWizardPage palladioTemplatePage;
+    private IProject project;
+    private IConfigurationElement config;
+    private IWorkbench workbench;
 
-	public void addPages() {
-		// set the basic project page
-		projectCreationPage = new WizardNewProjectCreationPage("NewPalladioProject");
-		projectCreationPage.setDescription("Create a new Palladio project.");
-		projectCreationPage.setTitle("New Palladio Project");
-		addPage(projectCreationPage);
+    /**
+     * Constructor for NewPCMWizard.
+     */
+    public NewPalladioProjectWizard() {
+        super();
+        setNeedsProgressMonitor(true);
+    }
 
-		// set the template page
-		Set<PalladioTemplate> availableTemplates = getAvailableTemplates();
-		palladioTemplatePage = new NewPalladioTemplateWizardPage(availableTemplates);
-		addPage(palladioTemplatePage);
-	}
+    @Override
+    public void init(final IWorkbench workbench, final IStructuredSelection selection) {
+        this.workbench = workbench;
+    }
 
-	@Override
-	public boolean performFinish() {
-		final IProject projectHandle = projectCreationPage.getProjectHandle();
-		
-		java.net.URI projectURI = (!projectCreationPage.useDefaults()) ? projectCreationPage.getLocationURI() : null;
+    /**
+     * Adding the page to the wizard.
+     */
 
-		IWorkspace workspace = ResourcesPlugin.getWorkspace();
+    @Override
+    public void addPages() {
+        // set the basic project page
+        this.projectCreationPage = new WizardNewProjectCreationPage("NewPalladioProject");
+        this.projectCreationPage.setDescription("Create a new Palladio project.");
+        this.projectCreationPage.setTitle("New Palladio Project");
+        addPage(this.projectCreationPage);
 
-		final IProjectDescription desc = workspace.newProjectDescription(projectHandle.getName());
-		desc.setLocationURI(projectURI);
-		
+        // set the template page
+        this.palladioTemplatePage = new NewPalladioTemplateWizardPage(ArchitecturalTemplateAPI.getInitiatorATs());
+        addPage(this.palladioTemplatePage);
+    }
 
-		/*
-		 * Creating the project encapsulated in a workspace operation
-		 */
-		WorkspaceModifyOperation op = new WorkspaceModifyOperation() {
-			protected void execute(IProgressMonitor monitor)
-					throws CoreException {
-				project = createProject(desc, projectHandle, monitor);
-			}
-		};
+    @Override
+    public boolean performFinish() {
+        final IProject projectHandle = this.projectCreationPage.getProjectHandle();
 
-		/*
-		 * This isn't as robust as the code in the BasicNewProjectResourceWizard
-		 * class. Consider beefing this up to improve error handling.
-		 */
-		try {
-			getContainer().run(true, true, op);
-		} catch (Exception e) {
-			MessageDialog.openError(getShell(), "Error", "An unexpected error occured. See stack trace");
-			e.printStackTrace();
-			return false;
-		}
+        final java.net.URI projectURI = (!this.projectCreationPage.useDefaults())
+                ? this.projectCreationPage.getLocationURI() : null;
 
-		if (project == null) {
-			return false;
-		}
+        final IWorkspace workspace = ResourcesPlugin.getWorkspace();
 
-		BasicNewProjectResourceWizard.updatePerspective(config);
-		BasicNewProjectResourceWizard.selectAndReveal(project,
-				workbench.getActiveWorkbenchWindow());
+        final IProjectDescription desc = workspace.newProjectDescription(projectHandle.getName());
+        desc.setLocationURI(projectURI);
 
-		return true;
-	}
+        /*
+         * Creating the project encapsulated in a workspace operation
+         */
+        final WorkspaceModifyOperation op = new WorkspaceModifyOperation() {
 
-	/**
-	 * This creates the project in the workspace.
-	 * 
-	 * @param description
-	 *            The description to set for the project.
-	 * @param projectHandle
-	 * @param monitor
-	 * @throws CoreException
-	 * @throws OperationCanceledException
-	 */
-	private IProject createProject(IProjectDescription description, IProject projectHandle,
-			IProgressMonitor monitor) throws CoreException,
-			OperationCanceledException {
-		try {
+            @Override
+            protected void execute(final IProgressMonitor monitor) throws CoreException {
+                NewPalladioProjectWizard.this.project = createProject(desc, projectHandle, monitor);
+            }
+        };
 
-			monitor.beginTask("", 2000);
-			projectHandle.create(description, new SubProgressMonitor(monitor, 1000));
-			if (monitor.isCanceled()) {
-				throw new OperationCanceledException();
-			}
-			projectHandle.open(IResource.BACKGROUND_REFRESH, new SubProgressMonitor(
-					monitor, 1000));
+        /*
+         * This isn't as robust as the code in the BasicNewProjectResourceWizard class. Consider
+         * beefing this up to improve error handling.
+         */
+        try {
+            getContainer().run(true, true, op);
+        } catch (final Exception e) {
+            MessageDialog.openError(getShell(), "Error", "An unexpected error occured. See stack trace");
+            e.printStackTrace();
+            return false;
+        }
 
-			
-			// Add Templates
-			IContainer container = (IContainer) projectHandle;
-			// check if a template was selected and produce the model files
-			PalladioTemplate selectedTemplate = palladioTemplatePage.getSelectedTemplate();
-			if(selectedTemplate != null){
-				Map<String,String> uriMap = selectedTemplate.getModelFiles();
-				for (String uri : uriMap.keySet()) {
-					String targetFileName = uriMap.get(uri);
-					addModelFile(uri, targetFileName, container, monitor);
-				}
-			}
-			
-			//Convert to modeling project
-			ModelingProjectManager.INSTANCE.convertToModelingProject(projectHandle, monitor);
-			
-			//Activate viewpoints
-			URI representationsURI = SiriusCustomUtil.getRepresentationsURI(projectHandle);
-			Session session = SessionManager.INSTANCE.getSession(representationsURI, monitor);;
-			activateCorrespondingViewpoints(session, monitor);
-			
-			
+        if (this.project == null) {
+            return false;
+        }
 
-		} finally {
-			monitor.done();
-		}
-		return projectHandle;
-	}
+        BasicNewProjectResourceWizard.updatePerspective(this.config);
+        BasicNewProjectResourceWizard.selectAndReveal(this.project, this.workbench.getActiveWorkbenchWindow());
 
-	/**
-	 * Get the set of registered model templates.
-	 * @return
-	 */
-	private Set<PalladioTemplate> getAvailableTemplates() {
-		ExtensionHelper helper = new ExtensionHelper();
-		return helper.getPalladioModelTemplates();
-	}
+        return true;
+    }
 
-	/**
-	 * Create a file in the project.
-	 * 
-	 * @param sourceFile The URI path to the source file to add (e.g. plattform://pluginid/...")
-	 * @param targetFileName The filename of the target file to write.
-	 * @param container The container to place the target file in.
-	 * @param monitor The monitor to track the progress.
-	 * @throws CoreException Identifying that the file could not be written.
-	 */
-	private void addModelFile(String sourceFileURI, String targetFileName,
-			IContainer container, IProgressMonitor monitor)
-			throws CoreException {
-		InputStream resourceStream = null;;
-		try {
+    /**
+     * This creates the project in the workspace.
+     * 
+     * @param description
+     *            The description to set for the project.
+     * @param projectHandle
+     * @param monitor
+     * @throws CoreException
+     * @throws OperationCanceledException
+     */
+    private IProject createProject(final IProjectDescription description, final IProject projectHandle,
+            final IProgressMonitor monitor) throws CoreException, OperationCanceledException {
+        try {
 
-			URL url = new URL(sourceFileURI);
-			resourceStream = url.openConnection().getInputStream();
-			if(resourceStream != null){
-				addFileToProject(container, new Path(targetFileName), resourceStream,
-						monitor);
-			}
-		} catch (IOException ioe) {
-			throwCoreException(ioe.getLocalizedMessage());
-		} finally {
-			if(resourceStream != null){
-				try {
-					resourceStream.close();
-				} catch (IOException e) {
-					throwCoreException(e.getLocalizedMessage());
-				}
-			}
-		}
-	}
+            monitor.beginTask("", 2000);
+            projectHandle.create(description, new SubProgressMonitor(monitor, 1000));
+            if (monitor.isCanceled()) {
+                throw new OperationCanceledException();
+            }
+            projectHandle.open(IResource.BACKGROUND_REFRESH, new SubProgressMonitor(monitor, 1000));
 
-	/**
-	 * Adds a new file to the project.
-	 * 
-	 * @param container
-	 * @param path
-	 * @param contentStream
-	 * @param monitor
-	 * @throws CoreException
-	 */
-	private void addFileToProject(IContainer container, Path path,
-			InputStream contentStream, IProgressMonitor monitor)
-			throws CoreException {
-		final IFile file = container.getFile(path);
-		if (file.exists()) {
-			file.setContents(contentStream, true, true, monitor);
-		} else {
-			file.create(contentStream, true, monitor);
-		}
-	}
+            // check if a template was selected and produce the model files
+            final AT selectedTemplate = this.palladioTemplatePage.getSelectedTemplate();
+            if (selectedTemplate != null) {
+                final URI templateFolderURI = getRootURI(selectedTemplate).appendSegment(INITIATOR_TEMPLATES_FOLDER);
+                final String[] segments = URI.createURI(selectedTemplate.getDefaultInstanceURI()).segments();
+                final URI templateURI = templateFolderURI.appendSegments(segments);
+                final String templatePath = templateURI.toString();
 
-	/**
-	 * Throw a core exception based on a given error message.
-	 * @param message The message to present.
-	 * @throws CoreException The exception to throw.
-	 */
-	private void throwCoreException(String message) throws CoreException {
-		IStatus status = new Status(IStatus.ERROR,
-				"org.palladiosimulator.editors.sirius.custom.wizard", IStatus.OK, message, null);
-		throw new CoreException(status);
-	}
+                for (final File file : FileHelper.getFiles(templatePath)) {
+                    addModelFile(templatePath + file.getName(), file.getName(), projectHandle, monitor);
+                }
+            }
 
+            // Convert to modeling project
+            ModelingProjectManager.INSTANCE.convertToModelingProject(projectHandle, monitor);
 
-	
-	
-	private void activateCorrespondingViewpoints(Session session, IProgressMonitor monitor) {
-		final Set<Viewpoint> registry = ViewpointRegistry.getInstance().getViewpoints();
-		HashSet<Viewpoint> viewpoints = new HashSet<Viewpoint>();
-		List<String> extensions = getExtensions(session);
-		for (Viewpoint viewpoint : registry) {
-			String ext = viewpoint.getModelFileExtension();
-			if (extensions.contains(ext)) {
-				viewpoints.add(viewpoint);
-			}
-		}
-		SiriusCustomUtil.selectViewpoints(session, viewpoints, true, monitor);
-		
-	}
-	
+            // Activate viewpoints
+            final URI representationsURI = SiriusCustomUtil.getRepresentationsURI(projectHandle);
+            final Session session = SessionManager.INSTANCE.getSession(representationsURI, monitor);
 
+            activateCorrespondingViewpoints(session, monitor);
 
-	private List<String> getExtensions(Session session) {
-		List<String> extensions = new ArrayList<String>();
-		for(Resource r : session.getSemanticResources()) {
-			if (r.getClass().getPackage().getName().startsWith("org.palladiosimulator.pcm.")){
-				if (r.getURI().isPlatform()) {
-					extensions.add(r.getURI().fileExtension());
-				}
-			}
-		}
-		return extensions;
-	}
+        } finally {
+            monitor.done();
+        }
+        return projectHandle;
+    }
+
+    /**
+     * Root folder of the eObject.
+     * 
+     * @param eObject
+     *            the eObject where the root folder shall be found for.
+     * @return the root folder.
+     */
+    private URI getRootURI(final EObject eObject) {
+        return eObject.eResource().getURI().trimFragment().trimSegments(1);
+    }
+
+    /**
+     * Create a file in the project.
+     * 
+     * @param sourceFile
+     *            The URI path to the source file to add (e.g. plattform://pluginid/...")
+     * @param targetFileName
+     *            The filename of the target file to write.
+     * @param container
+     *            The container to place the target file in.
+     * @param monitor
+     *            The monitor to track the progress.
+     * @throws CoreException
+     *             Identifying that the file could not be written.
+     */
+    private void addModelFile(final String sourceFileURI, final String targetFileName, final IContainer container,
+            final IProgressMonitor monitor) throws CoreException {
+        InputStream resourceStream = null;
+
+        try {
+
+            final URL url = new URL(sourceFileURI);
+            resourceStream = url.openConnection().getInputStream();
+            if (resourceStream != null) {
+                addFileToProject(container, new Path(targetFileName), resourceStream, monitor);
+            }
+        } catch (final IOException ioe) {
+            throwCoreException(ioe.getLocalizedMessage());
+        } finally {
+            if (resourceStream != null) {
+                try {
+                    resourceStream.close();
+                } catch (final IOException e) {
+                    throwCoreException(e.getLocalizedMessage());
+                }
+            }
+        }
+    }
+
+    /**
+     * Adds a new file to the project.
+     * 
+     * @param container
+     * @param path
+     * @param contentStream
+     * @param monitor
+     * @throws CoreException
+     */
+    private void addFileToProject(final IContainer container, final Path path, final InputStream contentStream,
+            final IProgressMonitor monitor) throws CoreException {
+        final IFile file = container.getFile(path);
+        if (file.exists()) {
+            file.setContents(contentStream, true, true, monitor);
+        } else {
+            file.create(contentStream, true, monitor);
+        }
+    }
+
+    /**
+     * Throw a core exception based on a given error message.
+     * 
+     * @param message
+     *            The message to present.
+     * @throws CoreException
+     *             The exception to throw.
+     */
+    private void throwCoreException(final String message) throws CoreException {
+        final IStatus status = new Status(IStatus.ERROR, "org.palladiosimulator.editors.sirius.custom.wizard",
+                IStatus.OK, message, null);
+        throw new CoreException(status);
+    }
+
+    private void activateCorrespondingViewpoints(final Session session, final IProgressMonitor monitor) {
+        final Set<Viewpoint> registry = ViewpointRegistry.getInstance().getViewpoints();
+        final HashSet<Viewpoint> viewpoints = new HashSet<>();
+        final List<String> extensions = getExtensions(session);
+        for (final Viewpoint viewpoint : registry) {
+            final String ext = viewpoint.getModelFileExtension();
+            if (extensions.contains(ext)) {
+                viewpoints.add(viewpoint);
+            }
+        }
+        SiriusCustomUtil.selectViewpoints(session, viewpoints, true, monitor);
+
+    }
+
+    private List<String> getExtensions(final Session session) {
+        final List<String> extensions = new ArrayList<>();
+        for (final Resource r : session.getSemanticResources()) {
+            if (r.getClass().getPackage().getName().startsWith("org.palladiosimulator.pcm.")) {
+                if (r.getURI().isPlatform()) {
+                    extensions.add(r.getURI().fileExtension());
+                }
+            }
+        }
+        return extensions;
+    }
 
 }
