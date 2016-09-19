@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: PCM Sirius editors: commons
 Bundle-SymbolicName: org.palladiosimulator.editors.sirius.custom;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.1.qualifier
 Bundle-Activator: org.palladiosimulator.editors.sirius.custom.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -15,9 +15,9 @@ Require-Bundle: org.eclipse.ui,
  de.uka.ipd.sdq.pcm.stochasticexpressions,
  org.palladiosimulator.pcm,
  org.modelversioning.emfprofile.edit;bundle-version="1.0.0",
- org.palladiosimulator.architecturaltemplates.api;bundle-version="1.0.0",
- org.palladiosimulator.architecturaltemplates;bundle-version="1.0.1",
- org.palladiosimulator.architecturaltemplates.ui;bundle-version="1.0.0",
+ org.palladiosimulator.architecturaltemplates.api;bundle-version="1.0.4",
+ org.palladiosimulator.architecturaltemplates;bundle-version="1.0.3",
+ org.palladiosimulator.architecturaltemplates.ui;bundle-version="1.0.1",
  org.palladiosimulator.mdsdprofiles.api;bundle-version="1.0.1",
  org.eclipse.emf.edit.ui,
  org.eclipse.emf.transaction;bundle-version="1.9.0",

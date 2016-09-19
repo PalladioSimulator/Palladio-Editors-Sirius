@@ -1,15 +1,15 @@
 Manifest-Version: 1.0
 Bundle-Name: ComposedProvidingRequiringEntity-design extensions
 Bundle-SymbolicName: org.palladiosimulator.editors.sirius.custom.style;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.1.qualifier
 Require-Bundle: org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0",
  org.eclipse.sirius.diagram.ui,
  org.eclipse.emf.edit.ui;bundle-version="2.10.2",
- org.palladiosimulator.architecturaltemplates;bundle-version="1.0.1",
- org.palladiosimulator.mdsdprofiles.api;bundle-version="1.0.0",
+ org.palladiosimulator.architecturaltemplates;bundle-version="1.0.3",
+ org.palladiosimulator.mdsdprofiles.api;bundle-version="1.0.1",
  org.modelversioning.emfprofile.registry;bundle-version="1.0.0",
- org.palladiosimulator.architecturaltemplates.ui;bundle-version="1.0.0",
- org.palladiosimulator.architecturaltemplates.api;bundle-version="1.0.0",
+ org.palladiosimulator.architecturaltemplates.ui;bundle-version="1.0.1",
+ org.palladiosimulator.architecturaltemplates.api;bundle-version="1.0.4",
  org.palladiosimulator.editors.commons.dialogs;bundle-version="1.0.0",
  org.modelversioning.emfprofile.edit;bundle-version="1.0.0",
  de.uka.ipd.sdq.stoex.analyser;bundle-version="2.0.0"
