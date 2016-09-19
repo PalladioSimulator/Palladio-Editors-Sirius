@@ -31,7 +31,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="RecoveryFlow" deletionDescription="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='deleteRecoveryFlow']" sourceMapping="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='RecoveryAction']/@subContainerMappings[name='RestRecoveryActionBehaviour']" targetMapping="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='RecoveryAction']/@subContainerMappings[name='RestRecoveryActionBehaviour']" targetFinderExpression="[failureHandlingAlternatives__RecoveryActionBehaviour/]">
+        <edgeMappings name="RecoveryFlow" deletionDescription="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='deleteRecoveryFlow']" sourceMapping="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='RecoveryAction']/@subContainerMappings[name='RestRecoveryActionBehaviour']" targetMapping="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='RecoveryAction']/@subContainerMappings[name='RestRecoveryActionBehaviour']" targetFinderExpression="[failureHandlingAlternatives__RecoveryActionBehaviour/]" reconnections="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Recovery%20Flow%20Source'] //@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Recovery%20Flow%20Target']">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -1026,6 +1026,37 @@
                 <parameters name="source" value="var:source"/>
                 <parameters name="target" value="var:target"/>
                 <parameters name="otherEnd" value="var:otherEnd"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Recovery Flow Source" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="ReconnectSourceOfRecoveryFlow" id="ReconnectSourceOfRecoveryFlow">
+                <parameters name="source" value="var:source"/>
+                <parameters name="target" value="var:target"/>
+                <parameters name="edgeView" value="[edgeView/]"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Recovery Flow Target">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="ReconnectTargetOfRecoveryFlow" id="ReconnectTargetOfRecoveryFlow">
+                <parameters name="source" value="var:source"/>
+                <parameters name="target" value="var:target"/>
+                <parameters name="edgeView" value="[edgeView/]"/>
+                <parameters name="element" value="var:element"/>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>

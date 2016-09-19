@@ -67,6 +67,14 @@
             actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.ReconnectSourceOfControlFlow"
             id="ReconnectSourceOfControlFlow">
       </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.ReconnectSourceOfRecoveryFlow"
+            id="ReconnectSourceOfRecoveryFlow">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.ReconnectTargetOfRecoveryFlow"
+            id="ReconnectTargetOfRecoveryFlow">
+      </javaActions>
    </extension>
 
 </plugin>

@@ -24,7 +24,6 @@ public class ReconnectSourceOfControlFlow implements IExternalJavaAction {
         DNodeContainerImpl otherEnd = (DNodeContainerImpl) parameters.get("otherEnd");
 
         newSource.setSuccessor_AbstractAction((AbstractInternalControlFlowAction) otherEnd.getTarget());
-        // newSource.setSuccessor_AbstractAction((AbstractAction)otherEnd.getTarget());
         oldSource.setSuccessor_AbstractAction(null);
     }
 
