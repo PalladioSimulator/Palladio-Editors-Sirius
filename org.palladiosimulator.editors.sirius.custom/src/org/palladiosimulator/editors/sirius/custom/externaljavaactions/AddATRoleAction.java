@@ -9,8 +9,8 @@ import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
 import org.modelversioning.emfprofile.Stereotype;
-import org.palladiosimulator.architecturaltemplates.api.ArchitecturalTemplateAPI;
 import org.palladiosimulator.architecturaltemplates.Role;
+import org.palladiosimulator.architecturaltemplates.api.ArchitecturalTemplateAPI;
 import org.palladiosimulator.architecturaltemplates.ui.dialogs.RoleStereotypeSelectionDialog;
 import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
@@ -36,7 +36,7 @@ public class AddATRoleAction implements IExternalJavaAction {
     /**
      * Message displayed in the selection dialog.
      */
-    private static final String DIALOG_MESSAGE = "Select Role-Stereotype to apply to the AssemblyContext";
+    private static final String DIALOG_MESSAGE = "Select the AT role to be bound to the ";
 
     /**
      * Asks the user to select a {@link Role} and attaches it to the given {@link AssemblyContext}.
@@ -58,7 +58,7 @@ public class AddATRoleAction implements IExternalJavaAction {
         final RoleStereotypeSelectionDialog dialog = new RoleStereotypeSelectionDialog(
                 PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
 
-        dialog.setMessage(DIALOG_MESSAGE);
+        dialog.setMessage(DIALOG_MESSAGE + selection.eClass().getName());
 
         dialog.setElements(unapplyedStereotypes.toArray(new Stereotype[0]));
 

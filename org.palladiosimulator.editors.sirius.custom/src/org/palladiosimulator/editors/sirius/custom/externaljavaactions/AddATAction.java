@@ -8,8 +8,8 @@ import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
 import org.modelversioning.emfprofile.Stereotype;
-import org.palladiosimulator.architecturaltemplates.api.ArchitecturalTemplateAPI;
 import org.palladiosimulator.architecturaltemplates.AT;
+import org.palladiosimulator.architecturaltemplates.api.ArchitecturalTemplateAPI;
 import org.palladiosimulator.architecturaltemplates.ui.dialogs.ArchitecturalTemplateSelectionDialog;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
 import org.palladiosimulator.pcm.system.System;
@@ -28,7 +28,7 @@ public class AddATAction implements IExternalJavaAction {
     /**
      * Message displayed in the selection dialog.
      */
-    private static final String DIALOG_MESSAGE = "Select an Architectural Template Profile to apply to the System";
+    private static final String DIALOG_MESSAGE = "Select the Architectural Template to be applied";
 
     /**
      * Creates an {@link ArchitecturalTemplateSelectEObjectDialog} that queries the user for an

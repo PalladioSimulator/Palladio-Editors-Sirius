@@ -268,20 +268,20 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Architectural Templates">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AT Creation" label="Add Architectural Template" precondition="[self.eClass().name = 'ResourceEnvironment'/]" forceRefresh="true" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceEnvironment%20AT%20Container']" iconPath="/org.palladiosimulator.architecturaltemplates.edit/icons/full/obj16/ATInstance.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AT Creation" label="Apply Architectural Template" precondition="[self.eClass().name = 'ResourceEnvironment'/]" forceRefresh="true" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceEnvironment%20AT%20Container']" iconPath="/org.palladiosimulator.architecturaltemplates.edit/icons/full/obj16/ATInstance.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT SystemRole Creation" label="Add Architectural Template" id="AddAT"/>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT SystemRole Creation" label="Apply Architectural Template" id="AddAT"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AT Role Creation" label="Add Role" precondition="[self.eClass().name = 'ResourceContainer'/]" forceRefresh="true" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='Role%20Container']" iconPath="/org.palladiosimulator.architecturaltemplates.edit/icons/full/obj16/Role2Component.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AT Role Creation" label="Bind Role" precondition="[self.eClass().name = 'ResourceContainer'/]" forceRefresh="true" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='Role%20Container']" iconPath="/org.palladiosimulator.architecturaltemplates.edit/icons/full/obj16/Role2Component.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Creation" label="Add Role" id="AddATRole"/>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Creation" label="Bind Role" id="AddATRole"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DeleteElementDescription" name="AT Role Removal" label="Remove Role">
