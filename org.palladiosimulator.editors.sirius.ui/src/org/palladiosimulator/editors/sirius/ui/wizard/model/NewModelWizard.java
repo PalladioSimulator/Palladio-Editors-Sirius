@@ -7,7 +7,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -108,8 +108,8 @@ public abstract class NewModelWizard extends Wizard implements INewWizard {
         if (createRepresentation) {
             final DRepresentation createdRepresentation = SiriusCustomUtil.createRepresentation(session,
                     representationName, this.representationDescription, this.modelObject, monitor);
-            monitor.subTask("Opening representation");
-            DialectUIManager.INSTANCE.openEditor(session, createdRepresentation, new SubProgressMonitor(monitor, 1));
+            DialectUIManager.INSTANCE.openEditor(session, createdRepresentation,
+                    SubMonitor.convert(monitor, "Opening representation", 1));
             monitor.worked(this.work);
         }
 
@@ -121,7 +121,7 @@ public abstract class NewModelWizard extends Wizard implements INewWizard {
         final CreateModelCommand createModelCommand = new CreateModelCommand(domain, this.modelURI, this.modelObject);
         domain.getCommandStack().execute(createModelCommand);
         domain.getCommandStack().execute(new AddSemanticResourceCommand(session, this.modelObject.eResource().getURI(),
-                new SubProgressMonitor(monitor, 1)));
+                SubMonitor.convert(monitor, "Adding semantic resource", 1)));
         monitor.worked(this.work);
     }
 
