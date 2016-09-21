@@ -1,15 +1,15 @@
 package org.palladiosimulator.editors.sirius.ui.wizard.project;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -23,7 +23,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -147,40 +147,49 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
     private IProject createProject(final IProjectDescription description, final IProject projectHandle,
             final IProgressMonitor monitor) throws CoreException, OperationCanceledException {
         try {
-
-            monitor.beginTask("", 2000);
-            projectHandle.create(description, new SubProgressMonitor(monitor, 1000));
-            if (monitor.isCanceled()) {
-                throw new OperationCanceledException();
-            }
-            projectHandle.open(IResource.BACKGROUND_REFRESH, new SubProgressMonitor(monitor, 1000));
-
-            // check if a template was selected and produce the model files
-            final AT selectedTemplate = this.palladioTemplatePage.getSelectedTemplate();
-            if (selectedTemplate != null) {
-                final URI templateFolderURI = getRootURI(selectedTemplate).appendSegment(INITIATOR_TEMPLATES_FOLDER);
-                final String[] segments = URI.createURI(selectedTemplate.getDefaultInstanceURI()).segments();
-                final URI templateURI = templateFolderURI.appendSegments(segments);
-                final String templatePath = templateURI.toString();
-
-                for (final File file : FileHelper.getFiles(templatePath)) {
-                    addModelFile(templatePath + file.getName(), file.getName(), projectHandle, monitor);
-                }
-            }
-
-            // Convert to modeling project
-            ModelingProjectManager.INSTANCE.convertToModelingProject(projectHandle, monitor);
-
-            // Activate viewpoints
-            final URI representationsURI = SiriusCustomUtil.getRepresentationsURI(projectHandle);
-            final Session session = SessionManager.INSTANCE.getSession(representationsURI, monitor);
-
-            activateCorrespondingViewpoints(session, monitor);
-
+            monitor.beginTask("Creating Project", 8000);
+            createAndOpenProject(description, projectHandle, SubMonitor.convert(monitor, "Main Task", 2000));
+            handleTemplate(projectHandle, SubMonitor.convert(monitor, "Initializing based on AT", 2000));
+            convertToModelingProject(projectHandle,
+                    SubMonitor.convert(monitor, "Converting to Modeling Project", 2000));
+            activateViewpoints(projectHandle, SubMonitor.convert(monitor, "Activating Viewpoints", 2000));
         } finally {
             monitor.done();
         }
         return projectHandle;
+    }
+
+    private void createAndOpenProject(final IProjectDescription description, final IProject projectHandle,
+            final SubMonitor subMonitor) throws CoreException {
+        projectHandle.create(description, subMonitor.split(1000));
+        if (subMonitor.isCanceled()) {
+            throw new OperationCanceledException();
+        }
+        projectHandle.open(IResource.BACKGROUND_REFRESH, subMonitor.split(1000));
+    }
+
+    /**
+     * Check if a template was selected and produce the model files.
+     * 
+     * @param projectHandle
+     * @param monitor
+     * @throws CoreException
+     */
+    private void handleTemplate(final IProject projectHandle, final SubMonitor subMonitor) throws CoreException {
+        final AT selectedTemplate = this.palladioTemplatePage.getSelectedTemplate();
+        if (selectedTemplate != null) {
+            for (final File source : FileHelper.getFiles(computeTemplatePath(selectedTemplate))) {
+                final IFile target = projectHandle.getFile(new Path(source.getName()));
+                addFileToProject(source, target, subMonitor);
+            }
+        }
+    }
+
+    private String computeTemplatePath(final AT selectedTemplate) {
+        final URI templateFolderURI = getRootURI(selectedTemplate).appendSegment(INITIATOR_TEMPLATES_FOLDER);
+        final String[] segments = URI.createURI(selectedTemplate.getDefaultInstanceURI()).segments();
+        final URI templateURI = templateFolderURI.appendSegments(segments);
+        return templateURI.toString();
     }
 
     /**
@@ -194,61 +203,23 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
         return eObject.eResource().getURI().trimFragment().trimSegments(1);
     }
 
-    /**
-     * Create a file in the project.
-     * 
-     * @param sourceFile
-     *            The URI path to the source file to add (e.g. plattform://pluginid/...")
-     * @param targetFileName
-     *            The filename of the target file to write.
-     * @param container
-     *            The container to place the target file in.
-     * @param monitor
-     *            The monitor to track the progress.
-     * @throws CoreException
-     *             Identifying that the file could not be written.
-     */
-    private void addModelFile(final String sourceFileURI, final String targetFileName, final IContainer container,
-            final IProgressMonitor monitor) throws CoreException {
-        InputStream resourceStream = null;
-
-        try {
-
-            final URL url = new URL(sourceFileURI);
-            resourceStream = url.openConnection().getInputStream();
-            if (resourceStream != null) {
-                addFileToProject(container, new Path(targetFileName), resourceStream, monitor);
+    private void addFileToProject(final File source, final IFile target, final SubMonitor subMonitor)
+            throws CoreException {
+        try (final InputStream contentStream = new FileInputStream(source)) {
+            if (target.exists()) {
+                target.setContents(contentStream, true, true, subMonitor);
+            } else {
+                target.create(contentStream, true, subMonitor);
             }
-        } catch (final IOException ioe) {
-            throwCoreException(ioe.getLocalizedMessage());
-        } finally {
-            if (resourceStream != null) {
-                try {
-                    resourceStream.close();
-                } catch (final IOException e) {
-                    throwCoreException(e.getLocalizedMessage());
-                }
-            }
+        } catch (final FileNotFoundException e) {
+            throwCoreException("File " + source.getAbsolutePath() + " does not exist!");
+        } catch (final IOException e) {
+            throwCoreException(
+                    "Cannot create inpht stream on file " + source.getAbsolutePath() + "! " + e.getMessage());
+        } catch (final CoreException e) {
+            throwCoreException(e.getMessage());
         }
-    }
 
-    /**
-     * Adds a new file to the project.
-     * 
-     * @param container
-     * @param path
-     * @param contentStream
-     * @param monitor
-     * @throws CoreException
-     */
-    private void addFileToProject(final IContainer container, final Path path, final InputStream contentStream,
-            final IProgressMonitor monitor) throws CoreException {
-        final IFile file = container.getFile(path);
-        if (file.exists()) {
-            file.setContents(contentStream, true, true, monitor);
-        } else {
-            file.create(contentStream, true, monitor);
-        }
     }
 
     /**
@@ -265,7 +236,20 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
         throw new CoreException(status);
     }
 
-    private void activateCorrespondingViewpoints(final Session session, final IProgressMonitor monitor) {
+    /**
+     * Convert to modeling project.
+     */
+    private void convertToModelingProject(final IProject projectHandle, final SubMonitor subMonitor)
+            throws CoreException {
+        ModelingProjectManager.INSTANCE.convertToModelingProject(projectHandle, subMonitor);
+    }
+
+    /**
+     * Activate viewpoints.
+     */
+    private void activateViewpoints(final IProject projectHandle, final SubMonitor subMonitor) {
+        final URI representationsURI = SiriusCustomUtil.getRepresentationsURI(projectHandle);
+        final Session session = SessionManager.INSTANCE.getSession(representationsURI, subMonitor);
         final Set<Viewpoint> registry = ViewpointRegistry.getInstance().getViewpoints();
         final HashSet<Viewpoint> viewpoints = new HashSet<>();
         final List<String> extensions = getExtensions(session);
@@ -275,8 +259,7 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
                 viewpoints.add(viewpoint);
             }
         }
-        SiriusCustomUtil.selectViewpoints(session, viewpoints, true, monitor);
-
+        SiriusCustomUtil.selectViewpoints(session, viewpoints, true, subMonitor);
     }
 
     private List<String> getExtensions(final Session session) {
