@@ -5,7 +5,15 @@
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//allocation"/>
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//resourceenvironment"/>
       <defaultLayer name="Default">
-        <containerMappings name="ResourceContainer" semanticCandidatesExpression="[self.targetResourceEnvironment_Allocation.resourceContainer_ResourceEnvironment/]" domainClass="resourceenvironment.ResourceContainer" reusedContainerMappings="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@containerMappings[name='AllocationContext']" childrenPresentation="List">
+        <containerMappings name="ResourceContainer" semanticCandidatesExpression="[self.targetResourceEnvironment_Allocation.resourceContainer_ResourceEnvironment/]" domainClass="resourceenvironment.ResourceContainer" reusedContainerMappings="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='AllocationContext']">
+          <subContainerMappings name="AllocationContext" semanticCandidatesExpression="aql:self.eInverse()->select(x | x.resourceContainer_AllocationContext.id = self.id)" domainClass="allocation.AllocationContext" childrenPresentation="List">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="[entityName/]" tooltipExpression="AllocationContext">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="[entityName/]" tooltipExpression="resourceContainer">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -13,16 +21,8 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="AllocationContext" semanticCandidatesExpression="feature:eAllContents" domainClass="allocation.AllocationContext" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="[entityName/]" tooltipExpression="AllocationContext">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-          </style>
-        </containerMappings>
         <toolSections name="Allocation Context">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AllocationContext" containerMappings="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@containerMappings[name='AllocationContext']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AllocationContext" containerMappings="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='AllocationContext']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -41,10 +41,6 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <customization>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.eContainer().eClass().name = 'AllocationContext'/]"/>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.eContainer().eContainer().eClass().name = 'AllocationContext'/]"/>
-        </customization>
       </defaultLayer>
     </ownedRepresentations>
   </ownedViewpoints>
