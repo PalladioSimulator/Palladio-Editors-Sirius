@@ -20,9 +20,10 @@ import org.palladiosimulator.editors.sirius.custom.util.SiriusCustomUtil;
  * External java action that opens representations of the selected element if
  * they already exist or creates a new representation and opens it if none
  * exists.
- * Two parameters must be specified :
+ * Three parameters must be specified :
  * 	Viewpoint: the name of the viewpoint to be selected
  * 	RepresentationDescription: the name of the specific RepresentationDescription in the chosen viewpoint
+ * 	element : the element on which the double click was triggered
  * 
  * @author Amine Kechaou
  *

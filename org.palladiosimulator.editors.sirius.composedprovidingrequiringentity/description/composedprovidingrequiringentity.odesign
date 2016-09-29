@@ -261,7 +261,13 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.OperationProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newProvidedRole"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'OperationProvidedRole' + container.eContents()->select(x | x.eClass()=repository::OperationProvidedRole)->size()"/>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add OperationProvidedRole" id="AddOperationProvidedRole">
+                      <parameters name="instance" value="var:instance"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.providedInterface__OperationProvidedRole = null">
+                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -272,7 +278,13 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.SinkRole" referenceName="providedRoles_InterfaceProvidingEntity">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newSinkRole"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'SinkRole' + container.eContents()->select(x | x.eClass()=repository::SinkRole)->size()"/>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add SinkRole" id="AddSinkRole">
+                      <parameters name="instance" value="var:instance"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.eventGroup__SinkRole = null">
+                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -283,7 +295,13 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InfrastructureProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newInfrastructureProvidedRole"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'InfrastructureProvidedRole' + container.eContents()->select(x | x.eClass()=repository::InfrastructureProvidedRole)->size()"/>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add InfrastructureProvidedRole" id="AddInfrastructureProvidedRole">
+                      <parameters name="instance" value="var:instance"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.providedInterface__InfrastructureProvidedRole = null">
+                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -295,7 +313,15 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.OperationRequiredRole" referenceName="requiredRoles_InterfaceRequiringEntity"/>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.OperationRequiredRole" referenceName="requiredRoles_InterfaceRequiringEntity">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'OperationRequiredRole' + container.eContents()->select(x | x.eClass()=repository::OperationRequiredRole)->size()"/>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add OperationRequiredRole" id="AddOperationRequiredRole">
+                      <parameters name="instance" value="var:instance"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.requiredInterface__OperationRequiredRole = null">
+                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    </subModelOperations>
+                  </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -305,7 +331,13 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.SourceRole" referenceName="requiredRoles_InterfaceRequiringEntity">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newSourceRole"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'SourceRole' + container.eContents()->select(x | x.eClass()=repository::SourceRole)->size()"/>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add SourceRole" id="AddSourceRole">
+                      <parameters name="instance" value="var:instance"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.eventGroup__SourceRole = null">
+                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -316,7 +348,13 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InfrastructureRequiredRole" referenceName="requiredRoles_InterfaceRequiringEntity">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newInfrastructureRequiredRole"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'InfrastructureRequiredRole' + container.eContents()->select(x | x.eClass()=repository::InfrastructureRequiredRole)->size()"/>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add InfrastructureRequiredRole" id="AddInfrastructureRequiredRole">
+                      <parameters name="instance" value="var:instance"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.requiredInterface__InfrastructureRequiredRole = null">
+                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>

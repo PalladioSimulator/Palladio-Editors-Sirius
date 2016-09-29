@@ -16,5 +16,39 @@
          </description>
       </wizard>
    </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.eclipse.ui.main.toolbar">
+         <toolbar
+               id="org.palladiosimulator.editors.sirius.ui.PCMToolbar"
+               label="PCM Wizards - Sirius">
+         </toolbar>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.palladiosimulator.editors.sirius.ui.PCMToolbar">
+         <command
+               commandId="org.palladiosimulator.editors.sirius.ui.toolbar.PalladioProjectCreation"
+               icon="icons/palladio-icon.ico"
+               label="Create a new Palladio project"
+               style="push"
+               tooltip="Create a new Palladio project">
+         </command>
+         <separator
+               name="org.palladiosimulator.editors.sirius.ui.toobar.seperator"
+               visible="true">
+         </separator>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.palladiosimulator.editors.sirius.ui.toolbar.PalladioProjectCreation"
+            id="org.palladiosimulator.editors.sirius.ui.toolbar.PalladioProjectCreation"
+            name="PalladioProjectCreation">
+      </command>
+   </extension>
 
 </plugin>

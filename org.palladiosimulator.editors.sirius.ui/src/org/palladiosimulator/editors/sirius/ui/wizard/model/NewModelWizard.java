@@ -104,14 +104,14 @@ public abstract class NewModelWizard extends Wizard implements INewWizard {
         final Session session = SessionManager.INSTANCE.getSession(representationsURI, monitor);
 
         createResource(session, monitor);
-        SiriusCustomUtil.selectViewpoints(session, this.viewpointNames, false, monitor);
-        if (createRepresentation) {
-            final DRepresentation createdRepresentation = SiriusCustomUtil.createRepresentation(session,
-                    representationName, this.representationDescription, this.modelObject, monitor);
-            DialectUIManager.INSTANCE.openEditor(session, createdRepresentation,
-                    SubMonitor.convert(monitor, "Opening representation", 1));
-            monitor.worked(this.work);
-        }
+        SiriusCustomUtil.selectViewpoints(session, this.viewpointNames, createRepresentation, monitor);
+//        if (createRepresentation) {
+//            final DRepresentation createdRepresentation = SiriusCustomUtil.createRepresentation(session,
+//                    representationName, this.representationDescription, this.modelObject, monitor);
+//            DialectUIManager.INSTANCE.openEditor(session, createdRepresentation,
+//                    SubMonitor.convert(monitor, "Opening representation", 1));
+//            monitor.worked(this.work);
+//        }
 
     }
 

@@ -7,7 +7,8 @@ import java.util.Set;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -63,7 +64,7 @@ public class SiriusCustomUtil {
 		TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
         final CreateRepresentationCommand createRepresentationCommand = new CreateRepresentationCommand(
                 session, description, semantic,
-                representationName, new SubProgressMonitor(monitor, 1));
+                representationName, new NullProgressMonitor());
         domain.getCommandStack().execute(createRepresentationCommand);
         return createRepresentationCommand.getCreatedRepresentation();
 	}

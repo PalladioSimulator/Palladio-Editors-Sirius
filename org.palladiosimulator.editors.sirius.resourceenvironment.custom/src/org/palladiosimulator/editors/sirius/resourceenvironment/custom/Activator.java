@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom.externaljavaactions;
+package org.palladiosimulator.editors.sirius.resourceenvironment.custom;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

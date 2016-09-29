@@ -17,4 +17,27 @@
            name="UsageModel Model and Diagram - Sirius">
      </wizard>
   </extension>
+  <extension
+        point="org.eclipse.ui.commands">
+     <command
+           defaultHandler="org.palladiosimulator.editors.sirius.usage.toolbar.UsageModelCreation"
+           id="org.palladiosimulator.editors.sirius.usage.toolbar.UsageModelCreation"
+           name="UsageModelCreation">
+     </command>
+  </extension>
+  <extension
+        point="org.eclipse.ui.menus">
+     <menuContribution
+           allPopups="false"
+           locationURI="toolbar:org.palladiosimulator.editors.sirius.ui.PCMToolbar?after=Allocation">
+        <command
+              commandId="org.palladiosimulator.editors.sirius.usage.toolbar.UsageModelCreation"
+              icon="icons/NewUsageFile.gif"
+              id="Usage"
+              label="Create a new UsageModel Model and Diagram from scratch"
+              style="push"
+              tooltip="Create a new UsageModel Model and Diagram from scratch">
+        </command>
+     </menuContribution>
+  </extension>
 </plugin>

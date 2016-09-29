@@ -7,5 +7,29 @@
             actionClass="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom.externaljavaactions.AddAssemblyContext"
             id="AddAssemblyContext">
       </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom.externaljavaactions.AddOperationProvidedRole"
+            id="AddOperationProvidedRole">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom.externaljavaactions.AddOperationRequiredRole"
+            id="AddOperationRequiredRole">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom.externaljavaactions.AddInfrastructureProvidedRole"
+            id="AddInfrastructureProvidedRole">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom.externaljavaactions.AddInfrastructureRequiredRole"
+            id="AddInfrastructureRequiredRole">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom.externaljavaactions.AddSinkRole"
+            id="AddSinkRole">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom.externaljavaactions.AddSourceRole"
+            id="AddSourceRole">
+      </javaActions>
    </extension>
 </plugin>

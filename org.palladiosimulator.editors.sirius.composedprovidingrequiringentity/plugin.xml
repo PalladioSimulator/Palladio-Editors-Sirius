@@ -83,4 +83,27 @@
            name="System Model and Diagram - Sirius">
      </wizard>
   </extension>
+  <extension
+        point="org.eclipse.ui.commands">
+     <command
+           defaultHandler="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.toolbar.SystemCreation"
+           id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.toolbar.SystemCreation"
+           name="SystemCreation">
+     </command>
+  </extension>
+  <extension
+        point="org.eclipse.ui.menus">
+     <menuContribution
+           allPopups="false"
+           locationURI="toolbar:org.palladiosimulator.editors.sirius.ui.PCMToolbar?after=Repository">
+        <command
+              commandId="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.toolbar.SystemCreation"
+              icon="icons/NewCompositeFile.gif"
+              id="System"
+              label="Create a new System Model and Diagram from scratch"
+              style="push"
+              tooltip="Create a new System Model and Diagram from scratch">
+        </command>
+     </menuContribution>
+  </extension>
 </plugin>
