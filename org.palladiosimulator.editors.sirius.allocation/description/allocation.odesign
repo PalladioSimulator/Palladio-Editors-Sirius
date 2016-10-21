@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Allocation" version="11.0.0.201601261200">
   <ownedViewpoints name="Allocation" label="Allocation" modelFileExtension="allocation">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Allocation Diagram" initialisation="true" domainClass="allocation.Allocation" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='']" name="Allocation Diagram" initialisation="true" domainClass="allocation.Allocation" enablePopupBars="true">
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//allocation"/>
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//resourceenvironment"/>
       <defaultLayer name="Default">
-        <containerMappings name="ResourceContainer" semanticCandidatesExpression="[self.targetResourceEnvironment_Allocation.resourceContainer_ResourceEnvironment/]" domainClass="resourceenvironment.ResourceContainer" reusedContainerMappings="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='AllocationContext']">
+        <containerMappings name="ResourceContainer" semanticCandidatesExpression="[self.targetResourceEnvironment_Allocation.resourceContainer_ResourceEnvironment/]" domainClass="resourceenvironment.ResourceContainer" dropDescriptions="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='']" reusedContainerMappings="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='AllocationContext']">
           <subContainerMappings name="AllocationContext" semanticCandidatesExpression="aql:self.eInverse()->select(x | x.resourceContainer_AllocationContext.id = self.id)" domainClass="allocation.AllocationContext" childrenPresentation="List">
             <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="[entityName/]" tooltipExpression="AllocationContext">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -37,6 +37,17 @@
                     <parameters name="newAllocationContext" value="[instance/]"/>
                   </subModelOperations>
                 </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" mappings="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='AllocationContext']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceContainer_AllocationContext" valueExpression="var:newSemanticContainer"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
