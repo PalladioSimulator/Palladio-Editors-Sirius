@@ -75,10 +75,6 @@
             actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.ReconnectTargetOfRecoveryFlow"
             id="ReconnectTargetOfRecoveryFlow">
       </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.DragDropAction"
-            id="DragDropAction">
-      </javaActions>
    </extension>
 
 </plugin>
