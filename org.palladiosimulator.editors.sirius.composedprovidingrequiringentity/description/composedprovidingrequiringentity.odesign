@@ -619,8 +619,11 @@
               <elementView name="elementView"/>
               <containerView name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                  <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="DeleteAsemblyContext" id="DeleteAsemblyContext">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+                    <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                  </subModelOperations>
+                  <parameters name="element" value="var:element"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
