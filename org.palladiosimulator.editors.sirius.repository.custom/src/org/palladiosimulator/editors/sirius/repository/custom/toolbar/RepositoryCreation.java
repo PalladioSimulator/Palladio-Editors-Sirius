@@ -1,5 +1,5 @@
-package org.palladiosimulator.editors.sirius.repository.toolbar;
-import org.palladiosimulator.editors.sirius.repository.wizard.RepositoryCreationWizard;
+package org.palladiosimulator.editors.sirius.repository.custom.toolbar;
+import org.palladiosimulator.editors.sirius.repository.custom.wizard.RepositoryCreationWizard;
 import org.palladiosimulator.editors.sirius.ui.toolbar.ModelCreation;
 import org.palladiosimulator.editors.sirius.ui.wizard.model.NewModelWizard;
 

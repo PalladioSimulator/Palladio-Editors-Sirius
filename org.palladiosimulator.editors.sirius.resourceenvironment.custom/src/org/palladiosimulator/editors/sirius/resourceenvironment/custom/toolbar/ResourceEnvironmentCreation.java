@@ -1,6 +1,6 @@
-package org.palladiosimulator.editors.sirius.resourceenvironment.toolbar;
+package org.palladiosimulator.editors.sirius.resourceenvironment.custom.toolbar;
 
-import org.palladiosimulator.editors.sirius.resourceenvironment.wizard.ResourceEnvironmentCreationWizard;
+import org.palladiosimulator.editors.sirius.resourceenvironment.custom.wizard.ResourceEnvironmentCreationWizard;
 import org.palladiosimulator.editors.sirius.ui.toolbar.ModelCreation;
 import org.palladiosimulator.editors.sirius.ui.wizard.model.NewModelWizard;
 
