@@ -4,7 +4,7 @@
   <extension point="org.eclipse.sirius.componentization">
     <component class="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.Activator"
                id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity"
-	       name="My">
+	       name="composedprovidingrequiringentity">
     </component>
   </extension>
   <extension

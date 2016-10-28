@@ -3,8 +3,8 @@
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
     <component class="org.palladiosimulator.editors.sirius.allocation.Activator"
-               id="org.palladiosimulator.editors.sirius.allocation.design"
-	       name="Allocation">
+               id="org.palladiosimulator.editors.sirius.allocation"
+	       name="allocation">
     </component>
   </extension>
   
