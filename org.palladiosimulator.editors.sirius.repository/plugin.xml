@@ -7,37 +7,5 @@
 	       name="repository">
     </component>
   </extension>
-  <extension
-        point="org.eclipse.ui.newWizards">
-     <wizard
-           category="org.palladiosimulator.pcmbench.palladio_modeling_category"
-           class="org.palladiosimulator.editors.sirius.repository.wizard.RepositoryCreationWizard"
-           icon="icons/NewRepositoryFile.gif"
-           id="org.palladiosimulator.editors.sirius.repository.wizard.RepositoryCreationWizard"
-           name="Repository Model and Diagram - Sirius">
-     </wizard>
-  </extension>
-  <extension
-        point="org.eclipse.ui.commands">
-     <command
-           defaultHandler="org.palladiosimulator.editors.sirius.repository.toolbar.RepositoryCreation"
-           id="org.palladiosimulator.editors.sirius.repository.toolbar.RepositoryCreation"
-           name="RepositoryCreation">
-     </command>
-  </extension>
-  <extension
-        point="org.eclipse.ui.menus">
-     <menuContribution
-           allPopups="false"
-           locationURI="toolbar:org.palladiosimulator.editors.sirius.ui.PCMToolbar?after=org.palladiosimulator.editors.sirius.ui.toobar.seperator">
-        <command
-              commandId="org.palladiosimulator.editors.sirius.repository.toolbar.RepositoryCreation"
-              icon="icons/NewRepositoryFile.gif"
-              id="Repository"
-              label="Create a new Repository Model and Diagram from scratch"
-              style="push"
-              tooltip="Create a new Repository Model and Diagram from scratch">
-        </command>
-     </menuContribution>
-  </extension>
+  
 </plugin>

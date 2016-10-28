@@ -1,28 +1,25 @@
-package org.palladiosimulator.editors.sirius.resourceenvironment.wizard;
-
-import java.util.ArrayList;
+package org.palladiosimulator.editors.sirius.allocation.custom.wizard;
 
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.palladiosimulator.editors.sirius.resourceenvironment.Activator;
+import org.palladiosimulator.editors.sirius.allocation.custom.Activator;
 import org.palladiosimulator.editors.sirius.ui.wizard.model.ModelCreationPage;
 import org.palladiosimulator.editors.sirius.ui.wizard.model.NewModelWizard;
-import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
-import org.palladiosimulator.pcm.resourceenvironment.ResourceenvironmentFactory;
+import org.palladiosimulator.pcm.allocation.Allocation;
+import org.palladiosimulator.pcm.allocation.AllocationFactory;
 
-public class ResourceEnvironmentCreationWizard extends NewModelWizard {
+public class AllocationCreationWizard extends NewModelWizard {
 
 	@Override
 	protected void init(IStructuredSelection selection) {
 		String viewpointName = Activator.VIEWPOINT_NAME;
+		viewpoint = Activator.getDefault().getViewpoint();
 		String ext = Activator.getDefault().getViewpoint().getModelFileExtension();
 		modelCreationPage = new ModelCreationPage(selection, viewpointName + " Creation Wizard", "new" + viewpointName,  ext);
-		viewpointNames = new ArrayList<String>();
-		viewpointNames.add(viewpointName);
 		representationDescription = Activator.getDefault().getRepresentationDescription();
 		
 
-		ResourceEnvironment obj = ResourceenvironmentFactory.eINSTANCE.createResourceEnvironment();
-		obj.setEntityName("New ResourceEnvironment");
+		Allocation obj = AllocationFactory.eINSTANCE.createAllocation();
+		obj.setEntityName("New Allocation");
 		
 		
 		modelObject = obj;

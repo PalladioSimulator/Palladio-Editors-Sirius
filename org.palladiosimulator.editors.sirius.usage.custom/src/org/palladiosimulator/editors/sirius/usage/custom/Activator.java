@@ -1,5 +1,10 @@
 package org.palladiosimulator.editors.sirius.usage.custom;
 
+import java.util.Set;
+
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -14,6 +19,11 @@ public class Activator extends AbstractUIPlugin {
 	// The shared instance
 	private static Activator plugin;
 	
+	private Viewpoint viewpoint;
+	private RepresentationDescription representationDescription;
+
+	public static final String VIEWPOINT_NAME = "UsageModel";
+	public static final String REPRESENTATION_NAME = "UsageModel Diagram";
 	/**
 	 * The constructor
 	 */
@@ -27,8 +37,32 @@ public class Activator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
+		
+		Set<Viewpoint> viewpoints = ViewpointRegistry.getInstance().getViewpoints();
+		// Set viewpoint constants
+		for (final Viewpoint v : viewpoints) {
+			if (v.getName().equals(VIEWPOINT_NAME)) {
+				this.viewpoint = v;
+				break;
+			}
+		}
+
+		// Set diagram description constants
+		for (final RepresentationDescription representationDescription : this.viewpoint.getOwnedRepresentations()) {
+			if (representationDescription.getName().equals(REPRESENTATION_NAME)) {
+				this.representationDescription = representationDescription;
+				break;
+			}
+		}
 	}
 
+	public Viewpoint getViewpoint() {
+		return viewpoint;
+	}
+
+	public RepresentationDescription getRepresentationDescription() {
+		return representationDescription;
+	}
 	/*
 	 * (non-Javadoc)
 	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)

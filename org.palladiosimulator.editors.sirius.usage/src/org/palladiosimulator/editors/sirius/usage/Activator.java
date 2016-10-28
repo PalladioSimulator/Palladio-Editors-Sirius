@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
-import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -21,11 +20,7 @@ public class Activator extends AbstractUIPlugin {
 
 	private static Set<Viewpoint> viewpoints;
 
-	private Viewpoint viewpoint;
-	private RepresentationDescription representationDescription;
 
-	public static final String VIEWPOINT_NAME = "UsageModel";
-	public static final String REPRESENTATION_NAME = "UsageModel Diagram";
 
 	/**
 	 * The constructor
@@ -44,31 +39,11 @@ public class Activator extends AbstractUIPlugin {
 		plugin = this;
 		viewpoints = new HashSet<Viewpoint>();
 		viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/usage.odesign"));
-		// Set viewpoint constants
-		for (final Viewpoint v : viewpoints) {
-			if (v.getName().equals(VIEWPOINT_NAME)) {
-				this.viewpoint = v;
-				break;
-			}
-		}
 
-		// Set diagram description constants
-		for (final RepresentationDescription representationDescription : this.viewpoint.getOwnedRepresentations()) {
-			if (representationDescription.getName().equals(REPRESENTATION_NAME)) {
-				this.representationDescription = representationDescription;
-				break;
-			}
-		}
 
 	}
 
-	public Viewpoint getViewpoint() {
-		return viewpoint;
-	}
 
-	public RepresentationDescription getRepresentationDescription() {
-		return representationDescription;
-	}
 
 	/*
 	 * (non-Javadoc)
