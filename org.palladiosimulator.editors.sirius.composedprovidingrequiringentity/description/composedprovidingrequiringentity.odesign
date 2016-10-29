@@ -482,7 +482,7 @@
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="target.eContainer()/]">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[target.eContainer()/]">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.RequiredInfrastructureDelegationConnector" referenceName="connectors__ComposedStructure">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newInfrastructureRequiredRole"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext__RequiredInfrastructureDelegationConnector" valueExpression="[sourceView.eContainer(DDiagramElement).target/]"/>
