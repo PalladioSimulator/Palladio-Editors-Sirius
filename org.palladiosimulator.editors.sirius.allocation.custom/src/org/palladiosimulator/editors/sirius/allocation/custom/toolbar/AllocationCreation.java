@@ -1,6 +1,6 @@
-package org.palladiosimulator.editors.sirius.allocation.toolbar;
+package org.palladiosimulator.editors.sirius.allocation.custom.toolbar;
 
-import org.palladiosimulator.editors.sirius.allocation.wizard.AllocationCreationWizard;
+import org.palladiosimulator.editors.sirius.allocation.custom.wizard.AllocationCreationWizard;
 import org.palladiosimulator.editors.sirius.ui.toolbar.ModelCreation;
 import org.palladiosimulator.editors.sirius.ui.wizard.model.NewModelWizard;
 

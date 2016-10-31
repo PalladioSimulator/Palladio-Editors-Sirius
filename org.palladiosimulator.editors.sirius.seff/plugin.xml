@@ -3,7 +3,7 @@
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
     <component class="org.palladiosimulator.editors.sirius.seff.Activator"
-               id="org.palladiosimulator.editors.sirius.seff.design"
+               id="org.palladiosimulator.editors.sirius.seff"
 	       name="seff">
     </component>
   </extension>

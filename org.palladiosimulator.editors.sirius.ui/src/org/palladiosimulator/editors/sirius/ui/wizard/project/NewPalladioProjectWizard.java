@@ -39,7 +39,12 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.INewWizard;
+import org.eclipse.ui.IPerspectiveDescriptor;
 import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.WorkbenchException;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 import org.eclipse.ui.wizards.newresource.BasicNewProjectResourceWizard;
@@ -55,6 +60,8 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
 
     /** An AT catalog stores initiator templates in this folder. */
     private static final String INITIATOR_TEMPLATES_FOLDER = "initiatorTemplates";
+
+	private static final String PERSPECTIVE_ID = "org.palladiosimulator.pcmbench.perspectives.palladio";
 
     private WizardNewProjectCreationPage projectCreationPage;
     private NewPalladioTemplateWizardPage palladioTemplatePage;
@@ -134,10 +141,36 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
         BasicNewProjectResourceWizard.updatePerspective(this.config);
         BasicNewProjectResourceWizard.selectAndReveal(this.project, this.workbench.getActiveWorkbenchWindow());
 
+        
+        if(!getCurrentPerspectiveId().equals(PERSPECTIVE_ID)) {
+        	boolean confirm = MessageDialog.openConfirm(getShell(), "Palladio Perspective", "This project is associated with the Palladio perspective.\n\nDo you want to open this perspective now?");
+        	if (confirm)
+        		openPalladioPerspective();
+        }
+        
         return true;
     }
 
-    /**
+    private void openPalladioPerspective() {
+		IWorkbench workbench = PlatformUI.getWorkbench();
+		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+		try {
+			workbench.showPerspective(PERSPECTIVE_ID, window);
+		} catch (WorkbenchException e) {
+			MessageDialog.openError(getShell(), "Error", "Could not open Palladio Perspective");
+            e.printStackTrace();
+		}
+	}
+
+	private String getCurrentPerspectiveId() {
+		IWorkbench workbench = PlatformUI.getWorkbench();
+		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+		IWorkbenchPage page = window.getActivePage();
+		IPerspectiveDescriptor perspective = page.getPerspective();
+		return perspective.getId();
+	}
+
+	/**
      * This creates the project in the workspace.
      * 
      * @param description

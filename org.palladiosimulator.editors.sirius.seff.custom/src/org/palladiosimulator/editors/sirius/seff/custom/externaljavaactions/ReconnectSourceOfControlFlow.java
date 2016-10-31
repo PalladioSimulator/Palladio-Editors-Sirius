@@ -4,8 +4,6 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeSpec;
-import org.eclipse.sirius.diagram.impl.DNodeContainerImpl;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.palladiosimulator.pcm.seff.AbstractInternalControlFlowAction;
