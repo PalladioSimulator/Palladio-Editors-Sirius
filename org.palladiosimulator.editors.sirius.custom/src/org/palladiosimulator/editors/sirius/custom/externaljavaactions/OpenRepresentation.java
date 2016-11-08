@@ -1,7 +1,8 @@
 package org.palladiosimulator.editors.sirius.custom.externaljavaactions;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -37,15 +38,15 @@ public class OpenRepresentation implements IExternalJavaAction {
 
 		String viewpointName = (String) parameters.get("Viewpoint");
 		String representationDescriptionName = (String) parameters.get("RepresentationDescription");
-
-		Viewpoint viewpoint = SiriusCustomUtil.findViewpoint(viewpointName);
-		RepresentationDescription description = SiriusCustomUtil.findDescription(viewpoint,
-				representationDescriptionName);
 		
 		// Select viewpoint
-		HashSet<Viewpoint> selectedViewpoints = new HashSet<Viewpoint>();
-		selectedViewpoints.add(viewpoint);
+		List<String> selectedViewpoints = new ArrayList<String>();
+		selectedViewpoints.add(viewpointName);
 		SiriusCustomUtil.selectViewpoints(session, selectedViewpoints, false, new NullProgressMonitor());
+		
+		// Getting selected viewpoint and representation
+		Viewpoint viewpoint = SiriusCustomUtil.getSelectedViewpointByName(session, viewpointName);
+		RepresentationDescription description = SiriusCustomUtil.findDescription(viewpoint, representationDescriptionName);
 		
 		// Find representations
 		Collection<DRepresentation> representations = DialectManager.INSTANCE.getRepresentations(semantic, session);

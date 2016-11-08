@@ -3,41 +3,9 @@
 <plugin>
   <extension point="org.eclipse.sirius.componentization">
     <component class="org.palladiosimulator.editors.sirius.allocation.Activator"
-               id="org.palladiosimulator.editors.sirius.allocation.design"
-	       name="Allocation">
+               id="org.palladiosimulator.editors.sirius.allocation"
+	       name="allocation">
     </component>
   </extension>
-  <extension
-        point="org.eclipse.ui.newWizards">
-     <wizard
-           category="org.palladiosimulator.pcmbench.palladio_modeling_category"
-           class="org.palladiosimulator.editors.sirius.allocation.wizard.AllocationCreationWizard"
-           icon="icons/NewAllocationFile.gif"
-           id="org.palladiosimulator.editors.sirius.allocation.wizard.AllocationCreationWizard"
-           name="Allocation Model and Diagram - Sirius">
-     </wizard>
-  </extension>
-  <extension
-        point="org.eclipse.ui.commands">
-     <command
-           defaultHandler="org.palladiosimulator.editors.sirius.allocation.toolbar.AllocationCreation"
-           id="org.palladiosimulator.editors.sirius.allocation.toolbar.AllocationCreation"
-           name="AllocationCreation">
-     </command>
-  </extension>
-  <extension
-        point="org.eclipse.ui.menus">
-     <menuContribution
-           allPopups="false"
-           locationURI="toolbar:org.palladiosimulator.editors.sirius.ui.PCMToolbar?after=ResourceEnvironment">
-        <command
-              commandId="org.palladiosimulator.editors.sirius.allocation.toolbar.AllocationCreation"
-              icon="icons/NewAllocationFile.gif"
-              id="Allocation"
-              label="Create a new Allocation Model and Diagram from scratch"
-              style="push"
-              tooltip="Create a new Allocation Model and Diagram from scratch">
-        </command>
-     </menuContribution>
-  </extension>
+  
 </plugin>

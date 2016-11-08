@@ -15,5 +15,42 @@
             actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.AddLinkingResourceAction"
             id="AddLinkingResource">
       </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.ReconnectLinkingResourceOfConnector"
+            id="ReconnectLinkingResourceOfConnector">
+      </javaActions>
    </extension>
+     <extension
+        point="org.eclipse.ui.newWizards">
+     <wizard
+           category="org.palladiosimulator.pcmbench.palladio_modeling_category"
+           class="org.palladiosimulator.editors.sirius.resourceenvironment.custom.wizard.ResourceEnvironmentCreationWizard"
+           icon="icons/NewResourceFile.gif"
+           id="org.palladiosimulator.editors.sirius.resourceenvironment.wizard.custom.ResourceEnvironmentCreationWizard"
+           name="ResourceEnvironment Model and Diagram - Sirius">
+     </wizard>
+  </extension>
+  <extension
+        point="org.eclipse.ui.commands">
+     <command
+           defaultHandler="org.palladiosimulator.editors.sirius.resourceenvironment.custom.toolbar.ResourceEnvironmentCreation"
+           id="org.palladiosimulator.editors.sirius.resourceenvironment.custom.toolbar.ResourceEnvironmentCreation"
+           name="ResourceEnvironmentCreation">
+     </command>
+  </extension>
+  <extension
+        point="org.eclipse.ui.menus">
+     <menuContribution
+           allPopups="false"
+           locationURI="toolbar:org.palladiosimulator.editors.sirius.ui.PCMToolbar?after=System">
+        <command
+              commandId="org.palladiosimulator.editors.sirius.resourceenvironment.custom.toolbar.ResourceEnvironmentCreation"
+              icon="icons/NewResourceFile.gif"
+              id="ResourceEnvironment"
+              label="Create a new ResourceEnvironment Model and Diagram from scratch"
+              style="push"
+              tooltip="Create a new ResourceEnvironment Model and Diagram from scratch">
+        </command>
+     </menuContribution>
+  </extension>
 </plugin>

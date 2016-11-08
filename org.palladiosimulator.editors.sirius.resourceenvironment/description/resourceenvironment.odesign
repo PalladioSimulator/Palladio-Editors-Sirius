@@ -8,7 +8,7 @@
       <metamodel href="http://www.modelversioning.org/emfprofile/application/1.1#/"/>
       <metamodel href="http://palladiosimulator.org/ArchitecturalTemplates/1.0#/"/>
       <defaultLayer name="Default">
-        <edgeMappings name="Connector" deletionDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Remove%20Connector']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']" targetMapping="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetFinderExpression="feature:connectedResourceContainers_LinkingResource">
+        <edgeMappings name="Connector" deletionDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Remove%20Connector']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']" targetMapping="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetFinderExpression="feature:connectedResourceContainers_LinkingResource" reconnections="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Connector%20ResourceContainer'] //@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Connector%20Linking%20Resource']">
           <style targetArrow="NoDecoration" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -52,7 +52,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="ResourceContainer" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Resource%20Container%20Name']" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.ResourceContainer">
+        <containerMappings name="ResourceContainer" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Resource%20Container%20Name']" semanticCandidatesExpression="feature:resourceContainer_ResourceEnvironment" domainClass="resourceenvironment.ResourceContainer" dropDescriptions="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='ResourceSpecification']">
           <subContainerMappings name="Role Container" deletionDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20Role%20Removal']" semanticCandidatesExpression="[self.getRoleApplications()/]" domainClass="StereotypeApplication" childrenPresentation="List">
             <subNodeMappings name="RoleParameter Node" preconditionExpression="[self.changeable/]" semanticCandidatesExpression="[self.getStereotype().getParameters()/]" doubleClickDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='QueryAndSetRoleParameterValue']" domainClass="EStructuralFeature">
               <style xsi:type="style:SquareDescription" labelExpression="[self.name + '=' + view.eContainer(DDiagramElementContainer).target.eGet(self)/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
@@ -226,6 +226,21 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element.oclAsType(EStructuralFeature).queryAndSetParameterValue(elementView.eContainer(DDiagramElement).target)/]"/>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="ResourceSpecification" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ProcessingResourceSpecification%20Container']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="activeResourceSpecifications_ResourceContainer" valueExpression="var:element">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:oldSemanticContainer">
+                    <subModelOperations xsi:type="tool_1:Unset" featureName="activeResourceSpecifications_ResourceContainer" elementExpression="var:element"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
         </toolSections>
         <toolSections name="Network">
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="LinkingResource" label="Linking Resource" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']">
@@ -265,6 +280,36 @@
                 <parameters name="elementView" value="var:elementView"/>
               </firstModelOperations>
             </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Connector ResourceContainer">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="connectedResourceContainers_LinkingResource" valueExpression="var:target">
+                  <subModelOperations xsi:type="tool_1:Unset" featureName="connectedResourceContainers_LinkingResource" elementExpression="var:source"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Connector Linking Resource" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="ReconnectLinkingResourceOfConnector" id="ReconnectLinkingResourceOfConnector">
+                <parameters name="source" value="var:source"/>
+                <parameters name="target" value="var:target"/>
+                <parameters name="otherEnd" value="var:otherEnd"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
           </ownedTools>
         </toolSections>
         <toolSections name="Architectural Templates">
