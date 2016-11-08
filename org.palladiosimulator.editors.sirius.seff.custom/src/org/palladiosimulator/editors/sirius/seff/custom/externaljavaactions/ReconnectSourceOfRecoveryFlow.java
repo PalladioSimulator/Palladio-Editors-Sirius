@@ -27,10 +27,11 @@ public class ReconnectSourceOfRecoveryFlow implements IExternalJavaAction {
         RecoveryActionBehaviour target = (RecoveryActionBehaviour) (((DDiagramElement) edge.getTargetNode())
                 .getTarget());
 
-        oldSource.getFailureHandlingAlternatives__RecoveryActionBehaviour().remove(target);
-        newSource.getFailureHandlingAlternatives__RecoveryActionBehaviour().add(target);
-        
-
+        // disallow self looping
+        if (!newSource.equals(target)) {
+            oldSource.getFailureHandlingAlternatives__RecoveryActionBehaviour().remove(target);
+            newSource.getFailureHandlingAlternatives__RecoveryActionBehaviour().add(target);
+        }        
     }
 
 }

@@ -4,8 +4,8 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
-import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.palladiosimulator.pcm.seff.AbstractAction;
 
 public class ReconnectSourceOfControlFlow implements IExternalJavaAction {
@@ -21,10 +21,13 @@ public class ReconnectSourceOfControlFlow implements IExternalJavaAction {
         AbstractAction oldSource = (AbstractAction) parameters.get("source");
         AbstractAction newSource = (AbstractAction) parameters.get("target");
 
-        DRepresentationElement otherEnd = (DRepresentationElement) parameters.get("otherEnd");
+        DDiagramElement otherEnd = (DDiagramElement) parameters.get("otherEnd");
 
-        newSource.setSuccessor_AbstractAction((AbstractAction) otherEnd.getTarget());
-        oldSource.setSuccessor_AbstractAction(null);
+        // Prevent self connecting os edges
+        if (!otherEnd.getTarget().equals(newSource)) {
+            newSource.setSuccessor_AbstractAction((AbstractAction) otherEnd.getTarget());
+            oldSource.setSuccessor_AbstractAction(null);
+        }
     }
 
 }

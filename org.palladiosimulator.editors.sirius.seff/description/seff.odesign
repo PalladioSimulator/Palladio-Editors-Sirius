@@ -1047,7 +1047,9 @@
             <element name="element"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:element"/>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:element&lt;>target">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:element"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
