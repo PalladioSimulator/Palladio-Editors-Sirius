@@ -22,8 +22,11 @@ public class ReconnectSourceOfUsageFlow implements IExternalJavaAction {
         
         DRepresentationElement otherEnd = (DRepresentationElement) parameters.get("otherEnd");
 
-        newSource.setSuccessor((AbstractUserActionImpl) otherEnd.getTarget());
-        oldSource.setSuccessor(null);
+        // disallow self looping
+        if (!otherEnd.getTarget().equals(newSource)) {
+            newSource.setSuccessor((AbstractUserActionImpl) otherEnd.getTarget());
+            oldSource.setSuccessor(null);
+        }
     }
 
 }

@@ -467,7 +467,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="links" label="Links">
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="usageFlowCreation" label="Usage Flow" edgeMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@edgeMappings[name='usageFlow']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="usageFlowCreation" label="Usage Flow" precondition="aql:preSource&lt;>preTarget" edgeMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@edgeMappings[name='usageFlow']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -497,8 +497,10 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor" valueExpression="aql:element"/>
+              <firstModelOperations xsi:type="tool_1:If" conditionExpression="aql:target&lt;>element">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor" valueExpression="aql:element"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
