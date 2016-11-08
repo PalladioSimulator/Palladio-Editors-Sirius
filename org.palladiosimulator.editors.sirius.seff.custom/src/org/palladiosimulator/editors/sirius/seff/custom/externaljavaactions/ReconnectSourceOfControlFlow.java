@@ -6,7 +6,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
-import org.palladiosimulator.pcm.seff.AbstractInternalControlFlowAction;
+import org.palladiosimulator.pcm.seff.AbstractAction;
 
 public class ReconnectSourceOfControlFlow implements IExternalJavaAction {
 
@@ -18,12 +18,12 @@ public class ReconnectSourceOfControlFlow implements IExternalJavaAction {
     @Override
     public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
 
-        AbstractInternalControlFlowAction oldSource = (AbstractInternalControlFlowAction) parameters.get("source");
-        AbstractInternalControlFlowAction newSource = (AbstractInternalControlFlowAction) parameters.get("target");
+        AbstractAction oldSource = (AbstractAction) parameters.get("source");
+        AbstractAction newSource = (AbstractAction) parameters.get("target");
 
         DRepresentationElement otherEnd = (DRepresentationElement) parameters.get("otherEnd");
 
-        newSource.setSuccessor_AbstractAction((AbstractInternalControlFlowAction) otherEnd.getTarget());
+        newSource.setSuccessor_AbstractAction((AbstractAction) otherEnd.getTarget());
         oldSource.setSuccessor_AbstractAction(null);
     }
 
