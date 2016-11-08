@@ -997,7 +997,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Links">
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="controlFlowCreation" label="Control Flow" edgeMappings="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@edgeMappings[name='ControlFlow']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="controlFlowCreation" label="Control Flow" precondition="aql:preSource &lt;> preTarget" edgeMappings="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@edgeMappings[name='ControlFlow']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -1010,7 +1010,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="recoveryFlowCreation" label="Recovery Flow" edgeMappings="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@edgeMappings[name='RecoveryFlow']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="recoveryFlowCreation" label="Recovery Flow" precondition="aql:preSource &lt;> preTarget" edgeMappings="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@edgeMappings[name='RecoveryFlow']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
