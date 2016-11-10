@@ -36,7 +36,7 @@
            bottom="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity/images/infrastructure-provided-bottom.svg"
            id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.infrastructureProvidedRole"
            left="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity/images/infrastructure-provided-left.svg"
-           right="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity/images/infrastructure-provided-top.svg"
+           right="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity/images/infrastructure-provided-right.svg"
            top="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity/images/infrastructure-provided-top.svg">
      </image>
   </extension>
