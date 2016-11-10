@@ -6,7 +6,8 @@ import java.util.Map;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 
 /**
@@ -20,9 +21,9 @@ public class LoadResources implements IExternalJavaAction {
 	@Override
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
 		EObject element = selections.iterator().next();
-		EObjectQuery query = new EObjectQuery(element);
+		Session session = SessionManager.INSTANCE.getSession(element);
 		for (Object p : parameters.values()) 
-			query.getSession().addSemanticResource(URI.createURI(p.toString()), new NullProgressMonitor());
+			session.addSemanticResource(URI.createURI(p.toString()), new NullProgressMonitor());
 
 	}
 

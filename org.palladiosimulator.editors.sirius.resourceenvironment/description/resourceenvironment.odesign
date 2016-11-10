@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="resourceenvironment" version="11.0.0.201601261200">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="resourceenvironment" version="11.1.1.201610211630">
   <ownedViewpoints name="ResourceEnvironment" modelFileExtension="resourceenvironment">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ResourceEnvironment Diagram" initialisation="true" domainClass="resourceenvironment.ResourceEnvironment" enablePopupBars="true">
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//resourceenvironment"/>
@@ -52,7 +52,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="ResourceContainer" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Resource%20Container%20Name']" semanticCandidatesExpression="feature:resourceContainer_ResourceEnvironment" domainClass="resourceenvironment.ResourceContainer" dropDescriptions="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='ResourceSpecification']">
+        <containerMappings name="ResourceContainer" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Resource%20Container%20Name']" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.ResourceContainer">
           <subContainerMappings name="Role Container" deletionDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20Role%20Removal']" semanticCandidatesExpression="[self.getRoleApplications()/]" domainClass="StereotypeApplication" childrenPresentation="List">
             <subNodeMappings name="RoleParameter Node" preconditionExpression="[self.changeable/]" semanticCandidatesExpression="[self.getStereotype().getParameters()/]" doubleClickDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='QueryAndSetRoleParameterValue']" domainClass="EStructuralFeature">
               <style xsi:type="style:SquareDescription" labelExpression="[self.name + '=' + view.eContainer(DDiagramElementContainer).target.eGet(self)/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
@@ -226,21 +226,6 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element.oclAsType(EStructuralFeature).queryAndSetParameterValue(elementView.eContainer(DDiagramElement).target)/]"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="ResourceSpecification" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ProcessingResourceSpecification%20Container']">
-            <oldContainer name="oldSemanticContainer"/>
-            <newContainer name="newSemanticContainer"/>
-            <element name="element"/>
-            <newViewContainer name="newContainerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newSemanticContainer">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="activeResourceSpecifications_ResourceContainer" valueExpression="var:element">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:oldSemanticContainer">
-                    <subModelOperations xsi:type="tool_1:Unset" featureName="activeResourceSpecifications_ResourceContainer" elementExpression="var:element"/>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
         </toolSections>
         <toolSections name="Network">
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="LinkingResource" label="Linking Resource" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']">
@@ -356,7 +341,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.custom.javaextensions.ResourceEnvironmentServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.custom.javaextensions.PCMServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.services.ResourceEnvironmentServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.services.PCMServices"/>
   </ownedViewpoints>
 </description:Group>

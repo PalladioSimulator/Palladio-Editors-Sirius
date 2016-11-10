@@ -1,6 +1,8 @@
 package org.palladiosimulator.editors.sirius.ui.wizard.model;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 
 import org.eclipse.core.resources.IProject;
@@ -13,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
@@ -34,7 +37,8 @@ public abstract class NewModelWizard extends Wizard implements INewWizard {
 
     protected ModelCreationPage modelCreationPage;
     private RepresentationCreationPage representationCreationPage;
-    private URI modelURI;
+    protected Collection<IWizardPage> additionalPages;
+    protected URI modelURI;
     protected EObject modelObject;
     protected Viewpoint viewpoint;
     protected RepresentationDescription representationDescription;
@@ -45,7 +49,8 @@ public abstract class NewModelWizard extends Wizard implements INewWizard {
         setNeedsProgressMonitor(true);
 
         this.representationCreationPage = new RepresentationCreationPage();
-
+        additionalPages = new ArrayList<IWizardPage>();
+        
         init(selection);
         if (this.viewpoint == null || this.modelObject == null || this.modelCreationPage == null)
             throw new NullPointerException("Attributes must be correctly initialized in the init method");
@@ -53,18 +58,28 @@ public abstract class NewModelWizard extends Wizard implements INewWizard {
 
     /**
      * The implementation of this method must correctly initialize the modelObject, viewpoints,
-     * representation and modelCreationPage attributes
+     * representation and modelCreationPage attributes and eventually add additional pages to additionalPages
      * 
      * @param selection
      *            selected element
      */
     protected abstract void init(IStructuredSelection selection);
+    
+    /**
+     * Performed after creating the resource and before initializing the diagram
+     */
+    protected void finish() {
+    	
+    };
 
     @Override
     public void addPages() {
         super.addPages();
         addPage(this.modelCreationPage);
         addPage(this.representationCreationPage);
+        for (IWizardPage page : additionalPages) {
+        	addPage(page);
+        }
     }
 
     @Override
@@ -79,6 +94,7 @@ public abstract class NewModelWizard extends Wizard implements INewWizard {
                 final IProject project = ResourcesPlugin.getWorkspace().getRoot()
                         .getProject(URI.decode(NewModelWizard.this.modelURI.segment(1)));
                 createModel(project, createRepresentation, representationName, monitor);
+            	finish();
             }
         };
 
@@ -104,6 +120,7 @@ public abstract class NewModelWizard extends Wizard implements INewWizard {
         final Session session = SessionManager.INSTANCE.getSession(representationsURI, SubMonitor.convert(monitor, "Getting Session", 1000));
 
         createResource(session, SubMonitor.convert(monitor, "Creating Resource", 1000));
+        
         HashSet<Viewpoint> selectedViewpoints = new HashSet<Viewpoint>();
         selectedViewpoints.add(viewpoint);
         SiriusCustomUtil.selectViewpoints(session, selectedViewpoints, false, SubMonitor.convert(monitor, "Selecting Viewpoint", 1000));

@@ -7,6 +7,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.palladiosimulator.editors.commons.dialogs.selection.PalladioSelectEObjectDialog;
 import org.palladiosimulator.pcm.allocation.AllocationContext;
@@ -15,68 +16,49 @@ import org.palladiosimulator.pcm.core.composition.EventChannel;
 
 public class AddAllocationContext implements IExternalJavaAction {
 
-    private static final Collection<EReference> ADDITIONAL_REFERENCES = new ArrayList<EReference>();
-    private static final Collection<Object> FILTER_LIST = new ArrayList<Object>();
 
-    static {
-        FILTER_LIST.add(org.palladiosimulator.pcm.system.System.class);
-        FILTER_LIST.add(AssemblyContext.class);
-        FILTER_LIST.add(EventChannel.class);
-    }
+	public static final Shell SHELL = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 
-    private static final String NEW_ALLOCATION_CONTEXT = "newAllocationContext";
-
-    public AddAllocationContext() {
-        super();
-    }
-
+	
     @Override
+    public void execute(final Collection<? extends EObject> selections, final Map<String, Object> parameters) {
+    	AllocationContext allocationContext = (AllocationContext) parameters.get("instance");
+    	EObject obj = getObject(allocationContext);
+    	if (obj == null)
+    		return;
+    	if(obj instanceof AssemblyContext) {
+    		AssemblyContext assemblyContext = (AssemblyContext) obj;
+    		allocationContext.setAssemblyContext_AllocationContext(assemblyContext);
+    	}
+    	else if(obj instanceof EventChannel) {
+    		EventChannel eventChannel = (EventChannel) obj;
+    		allocationContext.setEventChannel__AllocationContext(eventChannel);
+    	}
+    }
+   
+	private EObject getObject(AllocationContext allocationContext) {
+		Collection<Object> filter = new ArrayList<Object>();
+		filter.add(org.palladiosimulator.pcm.system.System.class);
+		filter.add(AssemblyContext.class);
+		filter.add(EventChannel.class);
+		
+
+		Collection<EReference> additionalChildReferences = new ArrayList<EReference>();
+		
+		PalladioSelectEObjectDialog dialog = new PalladioSelectEObjectDialog(SHELL, filter, additionalChildReferences,
+				allocationContext.eResource().getResourceSet());
+
+		dialog.setProvidedService(EObject.class);
+		dialog.open();
+		return dialog.getResult();
+	}
+
+	@Override
     public boolean canExecute(final Collection<? extends EObject> selections) {
         return true;
     }
 
-    @Override
-    public void execute(final Collection<? extends EObject> selections, final Map<String, Object> parameters) {
 
-        final Object parameter = parameters.get(NEW_ALLOCATION_CONTEXT);
 
-        if (parameter == null || !(parameter instanceof AllocationContext)) {
-            return;
-        }
-
-        final AllocationContext allocationContext = (AllocationContext) parameter;
-        final org.palladiosimulator.pcm.system.System system = allocationContext.getAllocation_AllocationContext()
-                .getSystem_Allocation();
-        // getAllocation_AllocationContext ist noch null >.< System muss im odesign gesetzt
-        // werden!!!!
-        // TODO
-
-        final EObject dialogResult = getDialogResult(system);
-
-        if (dialogResult instanceof AssemblyContext) {
-            allocationContext.setAssemblyContext_AllocationContext((AssemblyContext) dialogResult);
-            allocationContext.setEntityName("Allocation_" + allocationContext.getEntityName() + " <" + allocationContext
-                    .getAssemblyContext_AllocationContext().getEncapsulatedComponent__AssemblyContext().getEntityName()
-                    + ">");
-        }
-
-        else if (dialogResult instanceof EventChannel) {
-            allocationContext.setEventChannel__AllocationContext((EventChannel) dialogResult);
-            allocationContext.setEntityName("Allocation_" + allocationContext.getEntityName() + " <"
-                    + allocationContext.getEventChannel__AllocationContext().getEntityName() + ">");
-        }
-
-    }
-
-    final EObject getDialogResult(final org.palladiosimulator.pcm.system.System system) {
-
-        final PalladioSelectEObjectDialog dialog = new PalladioSelectEObjectDialog(
-                PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), FILTER_LIST, ADDITIONAL_REFERENCES,
-                system.eResource().getResourceSet());
-
-        // dialog.setProvidedService(org.palladiosimulator.pcm.system.System.class);
-        dialog.open();
-        return dialog.getResult();
-    }
 
 }

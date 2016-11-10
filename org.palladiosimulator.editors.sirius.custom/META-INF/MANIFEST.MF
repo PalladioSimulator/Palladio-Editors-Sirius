@@ -35,6 +35,5 @@ Export-Package: org.palladiosimulator.editors.sirius.custom.editpolicyproviders;
    de.uka.ipd.sdq.stoex,
    org.eclipse.swt.widgets,
    de.uka.ipd.sdq.stoex.analyser.visitors",
- org.palladiosimulator.editors.sirius.custom.javaextensions;uses:="org.eclipse.emf.ecore,org.modelversioning.emfprofileapplication,org.modelversioning.emfprofile",
  org.palladiosimulator.editors.sirius.custom.util
 Bundle-Vendor: palladiosimulator.org

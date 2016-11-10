@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.sirius.custom.javaextensions;
+package org.palladiosimulator.editors.sirius.services;
 
 import java.util.Collection;
 import java.util.Collections;

@@ -48,8 +48,7 @@ public class AddAssemblyContext implements IExternalJavaAction {
         final RepositoryComponent repositoryComponent = getRepositoryComponent(assemblyContext);
         if (repositoryComponent != null) {
             assemblyContext.setEncapsulatedComponent__AssemblyContext(repositoryComponent);
-            assemblyContext.setEntityName("Assembly_" + repositoryComponent.getEntityName() + " <"
-                    + repositoryComponent.getEntityName() + ">");
+            assemblyContext.setEntityName("Assembly_" + repositoryComponent.getEntityName());
         }
     }
 
