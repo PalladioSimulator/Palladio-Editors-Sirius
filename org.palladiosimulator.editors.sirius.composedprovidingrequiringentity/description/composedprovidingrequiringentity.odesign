@@ -391,9 +391,9 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.EventChannel" referenceName="eventChannel__ComposedStructure">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newAssemblyContext"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['EventChannel' + container.eventChannel__ComposedStructure->size()/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
