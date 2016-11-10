@@ -440,7 +440,7 @@
               <targetViewVariable name="targetView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.eContainer()/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InfrastructureProvidedRole" referenceName="connectors__ComposedStructure">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.ProvidedInfrastructureDelegationConnector" referenceName="connectors__ComposedStructure">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newInfrastructureProvidedRole"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext__ProvidedInfrastructureDelegationConnector" valueExpression="[targetView.eContainer(DDiagramElement).target/]"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="innerProvidedRole__ProvidedInfrastructureDelegationConnector" valueExpression="[target/]"/>
@@ -489,8 +489,8 @@
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="target.eContainer()/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InfrastructureRequiredRole" referenceName="connectors__ComposedStructure">
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[target.eContainer()/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.RequiredInfrastructureDelegationConnector" referenceName="connectors__ComposedStructure">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newInfrastructureRequiredRole"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext__RequiredInfrastructureDelegationConnector" valueExpression="[sourceView.eContainer(DDiagramElement).target/]"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="innerRequiredRole__RequiredInfrastructureDelegationConnector" valueExpression="[source/]"/>
@@ -544,10 +544,10 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[sourceView.eContainer().eContainer(DDiagramElement).target/]">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.AssemblyInfrastructureConnector" referenceName="connectors__ComposedStructure">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newAssemblyInfrastructureConnector"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="providedRole__AssemblyInfrastructureConnector" valueExpression="[source/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="requiredRole__AssemblyInfrastructureConnector" valueExpression="[target/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="requiringAssemblyContext__AssemblyInfrastructureConnector" valueExpression="[targetView.eContainer(DDiagramElement).target/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="providingAssemblyContext__AssemblyInfrastructureConnector" valueExpression="[sourceView.eContainer(DDiagramElement).target/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="requiredRole__AssemblyInfrastructureConnector" valueExpression="[source/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="providedRole__AssemblyInfrastructureConnector" valueExpression="[target/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="requiringAssemblyContext__AssemblyInfrastructureConnector" valueExpression="[sourceView.eContainer(DDiagramElement).target/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="providingAssemblyContext__AssemblyInfrastructureConnector" valueExpression="[targetView.eContainer(DDiagramElement).target/]"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -626,8 +626,11 @@
               <elementView name="elementView"/>
               <containerView name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                  <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="DeleteAsemblyContext" id="DeleteAsemblyContext">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+                    <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                  </subModelOperations>
+                  <parameters name="element" value="var:element"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>

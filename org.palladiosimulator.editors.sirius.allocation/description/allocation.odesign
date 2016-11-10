@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Allocation" version="11.0.0.201609021200">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Allocation" version="11.1.1.201610211630">
   <ownedViewpoints name="Allocation" label="Allocation" modelFileExtension="allocation">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AllocationContext%20into%20ResourceContainer']" name="Allocation Diagram" initialisation="true" domainClass="allocation.Allocation" enablePopupBars="true">
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//allocation"/>
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//resourceenvironment"/>
       <defaultLayer name="Default">
-        <containerMappings name="ResourceContainer" semanticCandidatesExpression="[self.targetResourceEnvironment_Allocation.resourceContainer_ResourceEnvironment/]" domainClass="resourceenvironment.ResourceContainer" dropDescriptions="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AllocationContext%20into%20ResourceContainer']" reusedContainerMappings="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='AllocationContext']">
-          <subContainerMappings name="AllocationContext" semanticCandidatesExpression="[containerView.eContainer().oclAsType(DSemanticDiagram).target.oclAsType(Allocation).allocationContexts_Allocation->select(x | x.oclAsType(AllocationContext).resourceContainer_AllocationContext = self)/]" domainClass="allocation.AllocationContext" childrenPresentation="List">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="[entityName/]" tooltipExpression="AllocationContext">
+        <containerMappings name="ResourceContainer" semanticCandidatesExpression="[self.targetResourceEnvironment_Allocation.resourceContainer_ResourceEnvironment/]" domainClass="resourceenvironment.ResourceContainer" dropDescriptions="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AllocationContext%20into%20ResourceContainer']" reusedContainerMappings="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='AllocationContext_AssemblyContext']">
+          <subContainerMappings name="AllocationContext_AssemblyContext" semanticCandidatesExpression="[containerView.eContainer().oclAsType(DSemanticDiagram).target.oclAsType(Allocation).allocationContexts_Allocation->select(x | x.oclAsType(AllocationContext).resourceContainer_AllocationContext = self and x.oclAsType(AllocationContext).assemblyContext_AllocationContext &lt;> null)/]" domainClass="allocation.AllocationContext" childrenPresentation="List">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:'AllocationContext_' + self.assemblyContext_AllocationContext.entityName" tooltipExpression="AllocationContext">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="AllocationContext_EventChannel" semanticCandidatesExpression="[containerView.eContainer().oclAsType(DSemanticDiagram).target.oclAsType(Allocation).allocationContexts_Allocation->select(x | x.oclAsType(AllocationContext).resourceContainer_AllocationContext = self and x.oclAsType(AllocationContext).eventChannel__AllocationContext &lt;> null)/]" domainClass="allocation.AllocationContext" childrenPresentation="List">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:'AllocationContext_' + self.eventChannel__AllocationContext.entityName" tooltipExpression="AllocationContext">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -22,22 +30,39 @@
           </style>
         </containerMappings>
         <toolSections name="Allocation Context">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AllocationContext" containerMappings="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='AllocationContext']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[containerView.eContainer().oclAsType(DSemanticDiagram).target/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="AllocationContext" referenceName="allocationContexts_Allocation">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceContainer_AllocationContext" valueExpression="var:container"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['AllocationContext' +self.eContainer().eContents()->select(x | x.oclIsTypeOf(AllocationContext) and x.oclAsType(AllocationContext).resourceContainer_AllocationContext = container)->size()/]"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add AllocationContext" id="AddAllocationContext">
-                  <parameters name="instance" value="var:instance"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
+          <ownedTools xsi:type="tool:ToolGroup" name="AllocationContext">
+            <tools xsi:type="tool:ContainerCreationDescription" name="AllocationContext_AssemblyContext" containerMappings="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='AllocationContext_AssemblyContext']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[containerView.eContainer().oclAsType(DSemanticDiagram).target/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="AllocationContext" referenceName="allocationContexts_Allocation">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceContainer_AllocationContext" valueExpression="var:container"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['AllocationContext' +self.eContainer().eContents()->select(x | x.oclIsTypeOf(AllocationContext) and x.oclAsType(AllocationContext).resourceContainer_AllocationContext = container)->size()/]"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add AllocationContext_AssemblyContext" id="AddAllocationContextAssemblyContext">
+                    <parameters name="instance" value="var:instance"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:ContainerCreationDescription" name="AllocationContext_EventChannel" containerMappings="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='AllocationContext_EventChannel']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[containerView.eContainer().oclAsType(DSemanticDiagram).target/]">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="AllocationContext" referenceName="allocationContexts_Allocation">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceContainer_AllocationContext" valueExpression="var:container"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['AllocationContext' +self.eContainer().eContents()->select(x | x.oclIsTypeOf(AllocationContext) and x.oclAsType(AllocationContext).resourceContainer_AllocationContext = container)->size()/]"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add AllocationContext_EventChannel" id="AddAllocationContextEventChannel">
+                    <parameters name="instance" value="var:instance"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="AllocationContext into ResourceContainer" mappings="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='AllocationContext']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="AllocationContext into ResourceContainer" mappings="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='AllocationContext_AssemblyContext']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>

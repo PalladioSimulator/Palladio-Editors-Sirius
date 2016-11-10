@@ -14,7 +14,7 @@ import org.palladiosimulator.pcm.allocation.AllocationContext;
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.core.composition.EventChannel;
 
-public class AddAllocationContext implements IExternalJavaAction {
+public class AddAllocationContextEventChannel implements IExternalJavaAction {
 
 
 	public static final Shell SHELL = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
@@ -23,23 +23,13 @@ public class AddAllocationContext implements IExternalJavaAction {
     @Override
     public void execute(final Collection<? extends EObject> selections, final Map<String, Object> parameters) {
     	AllocationContext allocationContext = (AllocationContext) parameters.get("instance");
-    	EObject obj = getObject(allocationContext);
-    	if (obj == null)
-    		return;
-    	if(obj instanceof AssemblyContext) {
-    		AssemblyContext assemblyContext = (AssemblyContext) obj;
-    		allocationContext.setAssemblyContext_AllocationContext(assemblyContext);
-    	}
-    	else if(obj instanceof EventChannel) {
-    		EventChannel eventChannel = (EventChannel) obj;
-    		allocationContext.setEventChannel__AllocationContext(eventChannel);
-    	}
+    	EventChannel eventChannel = getEventChannel(allocationContext);
+		allocationContext.setEventChannel__AllocationContext(eventChannel);
     }
    
-	private EObject getObject(AllocationContext allocationContext) {
+	private EventChannel getEventChannel(AllocationContext allocationContext) {
 		Collection<Object> filter = new ArrayList<Object>();
 		filter.add(org.palladiosimulator.pcm.system.System.class);
-		filter.add(AssemblyContext.class);
 		filter.add(EventChannel.class);
 		
 
@@ -48,9 +38,9 @@ public class AddAllocationContext implements IExternalJavaAction {
 		PalladioSelectEObjectDialog dialog = new PalladioSelectEObjectDialog(SHELL, filter, additionalChildReferences,
 				allocationContext.eResource().getResourceSet());
 
-		dialog.setProvidedService(EObject.class);
+		dialog.setProvidedService(EventChannel.class);
 		dialog.open();
-		return dialog.getResult();
+		return (EventChannel) dialog.getResult();
 	}
 
 	@Override
