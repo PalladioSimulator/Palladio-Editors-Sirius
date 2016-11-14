@@ -101,37 +101,37 @@
           </style>
         </edgeMappings>
         <containerMappings name="ComposedProvidingRequiringEntity Node" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="[self/]" domainClass="entity.ComposedProvidingRequiringEntity">
-          <borderedNodeMappings name="ExternalOperationProvidedRole Node" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="[self.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.OperationProvidedRole">
+          <borderedNodeMappings name="ExternalOperationProvidedRole Node" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RoleName']" semanticCandidatesExpression="[self.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.OperationProvidedRole">
             <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="feature:entityName" sizeComputationExpression="5" id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.operationProvidedRole">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </borderedNodeMappings>
-          <borderedNodeMappings name="ExternalOperationRequiredRole Node" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="[self.requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.OperationRequiredRole">
+          <borderedNodeMappings name="ExternalOperationRequiredRole Node" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RoleName']" semanticCandidatesExpression="[self.requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.OperationRequiredRole">
             <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="feature:entityName" sizeComputationExpression="5" id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.operationRequiredRole">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </borderedNodeMappings>
-          <borderedNodeMappings name="ExternalSourceRole Node" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="[requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.SourceRole">
+          <borderedNodeMappings name="ExternalSourceRole Node" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RoleName']" semanticCandidatesExpression="[requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.SourceRole">
             <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="feature:entityName" sizeComputationExpression="5" id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.sourceRole">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </borderedNodeMappings>
-          <borderedNodeMappings name="ExternalSinkRole Node" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="[providedRoles_InterfaceProvidingEntity/]" domainClass="repository.SinkRole">
+          <borderedNodeMappings name="ExternalSinkRole Node" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RoleName']" semanticCandidatesExpression="[providedRoles_InterfaceProvidingEntity/]" domainClass="repository.SinkRole">
             <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="feature:entityName" sizeComputationExpression="5" id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.sinkRole">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </borderedNodeMappings>
-          <borderedNodeMappings name="ExternalInfrastructureProvidedRole Node" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="feature:eAllContents" domainClass="repository.InfrastructureProvidedRole">
+          <borderedNodeMappings name="ExternalInfrastructureProvidedRole Node" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RoleName']" semanticCandidatesExpression="feature:eAllContents" domainClass="repository.InfrastructureProvidedRole">
             <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="feature:entityName" sizeComputationExpression="5" id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.infrastructureProvidedRole">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </borderedNodeMappings>
-          <borderedNodeMappings name="ExternalInfrastructureRequiredRole Node" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="feature:eAllContents" domainClass="repository.InfrastructureRequiredRole">
+          <borderedNodeMappings name="ExternalInfrastructureRequiredRole Node" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RoleName']" semanticCandidatesExpression="feature:eAllContents" domainClass="repository.InfrastructureRequiredRole">
             <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="feature:entityName" sizeComputationExpression="5" id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.infrastructureRequiredRole">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -152,37 +152,37 @@
             </style>
           </subNodeMappings>
           <subContainerMappings name="AssemblyContext Container" deletionDescription="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Deletion']/@ownedTools[name='AssemblyContext%20Deletion']" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="[self.assemblyContexts__ComposedStructure/]" documentation="Used for the parameter implementation until the Node can be fully migrated." domainClass="composition.AssemblyContext">
-            <borderedNodeMappings name="OperationProvidedRole Node" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.OperationProvidedRole">
+            <borderedNodeMappings name="OperationProvidedRole Node" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RoleName']" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.OperationProvidedRole">
               <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="feature:entityName" id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.operationProvidedRole">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
-            <borderedNodeMappings name="OperationRequiredRole Node" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.OperationRequiredRole">
+            <borderedNodeMappings name="OperationRequiredRole Node" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RoleName']" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.OperationRequiredRole">
               <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="feature:entityName" id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.operationRequiredRole">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
-            <borderedNodeMappings name="SinkRole Node" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.SinkRole">
+            <borderedNodeMappings name="SinkRole Node" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RoleName']" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.SinkRole">
               <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="feature:entityName" id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.sinkRole">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
-            <borderedNodeMappings name="SourceRole Node" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.SourceRole">
+            <borderedNodeMappings name="SourceRole Node" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RoleName']" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.SourceRole">
               <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="feature:entityName" id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.sourceRole">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
-            <borderedNodeMappings name="InfrastructureProvidedRole Node" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.InfrastructureProvidedRole">
+            <borderedNodeMappings name="InfrastructureProvidedRole Node" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RoleName']" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.InfrastructureProvidedRole">
               <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="feature:entityName" id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.infrastructureProvidedRole">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
-            <borderedNodeMappings name="InfrastructureRequiredRole Node" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.InfrastructureRequiredRole">
+            <borderedNodeMappings name="InfrastructureRequiredRole Node" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RoleName']" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.InfrastructureRequiredRole">
               <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="feature:entityName" id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.infrastructureRequiredRole">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -217,8 +217,8 @@
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               </style>
             </subContainerMappings>
-            <subContainerMappings name="Role Container" deletionDescription="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='AT%20Role%20Removal']" semanticCandidatesExpression="[self.getRoleApplications()/]" domainClass="StereotypeApplication" childrenPresentation="List">
-              <subNodeMappings name="RoleParameter Node" preconditionExpression="[self.changeable/]" semanticCandidatesExpression="[self.getStereotype().getParameters()/]" doubleClickDescription="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='QueryAndSetRoleParameterValue']" domainClass="EStructuralFeature">
+            <subContainerMappings name="Role Container" deletionDescription="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='AT%20Role%20Removal']" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RoleName']" semanticCandidatesExpression="[self.getRoleApplications()/]" domainClass="StereotypeApplication" childrenPresentation="List">
+              <subNodeMappings name="RoleParameter Node" preconditionExpression="[self.changeable/]" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RoleName']" semanticCandidatesExpression="[self.getStereotype().getParameters()/]" doubleClickDescription="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='QueryAndSetRoleParameterValue']" domainClass="EStructuralFeature">
                 <style xsi:type="style:SquareDescription" labelExpression="[self.name + '=' + view.eContainer(DDiagramElementContainer).target.eGet(self)/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -239,8 +239,8 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subContainerMappings>
-          <subContainerMappings name="System Role Container" deletionDescription="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='AT%20SystemRole%20Removal']" semanticCandidatesExpression="[self.getRoleApplications()/]" domainClass="StereotypeApplication" childrenPresentation="List">
-            <subNodeMappings name="RoleParameter Node" preconditionExpression="[self.changeable/]" semanticCandidatesExpression="[self.getStereotype().getParameters()/]" doubleClickDescription="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='QueryAndSetRoleParameterValue']" domainClass="EStructuralFeature">
+          <subContainerMappings name="System Role Container" deletionDescription="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='AT%20SystemRole%20Removal']" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RoleName']" semanticCandidatesExpression="[self.getRoleApplications()/]" domainClass="StereotypeApplication" childrenPresentation="List">
+            <subNodeMappings name="RoleParameter Node" preconditionExpression="[self.changeable/]" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RoleName']" semanticCandidatesExpression="[self.getStereotype().getParameters()/]" doubleClickDescription="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='QueryAndSetRoleParameterValue']" domainClass="EStructuralFeature">
               <style xsi:type="style:SquareDescription" labelExpression="[self.name + '=' + view.eContainer(DDiagramElementContainer).target.eGet(self)/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -367,6 +367,12 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="RoleName">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="var:0"/>
+            </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Nodes">
