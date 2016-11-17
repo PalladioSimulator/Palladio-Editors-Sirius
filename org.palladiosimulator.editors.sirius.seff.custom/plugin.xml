@@ -12,10 +12,6 @@
             id="GuardedBranchTransistionConditionDialog">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.DeleteRecoveryFlow"
-            id="DeleteRecoveryFlow">
-      </javaActions>
-      <javaActions
             actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.AddAcquireAction"
             id="AddAcquireAction">
       </javaActions>

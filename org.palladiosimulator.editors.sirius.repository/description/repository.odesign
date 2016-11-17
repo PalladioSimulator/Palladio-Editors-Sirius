@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="repository" version="11.0.0.201601261200">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="repository" version="11.1.1.201610211630">
   <ownedViewpoints name="Repository" modelFileExtension="repository">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Repository Diagram" initialisation="true" domainClass="repository.Repository" enablePopupBars="true">
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//repository"/>
@@ -197,7 +197,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationInterface" referenceName="interfaces__Repository">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['Interface' + container.eContents()->selectByType(OperationInterface)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'Interface' + container.eContents()->filter(repository::OperationInterface)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1199,15 +1199,13 @@
             <element name="element"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
-                <subModelOperations xsi:type="tool:If">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InnerDeclaration" referenceName="innerDeclaration_CompositeDataType">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['InnerDeclaration' + self.compositeDataType_InnerDeclaration.innerDeclaration_CompositeDataType->size()/]"/>
-                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="ReconnectSourceOfContainsRelation" id="ReconnectSourceOfContainsRelation">
-                      <parameters name="source" value="var:source"/>
-                      <parameters name="target" value="var:target"/>
-                      <parameters name="otherEnd" value="var:otherEnd"/>
-                      <parameters name="instance" value="var:instance"/>
-                    </subModelOperations>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InnerDeclaration" referenceName="innerDeclaration_CompositeDataType">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['InnerDeclaration' + self.compositeDataType_InnerDeclaration.innerDeclaration_CompositeDataType->size()/]"/>
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="ReconnectSourceOfContainsRelation" id="ReconnectSourceOfContainsRelation">
+                    <parameters name="source" value="var:source"/>
+                    <parameters name="target" value="var:target"/>
+                    <parameters name="otherEnd" value="var:otherEnd"/>
+                    <parameters name="instance" value="var:instance"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
