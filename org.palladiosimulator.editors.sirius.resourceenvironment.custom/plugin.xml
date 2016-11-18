@@ -19,6 +19,10 @@
             actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.ReconnectLinkingResourceOfConnector"
             id="ReconnectLinkingResourceOfConnector">
       </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.AddHDDProcessingResourceSpecification"
+            id="AddHDDProcessingResourceSpecification">
+      </javaActions>
    </extension>
      <extension
         point="org.eclipse.ui.newWizards">

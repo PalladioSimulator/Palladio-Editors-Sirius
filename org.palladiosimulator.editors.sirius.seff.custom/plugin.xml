@@ -71,6 +71,14 @@
             actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.ReconnectTargetOfRecoveryFlow"
             id="ReconnectTargetOfRecoveryFlow">
       </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.SetResourceCallRequiredRole"
+            id="SetResourceCallRequiredRole">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.SetResourceCallSignature"
+            id="SetResourceCallSignature">
+      </javaActions>
    </extension>
 
 </plugin>

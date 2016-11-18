@@ -104,6 +104,20 @@
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </subNodeMappings>
+            <subNodeMappings name="Write Processing Rate" semanticCandidatesExpression="[self/]" domainClass="resourceenvironment.HDDProcessingResourceSpecification">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="['Write Processing Rate: '+ self.writeProcessingRate.specification.toString()/]" labelAlignment="LEFT" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="Read Processing Rate" semanticCandidatesExpression="[self/]" domainClass="resourceenvironment.HDDProcessingResourceSpecification">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="['Read Processing Rate: '+ self.readProcessingRate.specification.toString()/]" labelAlignment="LEFT" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
             <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="[activeResourceType_ActiveResourceSpecification.entityName/]" labelAlignment="LEFT">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -180,6 +194,23 @@
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
                     <parameters name="newProcessingResourceSpecification" value="[instance/]"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="HDDProcessingResourceSpecification" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ProcessingResourceSpecification%20Container']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.HDDProcessingResourceSpecification" referenceName="activeResourceSpecifications_ResourceContainer">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newHDDProcessingResourceSpecification"/>
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SW ResourceType" label="Selection Wizard Resource Type" id="AddHDDProcessingResourceSpecification">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.schedulingPolicy=null or self.processingRate_ProcessingResourceSpecification=null or self.activeResourceType_ActiveResourceSpecification=null or self.writeProcessingRate=null or self.readProcessingRate=null/]">
+                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    </subModelOperations>
+                    <parameters name="newHDDProcessingResourceSpecification" value="[instance/]"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
