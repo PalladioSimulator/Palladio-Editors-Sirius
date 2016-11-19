@@ -138,7 +138,7 @@
             </style>
           </borderedNodeMappings>
           <subNodeMappings name="EventChannel Node" labelDirectEdit="//@ownedViewpoints[name='System']/@ownedRepresentations[name='ComposedProvidingRequiringEntity%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="[eventChannel__ComposedStructure/]" domainClass="composition.EventChannel">
-            <style xsi:type="style:LozengeNodeDescription" labelExpression="[entityName/]" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW" widthComputationExpression="[entityName.size()/]" heightComputationExpression="7">
+            <style xsi:type="style:LozengeNodeDescription" labelExpression="aql: '&lt;&lt;EventChannel>>\n'.concat(self.entityName)" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW" widthComputationExpression="[entityName.size()/]" heightComputationExpression="7">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -232,7 +232,7 @@
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
               </style>
             </subContainerMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="feature:entityName">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql: '&lt;&lt;AssemblyContext>>\n'.concat(self.entityName)">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -254,7 +254,7 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="[entityName/]">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql: '&lt;&lt;ComposedProvidingRequiringEntity>>\n'.concat(self.entityName)">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
