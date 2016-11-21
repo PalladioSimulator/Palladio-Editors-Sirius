@@ -18,28 +18,28 @@
         </edgeMappings>
         <containerMappings name="LinkingResource" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Resource%20Container%20Name']" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.LinkingResource" childrenPresentation="List">
           <subNodeMappings name="CommunicationLinkResourceSpecification" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
-            <style xsi:type="style:SquareDescription" labelExpression="[self.communicationLinkResourceType_CommunicationLinkResourceSpecification.entityName/]" labelAlignment="LEFT" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelExpression="aql:self.communicationLinkResourceType_CommunicationLinkResourceSpecification.entityName" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
           <subNodeMappings name="Latency" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="['Latency: ' + latency_CommunicationLinkResourceSpecification.specification.toString()/]" labelAlignment="LEFT" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'Latency: ' + self.latency_CommunicationLinkResourceSpecification.specification.toString()" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
           <subNodeMappings name="Throughput" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Throughput']" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="['Throughput: ' + throughput_CommunicationLinkResourceSpecification.specification.toString()/]" labelAlignment="LEFT" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql: 'Throughput: ' + self.throughput_CommunicationLinkResourceSpecification.specification.toString()" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
           <subNodeMappings name="Failure Probability" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="['Failure Probability: ' + failureProbability/]" labelAlignment="LEFT" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'Failure Probability: ' +self.failureProbability" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -53,15 +53,15 @@
           </style>
         </containerMappings>
         <containerMappings name="ResourceContainer" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Resource%20Container%20Name']" semanticCandidatesExpression="feature:resourceContainer_ResourceEnvironment" domainClass="resourceenvironment.ResourceContainer" dropDescriptions="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='ResourceSpecification']">
-          <subContainerMappings name="Role Container" deletionDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20Role%20Removal']" semanticCandidatesExpression="[self.getRoleApplications()/]" domainClass="StereotypeApplication" childrenPresentation="List">
-            <subNodeMappings name="RoleParameter Node" preconditionExpression="[self.changeable/]" semanticCandidatesExpression="[self.getStereotype().getParameters()/]" doubleClickDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='QueryAndSetRoleParameterValue']" domainClass="EStructuralFeature">
-              <style xsi:type="style:SquareDescription" labelExpression="[self.name + '=' + view.eContainer(DDiagramElementContainer).target.eGet(self)/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+          <subContainerMappings name="Role Container" deletionDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20Role%20Removal']" semanticCandidatesExpression="service:getRoleApplications()" domainClass="StereotypeApplication" childrenPresentation="List">
+            <subNodeMappings name="RoleParameter Node" preconditionExpression="[self.changeable/]" semanticCandidatesExpression="aql: self.getStereotype().getParameters()" doubleClickDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='QueryAndSetRoleParameterValue']" domainClass="EStructuralFeature">
+              <style xsi:type="style:SquareDescription" labelExpression="aql:self.name + '=' + view.eContainer(diagram::DDiagramElementContainer).target.eGet(self)" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </subNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="[self.getStereotype().name/]" iconPath="/org.palladiosimulator.architecturaltemplates.edit/icons/full/obj16/Role2Component.gif">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql:self.getStereotype().name" iconPath="/org.palladiosimulator.architecturaltemplates.edit/icons/full/obj16/Role2Component.gif">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -69,65 +69,65 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="ProcessingResourceSpecification Container" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.ProcessingResourceSpecification" childrenPresentation="List">
-            <subNodeMappings name="Scheduling" semanticCandidatesExpression="[self/]" domainClass="resourceenvironment.ProcessingResourceSpecification">
-              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="['Scheduling: ' + self.schedulingPolicy.id.toString()/]" labelAlignment="LEFT" resizeKind="NSEW">
+            <subNodeMappings name="Scheduling" semanticCandidatesExpression="var:self" domainClass="resourceenvironment.ProcessingResourceSpecification">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'Scheduling: ' + self.schedulingPolicy.id.toString()" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="Number of Replicas" semanticCandidatesExpression="[self/]" domainClass="resourceenvironment.ProcessingResourceSpecification">
+            <subNodeMappings name="Number of Replicas" semanticCandidatesExpression="var:self" domainClass="resourceenvironment.ProcessingResourceSpecification">
               <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="['Number of Replicas: ' + self.numberOfReplicas.toString()/]" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="Processing Rate" semanticCandidatesExpression="[self/]" domainClass="resourceenvironment.ProcessingResourceSpecification">
-              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="['Processing Rate: '+ self.processingRate_ProcessingResourceSpecification.specification.toString()/]" labelAlignment="LEFT" resizeKind="NSEW">
+            <subNodeMappings name="Processing Rate" semanticCandidatesExpression="var:self" domainClass="resourceenvironment.ProcessingResourceSpecification">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql: 'Processing Rate: '+ self.processingRate_ProcessingResourceSpecification.specification.toString()" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="MTTR" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='MTTR%20Edit']" semanticCandidatesExpression="[self/]" domainClass="resourceenvironment.ProcessingResourceSpecification">
-              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="['MTTR: ' + MTTR.toString()/]" labelAlignment="LEFT" resizeKind="NSEW">
+            <subNodeMappings name="MTTR" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='MTTR%20Edit']" semanticCandidatesExpression="var:self" domainClass="resourceenvironment.ProcessingResourceSpecification">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql: 'MTTR: ' + self.MTTR.toString()" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="MTTF" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='MTTF%20Edit']" semanticCandidatesExpression="[self/]" domainClass="resourceenvironment.ProcessingResourceSpecification">
-              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="['MTTF: ' + MTTF.toString()/]" labelAlignment="LEFT" resizeKind="NSEW">
+            <subNodeMappings name="MTTF" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='MTTF%20Edit']" semanticCandidatesExpression="var:self" domainClass="resourceenvironment.ProcessingResourceSpecification">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql: 'MTTF: ' + self.MTTF.toString()" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="Write Processing Rate" semanticCandidatesExpression="[self/]" domainClass="resourceenvironment.HDDProcessingResourceSpecification">
-              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="['Write Processing Rate: '+ self.writeProcessingRate.specification.toString()/]" labelAlignment="LEFT" resizeKind="NSEW">
+            <subNodeMappings name="Write Processing Rate" semanticCandidatesExpression="var:self" domainClass="resourceenvironment.HDDProcessingResourceSpecification">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql: 'Write Processing Rate: '+ self.writeProcessingRate.specification.toString()" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="Read Processing Rate" semanticCandidatesExpression="[self/]" domainClass="resourceenvironment.HDDProcessingResourceSpecification">
+            <subNodeMappings name="Read Processing Rate" semanticCandidatesExpression="var:self" domainClass="resourceenvironment.HDDProcessingResourceSpecification">
               <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="['Read Processing Rate: '+ self.readProcessingRate.specification.toString()/]" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </subNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="[activeResourceType_ActiveResourceSpecification.entityName/]" labelAlignment="LEFT">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.activeResourceType_ActiveResourceSpecification.entityName" labelAlignment="LEFT">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subContainerMappings>
-          <subContainerMappings name="Stereotype" semanticCandidatesExpression="[self.getStereotypeApplicationsWithoutRoles()/]" domainClass="StereotypeApplication" childrenPresentation="List">
-            <subNodeMappings name="RoleParameter Node" preconditionExpression="[self.changeable/]" semanticCandidatesExpression="[self.getStereotype().getParameters()/]" doubleClickDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='QueryAndSetRoleParameterValue']" domainClass="EStructuralFeature">
-              <style xsi:type="style:SquareDescription" labelExpression="[self.name + '=' + view.eContainer(DDiagramElementContainer).target.eGet(self)/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+          <subContainerMappings name="Stereotype" semanticCandidatesExpression="service:getStereotypeApplicationsWithoutRoles()" domainClass="StereotypeApplication" childrenPresentation="List">
+            <subNodeMappings name="RoleParameter Node" preconditionExpression="[self.changeable/]" semanticCandidatesExpression="aql:self.getStereotype().getParameters()" doubleClickDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='QueryAndSetRoleParameterValue']" domainClass="EStructuralFeature">
+              <style xsi:type="style:SquareDescription" labelExpression="aql: self.name + '=' + view.eContainer(diagram::DDiagramElementContainer).target.eGet(self)" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -147,8 +147,8 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="ResourceEnvironment AT Container" deletionDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20SystemRole%20Removal']" semanticCandidatesExpression="[self.getProfileImports()/]" domainClass="emfprofileapplication.ProfileImport" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderLineStyle="dash" labelExpression="[self.profile.name/]" iconPath="/org.palladiosimulator.architecturaltemplates.edit/icons/full/obj16/ATInstance.gif">
+        <containerMappings name="ResourceEnvironment AT Container" deletionDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20SystemRole%20Removal']" semanticCandidatesExpression="service: getProfileImports()" domainClass="emfprofileapplication.ProfileImport" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" borderLineStyle="dash" labelExpression="aql: self.profile.name" iconPath="/org.palladiosimulator.architecturaltemplates.edit/icons/full/obj16/ATInstance.gif">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -156,8 +156,8 @@
           </style>
         </containerMappings>
         <containerMappings name="Stereotype" semanticCandidatesExpression="[self.getStereotypeApplications()/]" domainClass="StereotypeApplication" childrenPresentation="List">
-          <subNodeMappings name="RoleParameter Node" preconditionExpression="[self.changeable/]" semanticCandidatesExpression="[self.getStereotype().getParameters()/]" doubleClickDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='QueryAndSetRoleParameterValue']" domainClass="EStructuralFeature">
-            <style xsi:type="style:SquareDescription" labelExpression="[self.name + '=' + view.eContainer(DDiagramElementContainer).target.eGet(self)/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+          <subNodeMappings name="RoleParameter Node" preconditionExpression="[self.changeable/]" semanticCandidatesExpression="aql: self.getStereotype().getParameters()" doubleClickDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='QueryAndSetRoleParameterValue']" domainClass="EStructuralFeature">
+            <style xsi:type="style:SquareDescription" labelExpression="aql:self.name + '=' + view.eContainer(diagram::DDiagramElementContainer).target.eGet(self)" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -175,7 +175,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.ResourceContainer" referenceName="resourceContainer_ResourceEnvironment">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="new ResourceContainer"/>
                 </subModelOperations>
@@ -186,14 +186,14 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.ProcessingResourceSpecification" referenceName="activeResourceSpecifications_ResourceContainer">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newProcessingResourceSpecification"/>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SW ResourceType" label="Selection Wizard Resource Type" id="AddProcessingResourceSpecification">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.schedulingPolicy=null or self.processingRate_ProcessingResourceSpecification=null or self.activeResourceType_ActiveResourceSpecification=null/]">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql: self.schedulingPolicy=null or self.processingRate_ProcessingResourceSpecification=null or self.activeResourceType_ActiveResourceSpecification=null">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
-                    <parameters name="newProcessingResourceSpecification" value="[instance/]"/>
+                    <parameters name="newProcessingResourceSpecification" value="var:instance"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -203,14 +203,14 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.HDDProcessingResourceSpecification" referenceName="activeResourceSpecifications_ResourceContainer">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newHDDProcessingResourceSpecification"/>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SW ResourceType" label="Selection Wizard Resource Type" id="AddHDDProcessingResourceSpecification">
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.schedulingPolicy=null or self.processingRate_ProcessingResourceSpecification=null or self.activeResourceType_ActiveResourceSpecification=null or self.writeProcessingRate=null or self.readProcessingRate=null/]">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
-                    <parameters name="newHDDProcessingResourceSpecification" value="[instance/]"/>
+                    <parameters name="newHDDProcessingResourceSpecification" value="var:instance"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -221,36 +221,36 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="MTTR Edit" forceRefresh="true">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="MTTR" valueExpression="[arg0/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="MTTR" valueExpression="var:arg0"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="MTTF Edit" forceRefresh="true">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="MTTF" valueExpression="[arg0/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="MTTF" valueExpression="var:arg0"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="Throughput">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="throughput_CommunicationLinkResourceSpecification" valueExpression="[arg0/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="throughput_CommunicationLinkResourceSpecification" valueExpression="var:arg0"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="Edit Resource Container Name">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="[arg0/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="var:arg0"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="QueryAndSetRoleParameterValue" precondition="[changeable/]" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='Role%20Container']/@subNodeMappings[name='RoleParameter%20Node'] //@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='Stereotype']/@subNodeMappings[name='RoleParameter%20Node'] //@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='Stereotype']/@subNodeMappings[name='RoleParameter%20Node']">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="QueryAndSetRoleParameterValue" precondition="feature:changeable" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='Role%20Container']/@subNodeMappings[name='RoleParameter%20Node'] //@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='Stereotype']/@subNodeMappings[name='RoleParameter%20Node'] //@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='Stereotype']/@subNodeMappings[name='RoleParameter%20Node']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -278,13 +278,13 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.LinkingResource" referenceName="linkingResources__ResourceEnvironment">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newLinkingResource"/>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.CommunicationLinkResourceSpecification" referenceName="communicationLinkResourceSpecifications_LinkingResource">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newCommunicationLinkingResource"/>
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AddLinkingResourceAction" label="Add Linking Resource" id="AddLinkingResource">
-                      <parameters name="newCommunicationLinkResourceSpecification" value="[instance/]"/>
+                      <parameters name="newCommunicationLinkResourceSpecification" value="var:instance"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -297,8 +297,8 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source/]">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="connectedResourceContainers_LinkingResource" valueExpression="[target/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="connectedResourceContainers_LinkingResource" valueExpression="var:target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -344,16 +344,16 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Architectural Templates">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AT Creation" label="Apply Architectural Template" precondition="[self.eClass().name = 'ResourceEnvironment'/]" forceRefresh="true" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceEnvironment%20AT%20Container']" iconPath="/org.palladiosimulator.architecturaltemplates.edit/icons/full/obj16/ATInstance.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AT Creation" label="Apply Architectural Template" precondition="aql: self.eClass().name = 'ResourceEnvironment'" forceRefresh="true" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceEnvironment%20AT%20Container']" iconPath="/org.palladiosimulator.architecturaltemplates.edit/icons/full/obj16/ATInstance.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT SystemRole Creation" label="Apply Architectural Template" id="AddAT"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AT Role Creation" label="Bind Role" precondition="[self.eClass().name = 'ResourceContainer'/]" forceRefresh="true" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='Role%20Container']" iconPath="/org.palladiosimulator.architecturaltemplates.edit/icons/full/obj16/Role2Component.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AT Role Creation" label="Bind Role" precondition="aql:self.eClass().name = 'ResourceContainer'" forceRefresh="true" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='Role%20Container']" iconPath="/org.palladiosimulator.architecturaltemplates.edit/icons/full/obj16/Role2Component.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>

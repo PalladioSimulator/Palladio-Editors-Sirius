@@ -145,8 +145,8 @@
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
                 </style>
-                <conditionnalStyles predicateExpression="[(self.type + ' = ' + self.specification_VariableCharacterisation.specification).size() > 40/]">
-                  <style xsi:type="style:SquareDescription" labelExpression="[ (self.type + ' = ' + self.specification_VariableCharacterisation.specification).substring(1, 40) + ' ...'/]" labelPosition="node" resizeKind="NSEW">
+                <conditionnalStyles predicateExpression="aql: (self.type + ' = ' + self.specification_VariableCharacterisation.specification).size() > 40">
+                  <style xsi:type="style:SquareDescription" labelExpression="aql: (self.type + ' = ' + self.specification_VariableCharacterisation.specification).substring(1, 40) + ' ...'" labelPosition="node" resizeKind="NSEW">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -208,7 +208,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="BasicComponent" referenceName="components__Repository">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['BasicComponent' + container.eAllContents()->selectByType(BasicComponent)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'BasicComponent' + container.eAllContents()->filter(repository::BasicComponent)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -219,7 +219,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="CompositeComponent" referenceName="components__Repository">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['CompositeComponent' + container.eAllContents()->selectByType(CompositeComponent)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'CompositeComponent' + container.eAllContents()->filter(repository::CompositeComponent)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -239,7 +239,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.OperationRequiredRole" referenceName="requiredRoles_InterfaceRequiringEntity">
                   <subModelOperations xsi:type="tool:SetValue" featureName="requiredInterface__OperationRequiredRole" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['OperationRequiredRole' + source.eContents()->selectByType(OperationRequiredRole)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'OperationRequiredRole' + source.eContents()->filter(repository::OperationRequiredRole)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -253,7 +253,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.OperationProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
                   <subModelOperations xsi:type="tool:SetValue" featureName="providedInterface__OperationProvidedRole" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['OperationProvidedRole' + source.eContents()->selectByType(OperationProvidedRole)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql: 'OperationProvidedRole' + source.eContents()->filter(repository::OperationProvidedRole)->size()"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="[source.oclIsTypeOf(BasicComponent)/]">
                     <subModelOperations xsi:type="tool:For" expression="[target.signatures__OperationInterface/]">
                       <subModelOperations xsi:type="tool:If" conditionExpression="[source.oclAsType(BasicComponent).serviceEffectSpecifications__BasicComponent->exists (x | x.oclAsType(ResourceDemandingSEFF).describedService__SEFF = i) = false/]">
@@ -283,7 +283,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="SubSystem" referenceName="components__Repository">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['SubSystem' + container.eAllContents()->selectByType(SubSystem)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'SubSystem' + container.eAllContents()->filter(subsystem::SubSystem)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -297,7 +297,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InfrastructureRequiredRole" referenceName="requiredRoles_InterfaceRequiringEntity">
                   <subModelOperations xsi:type="tool:SetValue" featureName="requiredInterface__InfrastructureRequiredRole" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['InfrastructureRequiredRole' + source.eContents()->selectByType(InfrastructureRequiredRole)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'InfrastructureRequiredRole' + source.eContents()->filter(repository::InfrastructureRequiredRole)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -311,12 +311,12 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InfrastructureProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
                   <subModelOperations xsi:type="tool:SetValue" featureName="providedInterface__InfrastructureProvidedRole" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['InfrastructureProvidedRole' + source.eContents()->selectByType(InfrastructureProvidedRole)->size()/]"/>
-                  <subModelOperations xsi:type="tool:For" expression="[target.infrastructureSignatures__InfrastructureInterface/]">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'InfrastructureProvidedRole' + source.eContents()->filter(repository::InfrastructureProvidedRole)->size()"/>
+                  <subModelOperations xsi:type="tool:For" expression="aql:target.infrastructureSignatures__InfrastructureInterface">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
                         <subModelOperations xsi:type="tool:SetValue" featureName="describedService__SEFF" valueExpression="var:i"/>
-                        <subModelOperations xsi:type="tool:If" conditionExpression="[instance.eContents(StartAction)->size() = 0 and instance.eContents(StopAction)->size() = 0 /]">
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql: instance.eContents(seff::StartAction)->size() = 0 and instance.eContents(seff::StopAction)->size() = 0">
                           <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="StartAction"/>
                           <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="StopAction"/>
                           <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StartAction">
@@ -339,7 +339,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="InfrastructureInterface" referenceName="interfaces__Repository">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['InfrastructureInterface' + container.eAllContents()->selectByType(InfrastructureInterface)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'InfrastructureInterface' + container.eAllContents()->filter(repository::InfrastructureInterface)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -533,14 +533,14 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:If" conditionExpression="[self.eClass()=repository::OperationInterface/]">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.eClass()=repository::OperationInterface">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.OperationSignature" referenceName="signatures__OperationInterface">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['method' + container.eAllContents()->selectByType(OperationSignature)->size()/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'method' + container.eAllContents()->filter(repository::OperationSignature)->size()"/>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="[self.eClass()=repository::InfrastructureInterface/]">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.eClass()=repository::InfrastructureInterface">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InfrastructureSignature" referenceName="infrastructureSignatures__InfrastructureInterface">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['method' + container.eAllContents()->selectByType(InfrastructureSignature)->size()/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'method' + container.eAllContents()->filter(repository::InfrastructureSignature)->size()"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -598,8 +598,8 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="Add SEFF" id="AddSEFF">
-                    <subModelOperations xsi:type="tool:If" conditionExpression="[self.describedService__SEFF &lt;> null/]">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[instance.eContents(StartAction)->size() = 0 and instance.eContents(StopAction)->size() = 0 /]">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.describedService__SEFF &lt;> null">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:instance.eContents(seff::StartAction)->size() = 0 and instance.eContents(seff::StopAction)->size() = 0">
                         <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="StartAction"/>
                         <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="StopAction"/>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StartAction">
@@ -610,7 +610,7 @@
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:If" conditionExpression="[self.describedService__SEFF = null/]">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.describedService__SEFF = null">
                       <subModelOperations xsi:type="tool:RemoveElement"/>
                     </subModelOperations>
                     <parameters name="instance" value="var:instance"/>
@@ -713,7 +713,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="ProvidesComponentType" referenceName="components__Repository">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['ProvidesComponentType' + container.eAllContents()->selectByType(ProvidesComponentType)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'ProvidesComponentType' + container.eAllContents()->filter(repository::ProvidesComponentType)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -724,7 +724,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="CompleteComponentType" referenceName="components__Repository">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['CompleteComponentType' + container.eAllContents()->selectByType(CompleteComponentType)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'CompleteComponentType' + container.eAllContents()->filter(repository::CompleteComponentType)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -767,7 +767,7 @@
             <containerView name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ExternalJavaAction" name="DeleteConformsCompleteRelation" id="DeleteConformsCompleteRelation">
-                <parameters name="elementView" value="[elementView/]"/>
+                <parameters name="elementView" value="var:elementView"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -878,7 +878,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.EventGroup" referenceName="interfaces__Repository">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['EventGroup' + container.eAllContents()->selectByType(EventGroup)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'EventGroup' + container.eAllContents()->filter(repository::EventGroup)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -903,7 +903,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.SourceRole" referenceName="requiredRoles_InterfaceRequiringEntity">
                   <subModelOperations xsi:type="tool:SetValue" featureName="eventGroup__SourceRole" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['SourceRole' + source.eContents()->selectByType(SourceRole)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'SourceRole' + source.eContents()->filter(repository::SourceRole)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -917,12 +917,12 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.SinkRole" referenceName="providedRoles_InterfaceProvidingEntity">
                   <subModelOperations xsi:type="tool:SetValue" featureName="eventGroup__SinkRole" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['SinkeRole' + source.eAllContents()->selectByType(SinkRole)->size()/]"/>
-                  <subModelOperations xsi:type="tool:For" expression="[target.eventTypes__EventGroup/]">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'SinkeRole' + source.eAllContents()->filter(repository::SinkRole)->size()"/>
+                  <subModelOperations xsi:type="tool:For" expression="aql: target.eventTypes__EventGroup">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
                         <subModelOperations xsi:type="tool:SetValue" featureName="describedService__SEFF" valueExpression="var:i"/>
-                        <subModelOperations xsi:type="tool:If" conditionExpression="[instance.eContents(StartAction)->size() = 0 and instance.eContents(StopAction)->size() = 0 /]">
+                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:instance.eContents(seff::StartAction)->size() = 0 and instance.eContents(seff::StopAction)->size() = 0">
                           <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="StartAction"/>
                           <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="StopAction"/>
                           <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StartAction">
@@ -1062,9 +1062,9 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.CollectionDataType" referenceName="dataTypes__Repository">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['CollectionDataType' + container.eAllContents()->selectByType(CollectionDataType)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'CollectionDataType' + container.eAllContents()->filter(repository::CollectionDataType)->size()"/>
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set InnerType" id="SetInnerType">
-                    <subModelOperations xsi:type="tool:If" conditionExpression="[self.innerType_CollectionDataType = null/]">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.innerType_CollectionDataType = null">
                       <subModelOperations xsi:type="tool:RemoveElement"/>
                     </subModelOperations>
                     <parameters name="collection" value="var:instance"/>
@@ -1079,7 +1079,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.CompositeDataType" referenceName="dataTypes__Repository">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['CompositeDataType' + container.eAllContents()->selectByType(CompositeDataType)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'CompositeDataType' + container.eAllContents()->filter(repository::CompositeDataType)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1090,7 +1090,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InnerDeclaration" referenceName="innerDeclaration_CompositeDataType">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['InnerDeclaration' + container.eAllContents()->selectByType(InnerDeclaration)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'InnerDeclaration' + container.eAllContents()->filter(repository::InnerDeclaration)->size()"/>
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set InnerDeclaration" id="SetInnerDeclaration">
                     <parameters name="innerDeclaration" value="var:instance"/>
                   </subModelOperations>
@@ -1107,7 +1107,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InnerDeclaration" referenceName="innerDeclaration_CompositeDataType">
                   <subModelOperations xsi:type="tool:SetValue" featureName="datatype_InnerDeclaration" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['InnerDeclaration' + self.compositeDataType_InnerDeclaration.innerDeclaration_CompositeDataType->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'InnerDeclaration' + self.compositeDataType_InnerDeclaration.innerDeclaration_CompositeDataType->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1128,7 +1128,7 @@
             <containerView name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ExternalJavaAction" name="DeleteInnerType" id="DeleteInnerType">
-                <parameters name="collection" value="[containerView.target/]"/>
+                <parameters name="collection" value="aql:containerView.target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1185,7 +1185,7 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InnerDeclaration" referenceName="innerDeclaration_CompositeDataType">
                   <subModelOperations xsi:type="tool:SetValue" featureName="datatype_InnerDeclaration" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['InnerDeclaration' + self.compositeDataType_InnerDeclaration.innerDeclaration_CompositeDataType->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'InnerDeclaration' + self.compositeDataType_InnerDeclaration.innerDeclaration_CompositeDataType->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1200,7 +1200,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InnerDeclaration" referenceName="innerDeclaration_CompositeDataType">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['InnerDeclaration' + self.compositeDataType_InnerDeclaration.innerDeclaration_CompositeDataType->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'InnerDeclaration' + self.compositeDataType_InnerDeclaration.innerDeclaration_CompositeDataType->size()"/>
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="ReconnectSourceOfContainsRelation" id="ReconnectSourceOfContainsRelation">
                     <parameters name="source" value="var:source"/>
                     <parameters name="target" value="var:target"/>
