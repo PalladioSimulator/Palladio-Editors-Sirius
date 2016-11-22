@@ -18,7 +18,7 @@
         </edgeMappings>
         <containerMappings name="LinkingResource" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Resource%20Container%20Name']" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.LinkingResource" childrenPresentation="List">
           <subNodeMappings name="CommunicationLinkResourceSpecification" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
-            <style xsi:type="style:SquareDescription" labelExpression="aql:self.communicationLinkResourceType_CommunicationLinkResourceSpecification.entityName" labelAlignment="LEFT" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelSize="7" labelExpression="aql:self.communicationLinkResourceType_CommunicationLinkResourceSpecification.entityName" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -77,7 +77,7 @@
               </style>
             </subNodeMappings>
             <subNodeMappings name="Number of Replicas" semanticCandidatesExpression="var:self" domainClass="resourceenvironment.ProcessingResourceSpecification">
-              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="['Number of Replicas: ' + self.numberOfReplicas.toString()/]" labelAlignment="LEFT" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'Number of Replicas: ' + self.numberOfReplicas.toString()" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -112,7 +112,7 @@
               </style>
             </subNodeMappings>
             <subNodeMappings name="Read Processing Rate" semanticCandidatesExpression="var:self" domainClass="resourceenvironment.HDDProcessingResourceSpecification">
-              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="['Read Processing Rate: '+ self.readProcessingRate.specification.toString()/]" labelAlignment="LEFT" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'Read Processing Rate: '+ self.readProcessingRate.specification.toString()" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -155,7 +155,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="Stereotype" semanticCandidatesExpression="[self.getStereotypeApplications()/]" domainClass="StereotypeApplication" childrenPresentation="List">
+        <containerMappings name="Stereotype" semanticCandidatesExpression="service:getStereotypeApplications()" domainClass="StereotypeApplication" childrenPresentation="List">
           <subNodeMappings name="RoleParameter Node" preconditionExpression="[self.changeable/]" semanticCandidatesExpression="aql: self.getStereotype().getParameters()" doubleClickDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='QueryAndSetRoleParameterValue']" domainClass="EStructuralFeature">
             <style xsi:type="style:SquareDescription" labelExpression="aql:self.name + '=' + view.eContainer(diagram::DDiagramElementContainer).target.eGet(self)" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -207,7 +207,7 @@
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.HDDProcessingResourceSpecification" referenceName="activeResourceSpecifications_ResourceContainer">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newHDDProcessingResourceSpecification"/>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SW ResourceType" label="Selection Wizard Resource Type" id="AddHDDProcessingResourceSpecification">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.schedulingPolicy=null or self.processingRate_ProcessingResourceSpecification=null or self.activeResourceType_ActiveResourceSpecification=null or self.writeProcessingRate=null or self.readProcessingRate=null/]">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql: self.schedulingPolicy=null or self.processingRate_ProcessingResourceSpecification=null or self.activeResourceType_ActiveResourceSpecification=null or self.writeProcessingRate=null or self.readProcessingRate=null">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
                     <parameters name="newHDDProcessingResourceSpecification" value="var:instance"/>
