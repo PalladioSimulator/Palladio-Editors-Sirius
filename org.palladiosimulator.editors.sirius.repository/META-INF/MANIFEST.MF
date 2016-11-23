@@ -13,5 +13,5 @@ Require-Bundle: org.eclipse.ui,
  org.palladiosimulator.editors.sirius.ui;bundle-version="1.0.1",
  org.eclipse.emf.transaction
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: palladiosimulator.org
