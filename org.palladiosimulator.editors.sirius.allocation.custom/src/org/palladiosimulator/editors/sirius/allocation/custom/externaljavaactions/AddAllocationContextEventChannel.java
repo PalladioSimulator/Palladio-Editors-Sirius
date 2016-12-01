@@ -11,7 +11,6 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.palladiosimulator.editors.commons.dialogs.selection.PalladioSelectEObjectDialog;
 import org.palladiosimulator.pcm.allocation.AllocationContext;
-import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.core.composition.EventChannel;
 
 public class AddAllocationContextEventChannel implements IExternalJavaAction {
