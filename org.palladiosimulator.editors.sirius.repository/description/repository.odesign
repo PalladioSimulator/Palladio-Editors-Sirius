@@ -751,23 +751,23 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Delete Conforms Provides Relation">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <containerView name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="DeleteConformsProvidesRelation" id="DeleteConformsProvidesRelation">
-                <parameters name="elementView" value="var:elementView"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Delete Conforms Complete Relation">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="DeleteConformsCompleteRelation" id="DeleteConformsCompleteRelation">
-                <parameters name="elementView" value="var:elementView"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:Unset" featureName="parentCompleteComponentTypes" elementExpression="[elementView.targetNode.oclAsType(DDiagramElement).target/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Delete Conforms Provides Relation">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:Unset" featureName="parentProvidesComponentTypes" elementExpression="[elementView.targetNode.oclAsType(DDiagramElement).target/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -778,13 +778,9 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="DeleteConformsProvidesRelation - Reconnection" id="DeleteConformsProvidesRelation">
-                  <parameters name="elementView" value="var:edgeView"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="parentProvidesComponentTypes" valueExpression="var:target"/>
-                </subModelOperations>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:Unset" featureName="parentProvidesComponentTypes" elementExpression="[edgeView.targetNode.oclAsType(DDiagramElement).target/]"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="parentProvidesComponentTypes" valueExpression="var:target"/>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
@@ -811,13 +807,9 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="DeleteConformsCompleteRelation - Reconnection" id="DeleteConformsCompleteRelation">
-                  <parameters name="elementView" value="var:edgeView"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="parentCompleteComponentTypes" valueExpression="var:target"/>
-                </subModelOperations>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:Unset" featureName="parentCompleteComponentTypes" elementExpression="[edgeView.targetNode.oclAsType(DDiagramElement).target/]"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="parentCompleteComponentTypes" valueExpression="var:target"/>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
@@ -1117,8 +1109,14 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Delete Contains Relation" id="DeleteContainsRelation">
-                <parameters name="elementView" value="var:elementView"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:For" expression="feature:innerDeclaration_CompositeDataType">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="[self.datatype_InnerDeclaration = elementView.targetNode.oclAsType(DDiagramElement).target/]">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:i">
+                      <subModelOperations xsi:type="tool:RemoveElement"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1127,8 +1125,8 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="DeleteInnerType" id="DeleteInnerType">
-                <parameters name="collection" value="aql:containerView.target"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.target">
+                <subModelOperations xsi:type="tool:Unset" featureName="innerType_CollectionDataType"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1138,9 +1136,7 @@
             <containerView name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="Delete CollectionDataType" id="DeleteInnerType">
-                  <parameters name="collection" value="var:element"/>
-                </subModelOperations>
+                <subModelOperations xsi:type="tool:Unset" featureName="innerType_CollectionDataType"/>
                 <subModelOperations xsi:type="tool:For" expression="[self.eContainer().eAllContents()->selectByType(CompositeDataType)/]">
                   <subModelOperations xsi:type="tool:For" expression="[i.oclAsType(CompositeDataType).innerDeclaration_CompositeDataType/]" iteratorName="j">
                     <subModelOperations xsi:type="tool:If" conditionExpression="[j.oclAsType(InnerDeclaration).datatype_InnerDeclaration = element/]">
@@ -1180,8 +1176,12 @@
             <element name="element"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="Delete Contains Relation - Target Reconnection" id="DeleteContainsRelation">
-                  <parameters name="elementView" value="var:edgeView"/>
+                <subModelOperations xsi:type="tool:For" expression="feature:innerDeclaration_CompositeDataType">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="[self.datatype_InnerDeclaration = edgeView.targetNode.oclAsType(DDiagramElement).target/]">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:i">
+                      <subModelOperations xsi:type="tool:RemoveElement"/>
+                    </subModelOperations>
+                  </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InnerDeclaration" referenceName="innerDeclaration_CompositeDataType">
                   <subModelOperations xsi:type="tool:SetValue" featureName="datatype_InnerDeclaration" valueExpression="var:target"/>

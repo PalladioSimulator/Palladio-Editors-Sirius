@@ -8,22 +8,6 @@
             id="AddSEFF">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.repository.custom.externaljavaactions.DeleteConformsCompleteRelation"
-            id="DeleteConformsCompleteRelation">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.repository.custom.externaljavaactions.DeleteConformsProvidesRelation"
-            id="DeleteConformsProvidesRelation">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.repository.custom.externaljavaactions.DeleteContainsRelation"
-            id="DeleteContainsRelation">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.repository.custom.externaljavaactions.DeleteInnerType"
-            id="DeleteInnerType">
-      </javaActions>
-      <javaActions
             actionClass="org.palladiosimulator.editors.sirius.repository.custom.externaljavaactions.SetCapacity"
             id="SetCapacity">
       </javaActions>
