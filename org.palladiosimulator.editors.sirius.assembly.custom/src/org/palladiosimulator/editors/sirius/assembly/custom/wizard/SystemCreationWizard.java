@@ -1,13 +1,13 @@
-package org.palladiosimulator.editors.sirius.usage.custom.wizard;
+package org.palladiosimulator.editors.sirius.assembly.custom.wizard;
+
 
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.palladiosimulator.editors.sirius.usage.custom.Activator;
+import org.palladiosimulator.editors.sirius.assembly.custom.Activator;
 import org.palladiosimulator.editors.sirius.ui.wizard.model.ModelCreationPage;
 import org.palladiosimulator.editors.sirius.ui.wizard.model.NewModelWizard;
-import org.palladiosimulator.pcm.usagemodel.UsageModel;
-import org.palladiosimulator.pcm.usagemodel.UsagemodelFactory;
+import org.palladiosimulator.pcm.system.SystemFactory;
 
-public class UsageModelCreationWizard extends NewModelWizard {
+public class SystemCreationWizard extends NewModelWizard {
 
 	@Override
 	protected void init(IStructuredSelection selection) {
@@ -19,8 +19,10 @@ public class UsageModelCreationWizard extends NewModelWizard {
 		
 		String defaultRepresentationName = "new " + Activator.REPRESENTATION_NAME;
 		this.representationCreationPage.setDefaultRepresentationName(defaultRepresentationName);
-
-		UsageModel obj = UsagemodelFactory.eINSTANCE.createUsageModel();
+		
+		org.palladiosimulator.pcm.system.System obj = SystemFactory.eINSTANCE.createSystem();
+		obj.setEntityName("New System");
+		
 		
 		modelObject = obj;
 	}

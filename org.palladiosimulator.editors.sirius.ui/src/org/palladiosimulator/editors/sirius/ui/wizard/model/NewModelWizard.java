@@ -36,7 +36,7 @@ public abstract class NewModelWizard extends Wizard implements INewWizard {
     private static final String WINDOW_TITLE = "Create Model";
 
     protected ModelCreationPage modelCreationPage;
-    private RepresentationCreationPage representationCreationPage;
+    protected RepresentationCreationPage representationCreationPage;
     protected Collection<IWizardPage> additionalPages;
     protected URI modelURI;
     protected EObject modelObject;

@@ -19,7 +19,7 @@ public class RepresentationCreationPage extends WizardPage implements SelectionL
     private static final String REPRESENTATION_NAME = "Representation name:";
     private static final String TITLE = "Create representation";
     private static final String MESSAGE = "Select whether you want to create a representation";
-    private static final String DEFAULT_REPRESENTATION_NAME = "new representation";
+    private String DEFAULT_REPRESENTATION_NAME = "new representation";
 
     private Button enabledCheckbox;
     private Text representationNameInput;
@@ -43,6 +43,10 @@ public class RepresentationCreationPage extends WizardPage implements SelectionL
     private void setEnabled(final boolean enabled) {
         this.enabledCheckbox.setSelection(enabled);
         this.representationComposite.setEnabled(enabled);
+    }
+    
+    public void setDefaultRepresentationName(String defaultRepresentationName) {
+    	this.DEFAULT_REPRESENTATION_NAME = defaultRepresentationName;
     }
 
     /**

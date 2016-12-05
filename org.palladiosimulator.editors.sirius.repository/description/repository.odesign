@@ -50,27 +50,27 @@
         </edgeMappings>
         <containerMappings name="Interface" deletionDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='OperationInterface%20Deletion']" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:interfaces__Repository" domainClass="repository.OperationInterface" childrenPresentation="List">
           <subNodeMappings name="OperationSignature" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:signatures__OperationInterface" domainClass="repository.OperationSignature">
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'void ' + self.entityName + '(' + self.getParameters() + ')'" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'void ' + self.entityName + '(' + self.printParameters() + ')'" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
             <conditionnalStyles predicateExpression="[self.returnType__OperationSignature.oclIsTypeOf(PrimitiveDataType)/]">
-              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:self.returnType__OperationSignature.oclAsType(repository::PrimitiveDataType).type.toString().toLower() + ' ' + self.entityName + '('+ self.getParameters() +')'" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:self.returnType__OperationSignature.oclAsType(repository::PrimitiveDataType).type.toString().toLower() + ' ' + self.entityName + '('+ self.printParameters() +')'" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="[self.returnType__OperationSignature.oclIsTypeOf(CompositeDataType)/]">
-              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:self.returnType__OperationSignature.oclAsType(repository::CompositeDataType).entityName + ' ' + self.entityName + '(' + self.getParameters() + ')'" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:self.returnType__OperationSignature.oclAsType(repository::CompositeDataType).entityName + ' ' + self.entityName + '(' + self.printParameters() + ')'" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="[self.returnType__OperationSignature.oclIsTypeOf(CollectionDataType)/]">
-              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:if self.returnType__OperationSignature.oclIsTypeOf(repository::CollectionDataType) and self.returnType__OperationSignature.oclAsType(repository::CollectionDataType).innerType_CollectionDataType.oclIsTypeOf(repository::PrimitiveDataType) then &#xD;self.returnType__OperationSignature.oclAsType(repository::CollectionDataType).innerType_CollectionDataType.oclAsType(repository::PrimitiveDataType).type.toString().toLower() + '[]' else self.returnType__OperationSignature.oclAsType(repository::CollectionDataType).entityName endif  + ' ' + self.entityName + '(' + self.getParameters() + ')'" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:if self.returnType__OperationSignature.oclIsTypeOf(repository::CollectionDataType) and self.returnType__OperationSignature.oclAsType(repository::CollectionDataType).innerType_CollectionDataType.oclIsTypeOf(repository::PrimitiveDataType) then &#xD;self.returnType__OperationSignature.oclAsType(repository::CollectionDataType).innerType_CollectionDataType.oclAsType(repository::PrimitiveDataType).type.toString().toLower() + '[]' else self.returnType__OperationSignature.oclAsType(repository::CollectionDataType).entityName endif  + ' ' + self.entityName + '(' + self.printParameters() + ')'" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -86,7 +86,7 @@
         </containerMappings>
         <containerMappings name="InfrastructureInterface" deletionDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='InfrastructureInterface%20Deletion']" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:interfaces__Repository" domainClass="repository.InfrastructureInterface" childrenPresentation="List">
           <subNodeMappings name="InfrastructureSignature" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:infrastructureSignatures__InfrastructureInterface" domainClass="repository.InfrastructureSignature">
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:self.entityName + '(' + self.getParameters() + ')'" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:self.entityName + '(' + self.printParameters() + ')'" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -509,8 +509,8 @@
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Open SubSystem Representation" id="OpenRepresentation">
-                <parameters name="Viewpoint" value="System"/>
-                <parameters name="RepresentationDescription" value="ComposedProvidingRequiringEntity Diagram"/>
+                <parameters name="Viewpoint" value="Assembly"/>
+                <parameters name="RepresentationDescription" value="Assembly Diagram"/>
                 <parameters name="element" value="var:element"/>
               </firstModelOperations>
             </initialOperation>

@@ -15,7 +15,7 @@ public class ParametersService {
 
 	}
 
-	public String getParameters(Signature sig) {
+	public String printParameters(Signature sig) {
 		String result = "";
 		EList<Parameter> parameters = null;
 		if (sig instanceof OperationSignature)

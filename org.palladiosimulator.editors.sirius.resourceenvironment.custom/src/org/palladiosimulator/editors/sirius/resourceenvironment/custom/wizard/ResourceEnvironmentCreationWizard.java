@@ -17,6 +17,8 @@ public class ResourceEnvironmentCreationWizard extends NewModelWizard {
 		modelCreationPage = new ModelCreationPage(selection, viewpointName + " Creation Wizard", "new" + viewpointName,  ext);
 		representationDescription = Activator.getDefault().getRepresentationDescription();
 		
+		String defaultRepresentationName = "new " + Activator.REPRESENTATION_NAME;
+		this.representationCreationPage.setDefaultRepresentationName(defaultRepresentationName);
 
 		ResourceEnvironment obj = ResourceenvironmentFactory.eINSTANCE.createResourceEnvironment();
 		obj.setEntityName("New ResourceEnvironment");
