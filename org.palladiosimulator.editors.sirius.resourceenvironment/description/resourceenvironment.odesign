@@ -237,12 +237,12 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="Throughput">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="throughput_CommunicationLinkResourceSpecification" valueExpression="var:arg0"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.throughput_CommunicationLinkResourceSpecification">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="specification" valueExpression="var:arg0"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit Resource Container Name">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit Resource Container Name" inputLabelExpression="feature:entityName">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
