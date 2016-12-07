@@ -70,69 +70,69 @@
      </menuContribution>
   </extension>
   <extension
-        id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom.operationProvidedRole"
+        id="org.palladiosimulator.editors.sirius.assembly.custom.operationProvidedRole"
         point="org.palladiosimulator.editors.sirius.custom.style.rotatableNode">
      <image
-           bottom="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/operation-provided-bottom.svg"
-           id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom.operationProvidedRole"
-           left="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/operation-provided-left.svg"
-           right="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/operation-provided-right.svg"
-           top="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/operation-provided-top.svg">
+           bottom="/org.palladiosimulator.editors.sirius.assembly.custom/images/operation-provided-bottom.svg"
+           id="org.palladiosimulator.editors.sirius.assembly.custom.operationProvidedRole"
+           left="/org.palladiosimulator.editors.sirius.assembly.custom/images/operation-provided-left.svg"
+           right="/org.palladiosimulator.editors.sirius.assembly.custom/images/operation-provided-right.svg"
+           top="/org.palladiosimulator.editors.sirius.assembly.custom/images/operation-provided-top.svg">
      </image>
   </extension>
   <extension
-        id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom.operationRequiredRole"
+        id="org.palladiosimulator.editors.sirius.assembly.custom.operationRequiredRole"
         point="org.palladiosimulator.editors.sirius.custom.style.rotatableNode">
      <image
-           bottom="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/operation-required-bottom.svg"
-           id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom.operationRequiredRole"
-           left="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/operation-required-left.svg"
-           right="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/operation-required-right.svg"
-           top="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/operation-required-top.svg">
+           bottom="/org.palladiosimulator.editors.sirius.assembly.custom/images/operation-required-bottom.svg"
+           id="org.palladiosimulator.editors.sirius.assembly.custom.operationRequiredRole"
+           left="/org.palladiosimulator.editors.sirius.assembly.custom/images/operation-required-left.svg"
+           right="/org.palladiosimulator.editors.sirius.assembly.custom/images/operation-required-right.svg"
+           top="/org.palladiosimulator.editors.sirius.assembly.custom/images/operation-required-top.svg">
      </image>
   </extension>
   <extension
-        id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom.infrastructureProvidedRole"
+        id="org.palladiosimulator.editors.sirius.assembly.custom.infrastructureProvidedRole"
         point="org.palladiosimulator.editors.sirius.custom.style.rotatableNode">
      <image
-           bottom="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/infrastructure-provided-bottom.svg"
-           id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom.infrastructureProvidedRole"
-           left="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/infrastructure-provided-left.svg"
-           right="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/infrastructure-provided-right.svg"
-           top="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/infrastructure-provided-top.svg">
+           bottom="/org.palladiosimulator.editors.sirius.assembly.custom/images/infrastructure-provided-bottom.svg"
+           id="org.palladiosimulator.editors.sirius.assembly.custom.infrastructureProvidedRole"
+           left="/org.palladiosimulator.editors.sirius.assembly.custom/images/infrastructure-provided-left.svg"
+           right="/org.palladiosimulator.editors.sirius.assembly.custom/images/infrastructure-provided-right.svg"
+           top="/org.palladiosimulator.editors.sirius.assembly.custom/images/infrastructure-provided-top.svg">
      </image>
   </extension>
   <extension
-        id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom.infrastructureRequiredRole"
+        id="org.palladiosimulator.editors.sirius.assembly.custom.infrastructureRequiredRole"
         point="org.palladiosimulator.editors.sirius.custom.style.rotatableNode">
      <image
-           bottom="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/infrastructure-required-bottom.svg"
-           id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom.infrastructureRequiredRole"
-           left="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/infrastructure-required-left.svg"
-           right="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/infrastructure-required-right.svg"
-           top="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/infrastructure-required-top.svg">
+           bottom="/org.palladiosimulator.editors.sirius.assembly.custom/images/infrastructure-required-bottom.svg"
+           id="org.palladiosimulator.editors.sirius.assembly.custom.infrastructureRequiredRole"
+           left="/org.palladiosimulator.editors.sirius.assembly.custom/images/infrastructure-required-left.svg"
+           right="/org.palladiosimulator.editors.sirius.assembly.custom/images/infrastructure-required-right.svg"
+           top="/org.palladiosimulator.editors.sirius.assembly.custom/images/infrastructure-required-top.svg">
      </image>
   </extension>
   <extension
-        id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom.sourceRole"
+        id="org.palladiosimulator.editors.sirius.assembly.custom.sourceRole"
         point="org.palladiosimulator.editors.sirius.custom.style.rotatableNode">
      <image
-           bottom="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/source-role-bottom.svg"
-           id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom.sourceRole"
-           left="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/source-role-left.svg"
-           right="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/source-role-right.svg"
-           top="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/source-role-top.svg">
+           bottom="/org.palladiosimulator.editors.sirius.assembly.custom/images/source-role-bottom.svg"
+           id="org.palladiosimulator.editors.sirius.assembly.custom.sourceRole"
+           left="/org.palladiosimulator.editors.sirius.assembly.custom/images/source-role-left.svg"
+           right="/org.palladiosimulator.editors.sirius.assembly.custom/images/source-role-right.svg"
+           top="/org.palladiosimulator.editors.sirius.assembly.custom/images/source-role-top.svg">
      </image>
   </extension>
   <extension
-        id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom.sinkRole"
+        id="org.palladiosimulator.editors.sirius.assembly.custom.sinkRole"
         point="org.palladiosimulator.editors.sirius.custom.style.rotatableNode">
      <image
-           bottom="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/sink-role-bottom.svg"
-           id="org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom.sinkRole"
-           left="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/sink-role-left.svg"
-           right="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/sink-role-right.svg"
-           top="/org.palladiosimulator.editors.sirius.composedprovidingrequiringentity.custom/images/sink-role-top.svg">
+           bottom="/org.palladiosimulator.editors.sirius.assembly.custom/images/sink-role-bottom.svg"
+           id="org.palladiosimulator.editors.sirius.assembly.custom.sinkRole"
+           left="/org.palladiosimulator.editors.sirius.assembly.custom/images/sink-role-left.svg"
+           right="/org.palladiosimulator.editors.sirius.assembly.custom/images/sink-role-right.svg"
+           top="/org.palladiosimulator.editors.sirius.assembly.custom/images/sink-role-top.svg">
      </image>
   </extension>
 </plugin>
