@@ -31,7 +31,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="Throughput" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Throughput']" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
+          <subNodeMappings name="Throughput" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
             <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql: 'Throughput: ' + self.throughput_CommunicationLinkResourceSpecification.specification.toString()" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -76,7 +76,7 @@
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="Number of Replicas" semanticCandidatesExpression="var:self" domainClass="resourceenvironment.ProcessingResourceSpecification">
+            <subNodeMappings name="Number of Replicas" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Number%20of%20Replicas']" semanticCandidatesExpression="var:self" domainClass="resourceenvironment.ProcessingResourceSpecification">
               <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'Number of Replicas: ' + self.numberOfReplicas.toString()" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -234,12 +234,10 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="Throughput">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Number of Replicas" inputLabelExpression="feature:numberOfReplicas">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.throughput_CommunicationLinkResourceSpecification">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="specification" valueExpression="var:arg0"/>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="numberOfReplicas" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="Edit Resource Container Name" inputLabelExpression="feature:entityName">
