@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions;
+package org.palladiosimulator.editors.sirius.custom.externaljavaactions;
 
 import java.util.Collection;
 import java.util.Map;

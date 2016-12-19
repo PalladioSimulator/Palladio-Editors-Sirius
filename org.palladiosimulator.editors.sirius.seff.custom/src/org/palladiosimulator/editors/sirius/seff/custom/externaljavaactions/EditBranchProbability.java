@@ -1,6 +1,7 @@
 package org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions;
 
 import org.eclipse.emf.ecore.EObject;
+import org.palladiosimulator.editors.sirius.custom.externaljavaactions.EditProbability;
 import org.palladiosimulator.pcm.seff.ProbabilisticBranchTransition;
 
 
