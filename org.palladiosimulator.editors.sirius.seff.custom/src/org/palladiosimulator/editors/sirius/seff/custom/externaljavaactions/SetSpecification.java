@@ -1,7 +1,5 @@
 package org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions;
 
-import java.util.Collection;
-
 import org.eclipse.emf.ecore.EObject;
 import org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetRandomVariable;
 import org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand;
@@ -12,10 +10,7 @@ import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
 
 public class SetSpecification extends SetRandomVariable {
 
-	@Override
-	public boolean canExecute(Collection<? extends EObject> selections) {
-		return true;
-	}
+	
 
 	@Override
 	public TypeEnum getExpectedType() {

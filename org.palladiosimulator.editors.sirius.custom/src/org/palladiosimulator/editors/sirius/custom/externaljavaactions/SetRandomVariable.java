@@ -59,4 +59,9 @@ public abstract class SetRandomVariable implements IExternalJavaAction {
 	 * @return The RandomVariable of the given element
 	 */
 	public abstract RandomVariable getRandomVariable(EObject element);
+	
+	@Override
+	public boolean canExecute(Collection<? extends EObject> selections) {
+		return true;
+	}
 }

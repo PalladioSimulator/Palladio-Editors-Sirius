@@ -1,7 +1,5 @@
 package org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions;
 
-import java.util.Collection;
-
 import org.eclipse.emf.ecore.EObject;
 import org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetRandomVariable;
 import org.palladiosimulator.pcm.seff.seff_performance.InfrastructureCall;
@@ -23,12 +21,6 @@ public class SetNumberOfCalls extends SetRandomVariable  {
 		} else {
 			return null;
 		}
-	}
-
-	@Override
-	public boolean canExecute(Collection<? extends EObject> selections) {
-		// TODO Auto-generated method stub
-		return true;
 	}
 
 	@Override
