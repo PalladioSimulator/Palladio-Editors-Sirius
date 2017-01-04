@@ -47,6 +47,26 @@
             actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.OpenRepresentation"
             id="OpenRepresentation">
       </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetLinkingResourceThroughput"
+            id="SetLinkingResourceThroughput">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetLinkingResourceLatency"
+            id="SetLinkingResourceLatency">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetResourceContainerReadProcessingRate"
+            id="SetResourceContainerReadProcessingRate">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetResourceContainerWriteProcessingRate"
+            id="SetResourceContainerWriteProcessingRate">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetProcessingResourceProcessingRate"
+            id="SetProcessingResourceProcessingRate">
+      </javaActions>
    </extension>
 
 </plugin>
