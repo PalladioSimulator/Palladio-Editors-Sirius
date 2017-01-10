@@ -78,7 +78,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="Default Label Editing">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Default Label Editing" inputLabelExpression="feature:entityName">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="var:0"/>
