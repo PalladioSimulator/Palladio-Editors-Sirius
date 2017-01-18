@@ -65,4 +65,13 @@
         </command>
      </menuContribution>
   </extension>
+  <extension
+        point="org.eclipse.eef.ide.ui.eefLifecycleManagerProvider">
+     <descriptor
+           class="org.palladiosimulator.editors.sirius.repository.custom.properties.TableLifecycleManagerProvider"
+           description="Table widget for the custom properties sheet"
+           id="org.palladiosimulator.editors.sirius.repository.custom.properties.table"
+           label="Table widget">
+     </descriptor>
+  </extension>
 </plugin>
