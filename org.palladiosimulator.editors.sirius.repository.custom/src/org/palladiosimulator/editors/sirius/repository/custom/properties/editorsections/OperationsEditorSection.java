@@ -133,7 +133,7 @@ public class OperationsEditorSection extends EditorSection{
 		column.setWidth(25);
 
 		for (int i = 1; i < columnNames.length; i++) {
-			// n-te column with task Description
+			// n'th column with task Description
 			column = new TableColumn(table, SWT.LEFT, i);
 			column.setText((String) columnNames[i]);
 			column.setWidth(140);
