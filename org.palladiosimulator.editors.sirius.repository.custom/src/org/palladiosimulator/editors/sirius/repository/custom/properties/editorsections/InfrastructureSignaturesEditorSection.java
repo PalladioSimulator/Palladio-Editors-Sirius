@@ -88,7 +88,7 @@ public class InfrastructureSignaturesEditorSection extends EditorSection{
 	 */
 	@Override
 	protected ObservableCellModifier createViewerCellModifier() {
-		return new InfrastructureSignaturesCellModifier(columnNames);
+		return new InfrastructureSignaturesCellModifier();
 	}
 
 	/* (non-Javadoc)
