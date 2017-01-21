@@ -119,7 +119,7 @@ public class OperationsEditorSection extends EditorSection{
 	 */
 	@Override
 	protected ObservableCellModifier createViewerCellModifier() {
-		return new OperationsCellModifier(columnNames);
+		return new OperationsCellModifier();
 	}
 
 	/* (non-Javadoc)
