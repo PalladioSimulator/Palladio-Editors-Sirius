@@ -5,6 +5,7 @@
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//allocation"/>
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//resourceenvironment"/>
       <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
+      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//core/composition"/>
       <defaultLayer name="Default">
         <containerMappings name="ResourceContainer" labelDirectEdit="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Default%20Label%20Editing']" semanticCandidatesExpression="[self.targetResourceEnvironment_Allocation.resourceContainer_ResourceEnvironment/]" domainClass="resourceenvironment.ResourceContainer" dropDescriptions="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AllocationContext%20into%20ResourceContainer']" reusedContainerMappings="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='Allocation_AssemblyContext']">
           <subContainerMappings name="Allocation_AssemblyContext" labelDirectEdit="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Default%20Label%20Editing']" semanticCandidatesExpression="[containerView.eContainer().oclAsType(diagram::DSemanticDiagram).target.oclAsType(allocation::Allocation).allocationContexts_Allocation->select(x | x.oclAsType(allocation::AllocationContext).resourceContainer_AllocationContext = self and x.oclAsType(allocation::AllocationContext).assemblyContext_AllocationContext &lt;> null)/]" domainClass="allocation.AllocationContext" childrenPresentation="List">
@@ -24,6 +25,14 @@
             </style>
           </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql: '&lt;&lt;ResourceContainer>>\n'.concat(self.entityName)" tooltipExpression="resourceContainer">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="AssemblyContext_Without_ResourceContainer" semanticCandidatesExpression="aql:self.system_Allocation.assemblyContexts__ComposedStructure->select(x | self.allocationContexts_Allocation.assemblyContext_AllocationContext->includes(x) = false)" domainClass="composition.AssemblyContext" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:'&lt;&lt;Assembly>>\n'.concat(self.entityName)" tooltipExpression="AllocationContext">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -87,5 +96,6 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.allocation.services.Services"/>
   </ownedViewpoints>
 </description:Group>
