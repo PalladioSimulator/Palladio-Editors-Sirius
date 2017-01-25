@@ -31,6 +31,10 @@
             actionClass="org.palladiosimulator.editors.sirius.repository.custom.externaljavaactions.ReconnectSourceOfContainsRelation"
             id="ReconnectSourceOfContainsRelation">
       </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.repository.custom.externaljavaactions.SetResourceInterface"
+            id="SetResourceInterface">
+      </javaActions>
    </extension>
 <extension
         point="org.eclipse.ui.newWizards">

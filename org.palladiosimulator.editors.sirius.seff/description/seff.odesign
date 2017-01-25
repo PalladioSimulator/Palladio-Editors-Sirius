@@ -102,7 +102,7 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="ResourceCall Container" semanticCandidatesExpression="var:self" domainClass="InternalAction" childrenPresentation="List">
-            <subNodeMappings name="ResourceCall" semanticCandidatesExpression="aql:self.resourceCall__Action" doubleClickDescription="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='seffOpenStoExDialogResourceCall']" domainClass="seff_performance.ResourceCall">
+            <subNodeMappings name="ResourceCall" semanticCandidatesExpression="feature:resourceCall__Action" doubleClickDescription="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='seffOpenStoExDialogResourceCall']" domainClass="seff_performance.ResourceCall">
               <style xsi:type="style:SquareDescription" labelExpression="aql: self.entityName + ':' + self.numberOfCalls__ResourceCall.specification" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

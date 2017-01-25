@@ -9,6 +9,7 @@
       <metamodel href="http://sdq.ipd.uka.de/StochasticExpressions/2.2#/"/>
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//core"/>
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//core/entity"/>
+      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//resourcetype"/>
       <diagramInitialisation>
         <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Load Resources" id="LoadResources">
           <parameters name="PrimitiveTypes.repository" value="aql:'pathmap://PCM_MODELS/PrimitiveTypes.repository'"/>
@@ -162,6 +163,21 @@
               </style>
             </subContainerMappings>
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="ComponentParameterCompartment" widthComputationExpression="" heightComputationExpression="">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="ResourceRequiredRoles" semanticCandidatesExpression="var:self" domainClass="repository.BasicComponent" childrenPresentation="List">
+            <subNodeMappings name="ResourceRequiredRole" semanticCandidatesExpression="feature:resourceRequiredRoles__ResourceInterfaceRequiringEntity" doubleClickDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20ResourceInterface']" domainClass="entity.ResourceRequiredRole">
+              <style xsi:type="style:SquareDescription" labelExpression="aql:self.entityName + '&lt;' + self.requiredResourceInterface__ResourceRequiredRole.entityName + '>'" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="ResourceRequiredRoles">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -620,6 +636,23 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="ResourceRequiredRole" nodeMappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='ResourceRequiredRoles']/@subNodeMappings[name='ResourceRequiredRole']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="entity.ResourceRequiredRole" referenceName="resourceRequiredRoles__ResourceInterfaceRequiringEntity">
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set ResourceInterface" id="SetResourceInterface">
+                    <parameters name="instance" value="var:instance"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'ResourceRequiredRole'+container.resourceRequiredRoles__ResourceInterfaceRequiringEntity->size()"/>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.requiredResourceInterface__ResourceRequiredRole = null">
+                    <subModelOperations xsi:type="tool:RemoveElement"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="Variable Usage" inputLabelExpression="aql:self.namedReference__VariableUsage.referenceName">
             <mask mask="{0}"/>
             <initialOperation>
@@ -669,6 +702,17 @@
                 <parameters name="Viewpoint" value="Seff"/>
                 <parameters name="RepresentationDescription" value="Seff Diagram"/>
                 <parameters name="element" value="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Edit ResourceInterface" mappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='ResourceRequiredRoles']/@subNodeMappings[name='ResourceRequiredRole']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="Edit ResourceInterface" id="SetResourceInterface">
+                  <parameters name="instance" value="var:element"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
