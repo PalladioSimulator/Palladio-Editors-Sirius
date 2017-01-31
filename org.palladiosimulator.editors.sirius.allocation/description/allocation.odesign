@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Allocation" version="11.1.1.201610211630">
   <ownedViewpoints name="Allocation" label="Allocation" modelFileExtension="allocation">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Allocation']/@ownedRepresentations[name='Allocation%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AllocationContext%20into%20ResourceContainer']" name="Allocation Diagram" initialisation="true" domainClass="allocation.Allocation" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Allocation Diagram" initialisation="true" domainClass="allocation.Allocation" enablePopupBars="true">
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//allocation"/>
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//resourceenvironment"/>
       <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
