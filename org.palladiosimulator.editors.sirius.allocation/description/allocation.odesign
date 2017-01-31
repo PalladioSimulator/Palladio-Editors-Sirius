@@ -96,6 +96,5 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.allocation.services.Services"/>
   </ownedViewpoints>
 </description:Group>
