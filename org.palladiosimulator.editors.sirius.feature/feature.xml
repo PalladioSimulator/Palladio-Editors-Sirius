@@ -54,6 +54,11 @@
       <import plugin="org.eclipse.emf.common"/>
       <import plugin="org.eclipse.ui.forms"/>
       <import plugin="org.eclipse.sirius.ui" version="3.1.2" match="greaterOrEqual"/>
+      <import feature="org.palladiosimulator.pcm.feature" version="4.0.0" match="greaterOrEqual"/>
+      <import feature="org.palladiosimulator.editors.commons.feature" version="1.0.0" match="greaterOrEqual"/>
+      <import feature="org.palladiosimulator.architecturaltemplates.feature" version="1.0.6" match="greaterOrEqual"/>
+      <import feature="org.palladiosimulator.architecturaltemplates.examples.feature" version="1.0.4" match="greaterOrEqual"/>
+      <import feature="org.palladiosimulator.mdsdprofiles.feature" version="1.0.1" match="greaterOrEqual"/>
    </requires>
 
    <plugin
