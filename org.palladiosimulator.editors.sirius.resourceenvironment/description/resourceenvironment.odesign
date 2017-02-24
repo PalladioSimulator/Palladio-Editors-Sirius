@@ -177,7 +177,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.ResourceContainer" referenceName="resourceContainer_ResourceEnvironment">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="new ResourceContainer"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'ResourceContainer'+ container.resourceContainer_ResourceEnvironment->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
