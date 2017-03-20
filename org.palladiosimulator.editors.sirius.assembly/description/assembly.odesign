@@ -151,7 +151,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subContainerMappings name="AssemblyContext Container" deletionDescription="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Deletion']/@ownedTools[name='AssemblyContext%20Deletion']" labelDirectEdit="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="[self.assemblyContexts__ComposedStructure/]" documentation="Used for the parameter implementation until the Node can be fully migrated." domainClass="composition.AssemblyContext">
+          <subContainerMappings name="AssemblyContext Container" deletionDescription="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Deletion']/@ownedTools[name='AssemblyContext%20Deletion']" labelDirectEdit="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="[self.assemblyContexts__ComposedStructure/]" doubleClickDescription="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='AssemblyContext%20Navigation']" documentation="Used for the parameter implementation until the Node can be fully migrated." domainClass="composition.AssemblyContext">
             <borderedNodeMappings name="OperationProvidedRole Node" labelDirectEdit="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RoleName']" semanticCandidatesExpression="[self.encapsulatedComponent__AssemblyContext.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.OperationProvidedRole">
               <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="feature:entityName" id="org.palladiosimulator.editors.sirius.assembly.custom.operationProvidedRole">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -401,6 +401,17 @@
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.EventChannel" referenceName="eventChannel__ComposedStructure">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['EventChannel' + container.eventChannel__ComposedStructure->size()/]"/>
                 </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="AssemblyContext Navigation" precondition="aql:self.encapsulatedComponent__AssemblyContext.oclIsKindOf(entity::ComposedProvidingRequiringEntity)" mappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Open CompositeComponent Representation" id="OpenRepresentation">
+                <parameters name="Viewpoint" value="Assembly"/>
+                <parameters name="RepresentationDescription" value="Assembly Diagram"/>
+                <parameters name="element" value="aql:element.oclAsType(composition::AssemblyContext).encapsulatedComponent__AssemblyContext"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

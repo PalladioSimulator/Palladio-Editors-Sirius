@@ -537,8 +537,8 @@
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Open CompositeComponent Representation" id="OpenRepresentation">
-                <parameters name="Viewpoint" value="System"/>
-                <parameters name="RepresentationDescription" value="ComposedProvidingRequiringEntity Diagram"/>
+                <parameters name="Viewpoint" value="Assembly"/>
+                <parameters name="RepresentationDescription" value="Assembly Diagram"/>
                 <parameters name="element" value="var:element"/>
               </firstModelOperations>
             </initialOperation>

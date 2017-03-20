@@ -11,7 +11,7 @@
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//core"/>
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//repository"/>
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//resourcetype"/>
-      <layout xsi:type="description_1:CompositeLayout"/>
+      <layout xsi:type="description_1:CompositeLayout" padding="15"/>
       <defaultLayer name="Default">
         <nodeMappings name="StartNode" semanticCandidatesExpression="feature:steps_Behaviour" domainClass="seff.StartAction">
           <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="" labelPosition="node" workspacePath="/org.palladiosimulator.editors.sirius.seff/icons/start.png">
