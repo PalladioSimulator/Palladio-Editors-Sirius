@@ -59,6 +59,10 @@
       <import feature="org.eclipse.sirius.runtime.ide.eef" version="4.1.1.201610251427"/>
       <import feature="org.eclipse.sirius.runtime.acceleo" version="4.1.1.201610251427"/>
       <import feature="org.eclipse.sirius.runtime.aql" version="4.1.1.201610251427"/>
+      <import feature="org.eclipse.sirius.runtime.ide.ui" version="4.1.1.201610251427"/>
+      <import feature="org.eclipse.sirius.runtime.ide.ui.acceleo" version="4.1.1.201610251427"/>
+      <import feature="org.eclipse.sirius.runtime.ocl" version="4.1.1.201610251427"/>
+      <import feature="org.eclipse.sirius.properties.feature" version="4.1.1.201610251427"/>
    </requires>
 
    <plugin

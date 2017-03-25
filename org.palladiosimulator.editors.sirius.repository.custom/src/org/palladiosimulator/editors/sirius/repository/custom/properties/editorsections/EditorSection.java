@@ -240,4 +240,16 @@ public abstract class EditorSection implements Observer {
 			viewer.refresh();
 		}
 	}
+	
+	public void setEnabled(boolean isEnabled) {
+		if (!this.viewer.getTable().isDisposed()) {
+			this.viewer.getTable().setEnabled(isEnabled);			
+		}
+		if (!this.addButton.isDisposed()) {
+			this.addButton.setEnabled(isEnabled);
+		}
+		if (!this.deleteButton.isDisposed()) {
+			this.deleteButton.setEnabled(isEnabled);
+		}
+	}
 }
