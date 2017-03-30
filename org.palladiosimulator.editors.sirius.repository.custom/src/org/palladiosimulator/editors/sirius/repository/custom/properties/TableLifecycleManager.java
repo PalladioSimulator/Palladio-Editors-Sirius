@@ -89,6 +89,7 @@ public abstract class TableLifecycleManager extends AbstractEEFWidgetLifecycleMa
 		this.adapterFactory.dispose();
 	}
 	
+	@Override
 	protected void setEnabled(boolean isEnabled) {
 		this.editorSection.setEnabled(isEnabled);
 	}
