@@ -100,8 +100,15 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add AllocationContext_AssemblyContext" id="AddAllocationContextAssemblyContext">
                     <parameters name="instance" value="var:instance"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'Allocation_' + self.assemblyContext_AllocationContext.entityName"/>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.assemblyContext_AllocationContext &lt;> null">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'Allocation_' + self.assemblyContext_AllocationContext.entityName"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.assemblyContext_AllocationContext = null">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -117,8 +124,15 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add AllocationContext_EventChannel" id="AddAllocationContextEventChannel">
                     <parameters name="instance" value="var:instance"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'Allocation_' + self.eventChannel__AllocationContext.entityName"/>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.eventChannel__AllocationContext &lt;> null">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'Allocation_' + self.eventChannel__AllocationContext.entityName"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.eventChannel__AllocationContext = null">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
