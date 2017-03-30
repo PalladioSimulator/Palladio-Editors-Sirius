@@ -11,6 +11,8 @@ import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.parameter.VariableUsage;
 import org.palladiosimulator.pcm.repository.ImplementationComponentType;
 
+import de.uka.ipd.sdq.stoex.AbstractNamedReference;
+
 public class ComposedProvidingRequiringEntityServices extends PCMServices {
 
     public ComposedProvidingRequiringEntityServices() {
@@ -77,7 +79,9 @@ public class ComposedProvidingRequiringEntityServices extends PCMServices {
         final AssemblyContext assemblyContext = (AssemblyContext) assemblyContextParam;
 
         for (final VariableUsage vu : assemblyContext.getConfigParameterUsages__AssemblyContext()) {
-            if (vu.getNamedReference__VariableUsage().getReferenceName().equals(variableUsageReferenceName)) {
+        	AbstractNamedReference reference = vu.getNamedReference__VariableUsage();
+        	
+            if (reference != null && variableUsageReferenceName.equals(reference.getReferenceName())) {
                 return true;
             }
         }
