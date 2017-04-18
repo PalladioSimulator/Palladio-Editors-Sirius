@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.InputDialog;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.ui.PlatformUI;
 import org.modelversioning.emfprofile.Profile;
 import org.modelversioning.emfprofile.Stereotype;
@@ -208,5 +209,20 @@ public class PCMServices {
         }
         return true;
     }
+    
+    /**
+     * Retrieves the top-most container view (i.e. the diagram element) from the specified container view.
+     * It does the job of getting the element referenced by the variable "diagram". This function should in fact
+     * be used when the variable "diagram" is not available. 
+     * @param containerView the container view from which the top-most container is going to be retrieved
+     * @return the diagram element
+     */
+    public DSemanticDiagram getSemanticDiagram(EObject containerView) {
+		EObject container = containerView;
+		while(!(container instanceof DSemanticDiagram)) {
+			container = container.eContainer();
+		}
+		return (DSemanticDiagram) container;
+	}
 
 }
