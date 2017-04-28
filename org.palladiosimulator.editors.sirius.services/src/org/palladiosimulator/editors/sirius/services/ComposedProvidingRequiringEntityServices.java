@@ -1,15 +1,21 @@
 package org.palladiosimulator.editors.sirius.services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.palladiosimulator.commons.emfutils.EMFCopyHelper;
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.parameter.VariableUsage;
+import org.palladiosimulator.pcm.qosannotations.QoSAnnotations;
+import org.palladiosimulator.pcm.qosannotations.SpecifiedQoSAnnotation;
+import org.palladiosimulator.pcm.qosannotations.qos_performance.SystemSpecifiedExecutionTime;
 import org.palladiosimulator.pcm.repository.ImplementationComponentType;
+import org.palladiosimulator.pcm.repository.Role;
 
 import de.uka.ipd.sdq.stoex.AbstractNamedReference;
 
@@ -98,4 +104,30 @@ public class ComposedProvidingRequiringEntityServices extends PCMServices {
 
         return variableUsage;
     }
+    
+    /**
+	 * filters the given {@link SystemSpecifiedExecutionTime}s to produce a collection with the first occurrences of SystemSpecifiedExecutionTime having distinct {@link Role}s
+	 * @param ssets 
+	 * @return
+	 */
+	public Collection<SystemSpecifiedExecutionTime> getSystemSpecifiedExecutionTimesWithDistinctRoles(org.palladiosimulator.pcm.system.System system) {
+		Collection<SystemSpecifiedExecutionTime> result = new ArrayList<SystemSpecifiedExecutionTime>();
+		Collection<SystemSpecifiedExecutionTime> ssets = new ArrayList<SystemSpecifiedExecutionTime>();
+		EList<QoSAnnotations> annotations = system.getQosAnnotations_System();
+		for (QoSAnnotations annotation : annotations) {
+			for (SpecifiedQoSAnnotation specifiedAnnotation : annotation.getSpecifiedQoSAnnotations_QoSAnnotations()) {
+				if (specifiedAnnotation instanceof SystemSpecifiedExecutionTime) {
+					ssets.add((SystemSpecifiedExecutionTime) specifiedAnnotation);
+				}
+			}
+		}
+		for (SystemSpecifiedExecutionTime sset : ssets) {
+			
+			if (sset.getRole_SpecifiedQoSAnnotation() != null && result.stream().noneMatch(x -> x.getRole_SpecifiedQoSAnnotation().equals(sset.getRole_SpecifiedQoSAnnotation()))) 
+				result.add(sset);
+		}
+		
+		return result;
+		
+	}
 }
