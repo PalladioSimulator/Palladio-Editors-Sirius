@@ -109,7 +109,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </borderedNodeMappings>
-          <borderedNodeMappings name="ExternalOperationRequiredRole Node" labelDirectEdit="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RoleName']" semanticCandidatesExpression="[self.requiredRoles_InterfaceRequiringEntity/]" domainClass="repository.OperationRequiredRole">
+          <borderedNodeMappings name="ExternalOperationRequiredRole Node" labelDirectEdit="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RoleName']" semanticCandidatesExpression="feature:requiredRoles_InterfaceRequiringEntity" domainClass="repository.OperationRequiredRole">
             <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="feature:entityName" sizeComputationExpression="5" id="org.palladiosimulator.editors.sirius.assembly.custom.operationRequiredRole">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -747,7 +747,7 @@
         </customization>
       </defaultLayer>
       <additionalLayers name="QoS" activeByDefault="true">
-        <edgeMappings name="QoSAnnotation connector" preconditionExpression="[container.oclIsTypeOf(system::System) and container.oclAsType(system::System).qosAnnotations_System &lt;> null/]" sourceMapping="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@additionalLayers[name='QoS']/@containerMappings[name='SystemSpecifiedExecutionTimes']" targetMapping="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalOperationRequiredRole%20Node']" targetFinderExpression="feature:role_SpecifiedQoSAnnotation">
+        <edgeMappings name="QoSAnnotation connector" preconditionExpression="[container.oclIsTypeOf(system::System) and container.oclAsType(system::System).qosAnnotations_System &lt;> null/]" sourceMapping="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@additionalLayers[name='QoS']/@containerMappings[name='SSETs']" targetMapping="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalOperationRequiredRole%20Node']" targetFinderExpression="var:self">
           <style targetArrow="NoDecoration">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -755,9 +755,9 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="SystemSpecifiedExecutionTimes" preconditionExpression="aql:container.oclIsTypeOf(system::System) and self.role_SpecifiedQoSAnnotation.oclIsTypeOf(repository::OperationRequiredRole) " semanticCandidatesExpression="aql:self.oclAsType(system::System).getSystemSpecifiedExecutionTimesWithDistinctRoles()" domainClass="qos_performance.SystemSpecifiedExecutionTime" childrenPresentation="List">
-          <subNodeMappings name="SystemSpecifiedExecutionTime" semanticCandidatesExpression="aql:diagram.oclAsType(diagram::DSemanticDiagram).target.oclAsType(system::System).qosAnnotations_System.specifiedQoSAnnotations_QoSAnnotations->select(x | x.role_SpecifiedQoSAnnotation == self.role_SpecifiedQoSAnnotation)" domainClass="qos_performance.SystemSpecifiedExecutionTime">
-            <style xsi:type="style:SquareDescription" labelExpression="aql:self.signature_SpecifiedQoSAnnation.entityName + ' = ' + self.specification_SpecifiedExecutionTime.specification" labelPosition="node" resizeKind="NSEW">
+        <containerMappings name="SSETs" preconditionExpression="aql:container.oclIsTypeOf(system::System)" deletionDescription="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@additionalLayers[name='QoS']/@toolSections.0/@ownedTools[name='SSETs%20deletion']" semanticCandidatesExpression="aql:self.requiredRoles_InterfaceRequiringEntity->select(x | self.oclAsType(system::System).qosAnnotations_System.specifiedQoSAnnotations_QoSAnnotations->exists(y | y.role_SpecifiedQoSAnnotation = x))" domainClass="repository.OperationRequiredRole" childrenPresentation="List">
+          <subNodeMappings name="SSET" semanticCandidatesExpression="aql:diagram.oclAsType(diagram::DSemanticDiagram).target.oclAsType(system::System).qosAnnotations_System.specifiedQoSAnnotations_QoSAnnotations->select(x | x.role_SpecifiedQoSAnnotation == self)" domainClass="qos_performance.SystemSpecifiedExecutionTime">
+            <style xsi:type="style:SquareDescription" labelExpression="aql:self.signature_SpecifiedQoSAnnation.entityName + ' = ' + self.specification_SpecifiedExecutionTime.specification" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -771,7 +771,21 @@
           </style>
         </containerMappings>
         <toolSections name="QoS">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="SystemSpecifiedExecutionTime " nodeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@additionalLayers[name='QoS']/@containerMappings[name='SystemSpecifiedExecutionTimes']/@subNodeMappings[name='SystemSpecifiedExecutionTime']" extraMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalOperationRequiredRole%20Node']">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="SSETs deletion">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:elementView">
+                <subModelOperations xsi:type="tool_1:For" expression="aql:self.eContents()">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:i.oclAsType(diagram::DNodeListElement).target">
+                    <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="SSET" nodeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@additionalLayers[name='QoS']/@containerMappings[name='SSETs']/@subNodeMappings[name='SSET']" extraMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalOperationRequiredRole%20Node']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -784,22 +798,21 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.oclAsType(system::System).qosAnnotations_System->first()">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="qos_performance.SystemSpecifiedExecutionTime" referenceName="specifiedQoSAnnotations_QoSAnnotations">
-                      <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add SystemSpecificExecutionTime" id="AddSystemSpecificExecutionTime">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="role_SpecifiedQoSAnnotation" valueExpression="var:container"/>
+                      <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add SystemSpecifiedExecutionTime" id="AddSystemSpecifiedExecutionTime">
                         <parameters name="instance" value="var:instance"/>
                       </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:container.oclIsTypeOf(repository::OperationRequiredRole)">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="role_SpecifiedQoSAnnotation" valueExpression="var:container"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:container.oclIsTypeOf(qos_performance::SystemSpecifiedExecutionTime)">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="role_SpecifiedQoSAnnotation" valueExpression="aql:container.oclAsType(qos_performance::SystemSpecifiedExecutionTime).role_SpecifiedQoSAnnotation"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.signature_SpecifiedQoSAnnation &lt;> null">
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.signature_SpecifiedQoSAnnation &lt;> null">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
                         <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_SpecifiedExecutionTime" variableName="specification"/>
                         <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set SSETSpecification" id="SetSSETSpecification">
                           <parameters name="element" value="var:instance"/>
                         </subModelOperations>
                       </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.signature_SpecifiedQoSAnnation == null">
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.signature_SpecifiedQoSAnnation == null or instance.specification_SpecifiedExecutionTime.specification == null">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
                         <subModelOperations xsi:type="tool_1:RemoveElement"/>
                       </subModelOperations>
                     </subModelOperations>

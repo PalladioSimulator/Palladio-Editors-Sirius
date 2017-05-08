@@ -36,8 +36,8 @@
             id="DeleteAsemblyContext">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.assembly.custom.externaljavaactions.AddSystemSpecificExecutionTime"
-            id="AddSystemSpecificExecutionTime">
+            actionClass="org.palladiosimulator.editors.sirius.assembly.custom.externaljavaactions.AddSystemSpecifiedExecutionTime"
+            id="AddSystemSpecifiedExecutionTime">
       </javaActions>
       <javaActions
             actionClass="org.palladiosimulator.editors.sirius.assembly.custom.externaljavaactions.SetSSETSpecification"

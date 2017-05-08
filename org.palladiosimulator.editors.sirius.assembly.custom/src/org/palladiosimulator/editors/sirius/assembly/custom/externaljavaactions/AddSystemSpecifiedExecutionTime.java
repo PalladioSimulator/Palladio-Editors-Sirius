@@ -9,18 +9,26 @@ import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.palladiosimulator.editors.commons.dialogs.selection.PalladioSelectEObjectDialog;
+import org.palladiosimulator.pcm.qosannotations.SpecifiedQoSAnnotation;
 import org.palladiosimulator.pcm.qosannotations.qos_performance.SystemSpecifiedExecutionTime;
 import org.palladiosimulator.pcm.repository.Interface;
 import org.palladiosimulator.pcm.repository.Repository;
 import org.palladiosimulator.pcm.repository.Signature;
 
-public class AddSystemSpecificExecutionTime implements IExternalJavaAction {
+public class AddSystemSpecifiedExecutionTime implements IExternalJavaAction {
 	public static final Shell SHELL = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 
 	@Override
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
 		SystemSpecifiedExecutionTime sset = (SystemSpecifiedExecutionTime) parameters.get("instance");
 		Signature sig = getSignature(sset);
+		for (SpecifiedQoSAnnotation s : sset.getQosAnnotations_SpecifiedQoSAnnotation().getSpecifiedQoSAnnotations_QoSAnnotations()) {
+			if ((s instanceof SystemSpecifiedExecutionTime) && 
+					(s.getSignature_SpecifiedQoSAnnation() != null) && 
+					(s.getRole_SpecifiedQoSAnnotation().equals(sset.getRole_SpecifiedQoSAnnotation())) && 
+					(s.getSignature_SpecifiedQoSAnnation().equals(sig)))
+				return;
+		}
 		sset.setSignature_SpecifiedQoSAnnation(sig);
 			
 	}
@@ -37,7 +45,7 @@ public class AddSystemSpecificExecutionTime implements IExternalJavaAction {
 				sset.eResource().getResourceSet());
 		
 		dialog.setProvidedService(Signature.class);
-
+		
 		dialog.open();
 		
 		return (Signature) dialog.getResult();
