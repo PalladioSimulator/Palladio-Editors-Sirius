@@ -5,14 +5,14 @@
       <metamodel href="http://www.modelversioning.org/emfprofile/1.1#/"/>
       <metamodel href="http://www.modelversioning.org/emfprofile/application/1.1#/"/>
       <metamodel href="http://palladiosimulator.org/ArchitecturalTemplates/1.0#/"/>
-      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//system"/>
-      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//repository"/>
-      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//parameter"/>
-      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//core/entity"/>
-      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//core/composition"/>
-      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//qosannotations"/>
-      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//qosannotations/qos_performance"/>
-      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//core"/>
+      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//system"/>
+      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//repository"/>
+      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//parameter"/>
+      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//core/entity"/>
+      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//core/composition"/>
+      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//qosannotations"/>
+      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//qosannotations/qos_performance"/>
+      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//core"/>
       <defaultLayer name="Default">
         <edgeMappings name="AssemblyConnector Edge" preconditionExpression="[sourceView.ancestors()->filter(DNodeContainer).target->includes(self.requiringAssemblyContext_AssemblyConnector) and targetView.ancestors()->filter(DNodeContainer).target->includes(self.providingAssemblyContext_AssemblyConnector)/]" semanticCandidatesExpression="[self.connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@borderedNodeMappings[name='OperationRequiredRole%20Node']" targetMapping="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@borderedNodeMappings[name='OperationProvidedRole%20Node']" targetFinderExpression="[self.providedRole_AssemblyConnector/]" sourceFinderExpression="[self.requiredRole_AssemblyConnector/]" domainClass="composition.AssemblyConnector" useDomainElement="true">
           <style sizeComputationExpression="2">

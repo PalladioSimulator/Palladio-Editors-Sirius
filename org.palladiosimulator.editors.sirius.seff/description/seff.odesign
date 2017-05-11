@@ -3,14 +3,14 @@
   <ownedViewpoints name="Seff" modelFileExtension="repository">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AbstractActions']" name="Seff Diagram" initialisation="true" domainClass="seff.ResourceDemandingSEFF" enablePopupBars="true">
       <metamodel href="http://sdq.ipd.uka.de/StochasticExpressions/2.2#/"/>
-      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//parameter"/>
-      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//seff"/>
-      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//seff/seff_performance"/>
-      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//seff/seff_reliability"/>
-      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//reliability"/>
-      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//core"/>
-      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//repository"/>
-      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.1#//resourcetype"/>
+      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//parameter"/>
+      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//seff"/>
+      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//seff/seff_performance"/>
+      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//seff/seff_reliability"/>
+      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//reliability"/>
+      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//core"/>
+      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//repository"/>
+      <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//resourcetype"/>
       <layout xsi:type="description_1:CompositeLayout" padding="15"/>
       <defaultLayer name="Default">
         <nodeMappings name="StartNode" semanticCandidatesExpression="feature:steps_Behaviour" domainClass="seff.StartAction">
