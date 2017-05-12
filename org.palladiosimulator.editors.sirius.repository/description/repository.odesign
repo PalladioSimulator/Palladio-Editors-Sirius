@@ -1277,8 +1277,8 @@
     <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.repository.ParametersService"/>
   </ownedViewpoints>
   <extensions xsi:type="properties:ViewExtensionDescription" identifier="Properties">
-    <metamodels href="http://palladiosimulator.org/PalladioComponentModel/5.1#//parameter"/>
-    <metamodels href="http://palladiosimulator.org/PalladioComponentModel/5.1#//repository"/>
+    <metamodels href="http://palladiosimulator.org/PalladioComponentModel/5.2#//parameter"/>
+    <metamodels href="http://palladiosimulator.org/PalladioComponentModel/5.2#//repository"/>
     <pages identifier="OperationInterface" labelExpression="Operations" domainClass="OperationInterface" semanticCandidateExpression="var:self" groups="//@extensions.0/@groups.0"/>
     <pages identifier="InfrastructureInterface" labelExpression="Operations" domainClass="InfrastructureInterface" semanticCandidateExpression="var:self" groups="//@extensions.0/@groups.1"/>
     <pages identifier="EventGroup" labelExpression="Operations" domainClass="EventGroup" semanticCandidateExpression="var:self" groups="//@extensions.0/@groups.2"/>
