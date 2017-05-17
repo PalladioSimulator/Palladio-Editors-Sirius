@@ -10,13 +10,13 @@
       <defaultLayer name="Default">
         <edgeMappings name="Connector" deletionDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Remove%20Connector']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']" targetMapping="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetFinderExpression="feature:connectedResourceContainers_LinkingResource" reconnections="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Connector%20ResourceContainer'] //@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Connector%20Linking%20Resource']">
           <style targetArrow="NoDecoration" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="LinkingResource" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Resource%20Container%20Name']" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.LinkingResource" childrenPresentation="List">
+        <containerMappings name="LinkingResource" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Resource%20Container%20Name']" semanticCandidatesExpression="feature:linkingResources__ResourceEnvironment" domainClass="resourceenvironment.LinkingResource" childrenPresentation="List">
           <subNodeMappings name="CommunicationLinkResourceSpecification" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
             <style xsi:type="style:SquareDescription" labelSize="7" labelExpression="aql:self.communicationLinkResourceType_CommunicationLinkResourceSpecification.entityName" labelAlignment="LEFT" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -46,7 +46,7 @@
             </style>
           </subNodeMappings>
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="5" arcHeight="5" borderSizeComputationExpression="1" labelExpression="aql: '&lt;&lt;LinkingResource>>\n'.concat(self.entityName)" labelAlignment="LEFT" roundedCorner="true">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -148,8 +148,8 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="2" labelExpression="aql: '&lt;&lt;ResourceContainer>>\n'.concat(self.entityName)" labelAlignment="LEFT" tooltipExpression="ResourceContainer" heightComputationExpression="10">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="1" labelExpression="aql: '&lt;&lt;ResourceContainer>>\n'.concat(self.entityName)" labelAlignment="LEFT" tooltipExpression="ResourceContainer" heightComputationExpression="10">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -318,7 +318,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="Failure Probability">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Failure Probability" inputLabelExpression="feature:failureProbability">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
@@ -378,7 +378,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.LinkingResource" referenceName="linkingResources__ResourceEnvironment">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newLinkingResource"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'LinkingResource' + container.linkingResources__ResourceEnvironment->size()"/>
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.CommunicationLinkResourceSpecification" referenceName="communicationLinkResourceSpecifications_LinkingResource">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newCommunicationLinkingResource"/>
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AddLinkingResourceAction" label="Add Linking Resource" id="AddLinkingResource">

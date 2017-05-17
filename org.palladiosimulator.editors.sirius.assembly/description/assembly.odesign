@@ -770,7 +770,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <toolSections name="QoS">
+        <toolSections name="QoS Annotations">
           <ownedTools xsi:type="tool:DeleteElementDescription" name="SSETs deletion">
             <element name="element"/>
             <elementView name="elementView"/>
@@ -785,7 +785,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="SSET" nodeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@additionalLayers[name='QoS']/@containerMappings[name='SSETs']/@subNodeMappings[name='SSET']" extraMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalOperationRequiredRole%20Node']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="System Required Execution Time" nodeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@additionalLayers[name='QoS']/@containerMappings[name='SSETs']/@subNodeMappings[name='SSET']" extraMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalOperationRequiredRole%20Node']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
