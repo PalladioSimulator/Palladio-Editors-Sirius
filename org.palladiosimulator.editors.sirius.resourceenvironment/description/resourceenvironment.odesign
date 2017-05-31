@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="resourceenvironment" version="11.1.1.201610211630">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="resourceenvironment" version="11.1.1.201610211630">
   <ownedViewpoints name="ResourceEnvironment" modelFileExtension="resourceenvironment">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Nested%20ResourceContainer%20into%20ResourceEnvironment']" name="ResourceEnvironment Diagram" initialisation="true" domainClass="resourceenvironment.ResourceEnvironment" enablePopupBars="true">
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//resourceenvironment"/>
@@ -7,6 +7,11 @@
       <metamodel href="http://www.modelversioning.org/emfprofile/1.1#/"/>
       <metamodel href="http://www.modelversioning.org/emfprofile/application/1.1#/"/>
       <metamodel href="http://palladiosimulator.org/ArchitecturalTemplates/1.0#/"/>
+      <diagramInitialisation>
+        <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Load Resources" id="LoadResources">
+          <parameters name="Palladio.resourcetype" value="aql:'pathmap://PCM_MODELS/Palladio.resourcetype'"/>
+        </firstModelOperations>
+      </diagramInitialisation>
       <defaultLayer name="Default">
         <edgeMappings name="Connector" deletionDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Remove%20Connector']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']" targetMapping="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']" targetFinderExpression="feature:connectedResourceContainers_LinkingResource" reconnections="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Connector%20ResourceContainer'] //@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Connector%20Linking%20Resource']">
           <style targetArrow="NoDecoration" sizeComputationExpression="2">
@@ -16,36 +21,37 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="LinkingResource" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Resource%20Container%20Name']" semanticCandidatesExpression="feature:linkingResources__ResourceEnvironment" domainClass="resourceenvironment.LinkingResource" childrenPresentation="List">
-          <subNodeMappings name="CommunicationLinkResourceSpecification" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
-            <style xsi:type="style:SquareDescription" labelSize="7" labelExpression="aql:self.communicationLinkResourceType_CommunicationLinkResourceSpecification.entityName" labelAlignment="LEFT" resizeKind="NSEW">
+        <containerMappings name="LinkingResource" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Resource%20Container%20Name']" semanticCandidatesExpression="feature:linkingResources__ResourceEnvironment" domainClass="resourceenvironment.LinkingResource" childrenPresentation="VerticalStack">
+          <subContainerMappings name="CommunicationLinkResourceSpecification" semanticCandidatesExpression="var:self" domainClass="resourceenvironment.LinkingResource" childrenPresentation="List">
+            <subNodeMappings name="Latency" semanticCandidatesExpression="feature:eAllContents" doubleClickDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditLatency']" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'Latency: ' + self.latency_CommunicationLinkResourceSpecification.specification.toString()" labelAlignment="LEFT" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="Throughput" semanticCandidatesExpression="feature:eAllContents" doubleClickDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditThroughput']" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql: 'Throughput: ' + self.throughput_CommunicationLinkResourceSpecification.specification.toString()" labelAlignment="LEFT" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="Failure Probability" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Failure%20Probability']" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
+              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'Failure Probability: ' +self.failureProbability" labelAlignment="LEFT" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="CommunicationLinkResourceSpecification">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
-          </subNodeMappings>
-          <subNodeMappings name="Latency" semanticCandidatesExpression="feature:eAllContents" doubleClickDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditLatency']" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'Latency: ' + self.latency_CommunicationLinkResourceSpecification.specification.toString()" labelAlignment="LEFT" resizeKind="NSEW">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            </style>
-          </subNodeMappings>
-          <subNodeMappings name="Throughput" semanticCandidatesExpression="feature:eAllContents" doubleClickDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditThroughput']" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql: 'Throughput: ' + self.throughput_CommunicationLinkResourceSpecification.specification.toString()" labelAlignment="LEFT" resizeKind="NSEW">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            </style>
-          </subNodeMappings>
-          <subNodeMappings name="Failure Probability" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Failure%20Probability']" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'Failure Probability: ' +self.failureProbability" labelAlignment="LEFT" resizeKind="NSEW">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            </style>
-          </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="5" arcHeight="5" borderSizeComputationExpression="1" labelExpression="aql: '&lt;&lt;LinkingResource>>\n'.concat(self.entityName)" labelAlignment="LEFT" roundedCorner="true">
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="5" arcHeight="5" borderSizeComputationExpression="1" labelExpression="aql: '&lt;&lt;LinkingResource>>\n'.concat(self.entityName)" roundedCorner="true">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -118,7 +124,7 @@
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </subNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.activeResourceType_ActiveResourceSpecification.entityName" labelAlignment="LEFT">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.activeResourceType_ActiveResourceSpecification.entityName">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -148,7 +154,7 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="1" labelExpression="aql: '&lt;&lt;ResourceContainer>>\n'.concat(self.entityName)" labelAlignment="LEFT" tooltipExpression="ResourceContainer" heightComputationExpression="10">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="20" arcHeight="20" borderSizeComputationExpression="1" labelExpression="aql: '&lt;&lt;ResourceContainer>>\n'.concat(self.entityName)" tooltipExpression="ResourceContainer" heightComputationExpression="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -179,34 +185,34 @@
           </style>
         </containerMappings>
         <toolSections name="Nodes">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="ResourceContainer" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer'] //@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='Nested%20ResourceContainer']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="ResourceContainer" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer'] //@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='Nested%20ResourceContainer']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:container.oclIsTypeOf(resourceenvironment::ResourceEnvironment)">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.ResourceContainer" referenceName="resourceContainer_ResourceEnvironment">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'ResourceContainer'+ container.oclAsType(resourceenvironment::ResourceEnvironment).resourceContainer_ResourceEnvironment->size()"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(resourceenvironment::ResourceEnvironment)">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="resourceenvironment.ResourceContainer" referenceName="resourceContainer_ResourceEnvironment">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'ResourceContainer'+ container.oclAsType(resourceenvironment::ResourceEnvironment).resourceContainer_ResourceEnvironment->size()"/>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:container.oclIsTypeOf(resourceenvironment::ResourceContainer)">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.ResourceContainer" referenceName="nestedResourceContainers__ResourceContainer">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'ResourceContainer'+ container.oclAsType(resourceenvironment::ResourceContainer).nestedResourceContainers__ResourceContainer->size()"/>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:container.oclIsTypeOf(resourceenvironment::ResourceContainer)">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="resourceenvironment.ResourceContainer" referenceName="nestedResourceContainers__ResourceContainer">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'ResourceContainer'+ container.oclAsType(resourceenvironment::ResourceContainer).nestedResourceContainers__ResourceContainer->size()"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="ProcessingResourceSpecification" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ProcessingResourceSpecification%20Container']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="ProcessingResourceSpecification" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ProcessingResourceSpecification%20Container']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.ProcessingResourceSpecification" referenceName="activeResourceSpecifications_ResourceContainer">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newProcessingResourceSpecification"/>
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SW ResourceType" label="Selection Wizard Resource Type" id="AddProcessingResourceSpecification">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql: self.schedulingPolicy=null or self.processingRate_ProcessingResourceSpecification=null or self.activeResourceType_ActiveResourceSpecification=null">
-                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="resourceenvironment.ProcessingResourceSpecification" referenceName="activeResourceSpecifications_ResourceContainer">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="newProcessingResourceSpecification"/>
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="SW ResourceType" label="Selection Wizard Resource Type" id="AddProcessingResourceSpecification">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql: self.schedulingPolicy=null or self.processingRate_ProcessingResourceSpecification=null or self.activeResourceType_ActiveResourceSpecification=null">
+                      <subModelOperations xsi:type="tool:RemoveElement"/>
                     </subModelOperations>
                     <parameters name="newProcessingResourceSpecification" value="var:instance"/>
                   </subModelOperations>
@@ -214,16 +220,16 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="HDDProcessingResourceSpecification" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ProcessingResourceSpecification%20Container']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="HDDProcessingResourceSpecification" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ProcessingResourceSpecification%20Container']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.HDDProcessingResourceSpecification" referenceName="activeResourceSpecifications_ResourceContainer">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newHDDProcessingResourceSpecification"/>
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SW ResourceType" label="Selection Wizard Resource Type" id="AddHDDProcessingResourceSpecification">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql: self.schedulingPolicy=null or self.processingRate_ProcessingResourceSpecification=null or self.activeResourceType_ActiveResourceSpecification=null or self.writeProcessingRate=null or self.readProcessingRate=null">
-                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="resourceenvironment.HDDProcessingResourceSpecification" referenceName="activeResourceSpecifications_ResourceContainer">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="newHDDProcessingResourceSpecification"/>
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="SW ResourceType" label="Selection Wizard Resource Type" id="AddHDDProcessingResourceSpecification">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql: self.schedulingPolicy=null or self.processingRate_ProcessingResourceSpecification=null or self.activeResourceType_ActiveResourceSpecification=null or self.writeProcessingRate=null or self.readProcessingRate=null">
+                      <subModelOperations xsi:type="tool:RemoveElement"/>
                     </subModelOperations>
                     <parameters name="newHDDProcessingResourceSpecification" value="var:instance"/>
                   </subModelOperations>
@@ -233,138 +239,138 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Actions">
-          <ownedTools xsi:type="tool:DirectEditLabel" name="MTTR Edit" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="MTTR Edit" forceRefresh="true" inputLabelExpression="feature:MTTR">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="MTTR" valueExpression="var:arg0"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:SetValue" featureName="MTTR" valueExpression="var:arg0"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="MTTF Edit" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="MTTF Edit" forceRefresh="true" inputLabelExpression="feature:MTTF">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="MTTF" valueExpression="var:arg0"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:SetValue" featureName="MTTF" valueExpression="var:arg0"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="Number of Replicas" inputLabelExpression="feature:numberOfReplicas">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Number of Replicas" inputLabelExpression="feature:numberOfReplicas">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="numberOfReplicas" valueExpression="var:arg0"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="numberOfReplicas" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit Resource Container Name" inputLabelExpression="feature:entityName">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit Resource Container Name" inputLabelExpression="feature:entityName">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="var:arg0"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="var:arg0"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="QueryAndSetRoleParameterValue" precondition="feature:changeable" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='Role%20Container']/@subNodeMappings[name='RoleParameter%20Node'] //@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='Stereotype']/@subNodeMappings[name='RoleParameter%20Node'] //@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='Stereotype']/@subNodeMappings[name='RoleParameter%20Node']">
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="QueryAndSetRoleParameterValue" precondition="feature:changeable" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='Role%20Container']/@subNodeMappings[name='RoleParameter%20Node'] //@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='Stereotype']/@subNodeMappings[name='RoleParameter%20Node'] //@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='Stereotype']/@subNodeMappings[name='RoleParameter%20Node']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element.oclAsType(EStructuralFeature).queryAndSetParameterValue(elementView.eContainer(DDiagramElement).target)/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[element.oclAsType(EStructuralFeature).queryAndSetParameterValue(elementView.eContainer(DDiagramElement).target)/]"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="ResourceSpecification" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ProcessingResourceSpecification%20Container']">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="ResourceSpecification" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ProcessingResourceSpecification%20Container']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newSemanticContainer">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="activeResourceSpecifications_ResourceContainer" valueExpression="var:element">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:oldSemanticContainer">
-                    <subModelOperations xsi:type="tool_1:Unset" featureName="activeResourceSpecifications_ResourceContainer" elementExpression="var:element"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool:SetValue" featureName="activeResourceSpecifications_ResourceContainer" valueExpression="var:element">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:oldSemanticContainer">
+                    <subModelOperations xsi:type="tool:Unset" featureName="activeResourceSpecifications_ResourceContainer" elementExpression="var:element"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="(Nested) ResourceContainer into (Nested) ResourceContainer" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer'] //@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='Nested%20ResourceContainer']">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="(Nested) ResourceContainer into (Nested) ResourceContainer" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer'] //@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='Nested%20ResourceContainer']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newSemanticContainer">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="nestedResourceContainers__ResourceContainer" valueExpression="var:element"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool:SetValue" featureName="nestedResourceContainers__ResourceContainer" valueExpression="var:element"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Nested ResourceContainer into ResourceEnvironment" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='Nested%20ResourceContainer'] //@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="Nested ResourceContainer into ResourceEnvironment" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='Nested%20ResourceContainer'] //@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newSemanticContainer">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="resourceContainer_ResourceEnvironment" valueExpression="var:element"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool:SetValue" featureName="resourceContainer_ResourceEnvironment" valueExpression="var:element"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="EditThroughput" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']/@subNodeMappings[name='Throughput']">
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="EditThroughput" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']/@subContainerMappings[name='CommunicationLinkResourceSpecification']/@subNodeMappings[name='Throughput']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SetLinkingResourceThroughput" id="SetLinkingResourceThroughput">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetLinkingResourceThroughput" id="SetLinkingResourceThroughput">
                   <parameters name="element" value="var:element"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="Failure Probability" inputLabelExpression="feature:failureProbability">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Failure Probability" inputLabelExpression="feature:failureProbability">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="failureProbability" valueExpression="var:arg0"/>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Edit LinkingResourceFailureProbability" id="EditLinkingResourceFailureProbability">
+                <parameters name="var" value="var:0"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="EditLatency" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']/@subNodeMappings[name='Latency']">
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="EditLatency" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']/@subContainerMappings[name='CommunicationLinkResourceSpecification']/@subNodeMappings[name='Latency']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SetLinkingResourceLatency" id="SetLinkingResourceLatency">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetLinkingResourceLatency" id="SetLinkingResourceLatency">
                   <parameters name="element" value="var:element"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="ProcessingRate" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ProcessingResourceSpecification%20Container']/@subNodeMappings[name='Processing%20Rate']">
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="ProcessingRate" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ProcessingResourceSpecification%20Container']/@subNodeMappings[name='Processing%20Rate']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SetProcessingResourceProcessingRate" id="SetProcessingResourceProcessingRate">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetProcessingResourceProcessingRate" id="SetProcessingResourceProcessingRate">
                   <parameters name="element" value="var:element"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="WriteProcessingRate" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ProcessingResourceSpecification%20Container']/@subNodeMappings[name='Write%20Processing%20Rate']">
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="WriteProcessingRate" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ProcessingResourceSpecification%20Container']/@subNodeMappings[name='Write%20Processing%20Rate']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SetResourceContainerWriteProcessingRate" id="SetResourceContainerWriteProcessingRate">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetResourceContainerWriteProcessingRate" id="SetResourceContainerWriteProcessingRate">
                   <parameters name="element" value="var:element"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="ReadProcessingRate" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ProcessingResourceSpecification%20Container']/@subNodeMappings[name='Read%20Processing%20Rate']">
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="ReadProcessingRate" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ProcessingResourceSpecification%20Container']/@subNodeMappings[name='Read%20Processing%20Rate']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SetResourceContainerReadProcessingRate" id="SetResourceContainerReadProcessingRate">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetResourceContainerReadProcessingRate" id="SetResourceContainerReadProcessingRate">
                   <parameters name="element" value="var:element"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -372,16 +378,16 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Network">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="LinkingResource" label="Linking Resource" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="LinkingResource" label="Linking Resource" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.LinkingResource" referenceName="linkingResources__ResourceEnvironment">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'LinkingResource' + container.linkingResources__ResourceEnvironment->size()"/>
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="resourceenvironment.CommunicationLinkResourceSpecification" referenceName="communicationLinkResourceSpecifications_LinkingResource">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newCommunicationLinkingResource"/>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AddLinkingResourceAction" label="Add Linking Resource" id="AddLinkingResource">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="resourceenvironment.LinkingResource" referenceName="linkingResources__ResourceEnvironment">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'LinkingResource' + container.linkingResources__ResourceEnvironment->size()"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="resourceenvironment.CommunicationLinkResourceSpecification" referenceName="communicationLinkResourceSpecifications_LinkingResource">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="newCommunicationLinkingResource"/>
+                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="AddLinkingResourceAction" label="Add Linking Resource" id="AddLinkingResource">
                       <parameters name="newCommunicationLinkResourceSpecification" value="var:instance"/>
                     </subModelOperations>
                   </subModelOperations>
@@ -389,50 +395,50 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Connector" edgeMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@edgeMappings[name='Connector']" iconPath="/org.palladiosimulator.pcm.edit/icons/full/obj16/CommunicationLink.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Connector" edgeMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@edgeMappings[name='Connector']" iconPath="/org.palladiosimulator.pcm.edit/icons/full/obj16/CommunicationLink.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="connectedResourceContainers_LinkingResource" valueExpression="var:target"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:SetValue" featureName="connectedResourceContainers_LinkingResource" valueExpression="var:target"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Remove Connector">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Remove Connector">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="RemoveConnector Action" id="RemoveConnector">
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="RemoveConnector Action" id="RemoveConnector">
                 <parameters name="elementView" value="var:elementView"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Connector ResourceContainer">
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="Connector ResourceContainer">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="connectedResourceContainers_LinkingResource" valueExpression="var:target">
-                  <subModelOperations xsi:type="tool_1:Unset" featureName="connectedResourceContainers_LinkingResource" elementExpression="var:source"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:SetValue" featureName="connectedResourceContainers_LinkingResource" valueExpression="var:target">
+                  <subModelOperations xsi:type="tool:Unset" featureName="connectedResourceContainers_LinkingResource" elementExpression="var:source"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Connector Linking Resource" reconnectionKind="RECONNECT_SOURCE">
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="Connector Linking Resource" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="ReconnectLinkingResourceOfConnector" id="ReconnectLinkingResourceOfConnector">
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="ReconnectLinkingResourceOfConnector" id="ReconnectLinkingResourceOfConnector">
                 <parameters name="source" value="var:source"/>
                 <parameters name="target" value="var:target"/>
                 <parameters name="otherEnd" value="var:otherEnd"/>
@@ -442,45 +448,45 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Architectural Templates">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AT Creation" label="Apply Architectural Template" precondition="aql: self.eClass().name = 'ResourceEnvironment'" forceRefresh="true" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceEnvironment%20AT%20Container']" iconPath="/org.palladiosimulator.architecturaltemplates.edit/icons/full/obj16/ATInstance.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="AT Creation" label="Apply Architectural Template" precondition="aql: self.eClass().name = 'ResourceEnvironment'" forceRefresh="true" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceEnvironment%20AT%20Container']" iconPath="/org.palladiosimulator.architecturaltemplates.edit/icons/full/obj16/ATInstance.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT SystemRole Creation" label="Apply Architectural Template" id="AddAT"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="AT SystemRole Creation" label="Apply Architectural Template" id="AddAT"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AT Role Creation" label="Bind Role" precondition="aql:self.eClass().name = 'ResourceContainer'" forceRefresh="true" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='Role%20Container']" iconPath="/org.palladiosimulator.architecturaltemplates.edit/icons/full/obj16/Role2Component.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="AT Role Creation" label="Bind Role" precondition="aql:self.eClass().name = 'ResourceContainer'" forceRefresh="true" containerMappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='Role%20Container']" iconPath="/org.palladiosimulator.architecturaltemplates.edit/icons/full/obj16/Role2Component.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Creation" label="Bind Role" id="AddATRole"/>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="AT Role Creation" label="Bind Role" id="AddATRole"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="AT Role Removal" label="Remove Role">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="AT Role Removal" label="Remove Role">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Removal" forceRefresh="true" id="RemoveATRole"/>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="AT Role Removal" forceRefresh="true" id="RemoveATRole"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="AT SystemRole Removal" label="Remove Architectural Template">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="AT SystemRole Removal" label="Remove Architectural Template">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role" forceRefresh="true" id="RemoveAT"/>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="AT Role" forceRefresh="true" id="RemoveAT"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Stereotypes">
-          <ownedTools xsi:type="tool_1:ExternalJavaAction" name="Apply Unapply Profile" id="ApplyUnapplyProfile"/>
-          <ownedTools xsi:type="tool_1:ExternalJavaAction" name="Apply Unapply Stereotype" id="ApplyUnapplyStereotype"/>
-          <ownedTools xsi:type="tool_1:PopupMenu" name="MDSD Profiles">
-            <menuItemDescription xsi:type="tool_1:ExternalJavaActionCall" name="Apply Unapply Profile" forceRefresh="true" action="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Apply%20Unapply%20Profile']"/>
-            <menuItemDescription xsi:type="tool_1:ExternalJavaActionCall" name="Apply Unapply Stereotype" forceRefresh="true" action="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Apply%20Unapply%20Stereotype']"/>
+          <ownedTools xsi:type="tool:ExternalJavaAction" name="Apply Unapply Profile" id="ApplyUnapplyProfile"/>
+          <ownedTools xsi:type="tool:ExternalJavaAction" name="Apply Unapply Stereotype" id="ApplyUnapplyStereotype"/>
+          <ownedTools xsi:type="tool:PopupMenu" name="MDSD Profiles">
+            <menuItemDescription xsi:type="tool:ExternalJavaActionCall" name="Apply Unapply Profile" forceRefresh="true" action="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Apply%20Unapply%20Profile']"/>
+            <menuItemDescription xsi:type="tool:ExternalJavaActionCall" name="Apply Unapply Stereotype" forceRefresh="true" action="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Apply%20Unapply%20Stereotype']"/>
           </ownedTools>
         </toolSections>
       </defaultLayer>

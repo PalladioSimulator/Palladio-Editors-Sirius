@@ -11,6 +11,7 @@ import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
@@ -97,4 +98,18 @@ public class SiriusCustomUtil {
 		}
 		return description;
 	}
+	
+	public static boolean uriAlreadyLoaded(URI uri, Session session) {
+		return getResourceByURI(uri, session) != null;
+	}
+	
+	public static Resource getResourceByURI(URI uri, Session session) {
+		Collection<Resource> resources = session.getSemanticResources();
+		for (Resource r : resources) {
+			if(r.getURI().equals(uri)) 
+				return r;
+		}
+		return null;
+	}
+	
 }

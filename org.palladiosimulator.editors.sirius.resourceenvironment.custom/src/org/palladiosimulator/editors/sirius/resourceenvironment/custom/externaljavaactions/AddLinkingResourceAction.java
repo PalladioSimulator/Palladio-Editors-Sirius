@@ -3,15 +3,25 @@ package org.palladiosimulator.editors.sirius.resourceenvironment.custom.external
 import java.util.Collection;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
 import org.palladiosimulator.editors.commons.dialogs.stoex.StochasticExpressionEditDialog;
+import org.palladiosimulator.editors.sirius.custom.util.SiriusCustomUtil;
 import org.palladiosimulator.pcm.core.CoreFactory;
 import org.palladiosimulator.pcm.core.PCMRandomVariable;
+import org.palladiosimulator.pcm.reliability.FailureType;
+import org.palladiosimulator.pcm.reliability.SoftwareInducedFailureType;
+import org.palladiosimulator.pcm.repository.Repository;
 import org.palladiosimulator.pcm.resourceenvironment.CommunicationLinkResourceSpecification;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceEnvironment;
+import org.palladiosimulator.pcm.resourcetype.CommunicationLinkResourceType;
+import org.palladiosimulator.pcm.resourcetype.ResourceRepository;
 
 import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
 
@@ -76,9 +86,27 @@ public class AddLinkingResourceAction implements IExternalJavaAction {
             return;
         }
         communicationLinkResourceSpecification.setThroughput_CommunicationLinkResourceSpecification(throughput);
+        
+        //Communication Link
+        
+        Session session = SessionManager.INSTANCE.getSession(communicationLinkResourceSpecification);
+        URI uri = URI.createURI("pathmap://PCM_MODELS/Palladio.resourcetype");
+        Resource palladioResources = SiriusCustomUtil.getResourceByURI(uri, session);
+        
+        if (palladioResources != null) {
+			ResourceRepository rep = (ResourceRepository) palladioResources.getContents().iterator().next();
+			for (EObject o : rep.eContents()) {
+				if ((o instanceof CommunicationLinkResourceType)
+						&& ((CommunicationLinkResourceType) o ).getEntityName().equals("LAN")) {
+					communicationLinkResourceSpecification.setCommunicationLinkResourceType_CommunicationLinkResourceSpecification((CommunicationLinkResourceType) o);
+					break;
+				}
+			}
+		}
+        
     }
 
-    /**
+	/**
      * Opens a StoxEx dialog and returns the resulting {@link PCMRandomVariable}.
      * 
      * @param displayTitle
@@ -102,4 +130,5 @@ public class AddLinkingResourceAction implements IExternalJavaAction {
         randomVariable.setSpecification(dialog.getResultText());
         return randomVariable;
     }
+    
 }

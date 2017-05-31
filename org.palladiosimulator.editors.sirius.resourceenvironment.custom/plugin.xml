@@ -23,6 +23,10 @@
             actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.AddHDDProcessingResourceSpecification"
             id="AddHDDProcessingResourceSpecification">
       </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.EditLinkingResourceFailureProbability"
+            id="EditLinkingResourceFailureProbability">
+      </javaActions>
    </extension>
      <extension
         point="org.eclipse.ui.newWizards">
