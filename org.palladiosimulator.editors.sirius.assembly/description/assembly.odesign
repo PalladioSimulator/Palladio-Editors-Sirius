@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="assembly" version="11.1.1.201610211630">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="assembly" version="11.1.1.201610211630">
   <ownedViewpoints name="Assembly" modelFileExtension="system">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Assembly Diagram" initialisation="true" domainClass="entity.ComposedProvidingRequiringEntity" enablePopupBars="true">
       <metamodel href="http://www.modelversioning.org/emfprofile/1.1#/"/>
@@ -13,6 +13,11 @@
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//qosannotations"/>
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//qosannotations/qos_performance"/>
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//core"/>
+      <diagramInitialisation>
+        <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Load Resources" id="LoadResources">
+          <parameters name="FailureTypes.repository" value="aql:'pathmap://PCM_MODELS/FailureTypes.repository'"/>
+        </firstModelOperations>
+      </diagramInitialisation>
       <defaultLayer name="Default">
         <edgeMappings name="AssemblyConnector Edge" preconditionExpression="[sourceView.ancestors()->filter(DNodeContainer).target->includes(self.requiringAssemblyContext_AssemblyConnector) and targetView.ancestors()->filter(DNodeContainer).target->includes(self.providingAssemblyContext_AssemblyConnector)/]" semanticCandidatesExpression="[self.connectors__ComposedStructure/]" sourceMapping="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@borderedNodeMappings[name='OperationRequiredRole%20Node']" targetMapping="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@borderedNodeMappings[name='OperationProvidedRole%20Node']" targetFinderExpression="[self.providedRole_AssemblyConnector/]" sourceFinderExpression="[self.requiredRole_AssemblyConnector/]" domainClass="composition.AssemblyConnector" useDomainElement="true">
           <style sizeComputationExpression="2">
@@ -264,130 +269,130 @@
           </style>
         </containerMappings>
         <toolSections name="Roles">
-          <ownedTools xsi:type="tool:ToolGroup" name="Provided Roles">
-            <tools xsi:type="tool:NodeCreationDescription" name="ExternalOperationProvidedRole" label="SystemOperationProvidedRole" nodeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalOperationProvidedRole%20Node']">
+          <ownedTools xsi:type="tool_1:ToolGroup" name="Provided Roles">
+            <tools xsi:type="tool_1:NodeCreationDescription" name="ExternalOperationProvidedRole" label="SystemOperationProvidedRole" nodeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalOperationProvidedRole%20Node']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.OperationProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'OperationProvidedRole' + container.eContents()->select(x | x.eClass()=repository::OperationProvidedRole)->size()"/>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add OperationProvidedRole" id="AddOperationProvidedRole">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.OperationProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'OperationProvidedRole' + container.eContents()->select(x | x.eClass()=repository::OperationProvidedRole)->size()"/>
+                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="Add OperationProvidedRole" id="AddOperationProvidedRole">
                       <parameters name="instance" value="var:instance"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.providedInterface__OperationProvidedRole = null">
-                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:instance.providedInterface__OperationProvidedRole = null">
+                      <subModelOperations xsi:type="tool:RemoveElement"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" name="ExternalSinkRole" label="SystemSinkRole" nodeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalSinkRole%20Node']">
+            <tools xsi:type="tool_1:NodeCreationDescription" name="ExternalSinkRole" label="SystemSinkRole" nodeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalSinkRole%20Node']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.SinkRole" referenceName="providedRoles_InterfaceProvidingEntity">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'SinkRole' + container.eContents()->select(x | x.eClass()=repository::SinkRole)->size()"/>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add SinkRole" id="AddSinkRole">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.SinkRole" referenceName="providedRoles_InterfaceProvidingEntity">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'SinkRole' + container.eContents()->select(x | x.eClass()=repository::SinkRole)->size()"/>
+                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="Add SinkRole" id="AddSinkRole">
                       <parameters name="instance" value="var:instance"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.eventGroup__SinkRole = null">
-                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:instance.eventGroup__SinkRole = null">
+                      <subModelOperations xsi:type="tool:RemoveElement"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" name="ExternalInfrastructureProvidedRole" label="SystemInfrastructureProvidedRole" nodeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalInfrastructureProvidedRole%20Node']">
+            <tools xsi:type="tool_1:NodeCreationDescription" name="ExternalInfrastructureProvidedRole" label="SystemInfrastructureProvidedRole" nodeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalInfrastructureProvidedRole%20Node']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InfrastructureProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'InfrastructureProvidedRole' + container.eContents()->select(x | x.eClass()=repository::InfrastructureProvidedRole)->size()"/>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add InfrastructureProvidedRole" id="AddInfrastructureProvidedRole">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InfrastructureProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'InfrastructureProvidedRole' + container.eContents()->select(x | x.eClass()=repository::InfrastructureProvidedRole)->size()"/>
+                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="Add InfrastructureProvidedRole" id="AddInfrastructureProvidedRole">
                       <parameters name="instance" value="var:instance"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.providedInterface__InfrastructureProvidedRole = null">
-                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ToolGroup" name="Required Roles">
-            <tools xsi:type="tool:NodeCreationDescription" name="ExternalOperationRequiredRole" label="SystemOperationRequiredRole" nodeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalOperationRequiredRole%20Node']">
-              <variable name="container"/>
-              <viewVariable name="containerView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.OperationRequiredRole" referenceName="requiredRoles_InterfaceRequiringEntity">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'OperationRequiredRole' + container.eContents()->select(x | x.eClass()=repository::OperationRequiredRole)->size()"/>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add OperationRequiredRole" id="AddOperationRequiredRole">
-                      <parameters name="instance" value="var:instance"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.requiredInterface__OperationRequiredRole = null">
-                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool:NodeCreationDescription" name="ExternalSourceRole" label="SystemSourceRole" nodeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalSourceRole%20Node']">
-              <variable name="container"/>
-              <viewVariable name="containerView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.SourceRole" referenceName="requiredRoles_InterfaceRequiringEntity">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'SourceRole' + container.eContents()->select(x | x.eClass()=repository::SourceRole)->size()"/>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add SourceRole" id="AddSourceRole">
-                      <parameters name="instance" value="var:instance"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.eventGroup__SourceRole = null">
-                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool:NodeCreationDescription" name="ExternalInfrastructureRequiredRole" label="SystemInfrastructureRequiredRole" nodeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalInfrastructureRequiredRole%20Node']">
-              <variable name="container"/>
-              <viewVariable name="containerView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="repository.InfrastructureRequiredRole" referenceName="requiredRoles_InterfaceRequiringEntity">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'InfrastructureRequiredRole' + container.eContents()->select(x | x.eClass()=repository::InfrastructureRequiredRole)->size()"/>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add InfrastructureRequiredRole" id="AddInfrastructureRequiredRole">
-                      <parameters name="instance" value="var:instance"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.requiredInterface__InfrastructureRequiredRole = null">
-                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:instance.providedInterface__InfrastructureProvidedRole = null">
+                      <subModelOperations xsi:type="tool:RemoveElement"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="RoleName" inputLabelExpression="feature:entityName">
+          <ownedTools xsi:type="tool_1:ToolGroup" name="Required Roles">
+            <tools xsi:type="tool_1:NodeCreationDescription" name="ExternalOperationRequiredRole" label="SystemOperationRequiredRole" nodeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalOperationRequiredRole%20Node']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.OperationRequiredRole" referenceName="requiredRoles_InterfaceRequiringEntity">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'OperationRequiredRole' + container.eContents()->select(x | x.eClass()=repository::OperationRequiredRole)->size()"/>
+                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="Add OperationRequiredRole" id="AddOperationRequiredRole">
+                      <parameters name="instance" value="var:instance"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:instance.requiredInterface__OperationRequiredRole = null">
+                      <subModelOperations xsi:type="tool:RemoveElement"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:NodeCreationDescription" name="ExternalSourceRole" label="SystemSourceRole" nodeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalSourceRole%20Node']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.SourceRole" referenceName="requiredRoles_InterfaceRequiringEntity">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'SourceRole' + container.eContents()->select(x | x.eClass()=repository::SourceRole)->size()"/>
+                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="Add SourceRole" id="AddSourceRole">
+                      <parameters name="instance" value="var:instance"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:instance.eventGroup__SourceRole = null">
+                      <subModelOperations xsi:type="tool:RemoveElement"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:NodeCreationDescription" name="ExternalInfrastructureRequiredRole" label="SystemInfrastructureRequiredRole" nodeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalInfrastructureRequiredRole%20Node']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InfrastructureRequiredRole" referenceName="requiredRoles_InterfaceRequiringEntity">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'InfrastructureRequiredRole' + container.eContents()->select(x | x.eClass()=repository::InfrastructureRequiredRole)->size()"/>
+                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="Add InfrastructureRequiredRole" id="AddInfrastructureRequiredRole">
+                      <parameters name="instance" value="var:instance"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:instance.requiredInterface__InfrastructureRequiredRole = null">
+                      <subModelOperations xsi:type="tool:RemoveElement"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="RoleName" inputLabelExpression="feature:entityName">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="var:0"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="var:0"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Nodes">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AssemblyContext" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="AssemblyContext" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[container/]">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.AssemblyContext" referenceName="assemblyContexts__ComposedStructure">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newAssemblyContext"/>
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AC Selection Wizard" label="Selection Wizard Assembly Context" forceRefresh="true" id="AddAssemblyContext">
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.encapsulatedComponent__AssemblyContext=null/]">
-                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="composition.AssemblyContext" referenceName="assemblyContexts__ComposedStructure">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="newAssemblyContext"/>
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="AC Selection Wizard" label="Selection Wizard Assembly Context" forceRefresh="true" id="AddAssemblyContext">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="[self.encapsulatedComponent__AssemblyContext=null/]">
+                      <subModelOperations xsi:type="tool:RemoveElement"/>
                     </subModelOperations>
                     <parameters name="newAssemblyContext" value="[instance/]"/>
                   </subModelOperations>
@@ -395,212 +400,213 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="EventChannel" nodeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='EventChannel%20Node']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="EventChannel" nodeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='EventChannel%20Node']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.EventChannel" referenceName="eventChannel__ComposedStructure">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="['EventChannel' + container.eventChannel__ComposedStructure->size()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="composition.EventChannel" referenceName="eventChannel__ComposedStructure">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['EventChannel' + container.eventChannel__ComposedStructure->size()/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="AssemblyContext Navigation" precondition="aql:self.encapsulatedComponent__AssemblyContext.oclIsKindOf(entity::ComposedProvidingRequiringEntity)" mappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']">
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="AssemblyContext Navigation" precondition="aql:self.encapsulatedComponent__AssemblyContext.oclIsKindOf(entity::ComposedProvidingRequiringEntity)" mappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Open CompositeComponent Representation" id="OpenRepresentation">
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Open CompositeComponent Representation" id="OpenRepresentation">
                 <parameters name="Viewpoint" value="Assembly"/>
                 <parameters name="RepresentationDescription" value="Assembly Diagram"/>
                 <parameters name="element" value="aql:element.oclAsType(composition::AssemblyContext).encapsulatedComponent__AssemblyContext"/>
+                <parameters name="Diagram name" value="CompositeComponent Diagram"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Connectors">
-          <ownedTools xsi:type="tool:ToolGroup" name="Provided Delegation Connectors">
-            <tools xsi:type="tool:EdgeCreationDescription" name="ProvidedDelegationConnector" edgeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@edgeMappings[name='ProvidedDelegationConnector%20Edge']">
+          <ownedTools xsi:type="tool_1:ToolGroup" name="Provided Delegation Connectors">
+            <tools xsi:type="tool_1:EdgeCreationDescription" name="ProvidedDelegationConnector" edgeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@edgeMappings[name='ProvidedDelegationConnector%20Edge']">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.eContainer()/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.ProvidedDelegationConnector" referenceName="connectors__ComposedStructure">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newProvidedDelegationConnector"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext_ProvidedDelegationConnector" valueExpression="[targetView.eContainer(DDiagramElement).target/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="innerProvidedRole_ProvidedDelegationConnector" valueExpression="[target/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outerProvidedRole_ProvidedDelegationConnector" valueExpression="[source/]"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[source.eContainer()/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="composition.ProvidedDelegationConnector" referenceName="connectors__ComposedStructure">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="newProvidedDelegationConnector"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="assemblyContext_ProvidedDelegationConnector" valueExpression="[targetView.eContainer(DDiagramElement).target/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="innerProvidedRole_ProvidedDelegationConnector" valueExpression="[target/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="outerProvidedRole_ProvidedDelegationConnector" valueExpression="[source/]"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:EdgeCreationDescription" name="SinkDelegationConnector" edgeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@edgeMappings[name='SinkDelegationConnector%20Edge']">
+            <tools xsi:type="tool_1:EdgeCreationDescription" name="SinkDelegationConnector" edgeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@edgeMappings[name='SinkDelegationConnector%20Edge']">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.eContainer()/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.SinkDelegationConnector" referenceName="connectors__ComposedStructure">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newSinkDelegationConnector"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext__SinkDelegationConnector" valueExpression="[targetView.eContainer(DDiagramElement).target/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="innerSinkRole__SinkRole" valueExpression="[target/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outerSinkRole__SinkRole" valueExpression="[source/]"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[source.eContainer()/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="composition.SinkDelegationConnector" referenceName="connectors__ComposedStructure">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="newSinkDelegationConnector"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="assemblyContext__SinkDelegationConnector" valueExpression="[targetView.eContainer(DDiagramElement).target/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="innerSinkRole__SinkRole" valueExpression="[target/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="outerSinkRole__SinkRole" valueExpression="[source/]"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:EdgeCreationDescription" name="ProvidedInfrastructureDelegationConnector" edgeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@edgeMappings[name='ProvidedInfrastructureDelegationConnector%20Edge']">
+            <tools xsi:type="tool_1:EdgeCreationDescription" name="ProvidedInfrastructureDelegationConnector" edgeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@edgeMappings[name='ProvidedInfrastructureDelegationConnector%20Edge']">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.eContainer()/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.ProvidedInfrastructureDelegationConnector" referenceName="connectors__ComposedStructure">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newInfrastructureProvidedRole"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext__ProvidedInfrastructureDelegationConnector" valueExpression="[targetView.eContainer(DDiagramElement).target/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="innerProvidedRole__ProvidedInfrastructureDelegationConnector" valueExpression="[target/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outerProvidedRole__ProvidedInfrastructureDelegationConnector" valueExpression="[source/]"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ToolGroup" name="Required Delegation Connectors">
-            <tools xsi:type="tool:EdgeCreationDescription" name="RequiredDelegationConnector" edgeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@edgeMappings[name='RequiredDelegationConnector%20Edge']">
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[target.eContainer()/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.RequiredDelegationConnector" referenceName="connectors__ComposedStructure">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="enityName" valueExpression="newRequiredDelegationConnector"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext_RequiredDelegationConnector" valueExpression="[sourceView.eContainer(DDiagramElement).target/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="innerRequiredRole_RequiredDelegationConnector" valueExpression="[source/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outerRequiredRole_RequiredDelegationConnector" valueExpression="[target/]"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool:EdgeCreationDescription" name="SourceDelegationConnector" edgeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@edgeMappings[name='SourceDelegationConnector%20Edge']">
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[target.eContainer()/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.SourceDelegationConnector" referenceName="connectors__ComposedStructure">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newSourceDelegationConnector"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext__SourceDelegationConnector" valueExpression="[sourceView.eContainer(DDiagramElement).target/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="innerSourceRole__SourceRole" valueExpression="[source/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outerSourceRole__SourceRole" valueExpression="[target/]"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-            <tools xsi:type="tool:EdgeCreationDescription" name="RequiredInfrastructureDelegationConnector" edgeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@edgeMappings[name='RequiredInfrastructureDelegationConnector%20Edge']">
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[target.eContainer()/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.RequiredInfrastructureDelegationConnector" referenceName="connectors__ComposedStructure">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newInfrastructureRequiredRole"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext__RequiredInfrastructureDelegationConnector" valueExpression="[sourceView.eContainer(DDiagramElement).target/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="innerRequiredRole__RequiredInfrastructureDelegationConnector" valueExpression="[source/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="outerRequiredRole__RequiredInfrastructureDelegationConnector" valueExpression="[target/]"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[source.eContainer()/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="composition.ProvidedInfrastructureDelegationConnector" referenceName="connectors__ComposedStructure">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="newInfrastructureProvidedRole"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="assemblyContext__ProvidedInfrastructureDelegationConnector" valueExpression="[targetView.eContainer(DDiagramElement).target/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="innerProvidedRole__ProvidedInfrastructureDelegationConnector" valueExpression="[target/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="outerProvidedRole__ProvidedInfrastructureDelegationConnector" valueExpression="[source/]"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolGroup" name="Assembly Connectors">
-            <tools xsi:type="tool:EdgeCreationDescription" name="AssemblyConnector" edgeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@edgeMappings[name='AssemblyConnector%20Edge']">
+          <ownedTools xsi:type="tool_1:ToolGroup" name="Required Delegation Connectors">
+            <tools xsi:type="tool_1:EdgeCreationDescription" name="RequiredDelegationConnector" edgeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@edgeMappings[name='RequiredDelegationConnector%20Edge']">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[sourceView.eContainer().eContainer(DDiagramElement).target/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.AssemblyConnector" referenceName="connectors__ComposedStructure">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newAssemblyConnector"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="providedRole_AssemblyConnector" valueExpression="[target/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="requiringAssemblyContext_AssemblyConnector" valueExpression="[sourceView.eContainer(DDiagramElement).target/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="requiredRole_AssemblyConnector" valueExpression="[source/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="providingAssemblyContext_AssemblyConnector" valueExpression="[targetView.eContainer(DDiagramElement).target/]"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[target.eContainer()/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="composition.RequiredDelegationConnector" referenceName="connectors__ComposedStructure">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="enityName" valueExpression="newRequiredDelegationConnector"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="assemblyContext_RequiredDelegationConnector" valueExpression="[sourceView.eContainer(DDiagramElement).target/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="innerRequiredRole_RequiredDelegationConnector" valueExpression="[source/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="outerRequiredRole_RequiredDelegationConnector" valueExpression="[target/]"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:EdgeCreationDescription" name="AssemblyEventConnector" edgeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@edgeMappings[name='AssemblyEventConnector%20Edge']">
+            <tools xsi:type="tool_1:EdgeCreationDescription" name="SourceDelegationConnector" edgeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@edgeMappings[name='SourceDelegationConnector%20Edge']">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[sourceView.eContainer().eContainer(DDiagramElement).target/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.AssemblyEventConnector" referenceName="connectors__ComposedStructure">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newAssemblyEventConnector"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceRole__AssemblyEventConnector" valueExpression="[source/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="sinkRole__AssemblyEventConnector" valueExpression="[target/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceAssemblyContext__AssemblyEventConnector" valueExpression="[sourceView.eContainer(DDiagramElement).target/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="sinkAssemblyContext__AssemblyEventConnector" valueExpression="[targetView.eContainer(DDiagramElement).target/]"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[target.eContainer()/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="composition.SourceDelegationConnector" referenceName="connectors__ComposedStructure">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="newSourceDelegationConnector"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="assemblyContext__SourceDelegationConnector" valueExpression="[sourceView.eContainer(DDiagramElement).target/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="innerSourceRole__SourceRole" valueExpression="[source/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="outerSourceRole__SourceRole" valueExpression="[target/]"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:EdgeCreationDescription" name="AssemblyInfrastructureConnector" edgeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@edgeMappings[name='AssemblyInfrastructureConnector%20Edge']">
+            <tools xsi:type="tool_1:EdgeCreationDescription" name="RequiredInfrastructureDelegationConnector" edgeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@edgeMappings[name='RequiredInfrastructureDelegationConnector%20Edge']">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[sourceView.eContainer().eContainer(DDiagramElement).target/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.AssemblyInfrastructureConnector" referenceName="connectors__ComposedStructure">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newAssemblyInfrastructureConnector"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="requiredRole__AssemblyInfrastructureConnector" valueExpression="[source/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="providedRole__AssemblyInfrastructureConnector" valueExpression="[target/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="requiringAssemblyContext__AssemblyInfrastructureConnector" valueExpression="[sourceView.eContainer(DDiagramElement).target/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="providingAssemblyContext__AssemblyInfrastructureConnector" valueExpression="[targetView.eContainer(DDiagramElement).target/]"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[target.eContainer()/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="composition.RequiredInfrastructureDelegationConnector" referenceName="connectors__ComposedStructure">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="newInfrastructureRequiredRole"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="assemblyContext__RequiredInfrastructureDelegationConnector" valueExpression="[sourceView.eContainer(DDiagramElement).target/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="innerRequiredRole__RequiredInfrastructureDelegationConnector" valueExpression="[source/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="outerRequiredRole__RequiredInfrastructureDelegationConnector" valueExpression="[target/]"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ToolGroup" name="Assembly Connectors">
+            <tools xsi:type="tool_1:EdgeCreationDescription" name="AssemblyConnector" edgeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@edgeMappings[name='AssemblyConnector%20Edge']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[sourceView.eContainer().eContainer(DDiagramElement).target/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="composition.AssemblyConnector" referenceName="connectors__ComposedStructure">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="newAssemblyConnector"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="providedRole_AssemblyConnector" valueExpression="[target/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="requiringAssemblyContext_AssemblyConnector" valueExpression="[sourceView.eContainer(DDiagramElement).target/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="requiredRole_AssemblyConnector" valueExpression="[source/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="providingAssemblyContext_AssemblyConnector" valueExpression="[targetView.eContainer(DDiagramElement).target/]"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:EdgeCreationDescription" name="AssemblyEventConnector" edgeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@edgeMappings[name='AssemblyEventConnector%20Edge']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[sourceView.eContainer().eContainer(DDiagramElement).target/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="composition.AssemblyEventConnector" referenceName="connectors__ComposedStructure">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="newAssemblyEventConnector"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="sourceRole__AssemblyEventConnector" valueExpression="[source/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="sinkRole__AssemblyEventConnector" valueExpression="[target/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="sourceAssemblyContext__AssemblyEventConnector" valueExpression="[sourceView.eContainer(DDiagramElement).target/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="sinkAssemblyContext__AssemblyEventConnector" valueExpression="[targetView.eContainer(DDiagramElement).target/]"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:EdgeCreationDescription" name="AssemblyInfrastructureConnector" edgeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@edgeMappings[name='AssemblyInfrastructureConnector%20Edge']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[sourceView.eContainer().eContainer(DDiagramElement).target/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="composition.AssemblyInfrastructureConnector" referenceName="connectors__ComposedStructure">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="newAssemblyInfrastructureConnector"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="requiredRole__AssemblyInfrastructureConnector" valueExpression="[source/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="providedRole__AssemblyInfrastructureConnector" valueExpression="[target/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="requiringAssemblyContext__AssemblyInfrastructureConnector" valueExpression="[sourceView.eContainer(DDiagramElement).target/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="providingAssemblyContext__AssemblyInfrastructureConnector" valueExpression="[targetView.eContainer(DDiagramElement).target/]"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
           </ownedTools>
           <subSections name="EventChannel Connectors">
-            <ownedTools xsi:type="tool:EdgeCreationDescription" name="EventChannelSinkConnector" edgeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@edgeMappings[name='EventChannelSinkConnector%20Edge']">
+            <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="EventChannelSinkConnector" edgeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@edgeMappings[name='EventChannelSinkConnector%20Edge']">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.oclAsType(composition::EventChannel).parentStructure__EventChannel/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.EventChannelSinkConnector" referenceName="connectors__ComposedStructure">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newEventChannelSinkConnector"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="eventChannel__EventChannelSinkConnector" valueExpression="[source/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="sinkRole__EventChannelSinkConnector" valueExpression="[target/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext__EventChannelSinkConnector" valueExpression="[targetView.eContainer(DDiagramElement).target/]"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[source.oclAsType(composition::EventChannel).parentStructure__EventChannel/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="composition.EventChannelSinkConnector" referenceName="connectors__ComposedStructure">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="newEventChannelSinkConnector"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="eventChannel__EventChannelSinkConnector" valueExpression="[source/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="sinkRole__EventChannelSinkConnector" valueExpression="[target/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="assemblyContext__EventChannelSinkConnector" valueExpression="[targetView.eContainer(DDiagramElement).target/]"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool:EdgeCreationDescription" name="EventChannelSourceConnector" edgeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@edgeMappings[name='EventChannelSourceConnector%20Edge']">
+            <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="EventChannelSourceConnector" edgeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@edgeMappings[name='EventChannelSourceConnector%20Edge']">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[target.oclAsType(composition::EventChannel).parentStructure__EventChannel/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="composition.EventChannelSourceConnector" referenceName="connectors__ComposedStructure">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="newEventChannelSourceConnector"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="eventChannel__EventChannelSourceConnector" valueExpression="[target/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceRole__EventChannelSourceRole" valueExpression="[source/]"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="assemblyContext__EventChannelSourceConnector" valueExpression="[sourceView.eContainer(DDiagramElement).target/]"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[target.oclAsType(composition::EventChannel).parentStructure__EventChannel/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="composition.EventChannelSourceConnector" referenceName="connectors__ComposedStructure">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="newEventChannelSourceConnector"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="eventChannel__EventChannelSourceConnector" valueExpression="[target/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="sourceRole__EventChannelSourceRole" valueExpression="[source/]"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="assemblyContext__EventChannelSourceConnector" valueExpression="[sourceView.eContainer(DDiagramElement).target/]"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -608,120 +614,120 @@
           </subSections>
         </toolSections>
         <toolSections name="Actions">
-          <ownedTools xsi:type="tool_1:OperationAction" name="Load Resource">
+          <ownedTools xsi:type="tool:OperationAction" name="Load Resource">
             <view name="views"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="Load Resource" id="LoadResource">
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Load Resource" id="LoadResource">
                 <parameters name="self" value="[self/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <subSections name="Direct Edit Label">
-            <ownedTools xsi:type="tool:DirectEditLabel" documentation="Basic direct edit label tool for NamedElements. Sets entityName to the user input." name="NamedElementDirectEdit" inputLabelExpression="feature:entityName">
+            <ownedTools xsi:type="tool_1:DirectEditLabel" documentation="Basic direct edit label tool for NamedElements. Sets entityName to the user input." name="NamedElementDirectEdit" inputLabelExpression="feature:entityName">
               <mask mask="{0}"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="[arg0/]"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self/]">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="[arg0/]"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool:DirectEditLabel" name="VariableCharacterisationDirectEdit" precondition="[self.variableUsage_VariableCharacterisation.eContainer().eClass().name = 'AssemblyContext'/]" inputLabelExpression="[self.specification_VariableCharacterisation.specification/]">
+            <ownedTools xsi:type="tool_1:DirectEditLabel" name="VariableCharacterisationDirectEdit" precondition="[self.variableUsage_VariableCharacterisation.eContainer().eClass().name = 'AssemblyContext'/]" inputLabelExpression="[self.specification_VariableCharacterisation.specification/]">
               <mask mask="{0}"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.specification_VariableCharacterisation.editPCMRandomVariable(arg0)/]"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.specification_VariableCharacterisation.editPCMRandomVariable(arg0)/]"/>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool:DoubleClickDescription" documentation="This should be using a direct edit label-tool instead which is not possible at the moment because the view is not accessible in it.&#xA;Can be changed once this bug is resolved: https://bugs.eclipse.org/bugs/show_bug.cgi?id=470598" name="QueryAndSetRoleParameterValue" precondition="[changeable/]" mappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='System%20Role%20Container']/@subNodeMappings[name='RoleParameter%20Node'] //@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@subContainerMappings[name='Role%20Container']/@subNodeMappings[name='RoleParameter%20Node']">
+            <ownedTools xsi:type="tool_1:DoubleClickDescription" documentation="This should be using a direct edit label-tool instead which is not possible at the moment because the view is not accessible in it.&#xA;Can be changed once this bug is resolved: https://bugs.eclipse.org/bugs/show_bug.cgi?id=470598" name="QueryAndSetRoleParameterValue" precondition="[changeable/]" mappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='System%20Role%20Container']/@subNodeMappings[name='RoleParameter%20Node'] //@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@subContainerMappings[name='Role%20Container']/@subNodeMappings[name='RoleParameter%20Node']">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element.oclAsType(EStructuralFeature).queryAndSetParameterValue(elementView.eContainer(DDiagramElement).target)/]"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[element.oclAsType(EStructuralFeature).queryAndSetParameterValue(elementView.eContainer(DDiagramElement).target)/]"/>
               </initialOperation>
             </ownedTools>
           </subSections>
           <subSections name="Deletion">
-            <ownedTools xsi:type="tool:DeleteElementDescription" documentation="Used to prevent modification of the repository upon deletion of an assembly context. By default this would remove the encapsulatedComponent." name="AssemblyContext Deletion" forceRefresh="true">
+            <ownedTools xsi:type="tool_1:DeleteElementDescription" documentation="Used to prevent modification of the repository upon deletion of an assembly context. By default this would remove the encapsulatedComponent." name="AssemblyContext Deletion" forceRefresh="true">
               <element name="element"/>
               <elementView name="elementView"/>
               <containerView name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="DeleteAsemblyContext" id="DeleteAsemblyContext">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                    <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                <firstModelOperations xsi:type="tool:ExternalJavaAction" name="DeleteAsemblyContext" id="DeleteAsemblyContext">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[self/]">
+                    <subModelOperations xsi:type="tool:RemoveElement"/>
                   </subModelOperations>
                   <parameters name="element" value="var:element"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool:DeleteElementDescription" documentation="Used to prevent deletion of roles which would modify the components." name="Noop">
+            <ownedTools xsi:type="tool_1:DeleteElementDescription" documentation="Used to prevent deletion of roles which would modify the components." name="Noop">
               <element name="element"/>
               <elementView name="elementView"/>
               <containerView name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self/]"/>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool:DeleteElementDescription" documentation="Deletes the VariableUsage. Only applicable if it is defined on the AssemblyContext." name="VariableUsage" precondition="[self.eContainer().eClass().name = 'AssemblyContext'/]">
+            <ownedTools xsi:type="tool_1:DeleteElementDescription" documentation="Deletes the VariableUsage. Only applicable if it is defined on the AssemblyContext." name="VariableUsage" precondition="[self.eContainer().eClass().name = 'AssemblyContext'/]">
               <element name="element"/>
               <elementView name="elementView"/>
               <containerView name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                  <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self/]">
+                  <subModelOperations xsi:type="tool:RemoveElement"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
           </subSections>
           <subSections name="Double Click">
-            <ownedTools xsi:type="tool:DoubleClickDescription" name="CopyVariableUsage to AssemblyContext" precondition="[self.eContainer().eClass().name &lt;> 'AssemblyContext'/]" mappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@subContainerMappings[name='VariableUsage%20Container']">
+            <ownedTools xsi:type="tool_1:DoubleClickDescription" name="CopyVariableUsage to AssemblyContext" precondition="[self.eContainer().eClass().name &lt;> 'AssemblyContext'/]" mappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@subContainerMappings[name='VariableUsage%20Container']">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element.oclAsType(VariableUsage).copyToAssemblyContext(elementView.eContainer().oclAsType(DNodeContainer).target.oclAsType(AssemblyContext))/]"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[element.oclAsType(VariableUsage).copyToAssemblyContext(elementView.eContainer().oclAsType(DNodeContainer).target.oclAsType(AssemblyContext))/]"/>
               </initialOperation>
             </ownedTools>
           </subSections>
         </toolSections>
         <toolSections name="Architectural Templates">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="The action is specified without a parameter, because Sirius does not allow for this right now. This bears potential for future bugs." name="AT Creation" label="Apply Architectural Template" precondition="[self.eClass().name = 'System'/]" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='System%20Role%20Container']" iconPath="/org.palladiosimulator.architecturaltemplates.edit/icons/full/obj16/ATInstance.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="The action is specified without a parameter, because Sirius does not allow for this right now. This bears potential for future bugs." name="AT Creation" label="Apply Architectural Template" precondition="[self.eClass().name = 'System'/]" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='System%20Role%20Container']" iconPath="/org.palladiosimulator.architecturaltemplates.edit/icons/full/obj16/ATInstance.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self/]">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT SystemRole Creation" id="AddAT"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self/]">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="AT SystemRole Creation" id="AddAT"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="AT Role Creation" label="Bind Role" precondition="[(self.eClass().name = 'AssemblyContext') and (self.eContainer().hasRoles())/]" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@subContainerMappings[name='Role%20Container']" iconPath="/org.palladiosimulator.architecturaltemplates.edit/icons/full/obj16/Role2Component.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="AT Role Creation" label="Bind Role" precondition="[(self.eClass().name = 'AssemblyContext') and (self.eContainer().hasRoles())/]" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@subContainerMappings[name='Role%20Container']" iconPath="/org.palladiosimulator.architecturaltemplates.edit/icons/full/obj16/Role2Component.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Creation" label="Bind Role" id="AddATRole"/>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="AT Role Creation" label="Bind Role" id="AddATRole"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="AT Role Removal" label="Remove Role" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="AT Role Removal" label="Remove Role" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role Removal" id="RemoveATRole"/>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="AT Role Removal" id="RemoveATRole"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="AT SystemRole Removal" label="Remove Architectural Template" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="AT SystemRole Removal" label="Remove Architectural Template" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="AT Role" id="RemoveAT"/>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="AT Role" id="RemoveAT"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Stereotypes">
-          <ownedTools xsi:type="tool_1:ExternalJavaAction" name="Apply Unapply Profile" id="ApplyUnapplyProfile"/>
-          <ownedTools xsi:type="tool_1:ExternalJavaAction" name="Apply Unapply Stereotype" id="ApplyUnapplyStereotype"/>
-          <ownedTools xsi:type="tool_1:PopupMenu" name="MDSD Profiles">
-            <menuItemDescription xsi:type="tool_1:ExternalJavaActionCall" name="Apply Unapply Profile Call" action="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='Apply%20Unapply%20Profile']"/>
-            <menuItemDescription xsi:type="tool_1:ExternalJavaActionCall" name="Apply Unapply Stereotype Call" action="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='Apply%20Unapply%20Stereotype']"/>
+          <ownedTools xsi:type="tool:ExternalJavaAction" name="Apply Unapply Profile" id="ApplyUnapplyProfile"/>
+          <ownedTools xsi:type="tool:ExternalJavaAction" name="Apply Unapply Stereotype" id="ApplyUnapplyStereotype"/>
+          <ownedTools xsi:type="tool:PopupMenu" name="MDSD Profiles">
+            <menuItemDescription xsi:type="tool:ExternalJavaActionCall" name="Apply Unapply Profile Call" action="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='Apply%20Unapply%20Profile']"/>
+            <menuItemDescription xsi:type="tool:ExternalJavaActionCall" name="Apply Unapply Stereotype Call" action="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='Apply%20Unapply%20Stereotype']"/>
           </ownedTools>
         </toolSections>
         <customization>
@@ -771,49 +777,49 @@
           </style>
         </containerMappings>
         <toolSections name="QoS Annotations">
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="SSETs deletion">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="SSETs deletion">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:elementView">
-                <subModelOperations xsi:type="tool_1:For" expression="aql:self.eContents()">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:i.oclAsType(diagram::DNodeListElement).target">
-                    <subModelOperations xsi:type="tool_1:RemoveElement"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:elementView">
+                <subModelOperations xsi:type="tool:For" expression="aql:self.eContents()">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:i.oclAsType(diagram::DNodeListElement).target">
+                    <subModelOperations xsi:type="tool:RemoveElement"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="System Required Execution Time" nodeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@additionalLayers[name='QoS']/@containerMappings[name='SSETs']/@subNodeMappings[name='SSET']" extraMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalOperationRequiredRole%20Node']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="System Required Execution Time" nodeMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@additionalLayers[name='QoS']/@containerMappings[name='SSETs']/@subNodeMappings[name='SSET']" extraMappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@borderedNodeMappings[name='ExternalOperationRequiredRole%20Node']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:If" conditionExpression="aql:containerView.getSemanticDiagram().oclAsType(diagram::DSemanticDiagram).target.oclIsTypeOf(system::System)">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:containerView.getSemanticDiagram().oclAsType(diagram::DSemanticDiagram).target">
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.oclAsType(system::System).qosAnnotations_System = null or self.oclAsType(system::System).qosAnnotations_System->isEmpty()">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="qosannotations.QoSAnnotations" referenceName="qosAnnotations_System">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="QoSAnnotations"/>
+              <firstModelOperations xsi:type="tool:If" conditionExpression="aql:containerView.getSemanticDiagram().oclAsType(diagram::DSemanticDiagram).target.oclIsTypeOf(system::System)">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:containerView.getSemanticDiagram().oclAsType(diagram::DSemanticDiagram).target">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclAsType(system::System).qosAnnotations_System = null or self.oclAsType(system::System).qosAnnotations_System->isEmpty()">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="qosannotations.QoSAnnotations" referenceName="qosAnnotations_System">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="QoSAnnotations"/>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.oclAsType(system::System).qosAnnotations_System->first()">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="qos_performance.SystemSpecifiedExecutionTime" referenceName="specifiedQoSAnnotations_QoSAnnotations">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="role_SpecifiedQoSAnnotation" valueExpression="var:container"/>
-                      <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add SystemSpecifiedExecutionTime" id="AddSystemSpecifiedExecutionTime">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.oclAsType(system::System).qosAnnotations_System->first()">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="qos_performance.SystemSpecifiedExecutionTime" referenceName="specifiedQoSAnnotations_QoSAnnotations">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="role_SpecifiedQoSAnnotation" valueExpression="var:container"/>
+                      <subModelOperations xsi:type="tool:ExternalJavaAction" name="Add SystemSpecifiedExecutionTime" id="AddSystemSpecifiedExecutionTime">
                         <parameters name="instance" value="var:instance"/>
                       </subModelOperations>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.signature_SpecifiedQoSAnnation &lt;> null">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_SpecifiedExecutionTime" variableName="specification"/>
-                        <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set SSETSpecification" id="SetSSETSpecification">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:instance.signature_SpecifiedQoSAnnation &lt;> null">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_SpecifiedExecutionTime" variableName="specification"/>
+                        <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set SSETSpecification" id="SetSSETSpecification">
                           <parameters name="element" value="var:instance"/>
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.signature_SpecifiedQoSAnnation == null or instance.specification_SpecifiedExecutionTime.specification == null">
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
-                        <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:instance.signature_SpecifiedQoSAnnation == null or instance.specification_SpecifiedExecutionTime.specification == null">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                        <subModelOperations xsi:type="tool:RemoveElement"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>

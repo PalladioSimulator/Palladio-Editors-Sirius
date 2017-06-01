@@ -529,6 +529,7 @@
                 <parameters name="Viewpoint" value="Assembly"/>
                 <parameters name="RepresentationDescription" value="Assembly Diagram"/>
                 <parameters name="element" value="var:element"/>
+                <parameters name="Diagram name" value="SubSystem Diagram"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -540,6 +541,7 @@
                 <parameters name="Viewpoint" value="Assembly"/>
                 <parameters name="RepresentationDescription" value="Assembly Diagram"/>
                 <parameters name="element" value="var:element"/>
+                <parameters name="Diagram name" value="CompositeComponent Diagram"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

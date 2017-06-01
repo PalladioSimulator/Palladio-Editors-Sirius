@@ -24,8 +24,8 @@ import org.palladiosimulator.editors.sirius.custom.util.SiriusCustomUtil;
  * Three parameters must be specified :
  * 	Viewpoint: the name of the viewpoint to be selected
  * 	RepresentationDescription: the name of the specific RepresentationDescription in the chosen viewpoint
- * 	element : the element on which the double click was triggered
- * 
+ * 	element: the element whose representation should be opened
+ *  Diagram name: Optional
  * @author Amine Kechaou
  *
  */
@@ -38,7 +38,7 @@ public class OpenRepresentation implements IExternalJavaAction {
 
 		String viewpointName = (String) parameters.get("Viewpoint");
 		String representationDescriptionName = (String) parameters.get("RepresentationDescription");
-		
+		String diagramName = (String) parameters.get("Diagram name");
 		// Select viewpoint
 		List<String> selectedViewpoints = new ArrayList<String>();
 		selectedViewpoints.add(viewpointName);
@@ -52,7 +52,13 @@ public class OpenRepresentation implements IExternalJavaAction {
 		Collection<DRepresentation> representations = DialectManager.INSTANCE.getRepresentations(semantic, session);
 		// create a new representation if none exists and open it
 		if (representations.isEmpty()) { 
-			String representationName = "new " + ((description.getLabel() == null) ? description.getName() : description.getLabel());
+			String representationName = null;
+			if (diagramName != null && !diagramName.isEmpty()) {
+				representationName = diagramName;
+			}
+			else {
+				representationName = ((description.getLabel() == null) ? description.getName() : description.getLabel());
+			}
 			DRepresentation representation = SiriusCustomUtil.createRepresentation(session, representationName,
 					description, semantic, new NullProgressMonitor());
 			DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());

@@ -10,6 +10,8 @@
       <diagramInitialisation>
         <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Load Resources" id="LoadResources">
           <parameters name="Palladio.resourcetype" value="aql:'pathmap://PCM_MODELS/Palladio.resourcetype'"/>
+          <parameters name="PrimitiveTypes.repository" value="aql:'pathmap://PCM_MODELS/PrimitiveTypes.repository'"/>
+          <parameters name="FailureTypes.repository" value="aql:'pathmap://PCM_MODELS/FailureTypes.repository'"/>
         </firstModelOperations>
       </diagramInitialisation>
       <defaultLayer name="Default">
