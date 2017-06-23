@@ -621,26 +621,26 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="Add SEFF" id="AddSEFF">
-                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.describedService__SEFF &lt;> null">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:instance.eContents(seff::StartAction)->size() = 0 and instance.eContents(seff::StopAction)->size() = 0">
-                        <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="StartAction"/>
-                        <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="StopAction"/>
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StartAction">
-                          <subModelOperations xsi:type="tool:SetValue" featureName="successor_AbstractAction" valueExpression="var:StopAction"/>
-                        </subModelOperations>
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StopAction">
-                          <subModelOperations xsi:type="tool:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:StartAction"/>
-                        </subModelOperations>
-                        <subModelOperations xsi:type="tool:ExternalJavaAction" name="Activate Seff Viewpoint on creation" id="ActivateViewpoint">
-                          <parameters name="element" value="var:instance"/>
-                          <parameters name="Viewpoint" value="Seff"/>
-                        </subModelOperations>
+                    <parameters name="instance" value="var:instance"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.describedService__SEFF = null">
+                    <subModelOperations xsi:type="tool:RemoveElement"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.describedService__SEFF &lt;> null">
+                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="Activate Seff Viewpoint on creation" id="ActivateViewpoint">
+                      <parameters name="element" value="var:instance"/>
+                      <parameters name="Viewpoint" value="Seff"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:instance.eContents(seff::StartAction)->size() = 0 and instance.eContents(seff::StopAction)->size() = 0">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="StartAction"/>
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="StopAction"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StartAction">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="successor_AbstractAction" valueExpression="var:StopAction"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StopAction">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:StartAction"/>
                       </subModelOperations>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.describedService__SEFF = null">
-                      <subModelOperations xsi:type="tool:RemoveElement"/>
-                    </subModelOperations>
-                    <parameters name="instance" value="var:instance"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>

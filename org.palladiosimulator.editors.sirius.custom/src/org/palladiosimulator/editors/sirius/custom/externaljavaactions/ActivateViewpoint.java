@@ -23,7 +23,7 @@ public class ActivateViewpoint implements IExternalJavaAction {
 		
 		List<String> selectedViewpoints = new ArrayList<String>();
 		selectedViewpoints.add(viewpointName);
-		SiriusCustomUtil.selectViewpoints(session, selectedViewpoints, false, new NullProgressMonitor());
+		SiriusCustomUtil.selectViewpoints(session, selectedViewpoints, true, new NullProgressMonitor());
 
 	}
 
