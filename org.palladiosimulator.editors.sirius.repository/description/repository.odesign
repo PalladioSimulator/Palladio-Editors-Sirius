@@ -285,6 +285,10 @@
                             <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StopAction">
                               <subModelOperations xsi:type="tool:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:StartAction"/>
                             </subModelOperations>
+                            <subModelOperations xsi:type="tool:ExternalJavaAction" name="Activate Seff Viewpoint on creation" id="ActivateViewpoint">
+                              <parameters name="element" value="var:instance"/>
+                              <parameters name="Viewpoint" value="Seff"/>
+                            </subModelOperations>
                           </subModelOperations>
                         </subModelOperations>
                       </subModelOperations>
@@ -626,6 +630,10 @@
                         </subModelOperations>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StopAction">
                           <subModelOperations xsi:type="tool:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:StartAction"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:ExternalJavaAction" name="Activate Seff Viewpoint on creation" id="ActivateViewpoint">
+                          <parameters name="element" value="var:instance"/>
+                          <parameters name="Viewpoint" value="Seff"/>
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
