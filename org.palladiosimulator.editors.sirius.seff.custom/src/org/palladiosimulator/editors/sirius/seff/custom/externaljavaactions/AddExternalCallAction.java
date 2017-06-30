@@ -27,7 +27,8 @@ public class AddExternalCallAction implements IExternalJavaAction {
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
 		ExternalCallAction extCall = (ExternalCallAction) parameters.get("instance");
 		OperationSignature os = getOperationSignature(extCall);
-		extCall.setCalledService_ExternalService(os);
+		if (os != null)
+			extCall.setCalledService_ExternalService(os);
 
 	}
 
