@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -18,6 +16,7 @@ import org.palladiosimulator.pcm.repository.OperationInterface;
 import org.palladiosimulator.pcm.repository.OperationRequiredRole;
 import org.palladiosimulator.pcm.repository.OperationSignature;
 import org.palladiosimulator.pcm.repository.Repository;
+import org.palladiosimulator.pcm.repository.RequiredRole;
 import org.palladiosimulator.pcm.seff.ExternalCallAction;
 import org.palladiosimulator.pcm.seff.ServiceEffectSpecification;
 
@@ -63,14 +62,10 @@ public class AddExternalCallAction implements IExternalJavaAction {
 			ServiceEffectSpecification seff = (ServiceEffectSpecification) extCall.getResourceDemandingBehaviour_AbstractAction();
 			BasicComponent parent = seff.getBasicComponent_ServiceEffectSpecification();
 			
-			//Get the OperationRequiredRoles of the BasicComponents
-			Collection<OperationRequiredRole> operationRequiredRoles = parent.getRequiredRoles_InterfaceRequiringEntity().stream().filter(x -> x instanceof OperationRequiredRole).map(x -> (OperationRequiredRole) x).collect(Collectors.toList());
-			
 			//if o is not referenced by any OperationRequiredRole, remove it from the tree viewer
-			
-		    Optional<OperationRequiredRole> operationRequiredRole = operationRequiredRoles.stream().filter(x -> x.getRequiredInterface__OperationRequiredRole() == o).findAny();
-		    if (operationRequiredRole.isPresent())
-		        requiredRolesMap.put((OperationInterface) o, operationRequiredRole.get());
+			OperationRequiredRole requiredRole= getOperationRequiredRole(parent.getRequiredRoles_InterfaceRequiringEntity(), (OperationInterface) o);
+		    if (requiredRole != null)
+		        requiredRolesMap.put((OperationInterface) o, requiredRole);
 		    else
 		        dialog.getTreeViewer().remove(o);
 			
@@ -80,6 +75,17 @@ public class AddExternalCallAction implements IExternalJavaAction {
 		dialog.open();
 
 		return (OperationSignature) dialog.getResult();
+	}
+	
+	private OperationRequiredRole getOperationRequiredRole(Collection<RequiredRole> requiredRoles, OperationInterface operationInterface) {
+	    for (RequiredRole r : requiredRoles) {
+	        if (!(r instanceof OperationRequiredRole))
+	            continue;
+	        
+	        if (((OperationRequiredRole) r).getRequiredInterface__OperationRequiredRole() == operationInterface)
+	            return (OperationRequiredRole) r;
+	    }
+	    return null;
 	}
 	
 
