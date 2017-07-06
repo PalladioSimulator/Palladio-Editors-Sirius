@@ -169,7 +169,7 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subContainerMappings>
-          <subContainerMappings name="ResourceRequiredRoles" semanticCandidatesExpression="var:self" domainClass="repository.BasicComponent" childrenPresentation="List">
+          <subContainerMappings name="ResourceRequiredRolesCompartment" semanticCandidatesExpression="var:self" domainClass="repository.BasicComponent" childrenPresentation="List">
             <subNodeMappings name="ResourceRequiredRole" semanticCandidatesExpression="feature:resourceRequiredRoles__ResourceInterfaceRequiringEntity" doubleClickDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20ResourceInterface']" domainClass="entity.ResourceRequiredRole">
               <style xsi:type="style:SquareDescription" labelExpression="aql:self.entityName + '&lt;' + self.requiredResourceInterface__ResourceRequiredRole.entityName + '>'" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -247,7 +247,7 @@
               <firstModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="var:0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="RequiredRole" edgeMappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@edgeMappings[name='RequiredRole']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="RequiredRole" edgeMappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@edgeMappings[name='RequiredRole']" extraSourceMappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='SEFFCompartment'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='PassiveResourcesCompartment'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='ComponentParameterCompartment'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='ResourceRequiredRolesCompartment']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -261,7 +261,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="ProvidedRole" precondition="[preSource.oclAsType(RepositoryComponent).providedRoles_InterfaceProvidingEntity->exists(x |  (x.oclIsTypeOf(OperationProvidedRole)) and (x.oclAsType(OperationProvidedRole).providedInterface__OperationProvidedRole = preTarget)) = false or preSource.oclIsTypeOf(CompositeComponent)/]" edgeMappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@edgeMappings[name='ProvidedRole']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="ProvidedRole" precondition="[preSource.oclAsType(RepositoryComponent).providedRoles_InterfaceProvidingEntity->exists(x |  (x.oclIsTypeOf(OperationProvidedRole)) and (x.oclAsType(OperationProvidedRole).providedInterface__OperationProvidedRole = preTarget)) = false or preSource.oclIsTypeOf(CompositeComponent)/]" edgeMappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@edgeMappings[name='ProvidedRole']" extraSourceMappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='ComponentParameterCompartment'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='PassiveResourcesCompartment'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='SEFFCompartment'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='ResourceRequiredRolesCompartment']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -654,7 +654,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="ResourceRequiredRole" nodeMappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='ResourceRequiredRoles']/@subNodeMappings[name='ResourceRequiredRole']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="ResourceRequiredRole" nodeMappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='ResourceRequiredRolesCompartment']/@subNodeMappings[name='ResourceRequiredRole']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -723,7 +723,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Edit ResourceInterface" mappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='ResourceRequiredRoles']/@subNodeMappings[name='ResourceRequiredRole']">
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Edit ResourceInterface" mappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='ResourceRequiredRolesCompartment']/@subNodeMappings[name='ResourceRequiredRole']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
