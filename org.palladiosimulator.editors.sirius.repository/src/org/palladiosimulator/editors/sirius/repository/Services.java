@@ -1,6 +1,7 @@
 package org.palladiosimulator.editors.sirius.repository;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.palladiosimulator.pcm.core.entity.NamedElement;
 import org.palladiosimulator.pcm.repository.CollectionDataType;
 import org.palladiosimulator.pcm.repository.DataType;
@@ -10,8 +11,8 @@ import org.palladiosimulator.pcm.repository.Parameter;
 import org.palladiosimulator.pcm.repository.PrimitiveDataType;
 import org.palladiosimulator.pcm.repository.Signature;
 
-public class ParametersService {
-	public ParametersService() {
+public class Services {
+	public Services() {
 
 	}
 
@@ -47,4 +48,17 @@ public class ParametersService {
 			result = result.substring(0, result.length() - 2);
 		return result;
 	}
+	
+	// Returns true if s is a legal Java identifier.
+    public Boolean isJavaIdentifier(EObject eObject, String s) {
+        if (s.length() == 0 || !Character.isJavaIdentifierStart(s.charAt(0))) {
+            return false;
+        }
+        for (int i=1; i < s.length(); i++) {
+            if (!Character.isJavaIdentifierPart(s.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

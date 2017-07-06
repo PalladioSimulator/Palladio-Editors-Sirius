@@ -2,7 +2,10 @@ package org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -15,7 +18,6 @@ import org.palladiosimulator.pcm.repository.OperationInterface;
 import org.palladiosimulator.pcm.repository.OperationRequiredRole;
 import org.palladiosimulator.pcm.repository.OperationSignature;
 import org.palladiosimulator.pcm.repository.Repository;
-import org.palladiosimulator.pcm.repository.RequiredRole;
 import org.palladiosimulator.pcm.seff.ExternalCallAction;
 import org.palladiosimulator.pcm.seff.ServiceEffectSpecification;
 
@@ -23,16 +25,21 @@ public class AddExternalCallAction implements IExternalJavaAction {
 	
 
 	public static final Shell SHELL = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+	
+	
 	@Override
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
 		ExternalCallAction extCall = (ExternalCallAction) parameters.get("instance");
-		OperationSignature os = getOperationSignature(extCall);
-		if (os != null)
-			extCall.setCalledService_ExternalService(os);
+		HashMap<OperationInterface, OperationRequiredRole> requiredRolesMap = new HashMap<OperationInterface, OperationRequiredRole>();
+		OperationSignature os = getOperationSignature(extCall, requiredRolesMap);
+		if (os != null) {
+			extCall.setCalledService_ExternalService(os);			
+			extCall.setRole_ExternalService(requiredRolesMap.get(os.getInterface__OperationSignature()));
+		}
 
 	}
 
-	private OperationSignature getOperationSignature(ExternalCallAction extCall) {
+	private OperationSignature getOperationSignature(ExternalCallAction extCall, HashMap<OperationInterface, OperationRequiredRole> requiredRolesMap) {
 
 		Collection<Object> filter = new ArrayList<Object>();
 		
@@ -48,26 +55,26 @@ public class AddExternalCallAction implements IExternalJavaAction {
 
 		dialog.setProvidedService(OperationSignature.class);
 		
-		// only take required OperationInterface
 		for (Object o : dialog.getTreeViewer().getExpandedElements()) {
-			if (!(o instanceof OperationInterface))
+			if (!(o instanceof OperationInterface)) //if the current object is not an OperationInterface, skip.
 				continue;
+			
+			//o is an OperationInterface
 			ServiceEffectSpecification seff = (ServiceEffectSpecification) extCall.getResourceDemandingBehaviour_AbstractAction();
 			BasicComponent parent = seff.getBasicComponent_ServiceEffectSpecification();
 			
-			boolean found = false;
-			for (RequiredRole r : parent.getRequiredRoles_InterfaceRequiringEntity()) {
-				if (!(r instanceof OperationRequiredRole))
-					continue;
-				OperationRequiredRole or = (OperationRequiredRole) r;
-				if (or.getRequiredInterface__OperationRequiredRole().equals(o)) {
+			//Get the OperationRequiredRoles of the BasicComponents
+			Collection<OperationRequiredRole> operationRequiredRoles = parent.getRequiredRoles_InterfaceRequiringEntity().stream().filter(x -> x instanceof OperationRequiredRole).map(x -> (OperationRequiredRole) x).collect(Collectors.toList());
+			
+			//if o is not referenced by any OperationRequiredRole, remove it from the tree viewer
+			
+		    Optional<OperationRequiredRole> operationRequiredRole = operationRequiredRoles.stream().filter(x -> x.getRequiredInterface__OperationRequiredRole() == o).findAny();
+		    if (operationRequiredRole.isPresent())
+		        requiredRolesMap.put((OperationInterface) o, operationRequiredRole.get());
+		    else
+		        dialog.getTreeViewer().remove(o);
+			
 
-					found = true;
-					extCall.setRole_ExternalService(or);
-				}
-			}
-			if (!found)
-				dialog.getTreeViewer().remove(o);
 		}
 		
 		dialog.open();
