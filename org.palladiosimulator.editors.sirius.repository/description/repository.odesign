@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="repository" version="12.0.0.2017041100">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="repository" version="11.1.1.201610211630">
   <ownedViewpoints name="Repository" modelFileExtension="repository">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Repository Diagram" initialisation="true" domainClass="repository.Repository" enablePopupBars="true">
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//repository"/>
@@ -1294,31 +1294,29 @@
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.repository.Services"/>
   </ownedViewpoints>
-  <extensions xsi:type="properties:ViewExtensionDescription" name="Properties">
+  <extensions xsi:type="properties:ViewExtensionDescription" identifier="Properties">
     <metamodels href="http://palladiosimulator.org/PalladioComponentModel/5.2#//parameter"/>
     <metamodels href="http://palladiosimulator.org/PalladioComponentModel/5.2#//repository"/>
-    <categories name="Default">
-      <pages name="OperationInterface" labelExpression="Operations" domainClass="OperationInterface" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0"/>
-      <pages name="InfrastructureInterface" labelExpression="Operations" domainClass="InfrastructureInterface" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.1"/>
-      <pages name="EventGroup" labelExpression="Operations" domainClass="EventGroup" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.2"/>
-      <groups name="OperationInterface group" domainClass="OperationInterface" semanticCandidateExpression="var:self">
-        <controls xsi:type="properties:CustomDescription" name="org.palladiosimulator.editors.sirius.repository.custom.properties.OperationInterface">
-          <customExpressions name="valueExpression" customExpression="aql:self"/>
-        </controls>
-        <style barStyle="NO_TITLE" toggleStyle="NONE"/>
-      </groups>
-      <groups name="InfrastructureInterface group" domainClass="InfrastructureInterface" semanticCandidateExpression="var:self">
-        <controls xsi:type="properties:CustomDescription" name="org.palladiosimulator.editors.sirius.repository.custom.properties.InfrastructureInterface">
-          <customExpressions name="valueExpression" customExpression="aql:self"/>
-        </controls>
-        <style barStyle="NO_TITLE" toggleStyle="NONE"/>
-      </groups>
-      <groups name="EventGroup group" domainClass="EventGroup" semanticCandidateExpression="var:self">
-        <controls xsi:type="properties:CustomDescription" name="org.palladiosimulator.editors.sirius.repository.custom.properties.EventGroup">
-          <customExpressions name="valueExpression" customExpression="aql:self"/>
-        </controls>
-        <style barStyle="NO_TITLE" toggleStyle="NONE"/>
-      </groups>
-    </categories>
+<pages identifier="OperationInterface" labelExpression="Operations" domainClass="OperationInterface" semanticCandidateExpression="var:self" groups="//@extensions.0/@groups.0"/>
+<pages identifier="InfrastructureInterface" labelExpression="Operations" domainClass="InfrastructureInterface" semanticCandidateExpression="var:self" groups="//@extensions.0/@groups.1"/>
+<pages identifier="EventGroup" labelExpression="Operations" domainClass="EventGroup" semanticCandidateExpression="var:self" groups="//@extensions.0/@groups.2"/>
+<groups identifier="OperationInterface group" domainClass="OperationInterface" semanticCandidateExpression="var:self">
+  <controls xsi:type="properties:CustomDescription" identifier="org.palladiosimulator.editors.sirius.repository.custom.properties.OperationInterface">
+    <customExpressions identifier="valueExpression" customExpression="aql:self"/>
+  </controls>
+  <style barStyle="NO_TITLE" toggleStyle="NONE"/>
+</groups>
+<groups identifier="InfrastructureInterface group" domainClass="InfrastructureInterface" semanticCandidateExpression="var:self">
+  <controls xsi:type="properties:CustomDescription" identifier="org.palladiosimulator.editors.sirius.repository.custom.properties.InfrastructureInterface">
+    <customExpressions identifier="valueExpression" customExpression="aql:self"/>
+  </controls>
+  <style barStyle="NO_TITLE" toggleStyle="NONE"/>
+</groups>
+<groups identifier="EventGroup group" domainClass="EventGroup" semanticCandidateExpression="var:self">
+  <controls xsi:type="properties:CustomDescription" identifier="org.palladiosimulator.editors.sirius.repository.custom.properties.EventGroup">
+    <customExpressions identifier="valueExpression" customExpression="aql:self"/>
+  </controls>
+  <style barStyle="NO_TITLE" toggleStyle="NONE"/>
+</groups>
   </extensions>
 </description:Group>
