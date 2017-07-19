@@ -18,78 +18,79 @@ import org.palladiosimulator.pcm.repository.provider.RepositoryItemProviderAdapt
 import org.palladiosimulator.pcm.seff.provider.SeffItemProviderAdapterFactory;
 public abstract class TableLifecycleManager extends AbstractEEFWidgetLifecycleManager {
 
-	private EEFCustomWidgetDescription description;
+    private final EEFCustomWidgetDescription description;
 
-	protected ComposedAdapterFactory adapterFactory;
-	protected EditorSection editorSection;
+    protected ComposedAdapterFactory adapterFactory;
+    protected EditorSection editorSection;
 
-	protected TableController controller;
+    protected TableController controller;
 
-	public TableLifecycleManager(EEFCustomWidgetDescription description, IVariableManager variableManager, IInterpreter interpreter,
-			EditingContextAdapter contextAdapter) {
-		super(variableManager, interpreter, contextAdapter);
-		this.description = description;
-	}
+    public TableLifecycleManager(final EEFCustomWidgetDescription description, final IVariableManager variableManager, final IInterpreter interpreter,
+            final EditingContextAdapter contextAdapter) {
+        super(variableManager, interpreter, contextAdapter);
+        this.description = description;
+    }
 
-	@Override
-	protected void createMainControl(Composite parent, IEEFFormContainer formContainer) {
+    @Override
+    protected void createMainControl(final Composite parent, final IEEFFormContainer formContainer) {
 
-		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
-		adapterFactory
-				.addAdapterFactory(new RepositoryItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new SeffItemProviderAdapterFactory());
-		adapterFactory
-				.addAdapterFactory(new ResourceItemProviderAdapterFactory());
-		adapterFactory
-				.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
-		
+        adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+        adapterFactory
+        .addAdapterFactory(new RepositoryItemProviderAdapterFactory());
+        adapterFactory.addAdapterFactory(new SeffItemProviderAdapterFactory());
+        adapterFactory
+        .addAdapterFactory(new ResourceItemProviderAdapterFactory());
+        adapterFactory
+        .addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
-		controller = new TableController(description, variableManager, interpreter, contextAdapter);
-		setPropertySection(parent);
 
-	}
+        controller = new TableController(description, variableManager, interpreter, super.editingContextAdapter);
+        setPropertySection(parent);
 
-	protected abstract void setPropertySection(Composite parent);
-	
+    }
 
-	@Override
-	public void aboutToBeShown() {
-		super.aboutToBeShown();
-	}
+    protected abstract void setPropertySection(Composite parent);
 
-	@Override
-	public void refresh() {
-		super.refresh();
-		this.controller.refresh();
-	}
 
-	@Override
-	public void aboutToBeHidden() {
-		super.aboutToBeHidden();
-	}
+    @Override
+    public void aboutToBeShown() {
+        super.aboutToBeShown();
+    }
 
-	@Override
-	protected IEEFWidgetController getController() {
-		return this.controller;
-	}
+    @Override
+    public void refresh() {
+        super.refresh();
+        this.controller.refresh();
+    }
 
-	@Override
-	protected EEFWidgetDescription getWidgetDescription() {
-		return this.description;
-	}
+    @Override
+    public void aboutToBeHidden() {
+        super.aboutToBeHidden();
+    }
 
-	@Override
-	protected Control getValidationControl() {
-		return this.editorSection.getViewer().getControl();
-	}
+    @Override
+    protected IEEFWidgetController getController() {
+        return this.controller;
+    }
 
-	@Override
-	public void dispose() {
-		super.dispose();
-		this.adapterFactory.dispose();
-	}
-	
-	protected void setEnabled(boolean isEnabled) {
-		this.editorSection.setEnabled(isEnabled);
-	}
+    @Override
+    protected EEFWidgetDescription getWidgetDescription() {
+        return this.description;
+    }
+
+    @Override
+    protected Control getValidationControl() {
+        return this.editorSection.getViewer().getControl();
+    }
+
+    @Override
+    public void dispose() {
+        super.dispose();
+        this.adapterFactory.dispose();
+    }
+
+    @Override
+    protected void setEnabled(final boolean isEnabled) {
+        this.editorSection.setEnabled(isEnabled);
+    }
 }

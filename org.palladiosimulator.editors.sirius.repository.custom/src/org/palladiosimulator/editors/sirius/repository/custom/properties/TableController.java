@@ -11,28 +11,28 @@ import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 
 public class TableController extends AbstractEEFCustomWidgetController {
 
-	private static final String VALUE_EXPRESSION_ID = "valueExpression"; //$NON-NLS-1$
-	
-	public TableController(EEFCustomWidgetDescription description, IVariableManager variableManager, IInterpreter interpreter,
-			EditingContextAdapter contextAdapter) {
-		super(description, variableManager, interpreter, contextAdapter);
-	}
+    private static final String VALUE_EXPRESSION_ID = "valueExpression"; //$NON-NLS-1$
 
-	public Object getValue() {
-		Map<String, Object> variables = new HashMap<String, Object>();
-		variables.putAll(this.variableManager.getVariables());
-		IEvaluationResult evaluationResult = this.interpreter.evaluateExpression(variables, getCustomExpression(VALUE_EXPRESSION_ID));
-		return evaluationResult.getValue();
-	}
-	
-	@Override
-	protected EEFCustomWidgetDescription getDescription() {
-		return this.description;
-	}
+    public TableController(final EEFCustomWidgetDescription description, final IVariableManager variableManager, final IInterpreter interpreter,
+            final EditingContextAdapter contextAdapter) {
+        super(description, variableManager, interpreter, contextAdapter);
+    }
 
-	@Override
-	public void refresh() {
-		super.refresh();
-	}
-	
+    public Object getValue() {
+        final Map<String, Object> variables = new HashMap<String, Object>();
+        variables.putAll(this.variableManager.getVariables());
+        final IEvaluationResult evaluationResult = this.interpreter.evaluateExpression(variables, getCustomExpression(VALUE_EXPRESSION_ID).get());
+        return evaluationResult.getValue();
+    }
+
+    @Override
+    protected EEFCustomWidgetDescription getDescription() {
+        return this.description;
+    }
+
+    @Override
+    public void refresh() {
+        super.refresh();
+    }
+
 }
