@@ -21,7 +21,7 @@ public class TableController extends AbstractEEFCustomWidgetController {
 	public Object getValue() {
 		Map<String, Object> variables = new HashMap<String, Object>();
 		variables.putAll(this.variableManager.getVariables());
-		IEvaluationResult evaluationResult = this.interpreter.evaluateExpression(variables, getCustomExpression(VALUE_EXPRESSION_ID));
+		IEvaluationResult evaluationResult = this.interpreter.evaluateExpression(variables, getCustomExpression(VALUE_EXPRESSION_ID).get());
 		return evaluationResult.getValue();
 	}
 	

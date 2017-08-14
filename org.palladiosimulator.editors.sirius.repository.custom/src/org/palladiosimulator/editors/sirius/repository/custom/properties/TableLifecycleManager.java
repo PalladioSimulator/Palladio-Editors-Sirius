@@ -44,7 +44,7 @@ public abstract class TableLifecycleManager extends AbstractEEFWidgetLifecycleMa
 				.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 		
 
-		controller = new TableController(description, variableManager, interpreter, contextAdapter);
+		controller = new TableController(description, variableManager, interpreter, editingContextAdapter);
 		setPropertySection(parent);
 
 	}

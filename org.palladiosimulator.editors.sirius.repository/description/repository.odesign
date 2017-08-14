@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="repository" version="11.1.1.201610211630">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="repository" version="12.0.0.2017041100">
   <ownedViewpoints name="Repository" modelFileExtension="repository">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Repository Diagram" initialisation="true" domainClass="repository.Repository" enablePopupBars="true">
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//repository"/>
@@ -213,7 +213,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationInterface" referenceName="interfaces__Repository">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository::OperationInterface" referenceName="interfaces__Repository">
                   <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'Interface' + container.eContents()->filter(repository::OperationInterface)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -224,7 +224,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="BasicComponent" referenceName="components__Repository">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository::BasicComponent" referenceName="components__Repository">
                   <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'BasicComponent' + container.eAllContents()->filter(repository::BasicComponent)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -235,7 +235,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="CompositeComponent" referenceName="components__Repository">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository::CompositeComponent" referenceName="components__Repository">
                   <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'CompositeComponent' + container.eAllContents()->filter(repository::CompositeComponent)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -268,26 +268,28 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.OperationProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository::OperationProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
                   <subModelOperations xsi:type="tool:SetValue" featureName="providedInterface__OperationProvidedRole" valueExpression="var:target"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql: 'OperationProvidedRole' + source.eContents()->filter(repository::OperationProvidedRole)->size()"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="[source.oclIsTypeOf(BasicComponent)/]">
                     <subModelOperations xsi:type="tool:For" expression="[target.signatures__OperationInterface/]">
                       <subModelOperations xsi:type="tool:If" conditionExpression="[source.oclAsType(BasicComponent).serviceEffectSpecifications__BasicComponent->exists (x | x.oclAsType(ResourceDemandingSEFF).describedService__SEFF = i) = false/]">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                          <subModelOperations xsi:type="tool:CreateInstance" typeName="ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
+                          <subModelOperations xsi:type="tool:CreateInstance" typeName="seff::ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
                             <subModelOperations xsi:type="tool:SetValue" featureName="describedService__SEFF" valueExpression="var:i"/>
-                            <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="StartAction"/>
-                            <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="StopAction"/>
-                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StartAction">
-                              <subModelOperations xsi:type="tool:SetValue" featureName="successor_AbstractAction" valueExpression="var:StopAction"/>
-                            </subModelOperations>
-                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StopAction">
-                              <subModelOperations xsi:type="tool:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:StartAction"/>
-                            </subModelOperations>
-                            <subModelOperations xsi:type="tool:ExternalJavaAction" name="Activate Seff Viewpoint on creation" id="ActivateViewpoint">
-                              <parameters name="element" value="var:instance"/>
-                              <parameters name="Viewpoint" value="Seff"/>
+                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                              <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="StartAction"/>
+                              <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="StopAction"/>
+                              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StartAction">
+                                <subModelOperations xsi:type="tool:SetValue" featureName="successor_AbstractAction" valueExpression="var:StopAction"/>
+                              </subModelOperations>
+                              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StopAction">
+                                <subModelOperations xsi:type="tool:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:StartAction"/>
+                              </subModelOperations>
+                              <subModelOperations xsi:type="tool:ExternalJavaAction" name="Activate Seff Viewpoint on creation" id="ActivateViewpoint">
+                                <parameters name="element" value="var:instance"/>
+                                <parameters name="Viewpoint" value="Seff"/>
+                              </subModelOperations>
                             </subModelOperations>
                           </subModelOperations>
                         </subModelOperations>
@@ -303,7 +305,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="SubSystem" referenceName="components__Repository">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="subsystem::SubSystem" referenceName="components__Repository">
                   <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'SubSystem' + container.eAllContents()->filter(subsystem::SubSystem)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -330,14 +332,15 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InfrastructureProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository::InfrastructureProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
                   <subModelOperations xsi:type="tool:SetValue" featureName="providedInterface__InfrastructureProvidedRole" valueExpression="var:target"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'InfrastructureProvidedRole' + source.eContents()->filter(repository::InfrastructureProvidedRole)->size()"/>
                   <subModelOperations xsi:type="tool:For" expression="aql:target.infrastructureSignatures__InfrastructureInterface">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                      <subModelOperations xsi:type="tool:CreateInstance" typeName="ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="seff::ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
                         <subModelOperations xsi:type="tool:SetValue" featureName="describedService__SEFF" valueExpression="var:i"/>
-                        <subModelOperations xsi:type="tool:If" conditionExpression="aql: instance.eContents(seff::StartAction)->size() = 0 and instance.eContents(seff::StopAction)->size() = 0">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="aql: instance.eContents(seff::StartAction)->size() = 0 and instance.eContents(seff::StopAction)->size() = 0"/>
                           <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="StartAction"/>
                           <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="StopAction"/>
                           <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StartAction">
@@ -359,7 +362,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="InfrastructureInterface" referenceName="interfaces__Repository">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository::InfrastructureInterface" referenceName="interfaces__Repository">
                   <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'InfrastructureInterface' + container.eAllContents()->filter(repository::InfrastructureInterface)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -583,10 +586,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.PassiveResource" referenceName="passiveResource_BasicComponent" variableName="passiveResource">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="capacity_PassiveResource"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'PassiveResource'+container.passiveResource_BasicComponent->size()"/>
-                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set Capacity" id="SetCapacity">
-                    <parameters name="element" value="var:passiveResource"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:passiveResource">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="capacity_PassiveResource"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'PassiveResource'+container.passiveResource_BasicComponent->size()"/>
+                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set Capacity" id="SetCapacity">
+                      <parameters name="element" value="var:passiveResource"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -598,10 +603,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="parameter.VariableUsage" referenceName="componentParameterUsage_ImplementationComponentType" variableName="variableUsage">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:VariableReference"/>
-                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set NamedReference" id="SetNamedReference">
-                    <parameters name="VariableReference" value="var:VariableReference"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:variableUsage">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="parameter::VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:VariableReference"/>
+                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set NamedReference" id="SetNamedReference">
+                      <parameters name="VariableReference" value="var:VariableReference"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -613,10 +620,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="parameter.VariableCharacterisation" referenceName="variableCharacterisation_VariableUsage" variableName="variableCharacterisation">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="aql:parameter::VariableCharacterisationType::STRUCTURE"/>
-                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set Variable Characterisation Specification" id="SetVariableCharacterisationSpecification">
-                    <parameters name="element" value="var:variableCharacterisation"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:variableCharacterisation">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="aql:parameter::VariableCharacterisationType::STRUCTURE"/>
+                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set Variable Characterisation Specification" id="SetVariableCharacterisationSpecification">
+                      <parameters name="element" value="var:variableCharacterisation"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -627,7 +636,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="seff::ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="Add SEFF" id="AddSEFF">
                     <parameters name="instance" value="var:instance"/>
                   </subModelOperations>
@@ -639,7 +648,8 @@
                       <parameters name="element" value="var:instance"/>
                       <parameters name="Viewpoint" value="Seff"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:instance.eContents(seff::StartAction)->size() = 0 and instance.eContents(seff::StopAction)->size() = 0">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql:instance.eContents(seff::StartAction)->size() = 0 and instance.eContents(seff::StopAction)->size() = 0"/>
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="StartAction"/>
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="StopAction"/>
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StartAction">
@@ -676,7 +686,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
                 <subModelOperations xsi:type="tool:If" conditionExpression="[self.namedReference__VariableUsage = null/]">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="parameter::VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:self.namedReference__VariableUsage">
                   <subModelOperations xsi:type="tool:SetValue" featureName="referenceName" valueExpression="var:0"/>
@@ -775,7 +785,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="ProvidesComponentType" referenceName="components__Repository">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository::ProvidesComponentType" referenceName="components__Repository">
                   <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'ProvidesComponentType' + container.eAllContents()->filter(repository::ProvidesComponentType)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -786,7 +796,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="CompleteComponentType" referenceName="components__Repository">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="repository::CompleteComponentType" referenceName="components__Repository">
                   <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'CompleteComponentType' + container.eAllContents()->filter(repository::CompleteComponentType)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -975,9 +985,10 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'SinkeRole' + source.eAllContents()->filter(repository::SinkRole)->size()"/>
                   <subModelOperations xsi:type="tool:For" expression="aql: target.eventTypes__EventGroup">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                      <subModelOperations xsi:type="tool:CreateInstance" typeName="ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="seff::ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
                         <subModelOperations xsi:type="tool:SetValue" featureName="describedService__SEFF" valueExpression="var:i"/>
-                        <subModelOperations xsi:type="tool:If" conditionExpression="aql:instance.eContents(seff::StartAction)->size() = 0 and instance.eContents(seff::StopAction)->size() = 0">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="aql:instance.eContents(seff::StartAction)->size() = 0 and instance.eContents(seff::StopAction)->size() = 0"/>
                           <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="StartAction"/>
                           <subModelOperations xsi:type="tool:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="StopAction"/>
                           <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:StartAction">
@@ -1294,29 +1305,31 @@
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.repository.Services"/>
   </ownedViewpoints>
-  <extensions xsi:type="properties:ViewExtensionDescription" identifier="Properties">
+  <extensions xsi:type="properties:ViewExtensionDescription" name="Properties">
     <metamodels href="http://palladiosimulator.org/PalladioComponentModel/5.2#//parameter"/>
     <metamodels href="http://palladiosimulator.org/PalladioComponentModel/5.2#//repository"/>
-<pages identifier="OperationInterface" labelExpression="Operations" domainClass="OperationInterface" semanticCandidateExpression="var:self" groups="//@extensions.0/@groups.0"/>
-<pages identifier="InfrastructureInterface" labelExpression="Operations" domainClass="InfrastructureInterface" semanticCandidateExpression="var:self" groups="//@extensions.0/@groups.1"/>
-<pages identifier="EventGroup" labelExpression="Operations" domainClass="EventGroup" semanticCandidateExpression="var:self" groups="//@extensions.0/@groups.2"/>
-<groups identifier="OperationInterface group" domainClass="OperationInterface" semanticCandidateExpression="var:self">
-  <controls xsi:type="properties:CustomDescription" identifier="org.palladiosimulator.editors.sirius.repository.custom.properties.OperationInterface">
-    <customExpressions identifier="valueExpression" customExpression="aql:self"/>
-  </controls>
-  <style barStyle="NO_TITLE" toggleStyle="NONE"/>
-</groups>
-<groups identifier="InfrastructureInterface group" domainClass="InfrastructureInterface" semanticCandidateExpression="var:self">
-  <controls xsi:type="properties:CustomDescription" identifier="org.palladiosimulator.editors.sirius.repository.custom.properties.InfrastructureInterface">
-    <customExpressions identifier="valueExpression" customExpression="aql:self"/>
-  </controls>
-  <style barStyle="NO_TITLE" toggleStyle="NONE"/>
-</groups>
-<groups identifier="EventGroup group" domainClass="EventGroup" semanticCandidateExpression="var:self">
-  <controls xsi:type="properties:CustomDescription" identifier="org.palladiosimulator.editors.sirius.repository.custom.properties.EventGroup">
-    <customExpressions identifier="valueExpression" customExpression="aql:self"/>
-  </controls>
-  <style barStyle="NO_TITLE" toggleStyle="NONE"/>
-</groups>
+    <categories name="Default">
+      <pages name="OperationInterface" labelExpression="Operations" domainClass="repository::OperationInterface" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0"/>
+      <pages name="InfrastructureInterface" labelExpression="Operations" domainClass="repository::InfrastructureInterface" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.1"/>
+      <pages name="EventGroup" labelExpression="Operations" domainClass="repository::EventGroup" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.2"/>
+      <groups name="OperationInterface group" domainClass="repository::OperationInterface" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:CustomDescription" name="org.palladiosimulator.editors.sirius.repository.custom.properties.OperationInterface">
+          <customExpressions name="valueExpression" customExpression="aql:self"/>
+        </controls>
+        <style barStyle="NO_TITLE" toggleStyle="NONE"/>
+      </groups>
+      <groups name="InfrastructureInterface group" domainClass="repository::InfrastructureInterface" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:CustomDescription" name="org.palladiosimulator.editors.sirius.repository.custom.properties.InfrastructureInterface">
+          <customExpressions name="valueExpression" customExpression="aql:self"/>
+        </controls>
+        <style barStyle="NO_TITLE" toggleStyle="NONE"/>
+      </groups>
+      <groups name="EventGroup group" domainClass="repository::EventGroup" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:CustomDescription" name="org.palladiosimulator.editors.sirius.repository.custom.properties.EventGroup">
+          <customExpressions name="valueExpression" customExpression="aql:self"/>
+        </controls>
+        <style barStyle="NO_TITLE" toggleStyle="NONE"/>
+      </groups>
+    </categories>
   </extensions>
 </description:Group>
