@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Seff Editor" version="11.1.1.201610211630">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Seff Editor" version="12.0.0.2017041100">
   <ownedViewpoints name="Seff" modelFileExtension="repository">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AbstractActions']" name="Seff Diagram" initialisation="true" domainClass="seff.ResourceDemandingSEFF" enablePopupBars="true">
       <metamodel href="http://sdq.ipd.uka.de/StochasticExpressions/2.2#/"/>
@@ -554,20 +554,24 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.LoopAction" referenceName="steps_Behaviour" variableName="loop">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="iterationCount_LoopAction">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="specification" valueExpression="aql: '1'"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.ResourceDemandingBehaviour" referenceName="bodyBehaviour_Loop" variableName="behaviour">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="start"/>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="stop"/>
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:start">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="successor_AbstractAction" valueExpression="var:stop"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:loop">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="iterationCount_LoopAction">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="specification" valueExpression="aql: '1'"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:stop">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:start"/>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.ResourceDemandingBehaviour" referenceName="bodyBehaviour_Loop" variableName="behaviour">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:behaviour">
+                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="start"/>
+                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="stop"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:start">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="successor_AbstractAction" valueExpression="var:stop"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:stop">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:start"/>
+                        </subModelOperations>
+                      </subModelOperations>
                     </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'LoopAction' +container.eContents()->filter(seff::LoopAction)->size()"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'LoopAction' +container.eContents()->filter(seff::LoopAction)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -578,18 +582,22 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.CollectionIteratorAction" referenceName="steps_Behaviour">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.ResourceDemandingBehaviour" referenceName="bodyBehaviour_Loop" variableName="behaviour">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="start"/>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="stop"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.ResourceDemandingBehaviour" referenceName="bodyBehaviour_Loop" variableName="behaviour">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:behaviour">
+                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="start"/>
+                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="stop"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add CollectionIteratorAction" id="AddCollectionIteratorAction">
+                      <parameters name="instance" value="var:instance"/>
+                      <parameters name="seff" value="var:container"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.parameter_CollectionIteratorAction=null">
+                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql: 'CollectionIteratorAction' +container.eContents()->filter(seff::CollectionIteratorAction)->size()"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add CollectionIteratorAction" id="AddCollectionIteratorAction">
-                    <parameters name="instance" value="var:instance"/>
-                    <parameters name="seff" value="var:container"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.parameter_CollectionIteratorAction=null">
-                    <subModelOperations xsi:type="tool_1:RemoveElement"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql: 'CollectionIteratorAction' +container.eContents()->filter(seff::CollectionIteratorAction)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -630,7 +638,7 @@
           <ownedTools xsi:type="tool:DirectEditLabel" documentation="Makes it possible to edit the given name of a diagram element directly by clicking on it with a single mouse click" name="directEditNameBySingleClick" inputLabelExpression="feature:entityName">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:0">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="var:arg0"/>
               </firstModelOperations>
             </initialOperation>
@@ -718,17 +726,19 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff_performance.ParametricResourceDemand" referenceName="resourceDemand_Action">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_ParametericResourceDemand" variableName="rv"/>
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set RequiredResource" id="SetRequiredResource">
-                    <parameters name="instance" value="var:instance"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.requiredResource_ParametricResourceDemand &lt;> null">
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set Specification" id="SetSpecification">
-                      <parameters name="element" value="var:instance"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_ParametericResourceDemand" variableName="rv"/>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set RequiredResource" id="SetRequiredResource">
+                      <parameters name="instance" value="var:instance"/>
                     </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.specification_ParametericResourceDemand.specification = null or  self.requiredResource_ParametricResourceDemand = null">
-                    <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.requiredResource_ParametricResourceDemand &lt;> null">
+                      <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set Specification" id="SetSpecification">
+                        <parameters name="element" value="var:instance"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.specification_ParametericResourceDemand.specification = null or  self.requiredResource_ParametricResourceDemand = null">
+                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -754,17 +764,19 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff_performance.InfrastructureCall" referenceName="infrastructureCall__Action">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="numberOfCalls__InfrastructureCall" variableName="rv"/>
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set InfrastructureSignature" id="SetInfrastructureSignature">
-                    <parameters name="instance" value="var:instance"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="numberOfCalls__InfrastructureCall" variableName="rv"/>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set InfrastructureSignature" id="SetInfrastructureSignature">
+                      <parameters name="instance" value="var:instance"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NumberOfCalls" id="SetNumberOfCalls">
+                      <parameters name="element" value="var:instance"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.numberOfCalls__InfrastructureCall.specification=null or self.signature__InfrastructureCall = null">
+                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql: 'InfrastructureCall' +container.eContents()->filter(seff_performance::InfrastructureCall)->size()"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NumberOfCalls" id="SetNumberOfCalls">
-                    <parameters name="element" value="var:instance"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.numberOfCalls__InfrastructureCall.specification=null or self.signature__InfrastructureCall = null">
-                    <subModelOperations xsi:type="tool_1:RemoveElement"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql: 'InfrastructureCall' +container.eContents()->filter(seff_performance::InfrastructureCall)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -775,20 +787,22 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff_performance.ResourceCall" referenceName="resourceCall__Action">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="numberOfCalls__ResourceCall" variableName="rv"/>
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set ResourceCallRequiredRole" id="SetResourceCallRequiredRole">
-                    <parameters name="instance" value="var:instance"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="numberOfCalls__ResourceCall" variableName="rv"/>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set ResourceCallRequiredRole" id="SetResourceCallRequiredRole">
+                      <parameters name="instance" value="var:instance"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set ResourceCallSignature" id="SetResourceCallSignature">
+                      <parameters name="instance" value="var:instance"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NumberOfCalls" id="SetNumberOfCalls">
+                      <parameters name="element" value="var:instance"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.numberOfCalls__ResourceCall.specification=null or self.signature__ResourceCall=null or self.resourceRequiredRole__ResourceCall=null">
+                      <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql: self.signature__ResourceCall.resourceInterface__ResourceSignature.entityName + ' (' + self.signature__ResourceCall.entityName + ')'"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set ResourceCallSignature" id="SetResourceCallSignature">
-                    <parameters name="instance" value="var:instance"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NumberOfCalls" id="SetNumberOfCalls">
-                    <parameters name="element" value="var:instance"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.numberOfCalls__ResourceCall.specification=null or self.signature__ResourceCall=null or self.resourceRequiredRole__ResourceCall=null">
-                    <subModelOperations xsi:type="tool_1:RemoveElement"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql: self.signature__ResourceCall.resourceInterface__ResourceSignature.entityName + ' (' + self.signature__ResourceCall.entityName + ')'"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -799,10 +813,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableCharacterisation" referenceName="variableCharacterisation_VariableUsage" variableName="variableCharacterisation">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="aql:parameter::VariableCharacterisationType::STRUCTURE"/>
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set Variable Characterisation Specification" id="SetVariableCharacterisationSpecification">
-                    <parameters name="element" value="var:variableCharacterisation"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:variableCharacterisation">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="aql:parameter::VariableCharacterisationType::STRUCTURE"/>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set Variable Characterisation Specification" id="SetVariableCharacterisationSpecification">
+                      <parameters name="element" value="var:variableCharacterisation"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -815,28 +831,34 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql: containerView.toString()='InputVariableUsageCompartment'">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableUsage" referenceName="inputVariableUsages__CallAction">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:VariableReference"/>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NamedReference" id="SetNamedReference">
-                      <parameters name="VariableReference" value="var:VariableReference"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:VariableReference"/>
+                      <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NamedReference" id="SetNamedReference">
+                        <parameters name="VariableReference" value="var:VariableReference"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql: containerView.toString()='OutputVariableUsageCompartment'">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableUsage" referenceName="returnVariableUsage__CallReturnAction">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:VariableReference"/>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NamedReference" id="SetNamedReference">
-                      <parameters name="VariableReference" value="var:VariableReference"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:VariableReference"/>
+                      <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NamedReference" id="SetNamedReference">
+                        <parameters name="VariableReference" value="var:VariableReference"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="[container.oclIsTypeOf(SetVariableAction)/]">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableUsage" referenceName="localVariableUsages_SetVariableAction">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:VariableReference"/>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NamedReference" id="SetNamedReference">
-                      <parameters name="VariableReference" value="var:VariableReference"/>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:VariableReference"/>
+                      <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NamedReference" id="SetNamedReference">
+                        <parameters name="VariableReference" value="var:VariableReference"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -924,17 +946,21 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.ProbabilisticBranchTransition" referenceName="branches_Branch">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.ResourceDemandingBehaviour" referenceName="branchBehaviour_BranchTransition" variableName="behaviour">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="start"/>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="stop"/>
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:start">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="successor_AbstractAction" valueExpression="var:stop"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.ResourceDemandingBehaviour" referenceName="branchBehaviour_BranchTransition" variableName="behaviour">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:behaviour">
+                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="start"/>
+                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="stop"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:start">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="successor_AbstractAction" valueExpression="var:stop"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:stop">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:start"/>
+                        </subModelOperations>
+                      </subModelOperations>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:stop">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:start"/>
-                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'ProbabilisticBranchTransition' + container.eContents()->filter(seff::ProbabilisticBranchTransition)->size()"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'ProbabilisticBranchTransition' + container.eContents()->filter(seff::ProbabilisticBranchTransition)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -945,22 +971,24 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.GuardedBranchTransition" referenceName="branches_Branch">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.ResourceDemandingBehaviour" referenceName="branchBehaviour_BranchTransition" variableName="behaviour">
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:behaviour">
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="start"/>
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="stop"/>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:start">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="successor_AbstractAction" valueExpression="var:stop"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:stop">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:start"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.ResourceDemandingBehaviour" referenceName="branchBehaviour_BranchTransition" variableName="behaviour">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:behaviour">
+                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StartAction" referenceName="steps_Behaviour" variableName="start"/>
+                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="seff.StopAction" referenceName="steps_Behaviour" variableName="stop"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:start">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="successor_AbstractAction" valueExpression="var:stop"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:stop">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor_AbstractAction" valueExpression="var:start"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="branchCondition_GuardedBranchTransition" variableName="randomVariable">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="specification" valueExpression="true"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'GuardedBranchTransition' + container.eContents()->filter(seff::GuardedBranchTransition)->size()"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="branchCondition_GuardedBranchTransition" variableName="randomVariable">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="specification" valueExpression="true"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql:'GuardedBranchTransition' + container.eContents()->filter(seff::GuardedBranchTransition)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

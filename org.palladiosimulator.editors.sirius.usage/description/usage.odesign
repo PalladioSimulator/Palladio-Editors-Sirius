@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="usage" version="11.1.1.201610211630">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="usage" version="12.0.0.2017041100">
   <ownedViewpoints name="UsageModel" modelFileExtension="usagemodel">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="UsageModel Diagram" initialisation="true" domainClass="usagemodel.UsageModel" rootExpression="[self/]" enablePopupBars="true">
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//usagemodel"/>
@@ -230,10 +230,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Delay" referenceName="actions_ScenarioBehaviour" variableName="usageDelay">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="timeSpecification_Delay">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="specification" valueExpression="0.0"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:usageDelay">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="timeSpecification_Delay">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="specification" valueExpression="0.0"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql: 'Delay' +container.eContents()->filter(usagemodel::Delay)->size()"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql: 'Delay' +container.eContents()->filter(usagemodel::Delay)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -263,20 +265,24 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Loop" referenceName="actions_ScenarioBehaviour">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="loopIteration_Loop">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="specification" valueExpression="aql:'1'"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.ScenarioBehaviour" referenceName="bodyBehaviour_Loop">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Start" referenceName="actions_ScenarioBehaviour" variableName="start"/>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Stop" referenceName="actions_ScenarioBehaviour" variableName="stop"/>
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:start">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="successor" valueExpression="var:stop"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="loopIteration_Loop">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="specification" valueExpression="aql:'1'"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:stop">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor" valueExpression="var:start"/>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.ScenarioBehaviour" referenceName="bodyBehaviour_Loop">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Start" referenceName="actions_ScenarioBehaviour" variableName="start"/>
+                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Stop" referenceName="actions_ScenarioBehaviour" variableName="stop"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:start">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="successor" valueExpression="var:stop"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:stop">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor" valueExpression="var:start"/>
+                        </subModelOperations>
+                      </subModelOperations>
                     </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql: 'Loop' +container.eContents()->filter(usagemodel::Loop)->size()"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql: 'Loop' +container.eContents()->filter(usagemodel::Loop)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -361,10 +367,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableUsage" referenceName="inputParameterUsages_EntryLevelSystemCall" variableName="variableUsage">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stoex.VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:VariableReference"/>
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NamedReference" id="SetNamedReference">
-                    <parameters name="VariableReference" value="var:VariableReference"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:variableUsage">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stoex.VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:VariableReference"/>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NamedReference" id="SetNamedReference">
+                      <parameters name="VariableReference" value="var:VariableReference"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -376,10 +384,12 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableCharacterisation" referenceName="variableCharacterisation_VariableUsage" variableName="variableCharacterisation">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="STRUCTURE"/>
-                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set Variable Characterisation Specification" id="SetVariableCharacterisationSpecification">
-                    <parameters name="element" value="var:variableCharacterisation"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:variableCharacterisation">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="STRUCTURE"/>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set Variable Characterisation Specification" id="SetVariableCharacterisationSpecification">
+                      <parameters name="element" value="var:variableCharacterisation"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -410,14 +420,18 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.BranchTransition" referenceName="branchTransitions_Branch">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.ScenarioBehaviour" referenceName="branchedBehaviour_BranchTransition">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Start" referenceName="actions_ScenarioBehaviour" variableName="start"/>
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Stop" referenceName="actions_ScenarioBehaviour" variableName="stop"/>
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:start">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="successor" valueExpression="var:stop"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:stop">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor" valueExpression="var:start"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.ScenarioBehaviour" referenceName="branchedBehaviour_BranchTransition">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Start" referenceName="actions_ScenarioBehaviour" variableName="start"/>
+                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.Stop" referenceName="actions_ScenarioBehaviour" variableName="stop"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:start">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="successor" valueExpression="var:stop"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:stop">
+                          <subModelOperations xsi:type="tool_1:SetValue" featureName="predecessor" valueExpression="var:start"/>
+                        </subModelOperations>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -522,8 +536,10 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.OpenWorkload" referenceName="workload_UsageScenario">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="interArrivalTime_OpenWorkload">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="specification" valueExpression="0.0"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="interArrivalTime_OpenWorkload">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="specification" valueExpression="0.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -535,8 +551,10 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="usagemodel.ClosedWorkload" referenceName="workload_UsageScenario">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="thinkTime_ClosedWorkload">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="specification" valueExpression="0.0"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="thinkTime_ClosedWorkload">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="specification" valueExpression="0.0"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>

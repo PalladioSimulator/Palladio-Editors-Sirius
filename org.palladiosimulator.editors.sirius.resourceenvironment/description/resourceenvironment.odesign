@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="resourceenvironment" version="11.1.1.201610211630">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="resourceenvironment" version="12.0.0.2017041100">
   <ownedViewpoints name="ResourceEnvironment" modelFileExtension="resourceenvironment">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Nested%20ResourceContainer%20into%20ResourceEnvironment']" name="ResourceEnvironment Diagram" initialisation="true" domainClass="resourceenvironment.ResourceEnvironment" enablePopupBars="true">
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//resourceenvironment"/>
@@ -211,12 +211,13 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="resourceenvironment.ProcessingResourceSpecification" referenceName="activeResourceSpecifications_ResourceContainer">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="newProcessingResourceSpecification"/>
-                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="SW ResourceType" label="Selection Wizard Resource Type" id="AddProcessingResourceSpecification">
-                    <subModelOperations xsi:type="tool:If" conditionExpression="aql: self.schedulingPolicy=null or self.processingRate_ProcessingResourceSpecification=null or self.activeResourceType_ActiveResourceSpecification=null">
-                      <subModelOperations xsi:type="tool:RemoveElement"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="SW ResourceType" label="Selection Wizard Resource Type" id="AddProcessingResourceSpecification">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql: self.schedulingPolicy=null or self.processingRate_ProcessingResourceSpecification=null or self.activeResourceType_ActiveResourceSpecification=null">
+                        <subModelOperations xsi:type="tool:RemoveElement"/>
+                      </subModelOperations>
+                      <parameters name="newProcessingResourceSpecification" value="var:instance"/>
                     </subModelOperations>
-                    <parameters name="newProcessingResourceSpecification" value="var:instance"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -228,7 +229,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="resourceenvironment.HDDProcessingResourceSpecification" referenceName="activeResourceSpecifications_ResourceContainer">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="newHDDProcessingResourceSpecification"/>
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="SW ResourceType" label="Selection Wizard Resource Type" id="AddHDDProcessingResourceSpecification">
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql: self.schedulingPolicy=null or self.processingRate_ProcessingResourceSpecification=null or self.activeResourceType_ActiveResourceSpecification=null or self.writeProcessingRate=null or self.readProcessingRate=null">
                       <subModelOperations xsi:type="tool:RemoveElement"/>
@@ -387,10 +387,11 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="resourceenvironment.LinkingResource" referenceName="linkingResources__ResourceEnvironment">
                   <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'LinkingResource' + container.linkingResources__ResourceEnvironment->size()"/>
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="resourceenvironment.CommunicationLinkResourceSpecification" referenceName="communicationLinkResourceSpecifications_LinkingResource">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="newCommunicationLinkingResource"/>
-                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="AddLinkingResourceAction" label="Add Linking Resource" id="AddLinkingResource">
-                      <parameters name="newCommunicationLinkResourceSpecification" value="var:instance"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="resourceenvironment.CommunicationLinkResourceSpecification" referenceName="communicationLinkResourceSpecifications_LinkingResource">
+                      <subModelOperations xsi:type="tool:ExternalJavaAction" name="AddLinkingResourceAction" label="Add Linking Resource" id="AddLinkingResource">
+                        <parameters name="newCommunicationLinkResourceSpecification" value="var:instance"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
