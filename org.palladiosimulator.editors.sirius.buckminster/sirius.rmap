@@ -7,6 +7,8 @@
 
   <rm:locator pattern="^org\.eclipse\.sirius\.runtime.*" searchPathRef="SiriusRuntime" failOnError="true"/>
   
+  <rm:locator pattern="^org\.eclipse\.eef\.*" searchPathRef="EEF" failOnError="true"/>
+  
   <rm:redirect pattern=".*"
 		href="https://raw.githubusercontent.com/PalladioSimulator/Palladio-Editors-Commons/master/org.palladiosimulator.editors.commons.buckminster/editors.rmap" />
 		
@@ -39,5 +41,12 @@
             </rm:uri>
         </rm:provider>
     </rm:searchPath>
-  
+
+  <rm:searchPath name="EEF">
+        <rm:provider componentTypes="eclipse.feature,osgi.bundle"
+            readerType="p2" source="false" mutable="false">
+            <rm:uri format="http://download.eclipse.org/releases/oxygen">
+            </rm:uri>
+        </rm:provider>
+    </rm:searchPath>
 </rm:rmap>
