@@ -32,12 +32,12 @@
   <rm:searchPath name="SiriusRuntime">
         <rm:provider componentTypes="eclipse.feature,osgi.bundle"
             readerType="p2" source="false" mutable="false">
-            <rm:uri format="http://download.eclipse.org/sirius/updates/releases/5.0.1/neon/">
+            <rm:uri format="http://download.eclipse.org/sirius/updates/releases/5.0.2/neon/">
             </rm:uri>
         </rm:provider>
         <rm:provider componentTypes="eclipse.feature,osgi.bundle"
             readerType="p2" source="false" mutable="false">
-            <rm:uri format="http://download.eclipse.org/sirius/updates/releases/5.0.1/oxygen/">
+            <rm:uri format="http://download.eclipse.org/sirius/updates/releases/5.0.2/oxygen/">
             </rm:uri>
         </rm:provider>
     </rm:searchPath>
