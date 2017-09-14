@@ -13,7 +13,6 @@
 
    <requires>
       <import plugin="org.eclipse.gmf.runtime.diagram.ui" version="1.8.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.sirius.diagram.ui" version="5.0.2" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.edit.ui" version="2.10.2" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.architecturaltemplates" version="1.0.3" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.mdsdprofiles.api" version="1.0.1" match="greaterOrEqual"/>
@@ -27,7 +26,6 @@
       <import plugin="org.eclipse.ui" version="3.107.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.sirius" version="5.0.2" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.ecore"/>
-      <import plugin="org.eclipse.sirius.diagram" version="5.0.2" match="greaterOrEqual"/>
       <import plugin="de.uka.ipd.sdq.stoex" version="2.2.0" match="greaterOrEqual"/>
       <import plugin="de.uka.ipd.sdq.pcm.stochasticexpressions"/>
       <import plugin="org.palladiosimulator.pcm" version="4.0.0" match="greaterOrEqual"/>
