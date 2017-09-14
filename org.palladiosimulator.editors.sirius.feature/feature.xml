@@ -48,7 +48,6 @@
       <import plugin="org.eclipse.jface" version="3.11.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.gef"/>
       <import plugin="org.palladiosimulator.editors.sirius.custom" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.ui" version="3.106.1" match="greaterOrEqual"/>
       <import plugin="org.modelversioning.emfprofile"/>
       <import plugin="org.eclipse.emf.common"/>
       <import plugin="org.eclipse.ui.forms"/>
