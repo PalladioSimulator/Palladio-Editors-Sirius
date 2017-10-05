@@ -102,7 +102,7 @@
           </style>
         </containerMappings>
         <containerMappings name="BasicComponent" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" domainClass="repository.BasicComponent" childrenPresentation="VerticalStack">
-          <subContainerMappings name="SEFFCompartment" semanticCandidatesExpression="var:self" domainClass="repository.BasicComponent" childrenPresentation="List">
+          <subContainerMappings name="SEFFCompartment" pasteDescriptions="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='SEFF%20Copy%20Paste']" semanticCandidatesExpression="var:self" domainClass="repository.BasicComponent" childrenPresentation="List">
             <subNodeMappings name="SEFF" semanticCandidatesExpression="feature:serviceEffectSpecifications__BasicComponent" doubleClickDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='SEFF%20Representation']" domainClass="seff.ResourceDemandingSEFF">
               <style xsi:type="style:SquareDescription" labelExpression="[self.describedService__SEFF.eContainer().oclAsType(Interface).entityName +  '.' + self.describedService__SEFF.entityName/]" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -741,6 +741,17 @@
                 <subModelOperations xsi:type="tool:ExternalJavaAction" name="Edit ResourceInterface" id="SetResourceInterface">
                   <parameters name="instance" value="var:element"/>
                 </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:PasteDescription" name="SEFF Copy Paste" precondition="aql:copiedElement.oclIsTypeOf(seff::ResourceDemandingSEFF)" forceRefresh="true">
+            <container name="container"/>
+            <containerView name="containerView"/>
+            <copiedView name="copiedView"/>
+            <copiedElement name="copiedElement"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:SetValue" featureName="serviceEffectSpecifications__BasicComponent" valueExpression="service:copiedElement.copyIdentifier()"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
