@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Resource Environment editor: external Java actions
 Bundle-SymbolicName: org.palladiosimulator.editors.sirius.resourceenvironment.custom;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 4.1.0.qualifier
 Bundle-Activator: org.palladiosimulator.editors.sirius.resourceenvironment.custom.Activator
 Bundle-Vendor: palladiosimulator.org
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.12.0",
