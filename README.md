@@ -9,7 +9,7 @@ https://sdqweb.ipd.kit.edu/wiki/PCM_Development/Sirius_Editors
 Eclipse Update Sites
 -----------------------------------------
 
-##### Latest Build
+##### Latest Release Build
 - https://sdqweb.ipd.kit.edu/eclipse/palladio/editors/sirius/releases/latest/
 
 ##### Nightly Build
