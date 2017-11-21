@@ -6,7 +6,7 @@ Bundle-Version: 4.1.0.qualifier
 Bundle-Activator: org.palladiosimulator.editors.sirius.allocation.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.transaction,
- org.palladiosimulator.pcm,
+ org.palladiosimulator.pcm;bundle-version="4.1.0",
  org.eclipse.sirius.ui;bundle-version="3.0.0",
  org.eclipse.ui.ide,
  org.palladiosimulator.editors.sirius.custom;bundle-version="1.0.0",
