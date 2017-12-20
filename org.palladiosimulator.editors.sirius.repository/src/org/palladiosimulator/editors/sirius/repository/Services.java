@@ -33,25 +33,30 @@ public class Services {
 			return "";
 		
 		for (Parameter p : parameters) {
-			String type = "";
 			DataType parameterType = p.getDataType__Parameter();
-			if (parameterType == null) {
-				type = "UNSPECIFIED DATATYPE";
-			}
-			else if (parameterType instanceof PrimitiveDataType) {
-				type = ((PrimitiveDataType) parameterType).getType().name().toLowerCase();
-			} else if ((parameterType instanceof CollectionDataType) && ((CollectionDataType) parameterType)
-					.getInnerType_CollectionDataType() instanceof PrimitiveDataType) {
-				type = ((PrimitiveDataType) ((CollectionDataType) parameterType).getInnerType_CollectionDataType()).getType().name().toLowerCase() + "[]";
-			} else {
-				type = ((NamedElement) parameterType).getEntityName();
-			}
-
+			String type = getDataTypeName(parameterType);
 			result += type + " " + p.getParameterName() + ", ";
 		}
 		if (result.endsWith(", "))
 			result = result.substring(0, result.length() - 2);
 		return result;
+	}
+	
+	public String getDataTypeName(DataType dataType) {
+		String type = "";
+		if (dataType == null) {
+			type = "UNSPECIFIED DATATYPE";
+		}
+		else if (dataType instanceof PrimitiveDataType) {
+			type = ((PrimitiveDataType) dataType).getType().name().toLowerCase();
+		} else if ((dataType instanceof CollectionDataType) && ((CollectionDataType) dataType)
+				.getInnerType_CollectionDataType() instanceof PrimitiveDataType) {
+			type = ((PrimitiveDataType) ((CollectionDataType) dataType).getInnerType_CollectionDataType()).getType().name().toLowerCase() + "[]";
+		} else {
+			type = ((NamedElement) dataType).getEntityName();
+		}
+
+		return type;
 	}
 	
 	// Returns true if s is a legal Java identifier.
@@ -67,10 +72,15 @@ public class Services {
         return true;
     }
     
-    public Identifier copyIdentifier(Identifier eObject) {
+    public EObject copyEObject(EObject eObject) {
     	Copier copier = new Copier();
-    	Identifier copy = (Identifier) copier.copy(eObject);
+    	EObject copy = copier.copy(eObject);
     	copier.copyReferences();
+    	return copy;
+    	
+    }
+    public Identifier copyIdentifier(Identifier eObject) {
+    	Identifier copy = (Identifier) copyEObject(eObject);
     	copy.setId(EcoreUtil.generateUUID());
     	TreeIterator<EObject> it = copy.eAllContents();
     	while (it.hasNext()){

@@ -934,7 +934,7 @@
         </edgeMappings>
         <containerMappings name="EventGroup" deletionDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='Event-Based%20Communication']/@toolSections.0/@ownedTools[name='EventGroup%20Deletion']" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:interfaces__Repository" domainClass="repository.EventGroup" childrenPresentation="List">
           <subNodeMappings name="EventType" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Signature']" semanticCandidatesExpression="feature:eventTypes__EventGroup" domainClass="repository.EventType">
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="feature:entityName" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:self.entityName + '(' + self.parameter__EventType.dataType__Parameter.getDataTypeName() + ' ' + self.parameter__EventType.parameterName + ')'" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
