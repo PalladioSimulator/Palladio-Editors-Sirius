@@ -107,7 +107,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="ComposedProvidingRequiringEntity Node" labelDirectEdit="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="var:self" domainClass="entity.ComposedProvidingRequiringEntity" dropDescriptions="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20Component']">
+        <containerMappings name="ComposedProvidingRequiringEntity Node" labelDirectEdit="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@toolSections.3/@subSections[name='Direct%20Edit%20Label']/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="var:self" domainClass="entity.ComposedProvidingRequiringEntity" dropDescriptions="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Component%20into%20System'] //@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EventGroup%20into%20System']">
           <borderedNodeMappings name="ExternalOperationProvidedRole Node" labelDirectEdit="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RoleName']" semanticCandidatesExpression="[self.providedRoles_InterfaceProvidingEntity/]" domainClass="repository.OperationProvidedRole">
             <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="feature:entityName" sizeComputationExpression="5" id="org.palladiosimulator.editors.sirius.assembly.custom.operationProvidedRole">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -422,7 +422,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="Drop Component" precondition="aql:self.oclIsKindOf(repository::RepositoryComponent)" mappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']" dragSource="BOTH">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="Component into System" precondition="aql:self.oclIsKindOf(repository::RepositoryComponent)" mappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']" dragSource="BOTH">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -433,6 +433,21 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="encapsulatedComponent__AssemblyContext" valueExpression="var:element"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="parentStructure__AssemblyContext" valueExpression="var:newSemanticContainer"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'Assembly_' + self.encapsulatedComponent__AssemblyContext.entityName"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="EventGroup into System" precondition="aql:self.oclIsKindOf(repository::EventGroup)" mappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subNodeMappings[name='EventChannel%20Node']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="composition::EventChannel" referenceName="eventChannel__ComposedStructure">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="eventGroup__EventChannel" valueExpression="var:element"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="parentStructure__EventChannel" valueExpression="var:newSemanticContainer"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'EventChannel_' + self.eventGroup__EventChannel.entityName"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

@@ -72,23 +72,5 @@ public class Services {
         return true;
     }
     
-    public EObject copyEObject(EObject eObject) {
-    	Copier copier = new Copier();
-    	EObject copy = copier.copy(eObject);
-    	copier.copyReferences();
-    	return copy;
-    	
-    }
-    public Identifier copyIdentifier(Identifier eObject) {
-    	Identifier copy = (Identifier) copyEObject(eObject);
-    	copy.setId(EcoreUtil.generateUUID());
-    	TreeIterator<EObject> it = copy.eAllContents();
-    	while (it.hasNext()){
-    		EObject o = it.next();
-    		if (o instanceof Identifier) {
-    			((Identifier) o).setId(EcoreUtil.generateUUID());     			
-    		}
-    	}
-    	return copy;
-    }
+
 }

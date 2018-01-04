@@ -7,11 +7,14 @@ import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.InputDialog;
@@ -27,6 +30,8 @@ import org.palladiosimulator.mdsdprofiles.api.StereotypeAPI;
 import org.palladiosimulator.pcm.core.PCMRandomVariable;
 import org.palladiosimulator.pcm.stochasticexpressions.parser.MyPCMStoExLexer;
 import org.palladiosimulator.pcm.stochasticexpressions.parser.MyPCMStoExParser;
+
+import de.uka.ipd.sdq.identifier.Identifier;
 
 public class PCMServices {
 
@@ -224,5 +229,36 @@ public class PCMServices {
 		}
 		return (DSemanticDiagram) container;
 	}
+    
+    /**
+     * Copies an EObject
+     * @param eObject the EObject to be copied
+     * @return The copy
+     */
+    public EObject copyEObject(EObject eObject) {
+    	Copier copier = new Copier();
+    	EObject copy = copier.copy(eObject);
+    	copier.copyReferences();
+    	return copy;
+    	
+    }
+    
+    /**
+     * Copies an Identifier and generates new IDs for it and all its contents
+     * @param eObject Identifier to be copied
+     * @return The copy
+     */
+    public Identifier copyIdentifier(Identifier eObject) {
+    	Identifier copy = (Identifier) copyEObject(eObject);
+    	copy.setId(EcoreUtil.generateUUID());
+    	TreeIterator<EObject> it = copy.eAllContents();
+    	while (it.hasNext()){
+    		EObject o = it.next();
+    		if (o instanceof Identifier) {
+    			((Identifier) o).setId(EcoreUtil.generateUUID());     			
+    		}
+    	}
+    	return copy;
+    }
 
 }
