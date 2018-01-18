@@ -387,7 +387,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="composition.AssemblyContext" referenceName="assemblyContexts__ComposedStructure">
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="AC Selection Wizard" label="Selection Wizard Assembly Context" forceRefresh="true" id="AddAssemblyContext">
                     <subModelOperations xsi:type="tool:If" conditionExpression="[self.encapsulatedComponent__AssemblyContext=null/]">
@@ -406,6 +406,14 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="composition.EventChannel" referenceName="eventChannel__ComposedStructure">
                   <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="['EventChannel' + container.eventChannel__ComposedStructure->size()/]"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="Select Event Group" id="AddEventChannel">
+                  <parameters name="instance" value="var:instance"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:instance.eventGroup__EventChannel = null">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool:RemoveElement"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
