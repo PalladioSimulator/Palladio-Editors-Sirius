@@ -865,7 +865,7 @@
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="[container.oclIsTypeOf(SetVariableAction)/]">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableUsage" referenceName="localVariableUsages_SetVariableAction">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stoex::VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
                       <subModelOperations xsi:type="tool_1:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:VariableReference"/>
                       <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NamedReference" id="SetNamedReference">
                         <parameters name="VariableReference" value="var:VariableReference"/>
@@ -1056,7 +1056,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.namedReference__VariableUsage = null">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stoex::VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.namedReference__VariableUsage">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="referenceName" valueExpression="var:0"/>
