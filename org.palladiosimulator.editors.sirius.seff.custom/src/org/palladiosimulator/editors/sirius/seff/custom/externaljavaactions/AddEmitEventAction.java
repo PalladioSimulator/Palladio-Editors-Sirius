@@ -50,8 +50,8 @@ public class AddEmitEventAction implements IExternalJavaAction {
 		for (Object o : dialog.getTreeViewer().getExpandedElements()) {
 			if (!(o instanceof EventGroup))
 				continue;
-			ServiceEffectSpecification seff = (ServiceEffectSpecification) emitEventAction
-					.getResourceDemandingBehaviour_AbstractAction();
+			ServiceEffectSpecification seff = SEFFUtil.getEnclosingSEFF(emitEventAction
+					.getResourceDemandingBehaviour_AbstractAction());
 			BasicComponent parent = seff.getBasicComponent_ServiceEffectSpecification();
 			
 			boolean found = false;

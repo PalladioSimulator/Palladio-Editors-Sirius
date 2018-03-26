@@ -18,6 +18,7 @@ import org.palladiosimulator.pcm.repository.OperationSignature;
 import org.palladiosimulator.pcm.repository.Repository;
 import org.palladiosimulator.pcm.repository.RequiredRole;
 import org.palladiosimulator.pcm.seff.ExternalCallAction;
+import org.palladiosimulator.pcm.seff.ResourceDemandingBehaviour;
 import org.palladiosimulator.pcm.seff.ServiceEffectSpecification;
 
 public class AddExternalCallAction implements IExternalJavaAction {
@@ -58,12 +59,13 @@ public class AddExternalCallAction implements IExternalJavaAction {
 			if (!(o instanceof OperationInterface)) //if the current object is not an OperationInterface, skip.
 				continue;
 			
-			//o is an OperationInterface
-			ServiceEffectSpecification seff = (ServiceEffectSpecification) extCall.getResourceDemandingBehaviour_AbstractAction();
+			ResourceDemandingBehaviour rd = extCall.getResourceDemandingBehaviour_AbstractAction();
+			
+			ServiceEffectSpecification seff = SEFFUtil.getEnclosingSEFF(rd);
 			BasicComponent parent = seff.getBasicComponent_ServiceEffectSpecification();
 			
 			//if o is not referenced by any OperationRequiredRole, remove it from the tree viewer
-			OperationRequiredRole requiredRole= getOperationRequiredRole(parent.getRequiredRoles_InterfaceRequiringEntity(), (OperationInterface) o);
+			OperationRequiredRole requiredRole = getOperationRequiredRole(parent.getRequiredRoles_InterfaceRequiringEntity(), (OperationInterface) o);
 		    if (requiredRole != null)
 		        requiredRolesMap.put((OperationInterface) o, requiredRole);
 		    else

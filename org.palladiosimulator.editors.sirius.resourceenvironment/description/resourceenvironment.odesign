@@ -61,8 +61,8 @@
           </style>
         </containerMappings>
         <containerMappings name="ResourceContainer" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Resource%20Container%20Name']" semanticCandidatesExpression="feature:resourceContainer_ResourceEnvironment" domainClass="resourceenvironment.ResourceContainer" dropDescriptions="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='ResourceSpecification'] //@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='(Nested)%20ResourceContainer%20into%20(Nested)%20ResourceContainer']">
-          <subContainerMappings name="Role Container" deletionDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20Role%20Removal']" semanticCandidatesExpression="service:getRoleApplications()" domainClass="StereotypeApplication" childrenPresentation="List">
-            <subNodeMappings name="RoleParameter Node" preconditionExpression="[self.changeable/]" semanticCandidatesExpression="aql: self.getStereotype().getParameters()" doubleClickDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='QueryAndSetRoleParameterValue']" domainClass="EStructuralFeature">
+          <subContainerMappings name="Role Container" deletionDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='AT%20Role%20Removal']" semanticCandidatesExpression="aql:self.getRoleApplications()" domainClass="StereotypeApplication" childrenPresentation="List">
+            <subNodeMappings name="RoleParameter Node" preconditionExpression="[self.changeable/]" semanticCandidatesExpression="aql:self.getStereotype().print().getParameters()" doubleClickDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='QueryAndSetRoleParameterValue']" domainClass="EStructuralFeature">
               <style xsi:type="style:SquareDescription" labelExpression="aql:self.name + '=' + view.eContainer(diagram::DDiagramElementContainer).target.eGet(self)" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -507,5 +507,6 @@
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.services.ResourceEnvironmentServices"/>
     <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.services.PCMServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.resourceenvironment.Services"/>
   </ownedViewpoints>
 </description:Group>

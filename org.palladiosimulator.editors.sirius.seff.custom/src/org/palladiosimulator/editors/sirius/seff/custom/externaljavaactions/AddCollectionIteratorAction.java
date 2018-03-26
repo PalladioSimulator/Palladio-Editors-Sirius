@@ -19,7 +19,8 @@ import org.palladiosimulator.pcm.repository.Parameter;
 import org.palladiosimulator.pcm.repository.Repository;
 import org.palladiosimulator.pcm.repository.Signature;
 import org.palladiosimulator.pcm.seff.CollectionIteratorAction;
-import org.palladiosimulator.pcm.seff.ResourceDemandingSEFF;
+import org.palladiosimulator.pcm.seff.ResourceDemandingBehaviour;
+import org.palladiosimulator.pcm.seff.ServiceEffectSpecification;
 
 public class AddCollectionIteratorAction implements IExternalJavaAction {
 	public static final Shell SHELL = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
@@ -27,13 +28,14 @@ public class AddCollectionIteratorAction implements IExternalJavaAction {
 	@Override
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
 		CollectionIteratorAction action = (CollectionIteratorAction) parameters.get("instance");
-		ResourceDemandingSEFF seff = (ResourceDemandingSEFF) parameters.get("seff");
+		ResourceDemandingBehaviour resourceDemandingBehaviour = (ResourceDemandingBehaviour) parameters.get("resourceDemandingBehaviour");
+		ServiceEffectSpecification seff = SEFFUtil.getEnclosingSEFF(resourceDemandingBehaviour);
 		Parameter parameter = getParameter(action, seff);
 		action.setParameter_CollectionIteratorAction(parameter);
 		
 	}
 
-	private Parameter getParameter(CollectionIteratorAction action, ResourceDemandingSEFF seff) {
+	private Parameter getParameter(CollectionIteratorAction action, ServiceEffectSpecification seff) {
 		Collection<Object> filter = new ArrayList<Object>();
 		filter.add(Repository.class);
 		filter.add(Interface.class);

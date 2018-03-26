@@ -11,6 +11,7 @@
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//core"/>
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//repository"/>
       <metamodel href="http://palladiosimulator.org/PalladioComponentModel/5.2#//resourcetype"/>
+      <metamodel href="http://sdq.ipd.uka.de/Identifier/2.1#/"/>
       <layout xsi:type="description_1:CompositeLayout" padding="15"/>
       <defaultLayer name="Default">
         <nodeMappings name="StartNode" semanticCandidatesExpression="feature:steps_Behaviour" domainClass="seff.StartAction">
@@ -591,7 +592,7 @@
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Add CollectionIteratorAction" id="AddCollectionIteratorAction">
                       <parameters name="instance" value="var:instance"/>
-                      <parameters name="seff" value="var:container"/>
+                      <parameters name="resourceDemandingBehaviour" value="var:container"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:instance.parameter_CollectionIteratorAction=null">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
@@ -725,7 +726,7 @@
             <copiedElement name="copiedElement"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="steps_Behaviour" valueExpression="aql:copiedElement.copyIdentifier()"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="steps_Behaviour" valueExpression="aql:copiedElement.oclAsType(identifier::Identifier).copyIdentifier()"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
