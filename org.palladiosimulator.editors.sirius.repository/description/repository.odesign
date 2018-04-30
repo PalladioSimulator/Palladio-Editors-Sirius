@@ -18,10 +18,10 @@
         </firstModelOperations>
       </diagramInitialisation>
       <defaultLayer name="Default">
-        <edgeMappings name="RequiredRole" sourceMapping="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='Interface']" targetFinderExpression="feature:requiredInterface__OperationRequiredRole" sourceFinderExpression="feature:requiringEntity_RequiredRole" domainClass="repository.OperationRequiredRole" useDomainElement="true" reconnections="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='OperationRequiredRole%27s%20Target'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RequiredRole%27s%20Source']">
+        <edgeMappings name="RequiredRole" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" sourceMapping="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='Interface']" targetFinderExpression="feature:requiredInterface__OperationRequiredRole" sourceFinderExpression="feature:requiringEntity_RequiredRole" domainClass="repository.OperationRequiredRole" useDomainElement="true" reconnections="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='OperationRequiredRole%27s%20Target'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RequiredRole%27s%20Source']">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Requires>>">
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql: '&lt;&lt;Requires>> \n' + self.entityName">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -29,7 +29,7 @@
         <edgeMappings name="ProvidedRole" sourceMapping="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='Interface']" targetFinderExpression="feature:providedInterface__OperationProvidedRole" sourceFinderExpression="feature:providingEntity_ProvidedRole" domainClass="repository.OperationProvidedRole" useDomainElement="true" reconnections="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='OperationProvidedRole%27s%20Target'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='OperationProvidedRole%27s%20Source']">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Provides>>">
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql: '&lt;&lt;Provides>> \n' + self.entityName">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -37,7 +37,7 @@
         <edgeMappings name="InfrastructureRequiredRole" sourceMapping="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='InfrastructureInterface']" targetFinderExpression="feature:requiredInterface__InfrastructureRequiredRole" sourceFinderExpression="feature:requiringEntity_RequiredRole" domainClass="repository.InfrastructureRequiredRole" useDomainElement="true" reconnections="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RequiredRole%27s%20Source'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='InfrastructureRequiredRole%27s%20Target']">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Requires>>">
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql: '&lt;&lt;Requires>> \n' + self.entityName">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -45,7 +45,7 @@
         <edgeMappings name="InfrastructureProvidedRole" sourceMapping="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='InfrastructureInterface']" targetFinderExpression="feature:providedInterface__InfrastructureProvidedRole" sourceFinderExpression="feature:providingEntity_ProvidedRole" domainClass="repository.InfrastructureProvidedRole" useDomainElement="true" reconnections="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='InfrastructureProvidedRole%27s%20Target'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='InfrastructureProvidedRole%27s%20Source']">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Provides>>">
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql: '&lt;&lt;Provides>> \n' + self.entityName">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -286,7 +286,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.OperationRequiredRole" referenceName="requiredRoles_InterfaceRequiringEntity">
                   <subModelOperations xsi:type="tool:SetValue" featureName="requiredInterface__OperationRequiredRole" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'OperationRequiredRole' + source.eContents()->filter(repository::OperationRequiredRole)->size()"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:self.requiringEntity_RequiredRole.entityName + '.' + self.requiredInterface__OperationRequiredRole.entityName + '.OperationRequiredRole' + source.eContents()->filter(repository::OperationRequiredRole)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -300,7 +300,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository::OperationProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
                   <subModelOperations xsi:type="tool:SetValue" featureName="providedInterface__OperationProvidedRole" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql: 'OperationProvidedRole' + source.eContents()->filter(repository::OperationProvidedRole)->size()"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:self.providingEntity_ProvidedRole.entityName + '.' + self.providedInterface__OperationProvidedRole.entityName + '.OperationProvidedRole' + source.eContents()->filter(repository::OperationProvidedRole)->size()"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="[source.oclIsTypeOf(BasicComponent)/]">
                     <subModelOperations xsi:type="tool:For" expression="[target.signatures__OperationInterface/]">
                       <subModelOperations xsi:type="tool:If" conditionExpression="[source.oclAsType(BasicComponent).serviceEffectSpecifications__BasicComponent->exists (x | x.oclAsType(ResourceDemandingSEFF).describedService__SEFF = i) = false/]">
@@ -319,6 +319,8 @@
                               <subModelOperations xsi:type="tool:ExternalJavaAction" name="Activate Seff Viewpoint on creation" id="ActivateViewpoint">
                                 <parameters name="element" value="var:instance"/>
                                 <parameters name="Viewpoint" value="Seff"/>
+                                <parameters name="Diagram Name" value="aql:'&lt;' + source.oclAsType(repository::BasicComponent).entityName + '>' + '&lt;' + i.oclAsType(repository::OperationSignature).entityName + '> SEFF Diagram'"/>
+                                <parameters name="RepresentationDescription" value="Seff Diagram"/>
                               </subModelOperations>
                             </subModelOperations>
                           </subModelOperations>
@@ -339,7 +341,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InfrastructureRequiredRole" referenceName="requiredRoles_InterfaceRequiringEntity">
                   <subModelOperations xsi:type="tool:SetValue" featureName="requiredInterface__InfrastructureRequiredRole" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'InfrastructureRequiredRole' + source.eContents()->filter(repository::InfrastructureRequiredRole)->size()"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:self.requiringEntity_RequiredRole.entityName + '.' + self.requiredInterface__InfrastructureRequiredRole.entityName + '.InfrastructureRequiredRole' + source.eContents()->filter(repository::InfrastructureRequiredRole)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -353,7 +355,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository::InfrastructureProvidedRole" referenceName="providedRoles_InterfaceProvidingEntity">
                   <subModelOperations xsi:type="tool:SetValue" featureName="providedInterface__InfrastructureProvidedRole" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'InfrastructureProvidedRole' + source.eContents()->filter(repository::InfrastructureProvidedRole)->size()"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:self.providingEntity_ProvidedRole.entityName + '.' + self.providedInterface__InfrastructureProvidedRole.entityName + '.InfrastructureProvidedRole' + source.eContents()->filter(repository::InfrastructureProvidedRole)->size()"/>
                   <subModelOperations xsi:type="tool:For" expression="aql:target.infrastructureSignatures__InfrastructureInterface">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="seff::ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
@@ -669,6 +671,8 @@
                     <subModelOperations xsi:type="tool:ExternalJavaAction" name="Activate Seff Viewpoint on creation" id="ActivateViewpoint">
                       <parameters name="element" value="var:instance"/>
                       <parameters name="Viewpoint" value="Seff"/>
+                      <parameters name="Diagram Name" value="aql:'&lt;' + container.oclAsType(repository::BasicComponent).entityName + '>' + '&lt;' + self.describedService__SEFF.entityName + '> SEFF Diagram'"/>
+                      <parameters name="RepresentationDescription" value="Seff Diagram"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
                       <subModelOperations xsi:type="tool:If" conditionExpression="aql:instance.eContents(seff::StartAction)->size() = 0 and instance.eContents(seff::StopAction)->size() = 0"/>
@@ -752,6 +756,7 @@
                 <parameters name="Viewpoint" value="Seff"/>
                 <parameters name="RepresentationDescription" value="Seff Diagram"/>
                 <parameters name="element" value="var:element"/>
+                <parameters name="Diagram name" value="test"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -941,7 +946,7 @@
         <edgeMappings name="SourceRole" sourceMapping="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='Event-Based%20Communication']/@containerMappings[name='EventGroup']" targetFinderExpression="feature:eventGroup__SourceRole" sourceFinderExpression="feature:requiringEntity_RequiredRole" domainClass="repository.SourceRole" useDomainElement="true" reconnections="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='RequiredRole%27s%20Source'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='SourceRole%27s%20Target']">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Emits>>">
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql: '&lt;&lt;Emits>> \n' + self.entityName">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -949,7 +954,7 @@
         <edgeMappings name="SinkRole" sourceMapping="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='CompositeComponent'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='SubSystem'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='Component%20Types']/@containerMappings[name='ProvidesComponentType'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='Component%20Types']/@containerMappings[name='CompleteComponentType']" targetMapping="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='Event-Based%20Communication']/@containerMappings[name='EventGroup']" targetFinderExpression="feature:eventGroup__SinkRole" sourceFinderExpression="feature:providingEntity_ProvidedRole" domainClass="repository.SinkRole" useDomainElement="true" reconnections="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='Event-Based%20Communication']/@toolSections.0/@ownedTools[name='SinkRole%27s%20Target'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='Event-Based%20Communication']/@toolSections.0/@ownedTools[name='SinkRole%27s%20Source']">
           <style>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Handles>>">
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql: '&lt;&lt;Handles>> \n' + self.entityName">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -1001,7 +1006,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.SourceRole" referenceName="requiredRoles_InterfaceRequiringEntity">
                   <subModelOperations xsi:type="tool:SetValue" featureName="eventGroup__SourceRole" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'SourceRole' + source.eContents()->filter(repository::SourceRole)->size()"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:self.requiringEntity_RequiredRole.entityName + '.' + self.eventGroup__SourceRole.entityName + '.SourceRole' + source.eContents()->filter(repository::SourceRole)->size()"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1015,7 +1020,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.SinkRole" referenceName="providedRoles_InterfaceProvidingEntity">
                   <subModelOperations xsi:type="tool:SetValue" featureName="eventGroup__SinkRole" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'SinkeRole' + source.eAllContents()->filter(repository::SinkRole)->size()"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:self.providingEntity_ProvidedRole.entityName + '.' + self.eventGroup__SinkRole.entityName + '.SinkRole' + source.eContents()->filter(repository::SinkRole)->size()"/>
                   <subModelOperations xsi:type="tool:For" expression="aql: target.eventTypes__EventGroup">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="seff::ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
