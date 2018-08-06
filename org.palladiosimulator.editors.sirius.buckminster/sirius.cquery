@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><cq:componentQuery xmlns:cq="http://www.eclipse.org/buckminster/CQuery-1.0" resourceMap="sirius.rmap">
-    <cq:rootRequest name="org.palladiosimulator.editors.sirius.buckminster" componentType="eclipse.feature"/>
-    <cq:advisorNode namePattern="^org\.palladiosimulator\.license$" sourceLevel="REQUIRE" useWorkspace="false"/>
-    <cq:advisorNode namePattern="^org\.palladiosimulator\.branding$" sourceLevel="REQUIRE" useWorkspace="false"/>
-    <cq:advisorNode namePattern="^org\.palladiosimulator\.editors\.sirius.*" sourceLevel="REQUIRE" useWorkspace="false"/>
-    <cq:advisorNode namePattern=".*" sourceLevel="REJECT"/>
-</cq:componentQuery>
