@@ -25,7 +25,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.gmf.runtime.common.core;bundle-version="1.7.0",
  org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0",
  org.palladiosimulator.commons;bundle-version="1.0.1",
- org.eclipse.sirius.ui
+ org.eclipse.sirius.ui,
+ org.palladiosimulator.commons.stoex.ui,
+ org.palladiosimulator.editors.sirius.services;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.palladiosimulator.editors.sirius.custom.editpolicyproviders;uses:="org.eclipse.gmf.runtime.common.core.service,org.eclipse.gmf.runtime.diagram.ui.services.editpolicy",
