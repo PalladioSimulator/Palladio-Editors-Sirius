@@ -9,8 +9,9 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
+import org.palladiosimulator.commons.stoex.ui.internal.StoexActivator;
 import org.palladiosimulator.editors.commons.dialogs.selection.PalladioSelectEObjectDialog;
-import org.palladiosimulator.editors.commons.dialogs.stoex.StochasticExpressionEditDialog;
+import org.palladiosimulator.editors.sirius.services.stoexxtext.OpenStoexXtextEmbeddedEditor;
 import org.palladiosimulator.pcm.core.CoreFactory;
 import org.palladiosimulator.pcm.core.PCMRandomVariable;
 import org.palladiosimulator.pcm.resourceenvironment.ProcessingResourceSpecification;
@@ -19,14 +20,13 @@ import org.palladiosimulator.pcm.resourcetype.ProcessingResourceType;
 import org.palladiosimulator.pcm.resourcetype.ResourceRepository;
 import org.palladiosimulator.pcm.resourcetype.SchedulingPolicy;
 
-import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
+import com.google.inject.Injector;
 
 /**
  * @author Edith
  */
 public class AddProcessingResourceSpecification implements IExternalJavaAction {
 
-    private static final String SET_PROCESSING_RATE = "Set Processing Rate";
     /**
      * Parameter name for the newly created communication linking resource. This name is used as a
      * key in the parameter key-value map.
@@ -61,11 +61,10 @@ public class AddProcessingResourceSpecification implements IExternalJavaAction {
             return;
 
         // 2. dialog
-        final PCMRandomVariable pcmrv = getProcessingRate();
-        if (pcmrv != null)
-            processingResourceSpecification.setProcessingRate_ProcessingResourceSpecification(pcmrv);
-        else
-            return;
+        final PCMRandomVariable pcmRandomVariable = CoreFactory.eINSTANCE.createPCMRandomVariable();
+        pcmRandomVariable.setSpecification("1.0");
+        processingResourceSpecification.setProcessingRate_ProcessingResourceSpecification(pcmRandomVariable);
+        
         // 3. dialog
         final SchedulingPolicy sp = getSchedulingPolicy(processingResourceSpecification);
         if (sp != null)
@@ -73,7 +72,7 @@ public class AddProcessingResourceSpecification implements IExternalJavaAction {
         else
             return;
     }
-
+    
     private ProcessingResourceType getResourceType(
             final ProcessingResourceSpecification processingResourceSpecification) {
 
@@ -118,23 +117,6 @@ public class AddProcessingResourceSpecification implements IExternalJavaAction {
             return null;
         }
         return (SchedulingPolicy) dialog.getResult();
-    }
-
-    private PCMRandomVariable getProcessingRate() {
-        final PCMRandomVariable pcmRandomVariable = CoreFactory.eINSTANCE.createPCMRandomVariable();
-        pcmRandomVariable.setSpecification("");
-
-        final StochasticExpressionEditDialog dialog = new StochasticExpressionEditDialog(
-                PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), TypeEnum.DOUBLE, pcmRandomVariable);
-        dialog.setDisplayTitle(SET_PROCESSING_RATE);
-        dialog.open();
-        if (dialog.getResult() == null) {
-            return null;
-        }
-
-        pcmRandomVariable.setSpecification(dialog.getResultText());
-
-        return pcmRandomVariable;
     }
 
 }

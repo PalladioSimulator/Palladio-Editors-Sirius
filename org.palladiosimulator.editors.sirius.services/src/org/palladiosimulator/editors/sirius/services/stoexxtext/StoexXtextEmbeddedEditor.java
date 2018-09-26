@@ -101,7 +101,7 @@ public class StoexXtextEmbeddedEditor extends XtextEmbeddedEditor {
 		EObject randomVariableInSirius = resourceInSirius.getEObject(semanticElementFragment);
 
 		// replace specification
-		String newSpecification = resourceInEmbeddedEditor.getParseResult().getRootNode().getText();
+		String newSpecification = resourceInEmbeddedEditor.getParseResult().getRootNode().getText().replace("\n", "");
 
 		final TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(originalResource);
 		editingDomain.getCommandStack()
