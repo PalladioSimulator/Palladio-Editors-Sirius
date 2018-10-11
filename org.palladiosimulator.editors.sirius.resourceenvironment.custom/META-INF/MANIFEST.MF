@@ -17,7 +17,6 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.12.0",
  org.eclipse.gef,
  org.eclipse.gmf,
  org.palladiosimulator.editors.sirius.custom;bundle-version="1.0.0",
- org.palladiosimulator.editors.sirius.ui,
- org.palladiosimulator.commons.stoex.ui
+ org.palladiosimulator.editors.sirius.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
