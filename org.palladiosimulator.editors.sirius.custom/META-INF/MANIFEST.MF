@@ -28,7 +28,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.ui,
  org.eclipse.sirius.diagram.ui,
  org.palladiosimulator.commons.stoex.ui,
- org.yakindu.base.xtext.utils.gmf;visibility:=reexport
+ org.yakindu.base.xtext.utils.gmf;visibility:=reexport,
+ org.yakindu.base.xtext.utils.jface,
+ org.eclipse.xtext.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.palladiosimulator.editors.sirius.custom.editpart,

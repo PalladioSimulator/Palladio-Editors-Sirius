@@ -19,7 +19,7 @@ public class RandomVariableEditPart extends DNodeListElementEditPart implements 
 	}
 
 	protected int getEditorStyles() {
-		return SWT.MULTI | SWT.WRAP;
+		return SWT.SINGLE | SWT.WRAP;
 	}
 	
 	@Override
@@ -36,7 +36,7 @@ public class RandomVariableEditPart extends DNodeListElementEditPart implements 
 	}
 
 	protected DirectEditManager createDirectEditManager() {
-		return new XtextDirectEditManager(this, getInjector(), getEditorStyles());
+		return new RandomVariableDirectEditManager(this, getInjector(), getEditorStyles());
 	}
 
 	private Injector getInjector() {
