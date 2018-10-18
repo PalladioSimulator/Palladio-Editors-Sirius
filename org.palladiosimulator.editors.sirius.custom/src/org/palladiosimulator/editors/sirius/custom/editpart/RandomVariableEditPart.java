@@ -11,11 +11,20 @@ import org.yakindu.base.xtext.utils.gmf.directedit.IXtextAwareEditPart;
 import org.yakindu.base.xtext.utils.gmf.directedit.XtextDirectEditManager;
 import com.google.inject.Injector;
 
+import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
+
 @SuppressWarnings("restriction")
 public class RandomVariableEditPart extends DNodeListElementEditPart implements IXtextAwareEditPart {
+	
+	private TypeEnum expectedType;
 
-	public RandomVariableEditPart(View view) {
+	public RandomVariableEditPart(View view, TypeEnum expectedType) {
 		super(view);
+		this.expectedType = expectedType;
+	}
+	
+	public RandomVariableEditPart(View view) {
+		this(view, TypeEnum.ANY);
 	}
 
 	protected int getEditorStyles() {
@@ -36,11 +45,15 @@ public class RandomVariableEditPart extends DNodeListElementEditPart implements 
 	}
 
 	protected DirectEditManager createDirectEditManager() {
-		return new RandomVariableDirectEditManager(this, getInjector(), getEditorStyles());
+		return new RandomVariableDirectEditManager(this, getInjector(), getEditorStyles(), expectedType);
 	}
 
 	private Injector getInjector() {
 		return StoexActivator.getInstance().getInjector("org.palladiosimulator.commons.stoex.Stoex");
+	}
+	
+	public void setExpectedType(TypeEnum expectedType) {
+		this.expectedType = expectedType;
 	}
 
 }

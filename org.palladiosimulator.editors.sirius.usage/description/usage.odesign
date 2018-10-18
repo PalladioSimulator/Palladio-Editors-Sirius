@@ -56,8 +56,8 @@
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               </style>
             </subContainerMappings>
-            <subContainerMappings name="loop" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" doubleClickDescription="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='doubleClickLoopIterationsDialog']" domainClass="usagemodel.Loop" childrenPresentation="VerticalStack">
-              <subContainerMappings name="LoopIterationCount" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='doubleClickLoopIterationsDialog']" domainClass="usagemodel.Loop">
+            <subContainerMappings name="loop" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Set%20LoopIteration']" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" domainClass="usagemodel.Loop" childrenPresentation="VerticalStack">
+              <subContainerMappings name="LoopIterationCount" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Set%20LoopIteration']" semanticCandidatesExpression="var:self" domainClass="usagemodel.Loop">
                 <style xsi:type="style:FlatContainerStyleDescription" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.loopIteration_Loop.specification" widthComputationExpression="20">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -119,7 +119,7 @@
               </style>
             </subContainerMappings>
             <subContainerMappings name="delay" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" domainClass="usagemodel.Delay" childrenPresentation="List">
-              <subNodeMappings name="delayTime" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='doubleClickDelayTimeDialog']" domainClass="usagemodel.Delay">
+              <subNodeMappings name="delayTime" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Set%20DelayTime']" semanticCandidatesExpression="var:self" domainClass="usagemodel.Delay">
                 <style xsi:type="style:BundledImageDescription" labelExpression="aql: 'Delay Time: ' + self.timeSpecification_Delay.specification" labelAlignment="LEFT" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -148,7 +148,7 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="openWorkload" semanticCandidatesExpression="feature:workload_UsageScenario" domainClass="usagemodel.OpenWorkload" childrenPresentation="List">
-            <subNodeMappings name="interArrivalTime" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='openWorkloadInterArrivalTimeDialog']" domainClass="usagemodel.OpenWorkload">
+            <subNodeMappings name="interArrivalTime" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='Set%20OpenWorkloadInterArrivalTime']" semanticCandidatesExpression="var:self" domainClass="usagemodel.OpenWorkload">
               <style xsi:type="style:NoteDescription" labelExpression="aql: 'Interarrival Time: ' + self.interArrivalTime_OpenWorkload.specification" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -177,7 +177,7 @@
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="thinkTime" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='closedWorkloadThinkTimeDialog']" domainClass="usagemodel.ClosedWorkload">
+            <subNodeMappings name="thinkTime" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='Set%20ClosedWorkloadThinkTimeDialog']" semanticCandidatesExpression="var:self" domainClass="usagemodel.ClosedWorkload">
               <style xsi:type="style:NoteDescription" labelExpression="['Think Time: ' + self.thinkTime_ClosedWorkload.specification/]" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -298,24 +298,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="doubleClickDelayTimeDialog" mappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='delay']/@subNodeMappings[name='delayTime']">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="delayTimeDialog" id="DelayTimeAction">
-                <parameters name="element" value="var:element"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="doubleClickLoopIterationsDialog" mappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='loop']/@subContainerMappings[name='LoopIterationCount'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='loop']">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="loopIterationsAction" id="LoopIterationsAction">
-                <parameters name="element" value="var:element"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool:DoubleClickDescription" name="Edit EntryLevelSystemCall" mappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall']">
             <element name="element"/>
             <elementView name="elementView"/>
@@ -357,6 +339,18 @@
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Set LoopIteration" inputLabelExpression="[self.loopIteration_Loop.specification/]">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.loopIteration_Loop.editPCMRandomVariable(arg0)/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Set DelayTime" inputLabelExpression="[self.timeSpecification_Delay.specification/]">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.timeSpecification_Delay.editPCMRandomVariable(arg0)/]"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
@@ -568,22 +562,16 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="closedWorkloadThinkTimeDialog" mappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='closedWorkload']/@subNodeMappings[name='thinkTime']">
-            <element name="element"/>
-            <elementView name="elementView"/>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Set OpenWorkloadInterArrivalTime" inputLabelExpression="[self.interArrivalTime_OpenWorkload.specification/]">
+            <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="thinkTimeDialog" id="ClosedWorkloadThinkTimeAction">
-                <parameters name="element" value="var:element"/>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.interArrivalTime_OpenWorkload.editPCMRandomVariable(arg0)/]"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="openWorkloadInterArrivalTimeDialog" mappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='openWorkload']/@subNodeMappings[name='interArrivalTime']">
-            <element name="element"/>
-            <elementView name="elementView"/>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Set ClosedWorkloadThinkTimeDialog" inputLabelExpression="[self.thinkTime_ClosedWorkload.specification/]">
+            <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ExternalJavaAction" name="interArrivalTimeDialog" id="OpenWorkloadInterArrivalTimeAction">
-                <parameters name="element" value="var:element"/>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.thinkTime_ClosedWorkload.editPCMRandomVariable(arg0)/]"/>
             </initialOperation>
           </ownedTools>
         </toolSections>

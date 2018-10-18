@@ -11,15 +11,19 @@ import org.yakindu.base.xtext.utils.gmf.viewers.XtextStyledTextCellEditorEx;
 
 import com.google.inject.Injector;
 
+import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
+
 public class RandomVariableDirectEditManager extends XtextDirectEditManager {
 	
 	private Injector injector;
 	private int style;
+	private TypeEnum expectedType;
 
-	public RandomVariableDirectEditManager(IXtextAwareEditPart source, Injector injector, int style) {
+	public RandomVariableDirectEditManager(IXtextAwareEditPart source, Injector injector, int style, TypeEnum expectedType) {
 		super(source, injector, style);
 		this.injector = injector;
 		this.style = style;
+		this.expectedType = expectedType;
 	}
 
 	@Override
@@ -32,7 +36,7 @@ public class RandomVariableDirectEditManager extends XtextDirectEditManager {
 
 		RandomVariableXtextStyledTextCellEditorEx editor;
 
-		editor = new RandomVariableXtextStyledTextCellEditorEx(style, injector);
+		editor = new RandomVariableXtextStyledTextCellEditorEx(style, injector, expectedType);
 		editor.create(composite);
 
 		return editor;
