@@ -32,31 +32,6 @@ import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
 @SuppressWarnings("restriction")
 public class RandomVariableEditPartProvider extends AbstractEditPartProvider {
 
-	class DirectEditForRandomVariable extends LabelDirectEditPolicy {
-
-		@Override
-		protected org.eclipse.gef.commands.Command getDirectEditCommand(DirectEditRequest edit) {
-			final EObject element = ((org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart) getHost())
-					.resolveSemanticElement();
-			final TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(element);
-			final String labelText = (String) edit.getCellEditor().getValue();
-			final RecordingCommand cmd = new RecordingCommand(domain) {
-
-				@Override
-				protected void doExecute() {
-					if (element instanceof DSemanticDecorator) {
-						final EObject target = ((DSemanticDecorator) element).getTarget();
-						System.out.println("DirectEdit succesfull");
-						// TODO save result to the model (as in PCMServices)
-					}
-				}
-			};
-			return new ICommandProxy(new GMFCommandWrapper(domain, cmd));
-
-		}
-
-	}
-
 	/**
 	 * @generated
 	 */
