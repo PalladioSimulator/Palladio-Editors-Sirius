@@ -31,7 +31,8 @@ Require-Bundle: org.eclipse.ui,
  org.yakindu.base.xtext.utils.gmf;visibility:=reexport,
  org.yakindu.base.xtext.utils.jface,
  org.eclipse.xtext.ui,
- de.uka.ipd.sdq.errorhandling
+ de.uka.ipd.sdq.errorhandling,
+ org.eclipse.gef
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.palladiosimulator.editors.sirius.custom.editpart,

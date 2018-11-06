@@ -26,7 +26,6 @@ import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
  */
 public class AddProcessingResourceSpecification implements IExternalJavaAction {
 
-    private static final String SET_PROCESSING_RATE = "Set Processing Rate";
     /**
      * Parameter name for the newly created communication linking resource. This name is used as a
      * key in the parameter key-value map.
@@ -60,12 +59,6 @@ public class AddProcessingResourceSpecification implements IExternalJavaAction {
         else
             return;
 
-        // 2. dialog
-        final PCMRandomVariable pcmrv = getProcessingRate();
-        if (pcmrv != null)
-            processingResourceSpecification.setProcessingRate_ProcessingResourceSpecification(pcmrv);
-        else
-            return;
         // 3. dialog
         final SchedulingPolicy sp = getSchedulingPolicy(processingResourceSpecification);
         if (sp != null)
@@ -118,23 +111,6 @@ public class AddProcessingResourceSpecification implements IExternalJavaAction {
             return null;
         }
         return (SchedulingPolicy) dialog.getResult();
-    }
-
-    private PCMRandomVariable getProcessingRate() {
-        final PCMRandomVariable pcmRandomVariable = CoreFactory.eINSTANCE.createPCMRandomVariable();
-        pcmRandomVariable.setSpecification("");
-
-        final StochasticExpressionEditDialog dialog = new StochasticExpressionEditDialog(
-                PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), TypeEnum.DOUBLE, pcmRandomVariable);
-        dialog.setDisplayTitle(SET_PROCESSING_RATE);
-        dialog.open();
-        if (dialog.getResult() == null) {
-            return null;
-        }
-
-        pcmRandomVariable.setSpecification(dialog.getResultText());
-
-        return pcmRandomVariable;
     }
 
 }

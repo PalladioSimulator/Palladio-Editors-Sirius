@@ -1,41 +1,37 @@
 package org.palladiosimulator.editors.sirius.custom.editpart;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.RequestConstants;
 import org.eclipse.gef.tools.DirectEditManager;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
 import org.eclipse.swt.SWT;
 import org.palladiosimulator.commons.stoex.ui.internal.StoexActivator;
 import org.yakindu.base.xtext.utils.gmf.directedit.IXtextAwareEditPart;
-import org.yakindu.base.xtext.utils.gmf.directedit.XtextDirectEditManager;
+
 import com.google.inject.Injector;
 
 import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
 
 @SuppressWarnings("restriction")
-public class RandomVariableEditPart extends DNodeListElementEditPart implements IXtextAwareEditPart, IEditTextEditPart {
+public class RandomVariableNodeContainerEditPart extends DNodeContainer2EditPart implements IXtextAwareEditPart, IEditTextEditPart {
 
 	private TypeEnum expectedType;
 
-	public RandomVariableEditPart(View view, TypeEnum expectedType) {
+	public RandomVariableNodeContainerEditPart(View view, TypeEnum expectedType) {
 		super(view);
 		this.expectedType = expectedType;
 	}
-
-	public RandomVariableEditPart(View view) {
+	
+	public RandomVariableNodeContainerEditPart(View view) {
 		this(view, TypeEnum.ANY);
 	}
 
 	protected int getEditorStyles() {
 		return SWT.SINGLE | SWT.WRAP;
 	}
-
-	@Override
-	protected boolean isDirectEditEnabled() {
-		return true;
-	}
-
+	
 	@Override
 	public void performRequest(Request req) {
 		if (req.getType() == RequestConstants.REQ_DIRECT_EDIT) {
@@ -62,9 +58,20 @@ public class RandomVariableEditPart extends DNodeListElementEditPart implements 
 	private Injector getInjector() {
 		return StoexActivator.getInstance().getInjector("org.palladiosimulator.commons.stoex.Stoex");
 	}
-
+	
 	public void setExpectedType(TypeEnum expectedType) {
 		this.expectedType = expectedType;
 	}
 
+	@Override
+	public String getEditText() {
+		//not needed if a directEditLabel was created in sirius editor. 
+		EObject semanticElement = resolveSemanticElement();
+		return (String) semanticElement.eGet(semanticElement.eClass().getEStructuralFeature("name"));
+	}
+
+	@Override
+	public void setLabelText(String text) {
+		//TODO auto generated.
+	}
 }

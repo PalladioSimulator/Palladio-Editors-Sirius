@@ -1,23 +1,19 @@
 package org.palladiosimulator.editors.sirius.usage.custom.externaljavaactions;
-import org.eclipse.emf.ecore.EObject;
-import org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetRandomVariable;
-import org.palladiosimulator.pcm.usagemodel.OpenWorkload;
 
-import de.uka.ipd.sdq.stoex.RandomVariable;
-import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
+import org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetRandomVariable;
 
 public class OpenWorkloadInterArrivalTimeAction extends SetRandomVariable {
 
+	private static final String INTER_ARRIVAL_TIME = "interArrivalTime";
 
 	@Override
-	public RandomVariable getRandomVariable(EObject element) {
-		OpenWorkload ow = (OpenWorkload) element;
-		return ow.getInterArrivalTime_OpenWorkload();
+	public String getInitialText() {
+		return INTER_ARRIVAL_TIME;
 	}
 
 	@Override
-	public TypeEnum getExpectedType() {
-		return TypeEnum.ANY;
+	protected boolean checkMapping(String mappingName) {
+		return INTER_ARRIVAL_TIME.equalsIgnoreCase(mappingName);
 	}
 
 }

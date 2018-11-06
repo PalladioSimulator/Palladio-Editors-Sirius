@@ -1,21 +1,21 @@
 package org.palladiosimulator.editors.sirius.custom.externaljavaactions;
-import org.eclipse.emf.ecore.EObject;
-import org.palladiosimulator.pcm.parameter.VariableCharacterisation;
-
-import de.uka.ipd.sdq.stoex.RandomVariable;
-import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
 
 public class SetVariableCharacterisationSpecification extends SetRandomVariable {
 
+	private static final String[] VARIABLE_CHARACTERISATION = { "VariableCharacterisation",
+			"Variable Characterisation", "VariableCharacterisationInput", "VariableCharacterisationOutput",
+			"VariableCharacterisationvariableSetter" };
+
 	@Override
-	public RandomVariable getRandomVariable(EObject element) {
-		VariableCharacterisation vc = (VariableCharacterisation) element;
-		return vc.getSpecification_VariableCharacterisation();
+	public String getInitialText() {
+		return VARIABLE_CHARACTERISATION[0];
 	}
 
 	@Override
-	public TypeEnum getExpectedType() {
-		return TypeEnum.ANY;
+	protected boolean checkMapping(String mappingName) {
+		for (String expectedName : VARIABLE_CHARACTERISATION) {
+			if (mappingName.equalsIgnoreCase(expectedName)) return true;
+		}
+		return false;
 	}
-
 }

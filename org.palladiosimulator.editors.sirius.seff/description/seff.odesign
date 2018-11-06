@@ -82,7 +82,7 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="InfrastructureCall Container" semanticCandidatesExpression="var:self" domainClass="InternalAction" childrenPresentation="List">
-            <subNodeMappings name="InfrastructureCall" semanticCandidatesExpression="feature:infrastructureCall__Action" domainClass="seff_performance.InfrastructureCall">
+            <subNodeMappings name="InfrastructureCall" labelDirectEdit="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Set%20Specification%20InfrastructureCall']" semanticCandidatesExpression="feature:infrastructureCall__Action" domainClass="seff_performance.InfrastructureCall">
               <style xsi:type="style:SquareDescription" labelExpression="aql: self.numberOfCalls__InfrastructureCall.specification + ' x ' + self.requiredRole__InfrastructureCall.entityName + '.' + self.signature__InfrastructureCall.entityName" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -408,8 +408,8 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="Loop" labelDirectEdit="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='directEditNameBySingleClick']" semanticCandidatesExpression="feature:steps_Behaviour" doubleClickDescription="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='seffLoopIterationsDialog']" domainClass="seff.LoopAction" childrenPresentation="VerticalStack">
-          <subContainerMappings name="LoopIterationCount" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='seffLoopIterationsDialog']" domainClass="seff.LoopAction">
+        <containerMappings name="Loop" semanticCandidatesExpression="feature:steps_Behaviour" domainClass="seff.LoopAction" childrenPresentation="VerticalStack">
+          <subContainerMappings name="LoopIterationCount" semanticCandidatesExpression="var:self" domainClass="seff.LoopAction">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql:self.iterationCount_LoopAction.specification" widthComputationExpression="20">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -644,17 +644,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="seffLoopIterationsDialog" mappings="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='Loop'] //@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='Loop']/@subContainerMappings[name='LoopIterationCount']">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="seffLoopIterationCountDialog" id="LoopIterationCountDialog">
-                  <parameters name="element" value="var:element"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool:DoubleClickDescription" name="Edit Parameter" mappings="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='CollectionIteratorAction']/@subContainerMappings[name='Parameter%20Compartment']">
             <element name="element"/>
             <elementView name="elementView"/>
@@ -748,7 +737,7 @@
                         <parameters name="element" value="var:instance"/>
                       </subModelOperations>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.specification_ParametericResourceDemand.specification = null or  self.requiredResource_ParametricResourceDemand = null">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.requiredResource_ParametricResourceDemand = null">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
                   </subModelOperations>
@@ -781,10 +770,10 @@
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set InfrastructureSignature" id="SetInfrastructureSignature">
                       <parameters name="instance" value="var:instance"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NumberOfCalls" id="SetNumberOfCalls">
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NumberOfInfrastructureCalls" id="SetNumberOfInfrastructureCalls">
                       <parameters name="element" value="var:instance"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.numberOfCalls__InfrastructureCall.specification=null or self.signature__InfrastructureCall = null">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.signature__InfrastructureCall = null">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql: 'InfrastructureCall' +container.eContents()->filter(seff_performance::InfrastructureCall)->size()"/>
@@ -807,10 +796,10 @@
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set ResourceCallSignature" id="SetResourceCallSignature">
                       <parameters name="instance" value="var:instance"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NumberOfCalls" id="SetNumberOfCalls">
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NumberOfResourceCalls" id="SetNumberOfResourceCalls">
                       <parameters name="element" value="var:instance"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.numberOfCalls__ResourceCall.specification=null or self.signature__ResourceCall=null or self.resourceRequiredRole__ResourceCall=null">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.signature__ResourceCall=null or self.resourceRequiredRole__ResourceCall=null">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql: self.signature__ResourceCall.resourceInterface__ResourceSignature.entityName + ' (' + self.signature__ResourceCall.entityName + ')'"/>
@@ -1054,12 +1043,7 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="Edit VariableCharacterisation" inputLabelExpression="[self.specification_VariableCharacterisation.specification/]">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.oclAsType(VariableCharacterisation).specification_VariableCharacterisation = null/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.specification_VariableCharacterisation.editPCMRandomVariable(arg0)/]"/>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.specification_VariableCharacterisation.editPCMRandomVariable(arg0)/]"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="Edit GuardedBranchTransitionDialog" inputLabelExpression="[self.branchCondition_GuardedBranchTransition.specification/]">
@@ -1072,6 +1056,12 @@
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.specification_ParametericResourceDemand.editPCMRandomVariable(arg0)/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Set Specification InfrastructureCall" inputLabelExpression="[self.numberOfCalls__InfrastructureCall.specification/]">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.numberOfCalls__InfrastructureCall.editPCMRandomVariable(arg0)/]"/>
             </initialOperation>
           </ownedTools>
         </toolSections>

@@ -10,24 +10,16 @@ import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
 
 public class SetSpecification extends SetRandomVariable {
 
-	
+	private static final String RESOURCE_DEMAND = "ResourceDemand";
 
 	@Override
-	public TypeEnum getExpectedType() {
-		return TypeEnum.ANY;
+	protected String getInitialText() {
+		return RESOURCE_DEMAND;
 	}
 
 	@Override
-	public RandomVariable getRandomVariable(EObject element) {
-		if (element instanceof ParametricResourceDemand) {
-			ParametricResourceDemand rd = (ParametricResourceDemand) element;
-			return rd.getSpecification_ParametericResourceDemand();
-		} else if (element instanceof ResourceCall) {
-			ResourceCall rc = (ResourceCall) element;
-			return rc.getNumberOfCalls__ResourceCall();
-		} else {
-			return null;
-		}
+	protected boolean checkMapping(String mappingName) {
+		return RESOURCE_DEMAND.equalsIgnoreCase(mappingName);
 	}
 
 }

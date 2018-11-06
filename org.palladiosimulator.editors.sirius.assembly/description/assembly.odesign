@@ -854,7 +854,7 @@
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:instance.signature_SpecifiedQoSAnnation == null or instance.specification_SpecifiedExecutionTime.specification == null">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:instance.signature_SpecifiedQoSAnnation == null">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
                         <subModelOperations xsi:type="tool:RemoveElement"/>
                       </subModelOperations>

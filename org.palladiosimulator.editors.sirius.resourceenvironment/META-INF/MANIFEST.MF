@@ -16,3 +16,4 @@ Require-Bundle: org.palladiosimulator.pcm;bundle-version="4.1.0",
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-Vendor: palladiosimulator.org
+Import-Package: org.eclipse.sirius.diagram.ui.internal.edit.parts

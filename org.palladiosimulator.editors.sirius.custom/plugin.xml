@@ -56,18 +56,6 @@
             id="SetLinkingResourceLatency">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetResourceContainerReadProcessingRate"
-            id="SetResourceContainerReadProcessingRate">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetResourceContainerWriteProcessingRate"
-            id="SetResourceContainerWriteProcessingRate">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetProcessingResourceProcessingRate"
-            id="SetProcessingResourceProcessingRate">
-      </javaActions>
-      <javaActions
             actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.ActivateViewpoint"
             id="ActivateViewpoint">
       </javaActions>

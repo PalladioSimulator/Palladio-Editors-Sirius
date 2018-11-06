@@ -1,22 +1,16 @@
 package org.palladiosimulator.editors.sirius.custom.externaljavaactions;
 
-import org.eclipse.emf.ecore.EObject;
-import org.palladiosimulator.pcm.resourceenvironment.CommunicationLinkResourceSpecification;
-
-import de.uka.ipd.sdq.stoex.RandomVariable;
-import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
-
 public class SetLinkingResourceLatency extends SetRandomVariable {
 
-    @Override
-    public TypeEnum getExpectedType() {
-        return TypeEnum.ANY;
-    }
+	private static final String LATENCY = "LATENCY";
 
-    @Override
-    public RandomVariable getRandomVariable(EObject element) {
-        CommunicationLinkResourceSpecification specification = (CommunicationLinkResourceSpecification) element;
-        return specification.getLatency_CommunicationLinkResourceSpecification();
-    }
+	public String getInitialText() {
+		return LATENCY;
+	}
+
+	@Override
+	protected boolean checkMapping(String mappingName) {
+		return LATENCY.equalsIgnoreCase(mappingName);
+	}
 
 }

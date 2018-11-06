@@ -1,23 +1,19 @@
 package org.palladiosimulator.editors.sirius.repository.custom.externaljavaactions;
 
-import org.eclipse.emf.ecore.EObject;
 import org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetRandomVariable;
-import org.palladiosimulator.pcm.repository.PassiveResource;
-
-import de.uka.ipd.sdq.stoex.RandomVariable;
-import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
 
 public class SetCapacity extends SetRandomVariable {
+	
+	private static final String CAPACITY = "Capacity";
 
 	@Override
-	public RandomVariable getRandomVariable(EObject element) {
-		PassiveResource pr = (PassiveResource) element;
-		return pr.getCapacity_PassiveResource();
+	public String getInitialText() {
+		return CAPACITY;
 	}
 
 	@Override
-	public TypeEnum getExpectedType() {
-		return TypeEnum.DOUBLE;
+	protected boolean checkMapping(String mappingName) {
+		return CAPACITY.equalsIgnoreCase(mappingName);
 	}
 
 }
