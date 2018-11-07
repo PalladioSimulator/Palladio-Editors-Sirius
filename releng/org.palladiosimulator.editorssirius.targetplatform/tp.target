@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target name="org.palladiosimulator.editorssirius Target Platform" sequenceNumber="1">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.pcm.feature.feature.group" version="4.1.0.201709282114"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/palladio/pcm/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.pcm.feature.feature.group" version="4.1.0.201709282114"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/palladio/pcm/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="de.uka.ipd.sdq.identifier.feature.feature.group" version="2.1.0.201611171324"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/commons/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="de.uka.ipd.sdq.identifier.feature.feature.group" version="2.1.0.201611171324"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/commons/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.editors.commons.feature.feature.group" version="2.1.1.201709282144"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/palladio/editors/commons/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.editors.commons.feature.feature.group" version="2.1.1.201709282144"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/palladio/editors/commons/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.edp2.feature.feature.group" version="1.0.0.201712071336"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/edp2/releases/latest"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.edp2.feature.feature.group" version="1.0.0.201712071336"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/edp2/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.metricspec.feature.feature.group" version="1.0.3.201712071325"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/metricspec/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.metricspec.feature.feature.group" version="1.0.3.201712071325"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/metricspec/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.thirdpartywrapper.feature.feature.group" version="1.0.2.201709282218"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/thirdpartywrapper/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.thirdpartywrapper.feature.feature.group" version="1.0.2.201709282218"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/thirdpartywrapper/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.measurementframework.feature.feature.group" version="1.0.1.201606011729"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/measurementframework/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.measurementframework.feature.feature.group" version="1.0.1.201606011729"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/measurementframework/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
+<unit id="org.modelversioning.emfprofile.feature.feature.group" version="1.0.0.201612011758"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/emf-profiles-updatesite/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.architecturaltemplates.feature.feature.group" version="1.1.0.201711211027"/>
+<unit id="org.palladiosimulator.architecturaltemplates.examples.feature.feature.group" version="1.0.4.201711211027"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/architecturaltemplates/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.architecturaltemplates.feature.feature.group" version="1.1.0.201711211027"/>
+<unit id="org.palladiosimulator.architecturaltemplates.examples.feature.feature.group" version="1.0.4.201711211027"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/architecturaltemplates/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="de.uka.ipd.sdq.workflow.feature.core.feature.group" version="2.2.3.201709282207"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/workflowengine/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="de.uka.ipd.sdq.workflow.feature.core.feature.group" version="2.2.3.201709282207"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/workflowengine/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.analyzer.feature.feature.group" version="1.0.1.201709282213"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/palladio/analyzer/framework/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.analyzer.feature.feature.group" version="1.0.1.201709282213"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/palladio/analyzer/framework/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="de.uka.ipd.sdq.featureconfig" version="2.1.0.201511051634"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/featuremodel/releases/latest"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="de.uka.ipd.sdq.featureconfig" version="2.1.0.201511051634"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/featuremodel/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.simucom.feature.feature.group" version="4.1.1.201806261550"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/palladio/analyzer/simucom/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.simucom.feature.feature.group" version="4.1.1.201806261550"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/palladio/analyzer/simucom/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.recorderframework.feature.feature.group" version="2.1.1.201807251628"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/recorderframework/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.recorderframework.feature.feature.group" version="2.1.1.201807251628"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/recorderframework/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.reliability.feature.feature.group" version="1.0.0.201511051309"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/palladio/analyzer/reliability/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.reliability.feature.feature.group" version="1.0.0.201511051309"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/palladio/analyzer/reliability/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="de.uka.ipd.sdq.simulation.abstractsimengine.feature.feature.group" version="4.1.0.201806251234"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/abstractsimengine/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="de.uka.ipd.sdq.simulation.abstractsimengine.feature.feature.group" version="4.1.0.201806251234"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/abstractsimengine/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.scheduler.feature.feature.group" version="4.1.1.201806251237"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/palladio/supporting/scheduler/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.scheduler.feature.feature.group" version="4.1.1.201806251237"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/palladio/supporting/scheduler/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.probeframework.feature.feature.group" version="2.0.2.201712071402"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/probeframework/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.probeframework.feature.feature.group" version="2.0.2.201712071402"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/probeframework/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.simulizar.feature.feature.group" version="2.1.0.201711211534-8h_SEFbcPueBA312721262539"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/simulizar/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.simulizar.feature.feature.group" version="2.1.0.201711211534-8h_SEFbcPueBA312721262539"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/simulizar/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.monitorrepository.feature.feature.group" version="3.0.2.201712121319"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/monitorrepository/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.monitorrepository.feature.feature.group" version="3.0.2.201712121319"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/monitorrepository/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.servicelevelobjective.feature.feature.group" version="1.1.0.201709290951"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/servicelevelobjectives/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.servicelevelobjective.feature.feature.group" version="1.1.0.201709290951"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/servicelevelobjectives/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.mdsdprofiles.feature.feature.group" version="1.0.1.201609191729"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/mdsdprofiles/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.mdsdprofiles.feature.feature.group" version="1.0.1.201609191729"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/mdsdprofiles/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.experimentautomation.application.feature.feature.group" version="1.0.0.201711151140"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/experimentautomation/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.experimentautomation.application.feature.feature.group" version="1.0.0.201711151140"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/experimentautomation/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.scaledl.usageevolution.feature.feature.group" version="1.0.0.201803191436"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/cloudscale/usageevolution/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.scaledl.usageevolution.feature.feature.group" version="1.0.0.201803191436"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/cloudscale/usageevolution/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
+<unit id="LIMBO_DLIM.feature.group" version="0.16.1.201606230914"/>
+<repository location="https://se4.informatik.uni-wuerzburg.de/nexus/content/unzip/public-unzip/tools/descartes/dlim/tools.descartes.dlim.releng.p2/0.16.1-SNAPSHOT/tools.descartes.dlim.releng.p2-0.16.1-SNAPSHOT.zip-unzip/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.storydriven.storydiagrams.feature.feature.group" version="1.0.1.201507032002"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/storydiagraminterpreter/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.storydriven.storydiagrams.feature.feature.group" version="1.0.1.201507032002"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/storydiagraminterpreter/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.experimentanalysis.feature.feature.group" version="1.0.0.201712111519"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/palladio/addons/experimentanalysis/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.experimentanalysis.feature.feature.group" version="1.0.0.201712111519"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/palladio/addons/experimentanalysis/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="de.uka.ipd.sdq.sensorframework.feature.feature.group" version="4.0.1.201807251515"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/sensorframework/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="de.uka.ipd.sdq.sensorframework.feature.feature.group" version="4.0.1.201807251515"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/sensorframework/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.solver.feature.feature.group" version="4.1.0.201709290912"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/palladio/analyzer/solver/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.solver.feature.feature.group" version="4.1.0.201709290912"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/palladio/analyzer/solver/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.sirius.runtime.acceleo.feature.group" version="6.0.0.201806111309"/>
+<unit id="org.eclipse.sirius.runtime.ide.eef.feature.group" version="6.0.0.201806111309"/>
+<unit id="org.eclipse.sirius.runtime.ocl.feature.group" version="6.0.0.201806111309"/>
+<repository location="http://download.eclipse.org/sirius/updates/releases/6.0.0/photon/"/>
+</location>
+</locations>
+</target>

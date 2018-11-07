@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.palladiosimulator.editorssirius</groupId>
+		<artifactId>parent</artifactId>
+		<version>0.1.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>bundles</artifactId>
+	<packaging>pom</packaging>
+	
+	<modules>
+		<module>org.palladiosimulator.editors.sirius.allocation</module>
+		<module>org.palladiosimulator.editors.sirius.allocation.custom</module>
+		<module>org.palladiosimulator.editors.sirius.assembly</module>
+		<module>org.palladiosimulator.editors.sirius.assembly.custom</module>
+		<module>org.palladiosimulator.editors.sirius.custom</module>
+		<module>org.palladiosimulator.editors.sirius.custom.style</module>
+		<module>org.palladiosimulator.editors.sirius.repository</module>
+		<module>org.palladiosimulator.editors.sirius.repository.custom</module>
+		<module>org.palladiosimulator.editors.sirius.resourceenvironment</module>
+		<module>org.palladiosimulator.editors.sirius.resourceenvironment.custom</module>
+		<module>org.palladiosimulator.editors.sirius.seff</module>
+		<module>org.palladiosimulator.editors.sirius.seff.custom</module>
+		<module>org.palladiosimulator.editors.sirius.services</module>
+		<module>org.palladiosimulator.editors.sirius.ui</module>
+		<module>org.palladiosimulator.editors.sirius.usage</module>
+		<module>org.palladiosimulator.editors.sirius.usage.custom</module>
+	</modules>
+	
+</project>
