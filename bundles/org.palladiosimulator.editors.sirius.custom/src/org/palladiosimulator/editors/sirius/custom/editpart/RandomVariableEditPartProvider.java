@@ -4,13 +4,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.gef.EditPart;
-import org.eclipse.gef.EditPartListener;
 import org.eclipse.gef.EditPolicy;
-import org.eclipse.gef.NodeListener;
 import org.eclipse.gef.requests.DirectEditRequest;
 import org.eclipse.gmf.runtime.common.core.service.IOperation;
-import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.LabelDirectEditPolicy;
@@ -18,26 +14,16 @@ import org.eclipse.gmf.runtime.diagram.ui.services.editpart.AbstractEditPartProv
 import org.eclipse.gmf.runtime.diagram.ui.services.editpart.CreateGraphicEditPartOperation;
 import org.eclipse.gmf.runtime.diagram.ui.services.editpart.IEditPartOperation;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.DNodeListElement;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.tool.spec.DirectEditLabelSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeContainerSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeListElementSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeListSpec;
-import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.impl.DDiagramElementImpl;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.palladiosimulator.pcm.core.CorePackage;
 import org.palladiosimulator.pcm.core.PCMRandomVariable;
-import org.palladiosimulator.pcm.resourceenvironment.impl.ProcessingResourceSpecificationImpl;
 import org.palladiosimulator.pcm.seff.LoopAction;
 import org.palladiosimulator.pcm.usagemodel.Loop;
 
-import de.uka.ipd.sdq.stoex.RandomVariable;
 import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
 
 @SuppressWarnings("restriction")

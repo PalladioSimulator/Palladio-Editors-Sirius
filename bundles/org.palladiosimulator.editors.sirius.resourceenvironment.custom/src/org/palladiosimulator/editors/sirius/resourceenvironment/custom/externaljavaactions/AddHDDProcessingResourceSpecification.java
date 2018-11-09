@@ -10,7 +10,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
 import org.palladiosimulator.editors.commons.dialogs.selection.PalladioSelectEObjectDialog;
-import org.palladiosimulator.editors.commons.dialogs.stoex.StochasticExpressionEditDialog;
 import org.palladiosimulator.pcm.core.CoreFactory;
 import org.palladiosimulator.pcm.core.PCMRandomVariable;
 import org.palladiosimulator.pcm.resourceenvironment.HDDProcessingResourceSpecification;
@@ -20,15 +19,10 @@ import org.palladiosimulator.pcm.resourcetype.ProcessingResourceType;
 import org.palladiosimulator.pcm.resourcetype.ResourceRepository;
 import org.palladiosimulator.pcm.resourcetype.SchedulingPolicy;
 
-import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
-
 /**
  * @author tzwickl
  */
 public class AddHDDProcessingResourceSpecification implements IExternalJavaAction {
-
-	private static final String SET_READ_PROCESSING_RATE = "Set Read Processing Rate";
-	private static final String SET_WRITE_PROCESSING_RATE = "Set Write Processing Rate";
 
 	/**
 	 * Parameter name for the newly created communication linking resource. This

@@ -8,7 +8,6 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPar
 import org.eclipse.swt.SWT;
 import org.palladiosimulator.commons.stoex.ui.internal.StoexActivator;
 import org.yakindu.base.xtext.utils.gmf.directedit.IXtextAwareEditPart;
-import org.yakindu.base.xtext.utils.gmf.directedit.XtextDirectEditManager;
 import com.google.inject.Injector;
 
 import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;

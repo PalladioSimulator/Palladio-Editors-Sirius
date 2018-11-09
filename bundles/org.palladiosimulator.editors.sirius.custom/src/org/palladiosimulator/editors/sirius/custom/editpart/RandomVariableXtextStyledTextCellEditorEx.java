@@ -6,11 +6,8 @@ import java.util.Collections;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.yakindu.base.xtext.utils.gmf.viewers.XtextStyledTextCellEditorEx;
 
