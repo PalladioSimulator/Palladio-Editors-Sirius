@@ -4,10 +4,16 @@ import java.awt.Toolkit;
 import java.util.Collection;
 import java.util.Collections;
 
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.TraverseEvent;
+import org.eclipse.swt.events.TraverseListener;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.yakindu.base.xtext.utils.gmf.viewers.XtextStyledTextCellEditorEx;
 
@@ -37,8 +43,9 @@ public class RandomVariableXtextStyledTextCellEditorEx extends XtextStyledTextCe
 		Display display = Display.getCurrent();
 		errorColor = display.getSystemColor(SWT.COLOR_RED);
 	}
-	
-	public RandomVariableXtextStyledTextCellEditorEx(int style, Injector injector, TypeEnum expectedType, String editText) {
+
+	public RandomVariableXtextStyledTextCellEditorEx(int style, Injector injector, TypeEnum expectedType,
+			String editText) {
 		this(style, injector, expectedType);
 		this.editText = editText;
 	}
@@ -55,7 +62,8 @@ public class RandomVariableXtextStyledTextCellEditorEx extends XtextStyledTextCe
 			final NonProbabilisticExpressionInferTypeVisitor typeVisitor = new NonProbabilisticExpressionInferTypeVisitor();
 			EObject resultType = getXtextAdapter().getXtextParseResult().getRootASTElement();
 			typeVisitor.doSwitch(resultType);
-			if (assertType(resultType, typeVisitor, expectedType).size() > 0) {
+			if (checkTypes(resultType, typeVisitor).size() > 0
+					|| assertType(resultType, typeVisitor, expectedType).size() > 0) {
 				displayError();
 			} else {
 				super.focusLost();
@@ -106,6 +114,41 @@ public class RandomVariableXtextStyledTextCellEditorEx extends XtextStyledTextCe
 					new ExpectedTypeMismatchIssue(expectedType, typeVisitor.getType((Expression) result)));
 		}
 		return Collections.emptyList();
+	}
+
+	/**
+	 * Check types.
+	 * 
+	 * @param result
+	 *            the result
+	 * @param typeVisitor
+	 *            the type visitor
+	 * @return the collection
+	 */
+	private Collection<IIssue> checkTypes(final EObject result,
+			final NonProbabilisticExpressionInferTypeVisitor typeVisitor) {
+		final TypeCheckVisitor typeChecker = new TypeCheckVisitor(typeVisitor);
+		typeChecker.doSwitch(result);
+		final TreeIterator<EObject> iterator = result.eAllContents();
+		for (; iterator.hasNext();) {
+			final EObject treeNode = iterator.next();
+			typeChecker.doSwitch(treeNode);
+		}
+		return typeChecker.getIssues();
+	}
+
+	@Override
+	protected Control createControl(Composite parent) {
+		StyledText text = (StyledText) super.createControl(parent);
+		text.addTraverseListener(new TraverseListener() {
+			@Override
+			public void keyTraversed(TraverseEvent e) {
+				if (e.character == SWT.TAB) {
+					e.doit = false;
+				}
+			}
+		});
+		return text;
 	}
 
 }
