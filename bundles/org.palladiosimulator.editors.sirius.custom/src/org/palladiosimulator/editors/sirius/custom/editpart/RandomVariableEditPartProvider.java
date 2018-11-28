@@ -1,12 +1,8 @@
 package org.palladiosimulator.editors.sirius.custom.editpart;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.impl.EClassImpl;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -31,8 +27,6 @@ import org.palladiosimulator.pcm.core.PCMRandomVariable;
 import org.palladiosimulator.pcm.seff.LoopAction;
 import org.palladiosimulator.pcm.usagemodel.Loop;
 
-import de.uka.ipd.sdq.stoex.RandomVariable;
-import de.uka.ipd.sdq.stoex.StoexPackage;
 import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
 
 @SuppressWarnings("restriction")
@@ -118,10 +112,12 @@ public class RandomVariableEditPartProvider extends AbstractEditPartProvider {
 				DDiagramElementImpl element = (DDiagramElementImpl) view.getElement();
 				int visualID = SiriusVisualIDRegistry.getVisualID(view);
 
-				if (visualID == DNodeListElementEditPart.VISUAL_ID) {
+				if (visualID == DNodeListElementEditPart.VISUAL_ID && element.getDiagramElementMapping().getLabelDirectEdit() != null) {
 					String inputExpr = element.getDiagramElementMapping().getLabelDirectEdit()
 							.getInputLabelExpression();
-					String featureName = inputExpr.split("\\.")[1];
+					String[] splittedInputExpr = inputExpr.split("\\.");
+					if (splittedInputExpr.length > 1) {
+						String featureName = splittedInputExpr[1];
 					for (EObject obj : element.getSemanticElements()) {
 						EStructuralFeature rv = obj.eClass().getEStructuralFeature(featureName);
 						if (rv != null) {
@@ -130,7 +126,7 @@ public class RandomVariableEditPartProvider extends AbstractEditPartProvider {
 								return true;
 							}
 						}
-					}
+					}}
 				} else if (visualID == DNodeContainer2EditPart.VISUAL_ID) {
 					String name = element.getMapping().getName();
 					if (name.equals("LoopIterationCount")) {
