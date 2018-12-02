@@ -16,6 +16,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.yakindu.base.xtext.utils.gmf.viewers.XtextStyledTextCellEditorEx;
+import org.yakindu.base.xtext.utils.jface.viewers.StyledTextXtextAdapter;
+import org.yakindu.base.xtext.utils.jface.viewers.context.IXtextFakeContextResourcesProvider;
 
 import com.google.inject.Injector;
 
@@ -59,15 +61,7 @@ public class RandomVariableXtextStyledTextCellEditorEx extends XtextStyledTextCe
 		if (getXtextAdapter().getXtextValidationIssues().size() > 0) {
 			displayError();
 		} else {
-			final NonProbabilisticExpressionInferTypeVisitor typeVisitor = new NonProbabilisticExpressionInferTypeVisitor();
-			EObject resultType = getXtextAdapter().getXtextParseResult().getRootASTElement();
-			typeVisitor.doSwitch(resultType);
-			if (checkTypes(resultType, typeVisitor).size() > 0
-					|| assertType(resultType, typeVisitor, expectedType).size() > 0) {
-				displayError();
-			} else {
-				super.focusLost();
-			}
+			super.focusLost();
 		}
 	}
 
@@ -81,7 +75,8 @@ public class RandomVariableXtextStyledTextCellEditorEx extends XtextStyledTextCe
 
 			@Override
 			public void run() {
-				text.forceFocus();
+				if (!text.isDisposed())
+					text.forceFocus();
 			}
 
 		});
@@ -96,47 +91,6 @@ public class RandomVariableXtextStyledTextCellEditorEx extends XtextStyledTextCe
 		super.editOccured(e);
 	}
 
-	/**
-	 * Assert type.
-	 * 
-	 * @param result
-	 *            the result
-	 * @param typeVisitor
-	 *            the type visitor
-	 * @param expectedType
-	 *            the expected type
-	 * @return the collection<? extends i issue>
-	 */
-	private Collection<? extends IIssue> assertType(final EObject result, final ExpressionInferTypeVisitor typeVisitor,
-			final TypeEnum expectedType) {
-		if (!TypeCheckVisitor.typesCompatible(expectedType, typeVisitor.getType((Expression) result))) {
-			return Collections.singletonList(
-					new ExpectedTypeMismatchIssue(expectedType, typeVisitor.getType((Expression) result)));
-		}
-		return Collections.emptyList();
-	}
-
-	/**
-	 * Check types.
-	 * 
-	 * @param result
-	 *            the result
-	 * @param typeVisitor
-	 *            the type visitor
-	 * @return the collection
-	 */
-	private Collection<IIssue> checkTypes(final EObject result,
-			final NonProbabilisticExpressionInferTypeVisitor typeVisitor) {
-		final TypeCheckVisitor typeChecker = new TypeCheckVisitor(typeVisitor);
-		typeChecker.doSwitch(result);
-		final TreeIterator<EObject> iterator = result.eAllContents();
-		for (; iterator.hasNext();) {
-			final EObject treeNode = iterator.next();
-			typeChecker.doSwitch(treeNode);
-		}
-		return typeChecker.getIssues();
-	}
-
 	@Override
 	protected Control createControl(Composite parent) {
 		StyledText text = (StyledText) super.createControl(parent);
@@ -149,6 +103,14 @@ public class RandomVariableXtextStyledTextCellEditorEx extends XtextStyledTextCe
 			}
 		});
 		return text;
+	}
+
+	@Override
+	protected StyledTextXtextAdapter createXtextAdapter() {
+		return new RandomVariableXtextAdapter(this.getInjector(),
+				getContextFakeResourceProvider() == null ? IXtextFakeContextResourcesProvider.NULL_CONTEXT_PROVIDER
+						: getContextFakeResourceProvider(),
+				expectedType);
 	}
 
 }
