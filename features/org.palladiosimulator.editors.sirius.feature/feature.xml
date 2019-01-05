@@ -70,6 +70,9 @@
       <import plugin="org.eclipse.eef.core" version="1.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.sirius.common.interpreter" version="5.0.2" match="greaterOrEqual"/>
       <import plugin="org.eclipse.eef.common.ui" version="1.7.0" match="greaterOrEqual"/>
+      <import feature="org.palladiosimulator.commons.stoex.feature"/>
+      <import feature="org.yakindu.base.xtext.utils.gmf"/>
+      <import feature="org.yakindu.base.xtext.utils.jface"/>
    </requires>
 
    <plugin

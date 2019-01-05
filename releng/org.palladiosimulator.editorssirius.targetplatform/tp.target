@@ -227,6 +227,16 @@
 <unit id="org.palladiosimulator.solver.feature.feature.group" version="4.1.0.201709290912"/>
 <repository location="https://sdqweb.ipd.kit.edu/eclipse/palladio/analyzer/solver/nightly/"/>
 </location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.yakindu.base.xtext.utils.gmf.feature.group" version="3.4.1.201812151841"/>
+<unit id="org.yakindu.base.xtext.utils.jface.feature.group" version="3.4.1.201812151841"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/yakindustatecharts/releases/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
+<unit id="org.yakindu.base.xtext.utils.gmf.feature.group" version="3.4.1.201812151841"/>
+<unit id="org.yakindu.base.xtext.utils.jface.feature.group" version="3.4.1.201812151841"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/yakindustatecharts/nightly/"/>
+</location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
 <unit id="org.eclipse.sirius.runtime.acceleo.feature.group" version="6.0.0.201806111309"/>
 <unit id="org.eclipse.sirius.runtime.ide.eef.feature.group" version="6.0.0.201806111309"/>
