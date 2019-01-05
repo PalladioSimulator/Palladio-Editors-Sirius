@@ -32,18 +32,6 @@
             id="SetInfrastructureSignature">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.SetNumberOfResourceCalls"
-            id="SetNumberOfResourceCalls">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.SetNumberOfInfrastructureCalls"
-            id="SetNumberOfInfrastructureCalls">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.SetSpecification"
-            id="SetSpecification">
-      </javaActions>
-      <javaActions
             actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.SetRequiredResource"
             id="SetRequiredResource">
       </javaActions>

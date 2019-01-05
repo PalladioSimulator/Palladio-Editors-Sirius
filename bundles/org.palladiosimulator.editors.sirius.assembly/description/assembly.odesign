@@ -671,7 +671,11 @@
             <ownedTools xsi:type="tool_1:DirectEditLabel" name="VariableCharacterisationDirectEdit" precondition="[self.variableUsage_VariableCharacterisation.eContainer().eClass().name = 'AssemblyContext'/]" inputLabelExpression="[self.specification_VariableCharacterisation.specification/]">
               <mask mask="{0}"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.specification_VariableCharacterisation.editPCMRandomVariable(arg0)/]"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.specification_VariableCharacterisation.editPCMRandomVariable(arg0)/]">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
+                </firstModelOperations>
               </initialOperation>
             </ownedTools>
             <ownedTools xsi:type="tool_1:DoubleClickDescription" documentation="This should be using a direct edit label-tool instead which is not possible at the moment because the view is not accessible in it.&#xA;Can be changed once this bug is resolved: https://bugs.eclipse.org/bugs/show_bug.cgi?id=470598" name="QueryAndSetRoleParameterValue" precondition="[changeable/]" mappings="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='System%20Role%20Container']/@subNodeMappings[name='RoleParameter%20Node'] //@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@defaultLayer/@containerMappings[name='ComposedProvidingRequiringEntity%20Node']/@subContainerMappings[name='AssemblyContext%20Container']/@subContainerMappings[name='Role%20Container']/@subNodeMappings[name='RoleParameter%20Node']">
@@ -849,9 +853,9 @@
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:instance.signature_SpecifiedQoSAnnation &lt;> null">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
                         <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_SpecifiedExecutionTime" variableName="specification"/>
-                        <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set SSETSpecification" id="SetSSETSpecification">
-                          <parameters name="element" value="var:instance"/>
-                        </subModelOperations>
+                        <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:instance.signature_SpecifiedQoSAnnation == null">

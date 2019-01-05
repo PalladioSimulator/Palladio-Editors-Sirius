@@ -381,9 +381,9 @@
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:variableCharacterisation">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="aql:parameter::VariableCharacterisationType::STRUCTURE"/>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set Variable Characterisation Specification" id="SetVariableCharacterisationSpecification">
-                      <parameters name="element" value="var:variableCharacterisation"/>
-                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>

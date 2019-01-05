@@ -15,7 +15,6 @@ public class RandomVariableDirectEditManager extends XtextDirectEditManager {
 	private Injector injector;
 	private int style;
 	private TypeEnum expectedType;
-	private String editText = null;
 
 	public RandomVariableDirectEditManager(IXtextAwareEditPart source, Injector injector, int style,
 			TypeEnum expectedType) {
@@ -25,18 +24,9 @@ public class RandomVariableDirectEditManager extends XtextDirectEditManager {
 		this.expectedType = expectedType;
 	}
 
-	public RandomVariableDirectEditManager(IXtextAwareEditPart source, Injector injector, int style,
-			TypeEnum expectedType, String editText) {
-		this(source, injector, style, expectedType);
-		this.editText = editText;
-	}
-
 	@Override
 	public void show() {
 		super.show();
-		if (editText != null) {
-			setEditText(editText);
-		}
 	}
 
 	@Override
@@ -48,12 +38,8 @@ public class RandomVariableDirectEditManager extends XtextDirectEditManager {
 		parent.setLayout(fillLayout);
 
 		RandomVariableXtextStyledTextCellEditorEx editor;
+		editor = new RandomVariableXtextStyledTextCellEditorEx(style, injector, expectedType);
 
-		if (editText != null) {
-			editor = new RandomVariableXtextStyledTextCellEditorEx(style, injector, expectedType, editText);
-		} else {
-			editor = new RandomVariableXtextStyledTextCellEditorEx(style, injector, expectedType);
-		}
 		editor.create(composite);
 
 		return editor;

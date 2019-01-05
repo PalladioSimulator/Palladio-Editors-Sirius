@@ -13,7 +13,7 @@ import com.google.inject.Injector;
 import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
 
 @SuppressWarnings("restriction")
-public class RandomVariableEditPart extends DNodeListElementEditPart implements IXtextAwareEditPart, IEditTextEditPart {
+public class RandomVariableEditPart extends DNodeListElementEditPart implements IXtextAwareEditPart {
 
 	private TypeEnum expectedType;
 
@@ -43,21 +43,10 @@ public class RandomVariableEditPart extends DNodeListElementEditPart implements 
 		}
 	}
 	
-	public void performRequest(Request req, String editText) {
-		if (req.getType() == RequestConstants.REQ_DIRECT_EDIT) {
-			final DirectEditManager manager = createDirectEditManager(editText);
-			manager.show();
-		}
-	}
-
 	protected DirectEditManager createDirectEditManager() {
 		return new RandomVariableDirectEditManager(this, getInjector(), getEditorStyles(), expectedType);
 	}
 	
-	protected DirectEditManager createDirectEditManager(String editText) {
-		return new RandomVariableDirectEditManager(this, getInjector(), getEditorStyles(), expectedType, editText);
-	}
-
 	private Injector getInjector() {
 		return StoexActivator.getInstance().getInjector("org.palladiosimulator.commons.stoex.Stoex");
 	}

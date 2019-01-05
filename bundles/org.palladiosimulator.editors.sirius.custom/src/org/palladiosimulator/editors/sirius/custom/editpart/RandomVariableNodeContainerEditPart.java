@@ -15,7 +15,7 @@ import com.google.inject.Injector;
 import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
 
 @SuppressWarnings("restriction")
-public class RandomVariableNodeContainerEditPart extends DNodeContainer2EditPart implements IXtextAwareEditPart, IEditTextEditPart {
+public class RandomVariableNodeContainerEditPart extends DNodeContainer2EditPart implements IXtextAwareEditPart {
 
 	private TypeEnum expectedType;
 
@@ -40,21 +40,10 @@ public class RandomVariableNodeContainerEditPart extends DNodeContainer2EditPart
 		}
 	}
 	
-	public void performRequest(Request req, String editText) {
-		if (req.getType() == RequestConstants.REQ_DIRECT_EDIT) {
-			final DirectEditManager manager = createDirectEditManager(editText);
-			manager.show();
-		}
-	}
-
 	protected DirectEditManager createDirectEditManager() {
 		return new RandomVariableDirectEditManager(this, getInjector(), getEditorStyles(), expectedType);
 	}
 	
-	protected DirectEditManager createDirectEditManager(String editText) {
-		return new RandomVariableDirectEditManager(this, getInjector(), getEditorStyles(), expectedType, editText);
-	}
-
 	private Injector getInjector() {
 		return StoexActivator.getInstance().getInjector("org.palladiosimulator.commons.stoex.Stoex");
 	}
@@ -65,7 +54,7 @@ public class RandomVariableNodeContainerEditPart extends DNodeContainer2EditPart
 
 	@Override
 	public String getEditText() {
-		//not needed if a directEditLabel was created in sirius editor. 
+		//not needed if a directEditLabel was created in the odesign-file 
 		EObject semanticElement = resolveSemanticElement();
 		return (String) semanticElement.eGet(semanticElement.eClass().getEStructuralFeature("name"));
 	}

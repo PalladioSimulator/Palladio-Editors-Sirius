@@ -219,9 +219,9 @@
                       <parameters name="newProcessingResourceSpecification" value="var:instance"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="processingRate_ProcessingResourceSpecification" variableName="processingRate"/>
-                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetProcessingResourceProcessingRate" id="SetProcessingResourceProcessingRate">
-                      <parameters name="element" value="var:instance"/>
-                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -242,12 +242,9 @@
                     </subModelOperations>
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="readProcessingRate" variableName="readProcessingRate"/>
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="writeProcessingRate" variableName="writeProcessingRate"/>
-                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetReadProcessingRate" id="SetReadProcessingRate">
-                      <parameters name="element" value="var:instance"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetWriteProcessingRate" id="SetWriteProcessingRate">
-                      <parameters name="element" value="var:instance"/>
-                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -351,31 +348,51 @@
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit Processing Rate" label="Edit Processing Rate" inputLabelExpression="[self.processingRate_ProcessingResourceSpecification.specification/]">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.processingRate_ProcessingResourceSpecification.editPCMRandomVariable(arg0)/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.processingRate_ProcessingResourceSpecification.editPCMRandomVariable(arg0)/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit Latency" inputLabelExpression="[self.latency_CommunicationLinkResourceSpecification.specification/]">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.latency_CommunicationLinkResourceSpecification.editPCMRandomVariable(arg0)/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.latency_CommunicationLinkResourceSpecification.editPCMRandomVariable(arg0)/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit Throughput" inputLabelExpression="[self.throughput_CommunicationLinkResourceSpecification.specification/]">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.throughput_CommunicationLinkResourceSpecification.editPCMRandomVariable(arg0)/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.throughput_CommunicationLinkResourceSpecification.editPCMRandomVariable(arg0)/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit Write Processing Rate" inputLabelExpression="[self.writeProcessingRate.specification/]">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.writeProcessingRate.editPCMRandomVariable(arg0)/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.writeProcessingRate.editPCMRandomVariable(arg0)/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit Read Processing Rate" inputLabelExpression="[self.readProcessingRate.specification/]">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.readProcessingRate.editPCMRandomVariable(arg0)/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.readProcessingRate.editPCMRandomVariable(arg0)/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
@@ -392,12 +409,9 @@
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
                         <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="latency_CommunicationLinkResourceSpecification" variableName="latency"/>
                         <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="throughput_CommunicationLinkResourceSpecification" variableName="throughput"/>
-                        <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetLinkingResourceThroughput" id="SetLinkingResourceThroughput">
-                          <parameters name="element" value="var:instance"/>
-                        </subModelOperations>
-                        <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetLinkingResourceLatency" id="SetLinkingResourceLatency">
-                          <parameters name="element" value="var:instance"/>
-                        </subModelOperations>
+                        <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>

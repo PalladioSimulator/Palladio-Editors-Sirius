@@ -35,7 +35,6 @@ public class RandomVariableXtextStyledTextCellEditorEx extends XtextStyledTextCe
 	private Color whiteColor;
 
 	private TypeEnum expectedType;
-	private String editText = "";
 
 	private boolean errorDisplayed = false;
 
@@ -49,14 +48,10 @@ public class RandomVariableXtextStyledTextCellEditorEx extends XtextStyledTextCe
 	public RandomVariableXtextStyledTextCellEditorEx(int style, Injector injector, TypeEnum expectedType,
 			String editText) {
 		this(style, injector, expectedType);
-		this.editText = editText;
 	}
 
 	@Override
 	protected void focusLost() {
-		// don't force focus if there is no value yet or the "help text" is displayed
-		if (text.getContent().getLine(0).contentEquals(editText))
-			return;
 		// don't close the editor if the new value has errors
 		if (getXtextAdapter().getXtextValidationIssues().size() > 0) {
 			displayError();

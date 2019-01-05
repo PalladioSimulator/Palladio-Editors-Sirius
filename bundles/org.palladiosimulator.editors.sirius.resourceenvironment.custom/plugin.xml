@@ -8,18 +8,6 @@
             id="AddProcessingResourceSpecification">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.SetProcessingResourceProcessingRate"
-            id="SetProcessingResourceProcessingRate">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.SetWriteProcessingRate"
-            id="SetWriteProcessingRate">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.SetReadProcessingRate"
-            id="SetReadProcessingRate">
-      </javaActions>
-      <javaActions
             actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.RemoveConnectorAction"
             id="RemoveConnector">
       </javaActions>

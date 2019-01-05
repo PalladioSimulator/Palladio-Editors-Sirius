@@ -621,9 +621,9 @@
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:passiveResource">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="capacity_PassiveResource"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'PassiveResource'+container.passiveResource_BasicComponent->size()"/>
-                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set Capacity" id="SetCapacity">
-                      <parameters name="element" value="var:passiveResource"/>
-                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -655,9 +655,9 @@
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:variableCharacterisation">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="aql:parameter::VariableCharacterisationType::STRUCTURE"/>
-                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set Variable Characterisation Specification" id="SetVariableCharacterisationSpecification">
-                      <parameters name="element" value="var:variableCharacterisation"/>
-                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -769,7 +769,11 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="[self.oclAsType(PassiveResource).capacity_PassiveResource = null/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="capacity_PassiveResource"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.capacity_PassiveResource.editPCMRandomVariable(arg0)/]"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.capacity_PassiveResource.editPCMRandomVariable(arg0)/]">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -780,7 +784,11 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="[self.oclAsType(VariableCharacterisation).specification_VariableCharacterisation = null/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.specification_VariableCharacterisation.editPCMRandomVariable(arg0)/]"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.specification_VariableCharacterisation.editPCMRandomVariable(arg0)/]">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

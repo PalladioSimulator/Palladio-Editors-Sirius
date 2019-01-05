@@ -733,9 +733,9 @@
                       <parameters name="instance" value="var:instance"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.requiredResource_ParametricResourceDemand &lt;> null">
-                      <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set Specification" id="SetSpecification">
-                        <parameters name="element" value="var:instance"/>
-                      </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.requiredResource_ParametricResourceDemand = null">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
@@ -770,9 +770,9 @@
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set InfrastructureSignature" id="SetInfrastructureSignature">
                       <parameters name="instance" value="var:instance"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NumberOfInfrastructureCalls" id="SetNumberOfInfrastructureCalls">
-                      <parameters name="element" value="var:instance"/>
-                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.signature__InfrastructureCall = null">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
@@ -796,9 +796,9 @@
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set ResourceCallSignature" id="SetResourceCallSignature">
                       <parameters name="instance" value="var:instance"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NumberOfResourceCalls" id="SetNumberOfResourceCalls">
-                      <parameters name="element" value="var:instance"/>
-                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.signature__ResourceCall=null or self.resourceRequiredRole__ResourceCall=null">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
@@ -817,9 +817,9 @@
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:variableCharacterisation">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="aql:parameter::VariableCharacterisationType::STRUCTURE"/>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set Variable Characterisation Specification" id="SetVariableCharacterisationSpecification">
-                      <parameters name="element" value="var:variableCharacterisation"/>
-                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -1037,31 +1037,51 @@
           <ownedTools xsi:type="tool:DirectEditLabel" name="Set Specification ResourceCall" inputLabelExpression="[self.numberOfCalls__ResourceCall.specification/]">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.numberOfCalls__ResourceCall.editPCMRandomVariable(arg0)/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.numberOfCalls__ResourceCall.editPCMRandomVariable(arg0)/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="Edit VariableCharacterisation" inputLabelExpression="[self.specification_VariableCharacterisation.specification/]">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.specification_VariableCharacterisation.editPCMRandomVariable(arg0)/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.specification_VariableCharacterisation.editPCMRandomVariable(arg0)/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="Edit GuardedBranchTransitionDialog" inputLabelExpression="[self.branchCondition_GuardedBranchTransition.specification/]">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.branchCondition_GuardedBranchTransition.editPCMRandomVariable(arg0)/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.branchCondition_GuardedBranchTransition.editPCMRandomVariable(arg0)/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="Set Specification ResourceDemand" inputLabelExpression="[self.specification_ParametericResourceDemand.specification/]">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.specification_ParametericResourceDemand.editPCMRandomVariable(arg0)/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.specification_ParametericResourceDemand.editPCMRandomVariable(arg0)/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="Set Specification InfrastructureCall" inputLabelExpression="[self.numberOfCalls__InfrastructureCall.specification/]">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.numberOfCalls__InfrastructureCall.editPCMRandomVariable(arg0)/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.numberOfCalls__InfrastructureCall.editPCMRandomVariable(arg0)/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>

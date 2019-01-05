@@ -4,14 +4,6 @@
    <extension
          point="org.eclipse.sirius.externalJavaAction">
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.usage.custom.externaljavaactions.ClosedWorkloadThinkTimeAction"
-            id="ClosedWorkloadThinkTimeAction">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.usage.custom.externaljavaactions.OpenWorkloadInterArrivalTimeAction"
-            id="OpenWorkloadInterArrivalTimeAction">
-      </javaActions>
-      <javaActions
             actionClass="org.palladiosimulator.editors.sirius.usage.custom.externaljavaactions.EntryLevelSystemCallDialog"
             id="EntryLevelSystemCallDialog">
       </javaActions>
