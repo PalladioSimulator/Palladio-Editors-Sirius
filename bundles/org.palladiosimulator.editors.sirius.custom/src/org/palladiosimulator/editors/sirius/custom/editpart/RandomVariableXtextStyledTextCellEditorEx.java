@@ -1,11 +1,6 @@
 package org.palladiosimulator.editors.sirius.custom.editpart;
 
 import java.awt.Toolkit;
-import java.util.Collection;
-import java.util.Collections;
-
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.ModifyEvent;
@@ -21,12 +16,6 @@ import org.yakindu.base.xtext.utils.jface.viewers.context.IXtextFakeContextResou
 
 import com.google.inject.Injector;
 
-import de.uka.ipd.sdq.errorhandling.IIssue;
-import de.uka.ipd.sdq.stoex.Expression;
-import de.uka.ipd.sdq.stoex.analyser.exceptions.ExpectedTypeMismatchIssue;
-import de.uka.ipd.sdq.stoex.analyser.visitors.ExpressionInferTypeVisitor;
-import de.uka.ipd.sdq.stoex.analyser.visitors.NonProbabilisticExpressionInferTypeVisitor;
-import de.uka.ipd.sdq.stoex.analyser.visitors.TypeCheckVisitor;
 import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
 
 public class RandomVariableXtextStyledTextCellEditorEx extends XtextStyledTextCellEditorEx {
