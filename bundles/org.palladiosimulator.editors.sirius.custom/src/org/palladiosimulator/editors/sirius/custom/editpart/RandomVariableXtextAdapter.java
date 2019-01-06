@@ -38,13 +38,14 @@ public class RandomVariableXtextAdapter extends StyledTextXtextAdapter {
 			warningText = warningText + issue.getMessage() + "\n";
 		}
 
-		final NonProbabilisticExpressionInferTypeVisitor typeVisitor = new NonProbabilisticExpressionInferTypeVisitor();
 		EObject resultType = getXtextParseResult().getRootASTElement();
-		typeVisitor.doSwitch(resultType);
-		Collection<? extends IIssue> typeIssues = assertType(resultType, typeVisitor, expectedType);
-
-		for (IIssue typeIssue : typeIssues) {
-			warningText = warningText + typeIssue.getMessage() + "\n";
+		if (resultType != null) {
+			final NonProbabilisticExpressionInferTypeVisitor typeVisitor = new NonProbabilisticExpressionInferTypeVisitor();
+			typeVisitor.doSwitch(resultType);
+			Collection<? extends IIssue> typeIssues = assertType(resultType, typeVisitor, expectedType);
+			for (IIssue typeIssue : typeIssues) {
+				warningText = warningText + typeIssue.getMessage() + "\n";
+			}
 		}
 
 		getDecoration().setDescriptionText(warningText);
