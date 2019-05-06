@@ -70,17 +70,11 @@
       <import plugin="org.eclipse.eef.core" version="1.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.sirius.common.interpreter" version="5.0.2" match="greaterOrEqual"/>
       <import plugin="org.eclipse.eef.common.ui" version="1.7.0" match="greaterOrEqual"/>
+      <import plugin="org.palladiosimulator.branding"/>
    </requires>
 
    <plugin
          id="org.palladiosimulator.editors.sirius.custom.style"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.palladiosimulator.branding"
          download-size="0"
          install-size="0"
          version="0.0.0"
