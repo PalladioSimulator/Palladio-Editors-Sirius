@@ -193,7 +193,7 @@
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
 <unit id="LIMBO_DLIM.feature.group" version="0.16.1.201606230914"/>
-<repository location="https://se4.informatik.uni-wuerzburg.de/nexus/content/unzip/public-unzip/tools/descartes/dlim/tools.descartes.dlim.releng.p2/0.16.1-SNAPSHOT/tools.descartes.dlim.releng.p2-0.16.1-SNAPSHOT.zip-unzip/"/>
+<repository location="https://se2.informatik.uni-wuerzburg.de/eclipse/limbo/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
 <unit id="org.storydriven.storydiagrams.feature.feature.group" version="1.0.1.201507032002"/>
@@ -228,10 +228,10 @@
 <repository location="https://sdqweb.ipd.kit.edu/eclipse/palladio/analyzer/solver/nightly/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
-<unit id="org.eclipse.sirius.runtime.acceleo.feature.group" version="6.0.0.201806111309"/>
-<unit id="org.eclipse.sirius.runtime.ide.eef.feature.group" version="6.0.0.201806111309"/>
-<unit id="org.eclipse.sirius.runtime.ocl.feature.group" version="6.0.0.201806111309"/>
-<repository location="http://download.eclipse.org/sirius/updates/releases/6.0.0/photon/"/>
+<unit id="org.eclipse.sirius.runtime.acceleo.feature.group" version="6.2.1.201906121203"/>
+<unit id="org.eclipse.sirius.runtime.ide.eef.feature.group" version="6.2.1.201906121203"/>
+<unit id="org.eclipse.sirius.runtime.ocl.feature.group" version="6.2.1.201906121203"/>
+<repository location="http://download.eclipse.org/sirius/updates/releases/6.2.1/2019-06"/>
 </location>
 </locations>
 </target>
