@@ -57,9 +57,13 @@
 <unit id="org.palladiosimulator.measurementframework.feature.feature.group" version="1.0.1.201606011729"/>
 <repository location="https://sdqweb.ipd.kit.edu/eclipse/measurementframework/nightly/"/>
 </location>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
-<unit id="org.modelversioning.emfprofile.feature.feature.group" version="1.0.0.201612011758"/>
-<repository location="https://sdqweb.ipd.kit.edu/eclipse/emf-profiles-updatesite/"/>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.modelversioning.emfprofile.feature.feature.group" version="tbd"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/emf-profiles/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.modelversioning.emfprofile.feature.feature.group" version="tbd"/>
+<repository location="https://sdqweb.ipd.kit.edu/eclipse/emf-profiles/nightly/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
 <unit id="org.palladiosimulator.architecturaltemplates.feature.feature.group" version="1.1.0.201711211027"/>
