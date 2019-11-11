@@ -630,10 +630,10 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="parameter.VariableUsage" referenceName="componentParameterUsage_ImplementationComponentType" variableName="variableUsage">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:variableUsage">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="parameter::VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:VariableReference"/>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="stoex::VariableReference" referenceName="namedReference__VariableUsage" variableName="variableReference"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:variableReference"/>
                     <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set NamedReference" id="SetNamedReference">
-                      <parameters name="VariableReference" value="var:VariableReference"/>
+                      <parameters name="VariableReference" value="var:variableReference"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
