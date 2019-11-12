@@ -30,5 +30,8 @@
       <styleConfigurationProvider
             providerClass="org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.ResourceContainerStyleConfiguration">
       </styleConfigurationProvider>
+      <styleConfigurationProvider
+            providerClass="org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.OperationalRolesStyleConfigurationProvider">
+      </styleConfigurationProvider>
    </extension>
 </plugin>

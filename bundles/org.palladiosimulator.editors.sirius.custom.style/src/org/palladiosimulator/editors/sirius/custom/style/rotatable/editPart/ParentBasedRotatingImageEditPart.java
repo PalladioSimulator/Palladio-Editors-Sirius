@@ -23,17 +23,6 @@ public class ParentBasedRotatingImageEditPart extends
 	private static final int WEIRD_OFFSET = 2;
 
 	/**
-	 * An enum that codes the orientation of the image or the side the
-	 * BorderedNode is attached to.
-	 * 
-	 * @author max
-	 *
-	 */
-	private static enum Orientation {
-		TOP, BOTTOM, LEFT, RIGHT
-	}
-
-	/**
 	 * Default constructor.
 	 * 
 	 * @param view
@@ -50,9 +39,14 @@ public class ParentBasedRotatingImageEditPart extends
 	public void figureHasChanged() {
 		if (!(getParent() instanceof ShapeEditPart))
 			return;
+		
+		Orientation newOrientation = orientationRelativeToEditPart((ShapeEditPart) getParent()
+				.getParent());
+		if (newOrientation == currentOrientation) {
+			return;
+		}
 
-		switch (orientationRelativeToEditPart((ShapeEditPart) getParent()
-				.getParent())) {
+		switch (newOrientation) {
 		case TOP:
 			setFigureAtTop();
 			break;

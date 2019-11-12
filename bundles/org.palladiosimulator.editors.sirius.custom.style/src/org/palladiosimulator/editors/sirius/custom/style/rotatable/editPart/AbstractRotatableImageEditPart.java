@@ -65,14 +65,8 @@ public abstract class AbstractRotatableImageEditPart extends
 	protected RotatableSVGWorkspaceImageFigure primaryShape;
 
 	protected RotatableEditPartListener listener;
-
-	public static final int TOP = 0;
-
-	public static final int LEFT = 1;
-
-	public static final int BOTTOM = 2;
-
-	public static final int RIGHT = 3;
+	
+	protected Orientation currentOrientation = null;
 
 	/**
 	 * Creates a new port edit part.
@@ -268,18 +262,22 @@ public abstract class AbstractRotatableImageEditPart extends
 	}
 
 	public void setFigureAtRight() {
+		currentOrientation = Orientation.RIGHT;
 		primaryShape.setRightImgAsCurrent();
 	}
 
 	public void setFigureAtBottom() {
+		currentOrientation = Orientation.BOTTOM;
 		primaryShape.setBottomImgAsCurrent();
 	}
 
 	public void setFigureAtLeft() {
+		currentOrientation = Orientation.LEFT;
 		primaryShape.setLeftImgAsCurrent();
 	}
 
 	public void setFigureAtTop() {
+		currentOrientation = Orientation.TOP;
 		primaryShape.setTopImgAsCurrent();
 	}
 
@@ -307,5 +305,9 @@ public abstract class AbstractRotatableImageEditPart extends
 			degrees = 180 + (180 - degrees);
 		}
 		return degrees;
+	}
+
+	public Orientation getCurrentOrientation() {
+		return currentOrientation;
 	}
 }

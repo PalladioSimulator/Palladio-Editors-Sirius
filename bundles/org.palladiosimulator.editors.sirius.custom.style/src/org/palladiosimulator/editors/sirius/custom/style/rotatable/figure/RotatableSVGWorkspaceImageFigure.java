@@ -11,7 +11,9 @@
 
 package org.palladiosimulator.editors.sirius.custom.style.rotatable.figure;
 
+import java.util.EnumMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.CustomStyle;
@@ -20,6 +22,7 @@ import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
 import org.palladiosimulator.editors.sirius.custom.style.ExtensionActivator;
 import org.palladiosimulator.editors.sirius.custom.style.rotatable.NodeImageExtension;
+import org.palladiosimulator.editors.sirius.custom.style.rotatable.editPart.Orientation;
 
 /**
  * Rotatable Workspace Image Figure : switch mode ROTATION or IMAGE, rotate the
@@ -30,15 +33,8 @@ import org.palladiosimulator.editors.sirius.custom.style.rotatable.NodeImageExte
  */
 public class RotatableSVGWorkspaceImageFigure extends SVGWorkspaceImageFigure {
 
-	private String bottomImgPath;
-
-	private String leftImgPath;
-
-	private String rightImgPath;
-
-	private String topImgPath;
-
-	private String currentImgPath;
+	private final Map<Orientation, String> imgPaths = new EnumMap<>(Orientation.class);
+	private Orientation currentOrientation = Orientation.TOP;
 
 	/**
 	 * Creates a rotative image
@@ -50,12 +46,11 @@ public class RotatableSVGWorkspaceImageFigure extends SVGWorkspaceImageFigure {
 			String leftImgPath, String bottomImgPath, String rightImgPath) {
 		super();
 
-		this.topImgPath = topImgPath;
-		this.bottomImgPath = bottomImgPath;
-		this.leftImgPath = leftImgPath;
-		this.rightImgPath = rightImgPath;
+		imgPaths.put(Orientation.TOP, topImgPath);
+		imgPaths.put(Orientation.BOTTOM, bottomImgPath);
+		imgPaths.put(Orientation.LEFT, leftImgPath);
+		imgPaths.put(Orientation.RIGHT, rightImgPath);
 
-		currentImgPath = topImgPath;
 		refreshFigure();
 	}
 
@@ -66,33 +61,19 @@ public class RotatableSVGWorkspaceImageFigure extends SVGWorkspaceImageFigure {
 	 *            the image associated to the figure
 	 */
 	public void refreshFigure(final CustomStyle imageStyle) {
-		boolean found = false;
-		Iterator<NodeImageExtension> iterator = ExtensionActivator.getDefault()
-				.getImageExtensions().iterator();
-		while (iterator.hasNext() && !found) {
+		
+		for (Iterator<NodeImageExtension> iterator = ExtensionActivator.getDefault()
+				.getImageExtensions().iterator(); iterator.hasNext(); ) {
 			NodeImageExtension desc = (NodeImageExtension) iterator.next();
-			if (imageStyle.getId() != null
-					&& imageStyle.getId().equals(desc.getId())) {
-				if (currentImgPath != null) {
-					if (currentImgPath.equals(bottomImgPath)) {
-						currentImgPath = desc.getBottomImage();
-					} else if (currentImgPath.equals(leftImgPath)) {
-						currentImgPath = desc.getLeftImage();
-					} else if (currentImgPath.equals(rightImgPath)) {
-						currentImgPath = desc.getRightImage();
-					} else {
-						currentImgPath = desc.getTopImage();
-					}
-				} else {
-					currentImgPath = desc.getTopImage();
-				}
-				topImgPath = desc.getTopImage();
-				bottomImgPath = desc.getBottomImage();
-				leftImgPath = desc.getLeftImage();
-				rightImgPath = desc.getRightImage();
-				found = true;
+			if (imageStyle.getId() != null && imageStyle.getId().equals(desc.getId())) {
+				imgPaths.put(Orientation.TOP, desc.getTopImage());
+				imgPaths.put(Orientation.BOTTOM, desc.getBottomImage());
+				imgPaths.put(Orientation.LEFT, desc.getLeftImage());
+				imgPaths.put(Orientation.RIGHT, desc.getRightImage());
+				break;
 			}
 		}
+
 		refreshFigure();
 		this.repaint();
 	}
@@ -100,7 +81,7 @@ public class RotatableSVGWorkspaceImageFigure extends SVGWorkspaceImageFigure {
 	private void refreshFigure() {
 		WorkspaceImage createWorkspaceImage = DiagramFactory.eINSTANCE
 				.createWorkspaceImage();
-		createWorkspaceImage.setWorkspacePath(currentImgPath);
+		createWorkspaceImage.setWorkspacePath(getCurrentImgPath());
 		refreshFigure(createWorkspaceImage);
 	}
 
@@ -117,47 +98,20 @@ public class RotatableSVGWorkspaceImageFigure extends SVGWorkspaceImageFigure {
 		}
 	}
 
+	protected void setCurrentOrientation(Orientation orientation) {
+		this.currentOrientation = orientation;
+		refreshFigure();
+	}
+	
+	public Orientation getCurrentOrientation() {
+		return currentOrientation;
+	}
+	
 	/**
 	 * @return the currentImgPath
 	 */
 	public String getCurrentImgPath() {
-		return currentImgPath;
-	}
-
-	/**
-	 * @param currentImgPath
-	 *            the currentImgPath to set
-	 */
-	public void setCurrentImgPath(String currentImgPath) {
-		this.currentImgPath = currentImgPath;
-	}
-
-	/**
-	 * @return the bottomImgPath
-	 */
-	public String getBottomImgPath() {
-		return bottomImgPath;
-	}
-
-	/**
-	 * @return the leftImgPath
-	 */
-	public String getLeftImgPath() {
-		return leftImgPath;
-	}
-
-	/**
-	 * @return the rightImgPath
-	 */
-	public String getRightImgPath() {
-		return rightImgPath;
-	}
-
-	/**
-	 * @return the topImgPath
-	 */
-	public String getTopImgPath() {
-		return topImgPath;
+		return imgPaths.get(currentOrientation);
 	}
 
 	/**
@@ -165,8 +119,7 @@ public class RotatableSVGWorkspaceImageFigure extends SVGWorkspaceImageFigure {
 	 *            the bottomImgPath to set
 	 */
 	public void setBottomImgAsCurrent() {
-		currentImgPath = bottomImgPath;
-		refreshFigure();
+		setCurrentOrientation(Orientation.BOTTOM);
 	}
 
 	/**
@@ -174,8 +127,7 @@ public class RotatableSVGWorkspaceImageFigure extends SVGWorkspaceImageFigure {
 	 *            the leftImgPath to set
 	 */
 	public void setLeftImgAsCurrent() {
-		currentImgPath = leftImgPath;
-		refreshFigure();
+		setCurrentOrientation(Orientation.LEFT);
 	}
 
 	/**
@@ -183,8 +135,7 @@ public class RotatableSVGWorkspaceImageFigure extends SVGWorkspaceImageFigure {
 	 *            the rightImgPath to set
 	 */
 	public void setRightImgAsCurrent() {
-		currentImgPath = rightImgPath;
-		refreshFigure();
+		setCurrentOrientation(Orientation.RIGHT);
 	}
 
 	/**
@@ -192,8 +143,7 @@ public class RotatableSVGWorkspaceImageFigure extends SVGWorkspaceImageFigure {
 	 *            the topImgPath to set
 	 */
 	public void setTopImgAsCurrent() {
-		currentImgPath = topImgPath;
-		refreshFigure();
+		setCurrentOrientation(Orientation.TOP);
 	}
 
 }
