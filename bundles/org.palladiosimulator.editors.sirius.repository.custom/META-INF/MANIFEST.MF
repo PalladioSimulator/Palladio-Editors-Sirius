@@ -26,6 +26,6 @@ Require-Bundle: org.eclipse.ui,
  org.palladiosimulator.pcm.edit,
  org.palladiosimulator.pcm.ui,
  org.eclipse.jface
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: palladiosimulator.org

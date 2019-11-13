@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Usage Diagram Editor - Custom
 Bundle-SymbolicName: org.palladiosimulator.editors.sirius.usage.custom;singleton:=true
 Bundle-Version: 4.1.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: org.eclipse.sirius,
  org.eclipse.core.runtime;bundle-version="3.12.0",
  org.eclipse.ui;bundle-version="3.106.1",

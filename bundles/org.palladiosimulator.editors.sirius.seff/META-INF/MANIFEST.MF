@@ -11,5 +11,5 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.common.acceleo.mtl,
  org.palladiosimulator.editors.sirius.services;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: palladiosimulator.org
