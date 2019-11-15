@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: PCM Sirius editors: commons
 Bundle-SymbolicName: org.palladiosimulator.editors.sirius.custom;singleton:=true
-Bundle-Version: 4.1.0.qualifier
+Bundle-Version: 4.2.0.qualifier
 Bundle-Activator: org.palladiosimulator.editors.sirius.custom.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime;bundle-version="3.12.0",
@@ -26,7 +26,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0",
  org.palladiosimulator.commons;bundle-version="1.0.1",
  org.eclipse.sirius.ui
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: org.palladiosimulator.editors.sirius.custom.editpolicyproviders;uses:="org.eclipse.gmf.runtime.common.core.service,org.eclipse.gmf.runtime.diagram.ui.services.editpolicy",
  org.palladiosimulator.editors.sirius.custom.externaljavaactions;
