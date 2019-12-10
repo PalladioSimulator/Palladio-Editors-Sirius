@@ -1,3 +1,3 @@
 PalladioPipeline {
-    deployUpdatesite 'releng/org.palladiosimulator.editorssirius.updatesite/target/repository'
+    deployUpdatesite 'releng/org.palladiosimulator.editors.sirius.updatesite/target/repository'
 } 
