@@ -14,42 +14,71 @@ import org.palladiosimulator.pcm.repository.OperationInterface;
 import org.palladiosimulator.pcm.repository.OperationProvidedRole;
 import org.palladiosimulator.pcm.repository.Repository;
 
+
 public class AddOperationProvidedRole implements IExternalJavaAction {
 
-	public static final Shell SHELL = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+    public static final Shell SHELL = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+    private static final String NAME_POST_EXTENSION = "ProvidedRole";
 
-	@Override
-	public boolean canExecute(Collection<? extends EObject> arg0) {
-		return true;
-	}
+    @Override
+    public boolean canExecute(final Collection<? extends EObject> arg0) {
+        return true;
+    }
 
-	@Override
-	public void execute(Collection<? extends EObject> selection, Map<String, Object> parameters) {
-		OperationProvidedRole role = (OperationProvidedRole) parameters.get("instance");		
-		OperationInterface oInterface = getOperationInterface(role);
-		role.setProvidedInterface__OperationProvidedRole(oInterface);
+    @Override
+    public void execute(final Collection<? extends EObject> selection, final Map<String, Object> parameters) {
+        final OperationProvidedRole role = (OperationProvidedRole) parameters.get("instance");
+        // get OptionalSystem
+        final var optSystem = selection.stream().filter(org.palladiosimulator.pcm.system.System.class::isInstance)
+                .map(org.palladiosimulator.pcm.system.System.class::cast).findAny();
+        final OperationInterface oInterface = this.getOperationInterface(role);
+        if (optSystem.isPresent()) {
+            role.setEntityName(this.findNameOperationProvidedRole(optSystem.get(), oInterface));
+        } else {
+            role.setEntityName(oInterface.getEntityName());
+        }
+        role.setProvidedInterface__OperationProvidedRole(oInterface);
 
-	}
+    }
 
-	private OperationInterface getOperationInterface(OperationProvidedRole role) {
+    private String findNameOperationProvidedRole(final org.palladiosimulator.pcm.system.System system,
+            final OperationInterface oInterface) {
+        final var interfaceName = oInterface.getEntityName() + NAME_POST_EXTENSION;
+        var roleName = interfaceName;
+        for (int i = 1; this.checkExistingNames(system, roleName); i++) {
+            roleName= interfaceName + i;
+            if(i == Integer.MAX_VALUE) {
+                throw new IllegalStateException("Operation Name Extension too big");
+            }
+        }
+        return roleName;
+    }
 
-		Collection<Object> filter = new ArrayList<Object>();
-		filter.add(Repository.class);
-		filter.add(OperationInterface.class);
+    private boolean checkExistingNames(final org.palladiosimulator.pcm.system.System system,
+            final String interfaceName) {
+        return system.getProvidedRoles_InterfaceProvidingEntity().stream()
+                .anyMatch(e -> interfaceName.equals(e.getEntityName()));
+    }
 
-		// Additional Child References
-		Collection<EReference> additionalChildReferences = new ArrayList<EReference>();
+    private OperationInterface getOperationInterface(final OperationProvidedRole role) {
 
-		// Creating the dialog
-		PalladioSelectEObjectDialog dialog = new PalladioSelectEObjectDialog(SHELL, filter, additionalChildReferences,
-				role.eResource().getResourceSet());
+        final Collection<Object> filter = new ArrayList<Object>();
+        filter.add(Repository.class);
+        filter.add(OperationInterface.class);
 
-		// Setting the needed object type
-		dialog.setProvidedService(OperationInterface.class);
+        // Additional Child References
+        final Collection<EReference> additionalChildReferences = new ArrayList<EReference>();
 
-		dialog.open();
+        // Creating the dialog
+        final PalladioSelectEObjectDialog dialog = new PalladioSelectEObjectDialog(SHELL, filter,
+                additionalChildReferences, role.eResource().getResourceSet());
 
-		return (OperationInterface) dialog.getResult();
-	}
+        // Setting the needed object type
+        dialog.setProvidedService(OperationInterface.class);
+
+        dialog.open();
+
+        return (OperationInterface) dialog.getResult();
+    }
 
 }
