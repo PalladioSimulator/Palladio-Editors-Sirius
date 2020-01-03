@@ -1,6 +1,7 @@
 package org.palladiosimulator.editors.sirius.services;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CommonTokenStream;
@@ -50,6 +51,16 @@ public class PCMServices {
     public Collection<StereotypeApplication> getStereotypeApplications(final EObject eObject) {
         return StereotypeAPI.getStereotypeApplications(eObject);
     }
+
+    /**
+     * @see StereotypeAPI#getStereotypeApplications(EObject)
+     * @see ArchitecturalTemplateAPI#isArchitecturalTemplateStereotypeApplication(StereotypeApplication)
+     */
+	public Collection<StereotypeApplication> getATStereotypeApplications(final EObject eObject) {
+		return getStereotypeApplications(eObject).stream()
+				.filter(ArchitecturalTemplateAPI::isArchitecturalTemplateStereotypeApplication)
+				.collect(Collectors.toList());
+	}
 
     /**
      * @see ArchitecturalTemplateAPI#isRole(Stereotype)
@@ -141,19 +152,19 @@ public class PCMServices {
     }
 
     public Collection<StereotypeApplication> getStereotypeApplicationsWithoutRoles(final EObject eObject) {
-        return ArchitecturalTemplateAPI.getStereotypeApplicationsWithoutRoles(eObject);
+        return ArchitecturalTemplateAPI.getATStereotypeApplicationsWithoutRoles(eObject);
     }
 
     /**
-     * Returns the {@link Profile}s on the given {@link EObject}.
+     * Returns the {@link Profile}s on the given {@link EObject} that are associated with architectural templates.
      * 
      * @param eObject
      *            object to get profiles for
      * @return collection of Profiles
      * @see ArchitecturalTemplateAPI#getProfiles(EObject)
      */
-    public Collection<ProfileImport> getProfileImports(final EObject eObject) {
-        return ArchitecturalTemplateAPI.getProfileImports(eObject);
+    public Collection<ProfileImport> getATProfileImports(final EObject eObject) {
+        return ArchitecturalTemplateAPI.getATProfileImports(eObject);
     }
 
     /**
