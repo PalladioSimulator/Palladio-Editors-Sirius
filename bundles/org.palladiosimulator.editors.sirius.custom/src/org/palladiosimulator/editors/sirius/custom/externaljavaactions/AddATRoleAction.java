@@ -50,9 +50,10 @@ public class AddATRoleAction implements IExternalJavaAction {
         final LinkedList<Stereotype> unapplyedStereotypes = new LinkedList<>();
 
         for (final Stereotype stereotype : StereotypeAPI.getApplicableStereotypes(selection)) {
-            if (!StereotypeAPI.isStereotypeApplied(selection, stereotype.getName())) {
-                unapplyedStereotypes.add(stereotype);
-            }
+			if (!StereotypeAPI.isStereotypeApplied(selection, stereotype.getName())
+					&& ArchitecturalTemplateAPI.isArchitecturalTemplateStereotype(stereotype)) {
+				unapplyedStereotypes.add(stereotype);
+			}
         }
 
         final RoleStereotypeSelectionDialog dialog = new RoleStereotypeSelectionDialog(
