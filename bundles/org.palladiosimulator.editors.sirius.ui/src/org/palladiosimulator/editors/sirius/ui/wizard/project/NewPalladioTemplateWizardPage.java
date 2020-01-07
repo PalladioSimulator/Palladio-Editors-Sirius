@@ -9,6 +9,7 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
@@ -73,6 +74,7 @@ public class NewPalladioTemplateWizardPage extends WizardPage implements ISelect
         this.wizardSelectionViewer = new TableViewer(sashForm, SWT.BORDER);
         this.wizardSelectionViewer.setContentProvider(ArrayContentProvider.getInstance());
         this.wizardSelectionViewer.setLabelProvider(new TemplateLabelProvider());
+        this.wizardSelectionViewer.setComparator(new ViewerComparator());
 
         createDescriptionIn(sashForm);
         this.wizardSelectionViewer.setInput(this.initiatorATs);
