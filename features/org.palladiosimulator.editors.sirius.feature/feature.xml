@@ -70,6 +70,7 @@
       <import plugin="org.eclipse.eef.core" version="1.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.sirius.common.interpreter" version="6.2.3" match="greaterOrEqual"/>
       <import plugin="org.eclipse.eef.common.ui" version="1.7.0" match="greaterOrEqual"/>
+	  <import feature="org.palladiosimulator.examples.package.feature" version="4.2.0" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.branding"/>
    </requires>
 
