@@ -237,5 +237,13 @@
 <unit id="org.eclipse.sirius.runtime.ocl.feature.group" version="6.2.3.201908120659"/>
 <repository location="http://download.eclipse.org/sirius/updates/releases/6.2.3/2019-06/"/>
 </location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.palladiosimulator.examples.package.feature.feature.group" version="tbd"/>
+<repository location="https://updatesite.palladio-simulator.com/palladio-example-models-package/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.palladiosimulator.examples.package.feature.feature.group" version="tbd"/>
+<repository location="https://updatesite.palladio-simulator.com/palladio-example-models-package/nightly/"/>
+</location>
 </locations>
 </target>
