@@ -593,12 +593,12 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.eClass()=repository::OperationInterface">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(repository::OperationInterface)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.OperationSignature" referenceName="signatures__OperationInterface">
                     <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'method' + container.eAllContents()->filter(repository::OperationSignature)->size()"/>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.eClass()=repository::InfrastructureInterface">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(repository::InfrastructureInterface)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InfrastructureSignature" referenceName="infrastructureSignatures__InfrastructureInterface">
                     <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'method' + container.eAllContents()->filter(repository::InfrastructureSignature)->size()"/>
                   </subModelOperations>
