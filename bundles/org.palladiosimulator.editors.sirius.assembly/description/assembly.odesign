@@ -151,7 +151,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="StereotypeApplication Node" preconditionExpression="[true &lt;> self.isSystemRole()/]" semanticCandidatesExpression="[self.getStereotypeApplications()/]" domainClass="StereotypeApplication">
+          <subNodeMappings name="StereotypeApplication Node" preconditionExpression="[true &lt;> self.isSystemRole()/]" semanticCandidatesExpression="[self.getATStereotypeApplications()/]" domainClass="StereotypeApplication">
             <style xsi:type="style:SquareDescription" labelExpression="[self.getStereotype().name/]" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -195,7 +195,7 @@
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
-            <subNodeMappings name="StereotypeApplication Node" preconditionExpression="[true &lt;> self.isRole()/]" semanticCandidatesExpression="[self.getStereotypeApplications()/]" domainClass="StereotypeApplication">
+            <subNodeMappings name="StereotypeApplication Node" preconditionExpression="[true &lt;> self.isRole()/]" semanticCandidatesExpression="[self.getATStereotypeApplications()/]" domainClass="StereotypeApplication">
               <style xsi:type="style:SquareDescription" labelExpression="[self.getStereotype().name/]" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -802,7 +802,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="SSETs" preconditionExpression="aql:container.oclIsTypeOf(system::System)" deletionDescription="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@additionalLayers[name='QoS']/@toolSections.0/@ownedTools[name='SSETs%20deletion']" semanticCandidatesExpression="aql:self.requiredRoles_InterfaceRequiringEntity->select(x | self.oclAsType(system::System).qosAnnotations_System.specifiedQoSAnnotations_QoSAnnotations->exists(y | y.role_SpecifiedQoSAnnotation = x))" domainClass="repository.OperationRequiredRole" childrenPresentation="List">
+        <containerMappings name="SSETs" preconditionExpression="aql:container.oclIsTypeOf(system::System)" deletionDescription="//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']/@additionalLayers[name='QoS']/@toolSections.0/@ownedTools[name='SSETs%20deletion']" semanticCandidatesExpression="aql: self.requiredRoles_InterfaceRequiringEntity->select(x | self->selectByKind(system::System).qosAnnotations_System.specifiedQoSAnnotations_QoSAnnotations->flatten()->exists(y | y.role_SpecifiedQoSAnnotation = x))" domainClass="repository.OperationRequiredRole" childrenPresentation="List">
           <subNodeMappings name="SSET" semanticCandidatesExpression="aql:diagram.oclAsType(diagram::DSemanticDiagram).target.oclAsType(system::System).qosAnnotations_System.specifiedQoSAnnotations_QoSAnnotations->select(x | x.role_SpecifiedQoSAnnotation == self)" domainClass="qos_performance.SystemSpecifiedExecutionTime">
             <style xsi:type="style:SquareDescription" labelExpression="aql:self.signature_SpecifiedQoSAnnation.entityName + ' = ' + self.specification_SpecifiedExecutionTime.specification" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

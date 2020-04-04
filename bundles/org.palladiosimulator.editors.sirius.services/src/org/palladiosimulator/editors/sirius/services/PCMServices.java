@@ -1,6 +1,7 @@
 package org.palladiosimulator.editors.sirius.services;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClassifier;
@@ -40,12 +41,22 @@ public class PCMServices {
 		return StereotypeAPI.getStereotypeApplications(eObject);
 	}
 
-	/**
-	 * @see ArchitecturalTemplateAPI#isRole(Stereotype)
-	 */
-	public boolean isRole(final StereotypeApplication stereotypeApplication) {
-		return ArchitecturalTemplateAPI.isRole(stereotypeApplication.getStereotype());
+    /**
+     * @see StereotypeAPI#getStereotypeApplications(EObject)
+     * @see ArchitecturalTemplateAPI#isArchitecturalTemplateStereotypeApplication(StereotypeApplication)
+     */
+	public Collection<StereotypeApplication> getATStereotypeApplications(final EObject eObject) {
+		return getStereotypeApplications(eObject).stream()
+				.filter(ArchitecturalTemplateAPI::isArchitecturalTemplateStereotypeApplication)
+				.collect(Collectors.toList());
 	}
+
+    /**
+     * @see ArchitecturalTemplateAPI#isRole(Stereotype)
+     */
+    public boolean isRole(final StereotypeApplication stereotypeApplication) {
+        return ArchitecturalTemplateAPI.isRole(stereotypeApplication.getStereotype());
+    }
 
 	/**
 	 * @see ArchitecturalTemplateAPI#isSystemRole(Stereotype)
@@ -131,21 +142,21 @@ public class PCMServices {
 		return ArchitecturalTemplateAPI.getRoleApplications(eObject);
 	}
 
-	public Collection<StereotypeApplication> getStereotypeApplicationsWithoutRoles(final EObject eObject) {
-		return ArchitecturalTemplateAPI.getStereotypeApplicationsWithoutRoles(eObject);
-	}
+    public Collection<StereotypeApplication> getStereotypeApplicationsWithoutRoles(final EObject eObject) {
+        return ArchitecturalTemplateAPI.getATStereotypeApplicationsWithoutRoles(eObject);
+    }
 
-	/**
-	 * Returns the {@link Profile}s on the given {@link EObject}.
-	 * 
-	 * @param eObject
-	 *            object to get profiles for
-	 * @return collection of Profiles
-	 * @see ArchitecturalTemplateAPI#getProfiles(EObject)
-	 */
-	public Collection<ProfileImport> getProfileImports(final EObject eObject) {
-		return ArchitecturalTemplateAPI.getProfileImports(eObject);
-	}
+    /**
+     * Returns the {@link Profile}s on the given {@link EObject} that are associated with architectural templates.
+     * 
+     * @param eObject
+     *            object to get profiles for
+     * @return collection of Profiles
+     * @see ArchitecturalTemplateAPI#getProfiles(EObject)
+     */
+    public Collection<ProfileImport> getATProfileImports(final EObject eObject) {
+        return ArchitecturalTemplateAPI.getATProfileImports(eObject);
+    }
 
 	/**
 	 * Returns, whether the given {@link StereotypableElement} has roles applied.
