@@ -234,12 +234,12 @@
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
 <unit id="org.yakindu.base.xtext.utils.gmf.feature.group" version="3.4.1.201812151841"/>
 <unit id="org.yakindu.base.xtext.utils.jface.feature.group" version="3.4.1.201812151841"/>
-<repository location="https://sdqweb.ipd.kit.edu/eclipse/yakindustatecharts/releases/"/>
+<repository location="https://updatesite.palladio-simulator.com/palladio-thirdparty-yakindustatecharts/releases"/>
 </location>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
 <unit id="org.yakindu.base.xtext.utils.gmf.feature.group" version="3.4.1.201812151841"/>
 <unit id="org.yakindu.base.xtext.utils.jface.feature.group" version="3.4.1.201812151841"/>
-<repository location="https://sdqweb.ipd.kit.edu/eclipse/yakindustatecharts/nightly/"/>
+<repository location="https://updatesite.palladio-simulator.com/palladio-thirdparty-yakindustatecharts/nightly/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
 <unit id="org.eclipse.sirius.runtime.acceleo.feature.group" version="6.2.3.201908120659"/>
