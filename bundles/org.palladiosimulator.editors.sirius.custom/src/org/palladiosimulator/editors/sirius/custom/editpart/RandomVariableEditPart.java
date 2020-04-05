@@ -48,7 +48,7 @@ public class RandomVariableEditPart extends DNodeListElementEditPart implements 
 	}
 	
 	private Injector getInjector() {
-		return StoexActivator.getInstance().getInjector("org.palladiosimulator.commons.stoex.Stoex");
+		return StoexActivator.getInstance().getInjector(StoexActivator.ORG_PALLADIOSIMULATOR_COMMONS_STOEX_STOEX);
 	}
 
 	public void setExpectedType(TypeEnum expectedType) {
