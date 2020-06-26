@@ -1,10 +1,14 @@
 package org.palladiosimulator.editors.sirius.ui.wizard.project;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringBufferInputStream;
+import java.io.StringReader;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -214,47 +218,78 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
     private void handleTemplate(final IProject projectHandle, final SubMonitor subMonitor) throws CoreException {
         final AT selectedTemplate = this.palladioTemplatePage.getSelectedTemplate();
         if (selectedTemplate != null) {
-            addToProject(computeTemplatePath(selectedTemplate), projectHandle, subMonitor);
+            TemplateInitiationContext context = new TemplateInitiationContext(projectHandle, selectedTemplate);
+            context.addToProject(computeTemplatePath(selectedTemplate), projectHandle, subMonitor);
         }
     }
 
-    private void addToProject(final URI path, final IContainer target, final SubMonitor subMonitor)
-            throws CoreException {
-        for (final File source : FileHelper.getFiles(path.toString())) {
-            final IPath newTarget = new Path(source.getName());
-            if (source.isDirectory()) {
-                addFolderToProject(path, source, target.getFolder(newTarget), subMonitor);
-            } else {
-                addFileToProject(source, target.getFile(newTarget), subMonitor);
+    /**
+     * Encapsulates one invocation of the template loading.
+     */
+    private static class TemplateInitiationContext {
+        public final IProject projectHandle;
+        public final AT template;
+
+        public TemplateInitiationContext(IProject projectHandle, AT template) {
+            this.projectHandle = projectHandle;
+            this.template = template;
+        }
+
+        private void addToProject(final URI path, final IContainer target, final SubMonitor subMonitor)
+                throws CoreException {
+            for (final File source : FileHelper.getFiles(path.toString())) {
+                final IPath newTarget = new Path(source.getName());
+                if (source.isDirectory()) {
+                    addFolderToProject(path, source, target.getFolder(newTarget), subMonitor);
+                } else {
+                    addFileToProject(source, target.getFile(newTarget), subMonitor);
+                }
             }
         }
-    }
 
-    private void addFolderToProject(final URI path, final File source, final IFolder target,
-            final SubMonitor subMonitor) throws CoreException {
-        if (!target.exists()) {
-            target.create(IResource.NONE, true, null);
-        }
-
-        addToProject(path.appendSegment(source.getName()), target, subMonitor);
-    }
-
-    private void addFileToProject(final File source, final IFile target, final SubMonitor subMonitor)
-            throws CoreException {
-        try (final InputStream contentStream = new FileInputStream(source)) {
-            if (target.exists()) {
-                target.setContents(contentStream, true, true, subMonitor);
-            } else {
-                target.create(contentStream, true, subMonitor);
+        private void addFolderToProject(final URI path, final File source, final IFolder target,
+                final SubMonitor subMonitor) throws CoreException {
+            if (!target.exists()) {
+                target.create(IResource.NONE, true, null);
             }
-        } catch (final FileNotFoundException e) {
-            throwCoreException("File " + source.getAbsolutePath() + " does not exist!");
-        } catch (final IOException e) {
-            throwCoreException(
-                    "Cannot create inpht stream on file " + source.getAbsolutePath() + "! " + e.getMessage());
-        } catch (final CoreException e) {
-            throwCoreException(e.getMessage());
+
+            addToProject(path.appendSegment(source.getName()), target, subMonitor);
         }
+
+        private void addFileToProject(final File source, final IFile target, final SubMonitor subMonitor)
+                throws CoreException {
+            try (final InputStream contentStream = loadInputFile(source)) {
+                if (target.exists()) {
+                    target.setContents(contentStream, true, true, subMonitor);
+                } else {
+                    target.create(contentStream, true, subMonitor);
+                }
+            } catch (final FileNotFoundException e) {
+                throwCoreException("File " + source.getAbsolutePath() + " does not exist!");
+            } catch (final IOException e) {
+                throwCoreException(
+                        "Cannot create input stream on file " + source.getAbsolutePath() + "! " + e.getMessage());
+            } catch (final CoreException e) {
+                throwCoreException(e.getMessage());
+            }
+        }
+
+        private InputStream loadInputFile(File source) throws IOException {
+            // launch configurations should be small enough to load
+            if (source.getName()
+                .endsWith(".launch")) {
+                String fileContent = Files.readString(source.toPath());
+                fileContent = fileContent.replace(createPlatformUriStart(template.getEntityName()),
+                        createPlatformUriStart(projectHandle.getName()));
+                return new ByteArrayInputStream(fileContent.getBytes());
+            }
+
+            return new FileInputStream(source);
+        }
+    }
+
+    private static String createPlatformUriStart(String projectName) {
+        return "platform:/resource/" + projectName + "/";
     }
 
     private URI computeTemplatePath(final AT selectedTemplate) {
@@ -282,7 +317,7 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
      * @throws CoreException
      *             The exception to throw.
      */
-    private void throwCoreException(final String message) throws CoreException {
+    private static void throwCoreException(final String message) throws CoreException {
         final IStatus status = new Status(IStatus.ERROR, "org.palladiosimulator.editors.sirius.custom.wizard",
                 IStatus.OK, message, null);
         throw new CoreException(status);
