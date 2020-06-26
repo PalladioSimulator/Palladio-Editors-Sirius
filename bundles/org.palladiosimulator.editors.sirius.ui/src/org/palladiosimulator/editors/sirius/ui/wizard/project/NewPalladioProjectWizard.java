@@ -65,7 +65,7 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
     /** An AT catalog stores initiator templates in this folder. */
     private static final String INITIATOR_TEMPLATES_FOLDER = "initiatorTemplates";
 
-	private static final String PERSPECTIVE_ID = "org.palladiosimulator.pcmbench.perspectives.palladio";
+    private static final String PERSPECTIVE_ID = "org.palladiosimulator.pcmbench.perspectives.palladio";
 
     private WizardNewProjectCreationPage projectCreationPage;
     private NewPalladioTemplateWizardPage palladioTemplatePage;
@@ -108,7 +108,8 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
         final IProject projectHandle = this.projectCreationPage.getProjectHandle();
 
         final java.net.URI projectURI = (!this.projectCreationPage.useDefaults())
-                ? this.projectCreationPage.getLocationURI() : null;
+                ? this.projectCreationPage.getLocationURI()
+                : null;
 
         final IWorkspace workspace = ResourcesPlugin.getWorkspace();
 
@@ -145,36 +146,36 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
         BasicNewProjectResourceWizard.updatePerspective(this.config);
         BasicNewProjectResourceWizard.selectAndReveal(this.project, this.workbench.getActiveWorkbenchWindow());
 
-        
-        if(!getCurrentPerspectiveId().equals(PERSPECTIVE_ID)) {
-        	boolean confirm = MessageDialog.openConfirm(getShell(), "Palladio Perspective", "This project is associated with the Palladio perspective.\n\nDo you want to open this perspective now?");
-        	if (confirm)
-        		openPalladioPerspective();
+        if (!getCurrentPerspectiveId().equals(PERSPECTIVE_ID)) {
+            boolean confirm = MessageDialog.openConfirm(getShell(), "Palladio Perspective",
+                    "This project is associated with the Palladio perspective.\n\nDo you want to open this perspective now?");
+            if (confirm)
+                openPalladioPerspective();
         }
-        
+
         return true;
     }
 
     private void openPalladioPerspective() {
-		IWorkbench workbench = PlatformUI.getWorkbench();
-		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
-		try {
-			workbench.showPerspective(PERSPECTIVE_ID, window);
-		} catch (WorkbenchException e) {
-			MessageDialog.openError(getShell(), "Error", "Could not open Palladio Perspective");
+        IWorkbench workbench = PlatformUI.getWorkbench();
+        IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+        try {
+            workbench.showPerspective(PERSPECTIVE_ID, window);
+        } catch (WorkbenchException e) {
+            MessageDialog.openError(getShell(), "Error", "Could not open Palladio Perspective");
             e.printStackTrace();
-		}
-	}
+        }
+    }
 
-	private String getCurrentPerspectiveId() {
-		IWorkbench workbench = PlatformUI.getWorkbench();
-		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
-		IWorkbenchPage page = window.getActivePage();
-		IPerspectiveDescriptor perspective = page.getPerspective();
-		return perspective.getId();
-	}
+    private String getCurrentPerspectiveId() {
+        IWorkbench workbench = PlatformUI.getWorkbench();
+        IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+        IWorkbenchPage page = window.getActivePage();
+        IPerspectiveDescriptor perspective = page.getPerspective();
+        return perspective.getId();
+    }
 
-	/**
+    /**
      * This creates the project in the workspace.
      * 
      * @param description
@@ -294,7 +295,8 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
 
     private URI computeTemplatePath(final AT selectedTemplate) {
         final URI templateFolderURI = getRootURI(selectedTemplate).appendSegment(INITIATOR_TEMPLATES_FOLDER);
-        final String[] segments = URI.createURI(selectedTemplate.getDefaultInstanceURI()).segments();
+        final String[] segments = URI.createURI(selectedTemplate.getDefaultInstanceURI())
+            .segments();
         return templateFolderURI.appendSegments(segments);
     }
 
@@ -306,7 +308,10 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
      * @return the root folder.
      */
     private URI getRootURI(final EObject eObject) {
-        return eObject.eResource().getURI().trimFragment().trimSegments(1);
+        return eObject.eResource()
+            .getURI()
+            .trimFragment()
+            .trimSegments(1);
     }
 
     /**
@@ -337,7 +342,8 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
     private void activateViewpoints(final IProject projectHandle, final SubMonitor subMonitor) {
         final URI representationsURI = SiriusCustomUtil.getRepresentationsURI(projectHandle);
         final Session session = SessionManager.INSTANCE.getSession(representationsURI, subMonitor);
-        final Set<Viewpoint> registry = ViewpointRegistry.getInstance().getViewpoints();
+        final Set<Viewpoint> registry = ViewpointRegistry.getInstance()
+            .getViewpoints();
         final HashSet<Viewpoint> viewpoints = new HashSet<>();
         final List<String> extensions = getExtensions(session);
         for (final Viewpoint viewpoint : registry) {
@@ -352,9 +358,14 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
     private List<String> getExtensions(final Session session) {
         final List<String> extensions = new ArrayList<>();
         for (final Resource r : session.getSemanticResources()) {
-            if (r.getClass().getPackage().getName().startsWith("org.palladiosimulator.pcm.")) {
-                if (r.getURI().isPlatform()) {
-                    extensions.add(r.getURI().fileExtension());
+            if (r.getClass()
+                .getPackage()
+                .getName()
+                .startsWith("org.palladiosimulator.pcm.")) {
+                if (r.getURI()
+                    .isPlatform()) {
+                    extensions.add(r.getURI()
+                        .fileExtension());
                 }
             }
         }
