@@ -228,8 +228,8 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
      * Encapsulates one invocation of the template loading.
      */
     private static class TemplateInitiationContext {
-        public final IProject projectHandle;
-        public final AT template;
+        private final IProject projectHandle;
+        private final AT template;
 
         public TemplateInitiationContext(IProject projectHandle, AT template) {
             this.projectHandle = projectHandle;
@@ -290,7 +290,10 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
     }
 
     private static String createPlatformUriStart(String projectName) {
-        return "platform:/resource/" + projectName + "/";
+        // empty segment adds the "/" at the end of the URI
+        return URI.createPlatformResourceURI(projectName, false)
+            .appendSegment("")
+            .toString();
     }
 
     private URI computeTemplatePath(final AT selectedTemplate) {
