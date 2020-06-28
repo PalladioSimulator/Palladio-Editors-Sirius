@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringBufferInputStream;
 import java.io.StringReader;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -282,7 +284,7 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
                 String fileContent = Files.readString(source.toPath());
                 fileContent = fileContent.replace(createPlatformUriStart(template.getEntityName()),
                         createPlatformUriStart(projectHandle.getName()));
-                return new ByteArrayInputStream(fileContent.getBytes());
+                return new ByteArrayInputStream(fileContent.getBytes(StandardCharsets.UTF_8));
             }
 
             return new FileInputStream(source);
