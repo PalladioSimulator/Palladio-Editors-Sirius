@@ -219,10 +219,12 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
      * @throws CoreException
      */
     private void handleTemplate(final IProject projectHandle, final SubMonitor subMonitor) throws CoreException {
-        final AT selectedTemplate = this.palladioTemplatePage.getSelectedTemplate();
-        if (selectedTemplate != null) {
-            TemplateInitiationContext context = new TemplateInitiationContext(projectHandle, selectedTemplate);
-            context.addToProject(computeTemplatePath(selectedTemplate), projectHandle, subMonitor);
+        if (this.palladioTemplatePage.getUseTemplate()) {
+            final AT selectedTemplate = this.palladioTemplatePage.getSelectedTemplate();
+            if (selectedTemplate != null) {
+                TemplateInitiationContext context = new TemplateInitiationContext(projectHandle, selectedTemplate);
+                context.addToProject(computeTemplatePath(selectedTemplate), projectHandle, subMonitor);
+            }
         }
     }
 
