@@ -396,7 +396,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="ParentInterface" precondition="aql:preTarget.differs(preSource)" edgeMappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@edgeMappings[name='ParentInterfaceEdge']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="ParentInterface" precondition="aql:preTarget.differs(preSource)" edgeMappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@edgeMappings[name='ParentInterfaceEdge']" iconPath="/org.palladiosimulator.editors.sirius.repository.custom/icons/inheritance_arrow.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
