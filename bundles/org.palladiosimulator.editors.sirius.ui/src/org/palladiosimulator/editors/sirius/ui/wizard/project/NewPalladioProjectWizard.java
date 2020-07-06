@@ -1,10 +1,16 @@
 package org.palladiosimulator.editors.sirius.ui.wizard.project;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringBufferInputStream;
+import java.io.StringReader;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -61,7 +67,7 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
     /** An AT catalog stores initiator templates in this folder. */
     private static final String INITIATOR_TEMPLATES_FOLDER = "initiatorTemplates";
 
-	private static final String PERSPECTIVE_ID = "org.palladiosimulator.pcmbench.perspectives.palladio";
+    private static final String PERSPECTIVE_ID = "org.palladiosimulator.pcmbench.perspectives.palladio";
 
     private WizardNewProjectCreationPage projectCreationPage;
     private NewPalladioTemplateWizardPage palladioTemplatePage;
@@ -104,7 +110,8 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
         final IProject projectHandle = this.projectCreationPage.getProjectHandle();
 
         final java.net.URI projectURI = (!this.projectCreationPage.useDefaults())
-                ? this.projectCreationPage.getLocationURI() : null;
+                ? this.projectCreationPage.getLocationURI()
+                : null;
 
         final IWorkspace workspace = ResourcesPlugin.getWorkspace();
 
@@ -141,36 +148,36 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
         BasicNewProjectResourceWizard.updatePerspective(this.config);
         BasicNewProjectResourceWizard.selectAndReveal(this.project, this.workbench.getActiveWorkbenchWindow());
 
-        
-        if(!getCurrentPerspectiveId().equals(PERSPECTIVE_ID)) {
-        	boolean confirm = MessageDialog.openConfirm(getShell(), "Palladio Perspective", "This project is associated with the Palladio perspective.\n\nDo you want to open this perspective now?");
-        	if (confirm)
-        		openPalladioPerspective();
+        if (!getCurrentPerspectiveId().equals(PERSPECTIVE_ID)) {
+            boolean confirm = MessageDialog.openConfirm(getShell(), "Palladio Perspective",
+                    "This project is associated with the Palladio perspective.\n\nDo you want to open this perspective now?");
+            if (confirm)
+                openPalladioPerspective();
         }
-        
+
         return true;
     }
 
     private void openPalladioPerspective() {
-		IWorkbench workbench = PlatformUI.getWorkbench();
-		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
-		try {
-			workbench.showPerspective(PERSPECTIVE_ID, window);
-		} catch (WorkbenchException e) {
-			MessageDialog.openError(getShell(), "Error", "Could not open Palladio Perspective");
+        IWorkbench workbench = PlatformUI.getWorkbench();
+        IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+        try {
+            workbench.showPerspective(PERSPECTIVE_ID, window);
+        } catch (WorkbenchException e) {
+            MessageDialog.openError(getShell(), "Error", "Could not open Palladio Perspective");
             e.printStackTrace();
-		}
-	}
+        }
+    }
 
-	private String getCurrentPerspectiveId() {
-		IWorkbench workbench = PlatformUI.getWorkbench();
-		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
-		IWorkbenchPage page = window.getActivePage();
-		IPerspectiveDescriptor perspective = page.getPerspective();
-		return perspective.getId();
-	}
+    private String getCurrentPerspectiveId() {
+        IWorkbench workbench = PlatformUI.getWorkbench();
+        IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+        IWorkbenchPage page = window.getActivePage();
+        IPerspectiveDescriptor perspective = page.getPerspective();
+        return perspective.getId();
+    }
 
-	/**
+    /**
      * This creates the project in the workspace.
      * 
      * @param description
@@ -212,54 +219,91 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
      * @throws CoreException
      */
     private void handleTemplate(final IProject projectHandle, final SubMonitor subMonitor) throws CoreException {
-        final AT selectedTemplate = this.palladioTemplatePage.getSelectedTemplate();
-        if (selectedTemplate != null) {
-            addToProject(computeTemplatePath(selectedTemplate), projectHandle, subMonitor);
-        }
-    }
-
-    private void addToProject(final URI path, final IContainer target, final SubMonitor subMonitor)
-            throws CoreException {
-        for (final File source : FileHelper.getFiles(path.toString())) {
-            final IPath newTarget = new Path(source.getName());
-            if (source.isDirectory()) {
-                addFolderToProject(path, source, target.getFolder(newTarget), subMonitor);
-            } else {
-                addFileToProject(source, target.getFile(newTarget), subMonitor);
+        if (this.palladioTemplatePage.getUseTemplate()) {
+            final AT selectedTemplate = this.palladioTemplatePage.getSelectedTemplate();
+            if (selectedTemplate != null) {
+                TemplateInitiationContext context = new TemplateInitiationContext(projectHandle, selectedTemplate);
+                context.addToProject(computeTemplatePath(selectedTemplate), projectHandle, subMonitor);
             }
         }
     }
 
-    private void addFolderToProject(final URI path, final File source, final IFolder target,
-            final SubMonitor subMonitor) throws CoreException {
-        if (!target.exists()) {
-            target.create(IResource.NONE, true, null);
+    /**
+     * Encapsulates one invocation of the template loading.
+     */
+    private static class TemplateInitiationContext {
+        private final IProject projectHandle;
+        private final AT template;
+
+        public TemplateInitiationContext(IProject projectHandle, AT template) {
+            this.projectHandle = projectHandle;
+            this.template = template;
         }
 
-        addToProject(path.appendSegment(source.getName()), target, subMonitor);
+        private void addToProject(final URI path, final IContainer target, final SubMonitor subMonitor)
+                throws CoreException {
+            for (final File source : FileHelper.getFiles(path.toString())) {
+                final IPath newTarget = new Path(source.getName());
+                if (source.isDirectory()) {
+                    addFolderToProject(path, source, target.getFolder(newTarget), subMonitor);
+                } else {
+                    addFileToProject(source, target.getFile(newTarget), subMonitor);
+                }
+            }
+        }
+
+        private void addFolderToProject(final URI path, final File source, final IFolder target,
+                final SubMonitor subMonitor) throws CoreException {
+            if (!target.exists()) {
+                target.create(IResource.NONE, true, null);
+            }
+
+            addToProject(path.appendSegment(source.getName()), target, subMonitor);
+        }
+
+        private void addFileToProject(final File source, final IFile target, final SubMonitor subMonitor)
+                throws CoreException {
+            try (final InputStream contentStream = loadInputFile(source)) {
+                if (target.exists()) {
+                    target.setContents(contentStream, true, true, subMonitor);
+                } else {
+                    target.create(contentStream, true, subMonitor);
+                }
+            } catch (final FileNotFoundException e) {
+                throwCoreException("File " + source.getAbsolutePath() + " does not exist!");
+            } catch (final IOException e) {
+                throwCoreException(
+                        "Cannot create input stream on file " + source.getAbsolutePath() + "! " + e.getMessage());
+            } catch (final CoreException e) {
+                throwCoreException(e.getMessage());
+            }
+        }
+
+        private InputStream loadInputFile(File source) throws IOException {
+            // launch configurations should be small enough to load
+            if (source.getName()
+                .endsWith(".launch")) {
+                String fileContent = Files.readString(source.toPath());
+                fileContent = fileContent.replace(createPlatformUriStart(template.getEntityName()),
+                        createPlatformUriStart(projectHandle.getName()));
+                return new ByteArrayInputStream(fileContent.getBytes(StandardCharsets.UTF_8));
+            }
+
+            return new FileInputStream(source);
+        }
     }
 
-    private void addFileToProject(final File source, final IFile target, final SubMonitor subMonitor)
-            throws CoreException {
-        try (final InputStream contentStream = new FileInputStream(source)) {
-            if (target.exists()) {
-                target.setContents(contentStream, true, true, subMonitor);
-            } else {
-                target.create(contentStream, true, subMonitor);
-            }
-        } catch (final FileNotFoundException e) {
-            throwCoreException("File " + source.getAbsolutePath() + " does not exist!");
-        } catch (final IOException e) {
-            throwCoreException(
-                    "Cannot create inpht stream on file " + source.getAbsolutePath() + "! " + e.getMessage());
-        } catch (final CoreException e) {
-            throwCoreException(e.getMessage());
-        }
+    private static String createPlatformUriStart(String projectName) {
+        // empty segment adds the "/" at the end of the URI
+        return URI.createPlatformResourceURI(projectName, false)
+            .appendSegment("")
+            .toString();
     }
 
     private URI computeTemplatePath(final AT selectedTemplate) {
         final URI templateFolderURI = getRootURI(selectedTemplate).appendSegment(INITIATOR_TEMPLATES_FOLDER);
-        final String[] segments = URI.createURI(selectedTemplate.getDefaultInstanceURI()).segments();
+        final String[] segments = URI.createURI(selectedTemplate.getDefaultInstanceURI())
+            .segments();
         return templateFolderURI.appendSegments(segments);
     }
 
@@ -271,7 +315,10 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
      * @return the root folder.
      */
     private URI getRootURI(final EObject eObject) {
-        return eObject.eResource().getURI().trimFragment().trimSegments(1);
+        return eObject.eResource()
+            .getURI()
+            .trimFragment()
+            .trimSegments(1);
     }
 
     /**
@@ -282,7 +329,7 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
      * @throws CoreException
      *             The exception to throw.
      */
-    private void throwCoreException(final String message) throws CoreException {
+    private static void throwCoreException(final String message) throws CoreException {
         final IStatus status = new Status(IStatus.ERROR, "org.palladiosimulator.editors.sirius.custom.wizard",
                 IStatus.OK, message, null);
         throw new CoreException(status);
@@ -302,7 +349,8 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
     private void activateViewpoints(final IProject projectHandle, final SubMonitor subMonitor) {
         final URI representationsURI = SiriusCustomUtil.getRepresentationsURI(projectHandle);
         final Session session = SessionManager.INSTANCE.getSession(representationsURI, subMonitor);
-        final Set<Viewpoint> registry = ViewpointRegistry.getInstance().getViewpoints();
+        final Set<Viewpoint> registry = ViewpointRegistry.getInstance()
+            .getViewpoints();
         final HashSet<Viewpoint> viewpoints = new HashSet<>();
         final List<String> extensions = getExtensions(session);
         for (final Viewpoint viewpoint : registry) {
@@ -317,9 +365,14 @@ public class NewPalladioProjectWizard extends Wizard implements INewWizard {
     private List<String> getExtensions(final Session session) {
         final List<String> extensions = new ArrayList<>();
         for (final Resource r : session.getSemanticResources()) {
-            if (r.getClass().getPackage().getName().startsWith("org.palladiosimulator.pcm.")) {
-                if (r.getURI().isPlatform()) {
-                    extensions.add(r.getURI().fileExtension());
+            if (r.getClass()
+                .getPackage()
+                .getName()
+                .startsWith("org.palladiosimulator.pcm.")) {
+                if (r.getURI()
+                    .isPlatform()) {
+                    extensions.add(r.getURI()
+                        .fileExtension());
                 }
             }
         }
