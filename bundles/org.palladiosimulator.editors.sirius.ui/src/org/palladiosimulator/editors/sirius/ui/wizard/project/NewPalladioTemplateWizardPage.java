@@ -13,10 +13,15 @@ import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.palladiosimulator.architecturaltemplates.AT;
 
@@ -33,6 +38,10 @@ public class NewPalladioTemplateWizardPage extends WizardPage implements ISelect
     private final Set<AT> initiatorATs;
 
     private AT selectedTemplate;
+    private boolean useTemplate;
+
+    private SashForm sashForm;
+    private Button useTemplateCheckBox;
 
     /**
      * Constructor for SampleNewWizardPage.
@@ -44,6 +53,7 @@ public class NewPalladioTemplateWizardPage extends WizardPage implements ISelect
         setTitle("Initiator Architectural Template Selection");
         setDescription("Select a template to create an initial Palladio model.");
         this.initiatorATs = initiatorATs;
+        this.useTemplate = false;
     }
 
     /**
@@ -57,19 +67,27 @@ public class NewPalladioTemplateWizardPage extends WizardPage implements ISelect
         container.setLayout(layout);
         container.setLayoutData(new GridData(GridData.FILL_BOTH));
 
+        useTemplateCheckBox = new Button(container, useTemplate ? (SWT.CHECK | SWT.SELECTED) : SWT.CHECK);
+        useTemplateCheckBox.setText("Create a Palladio project using one of the initiator templates.");
+
         final Label label = new Label(container, SWT.NONE);
-        label.setText(getTitle());
+        label.setText("Available Initiator Architectural Templates:");
         GridData gd = new GridData();
         label.setLayoutData(gd);
 
-        final SashForm sashForm = new SashForm(container, SWT.HORIZONTAL);
+        sashForm = new SashForm(container, SWT.HORIZONTAL);
         gd = new GridData(GridData.FILL_BOTH);
         // limit the width of the sash form to avoid the wizard
         // opening very wide. This is just preferred size -
         // it can be made bigger by the wizard
         // See bug #83356
         gd.widthHint = 300;
+
+        gd.heightHint = 300;
         sashForm.setLayoutData(gd);
+
+        useTemplateCheckBox
+            .addSelectionListener(SelectionListener.widgetSelectedAdapter(this::updateEnabledStateOfSelection));
 
         this.wizardSelectionViewer = new TableViewer(sashForm, SWT.BORDER);
         this.wizardSelectionViewer.setContentProvider(ArrayContentProvider.getInstance());
@@ -80,6 +98,26 @@ public class NewPalladioTemplateWizardPage extends WizardPage implements ISelect
         this.wizardSelectionViewer.setInput(this.initiatorATs);
         this.wizardSelectionViewer.addSelectionChangedListener(this);
         setControl(container);
+
+        // set correct colors and enabled state for initial state of useTemplate
+        updateEnabledStateOfSelection(null);
+    }
+
+    private void updateEnabledStateOfSelection(SelectionEvent event) {
+        useTemplate = useTemplateCheckBox.getSelection();
+        Color color = useTemplate //
+                ? getCurrentDisplayColor(SWT.COLOR_LIST_BACKGROUND) //
+                : getCurrentDisplayColor(SWT.COLOR_TEXT_DISABLED_BACKGROUND);
+
+        sashForm.setEnabled(useTemplate);
+        wizardSelectionViewer.getTable()
+            .setBackground(color);
+        descriptionBrowser.formText.setBackground(color);
+    }
+
+    private Color getCurrentDisplayColor(int colorId) {
+        return Display.getCurrent()
+            .getSystemColor(colorId);
     }
 
     /**
@@ -148,5 +186,9 @@ public class NewPalladioTemplateWizardPage extends WizardPage implements ISelect
     public AT getSelectedTemplate() {
         // return availableTemplates.iterator().next();
         return this.selectedTemplate;
+    }
+
+    public boolean getUseTemplate() {
+        return this.useTemplate;
     }
 }
