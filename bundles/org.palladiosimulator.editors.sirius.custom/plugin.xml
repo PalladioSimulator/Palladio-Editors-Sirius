@@ -40,37 +40,23 @@
             id="SetNamedReference">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetVariableCharacterisationSpecification"
-            id="SetVariableCharacterisationSpecification">
-      </javaActions>
-      <javaActions
             actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.OpenRepresentation"
             id="OpenRepresentation">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetLinkingResourceThroughput"
-            id="SetLinkingResourceThroughput">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetLinkingResourceLatency"
-            id="SetLinkingResourceLatency">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetResourceContainerReadProcessingRate"
-            id="SetResourceContainerReadProcessingRate">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetResourceContainerWriteProcessingRate"
-            id="SetResourceContainerWriteProcessingRate">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.SetProcessingResourceProcessingRate"
-            id="SetProcessingResourceProcessingRate">
       </javaActions>
       <javaActions
             actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.ActivateViewpoint"
             id="ActivateViewpoint">
       </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.RegisterResourceSetListener"
+            id="RegisterResourceSetListener">
+      </javaActions>
+   </extension>
+   <extension
+         point="org.eclipse.emf.transaction.listeners">
+      <listener
+            class="org.palladiosimulator.editors.sirius.custom.validation.MyResourceSetListener">
+      </listener>
    </extension>
 
 </plugin>

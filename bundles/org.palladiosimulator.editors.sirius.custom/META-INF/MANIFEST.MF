@@ -25,10 +25,18 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.gmf.runtime.common.core;bundle-version="1.7.0",
  org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0",
  org.palladiosimulator.commons;bundle-version="1.0.1",
- org.eclipse.sirius.ui
+ org.eclipse.sirius.ui,
+ org.eclipse.sirius.diagram.ui,
+ org.palladiosimulator.commons.stoex.ui,
+ org.yakindu.base.xtext.utils.gmf;visibility:=reexport,
+ org.yakindu.base.xtext.utils.jface,
+ org.eclipse.xtext.ui,
+ de.uka.ipd.sdq.errorhandling,
+ org.eclipse.gef
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
-Export-Package: org.palladiosimulator.editors.sirius.custom.editpolicyproviders;uses:="org.eclipse.gmf.runtime.common.core.service,org.eclipse.gmf.runtime.diagram.ui.services.editpolicy",
+Export-Package: org.palladiosimulator.editors.sirius.custom.editpart,
+ org.palladiosimulator.editors.sirius.custom.editpolicyproviders;uses:="org.eclipse.gmf.runtime.common.core.service,org.eclipse.gmf.runtime.diagram.ui.services.editpolicy",
  org.palladiosimulator.editors.sirius.custom.externaljavaactions;
   uses:="org.eclipse.emf.ecore,
    org.eclipse.sirius.tools.api.ui,
@@ -37,3 +45,9 @@ Export-Package: org.palladiosimulator.editors.sirius.custom.editpolicyproviders;
    de.uka.ipd.sdq.stoex.analyser.visitors",
  org.palladiosimulator.editors.sirius.custom.util
 Bundle-Vendor: palladiosimulator.org
+Import-Package: com.google.inject,
+ com.ibm.icu.util;version="58.2.0",
+ org.eclipse.sirius.common.ui.tools.api.util;version="2.1.0",
+ org.eclipse.sirius.ext.base;version="2.1.0",
+ org.eclipse.sirius.ext.emf;version="2.1.0",
+ org.eclipse.ui.actions

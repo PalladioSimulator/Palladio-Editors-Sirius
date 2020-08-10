@@ -15,6 +15,11 @@
                name="Highest">
          </Priority>
       </editpolicyProvider>
-   </extension>
+  </extension>
+   <extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+    <editpartProvider class="org.palladiosimulator.editors.sirius.custom.editpart.RandomVariableEditPartProvider">
+      <Priority name="Highest"/>
+    </editpartProvider>
+  </extension>
 
 </plugin>

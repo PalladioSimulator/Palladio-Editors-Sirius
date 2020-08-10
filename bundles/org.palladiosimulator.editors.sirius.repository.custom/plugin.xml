@@ -8,10 +8,6 @@
             id="AddSEFF">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.repository.custom.externaljavaactions.SetCapacity"
-            id="SetCapacity">
-      </javaActions>
-      <javaActions
             actionClass="org.palladiosimulator.editors.sirius.repository.custom.externaljavaactions.SetInnerDeclaration"
             id="SetInnerDeclaration">
       </javaActions>

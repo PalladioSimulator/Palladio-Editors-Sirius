@@ -11,10 +11,12 @@
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
 <unit id="de.uka.ipd.sdq.identifier.feature.feature.group" version="2.1.0.201611171324"/>
+<unit id="org.palladiosimulator.commons.stoex.sdk.feature.group" version="tbd"/>
 <repository location="https://updatesite.palladio-simulator.com/palladio-core-commons/releases/latest/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
 <unit id="de.uka.ipd.sdq.identifier.feature.feature.group" version="2.1.0.201611171324"/>
+<unit id="org.palladiosimulator.commons.stoex.sdk.feature.group" version="tbd"/>
 <repository location="https://updatesite.palladio-simulator.com/palladio-core-commons/nightly/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
@@ -230,6 +232,16 @@
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
 <unit id="org.palladiosimulator.solver.feature.feature.group" version="4.1.0.201709290912"/>
 <repository location="https://updatesite.palladio-simulator.com/palladio-analyzer-solver/nightly/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
+<unit id="org.yakindu.base.xtext.utils.gmf.feature.group" version="3.4.1.201812151841"/>
+<unit id="org.yakindu.base.xtext.utils.jface.feature.group" version="3.4.1.201812151841"/>
+<repository location="https://updatesite.palladio-simulator.com/palladio-thirdparty-yakindustatecharts/releases"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly" refresh="true">
+<unit id="org.yakindu.base.xtext.utils.gmf.feature.group" version="3.4.1.201812151841"/>
+<unit id="org.yakindu.base.xtext.utils.jface.feature.group" version="3.4.1.201812151841"/>
+<repository location="https://updatesite.palladio-simulator.com/palladio-thirdparty-yakindustatecharts/nightly/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
 <unit id="org.eclipse.sirius.runtime.acceleo.feature.group" version="6.3.1.202006101101"/>
