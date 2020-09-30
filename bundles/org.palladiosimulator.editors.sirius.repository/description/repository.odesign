@@ -135,7 +135,7 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="PassiveResourcesCompartment" semanticCandidatesExpression="var:self" domainClass="repository.BasicComponent" childrenPresentation="List">
-            <subNodeMappings name="PassiveResource" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:passiveResource_BasicComponent" doubleClickDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Capacity']" domainClass="repository.PassiveResource">
+            <subNodeMappings name="PassiveResource" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Capacity']" semanticCandidatesExpression="feature:passiveResource_BasicComponent" domainClass="repository.PassiveResource">
               <style xsi:type="style:SquareDescription" labelExpression="aql:self.entityName + '&lt;Capacity: ' + self.capacity_PassiveResource.specification + '>'" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -151,7 +151,7 @@
           </subContainerMappings>
           <subContainerMappings name="ComponentParameterCompartment" semanticCandidatesExpression="var:self" domainClass="repository.BasicComponent">
             <subContainerMappings name="ComponentParameter" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Variable%20Usage']" semanticCandidatesExpression="feature:componentParameterUsage_ImplementationComponentType" domainClass="parameter.VariableUsage" childrenPresentation="List">
-              <subNodeMappings name="Variable Characterisation" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" doubleClickDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20VariableCharacterisation']" domainClass="parameter.VariableCharacterisation">
+              <subNodeMappings name="Variable Characterisation" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20VariableCharacterisation']" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" domainClass="parameter.VariableCharacterisation">
                 <style xsi:type="style:SquareDescription" labelExpression="aql:self.type + ' = ' + self.specification_VariableCharacterisation.specification" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -202,6 +202,14 @@
           </style>
         </containerMappings>
         <containerMappings name="CompositeComponent" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" doubleClickDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CompositeComponent%20Representation']" domainClass="repository.CompositeComponent" childrenPresentation="List">
+          <subContainerMappings name="CompositeComponent" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" domainClass="repository.CompositeComponent" childrenPresentation="List">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql: '&lt;&lt;CompositeComponent>>\n'.concat(self.entityName)" widthComputationExpression="20" heightComputationExpression="10">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql: '&lt;&lt;CompositeComponent>>\n'.concat(self.entityName)" widthComputationExpression="20" heightComputationExpression="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -695,9 +703,9 @@
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:passiveResource">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="capacity_PassiveResource"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'PassiveResource'+container.passiveResource_BasicComponent->size()"/>
-                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set Capacity" id="SetCapacity">
-                      <parameters name="element" value="var:passiveResource"/>
-                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -729,9 +737,9 @@
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:variableCharacterisation">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="aql:parameter::VariableCharacterisationType::STRUCTURE"/>
-                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set Variable Characterisation Specification" id="SetVariableCharacterisationSpecification">
-                      <parameters name="element" value="var:variableCharacterisation"/>
-                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -802,34 +810,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Edit VariableCharacterisation" mappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='ComponentParameterCompartment']/@subContainerMappings[name='ComponentParameter']/@subNodeMappings[name='Variable%20Characterisation']">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool:If" conditionExpression="[self.oclAsType(VariableCharacterisation).specification_VariableCharacterisation = null/]">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="Edit Variable Characterisation Specification" id="SetVariableCharacterisationSpecification">
-                  <parameters name="element" value="var:element"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Edit Capacity" mappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='PassiveResourcesCompartment']/@subNodeMappings[name='PassiveResource']">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool:If" conditionExpression="[self.oclAsType(PassiveResource).capacity_PassiveResource = null/]">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="capacity_PassiveResource"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="Edit capacity" id="SetCapacity">
-                  <parameters name="element" value="var:element"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool_1:DoubleClickDescription" name="SEFF Representation" mappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='SEFFCompartment']/@subNodeMappings[name='SEFF']">
             <element name="element"/>
             <elementView name="elementView"/>
@@ -861,6 +841,36 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:SetValue" featureName="serviceEffectSpecifications__BasicComponent" valueExpression="aql:copiedElement.copyIdentifier()"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit Capacity" inputLabelExpression="[self.capacity_PassiveResource.specification/]">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:If" conditionExpression="[self.oclAsType(PassiveResource).capacity_PassiveResource = null/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="capacity_PassiveResource"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.capacity_PassiveResource.editPCMRandomVariable(arg0)/]">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit VariableCharacterisation" inputLabelExpression="[self.specification_VariableCharacterisation.specification/]">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:If" conditionExpression="[self.oclAsType(VariableCharacterisation).specification_VariableCharacterisation = null/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.specification_VariableCharacterisation.editPCMRandomVariable(arg0)/]">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

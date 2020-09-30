@@ -25,14 +25,14 @@
         </edgeMappings>
         <containerMappings name="LinkingResource" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Resource%20Container%20Name']" semanticCandidatesExpression="feature:linkingResources__ResourceEnvironment" domainClass="resourceenvironment.LinkingResource" childrenPresentation="VerticalStack">
           <subContainerMappings name="CommunicationLinkResourceSpecification" semanticCandidatesExpression="var:self" domainClass="resourceenvironment.LinkingResource" childrenPresentation="List">
-            <subNodeMappings name="Latency" semanticCandidatesExpression="feature:eAllContents" doubleClickDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditLatency']" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
+            <subNodeMappings name="Latency" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Latency']" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
               <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'Latency: ' + self.latency_CommunicationLinkResourceSpecification.specification.toString()" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="Throughput" semanticCandidatesExpression="feature:eAllContents" doubleClickDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='EditThroughput']" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
+            <subNodeMappings name="Throughput" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Throughput']" semanticCandidatesExpression="feature:eAllContents" domainClass="resourceenvironment.CommunicationLinkResourceSpecification">
               <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql: 'Throughput: ' + self.throughput_CommunicationLinkResourceSpecification.specification.toString()" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -91,7 +91,7 @@
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="Processing Rate" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='ProcessingRate']" domainClass="resourceenvironment.ProcessingResourceSpecification">
+            <subNodeMappings name="Processing Rate" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Processing%20Rate']" semanticCandidatesExpression="var:self" domainClass="resourceenvironment.ProcessingResourceSpecification">
               <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql: 'Processing Rate: '+ self.processingRate_ProcessingResourceSpecification.specification.toString()" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -112,14 +112,14 @@
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="Write Processing Rate" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='WriteProcessingRate']" domainClass="resourceenvironment.HDDProcessingResourceSpecification">
+            <subNodeMappings name="Write Processing Rate" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Write%20Processing%20Rate']" semanticCandidatesExpression="var:self" domainClass="resourceenvironment.HDDProcessingResourceSpecification">
               <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql: 'Write Processing Rate: '+ self.writeProcessingRate.specification.toString()" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="Read Processing Rate" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='ReadProcessingRate']" domainClass="resourceenvironment.HDDProcessingResourceSpecification">
+            <subNodeMappings name="Read Processing Rate" labelDirectEdit="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Read%20Processing%20Rate']" semanticCandidatesExpression="var:self" domainClass="resourceenvironment.HDDProcessingResourceSpecification">
               <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:'Read Processing Rate: '+ self.readProcessingRate.specification.toString()" labelAlignment="LEFT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -183,11 +183,15 @@
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="resourceenvironment.ProcessingResourceSpecification" referenceName="activeResourceSpecifications_ResourceContainer">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
                     <subModelOperations xsi:type="tool:ExternalJavaAction" name="SW ResourceType" label="Selection Wizard Resource Type" id="AddProcessingResourceSpecification">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="aql: self.schedulingPolicy=null or self.processingRate_ProcessingResourceSpecification=null or self.activeResourceType_ActiveResourceSpecification=null">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql: self.schedulingPolicy=null or self.activeResourceType_ActiveResourceSpecification=null">
                         <subModelOperations xsi:type="tool:RemoveElement"/>
                       </subModelOperations>
                       <parameters name="newProcessingResourceSpecification" value="var:instance"/>
                     </subModelOperations>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="processingRate_ProcessingResourceSpecification" variableName="processingRate"/>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -199,11 +203,18 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="resourceenvironment.HDDProcessingResourceSpecification" referenceName="activeResourceSpecifications_ResourceContainer">
-                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="SW ResourceType" label="Selection Wizard Resource Type" id="AddHDDProcessingResourceSpecification">
-                    <subModelOperations xsi:type="tool:If" conditionExpression="aql: self.schedulingPolicy=null or self.processingRate_ProcessingResourceSpecification=null or self.activeResourceType_ActiveResourceSpecification=null or self.writeProcessingRate=null or self.readProcessingRate=null">
-                      <subModelOperations xsi:type="tool:RemoveElement"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="SW ResourceType" label="Selection Wizard Resource Type" id="AddHDDProcessingResourceSpecification">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="aql: self.schedulingPolicy=null or self.processingRate_ProcessingResourceSpecification=null or self.activeResourceType_ActiveResourceSpecification=null">
+                        <subModelOperations xsi:type="tool:RemoveElement"/>
+                      </subModelOperations>
+                      <parameters name="newHDDProcessingResourceSpecification" value="var:instance"/>
                     </subModelOperations>
-                    <parameters name="newHDDProcessingResourceSpecification" value="var:instance"/>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="readProcessingRate" variableName="readProcessingRate"/>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="writeProcessingRate" variableName="writeProcessingRate"/>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -296,17 +307,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="EditThroughput" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']/@subContainerMappings[name='CommunicationLinkResourceSpecification']/@subNodeMappings[name='Throughput']">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetLinkingResourceThroughput" id="SetLinkingResourceThroughput">
-                  <parameters name="element" value="var:element"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="Failure Probability" inputLabelExpression="feature:failureProbability">
             <mask mask="{0}"/>
             <initialOperation>
@@ -315,46 +315,52 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="EditLatency" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='LinkingResource']/@subContainerMappings[name='CommunicationLinkResourceSpecification']/@subNodeMappings[name='Latency']">
-            <element name="element"/>
-            <elementView name="elementView"/>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit Processing Rate" label="Edit Processing Rate" inputLabelExpression="[self.processingRate_ProcessingResourceSpecification.specification/]">
+            <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetLinkingResourceLatency" id="SetLinkingResourceLatency">
-                  <parameters name="element" value="var:element"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.processingRate_ProcessingResourceSpecification.editPCMRandomVariable(arg0)/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="ProcessingRate" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ProcessingResourceSpecification%20Container']/@subNodeMappings[name='Processing%20Rate']">
-            <element name="element"/>
-            <elementView name="elementView"/>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit Latency" inputLabelExpression="[self.latency_CommunicationLinkResourceSpecification.specification/]">
+            <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetProcessingResourceProcessingRate" id="SetProcessingResourceProcessingRate">
-                  <parameters name="element" value="var:element"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.latency_CommunicationLinkResourceSpecification.editPCMRandomVariable(arg0)/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="WriteProcessingRate" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ProcessingResourceSpecification%20Container']/@subNodeMappings[name='Write%20Processing%20Rate']">
-            <element name="element"/>
-            <elementView name="elementView"/>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit Throughput" inputLabelExpression="[self.throughput_CommunicationLinkResourceSpecification.specification/]">
+            <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetResourceContainerWriteProcessingRate" id="SetResourceContainerWriteProcessingRate">
-                  <parameters name="element" value="var:element"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.throughput_CommunicationLinkResourceSpecification.editPCMRandomVariable(arg0)/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="ReadProcessingRate" mappings="//@ownedViewpoints[name='ResourceEnvironment']/@ownedRepresentations[name='ResourceEnvironment%20Diagram']/@defaultLayer/@containerMappings[name='ResourceContainer']/@subContainerMappings[name='ProcessingResourceSpecification%20Container']/@subNodeMappings[name='Read%20Processing%20Rate']">
-            <element name="element"/>
-            <elementView name="elementView"/>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit Write Processing Rate" inputLabelExpression="[self.writeProcessingRate.specification/]">
+            <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetResourceContainerReadProcessingRate" id="SetResourceContainerReadProcessingRate">
-                  <parameters name="element" value="var:element"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.writeProcessingRate.editPCMRandomVariable(arg0)/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit Read Processing Rate" inputLabelExpression="[self.readProcessingRate.specification/]">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.readProcessingRate.editPCMRandomVariable(arg0)/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -370,8 +376,12 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'LinkingResource' + container.linkingResources__ResourceEnvironment->size()"/>
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="resourceenvironment.CommunicationLinkResourceSpecification" referenceName="communicationLinkResourceSpecifications_LinkingResource">
-                      <subModelOperations xsi:type="tool:ExternalJavaAction" name="AddLinkingResourceAction" label="Add Linking Resource" id="AddLinkingResource">
-                        <parameters name="newCommunicationLinkResourceSpecification" value="var:instance"/>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="latency_CommunicationLinkResourceSpecification" variableName="latency"/>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="throughput_CommunicationLinkResourceSpecification" variableName="throughput"/>
+                        <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
