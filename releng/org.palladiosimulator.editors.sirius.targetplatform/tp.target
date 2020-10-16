@@ -197,9 +197,9 @@
 <unit id="org.scaledl.usageevolution.feature.feature.group" version="1.0.0.201803191436"/>
 <repository location="https://updatesite.palladio-simulator.com/palladio-thirdparty-cloudscaleusageevolution/nightly/"/>
 </location>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" refresh="true">
 <unit id="LIMBO_DLIM.feature.group" version="0.16.1.201606230914"/>
-<repository location="https://se2.informatik.uni-wuerzburg.de/eclipse/limbo/"/>
+<repository location="https://updatesite.palladio-simulator.com/palladio-p2mirror-dlim/nightly/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release" refresh="true">
 <unit id="org.storydriven.storydiagrams.feature.feature.group" version="1.0.1.201507032002"/>
