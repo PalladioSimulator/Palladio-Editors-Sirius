@@ -1,14 +1,17 @@
 package org.palladiosimulator.editors.sirius.ui.wizard.project;
 
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.jface.dialogs.IDialogPage;
-import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
@@ -22,8 +25,8 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Label;
 import org.palladiosimulator.architecturaltemplates.AT;
+import org.palladiosimulator.architecturaltemplates.Catalog;
 
 /**
  * The "New" wizard page allows setting the container for the new file as well as the file name. The
@@ -32,16 +35,23 @@ import org.palladiosimulator.architecturaltemplates.AT;
  */
 
 public class NewPalladioTemplateWizardPage extends WizardPage implements ISelectionChangedListener {
-
-    protected TableViewer wizardSelectionViewer;
+    protected TreeViewer wizardTreeViewer;
     private DescriptionBox descriptionBrowser;
     private final Set<AT> initiatorATs;
+    private final Map<Catalog, List<AT>> allInitiatorATs;
 
     private AT selectedTemplate;
     private boolean useTemplate;
+    private boolean advancedView;
 
     private SashForm sashForm;
     private Button useTemplateCheckBox;
+    private Button advancedViewCheckBox;
+
+    // see
+    // https://github.com/PalladioSimulator/Palladio-Addon-ArchitecturalTemplates/blob/master/bundles/
+    // org.palladiosimulator.architecturaltemplates.catalog/Default.architecturaltemplates
+    private final String DEFAULT_CATALOG_ID = "_2eRmoCOzEeSLXszsY50NUA";
 
     /**
      * Constructor for SampleNewWizardPage.
@@ -52,8 +62,20 @@ public class NewPalladioTemplateWizardPage extends WizardPage implements ISelect
         super("Architectural Template Selection");
         setTitle("Initiator Architectural Template Selection");
         setDescription("Select a template to create an initial Palladio model.");
-        this.initiatorATs = initiatorATs;
+
+        this.allInitiatorATs = initiatorATs.stream()
+            .collect(Collectors.groupingBy(it -> it.getCatalog()));
+        this.initiatorATs = allInitiatorATs.entrySet()
+            .stream()
+            .filter(it -> it.getKey()
+                .getId()
+                .equals(DEFAULT_CATALOG_ID))
+            .map(it -> Set.copyOf(it.getValue()))
+            .findAny()
+            .orElse(Collections.emptySet());
+
         this.useTemplate = false;
+        this.advancedView = false;
     }
 
     /**
@@ -70,10 +92,10 @@ public class NewPalladioTemplateWizardPage extends WizardPage implements ISelect
         useTemplateCheckBox = new Button(container, useTemplate ? (SWT.CHECK | SWT.SELECTED) : SWT.CHECK);
         useTemplateCheckBox.setText("Create a Palladio project using one of the initiator templates.");
 
-        final Label label = new Label(container, SWT.NONE);
-        label.setText("Available Initiator Architectural Templates:");
+        advancedViewCheckBox = new Button(container, advancedView ? (SWT.CHECK | SWT.SELECTED) : SWT.CHECK);
+        advancedViewCheckBox.setText("Show advanced view (all examples).");
+
         GridData gd = new GridData();
-        label.setLayoutData(gd);
 
         sashForm = new SashForm(container, SWT.HORIZONTAL);
         gd = new GridData(GridData.FILL_BOTH);
@@ -88,19 +110,25 @@ public class NewPalladioTemplateWizardPage extends WizardPage implements ISelect
 
         useTemplateCheckBox
             .addSelectionListener(SelectionListener.widgetSelectedAdapter(this::updateEnabledStateOfSelection));
+        advancedViewCheckBox
+            .addSelectionListener(SelectionListener.widgetSelectedAdapter(it -> updateWizardTreeViewerInput()));
 
-        this.wizardSelectionViewer = new TableViewer(sashForm, SWT.BORDER);
-        this.wizardSelectionViewer.setContentProvider(ArrayContentProvider.getInstance());
-        this.wizardSelectionViewer.setLabelProvider(new TemplateLabelProvider());
-        this.wizardSelectionViewer.setComparator(new ViewerComparator());
+        this.wizardTreeViewer = new TreeViewer(sashForm, SWT.BORDER);
+        this.wizardTreeViewer.setContentProvider(new TreeContentProvider());
+        updateWizardTreeViewerInput();
+        this.wizardTreeViewer.setLabelProvider(new TemplateTreeLabelProvider());
+        this.wizardTreeViewer.setComparator(new ViewerComparator());
+        this.wizardTreeViewer.addSelectionChangedListener(this);
 
         createDescriptionIn(sashForm);
-        this.wizardSelectionViewer.setInput(this.initiatorATs);
-        this.wizardSelectionViewer.addSelectionChangedListener(this);
         setControl(container);
 
         // set correct colors and enabled state for initial state of useTemplate
         updateEnabledStateOfSelection(null);
+    }
+
+    private void updateWizardTreeViewerInput() {
+        wizardTreeViewer.setInput(advancedViewCheckBox.getSelection() ? allInitiatorATs : initiatorATs);
     }
 
     private void updateEnabledStateOfSelection(SelectionEvent event) {
@@ -110,7 +138,7 @@ public class NewPalladioTemplateWizardPage extends WizardPage implements ISelect
                 : getCurrentDisplayColor(SWT.COLOR_TEXT_DISABLED_BACKGROUND);
 
         sashForm.setEnabled(useTemplate);
-        wizardSelectionViewer.getTable()
+        wizardTreeViewer.getTree()
             .setBackground(color);
         descriptionBrowser.formText.setBackground(color);
     }
@@ -143,7 +171,10 @@ public class NewPalladioTemplateWizardPage extends WizardPage implements ISelect
         AT currentTemplateSelection = null;
         final Iterator iter = selection.iterator();
         if (iter.hasNext()) {
-            currentTemplateSelection = (AT) iter.next();
+            Object nextElement = iter.next();
+            if (nextElement instanceof AT) {
+                currentTemplateSelection = (AT) nextElement;
+            }
         }
         if (currentTemplateSelection == null) {
             setSelectedTemplate(null);
@@ -184,7 +215,6 @@ public class NewPalladioTemplateWizardPage extends WizardPage implements ISelect
      * @return the selectedTemplate
      */
     public AT getSelectedTemplate() {
-        // return availableTemplates.iterator().next();
         return this.selectedTemplate;
     }
 
