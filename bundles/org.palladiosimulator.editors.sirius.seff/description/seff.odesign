@@ -226,7 +226,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="SetVariableAction" semanticCandidatesExpression="feature:steps_Behaviour" domainClass="seff.SetVariableAction" dropDescriptions="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='VariableUsage']">
+        <containerMappings name="SetVariableAction" labelDirectEdit="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='directEditNameBySingleClick']" semanticCandidatesExpression="feature:steps_Behaviour" domainClass="seff.SetVariableAction" dropDescriptions="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='VariableUsage']">
           <subContainerMappings name="LocalVariableUsageSetVariableAction" labelDirectEdit="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Variable%20Usage']" semanticCandidatesExpression="feature:localVariableUsages_SetVariableAction" domainClass="parameter.VariableUsage" childrenPresentation="List">
             <subNodeMappings name="VariableCharacterisationvariableSetter" labelDirectEdit="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20VariableCharacterisation']" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" domainClass="parameter.VariableCharacterisation">
               <style xsi:type="style:SquareDescription" labelExpression="aql: self.type + ' = ' + self.specification_VariableCharacterisation.specification" labelPosition="node" resizeKind="NSEW">
@@ -734,8 +734,8 @@
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.requiredResource_ParametricResourceDemand &lt;> null">
                       <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
-                  <parameters name="element" value="[thisEObject/]"/>
-                </subModelOperations>
+                        <parameters name="element" value="[thisEObject/]"/>
+                      </subModelOperations>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.requiredResource_ParametricResourceDemand = null">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
@@ -771,8 +771,8 @@
                       <parameters name="instance" value="var:instance"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
-                  <parameters name="element" value="[thisEObject/]"/>
-                </subModelOperations>
+                      <parameters name="element" value="[thisEObject/]"/>
+                    </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.signature__InfrastructureCall = null">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
@@ -797,8 +797,8 @@
                       <parameters name="instance" value="var:instance"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
-                  <parameters name="element" value="[thisEObject/]"/>
-                </subModelOperations>
+                      <parameters name="element" value="[thisEObject/]"/>
+                    </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.signature__ResourceCall=null or self.resourceRequiredRole__ResourceCall=null">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
@@ -818,8 +818,8 @@
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="aql:parameter::VariableCharacterisationType::STRUCTURE"/>
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
-                  <parameters name="element" value="[thisEObject/]"/>
-                </subModelOperations>
+                      <parameters name="element" value="[thisEObject/]"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
