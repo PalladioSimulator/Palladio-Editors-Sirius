@@ -23,6 +23,10 @@
             actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.EditLinkingResourceFailureProbability"
             id="EditLinkingResourceFailureProbability">
       </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.CreateExternalStoexEditor"
+            id="CreateExternalStoexEditor">
+      </javaActions>
    </extension>
      <extension
         point="org.eclipse.ui.newWizards">
