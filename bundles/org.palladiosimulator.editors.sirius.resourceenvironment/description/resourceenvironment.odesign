@@ -491,15 +491,44 @@
   </ownedViewpoints>
   <extensions xsi:type="properties:ViewExtensionDescription">
     <categories>
-      <pages name="StoexEditLinkingResourcePage" label="StoexEditLinkingResourcePage" labelExpression="StoexEdit" domainClass="CommunicationLinkResourceSpecification" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0"/>
+      <pages name="StoexEditLinkingResourcePage" labelExpression="StoexEdit" domainClass="CommunicationLinkResourceSpecification" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0"/>
+      <pages name="StoexEditResourcePage" labelExpression="StoexEdit" domainClass="ProcessingResourceSpecification" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.1"/>
       <groups name="StoexEditLinkingResourceGroup" label="StoexEditLinkingResourceGroup" labelExpression="StoexEdit" domainClass="CommunicationLinkResourceSpecification" semanticCandidateExpression="var:self">
         <controls xsi:type="properties:ContainerDescription">
           <controls xsi:type="properties:LabelDescription" valueExpression="Latency"/>
           <controls xsi:type="properties:ButtonDescription" buttonLabelExpression="Edit">
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateExternalStoexEditor" id="CreateExternalStoexEditor">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="LinkingResourceExternalStoexEdit" id="LinkingResourceExternalStoexEdit">
                   <parameters name="type" value="latency"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </controls>
+          <layout xsi:type="properties:FillLayoutDescription" orientation="HORIZONTAL"/>
+        </controls>
+        <controls xsi:type="properties:ContainerDescription">
+          <controls xsi:type="properties:LabelDescription" valueExpression="Throughput"/>
+          <controls xsi:type="properties:ButtonDescription" buttonLabelExpression="Edit">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="LinkingResourceExternalStoexEdit" id="LinkingResourceExternalStoexEdit">
+                  <parameters name="type" value="throughput"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </controls>
+          <layout xsi:type="properties:FillLayoutDescription" orientation="HORIZONTAL"/>
+        </controls>
+      </groups>
+      <groups name="StoexEditResourceGroup" label="StoexEditResourceGroup" labelExpression="StoexEdit" domainClass="ProcessingResourceSpecification" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:ContainerDescription">
+          <controls xsi:type="properties:LabelDescription" valueExpression="Processing Rate"/>
+          <controls xsi:type="properties:ButtonDescription" buttonLabelExpression="Edit">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="ResourceExternalStoexEdit" id="ResourceExternalStoexEdit">
+                  <parameters name="type" value="rate"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

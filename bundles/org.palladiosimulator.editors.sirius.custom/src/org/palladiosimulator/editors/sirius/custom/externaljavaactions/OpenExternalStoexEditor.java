@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions;
+package org.palladiosimulator.editors.sirius.custom.externaljavaactions;
 
 import java.util.Collection;
 import java.util.Map;
@@ -16,9 +16,9 @@ import de.uka.ipd.sdq.pcm.stochasticexpressions.PCMStoExPrettyPrintVisitor;
 import de.uka.ipd.sdq.stoex.RandomVariable;
 import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
 
-public class CreateExternalStoexEditor implements IExternalJavaAction {
+public abstract class OpenExternalStoexEditor implements IExternalJavaAction {
 
-	public CreateExternalStoexEditor() {
+	public OpenExternalStoexEditor() {
 		super();
 	}
 	
@@ -31,28 +31,20 @@ public class CreateExternalStoexEditor implements IExternalJavaAction {
 	public void execute(Collection<? extends EObject> arg0, Map<String, Object> arg1) {
 		if(arg0.size() != 1)
 			throw new IllegalArgumentException("Multiselection not supported");
-		var linking =  arg0.iterator().next();
-		if(!(linking instanceof CommunicationLinkResourceSpecification))
-			throw new IllegalArgumentException("Only CommunicationLinkResourceSpecification supported");
-		var linkingResource = (CommunicationLinkResourceSpecification) linking;
-		
-		RandomVariable randVar;
-		var type = (String) arg1.get("type");
-		
-		switch (type) {
-		case "latency":
-			randVar  = linkingResource.getLatency_CommunicationLinkResourceSpecification();
-			break;
+		var element =  arg0.iterator().next();
 
-		default:
-			throw new IllegalArgumentException("RandomVar Type missing");
-		}
+		
+		
+		RandomVariable randVar = extractRandomVariable(arg1, element);;
 				
 		
 		
 		createDialog(randVar);
 
 	}
+
+	protected abstract RandomVariable extractRandomVariable(Map<String, Object> arg1,
+			EObject element);
 
 	private void createDialog(RandomVariable randVar) {
 		StochasticExpressionEditDialog dialog = new StochasticExpressionEditDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),

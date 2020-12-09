@@ -24,8 +24,12 @@
             id="EditLinkingResourceFailureProbability">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.CreateExternalStoexEditor"
-            id="CreateExternalStoexEditor">
+            actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.LinkingResourceExternalStoexEdit"
+            id="LinkingResourceExternalStoexEdit">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.ResourceExternalStoexEdit"
+            id="ResourceExternalStoexEdit">
       </javaActions>
    </extension>
      <extension
