@@ -67,6 +67,22 @@
             actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.ParametricResourceDemandExternalStoexEdit"
             id="ParametricResourceDemandExternalStoexEdit">
       </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.LoopActionExternalStoexEdit"
+            id="LoopActionExternalStoexEdit">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.VariableCharacterisationExternalStoexEdit"
+            id="VariableCharacterisationExternalStoexEdit">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.InfrastructureCallExternalStoexEdit"
+            id="InfrastructureCallExternalStoexEdit">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.ResourceCallExternalStoexEdit"
+            id="ResourceCallExternalStoexEdit">
+      </javaActions>
    </extension>
 
 </plugin>
