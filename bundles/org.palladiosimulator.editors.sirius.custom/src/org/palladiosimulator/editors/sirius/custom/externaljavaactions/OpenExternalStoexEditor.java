@@ -32,7 +32,6 @@ public abstract class OpenExternalStoexEditor implements IExternalJavaAction {
 		if(arg0.size() != 1)
 			throw new IllegalArgumentException("Multiselection not supported");
 		var element =  arg0.iterator().next();
-
 		
 		
 		RandomVariable randVar = extractRandomVariable(arg1, element);;
@@ -42,7 +41,8 @@ public abstract class OpenExternalStoexEditor implements IExternalJavaAction {
 		createDialog(randVar);
 
 	}
-
+	
+	
 	protected abstract RandomVariable extractRandomVariable(Map<String, Object> arg1,
 			EObject element);
 

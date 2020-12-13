@@ -11,6 +11,18 @@
             actionClass="org.palladiosimulator.editors.sirius.usage.custom.externaljavaactions.ReconnectSourceOfUsageFlow"
             id="ReconnectSourceOfUsageFlow">
       </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.usage.custom.externaljavaactions.DelayExternalStoexEdit"
+            id="DelayExternalStoexEdit">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.usage.custom.externaljavaactions.LoopExternalStoexEdit"
+            id="LoopExternalStoexEdit">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.usage.custom.externaljavaactions.WorkloadExternalStoexEdit"
+            id="WorkloadExternalStoexEdit">
+      </javaActions>
    </extension>
    
      <extension
