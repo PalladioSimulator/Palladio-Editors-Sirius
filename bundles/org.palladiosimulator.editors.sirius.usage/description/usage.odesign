@@ -630,7 +630,7 @@
       <groups name="OpenWorkloadStoexEditGroup" labelExpression="Group" domainClass="OpenWorkload" semanticCandidateExpression="var:self">
         <controls xsi:type="properties:ContainerDescription">
           <controls xsi:type="properties:LabelDescription" valueExpression="interArrivalTime"/>
-          <controls xsi:type="properties:ButtonDescription">
+          <controls xsi:type="properties:ButtonDescription" buttonLabelExpression="Edit">
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" id="WorkloadExternalStoexEdit">

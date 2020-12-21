@@ -1,8 +1,5 @@
 package org.palladiosimulator.editors.sirius.usage.custom.externaljavaactions;
 
-import java.util.Map;
-
-import org.eclipse.emf.ecore.EObject;
 import org.palladiosimulator.editors.sirius.custom.externaljavaactions.OpenExternalStoexEditor;
 import org.palladiosimulator.pcm.usagemodel.ClosedWorkload;
 import org.palladiosimulator.pcm.usagemodel.OpenWorkload;
@@ -10,25 +7,25 @@ import org.palladiosimulator.pcm.usagemodel.Workload;
 
 import de.uka.ipd.sdq.stoex.RandomVariable;
 
-public class WorkloadExternalStoexEdit extends OpenExternalStoexEditor {
+public class WorkloadExternalStoexEdit extends OpenExternalStoexEditor<Workload> {
+    private final String editThinkTime = "closed";
+    private final String editInterArrivalTime = "open";
 
-	@Override
-	protected RandomVariable extractRandomVariable(Map<String, Object> arg1, EObject element) {
-		if(!(element instanceof Workload))
-			throw new IllegalArgumentException("Only Workload supported");
-		var resource = (Workload) element;
-		
-		var type = (String) arg1.get("type");
-		
-		switch (type) {
-		case "closed":
-			return ((ClosedWorkload) resource).getThinkTime_ClosedWorkload();
-		case "open":
-			return ((OpenWorkload) resource).getInterArrivalTime_OpenWorkload();
+    public WorkloadExternalStoexEdit() {
+        super(Workload.class);
+    }
 
-		default:
-			throw new IllegalArgumentException("RandomVar Type missing");
-		}
-	}
+    @Override
+    protected RandomVariable editStoexAction(final String action, final Workload element) {
+        switch (action) {
+        case editThinkTime:
+            return ((ClosedWorkload) element).getThinkTime_ClosedWorkload();
+        case editInterArrivalTime:
+            return ((OpenWorkload) element).getInterArrivalTime_OpenWorkload();
+
+        default:
+            throw new IllegalArgumentException(action + "missing");
+        }
+    }
 
 }

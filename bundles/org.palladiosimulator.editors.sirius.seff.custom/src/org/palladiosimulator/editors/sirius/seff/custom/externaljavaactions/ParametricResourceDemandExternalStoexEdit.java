@@ -1,30 +1,26 @@
 package org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions;
 
-import java.util.Map;
-
-import org.eclipse.emf.ecore.EObject;
 import org.palladiosimulator.editors.sirius.custom.externaljavaactions.OpenExternalStoexEditor;
 import org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand;
 
 import de.uka.ipd.sdq.stoex.RandomVariable;
 
-public class ParametricResourceDemandExternalStoexEdit extends OpenExternalStoexEditor{
+public class ParametricResourceDemandExternalStoexEdit extends OpenExternalStoexEditor<ParametricResourceDemand> {
+    private final String editParametericResourceDemand = "demand";
 
-	@Override
-	protected RandomVariable extractRandomVariable(Map<String, Object> arg1, EObject element) {
-		if(!(element instanceof ParametricResourceDemand))
-			throw new IllegalArgumentException("Only ParametricResourceDemand supported");
-		var resource = (ParametricResourceDemand) element;
-		
-		var type = (String) arg1.get("type");
-		
-		switch (type) {
-		case "demand":
-			return resource.getSpecification_ParametericResourceDemand();
+    public ParametricResourceDemandExternalStoexEdit() {
+        super(ParametricResourceDemand.class);
+    }
 
-		default:
-			throw new IllegalArgumentException("RandomVar Type missing");
-		}
-	}
+    @Override
+    protected RandomVariable editStoexAction(final String action, final ParametricResourceDemand element) {
+        switch (action) {
+        case editParametericResourceDemand:
+            return element.getSpecification_ParametericResourceDemand();
+
+        default:
+            throw new IllegalArgumentException(action + "missing");
+        }
+    }
 
 }

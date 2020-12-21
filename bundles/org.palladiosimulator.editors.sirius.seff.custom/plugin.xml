@@ -83,6 +83,10 @@
             actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.ResourceCallExternalStoexEdit"
             id="ResourceCallExternalStoexEdit">
       </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.GuardedTransitionExternalStoexEdit"
+            id="GuardedTransitionExternalStoexEdit">
+      </javaActions>
    </extension>
 
 </plugin>
