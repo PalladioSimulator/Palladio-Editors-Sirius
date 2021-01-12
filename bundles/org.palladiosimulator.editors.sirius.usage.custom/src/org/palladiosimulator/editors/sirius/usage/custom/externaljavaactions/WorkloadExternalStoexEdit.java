@@ -8,7 +8,7 @@ import org.palladiosimulator.pcm.usagemodel.Workload;
 import de.uka.ipd.sdq.stoex.RandomVariable;
 
 public class WorkloadExternalStoexEdit extends OpenExternalStoexEditor<Workload> {
-    private final String editThinkTime = "closed";
+    public static final String editThinkTime = "closed";
     private final String editInterArrivalTime = "open";
 
     public WorkloadExternalStoexEdit() {

@@ -1198,7 +1198,7 @@
   <extensions xsi:type="properties:ViewExtensionDescription" name="Properties">
     <categories name="Default Category">
       <pages name="ParametricResourceDemandPage" labelExpression="StoexEdit" domainClass="ParametricResourceDemand" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0"/>
-      <pages name="GuardedBranchTransitionPage" labelExpression="StoexEdit" domainClass="BranchAction" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.1"/>
+      <pages name="GuardedBranchTransitionPage" labelExpression="StoexEdit" domainClass="GuardedBranchTransition" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.1"/>
       <pages name="LoopActionSeffPage" labelExpression="StoexEdit" domainClass="LoopAction" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.2"/>
       <pages name="VariableCharacterisationPage" labelExpression="StoexEdit" domainClass="VariableCharacterisation" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.3"/>
       <pages name="InfrastructureCallPage" labelExpression="StoexEdit" domainClass="InfrastructureCall" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.4"/>
@@ -1218,7 +1218,7 @@
           <layout xsi:type="properties:FillLayoutDescription" orientation="HORIZONTAL"/>
         </controls>
       </groups>
-      <groups name="GuardedBranchTransitionGroup" labelExpression="StoexEdit" domainClass="BranchAction" semanticCandidateExpression="var:self">
+      <groups name="GuardedBranchTransitionGroup" labelExpression="StoexEdit" domainClass="GuardedBranchTransition" semanticCandidateExpression="var:self">
         <controls xsi:type="properties:ContainerDescription">
           <controls xsi:type="properties:LabelDescription" labelExpression="Transition"/>
           <controls xsi:type="properties:ButtonDescription" buttonLabelExpression="Edit">
