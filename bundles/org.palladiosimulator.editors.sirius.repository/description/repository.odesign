@@ -1523,6 +1523,7 @@
       <pages name="OperationInterface" labelExpression="Operations" domainClass="repository::OperationInterface" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0"/>
       <pages name="InfrastructureInterface" labelExpression="Operations" domainClass="repository::InfrastructureInterface" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.1"/>
       <pages name="EventGroup" labelExpression="Operations" domainClass="repository::EventGroup" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.2"/>
+      <pages name="PassiveResourcePage" labelExpression="StoexEdit" domainClass="PassiveResource" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.3"/>
       <groups name="OperationInterface group" domainClass="repository::OperationInterface" semanticCandidateExpression="var:self">
         <controls xsi:type="properties:CustomDescription" name="org.palladiosimulator.editors.sirius.repository.custom.properties.OperationInterface">
           <customExpressions name="valueExpression" customExpression="aql:self"/>
@@ -1540,6 +1541,21 @@
           <customExpressions name="valueExpression" customExpression="aql:self"/>
         </controls>
         <style barStyle="NO_TITLE" toggleStyle="NONE"/>
+      </groups>
+      <groups name="PassiveResourceGroup" labelExpression="Group" domainClass="PassiveResource" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:ContainerDescription">
+          <controls xsi:type="properties:LabelDescription" labelExpression="Capacity"/>
+          <controls xsi:type="properties:ButtonDescription" buttonLabelExpression="Edit">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" id="PassiveResourceExternalStoexEdit">
+                  <parameters name="type" value="passive"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </controls>
+          <layout xsi:type="properties:FillLayoutDescription" orientation="HORIZONTAL"/>
+        </controls>
       </groups>
     </categories>
   </extensions>
