@@ -2,6 +2,8 @@ package org.palladiosimulator.editors.sirius.repository.custom.externaljavaactio
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
@@ -19,6 +21,7 @@ import org.palladiosimulator.pcm.repository.ProvidedRole;
 import org.palladiosimulator.pcm.repository.Repository;
 import org.palladiosimulator.pcm.repository.Signature;
 import org.palladiosimulator.pcm.repository.SinkRole;
+import org.palladiosimulator.pcm.repository.util.RepositorySwitch;
 import org.palladiosimulator.pcm.seff.ResourceDemandingSEFF;
 import org.palladiosimulator.pcm.seff.ServiceEffectSpecification;
 
@@ -59,33 +62,61 @@ public class AddSEFF implements IExternalJavaAction {
 			BasicComponent parent = seff.getBasicComponent_ServiceEffectSpecification();
 			EList<ProvidedRole> providedRoles = parent.getProvidedRoles_InterfaceProvidingEntity();
 			if (o instanceof Interface) {
-				boolean found = false;
-				for (ProvidedRole p : providedRoles) {
-					if (p instanceof OperationProvidedRole) {
-						OperationProvidedRole role = (OperationProvidedRole) p;
-						if (role.getProvidedInterface__OperationProvidedRole().equals(o))
-							found = true;
-					} else if (p instanceof InfrastructureProvidedRole) {
-						InfrastructureProvidedRole role = (InfrastructureProvidedRole) p;
-						if (role.getProvidedInterface__InfrastructureProvidedRole().equals(o))
-							found = true;
-					} else if (p instanceof SinkRole) {
-						SinkRole role = (SinkRole) p;
-						if (role.getEventGroup__SinkRole().equals(o))
-							found = true;
-					}
+				if (!isReferenced(providedRoles, (Interface)o)) {
+				    dialog.getTreeViewer().remove(o);				    
 				}
-				if (!found)
-					dialog.getTreeViewer().remove(o);
-				
 			}
-
 		}
-		
-		
+
 		dialog.open();
 
 		return (Signature) dialog.getResult();
+	}
+	
+	protected boolean isReferenced(Iterable<ProvidedRole> providedRoles, Interface testInterface) {
+        for (ProvidedRole p : providedRoles) {
+            if (isInterfaceReferencedByRole(p, testInterface)) {
+                return true;
+            }
+        }
+        return false;
+	}
+	
+	protected boolean isInterfaceReferencedByRole(ProvidedRole role, Interface testInterface) {
+	    final var interfaceGetter = new RepositorySwitch<Interface>() {
+
+            @Override
+            public Interface caseOperationProvidedRole(OperationProvidedRole object) {
+                return object.getProvidedInterface__OperationProvidedRole();
+            }
+
+            @Override
+            public Interface caseInfrastructureProvidedRole(InfrastructureProvidedRole object) {
+                return object.getProvidedInterface__InfrastructureProvidedRole();
+            }
+            
+            @Override
+            public Interface caseSinkRole(SinkRole object) {
+                return object.getEventGroup__SinkRole();
+            }
+	        
+	    };
+	    final var foundInterface = interfaceGetter.doSwitch(role);
+	    if (foundInterface == null) {
+	        return false;
+	    }
+	    
+	    final var interfaceClosure = new HashSet<Interface>();
+	    final var queue = new LinkedList<Interface>();
+	    queue.add(foundInterface);
+	    while (!queue.isEmpty()) {
+	        var i = queue.pop();
+	        if (interfaceClosure.add(i)) {
+	            queue.addAll(i.getParentInterfaces__Interface());
+	        }
+	    }
+	    
+	    return interfaceClosure.contains(testInterface);
 	}
 
 	@Override
