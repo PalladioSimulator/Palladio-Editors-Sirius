@@ -63,7 +63,7 @@ public class AddSEFF implements IExternalJavaAction {
 			EList<ProvidedRole> providedRoles = parent.getProvidedRoles_InterfaceProvidingEntity();
 			if (o instanceof Interface) {
 				if (!isReferenced(providedRoles, (Interface)o)) {
-				    dialog.getTreeViewer().remove(o);				    
+				    dialog.getTreeViewer().remove(o);
 				}
 			}
 		}
