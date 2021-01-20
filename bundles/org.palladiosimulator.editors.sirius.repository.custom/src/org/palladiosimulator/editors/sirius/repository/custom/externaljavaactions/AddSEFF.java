@@ -30,15 +30,18 @@ public class AddSEFF implements IExternalJavaAction {
 	public static final Shell SHELL = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 
 	@Override
-	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
-		ResourceDemandingSEFF seff = (ResourceDemandingSEFF) parameters.get("instance");
-		Signature signature = getSignature(seff);
-		for (ServiceEffectSpecification s : seff.getBasicComponent_ServiceEffectSpecification().getServiceEffectSpecifications__BasicComponent()) {
-			if (s.getDescribedService__SEFF() != null && s.getDescribedService__SEFF().equals(signature))
-				return; // do nothing if the chosen signature already has a corresponding SEFF
-		}
-		seff.setDescribedService__SEFF(signature);
-	}
+    public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
+        ResourceDemandingSEFF seff = (ResourceDemandingSEFF) parameters.get("instance");
+        Signature signature = getSignature(seff);
+        for (ServiceEffectSpecification s : seff.getBasicComponent_ServiceEffectSpecification()
+            .getServiceEffectSpecifications__BasicComponent()) {
+            if (s.getDescribedService__SEFF() != null && s.getDescribedService__SEFF()
+                .equals(signature)) {
+                return; // do nothing if the chosen signature already has a corresponding SEFF
+            }
+        }
+        seff.setDescribedService__SEFF(signature);
+    }
 
 	private Signature getSignature(ResourceDemandingSEFF seff) {
 		// Filter list (Repository > Interface > Signature)
@@ -62,7 +65,7 @@ public class AddSEFF implements IExternalJavaAction {
 			BasicComponent parent = seff.getBasicComponent_ServiceEffectSpecification();
 			EList<ProvidedRole> providedRoles = parent.getProvidedRoles_InterfaceProvidingEntity();
 			if (o instanceof Interface) {
-				if (!isReferenced(providedRoles, (Interface)o)) {
+				if (!isReferenced(providedRoles, (Interface) o)) {
 				    dialog.getTreeViewer().remove(o);
 				}
 			}
