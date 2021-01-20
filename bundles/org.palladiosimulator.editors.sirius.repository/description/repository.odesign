@@ -320,7 +320,7 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="providedInterface__OperationProvidedRole" valueExpression="var:target"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:self.providingEntity_ProvidedRole.entityName + '.' + self.providedInterface__OperationProvidedRole.entityName + '.OperationProvidedRole' + source.eContents()->filter(repository::OperationProvidedRole)->size()"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="[source.oclIsTypeOf(BasicComponent)/]">
-                    <subModelOperations xsi:type="tool:For" expression="[target.signatures__OperationInterface/]">
+                    <subModelOperations xsi:type="tool:For" expression="[target.oclAsType(Interface)->closure(target.parentInterfaces__Interface)->including(target)->selectByKind(OperationInterface).signatures__OperationInterface/]">
                       <subModelOperations xsi:type="tool:If" conditionExpression="[source.oclAsType(BasicComponent).serviceEffectSpecifications__BasicComponent->exists (x | x.oclAsType(ResourceDemandingSEFF).describedService__SEFF = i) = false/]">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                           <subModelOperations xsi:type="tool:CreateInstance" typeName="seff::ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
