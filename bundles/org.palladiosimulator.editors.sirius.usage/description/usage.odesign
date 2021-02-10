@@ -88,27 +88,65 @@
                 <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               </style>
             </subContainerMappings>
-            <subContainerMappings name="entryLevelSystemCall" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" doubleClickDescription="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20EntryLevelSystemCall']" domainClass="usagemodel.EntryLevelSystemCall">
-              <subContainerMappings name="variableUsage" semanticCandidatesExpression="feature:inputParameterUsages_EntryLevelSystemCall" domainClass="parameter.VariableUsage" childrenPresentation="List">
-                <subNodeMappings name="variableCharacterisation" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Variable%20Characterisation']" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" domainClass="parameter.VariableCharacterisation">
-                  <style xsi:type="style:SquareDescription" labelExpression="aql:self.type + ' = ' + self.specification_VariableCharacterisation.specification" labelPosition="node" resizeKind="NSEW">
-                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                    <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-                  </style>
-                  <conditionnalStyles predicateExpression="aql:  self.specification_VariableCharacterisation.specification.size() > 40">
-                    <style xsi:type="style:SquareDescription" labelExpression="aql: self.type + ' = ' + self.specification_VariableCharacterisation.specification.substring(1, 40) + ' ...'" labelPosition="node" resizeKind="NSEW">
+            <subContainerMappings name="entryLevelSystemCall" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:actions_ScenarioBehaviour" doubleClickDescription="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20EntryLevelSystemCall']" domainClass="usagemodel.EntryLevelSystemCall" childrenPresentation="VerticalStack">
+              <subContainerMappings name="InputVariableUsageCompartment" semanticCandidatesExpression="var:self" domainClass="usagemodel.EntryLevelSystemCall">
+                <subContainerMappings name="InputVariableUsage" semanticCandidatesExpression="feature:inputParameterUsages_EntryLevelSystemCall" domainClass="parameter.VariableUsage" childrenPresentation="List">
+                  <subNodeMappings name="VariableCharacterisationInput" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Variable%20Characterisation']" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" domainClass="parameter.VariableCharacterisation">
+                    <style xsi:type="style:SquareDescription" labelExpression="aql:self.type + ' = ' + self.specification_VariableCharacterisation.specification" labelPosition="node" resizeKind="NSEW">
                       <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                       <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                       <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
                     </style>
-                  </conditionnalStyles>
-                </subNodeMappings>
-                <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="service:getFullName()">
+                    <conditionnalStyles predicateExpression="aql:  self.specification_VariableCharacterisation.specification.size() > 40">
+                      <style xsi:type="style:SquareDescription" labelExpression="aql: self.type + ' = ' + self.specification_VariableCharacterisation.specification.substring(1, 40) + ' ...'" labelPosition="node" resizeKind="NSEW">
+                        <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                        <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                        <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                      </style>
+                    </conditionnalStyles>
+                  </subNodeMappings>
+                  <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="service:getFullName()">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                    <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                  </style>
+                </subContainerMappings>
+                <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="InputVariableUsageCompartment">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                </style>
+              </subContainerMappings>
+              <subContainerMappings name="OutputVariableUsageCompartment" semanticCandidatesExpression="var:self" domainClass="usagemodel.EntryLevelSystemCall">
+                <subContainerMappings name="OutputVariableUsage" semanticCandidatesExpression="feature:outputParameterUsages_EntryLevelSystemCall" domainClass="parameter.VariableUsage" childrenPresentation="List">
+                  <subNodeMappings name="VariableCharacterisationOutput" labelDirectEdit="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Variable%20Characterisation']" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" domainClass="parameter.VariableCharacterisation">
+                    <style xsi:type="style:SquareDescription" labelExpression="aql:self.type + ' = ' + self.specification_VariableCharacterisation.specification" labelPosition="node" resizeKind="NSEW">
+                      <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                      <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                      <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                    </style>
+                    <conditionnalStyles predicateExpression="aql:  self.specification_VariableCharacterisation.specification.size() > 40">
+                      <style xsi:type="style:SquareDescription" labelExpression="aql: self.type + ' = ' + self.specification_VariableCharacterisation.specification.substring(1, 40) + ' ...'" labelPosition="node" resizeKind="NSEW">
+                        <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                        <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                        <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                      </style>
+                    </conditionnalStyles>
+                  </subNodeMappings>
+                  <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="service:getFullName()">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                    <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                  </style>
+                </subContainerMappings>
+                <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="OutputVariableUsageCompartment">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
                 </style>
               </subContainerMappings>
               <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:'&lt;&lt;EntryLevelSystemCall>>\n' + self.entityName + '\n' +  self.operationSignature__EntryLevelSystemCall.interface__OperationSignature.entityName + '.' + self.operationSignature__EntryLevelSystemCall.entityName">
@@ -355,24 +393,37 @@
           </ownedTools>
         </toolSections>
         <toolSections name="actionDetails" label="Action Details">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="variableUsageCreation" label="Variable Usage" containerMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall']/@subContainerMappings[name='variableUsage']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="variableUsageCreation" label="Variable Usage" containerMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall']/@subContainerMappings[name='InputVariableUsageCompartment']/@subContainerMappings[name='InputVariableUsage'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall']/@subContainerMappings[name='OutputVariableUsageCompartment']/@subContainerMappings[name='OutputVariableUsage']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableUsage" referenceName="inputParameterUsages_EntryLevelSystemCall" variableName="variableUsage">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:variableUsage">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stoex.VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:VariableReference"/>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NamedReference" id="SetNamedReference">
-                      <parameters name="VariableReference" value="var:VariableReference"/>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql: containerView.toString()='InputVariableUsageCompartment'">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableUsage" referenceName="inputParameterUsages_EntryLevelSystemCall" variableName="variableUsage">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:variableUsage">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stoex.VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:VariableReference"/>
+                      <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NamedReference" id="SetNamedReference">
+                        <parameters name="VariableReference" value="var:VariableReference"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql: containerView.toString()='OutputVariableUsageCompartment'">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="parameter.VariableUsage" referenceName="outputParameterUsages_EntryLevelSystemCall" variableName="variableUsage">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:variableUsage">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="stoex.VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:VariableReference"/>
+                      <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NamedReference" id="SetNamedReference">
+                        <parameters name="VariableReference" value="var:VariableReference"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="VariableCharacterisation" nodeMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall']/@subContainerMappings[name='variableUsage']/@subNodeMappings[name='variableCharacterisation']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="VariableCharacterisation" nodeMappings="//@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall']/@subContainerMappings[name='InputVariableUsageCompartment']/@subContainerMappings[name='InputVariableUsage']/@subNodeMappings[name='VariableCharacterisationInput'] //@ownedViewpoints[name='UsageModel']/@ownedRepresentations[name='UsageModel%20Diagram']/@defaultLayer/@containerMappings[name='usageScenario']/@subContainerMappings[name='scenarioBehavior']/@subContainerMappings[name='entryLevelSystemCall']/@subContainerMappings[name='OutputVariableUsageCompartment']/@subContainerMappings[name='OutputVariableUsage']/@subNodeMappings[name='VariableCharacterisationOutput']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
