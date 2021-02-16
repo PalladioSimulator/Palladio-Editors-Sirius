@@ -7,7 +7,7 @@ import org.eclipse.gef.tools.DirectEditManager;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
 import org.eclipse.swt.SWT;
-import org.palladiosimulator.commons.stoex.ui.internal.StoexActivator;
+import org.palladiosimulator.pcm.stoex.ui.internal.StoexActivator;
 import org.yakindu.base.xtext.utils.gmf.directedit.IXtextAwareEditPart;
 
 import com.google.inject.Injector;
@@ -45,7 +45,7 @@ public class RandomVariableNodeContainerEditPart extends DNodeContainer2EditPart
 	}
 	
 	private Injector getInjector() {
-		return StoexActivator.getInstance().getInjector("org.palladiosimulator.commons.stoex.Stoex");
+		return StoexActivator.getInstance().getInjector(StoexActivator.ORG_PALLADIOSIMULATOR_PCM_STOEX_PCMSTOEX);
 	}
 	
 	public void setExpectedType(TypeEnum expectedType) {
