@@ -17,15 +17,11 @@ import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
 @SuppressWarnings("restriction")
 public class RandomVariableNodeContainerEditPart extends DNodeContainer2EditPart implements IXtextAwareEditPart {
 
-	private TypeEnum expectedType;
+	private final TypeEnum expectedType;
 
 	public RandomVariableNodeContainerEditPart(View view, TypeEnum expectedType) {
 		super(view);
 		this.expectedType = expectedType;
-	}
-	
-	public RandomVariableNodeContainerEditPart(View view) {
-		this(view, TypeEnum.ANY);
 	}
 
 	protected int getEditorStyles() {
@@ -46,10 +42,6 @@ public class RandomVariableNodeContainerEditPart extends DNodeContainer2EditPart
 	
 	private Injector getInjector() {
 		return StoexActivator.getInstance().getInjector(StoexActivator.ORG_PALLADIOSIMULATOR_PCM_STOEX_PCMSTOEX);
-	}
-	
-	public void setExpectedType(TypeEnum expectedType) {
-		this.expectedType = expectedType;
 	}
 
 	@Override
