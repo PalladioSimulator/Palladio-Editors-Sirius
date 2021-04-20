@@ -15,6 +15,10 @@
             Create a new Palladio Modeling project
          </description>
       </wizard>
+      <category
+            id="org.palladiosimulator.pcmbench.palladio_modeling_category"
+            name="Palladio Modeling">
+      </category>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
