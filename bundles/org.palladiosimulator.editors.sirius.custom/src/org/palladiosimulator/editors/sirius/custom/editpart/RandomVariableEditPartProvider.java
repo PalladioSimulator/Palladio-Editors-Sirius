@@ -70,25 +70,7 @@ public class RandomVariableEditPartProvider extends AbstractEditPartProvider {
 			String name = element.getMapping().getName();
 			switch (SiriusVisualIDRegistry.getVisualID(view)) {
 			case DNodeListElementEditPart.VISUAL_ID:
-				final RandomVariableEditPart editPart = new RandomVariableEditPart(view);
-				switch (name) {
-				case "GuardedBranchTransition": // Guarded Branch Transistion Condition Dialog
-				case "Condition": // Guarded Branch Transistion Condition Dialog
-					editPart.setExpectedType(TypeEnum.BOOL);
-					return editPart;
-				case "InfrastructureCall": // NumberOfCalls
-				case "ResourceCall":
-					editPart.setExpectedType(TypeEnum.INT);
-					return editPart;
-				case "thinkTime": // Closed Workload Think Time Action
-				case "delayTime": // Delay Time Action
-				case "Throughput":
-				case "Latency":
-				case "PassiveResource": // SetCapacity
-					editPart.setExpectedType(TypeEnum.DOUBLE);
-					return editPart;
-				}
-				return editPart;
+				return new RandomVariableEditPart(view, getExpectedType(name));
 			case DNodeContainer2EditPart.VISUAL_ID: {
 				if (name.equals("LoopIterationCount")) {
 					RandomVariableNodeContainerEditPart containerEditPart = new RandomVariableNodeContainerEditPart(
@@ -102,6 +84,28 @@ public class RandomVariableEditPartProvider extends AbstractEditPartProvider {
 		}
 		return null;
 
+	}
+	
+	protected TypeEnum getExpectedType(String mappingName) {
+	    TypeEnum expectedType = TypeEnum.ANY;
+	    switch (mappingName) {
+        case "GuardedBranchTransition": // Guarded Branch Transistion Condition Dialog
+        case "Condition": // Guarded Branch Transistion Condition Dialog
+            expectedType = TypeEnum.BOOL;
+            break;
+        case "InfrastructureCall": // NumberOfCalls
+        case "ResourceCall":
+            expectedType = TypeEnum.INT;
+            break;
+        case "thinkTime": // Closed Workload Think Time Action
+        case "delayTime": // Delay Time Action
+        case "Throughput":
+        case "Latency":
+        case "PassiveResource": // SetCapacity
+            expectedType = TypeEnum.DOUBLE;
+            break;
+        }
+	    return expectedType;
 	}
 
 	@Override

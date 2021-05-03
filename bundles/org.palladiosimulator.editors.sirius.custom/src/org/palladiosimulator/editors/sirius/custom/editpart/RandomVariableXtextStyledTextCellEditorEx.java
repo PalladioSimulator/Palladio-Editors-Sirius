@@ -1,6 +1,8 @@
 package org.palladiosimulator.editors.sirius.custom.editpart;
 
 import java.awt.Toolkit;
+import java.util.Optional;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.ModifyEvent;
@@ -16,27 +18,25 @@ import org.yakindu.base.xtext.utils.jface.viewers.context.IXtextFakeContextResou
 
 import com.google.inject.Injector;
 
+import de.uka.ipd.sdq.stoex.RandomVariable;
 import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
 
 public class RandomVariableXtextStyledTextCellEditorEx extends XtextStyledTextCellEditorEx {
 
-	private Color errorColor;
+	private final Color errorColor;
 	private Color whiteColor;
 
-	private TypeEnum expectedType;
+	private final Optional<RandomVariable> randomVariable;
+	private final TypeEnum expectedType;
 
 	private boolean errorDisplayed = false;
 
-	public RandomVariableXtextStyledTextCellEditorEx(int style, Injector injector, TypeEnum expectedType) {
+	public RandomVariableXtextStyledTextCellEditorEx(int style, Injector injector, Optional<RandomVariable> randomVariable, TypeEnum expectedType) {
 		super(style, injector);
 		this.expectedType = expectedType;
+		this.randomVariable = randomVariable;
 		Display display = Display.getCurrent();
 		errorColor = display.getSystemColor(SWT.COLOR_RED);
-	}
-
-	public RandomVariableXtextStyledTextCellEditorEx(int style, Injector injector, TypeEnum expectedType,
-			String editText) {
-		this(style, injector, expectedType);
 	}
 
 	@Override
@@ -94,7 +94,7 @@ public class RandomVariableXtextStyledTextCellEditorEx extends XtextStyledTextCe
 		return new RandomVariableXtextAdapter(this.getInjector(),
 				getContextFakeResourceProvider() == null ? IXtextFakeContextResourcesProvider.NULL_CONTEXT_PROVIDER
 						: getContextFakeResourceProvider(),
-				expectedType);
+						randomVariable, expectedType);
 	}
 
 }
