@@ -11,7 +11,6 @@ import org.eclipse.ui.PlatformUI;
 import org.palladiosimulator.editors.commons.dialogs.stoex.StochasticExpressionEditDialog;
 import org.palladiosimulator.pcm.parameter.VariableCharacterisation;
 
-import de.uka.ipd.sdq.pcm.stochasticexpressions.PCMStoExPrettyPrintVisitor;
 import de.uka.ipd.sdq.stoex.RandomVariable;
 import de.uka.ipd.sdq.stoex.analyser.visitors.TypeEnum;
 
@@ -55,7 +54,7 @@ public abstract class OpenExternalStoexEditor<T> implements IExternalJavaAction 
         copyRand.setSpecification("0");
         final StochasticExpressionEditDialog dialog = this.createDialog(copyRand);
         if (dialog.getReturnCode() == Window.OK) {
-            final String result = new PCMStoExPrettyPrintVisitor().prettyPrint(dialog.getResult());
+            final String result = dialog.getResultText();
             randVar.setSpecification(result);
         }
     }
@@ -63,7 +62,7 @@ public abstract class OpenExternalStoexEditor<T> implements IExternalJavaAction 
     private void dialogNotEmptyRandomVariable(final RandomVariable randVar) {
         final StochasticExpressionEditDialog dialog = this.createDialog(randVar);
         if (dialog.getReturnCode() == Window.OK) {
-            final String result = new PCMStoExPrettyPrintVisitor().prettyPrint(dialog.getResult());
+            final String result = dialog.getResultText();
             randVar.setSpecification(result);
         }
     }
