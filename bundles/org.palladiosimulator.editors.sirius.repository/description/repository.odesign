@@ -201,7 +201,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="CompositeComponent" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" doubleClickDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CompositeComponent%20Representation']" domainClass="repository.CompositeComponent" childrenPresentation="List">
+        <containerMappings name="CompositeComponent" deletionDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CompositeComponent%20Deletion']" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" doubleClickDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CompositeComponent%20Representation']" domainClass="repository.CompositeComponent" childrenPresentation="List">
           <subContainerMappings name="CompositeComponent" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" domainClass="repository.CompositeComponent" childrenPresentation="List">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql: '&lt;&lt;CompositeComponent>>\n'.concat(self.entityName)" widthComputationExpression="20" heightComputationExpression="10">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -217,7 +217,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="SubSystem" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" doubleClickDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='SubSystem%20Representation']" domainClass="subsystem.SubSystem" childrenPresentation="List">
+        <containerMappings name="SubSystem" deletionDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='SubSystem%20Deletion']" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" doubleClickDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='SubSystem%20Representation']" domainClass="subsystem.SubSystem" childrenPresentation="List">
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql: '&lt;&lt;SubSystem>>\n'.concat(self.entityName)" widthComputationExpression="20" heightComputationExpression="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -254,7 +254,14 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository::CompositeComponent" referenceName="components__Repository">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'CompositeComponent' + container.eAllContents()->filter(repository::CompositeComponent)->size()"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'CompositeComponent' + container.eAllContents()->filter(repository::CompositeComponent)->size()">
+                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="Create Assembly Diagram" id="ActivateViewpoint">
+                      <parameters name="element" value="var:instance"/>
+                      <parameters name="Viewpoint" value="Assembly"/>
+                      <parameters name="Diagram Name" value="CompositeComponent Diagram"/>
+                      <parameters name="RepresentationDescription" value="Assembly Diagram"/>
+                    </subModelOperations>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -265,7 +272,14 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="subsystem::SubSystem" referenceName="components__Repository">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'SubSystem' + container.eAllContents()->filter(subsystem::SubSystem)->size()"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'SubSystem' + container.eAllContents()->filter(subsystem::SubSystem)->size()">
+                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="Create Assembly Diagram" id="ActivateViewpoint">
+                      <parameters name="element" value="var:instance"/>
+                      <parameters name="Viewpoint" value="Assembly"/>
+                      <parameters name="Diagram Name" value="SubSystem Diagram"/>
+                      <parameters name="RepresentationDescription" value="Assembly Diagram"/>
+                    </subModelOperations>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -466,6 +480,30 @@
                     <subModelOperations xsi:type="tool:Unset" featureName="parentInterfaces__Interface" elementExpression="aql:target"/>
                   </subModelOperations>
                 </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="CompositeComponent Deletion">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Remove Assembly Diagram" id="RemoveDiagram">
+                <subModelOperations xsi:type="tool:RemoveElement"/>
+                <parameters name="Viewpoint" value="Assembly"/>
+                <parameters name="element" value="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="SubSystem Deletion">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Remove Assembly Diagram" id="RemoveDiagram">
+                <subModelOperations xsi:type="tool:RemoveElement"/>
+                <parameters name="Viewpoint" value="Assembly"/>
+                <parameters name="element" value="var:element"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

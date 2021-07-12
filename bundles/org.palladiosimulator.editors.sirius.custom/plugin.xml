@@ -51,6 +51,10 @@
             actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.RegisterResourceSetListener"
             id="RegisterResourceSetListener">
       </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.custom.externaljavaactions.RemoveDiagramAction"
+            id="RemoveDiagram">
+      </javaActions>
    </extension>
    <extension
          point="org.eclipse.emf.transaction.listeners">
