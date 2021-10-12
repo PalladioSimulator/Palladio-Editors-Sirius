@@ -1562,7 +1562,7 @@
       <pages name="InfrastructureInterface" labelExpression="Operations" domainClass="repository::InfrastructureInterface" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.1"/>
       <pages name="EventGroup" labelExpression="Operations" domainClass="repository::EventGroup" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.2"/>
       <pages name="PassiveResourcePage" labelExpression="StoexEdit" domainClass="PassiveResource" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.3"/>
-      <pages name="OperationSignature" labelExpression="Operations " domainClass="repository::Signature" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.4" indented="true"/>
+      <pages name="OperationSignature" labelExpression="Operations " domainClass="repository::OperationSignature" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.4" indented="true"/>
       <groups name="OperationInterface group" domainClass="repository::OperationInterface" semanticCandidateExpression="var:self">
         <controls xsi:type="properties:CustomDescription" name="org.palladiosimulator.editors.sirius.repository.custom.properties.OperationInterface">
           <customExpressions name="valueExpression" customExpression="aql:self"/>
