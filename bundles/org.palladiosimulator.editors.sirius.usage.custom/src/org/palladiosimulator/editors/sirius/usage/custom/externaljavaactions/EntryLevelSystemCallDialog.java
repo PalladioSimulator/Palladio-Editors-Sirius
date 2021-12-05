@@ -10,6 +10,7 @@ import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.palladiosimulator.editors.commons.dialogs.selection.PalladioSelectEObjectDialog;
+import org.palladiosimulator.editors.sirius.custom.util.PCMQueryUtils;
 import org.palladiosimulator.pcm.repository.OperationInterface;
 import org.palladiosimulator.pcm.repository.OperationProvidedRole;
 import org.palladiosimulator.pcm.repository.OperationSignature;
@@ -46,12 +47,14 @@ public class EntryLevelSystemCallDialog implements IExternalJavaAction {
 		filter.add(OperationInterface.class);
 		filter.add(OperationSignature.class);
 		
-
 		Collection<EReference> additionalChildReferences = new ArrayList<EReference>();
 		
 		PalladioSelectEObjectDialog dialog = new PalladioSelectEObjectDialog(SHELL, filter, additionalChildReferences,
 				element.eResource().getResourceSet());
-		
+        Collection<OperationInterface> calledInterfaces = PCMQueryUtils
+            .getTransitiveParentInterfaceClosureIncludingSelf(element.getProvidedRole_EntryLevelSystemCall()
+                .getProvidedInterface__OperationProvidedRole());
+
 		dialog.setProvidedService(OperationSignature.class);
 		
 
@@ -59,9 +62,9 @@ public class EntryLevelSystemCallDialog implements IExternalJavaAction {
 			if (!(o instanceof OperationInterface))
 				continue;
 			OperationInterface oi = (OperationInterface) o;
-			if (!element.getProvidedRole_EntryLevelSystemCall().getProvidedInterface__OperationProvidedRole().equals(oi))
-				dialog.getTreeViewer().remove(o);
-
+			if (!calledInterfaces.contains(oi)) {
+			    dialog.getTreeViewer().remove(o);			    
+			}
 		}
 		
 		dialog.open();
@@ -87,7 +90,6 @@ public class EntryLevelSystemCallDialog implements IExternalJavaAction {
 		return (OperationProvidedRole) dialog.getResult();
 	}
 	
-
 	@Override
     public boolean canExecute(final Collection<? extends EObject> arg0) {
         return true;
