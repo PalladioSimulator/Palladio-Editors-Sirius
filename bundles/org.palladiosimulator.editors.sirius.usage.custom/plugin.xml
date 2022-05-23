@@ -4,28 +4,24 @@
    <extension
          point="org.eclipse.sirius.externalJavaAction">
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.usage.custom.externaljavaactions.ClosedWorkloadThinkTimeAction"
-            id="ClosedWorkloadThinkTimeAction">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.usage.custom.externaljavaactions.DelayTimeAction"
-            id="DelayTimeAction">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.usage.custom.externaljavaactions.OpenWorkloadInterArrivalTimeAction"
-            id="OpenWorkloadInterArrivalTimeAction">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.usage.custom.externaljavaactions.LoopIterationsAction"
-            id="LoopIterationsAction">
-      </javaActions>
-      <javaActions
             actionClass="org.palladiosimulator.editors.sirius.usage.custom.externaljavaactions.EntryLevelSystemCallDialog"
             id="EntryLevelSystemCallDialog">
       </javaActions>
       <javaActions
             actionClass="org.palladiosimulator.editors.sirius.usage.custom.externaljavaactions.ReconnectSourceOfUsageFlow"
             id="ReconnectSourceOfUsageFlow">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.usage.custom.externaljavaactions.DelayExternalStoexEdit"
+            id="DelayExternalStoexEdit">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.usage.custom.externaljavaactions.LoopExternalStoexEdit"
+            id="LoopExternalStoexEdit">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.usage.custom.externaljavaactions.WorkloadExternalStoexEdit"
+            id="WorkloadExternalStoexEdit">
       </javaActions>
    </extension>
    

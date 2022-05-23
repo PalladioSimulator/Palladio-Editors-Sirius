@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Seff Editor" version="12.0.0.2017041100">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:properties="http://www.eclipse.org/sirius/properties/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Seff Editor" version="12.0.0.2017041100">
   <ownedViewpoints name="Seff" modelFileExtension="repository">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AbstractActions']" name="Seff Diagram" initialisation="true" pasteDescriptions="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='AbstractInternalControlFlowActions']" domainClass="seff.ResourceDemandingSEFF" enablePopupBars="true">
       <metamodel href="http://sdq.ipd.uka.de/StochasticExpressions/2.2#/"/>
@@ -44,7 +44,7 @@
         </edgeMappings>
         <containerMappings name="InternalAction" labelDirectEdit="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='directEditNameBySingleClick']" semanticCandidatesExpression="feature:steps_Behaviour" domainClass="seff.InternalAction" childrenPresentation="VerticalStack">
           <subContainerMappings name="ResourceDemand Container" semanticCandidatesExpression="var:self" domainClass="InternalAction" childrenPresentation="List">
-            <subNodeMappings name="ResourceDemand" semanticCandidatesExpression="feature:resourceDemand_Action" doubleClickDescription="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='seffOpenStoExDialogResourceDemand']" domainClass="seff_performance.ParametricResourceDemand">
+            <subNodeMappings name="ResourceDemand" labelDirectEdit="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Set%20Specification%20ResourceDemand']" semanticCandidatesExpression="feature:resourceDemand_Action" domainClass="seff_performance.ParametricResourceDemand">
               <style xsi:type="style:SquareDescription" labelExpression="aql: self.specification_ParametericResourceDemand.specification + ' &lt;' + self.requiredResource_ParametricResourceDemand.entityName + '>'" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>bold</labelFormat>
@@ -82,7 +82,7 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="InfrastructureCall Container" semanticCandidatesExpression="var:self" domainClass="InternalAction" childrenPresentation="List">
-            <subNodeMappings name="InfrastructureCall" semanticCandidatesExpression="feature:infrastructureCall__Action" domainClass="seff_performance.InfrastructureCall">
+            <subNodeMappings name="InfrastructureCall" labelDirectEdit="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Set%20Specification%20InfrastructureCall']" semanticCandidatesExpression="feature:infrastructureCall__Action" domainClass="seff_performance.InfrastructureCall">
               <style xsi:type="style:SquareDescription" labelExpression="aql: self.numberOfCalls__InfrastructureCall.specification + ' x ' + self.requiredRole__InfrastructureCall.entityName + '.' + self.signature__InfrastructureCall.entityName" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -104,7 +104,7 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="ResourceCall Container" semanticCandidatesExpression="var:self" domainClass="InternalAction" childrenPresentation="List">
-            <subNodeMappings name="ResourceCall" semanticCandidatesExpression="feature:resourceCall__Action" doubleClickDescription="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='seffOpenStoExDialogResourceCall']" domainClass="seff_performance.ResourceCall">
+            <subNodeMappings name="ResourceCall" labelDirectEdit="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Set%20Specification%20ResourceCall']" semanticCandidatesExpression="feature:resourceCall__Action" domainClass="seff_performance.ResourceCall">
               <style xsi:type="style:SquareDescription" labelExpression="aql: self.entityName + ':' + self.numberOfCalls__ResourceCall.specification" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -128,7 +128,7 @@
         <containerMappings name="ExternalCallAction" labelDirectEdit="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='directEditNameBySingleClick']" semanticCandidatesExpression="feature:steps_Behaviour" doubleClickDescription="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='ExternalCallAction%20OperationSignature%20edition']" domainClass="seff.ExternalCallAction" childrenPresentation="VerticalStack">
           <subContainerMappings name="InputVariableUsageCompartment" semanticCandidatesExpression="var:self" domainClass="seff.ExternalCallAction">
             <subContainerMappings name="InputVariableUsage" labelDirectEdit="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Variable%20Usage']" semanticCandidatesExpression="feature:inputVariableUsages__CallAction" domainClass="parameter.VariableUsage" childrenPresentation="List">
-              <subNodeMappings name="VariableCharacterisationInput" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" doubleClickDescription="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20VariableCharacterisation']" domainClass="parameter.VariableCharacterisation">
+              <subNodeMappings name="VariableCharacterisationInput" labelDirectEdit="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20VariableCharacterisation']" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" domainClass="parameter.VariableCharacterisation">
                 <style xsi:type="style:SquareDescription" labelExpression="aql: self.type + ' = ' + self.specification_VariableCharacterisation.specification" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -159,7 +159,7 @@
           </subContainerMappings>
           <subContainerMappings name="OutputVariableUsageCompartment" semanticCandidatesExpression="var:self" domainClass="seff.ExternalCallAction">
             <subContainerMappings name="OutputVariableUsage" labelDirectEdit="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Variable%20Usage']" semanticCandidatesExpression="feature:returnVariableUsage__CallReturnAction" domainClass="parameter.VariableUsage" childrenPresentation="List">
-              <subNodeMappings name="VariableCharacterisationOutput" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" doubleClickDescription="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20VariableCharacterisation']" domainClass="parameter.VariableCharacterisation">
+              <subNodeMappings name="VariableCharacterisationOutput" labelDirectEdit="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20VariableCharacterisation']" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" domainClass="parameter.VariableCharacterisation">
                 <style xsi:type="style:SquareDescription" labelExpression="aql: self.type + ' = ' + self.specification_VariableCharacterisation.specification" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -226,9 +226,9 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="SetVariableAction" semanticCandidatesExpression="feature:steps_Behaviour" domainClass="seff.SetVariableAction" dropDescriptions="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='VariableUsage']">
+        <containerMappings name="SetVariableAction" labelDirectEdit="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='directEditNameBySingleClick']" semanticCandidatesExpression="feature:steps_Behaviour" domainClass="seff.SetVariableAction" dropDescriptions="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='VariableUsage']">
           <subContainerMappings name="LocalVariableUsageSetVariableAction" labelDirectEdit="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Variable%20Usage']" semanticCandidatesExpression="feature:localVariableUsages_SetVariableAction" domainClass="parameter.VariableUsage" childrenPresentation="List">
-            <subNodeMappings name="VariableCharacterisationvariableSetter" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" doubleClickDescription="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20VariableCharacterisation']" domainClass="parameter.VariableCharacterisation">
+            <subNodeMappings name="VariableCharacterisationvariableSetter" labelDirectEdit="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20VariableCharacterisation']" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" domainClass="parameter.VariableCharacterisation">
               <style xsi:type="style:SquareDescription" labelExpression="aql: self.type + ' = ' + self.specification_VariableCharacterisation.specification" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -297,8 +297,8 @@
           </style>
         </containerMappings>
         <containerMappings name="BranchAction" labelDirectEdit="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='directEditNameBySingleClick']" semanticCandidatesExpression="feature:steps_Behaviour" domainClass="seff.BranchAction" dropDescriptions="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='BranchTransition']">
-          <subContainerMappings name="GuardedBranchTransition" labelDirectEdit="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='directEditNameBySingleClick']" semanticCandidatesExpression="feature:branches_Branch" doubleClickDescription="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='seffOpenStoExDialogGuardedBranchTransistion']" domainClass="seff.GuardedBranchTransition" childrenPresentation="VerticalStack">
-            <subContainerMappings name="Condition" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='seffOpenStoExDialogGuardedBranchTransistion']" domainClass="seff.GuardedBranchTransition">
+          <subContainerMappings name="GuardedBranchTransition" labelDirectEdit="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20GuardedBranchTransitionDialog']" semanticCandidatesExpression="feature:branches_Branch" domainClass="seff.GuardedBranchTransition" childrenPresentation="VerticalStack">
+            <subContainerMappings name="Condition" labelDirectEdit="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20GuardedBranchTransitionDialog']" semanticCandidatesExpression="var:self" domainClass="seff.GuardedBranchTransition">
               <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'Cond: ' + self.branchCondition_GuardedBranchTransition.specification">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -408,8 +408,8 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="Loop" labelDirectEdit="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='directEditNameBySingleClick']" semanticCandidatesExpression="feature:steps_Behaviour" doubleClickDescription="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='seffLoopIterationsDialog']" domainClass="seff.LoopAction" childrenPresentation="VerticalStack">
-          <subContainerMappings name="LoopIterationCount" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='seffLoopIterationsDialog']" domainClass="seff.LoopAction">
+        <containerMappings name="Loop" semanticCandidatesExpression="feature:steps_Behaviour" domainClass="seff.LoopAction" childrenPresentation="VerticalStack">
+          <subContainerMappings name="LoopIterationCount" semanticCandidatesExpression="var:self" domainClass="seff.LoopAction">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql:self.iterationCount_LoopAction.specification" widthComputationExpression="20">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -644,17 +644,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="seffLoopIterationsDialog" mappings="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='Loop'] //@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='Loop']/@subContainerMappings[name='LoopIterationCount']">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="seffLoopIterationCountDialog" id="LoopIterationCountDialog">
-                  <parameters name="element" value="var:element"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool:DoubleClickDescription" name="Edit Parameter" mappings="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='CollectionIteratorAction']/@subContainerMappings[name='Parameter%20Compartment']">
             <element name="element"/>
             <elementView name="elementView"/>
@@ -744,11 +733,11 @@
                       <parameters name="instance" value="var:instance"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.requiredResource_ParametricResourceDemand &lt;> null">
-                      <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set Specification" id="SetSpecification">
-                        <parameters name="element" value="var:instance"/>
+                      <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                        <parameters name="element" value="[thisEObject/]"/>
                       </subModelOperations>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.specification_ParametericResourceDemand.specification = null or  self.requiredResource_ParametricResourceDemand = null">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.requiredResource_ParametricResourceDemand = null">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
                   </subModelOperations>
@@ -781,10 +770,10 @@
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set InfrastructureSignature" id="SetInfrastructureSignature">
                       <parameters name="instance" value="var:instance"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NumberOfCalls" id="SetNumberOfCalls">
-                      <parameters name="element" value="var:instance"/>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                      <parameters name="element" value="[thisEObject/]"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.numberOfCalls__InfrastructureCall.specification=null or self.signature__InfrastructureCall = null">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.signature__InfrastructureCall = null">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql: 'InfrastructureCall' +container.eContents()->filter(seff_performance::InfrastructureCall)->size()"/>
@@ -807,10 +796,10 @@
                     <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set ResourceCallSignature" id="SetResourceCallSignature">
                       <parameters name="instance" value="var:instance"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set NumberOfCalls" id="SetNumberOfCalls">
-                      <parameters name="element" value="var:instance"/>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                      <parameters name="element" value="[thisEObject/]"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.numberOfCalls__ResourceCall.specification=null or self.signature__ResourceCall=null or self.resourceRequiredRole__ResourceCall=null">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:self.signature__ResourceCall=null or self.resourceRequiredRole__ResourceCall=null">
                       <subModelOperations xsi:type="tool_1:RemoveElement"/>
                     </subModelOperations>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="entityName" valueExpression="aql: self.signature__ResourceCall.resourceInterface__ResourceSignature.entityName + ' (' + self.signature__ResourceCall.entityName + ')'"/>
@@ -828,8 +817,8 @@
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:variableCharacterisation">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="aql:parameter::VariableCharacterisationType::STRUCTURE"/>
-                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Set Variable Characterisation Specification" id="SetVariableCharacterisationSpecification">
-                      <parameters name="element" value="var:variableCharacterisation"/>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                      <parameters name="element" value="[thisEObject/]"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -1016,42 +1005,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="seffOpenStoExDialogResourceDemand" mappings="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='InternalAction']/@subContainerMappings[name='ResourceDemand%20Container']/@subNodeMappings[name='ResourceDemand']">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="seffResourceDemandDialog" id="SetSpecification">
-                  <parameters name="element" value="var:element"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="seffOpenStoExDialogGuardedBranchTransistion" mappings="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='BranchAction']/@subContainerMappings[name='GuardedBranchTransition'] //@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='BranchAction']/@subContainerMappings[name='GuardedBranchTransition']/@subContainerMappings[name='Condition']">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="seffGuardedBranchTransistionDialog" id="GuardedBranchTransistionConditionDialog">
-                  <parameters name="element" value="var:element"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="Edit VariableCharacterisation" mappings="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='ExternalCallAction']/@subContainerMappings[name='InputVariableUsageCompartment']/@subContainerMappings[name='InputVariableUsage']/@subNodeMappings[name='VariableCharacterisationInput'] //@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='ExternalCallAction']/@subContainerMappings[name='OutputVariableUsageCompartment']/@subContainerMappings[name='OutputVariableUsage']/@subNodeMappings[name='VariableCharacterisationOutput'] //@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='SetVariableAction']/@subContainerMappings[name='LocalVariableUsageSetVariableAction']/@subNodeMappings[name='VariableCharacterisationvariableSetter']">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:If" conditionExpression="[self.oclAsType(VariableCharacterisation).specification_VariableCharacterisation = null/]">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Edit Variable Characterisation Specification " id="SetVariableCharacterisationSpecification">
-                  <parameters name="element" value="var:element"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="Variable Usage">
             <mask mask="{0}"/>
             <initialOperation>
@@ -1081,13 +1034,52 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="seffOpenStoExDialogResourceCall" mappings="//@ownedViewpoints[name='Seff']/@ownedRepresentations[name='Seff%20Diagram']/@defaultLayer/@containerMappings[name='InternalAction']/@subContainerMappings[name='ResourceCall%20Container']/@subNodeMappings[name='ResourceCall']">
-            <element name="element"/>
-            <elementView name="elementView"/>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Set Specification ResourceCall" inputLabelExpression="[self.numberOfCalls__ResourceCall.specification/]">
+            <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="seffResourceDemandDialog" id="SetSpecification">
-                  <parameters name="element" value="var:element"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.numberOfCalls__ResourceCall.editPCMRandomVariable(arg0)/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit VariableCharacterisation" inputLabelExpression="[self.specification_VariableCharacterisation.specification/]">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.specification_VariableCharacterisation.editPCMRandomVariable(arg0)/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit GuardedBranchTransitionDialog" inputLabelExpression="[self.branchCondition_GuardedBranchTransition.specification/]">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.branchCondition_GuardedBranchTransition.editPCMRandomVariable(arg0)/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Set Specification ResourceDemand" inputLabelExpression="[self.specification_ParametericResourceDemand.specification/]">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.specification_ParametericResourceDemand.editPCMRandomVariable(arg0)/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Set Specification InfrastructureCall" inputLabelExpression="[self.numberOfCalls__InfrastructureCall.specification/]">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.numberOfCalls__InfrastructureCall.editPCMRandomVariable(arg0)/]">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1203,4 +1195,104 @@
     <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.services.VariableUsageNameService"/>
     <ownedJavaExtensions qualifiedClassName="org.palladiosimulator.editors.sirius.services.PCMServices"/>
   </ownedViewpoints>
+  <extensions xsi:type="properties:ViewExtensionDescription" name="Properties">
+    <categories name="Default Category">
+      <pages name="ParametricResourceDemandPage" labelExpression="StoexEdit" domainClass="ParametricResourceDemand" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0"/>
+      <pages name="GuardedBranchTransitionPage" labelExpression="StoexEdit" domainClass="GuardedBranchTransition" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.1"/>
+      <pages name="LoopActionSeffPage" labelExpression="StoexEdit" domainClass="LoopAction" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.2"/>
+      <pages name="VariableCharacterisationPage" labelExpression="StoexEdit" domainClass="VariableCharacterisation" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.3"/>
+      <pages name="InfrastructureCallPage" labelExpression="StoexEdit" domainClass="InfrastructureCall" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.4"/>
+      <pages name="ResourceCallPage" labelExpression="StoexEdit" domainClass="ResourceCall" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.5"/>
+      <groups name="ParametricResourceDemandGroup" labelExpression="StoexEdit" domainClass="ParametricResourceDemand" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:ContainerDescription">
+          <controls xsi:type="properties:LabelDescription" valueExpression="ResourceDemand"/>
+          <controls xsi:type="properties:ButtonDescription" buttonLabelExpression="Edit">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" id="ParametricResourceDemandExternalStoexEdit">
+                  <parameters name="type" value="demand"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </controls>
+          <layout xsi:type="properties:FillLayoutDescription" orientation="HORIZONTAL"/>
+        </controls>
+      </groups>
+      <groups name="GuardedBranchTransitionGroup" labelExpression="StoexEdit" domainClass="GuardedBranchTransition" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:ContainerDescription">
+          <controls xsi:type="properties:LabelDescription" labelExpression="Transition"/>
+          <controls xsi:type="properties:ButtonDescription" buttonLabelExpression="Edit">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" id="GuardedTransitionExternalStoexEdit">
+                  <parameters name="type" value="guard"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </controls>
+          <layout xsi:type="properties:FillLayoutDescription" orientation="HORIZONTAL"/>
+        </controls>
+      </groups>
+      <groups name="LoopActionSeffGroup" labelExpression="Group" domainClass="LoopAction" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:ContainerDescription">
+          <controls xsi:type="properties:LabelDescription" valueExpression="LoopAction"/>
+          <controls xsi:type="properties:ButtonDescription" buttonLabelExpression="Edit">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" id="LoopActionExternalStoexEdit">
+                  <parameters name="type" value="loop"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </controls>
+          <layout xsi:type="properties:FillLayoutDescription" orientation="HORIZONTAL"/>
+        </controls>
+      </groups>
+      <groups name="VariableCharacterisationGroup" labelExpression="StoexEdit" domainClass="VariableCharacterisation" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:ContainerDescription">
+          <controls xsi:type="properties:LabelDescription" labelExpression="VariableCharacterisation"/>
+          <controls xsi:type="properties:ButtonDescription" buttonLabelExpression="Edit">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" id="VariableCharacterisationExternalStoexEdit">
+                  <parameters name="type" value="variable"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </controls>
+          <layout xsi:type="properties:FillLayoutDescription" orientation="HORIZONTAL"/>
+        </controls>
+      </groups>
+      <groups name="InfrastructureCallGroup" labelExpression="Group" domainClass="InfrastructureCall" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:ContainerDescription">
+          <controls xsi:type="properties:LabelDescription" labelExpression="Count Number"/>
+          <controls xsi:type="properties:ButtonDescription" buttonLabelExpression="Edit">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" id="InfrastructureCallExternalStoexEdit">
+                  <parameters name="type" value="infrastructure"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </controls>
+          <layout xsi:type="properties:FillLayoutDescription" orientation="HORIZONTAL"/>
+        </controls>
+      </groups>
+      <groups name="ResourceCallGroup" labelExpression="StoexEdit" domainClass="ResourceCall" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:ContainerDescription">
+          <controls xsi:type="properties:LabelDescription" labelExpression="ResourceCall"/>
+          <controls xsi:type="properties:ButtonDescription" buttonLabelExpression="Edit">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" id="ResourceCallExternalStoexEdit">
+                  <parameters name="type" value="resource"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </controls>
+          <layout xsi:type="properties:FillLayoutDescription" orientation="HORIZONTAL"/>
+        </controls>
+      </groups>
+    </categories>
+  </extensions>
 </description:Group>

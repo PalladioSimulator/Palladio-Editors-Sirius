@@ -50,6 +50,14 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
+        <edgeMappings name="ParentInterfaceEdge" deletionDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='ParentInterface%20Deletion']" sourceMapping="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='Interface']" targetMapping="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='Interface']" targetFinderExpression="aql:self.parentInterfaces__Interface" reconnections="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='ParentInterface%27s%20Target'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='ParentInterface%27s%20Source']">
+          <style targetArrow="InputClosedArrow">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Inherits>>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
         <containerMappings name="Interface" deletionDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='OperationInterface%20Deletion']" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:interfaces__Repository" domainClass="repository.OperationInterface" childrenPresentation="List">
           <subNodeMappings name="OperationSignature" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Signature']" semanticCandidatesExpression="feature:signatures__OperationInterface" domainClass="repository.OperationSignature">
             <conditionnalStyles predicateExpression="[self.returnType__OperationSignature.oclIsUndefined()/]">
@@ -127,7 +135,7 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="PassiveResourcesCompartment" semanticCandidatesExpression="var:self" domainClass="repository.BasicComponent" childrenPresentation="List">
-            <subNodeMappings name="PassiveResource" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:passiveResource_BasicComponent" doubleClickDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Capacity']" domainClass="repository.PassiveResource">
+            <subNodeMappings name="PassiveResource" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20Capacity']" semanticCandidatesExpression="feature:passiveResource_BasicComponent" domainClass="repository.PassiveResource">
               <style xsi:type="style:SquareDescription" labelExpression="aql:self.entityName + '&lt;Capacity: ' + self.capacity_PassiveResource.specification + '>'" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -143,7 +151,7 @@
           </subContainerMappings>
           <subContainerMappings name="ComponentParameterCompartment" semanticCandidatesExpression="var:self" domainClass="repository.BasicComponent">
             <subContainerMappings name="ComponentParameter" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Variable%20Usage']" semanticCandidatesExpression="feature:componentParameterUsage_ImplementationComponentType" domainClass="parameter.VariableUsage" childrenPresentation="List">
-              <subNodeMappings name="Variable Characterisation" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" doubleClickDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20VariableCharacterisation']" domainClass="parameter.VariableCharacterisation">
+              <subNodeMappings name="Variable Characterisation" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Edit%20VariableCharacterisation']" semanticCandidatesExpression="feature:variableCharacterisation_VariableUsage" domainClass="parameter.VariableCharacterisation">
                 <style xsi:type="style:SquareDescription" labelExpression="aql:self.type + ' = ' + self.specification_VariableCharacterisation.specification" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -193,7 +201,15 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="CompositeComponent" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" doubleClickDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CompositeComponent%20Representation']" domainClass="repository.CompositeComponent" childrenPresentation="List">
+        <containerMappings name="CompositeComponent" deletionDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CompositeComponent%20Deletion']" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" doubleClickDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CompositeComponent%20Representation']" domainClass="repository.CompositeComponent" childrenPresentation="List">
+          <subContainerMappings name="CompositeComponent" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" domainClass="repository.CompositeComponent" childrenPresentation="List">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql: '&lt;&lt;CompositeComponent>>\n'.concat(self.entityName)" widthComputationExpression="20" heightComputationExpression="10">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql: '&lt;&lt;CompositeComponent>>\n'.concat(self.entityName)" widthComputationExpression="20" heightComputationExpression="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -201,8 +217,8 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="SubSystem" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" doubleClickDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='SubSystem%20Representation']" domainClass="subsystem.SubSystem" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql: '&lt;&lt;SubSystem>>\n'.concat(self.entityName)" widthComputationExpression="10" heightComputationExpression="5">
+        <containerMappings name="SubSystem" deletionDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='SubSystem%20Deletion']" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:components__Repository" doubleClickDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='SubSystem%20Representation']" domainClass="subsystem.SubSystem" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql: '&lt;&lt;SubSystem>>\n'.concat(self.entityName)" widthComputationExpression="20" heightComputationExpression="10">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -238,7 +254,14 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="repository::CompositeComponent" referenceName="components__Repository">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'CompositeComponent' + container.eAllContents()->filter(repository::CompositeComponent)->size()"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'CompositeComponent' + container.eAllContents()->filter(repository::CompositeComponent)->size()">
+                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="Create Assembly Diagram" id="ActivateViewpoint">
+                      <parameters name="element" value="var:instance"/>
+                      <parameters name="Viewpoint" value="Assembly"/>
+                      <parameters name="Diagram Name" value="CompositeComponent Diagram"/>
+                      <parameters name="RepresentationDescription" value="Assembly Diagram"/>
+                    </subModelOperations>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -249,7 +272,14 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="subsystem::SubSystem" referenceName="components__Repository">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'SubSystem' + container.eAllContents()->filter(subsystem::SubSystem)->size()"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'SubSystem' + container.eAllContents()->filter(subsystem::SubSystem)->size()">
+                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="Create Assembly Diagram" id="ActivateViewpoint">
+                      <parameters name="element" value="var:instance"/>
+                      <parameters name="Viewpoint" value="Assembly"/>
+                      <parameters name="Diagram Name" value="SubSystem Diagram"/>
+                      <parameters name="RepresentationDescription" value="Assembly Diagram"/>
+                    </subModelOperations>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -304,7 +334,7 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="providedInterface__OperationProvidedRole" valueExpression="var:target"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:self.providingEntity_ProvidedRole.entityName + '.' + self.providedInterface__OperationProvidedRole.entityName + '.OperationProvidedRole' + source.eContents()->filter(repository::OperationProvidedRole)->size()"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="[source.oclIsTypeOf(BasicComponent)/]">
-                    <subModelOperations xsi:type="tool:For" expression="[target.signatures__OperationInterface/]">
+                    <subModelOperations xsi:type="tool:For" expression="[target.oclAsType(Interface)->closure(target.parentInterfaces__Interface)->including(target)->selectByKind(OperationInterface).signatures__OperationInterface/]">
                       <subModelOperations xsi:type="tool:If" conditionExpression="[source.oclAsType(BasicComponent).serviceEffectSpecifications__BasicComponent->exists (x | x.oclAsType(ResourceDemandingSEFF).describedService__SEFF = i) = false/]">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                           <subModelOperations xsi:type="tool:CreateInstance" typeName="seff::ResourceDemandingSEFF" referenceName="serviceEffectSpecifications__BasicComponent">
@@ -380,6 +410,17 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="ParentInterface" precondition="aql:preTarget.differs(preSource)" edgeMappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@edgeMappings[name='ParentInterfaceEdge']" iconPath="/org.palladiosimulator.editors.sirius.repository.custom/icons/inheritance_arrow.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:SetValue" featureName="parentInterfaces__Interface" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool_1:DeleteElementDescription" name="OperationInterface Deletion">
             <element name="element"/>
             <elementView name="elementView"/>
@@ -425,6 +466,44 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:RemoveElement"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="ParentInterface Deletion">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Let" variableName="target" valueExpression="[elementView.oclAsType(DEdge).targetNode.oclAsType(DSemanticDecorator).target/]">
+                <subModelOperations xsi:type="tool:Let" variableName="source" valueExpression="[elementView.oclAsType(DEdge).sourceNode.oclAsType(DSemanticDecorator).target/]">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
+                    <subModelOperations xsi:type="tool:Unset" featureName="parentInterfaces__Interface" elementExpression="aql:target"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="CompositeComponent Deletion">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Remove Assembly Diagram" id="RemoveDiagram">
+                <subModelOperations xsi:type="tool:RemoveElement"/>
+                <parameters name="Viewpoint" value="Assembly"/>
+                <parameters name="element" value="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="SubSystem Deletion">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Remove Assembly Diagram" id="RemoveDiagram">
+                <subModelOperations xsi:type="tool:RemoveElement"/>
+                <parameters name="Viewpoint" value="Assembly"/>
+                <parameters name="element" value="var:element"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -540,6 +619,53 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="ParentInterface's Target">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Let" variableName="currentTarget" valueExpression="var:source">
+                <subModelOperations xsi:type="tool:Let" variableName="currentSource" valueExpression="[edgeView.oclAsType(DEdge).sourceNode.oclAsType(DSemanticDecorator).target/]">
+                  <subModelOperations xsi:type="tool:Let" variableName="newTarget" valueExpression="var:target">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:newTarget.differs(currentSource)">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:currentSource">
+                        <subModelOperations xsi:type="tool:Unset" featureName="parentInterfaces__Interface" elementExpression="aql:currentTarget"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="parentInterfaces__Interface" valueExpression="aql:newTarget"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="ParentInterface's Source" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Let" variableName="currentTarget" valueExpression="[edgeView.oclAsType(DEdge).targetNode.oclAsType(DSemanticDecorator).target/]">
+                <subModelOperations xsi:type="tool:Let" variableName="currentSource" valueExpression="var:source">
+                  <subModelOperations xsi:type="tool:Let" variableName="newSource" valueExpression="var:target">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:newSource.differs(currentTarget)">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:currentSource">
+                        <subModelOperations xsi:type="tool:Unset" featureName="parentInterfaces__Interface" elementExpression="var:currentTarget">
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:newSource">
+                            <subModelOperations xsi:type="tool:SetValue" featureName="parentInterfaces__Interface" valueExpression="var:currentTarget"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
           <ownedTools xsi:type="tool_1:DoubleClickDescription" name="SubSystem Representation" mappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='SubSystem']">
             <element name="element"/>
             <elementView name="elementView"/>
@@ -593,12 +719,12 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.eClass()=repository::OperationInterface">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(repository::OperationInterface)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.OperationSignature" referenceName="signatures__OperationInterface">
                     <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'method' + container.eAllContents()->filter(repository::OperationSignature)->size()"/>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.eClass()=repository::InfrastructureInterface">
+                <subModelOperations xsi:type="tool:If" conditionExpression="aql:self.oclIsKindOf(repository::InfrastructureInterface)">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="repository.InfrastructureSignature" referenceName="infrastructureSignatures__InfrastructureInterface">
                     <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'method' + container.eAllContents()->filter(repository::InfrastructureSignature)->size()"/>
                   </subModelOperations>
@@ -615,9 +741,9 @@
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:passiveResource">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="capacity_PassiveResource"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="entityName" valueExpression="aql:'PassiveResource'+container.passiveResource_BasicComponent->size()"/>
-                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set Capacity" id="SetCapacity">
-                      <parameters name="element" value="var:passiveResource"/>
-                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -630,10 +756,10 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="parameter.VariableUsage" referenceName="componentParameterUsage_ImplementationComponentType" variableName="variableUsage">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:variableUsage">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="parameter::VariableReference" referenceName="namedReference__VariableUsage" variableName="VariableReference"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:VariableReference"/>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="stoex::VariableReference" referenceName="namedReference__VariableUsage" variableName="variableReference"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="namedReference__VariableUsage" valueExpression="var:variableReference"/>
                     <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set NamedReference" id="SetNamedReference">
-                      <parameters name="VariableReference" value="var:VariableReference"/>
+                      <parameters name="VariableReference" value="var:variableReference"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -649,9 +775,9 @@
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:variableCharacterisation">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="aql:parameter::VariableCharacterisationType::STRUCTURE"/>
-                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="Set Variable Characterisation Specification" id="SetVariableCharacterisationSpecification">
-                      <parameters name="element" value="var:variableCharacterisation"/>
-                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -722,34 +848,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Edit VariableCharacterisation" mappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='ComponentParameterCompartment']/@subContainerMappings[name='ComponentParameter']/@subNodeMappings[name='Variable%20Characterisation']">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool:If" conditionExpression="[self.oclAsType(VariableCharacterisation).specification_VariableCharacterisation = null/]">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="Edit Variable Characterisation Specification" id="SetVariableCharacterisationSpecification">
-                  <parameters name="element" value="var:element"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Edit Capacity" mappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='PassiveResourcesCompartment']/@subNodeMappings[name='PassiveResource']">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool:If" conditionExpression="[self.oclAsType(PassiveResource).capacity_PassiveResource = null/]">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="capacity_PassiveResource"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="Edit capacity" id="SetCapacity">
-                  <parameters name="element" value="var:element"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool_1:DoubleClickDescription" name="SEFF Representation" mappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@containerMappings[name='BasicComponent']/@subContainerMappings[name='SEFFCompartment']/@subNodeMappings[name='SEFF']">
             <element name="element"/>
             <elementView name="elementView"/>
@@ -781,6 +879,36 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:SetValue" featureName="serviceEffectSpecifications__BasicComponent" valueExpression="aql:copiedElement.copyIdentifier()"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit Capacity" inputLabelExpression="[self.capacity_PassiveResource.specification/]">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:If" conditionExpression="[self.oclAsType(PassiveResource).capacity_PassiveResource = null/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="capacity_PassiveResource"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.capacity_PassiveResource.editPCMRandomVariable(arg0)/]">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit VariableCharacterisation" inputLabelExpression="[self.specification_VariableCharacterisation.specification/]">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:If" conditionExpression="[self.oclAsType(VariableCharacterisation).specification_VariableCharacterisation = null/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="core.PCMRandomVariable" referenceName="specification_VariableCharacterisation"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.specification_VariableCharacterisation.editPCMRandomVariable(arg0)/]">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="RegisterResourceSetListener" id="RegisterResourceSetListener">
+                  <parameters name="element" value="[thisEObject/]"/>
+                </subModelOperations>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1110,6 +1238,14 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
+        <edgeMappings name="ParentDataTypeEdge" deletionDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='DataTypes']/@toolSections.0/@ownedTools[name='ParentDataType%20Deletion']" sourceMapping="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='DataTypes']/@containerMappings[name='CompositeDataType']" targetMapping="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='DataTypes']/@containerMappings[name='CompositeDataType']" targetFinderExpression="aql:self.parentType_CompositeDataType" reconnections="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='DataTypes']/@toolSections.0/@ownedTools[name='ParentDataType%27s%20Target'] //@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='DataTypes']/@toolSections.0/@ownedTools[name='ParentDataType%27s%20Source']">
+          <style targetArrow="InputClosedArrow">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Inherits>>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
         <containerMappings name="CollectionDataType" deletionDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='DataTypes']/@toolSections.0/@ownedTools[name='Delete%20CollectionDataType']" labelDirectEdit="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:dataTypes__Repository" domainClass="repository.CollectionDataType" childrenPresentation="List">
           <subNodeMappings name="InnerType" deletionDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='DataTypes']/@toolSections.0/@ownedTools[name='Delete%20Inner%20Type']" semanticCandidatesExpression="feature:innerType_CollectionDataType" doubleClickDescription="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='DataTypes']/@toolSections.0/@ownedTools[name='Edit%20InnerType']" domainClass="repository.DataType">
             <style xsi:type="style:BundledImageDescription" labelExpression="" labelPosition="node" resizeKind="NSEW">
@@ -1132,7 +1268,7 @@
               </style>
             </conditionnalStyles>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql: '&lt;&lt;CollectionDataType>>\n'.concat(self.entityName)" widthComputationExpression="10" heightComputationExpression="5">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql: '&lt;&lt;CollectionDataType>>\n'.concat(self.entityName)">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -1168,7 +1304,7 @@
               </style>
             </conditionnalStyles>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql: '&lt;&lt;CompositeDataType>>\n'.concat(self.entityName)" widthComputationExpression="10" heightComputationExpression="5">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql: '&lt;&lt;CompositeDataType>>\n'.concat(self.entityName)">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -1232,6 +1368,17 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="ParentDataTypeEdge" precondition="aql:preTarget.differs(preSource)" edgeMappings="//@ownedViewpoints[name='Repository']/@ownedRepresentations[name='Repository%20Diagram']/@additionalLayers[name='DataTypes']/@edgeMappings[name='ParentDataTypeEdge']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:SetValue" featureName="parentType_CompositeDataType" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Delete Contains">
             <element name="element"/>
             <elementView name="elementView"/>
@@ -1275,6 +1422,20 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:RemoveElement"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="ParentDataType Deletion">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Let" variableName="target" valueExpression="[elementView.oclAsType(DEdge).targetNode.oclAsType(DSemanticDecorator).target/]">
+                <subModelOperations xsi:type="tool:Let" variableName="source" valueExpression="[elementView.oclAsType(DEdge).sourceNode.oclAsType(DSemanticDecorator).target/]">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
+                    <subModelOperations xsi:type="tool:Unset" featureName="parentType_CompositeDataType" elementExpression="aql:target"/>
+                  </subModelOperations>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1340,6 +1501,53 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="ParentDataType's Target">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Let" variableName="currentTarget" valueExpression="var:source">
+                <subModelOperations xsi:type="tool:Let" variableName="currentSource" valueExpression="[edgeView.oclAsType(DEdge).sourceNode.oclAsType(DSemanticDecorator).target/]">
+                  <subModelOperations xsi:type="tool:Let" variableName="newTarget" valueExpression="var:target">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:newTarget.differs(currentSource)">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:currentSource">
+                        <subModelOperations xsi:type="tool:Unset" featureName="parentType_CompositeDataType" elementExpression="aql:currentTarget"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="parentType_CompositeDataType" valueExpression="aql:newTarget"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="ParentDataType's Source" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:Let" variableName="currentTarget" valueExpression="[edgeView.oclAsType(DEdge).targetNode.oclAsType(DSemanticDecorator).target/]">
+                <subModelOperations xsi:type="tool:Let" variableName="currentSource" valueExpression="var:source">
+                  <subModelOperations xsi:type="tool:Let" variableName="newSource" valueExpression="var:target">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="aql:newSource.differs(currentTarget)">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:currentSource">
+                        <subModelOperations xsi:type="tool:Unset" featureName="parentType_CompositeDataType" elementExpression="var:currentTarget">
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:newSource">
+                            <subModelOperations xsi:type="tool:SetValue" featureName="parentType_CompositeDataType" valueExpression="var:currentTarget"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
         </toolSections>
       </additionalLayers>
     </ownedRepresentations>
@@ -1353,6 +1561,8 @@
       <pages name="OperationInterface" labelExpression="Operations" domainClass="repository::OperationInterface" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.0"/>
       <pages name="InfrastructureInterface" labelExpression="Operations" domainClass="repository::InfrastructureInterface" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.1"/>
       <pages name="EventGroup" labelExpression="Operations" domainClass="repository::EventGroup" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.2"/>
+      <pages name="PassiveResourcePage" labelExpression="StoexEdit" domainClass="PassiveResource" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.3"/>
+      <pages name="OperationSignature" labelExpression="Operations " domainClass="repository::OperationSignature" semanticCandidateExpression="var:self" groups="//@extensions.0/@categories.0/@groups.4" indented="true"/>
       <groups name="OperationInterface group" domainClass="repository::OperationInterface" semanticCandidateExpression="var:self">
         <controls xsi:type="properties:CustomDescription" name="org.palladiosimulator.editors.sirius.repository.custom.properties.OperationInterface">
           <customExpressions name="valueExpression" customExpression="aql:self"/>
@@ -1371,6 +1581,22 @@
         </controls>
         <style barStyle="NO_TITLE" toggleStyle="NONE"/>
       </groups>
+      <groups name="PassiveResourceGroup" labelExpression="Group" domainClass="PassiveResource" semanticCandidateExpression="var:self">
+        <controls xsi:type="properties:ContainerDescription">
+          <controls xsi:type="properties:LabelDescription" labelExpression="Capacity"/>
+          <controls xsi:type="properties:ButtonDescription" buttonLabelExpression="Edit">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" id="PassiveResourceExternalStoexEdit">
+                  <parameters name="type" value="passive"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </controls>
+          <layout xsi:type="properties:FillLayoutDescription" orientation="HORIZONTAL"/>
+        </controls>
+      </groups>
+      <groups name="OperationSignature group" labelExpression="OperationSignature group" domainClass="repository::OperationInterface" semanticCandidateExpression="aql:self.eContainer()" extends="//@extensions.0/@categories.0/@groups.0" filterControlsFromExtendedGroupExpression="var:self"/>
     </categories>
   </extensions>
 </description:Group>

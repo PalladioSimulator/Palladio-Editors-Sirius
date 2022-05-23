@@ -4,14 +4,6 @@
    <extension
          point="org.eclipse.sirius.externalJavaAction">
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.LoopIterationCountDialog"
-            id="LoopIterationCountDialog">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.GuardedBranchTransistionConditionDialog"
-            id="GuardedBranchTransistionConditionDialog">
-      </javaActions>
-      <javaActions
             actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.AddAcquireAction"
             id="AddAcquireAction">
       </javaActions>
@@ -38,14 +30,6 @@
       <javaActions
             actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.SetInfrastructureSignature"
             id="SetInfrastructureSignature">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.SetNumberOfCalls"
-            id="SetNumberOfCalls">
-      </javaActions>
-      <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.SetSpecification"
-            id="SetSpecification">
       </javaActions>
       <javaActions
             actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.SetRequiredResource"
@@ -78,6 +62,30 @@
       <javaActions
             actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.SetResourceCallSignature"
             id="SetResourceCallSignature">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.ParametricResourceDemandExternalStoexEdit"
+            id="ParametricResourceDemandExternalStoexEdit">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.LoopActionExternalStoexEdit"
+            id="LoopActionExternalStoexEdit">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.VariableCharacterisationExternalStoexEdit"
+            id="VariableCharacterisationExternalStoexEdit">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.InfrastructureCallExternalStoexEdit"
+            id="InfrastructureCallExternalStoexEdit">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.ResourceCallExternalStoexEdit"
+            id="ResourceCallExternalStoexEdit">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.seff.custom.externaljavaactions.GuardedTransitionExternalStoexEdit"
+            id="GuardedTransitionExternalStoexEdit">
       </javaActions>
    </extension>
 

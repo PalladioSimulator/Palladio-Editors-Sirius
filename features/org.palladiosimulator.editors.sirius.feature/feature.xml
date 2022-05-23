@@ -2,7 +2,7 @@
 <feature
       id="org.palladiosimulator.editors.sirius.feature"
       label="Palladio Component Model - Sirius Editors"
-      version="4.1.0.qualifier"
+      version="5.1.0.qualifier"
       plugin="org.palladiosimulator.branding"
       license-feature="org.palladiosimulator.license"
       license-feature-version="1.0.0">
@@ -24,7 +24,7 @@
       <import plugin="de.uka.ipd.sdq.stoex.analyser" version="2.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.runtime" version="3.12.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui" version="3.107.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.sirius" version="5.0.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.sirius" version="6.2.3" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.ecore"/>
       <import plugin="de.uka.ipd.sdq.stoex" version="2.2.0" match="greaterOrEqual"/>
       <import plugin="de.uka.ipd.sdq.pcm.stochasticexpressions"/>
@@ -33,11 +33,11 @@
       <import plugin="org.eclipse.gmf"/>
       <import plugin="org.eclipse.gmf.runtime.common.core" version="1.7.0" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.commons" version="1.0.1" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.sirius.ui" version="5.0.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.sirius.ui" version="6.2.3" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf" version="2.6.0" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.editors.sirius.ui" version="1.0.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.gmf.runtime.emf.commands.core"/>
-      <import plugin="org.eclipse.sirius.common" version="5.0.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.sirius.common" version="6.2.3" match="greaterOrEqual"/>
       <import plugin="org.eclipse.eef.ide.ui" version="2.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.edit" version="2.12.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.edit.ui" version="2.12.0" match="greaterOrEqual"/>
@@ -58,19 +58,22 @@
       <import feature="org.palladiosimulator.architecturaltemplates.feature" version="1.0.6" match="greaterOrEqual"/>
       <import feature="org.palladiosimulator.architecturaltemplates.examples.feature" version="1.0.4" match="greaterOrEqual"/>
       <import feature="org.palladiosimulator.mdsdprofiles.feature" version="1.0.1" match="greaterOrEqual"/>
-      <import feature="org.eclipse.sirius.runtime" version="5.0.2" match="greaterOrEqual"/>
-      <import feature="org.eclipse.sirius.runtime.ide.eef" version="5.0.2" match="greaterOrEqual"/>
-      <import feature="org.eclipse.sirius.runtime.acceleo" version="5.0.2" match="greaterOrEqual"/>
-      <import feature="org.eclipse.sirius.runtime.aql" version="5.0.2" match="greaterOrEqual"/>
-      <import feature="org.eclipse.sirius.runtime.ide.ui" version="5.0.2" match="greaterOrEqual"/>
-      <import feature="org.eclipse.sirius.runtime.ocl" version="5.0.2" match="greaterOrEqual"/>
-      <import feature="org.eclipse.sirius.properties.feature" version="5.0.2" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime" version="6.2.3" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime.ide.eef" version="6.2.3" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime.aql" version="6.2.3" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.runtime.ide.ui" version="6.2.3" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.properties.feature" version="6.2.3" match="greaterOrEqual"/>
       <import feature="org.eclipse.e4.core.tools.feature" version="4.5.100.v20170131-1452"/>
       <import plugin="org.eclipse.eef" version="1.7.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.eef.core" version="1.7.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.sirius.common.interpreter" version="5.0.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.sirius.common.interpreter" version="6.2.3" match="greaterOrEqual"/>
       <import plugin="org.eclipse.eef.common.ui" version="1.7.0" match="greaterOrEqual"/>
+      <import feature="org.palladiosimulator.commons.stoex.sdk"/>
+      <import feature="org.yakindu.base.xtext.utils.gmf"/>
+      <import feature="org.yakindu.base.xtext.utils.jface"/>
+      <import feature="org.palladiosimulator.examples.package.feature" version="4.2.0" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.branding"/>
+      <import plugin="org.eclipse.sirius.common.acceleo.mtl"/>
    </requires>
 
    <plugin

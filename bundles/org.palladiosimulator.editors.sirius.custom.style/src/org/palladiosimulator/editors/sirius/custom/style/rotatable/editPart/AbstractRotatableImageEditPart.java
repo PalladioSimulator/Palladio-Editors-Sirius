@@ -37,7 +37,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.CustomStyle;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractNotSelectableShapeNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
-import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures .AirStyleDefaultSizeNodeFigure;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AirStyleDefaultSizeNodeFigure;
 import org.palladiosimulator.editors.sirius.custom.style.ExtensionActivator;
 import org.palladiosimulator.editors.sirius.custom.style.rotatable.NodeImageExtension;
 import org.palladiosimulator.editors.sirius.custom.style.rotatable.editPart.listener.PropagateFigureListenerAtConnectionFigure;

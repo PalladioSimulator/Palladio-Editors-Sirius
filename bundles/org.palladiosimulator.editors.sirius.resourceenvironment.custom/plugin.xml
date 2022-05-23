@@ -12,10 +12,6 @@
             id="RemoveConnector">
       </javaActions>
       <javaActions
-            actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.AddLinkingResourceAction"
-            id="AddLinkingResource">
-      </javaActions>
-      <javaActions
             actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.ReconnectLinkingResourceOfConnector"
             id="ReconnectLinkingResourceOfConnector">
       </javaActions>
@@ -26,6 +22,14 @@
       <javaActions
             actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.EditLinkingResourceFailureProbability"
             id="EditLinkingResourceFailureProbability">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.LinkingResourceExternalStoexEdit"
+            id="LinkingResourceExternalStoexEdit">
+      </javaActions>
+      <javaActions
+            actionClass="org.palladiosimulator.editors.sirius.resourceenvironment.custom.externaljavaactions.ResourceExternalStoexEdit"
+            id="ResourceExternalStoexEdit">
       </javaActions>
    </extension>
      <extension
