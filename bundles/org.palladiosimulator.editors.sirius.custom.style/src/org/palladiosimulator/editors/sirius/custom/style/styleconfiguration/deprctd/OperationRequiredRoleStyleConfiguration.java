@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.sirius.custom.style.styleconfiguration;
+package org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.deprctd;
 
 import java.util.EnumMap;
 import java.util.LinkedList;
@@ -18,31 +18,31 @@ import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util.AnchorProvider;
 import org.palladiosimulator.editors.sirius.custom.style.rotatable.editPart.Orientation;
 import org.palladiosimulator.editors.sirius.custom.style.rotatable.figure.RotatableSVGWorkspaceImageFigure;
 
-public class OperationalRolesStyleConfiguration extends SimpleStyleConfiguration {
+public class OperationRequiredRoleStyleConfiguration extends SimpleStyleConfiguration {
 
-	private static class OperationRolesAnchorProvider implements AnchorProvider {
+	private static class OperationRequiredRoleAnchorProvider implements AnchorProvider {
 
 		@Override
 		public ConnectionAnchor createDefaultAnchor(AirDefaultSizeNodeFigure figure) {
-			return new OperationRolesAnchor(figure);
+			return new OperationRequiredRoleAnchor(figure);
 		}
 
 		@Override
 		public ConnectionAnchor createAnchor(final AirDefaultSizeNodeFigure figure, final PrecisionPoint p) {
-			return new OperationRolesAnchor(figure, p);
+			return new OperationRequiredRoleAnchor(figure, p);
 		}
 
 	}
 
-	private static class OperationRolesAnchor extends AlphaBasedSlidableImageAnchor {
+	private static class OperationRequiredRoleAnchor extends AlphaBasedSlidableImageAnchor {
 
 		private static final Map<Orientation, Function<Rectangle, Point>> LOCATION_CALCULATORS = createLocationCalculators();
 
-		public OperationRolesAnchor(IFigure f, PrecisionPoint p) {
+		public OperationRequiredRoleAnchor(IFigure f, PrecisionPoint p) {
 			super(f, p);
 		}
 
-		public OperationRolesAnchor(IFigure f) {
+		public OperationRequiredRoleAnchor(IFigure f) {
 			super(f);
 		}
 
@@ -61,10 +61,10 @@ public class OperationalRolesStyleConfiguration extends SimpleStyleConfiguration
 		
 		private static Map<Orientation, Function<Rectangle, Point>> createLocationCalculators() {
 			Map<Orientation, Function<Rectangle, Point>> calculators = new EnumMap<>(Orientation.class);
-			calculators.put(Orientation.LEFT, fb -> fb.getTopRight().translate(0, fb.height() / 2));
-			calculators.put(Orientation.RIGHT, fb -> fb.getTopLeft().translate(0, fb.height() / 2));
-			calculators.put(Orientation.BOTTOM, fb -> fb.getTopLeft().translate(fb.width() / 2, 0));
-			calculators.put(Orientation.TOP, fb -> fb.getBottomLeft().translate(fb.width() / 2, 0));
+			calculators.put(Orientation.LEFT, fb -> fb.getTopLeft().translate(fb.width() / 4, fb.height() / 2));
+			calculators.put(Orientation.RIGHT, fb -> fb.getTopRight().translate(-fb.width() / 4, fb.height() / 2));
+			calculators.put(Orientation.BOTTOM, fb -> fb.getBottomLeft().translate(fb.width() / 2, -fb.height() / 4));
+			calculators.put(Orientation.TOP, fb -> fb.getTopLeft().translate(fb.width() / 2, fb.height() / 4));
 			return calculators;
 		}
 
@@ -92,7 +92,7 @@ public class OperationalRolesStyleConfiguration extends SimpleStyleConfiguration
 
 	@Override
 	public AnchorProvider getAnchorProvider() {
-		return new OperationRolesAnchorProvider();
+		return new OperationRequiredRoleAnchorProvider();
 	}
 
 }
