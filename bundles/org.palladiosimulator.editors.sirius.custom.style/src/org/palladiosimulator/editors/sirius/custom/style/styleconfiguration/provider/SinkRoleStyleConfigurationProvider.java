@@ -8,22 +8,22 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfi
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.viewpoint.Style;
 import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.ConnectorStyleConfiguration;
-import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorProvider.OrientedFixpointAnchorProvider;
+import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorProvider.OrientedHalfAlphaBasedAnchorProvider;
 
-public class OperationRequiredRoleStyleConfigurationProvider implements IStyleConfigurationProvider {
+public class SinkRoleStyleConfigurationProvider implements IStyleConfigurationProvider {
 
-	public OperationRequiredRoleStyleConfigurationProvider() {
+	public SinkRoleStyleConfigurationProvider() {
 	}
 
 	@Override
 	public StyleConfiguration createStyleConfiguration(DiagramElementMapping mapping, Style style) {
-		return new ConnectorStyleConfiguration(new OrientedFixpointAnchorProvider(0.25));
+		return new ConnectorStyleConfiguration(new OrientedHalfAlphaBasedAnchorProvider());
 	}
 
 	@Override
 	public boolean provides(DiagramElementMapping mapping, Style style) {
 
-		List<String> supportedMappings = Arrays.asList("OperationRequiredRole Node");
+		List<String> supportedMappings = Arrays.asList("SinkRole Node");
 
 		if (supportedMappings.contains(mapping.getName())) {
 			return true;

@@ -3,6 +3,7 @@ package org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anc
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Optional;
+
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
@@ -10,14 +11,15 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AlphaBasedSlidableImageAnchor;
 import org.palladiosimulator.editors.sirius.custom.style.rotatable.editPart.Orientation;
 import org.palladiosimulator.editors.sirius.custom.style.rotatable.figure.RotatableSVGWorkspaceImageFigure;
-import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.deprctd.OperationRequiredRoleAnchorProvider;
 
 /**
- * An abstract anchor which calculates the location of its anchorPoint dependent of its
- * figures orientation.
+ * An abstract anchor which calculates the location of its anchorPoint dependent
+ * of its figures orientation.
  * 
  * The abstract method createTranslationCalculators() has to be implemented.
- * <br><br> See {@link AbstractOrientedAnchor#createTranslationCalculators()}
+ * <br>
+ * <br>
+ * See {@link AbstractOrientedAnchor#createTranslationCalculators()}
  * 
  * @author Jonas Lehmann
  */
@@ -25,7 +27,6 @@ public abstract class AbstractOrientedAnchor extends AlphaBasedSlidableImageAnch
 
 	private final Map<Orientation, Translation> TRANSLATION_CALCULATORS = createTranslationCalculators();
 
-	
 	public AbstractOrientedAnchor(IFigure f, PrecisionPoint p) {
 		super(f, p);
 	}
@@ -47,11 +48,11 @@ public abstract class AbstractOrientedAnchor extends AlphaBasedSlidableImageAnch
 
 		return newAnchorPoint;
 	}
-	
+
 	/**
-	 * A translation inbetween rectangle bounds.
-	 * <br> e.g. translateToLeftHalf:
-	 * <br> (p, bounds) -> {return p.setX(Math.min(bounds.getTop().x, p.x));}
+	 * A translation inbetween rectangle bounds. <br>
+	 * e.g. translateToLeftHalf: <br>
+	 * (p, bounds) -> {return p.setX(Math.min(bounds.getTop().x, p.x));}
 	 */
 	protected interface Translation {
 		Point translate(Point previous, Rectangle r);
@@ -61,11 +62,14 @@ public abstract class AbstractOrientedAnchor extends AlphaBasedSlidableImageAnch
 	 * Implementation of mapping a {@link Translation} function to each orientation
 	 * to translate a cursor position to a valid anchorPoint location.
 	 * 
-	 * <br><br> For an example implementation see {@link OperationRequiredRoleAnchorProvider}
+	 * <br>
+	 * <br>
+	 * For an example implementation see {@link OperationRequiredRoleAnchorProvider}
+	 * 
 	 * @return the specified map
 	 */
 	protected abstract Map<Orientation, Translation> createTranslationCalculators();
-	
+
 	private static Optional<Orientation> getOrientation(IFigure figure) {
 		return findRotatableFigure(figure).map(RotatableSVGWorkspaceImageFigure::getCurrentOrientation);
 	}

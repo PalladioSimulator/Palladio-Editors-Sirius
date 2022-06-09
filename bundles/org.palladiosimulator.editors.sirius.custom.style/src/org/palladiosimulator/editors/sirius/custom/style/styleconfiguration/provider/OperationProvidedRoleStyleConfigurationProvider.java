@@ -23,8 +23,7 @@ public class OperationProvidedRoleStyleConfigurationProvider implements IStyleCo
 	@Override
 	public boolean provides(DiagramElementMapping mapping, Style style) {
 
-		List<String> supportedMappings = Arrays.asList("OperationProvidedRole Node", "InfrastructureProvidedRole Node",
-				"SinkRole Node");
+		List<String> supportedMappings = Arrays.asList("OperationProvidedRole Node");
 
 		if (supportedMappings.contains(mapping.getName())) {
 			return true;
