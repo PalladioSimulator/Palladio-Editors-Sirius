@@ -27,10 +27,7 @@ public class ExternalRolesStyleConfigurationProvider implements IStyleConfigurat
 				"ExternalOperationProvidedRole Node", "ExternalSourceRole Node", "ExternalSinkRole Node",
 				"ExternalInfrastructureRequiredRole Node", "ExternalInfrastructureProvidedRole Node");
 
-		if (supportedMappings.contains(mapping.getName())) {
-			return true;
-		}
-		return false;
+		return supportedMappings.contains(mapping.getName());
 	}
 
 }

@@ -11,24 +11,29 @@ import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util.AnchorProvider;
 import org.palladiosimulator.editors.sirius.custom.style.rotatable.editPart.Orientation;
 
 /**
- * Provides an anchor with specified offset of the oriented sides center
+ * Provides an anchor with specified offset of the oriented sides center.
  * 
- * <br><br> e.g. if offset = 1/4, the anchor point is moved one quarter of the rectangle width along the center axis away from the Orientated sides centerPoint.
+ * <br>
+ * <br>
+ * e.g. if offset = 1/4, the anchor point is moved one quarter of the rectangle
+ * width along the center axis away from the Orientated sides centerPoint.
  * 
  * @author Jonas Lehmann
  */
-public class OrientedFixpointAnchorProvider  implements AnchorProvider {
+public class OrientedFixpointAnchorProvider implements AnchorProvider {
 
 	private double relativeOffset;
-	
+
 	/**
 	 * Creates a new {@link OrientedFixpointAnchorProvider}.
-	 * @param relativeOffset A fraction inbetween [0.0 (the oriented sides center), 1.0 (the other sides center)]
+	 * 
+	 * @param relativeOffset A fraction inbetween [0.0 (the oriented sides center),
+	 *                       1.0 (the other sides center)]
 	 */
 	public OrientedFixpointAnchorProvider(double relativeOffset) {
 		this.relativeOffset = relativeOffset;
 	}
-	
+
 	@Override
 	public ConnectionAnchor createDefaultAnchor(AirDefaultSizeNodeFigure figure) {
 		return new OrientedFixpointAnchor(figure, relativeOffset);
@@ -40,7 +45,7 @@ public class OrientedFixpointAnchorProvider  implements AnchorProvider {
 	}
 
 	private static class OrientedFixpointAnchor extends AbstractOrientedAnchor {
-		
+
 		private double relativeOffset;
 
 		public OrientedFixpointAnchor(IFigure f, PrecisionPoint p, double relativeOffset) {
@@ -52,7 +57,7 @@ public class OrientedFixpointAnchorProvider  implements AnchorProvider {
 			super(f);
 			this.relativeOffset = relativeOffset;
 		}
-		
+
 		@Override
 		protected Map<Orientation, Translation> createTranslationCalculators() {
 			Map<Orientation, Translation> calculators = new EnumMap<>(Orientation.class);

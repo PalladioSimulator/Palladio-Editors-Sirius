@@ -70,7 +70,7 @@ public abstract class AbstractOrientedAnchor extends AlphaBasedSlidableImageAnch
 	 */
 	protected abstract Map<Orientation, Translation> createTranslationCalculators();
 
-	private static Optional<Orientation> getOrientation(IFigure figure) {
+	protected static Optional<Orientation> getOrientation(IFigure figure) {
 		return findRotatableFigure(figure).map(RotatableSVGWorkspaceImageFigure::getCurrentOrientation);
 	}
 

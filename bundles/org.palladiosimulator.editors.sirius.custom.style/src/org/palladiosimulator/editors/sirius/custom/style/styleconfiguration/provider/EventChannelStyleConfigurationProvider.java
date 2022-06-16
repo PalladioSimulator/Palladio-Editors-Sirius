@@ -25,10 +25,7 @@ public class EventChannelStyleConfigurationProvider implements IStyleConfigurati
 
 		List<String> supportedMappings = Arrays.asList("EventChannel Node");
 
-		if (supportedMappings.contains(mapping.getName())) {
-			return true;
-		}
-		return false;
+		return supportedMappings.contains(mapping.getName());
 	}
 
 }

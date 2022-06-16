@@ -12,29 +12,41 @@ import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AirDefaultSizeNodeFigure;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util.AnchorProvider;
 
+/**
+ * Provides a slidable anchor located on a diamond shaped border.
+ * 
+ * @author Jonas Lehmann
+ */
 public class DiamondShapedSlidableAnchorProvider implements AnchorProvider {
+
+	/**
+	 * Creates a provider for anchors that are located on a diamond shaped border.
+	 * The diamond is defined by the centerpoints of sides of the figures rectangle
+	 * bounds. The anchorpoints are slidable on the specified diamond edges.
+	 */
+	public DiamondShapedSlidableAnchorProvider() {
+	}
 
 	@Override
 	public ConnectionAnchor createDefaultAnchor(AirDefaultSizeNodeFigure figure) {
-		return new EventChannelAnchor(figure);
+		return new DiamondShapedSlidableAnchor(figure);
 	}
 
 	@Override
 	public ConnectionAnchor createAnchor(final AirDefaultSizeNodeFigure figure, final PrecisionPoint p) {
-		return new EventChannelAnchor(figure, p);
+		return new DiamondShapedSlidableAnchor(figure, p);
 	}
-	
-	private static class EventChannelAnchor extends SlidableAnchor {
 
-		
-		public EventChannelAnchor(IFigure f, PrecisionPoint p) {
+	private static class DiamondShapedSlidableAnchor extends SlidableAnchor {
+
+		public DiamondShapedSlidableAnchor(IFigure f, PrecisionPoint p) {
 			super(f, p);
 		}
-		
-		public EventChannelAnchor(IFigure f) {
+
+		public DiamondShapedSlidableAnchor(IFigure f) {
 			super(f);
 		}
-		
+
 		protected PointList getIntersectionPoints(Point ownReference, Point foreignReference) {
 			PrecisionRectangle r = new PrecisionRectangle(getBox());
 			PrecisionPointList ptList = new PrecisionPointList(5);
@@ -44,7 +56,7 @@ public class DiamondShapedSlidableAnchorProvider implements AnchorProvider {
 			ptList.addPoint(new PrecisionPoint(r.getRight().preciseX(), r.getRight().preciseY()));
 			ptList.addPoint(new PrecisionPoint(r.getTop().preciseX(), r.getTop().preciseY()));
 			final PointList polygon = ptList;
-			return (new LineSeg(ownReference, foreignReference)).getLineIntersectionsWithLineSegs(polygon); 
+			return (new LineSeg(ownReference, foreignReference)).getLineIntersectionsWithLineSegs(polygon);
 		}
 	}
 

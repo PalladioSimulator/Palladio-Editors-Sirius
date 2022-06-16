@@ -25,10 +25,7 @@ public class InfrastructureRequiredRoleStyleConfigurationProvider implements ISt
 
 		List<String> supportedMappings = Arrays.asList("InfrastructureRequiredRole Node");
 
-		if (supportedMappings.contains(mapping.getName())) {
-			return true;
-		}
-		return false;
+		return supportedMappings.contains(mapping.getName());
 	}
 
 }

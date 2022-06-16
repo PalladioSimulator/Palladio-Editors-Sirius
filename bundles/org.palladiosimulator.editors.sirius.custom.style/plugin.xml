@@ -30,7 +30,6 @@
       <styleConfigurationProvider
             providerClass="org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.ResourceContainerStyleConfiguration">
       </styleConfigurationProvider>
-<!--
       <styleConfigurationProvider
             providerClass="org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.provider.EventChannelStyleConfigurationProvider">
       </styleConfigurationProvider>
@@ -54,10 +53,6 @@
       </styleConfigurationProvider>
       <styleConfigurationProvider
             providerClass="org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.provider.SourceRoleStyleConfigurationProvider">
-      </styleConfigurationProvider>
--->
-      <styleConfigurationProvider
-            providerClass="org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.provider.ConnectorStyleConfigurationProvider">
       </styleConfigurationProvider>
    </extension>
 </plugin>

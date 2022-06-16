@@ -8,7 +8,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfi
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.viewpoint.Style;
 import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.ConnectorStyleConfiguration;
-import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorProvider.OrientedHalfAlphaBasedAnchorProvider;
+import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorProvider.OrientedFixpointAnchorProvider;
 
 public class SinkRoleStyleConfigurationProvider implements IStyleConfigurationProvider {
 
@@ -17,7 +17,7 @@ public class SinkRoleStyleConfigurationProvider implements IStyleConfigurationPr
 
 	@Override
 	public StyleConfiguration createStyleConfiguration(DiagramElementMapping mapping, Style style) {
-		return new ConnectorStyleConfiguration(new OrientedHalfAlphaBasedAnchorProvider());
+		return new ConnectorStyleConfiguration(new OrientedFixpointAnchorProvider(0.15));
 	}
 
 	@Override
@@ -25,10 +25,7 @@ public class SinkRoleStyleConfigurationProvider implements IStyleConfigurationPr
 
 		List<String> supportedMappings = Arrays.asList("SinkRole Node");
 
-		if (supportedMappings.contains(mapping.getName())) {
-			return true;
-		}
-		return false;
+		return supportedMappings.contains(mapping.getName());
 	}
 
 }

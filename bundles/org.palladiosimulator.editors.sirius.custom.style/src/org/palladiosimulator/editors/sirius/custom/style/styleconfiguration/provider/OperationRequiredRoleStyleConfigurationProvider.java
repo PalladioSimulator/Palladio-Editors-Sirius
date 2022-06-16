@@ -25,10 +25,7 @@ public class OperationRequiredRoleStyleConfigurationProvider implements IStyleCo
 
 		List<String> supportedMappings = Arrays.asList("OperationRequiredRole Node");
 
-		if (supportedMappings.contains(mapping.getName())) {
-			return true;
-		}
-		return false;
+		return supportedMappings.contains(mapping.getName());
 	}
 
 }

@@ -25,10 +25,7 @@ public class SourceRoleStyleConfigurationProvider implements IStyleConfiguration
 
 		List<String> supportedMappings = Arrays.asList("SourceRole Node");
 
-		if (supportedMappings.contains(mapping.getName())) {
-			return true;
-		}
-		return false;
+		return supportedMappings.contains(mapping.getName());
 	}
 
 }
