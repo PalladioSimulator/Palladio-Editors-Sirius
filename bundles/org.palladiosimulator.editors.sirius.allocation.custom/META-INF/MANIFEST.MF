@@ -16,7 +16,6 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.12.0",
  org.eclipse.emf.edit.ui,
  org.eclipse.emf.transaction,
  org.eclipse.gmf.runtime.emf.commands.core,
- org.eclipse.sirius.common,
- tools.mdsd.library.emfeditutils;bundle-version="0.0.0"
+ org.eclipse.sirius.common
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
