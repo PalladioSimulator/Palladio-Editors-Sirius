@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ASCII"?>
+<repository:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.2" id="_iAc8IPZDEeydK99Z75ZClw">
+  <components__Repository xsi:type="repository:BasicComponent" id="_Ljf8wPu7Eey7C_gj_jwjCw" entityName="basicCompA">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_kQtH4P3gEeyKG5N7yQCbew" entityName="operationProvidedRoleNode" providedInterface__OperationProvidedRole="_gFCYsP3gEeyKG5N7yQCbew"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:InfrastructureProvidedRole" id="_9giv8AG7Ee2whLO-MOLsfw" entityName="infrastructureProvidedRoleNode" providedInterface__InfrastructureProvidedRole="_4QWBoAG7Ee2whLO-MOLsfw"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:SourceRole" id="_LOtJEAG8Ee2whLO-MOLsfw" entityName="sourceRoleNode" eventGroup__SourceRole="_DPJ4kAG8Ee2whLO-MOLsfw"/>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_M8dTwPu7Eey7C_gj_jwjCw" entityName="basicCompB">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_MNGrAAG8Ee2whLO-MOLsfw" entityName="sinkRoleNode" eventGroup__SinkRole="_DPJ4kAG8Ee2whLO-MOLsfw"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_jeExEP3gEeyKG5N7yQCbew" entityName="operationRequiredRoleNode" requiredInterface__OperationRequiredRole="_gFCYsP3gEeyKG5N7yQCbew"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:InfrastructureRequiredRole" id="_8Iy54AG7Ee2whLO-MOLsfw" entityName="infrastructureRequiredRoleNode" requiredInterface__InfrastructureRequiredRole="_4QWBoAG7Ee2whLO-MOLsfw"/>
+  </components__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_gFCYsP3gEeyKG5N7yQCbew" entityName="iOperation"/>
+  <interfaces__Repository xsi:type="repository:InfrastructureInterface" id="_4QWBoAG7Ee2whLO-MOLsfw" entityName="InfrastructureInterface1"/>
+  <interfaces__Repository xsi:type="repository:EventGroup" id="_DPJ4kAG8Ee2whLO-MOLsfw" entityName="EventGroup1"/>
+</repository:Repository>
