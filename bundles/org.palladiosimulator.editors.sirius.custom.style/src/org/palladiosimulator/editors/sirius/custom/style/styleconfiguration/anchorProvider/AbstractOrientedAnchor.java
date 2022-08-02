@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorProvider;
+package org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorprovider;
 
 import java.util.LinkedList;
 import java.util.Map;
@@ -25,7 +25,7 @@ import org.palladiosimulator.editors.sirius.custom.style.rotatable.figure.Rotata
  */
 public abstract class AbstractOrientedAnchor extends AlphaBasedSlidableImageAnchor {
 
-	private final Map<Orientation, Translation> TRANSLATION_CALCULATORS = createTranslationCalculators();
+	private final Map<Orientation, Translation> translationCalculators = createTranslationCalculators();
 
 	public AbstractOrientedAnchor(IFigure f, PrecisionPoint p) {
 		super(f, p);
@@ -41,7 +41,7 @@ public abstract class AbstractOrientedAnchor extends AlphaBasedSlidableImageAnch
 		Point anchorPoint = super.getLocation(reference);
 		getOwner().translateToRelative(anchorPoint);
 
-		Point newAnchorPoint = getOrientation(getOwner()).map(TRANSLATION_CALCULATORS::get)
+		Point newAnchorPoint = getOrientation(getOwner()).map(translationCalculators::get)
 				.map(t -> t.translate(anchorPoint, figureBounds)).orElse(anchorPoint);
 
 		getOwner().translateToAbsolute(newAnchorPoint);

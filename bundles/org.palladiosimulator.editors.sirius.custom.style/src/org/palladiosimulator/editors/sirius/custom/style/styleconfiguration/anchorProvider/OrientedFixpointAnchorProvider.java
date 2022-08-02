@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorProvider;
+package org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorprovider;
 
 import java.util.EnumMap;
 import java.util.Map;

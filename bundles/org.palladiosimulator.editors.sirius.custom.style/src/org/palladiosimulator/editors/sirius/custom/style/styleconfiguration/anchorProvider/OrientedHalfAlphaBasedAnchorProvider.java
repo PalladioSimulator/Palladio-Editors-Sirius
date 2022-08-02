@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorProvider;
+package org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorprovider;
 
 import java.util.EnumMap;
 import java.util.Map;
@@ -39,7 +39,7 @@ public class OrientedHalfAlphaBasedAnchorProvider implements AnchorProvider {
 
 	private static class OrientedHalfAlphaBasedAnchor extends AbstractOrientedAnchor {
 
-		private final Map<Orientation, Translation> ORIENTED_CENTER_CALCULATORS = createOrientedCenterCalculators();
+		private final Map<Orientation, Translation> orientedCenterCalculators = createOrientedCenterCalculators();
 
 		public OrientedHalfAlphaBasedAnchor(IFigure f, PrecisionPoint p) {
 			super(f, p);
@@ -60,7 +60,7 @@ public class OrientedHalfAlphaBasedAnchorProvider implements AnchorProvider {
 		private Point getCenterOfOrientedHalf() {
 			Rectangle figureBounds = getOwner().getBounds();
 			Point p = figureBounds.getCenter();
-			Point orientedCenter = super.getOrientation(getOwner()).map(ORIENTED_CENTER_CALCULATORS::get)
+			Point orientedCenter = super.getOrientation(getOwner()).map(orientedCenterCalculators::get)
 					.map(t -> t.translate(p, figureBounds)).orElse(p);
 			getOwner().translateToAbsolute(orientedCenter);
 			return orientedCenter;
