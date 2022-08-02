@@ -8,7 +8,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfi
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.viewpoint.Style;
 import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.ConnectorStyleConfiguration;
-import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorProvider.OrientedHalfAlphaBasedAnchorProvider;
+import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorprovider.OrientedHalfAlphaBasedAnchorProvider;
 
 public class OperationProvidedRoleStyleConfigurationProvider implements IStyleConfigurationProvider {
 
