@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorprovider;
+package org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorProvider;
 
 import java.util.LinkedList;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorprovider;
+package org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorProvider;
 
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.IFigure;
