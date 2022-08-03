@@ -12,20 +12,20 @@ import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anch
 
 public class EventChannelStyleConfigurationProvider implements IStyleConfigurationProvider {
 
-	public EventChannelStyleConfigurationProvider() {
-	}
+    public EventChannelStyleConfigurationProvider() {
+    }
 
-	@Override
-	public StyleConfiguration createStyleConfiguration(DiagramElementMapping mapping, Style style) {
-		return new ConnectorStyleConfiguration(new DiamondShapedSlidableAnchorProvider());
-	}
+    @Override
+    public StyleConfiguration createStyleConfiguration(final DiagramElementMapping mapping, final Style style) {
+        return new ConnectorStyleConfiguration(new DiamondShapedSlidableAnchorProvider());
+    }
 
-	@Override
-	public boolean provides(DiagramElementMapping mapping, Style style) {
+    @Override
+    public boolean provides(final DiagramElementMapping mapping, final Style style) {
 
-		List<String> supportedMappings = Arrays.asList("EventChannel Node");
+        final List<String> supportedMappings = Arrays.asList("EventChannel Node");
 
-		return supportedMappings.contains(mapping.getName());
-	}
+        return supportedMappings.contains(mapping.getName());
+    }
 
 }

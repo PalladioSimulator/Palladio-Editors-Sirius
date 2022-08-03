@@ -12,20 +12,20 @@ import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anch
 
 public class InfrastructureRequiredRoleStyleConfigurationProvider implements IStyleConfigurationProvider {
 
-	public InfrastructureRequiredRoleStyleConfigurationProvider() {
-	}
+    public InfrastructureRequiredRoleStyleConfigurationProvider() {
+    }
 
-	@Override
-	public StyleConfiguration createStyleConfiguration(DiagramElementMapping mapping, Style style) {
-		return new ConnectorStyleConfiguration(new OrientedFixpointAnchorProvider(1.0 / 3));
-	}
+    @Override
+    public StyleConfiguration createStyleConfiguration(final DiagramElementMapping mapping, final Style style) {
+        return new ConnectorStyleConfiguration(new OrientedFixpointAnchorProvider(1.0 / 3));
+    }
 
-	@Override
-	public boolean provides(DiagramElementMapping mapping, Style style) {
+    @Override
+    public boolean provides(final DiagramElementMapping mapping, final Style style) {
 
-		List<String> supportedMappings = Arrays.asList("InfrastructureRequiredRole Node");
+        final List<String> supportedMappings = Arrays.asList("InfrastructureRequiredRole Node");
 
-		return supportedMappings.contains(mapping.getName());
-	}
+        return supportedMappings.contains(mapping.getName());
+    }
 
 }

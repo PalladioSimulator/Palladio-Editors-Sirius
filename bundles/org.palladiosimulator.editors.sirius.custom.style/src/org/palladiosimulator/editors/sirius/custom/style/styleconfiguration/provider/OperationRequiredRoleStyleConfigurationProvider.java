@@ -12,20 +12,20 @@ import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anch
 
 public class OperationRequiredRoleStyleConfigurationProvider implements IStyleConfigurationProvider {
 
-	public OperationRequiredRoleStyleConfigurationProvider() {
-	}
+    public OperationRequiredRoleStyleConfigurationProvider() {
+    }
 
-	@Override
-	public StyleConfiguration createStyleConfiguration(DiagramElementMapping mapping, Style style) {
-		return new ConnectorStyleConfiguration(new OrientedFixpointAnchorProvider(0.25));
-	}
+    @Override
+    public StyleConfiguration createStyleConfiguration(final DiagramElementMapping mapping, final Style style) {
+        return new ConnectorStyleConfiguration(new OrientedFixpointAnchorProvider(0.25));
+    }
 
-	@Override
-	public boolean provides(DiagramElementMapping mapping, Style style) {
+    @Override
+    public boolean provides(final DiagramElementMapping mapping, final Style style) {
 
-		List<String> supportedMappings = Arrays.asList("OperationRequiredRole Node");
+        final List<String> supportedMappings = Arrays.asList("OperationRequiredRole Node");
 
-		return supportedMappings.contains(mapping.getName());
-	}
+        return supportedMappings.contains(mapping.getName());
+    }
 
 }

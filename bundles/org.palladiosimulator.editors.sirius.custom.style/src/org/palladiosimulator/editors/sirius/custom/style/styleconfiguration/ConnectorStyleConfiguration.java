@@ -5,20 +5,20 @@ import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util.AnchorProvider;
 
 public class ConnectorStyleConfiguration extends SimpleStyleConfiguration {
 
-	AnchorProvider anchorProvider;
+    AnchorProvider anchorProvider;
 
-	/**
-	 * Creates a StyleConfiguration for providing anchors for a connector
-	 * 
-	 * @param anchorProvider the provider for the specific anchortype
-	 */
-	public ConnectorStyleConfiguration(AnchorProvider anchorProvider) {
-		this.anchorProvider = anchorProvider;
-	}
+    /**
+     * Creates a StyleConfiguration for providing anchors for a connector
+     *
+     * @param anchorProvider
+     *            the provider for the specific anchortype
+     */
+    public ConnectorStyleConfiguration(final AnchorProvider anchorProvider) {
+        this.anchorProvider = anchorProvider;
+    }
 
-	@Override
-	public AnchorProvider getAnchorProvider() {
-		return anchorProvider;
-	}
-
+    @Override
+    public AnchorProvider getAnchorProvider() {
+        return this.anchorProvider;
+    }
 }

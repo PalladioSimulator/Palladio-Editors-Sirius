@@ -14,50 +14,66 @@ import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util.AnchorProvider;
 
 /**
  * Provides a slidable anchor located on a diamond shaped border.
- * 
+ *
  * @author Jonas Lehmann
  */
 public class DiamondShapedSlidableAnchorProvider implements AnchorProvider {
 
-	/**
-	 * Creates a provider for anchors that are located on a diamond shaped border.
-	 * The diamond is defined by the centerpoints of sides of the figures rectangle
-	 * bounds. The anchorpoints are slidable on the specified diamond edges.
-	 */
-	public DiamondShapedSlidableAnchorProvider() {
-	}
+    /**
+     * Creates a provider for anchors that are located on a diamond shaped border. The diamond is
+     * defined by the centerpoints of sides of the figures rectangle bounds. The anchorpoints are
+     * slidable on the specified diamond edges.
+     */
+    public DiamondShapedSlidableAnchorProvider() {
+    }
 
-	@Override
-	public ConnectionAnchor createDefaultAnchor(AirDefaultSizeNodeFigure figure) {
-		return new DiamondShapedSlidableAnchor(figure);
-	}
+    @Override
+    public ConnectionAnchor createDefaultAnchor(final AirDefaultSizeNodeFigure figure) {
+        return new DiamondShapedSlidableAnchor(figure);
+    }
 
-	@Override
-	public ConnectionAnchor createAnchor(final AirDefaultSizeNodeFigure figure, final PrecisionPoint p) {
-		return new DiamondShapedSlidableAnchor(figure, p);
-	}
+    @Override
+    public ConnectionAnchor createAnchor(final AirDefaultSizeNodeFigure figure, final PrecisionPoint p) {
+        return new DiamondShapedSlidableAnchor(figure, p);
+    }
 
-	private static class DiamondShapedSlidableAnchor extends SlidableAnchor {
+    private static class DiamondShapedSlidableAnchor extends SlidableAnchor {
 
-		public DiamondShapedSlidableAnchor(IFigure f, PrecisionPoint p) {
-			super(f, p);
-		}
+        public DiamondShapedSlidableAnchor(final IFigure f, final PrecisionPoint p) {
+            super(f, p);
+        }
 
-		public DiamondShapedSlidableAnchor(IFigure f) {
-			super(f);
-		}
+        public DiamondShapedSlidableAnchor(final IFigure f) {
+            super(f);
+        }
 
-		protected PointList getIntersectionPoints(Point ownReference, Point foreignReference) {
-			PrecisionRectangle r = new PrecisionRectangle(getBox());
-			PrecisionPointList ptList = new PrecisionPointList(5);
-			ptList.addPoint(new PrecisionPoint(r.getTop().preciseX(), r.getTop().preciseY()));
-			ptList.addPoint(new PrecisionPoint(r.getLeft().preciseX(), r.getLeft().preciseY()));
-			ptList.addPoint(new PrecisionPoint(r.getBottom().preciseX(), r.getBottom().preciseY()));
-			ptList.addPoint(new PrecisionPoint(r.getRight().preciseX(), r.getRight().preciseY()));
-			ptList.addPoint(new PrecisionPoint(r.getTop().preciseX(), r.getTop().preciseY()));
-			final PointList polygon = ptList;
-			return (new LineSeg(ownReference, foreignReference)).getLineIntersectionsWithLineSegs(polygon);
-		}
-	}
+        @Override
+        protected PointList getIntersectionPoints(final Point ownReference, final Point foreignReference) {
+            final PrecisionRectangle r = new PrecisionRectangle(this.getBox());
+            final PrecisionPointList ptList = new PrecisionPointList(5);
+            ptList.addPoint(new PrecisionPoint(r.getTop()
+                .preciseX(),
+                    r.getTop()
+                        .preciseY()));
+            ptList.addPoint(new PrecisionPoint(r.getLeft()
+                .preciseX(),
+                    r.getLeft()
+                        .preciseY()));
+            ptList.addPoint(new PrecisionPoint(r.getBottom()
+                .preciseX(),
+                    r.getBottom()
+                        .preciseY()));
+            ptList.addPoint(new PrecisionPoint(r.getRight()
+                .preciseX(),
+                    r.getRight()
+                        .preciseY()));
+            ptList.addPoint(new PrecisionPoint(r.getTop()
+                .preciseX(),
+                    r.getTop()
+                        .preciseY()));
+            final PointList polygon = ptList;
+            return (new LineSeg(ownReference, foreignReference)).getLineIntersectionsWithLineSegs(polygon);
+        }
+    }
 
 }

@@ -12,22 +12,22 @@ import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anch
 
 public class ExternalRolesStyleConfigurationProvider implements IStyleConfigurationProvider {
 
-	public ExternalRolesStyleConfigurationProvider() {
-	}
+    public ExternalRolesStyleConfigurationProvider() {
+    }
 
-	@Override
-	public StyleConfiguration createStyleConfiguration(DiagramElementMapping mapping, Style style) {
-		return new ConnectorStyleConfiguration(new OrientedFixpointAnchorProvider(1.0));
-	}
+    @Override
+    public StyleConfiguration createStyleConfiguration(final DiagramElementMapping mapping, final Style style) {
+        return new ConnectorStyleConfiguration(new OrientedFixpointAnchorProvider(1.0));
+    }
 
-	@Override
-	public boolean provides(DiagramElementMapping mapping, Style style) {
+    @Override
+    public boolean provides(final DiagramElementMapping mapping, final Style style) {
 
-		List<String> supportedMappings = Arrays.asList("ExternalOperationRequiredRole Node",
-				"ExternalOperationProvidedRole Node", "ExternalSourceRole Node", "ExternalSinkRole Node",
-				"ExternalInfrastructureRequiredRole Node", "ExternalInfrastructureProvidedRole Node");
+        final List<String> supportedMappings = Arrays.asList("ExternalOperationRequiredRole Node",
+                "ExternalOperationProvidedRole Node", "ExternalSourceRole Node", "ExternalSinkRole Node",
+                "ExternalInfrastructureRequiredRole Node", "ExternalInfrastructureProvidedRole Node");
 
-		return supportedMappings.contains(mapping.getName());
-	}
+        return supportedMappings.contains(mapping.getName());
+    }
 
 }
