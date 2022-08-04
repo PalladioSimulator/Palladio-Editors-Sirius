@@ -9,6 +9,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfig
 import org.eclipse.sirius.viewpoint.Style;
 import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.ConnectorStyleConfiguration;
 import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorprovider.OrientedHalfAlphaBasedAnchorProvider;
+import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorprovider.PixelOffsetDecorator;
 
 public class InfrastructureProvidedRoleStyleConfigurationProvider implements IStyleConfigurationProvider {
 
@@ -17,7 +18,7 @@ public class InfrastructureProvidedRoleStyleConfigurationProvider implements ISt
 
     @Override
     public StyleConfiguration createStyleConfiguration(final DiagramElementMapping mapping, final Style style) {
-        return new ConnectorStyleConfiguration(new OrientedHalfAlphaBasedAnchorProvider());
+        return new ConnectorStyleConfiguration(new PixelOffsetDecorator(new OrientedHalfAlphaBasedAnchorProvider()));
     }
 
     @Override

@@ -8,7 +8,8 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfi
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.viewpoint.Style;
 import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.ConnectorStyleConfiguration;
-import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorprovider.OrientedFixpointPixelOffsetAnchorProvider;
+import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorprovider.OrientedFixpointAnchorProvider;
+import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorprovider.PixelOffsetDecorator;
 
 public class SinkRoleStyleConfigurationProvider implements IStyleConfigurationProvider {
 
@@ -17,7 +18,7 @@ public class SinkRoleStyleConfigurationProvider implements IStyleConfigurationPr
 
     @Override
     public StyleConfiguration createStyleConfiguration(final DiagramElementMapping mapping, final Style style) {
-        return new ConnectorStyleConfiguration(new OrientedFixpointPixelOffsetAnchorProvider(0.15));
+        return new ConnectorStyleConfiguration(new PixelOffsetDecorator(new OrientedFixpointAnchorProvider(0.15)));
     }
 
     @Override
