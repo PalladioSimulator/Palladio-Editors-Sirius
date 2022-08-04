@@ -64,11 +64,11 @@ public abstract class AbstractOrientedAnchor extends AlphaBasedSlidableImageAnch
     /**
      * Implementation of mapping a {@link Translation} function to each orientation to translate a
      * cursor position to a valid anchorPoint location.
-     * 
+     *
      * <br>
      * <br>
      * For an example implementation see {@link OperationRequiredRoleAnchorProvider}
-     * 
+     *
      * @return the specified map
      */
     protected abstract Map<Orientation, Translation> createTranslationCalculators();
