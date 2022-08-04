@@ -44,7 +44,7 @@ public class OrientedFixpointAnchorProvider implements AnchorProvider {
     public ConnectionAnchor createAnchor(final AirDefaultSizeNodeFigure figure, final PrecisionPoint p) {
         return new OrientedFixpointAnchor(figure, p, this.relativeOffset);
     }
-    
+
     private static class OrientedFixpointAnchor extends AbstractOrientedAnchor {
 
         private final double relativeOffset;

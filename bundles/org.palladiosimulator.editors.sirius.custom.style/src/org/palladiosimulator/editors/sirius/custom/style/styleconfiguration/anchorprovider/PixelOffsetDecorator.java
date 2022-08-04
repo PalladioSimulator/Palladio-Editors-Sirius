@@ -20,48 +20,48 @@ import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util.AnchorProvider;
  *
  * @author Jonas Lehmann
  */
-public class PixelOffsetDecorator implements AnchorProvider{
+public class PixelOffsetDecorator implements AnchorProvider {
 
     private final static int PIXEL_OFFSET = 2;
     private final AnchorProvider anchorProvider;
-    
+
     /**
      * Creates a new {@link PixelOffsetDecorator}.
      *
      * @param anchorProvider
      *            the AnchorProvider which should be decorated
      */
-    public PixelOffsetDecorator(AnchorProvider anchorProvider) {
+    public PixelOffsetDecorator(final AnchorProvider anchorProvider) {
         this.anchorProvider = anchorProvider;
     }
-    
+
     @Override
-    public ConnectionAnchor createDefaultAnchor(AirDefaultSizeNodeFigure figure) {
-        ConnectionAnchor anchor = this.anchorProvider.createDefaultAnchor(figure);
+    public ConnectionAnchor createDefaultAnchor(final AirDefaultSizeNodeFigure figure) {
+        final ConnectionAnchor anchor = this.anchorProvider.createDefaultAnchor(figure);
         return new AnchorDecorator(anchor);
     }
 
     @Override
-    public ConnectionAnchor createAnchor(AirDefaultSizeNodeFigure figure, PrecisionPoint p) {
-        ConnectionAnchor anchor = this.anchorProvider.createAnchor(figure, p);
+    public ConnectionAnchor createAnchor(final AirDefaultSizeNodeFigure figure, final PrecisionPoint p) {
+        final ConnectionAnchor anchor = this.anchorProvider.createAnchor(figure, p);
         return new AnchorDecorator(anchor);
     }
-    
+
     private class AnchorDecorator implements ConnectionAnchor {
 
-        private ConnectionAnchor anchor;
-        
-        public AnchorDecorator(ConnectionAnchor anchor) {
+        private final ConnectionAnchor anchor;
+
+        public AnchorDecorator(final ConnectionAnchor anchor) {
             this.anchor = anchor;
         }
-        
+
         @Override
-        public void addAnchorListener(AnchorListener listener) {
+        public void addAnchorListener(final AnchorListener listener) {
             this.anchor.addAnchorListener(listener);
         }
 
         @Override
-        public Point getLocation(Point reference) {
+        public Point getLocation(final Point reference) {
             final Point anchorPoint = this.anchor.getLocation(reference);
 
             this.getOwner()
@@ -92,10 +92,10 @@ public class PixelOffsetDecorator implements AnchorProvider{
         }
 
         @Override
-        public void removeAnchorListener(AnchorListener listener) {
+        public void removeAnchorListener(final AnchorListener listener) {
             this.anchor.removeAnchorListener(listener);
         }
-        
+
     }
 
 }
