@@ -30,5 +30,29 @@
       <styleConfigurationProvider
             providerClass="org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.ResourceContainerStyleConfiguration">
       </styleConfigurationProvider>
+      <styleConfigurationProvider
+            providerClass="org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.provider.EventChannelStyleConfigurationProvider">
+      </styleConfigurationProvider>
+      <styleConfigurationProvider
+            providerClass="org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.provider.ExternalRolesStyleConfigurationProvider">
+      </styleConfigurationProvider>
+      <styleConfigurationProvider
+            providerClass="org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.provider.InfrastructureProvidedRoleStyleConfigurationProvider">
+      </styleConfigurationProvider>
+      <styleConfigurationProvider
+            providerClass="org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.provider.InfrastructureRequiredRoleStyleConfigurationProvider">
+      </styleConfigurationProvider>
+      <styleConfigurationProvider
+            providerClass="org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.provider.OperationProvidedRoleStyleConfigurationProvider">
+      </styleConfigurationProvider>
+      <styleConfigurationProvider
+            providerClass="org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.provider.OperationRequiredRoleStyleConfigurationProvider">
+      </styleConfigurationProvider>
+      <styleConfigurationProvider
+            providerClass="org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.provider.SinkRoleStyleConfigurationProvider">
+      </styleConfigurationProvider>
+      <styleConfigurationProvider
+            providerClass="org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.provider.SourceRoleStyleConfigurationProvider">
+      </styleConfigurationProvider>
    </extension>
 </plugin>
