@@ -8,24 +8,25 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfi
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.viewpoint.Style;
 import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.ConnectorStyleConfiguration;
-import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorProvider.OrientedHalfAlphaBasedAnchorProvider;
+import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorprovider.OrientedHalfAlphaBasedAnchorProvider;
+import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorprovider.PixelOffsetDecorator;
 
 public class OperationProvidedRoleStyleConfigurationProvider implements IStyleConfigurationProvider {
 
-	public OperationProvidedRoleStyleConfigurationProvider() {
-	}
+    public OperationProvidedRoleStyleConfigurationProvider() {
+    }
 
-	@Override
-	public StyleConfiguration createStyleConfiguration(DiagramElementMapping mapping, Style style) {
-		return new ConnectorStyleConfiguration(new OrientedHalfAlphaBasedAnchorProvider());
-	}
+    @Override
+    public StyleConfiguration createStyleConfiguration(final DiagramElementMapping mapping, final Style style) {
+        return new ConnectorStyleConfiguration(new PixelOffsetDecorator(new OrientedHalfAlphaBasedAnchorProvider()));
+    }
 
-	@Override
-	public boolean provides(DiagramElementMapping mapping, Style style) {
+    @Override
+    public boolean provides(final DiagramElementMapping mapping, final Style style) {
 
-		List<String> supportedMappings = Arrays.asList("OperationProvidedRole Node");
+        final List<String> supportedMappings = Arrays.asList("OperationProvidedRole Node");
 
-		return supportedMappings.contains(mapping.getName());
-	}
+        return supportedMappings.contains(mapping.getName());
+    }
 
 }

@@ -8,26 +8,26 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfi
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.viewpoint.Style;
 import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.ConnectorStyleConfiguration;
-import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorProvider.OrientedFixpointAnchorProvider;
+import org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorprovider.OrientedFixpointAnchorProvider;
 
 public class ExternalRolesStyleConfigurationProvider implements IStyleConfigurationProvider {
 
-	public ExternalRolesStyleConfigurationProvider() {
-	}
+    public ExternalRolesStyleConfigurationProvider() {
+    }
 
-	@Override
-	public StyleConfiguration createStyleConfiguration(DiagramElementMapping mapping, Style style) {
-		return new ConnectorStyleConfiguration(new OrientedFixpointAnchorProvider(1.0));
-	}
+    @Override
+    public StyleConfiguration createStyleConfiguration(final DiagramElementMapping mapping, final Style style) {
+        return new ConnectorStyleConfiguration(new OrientedFixpointAnchorProvider(1.0));
+    }
 
-	@Override
-	public boolean provides(DiagramElementMapping mapping, Style style) {
+    @Override
+    public boolean provides(final DiagramElementMapping mapping, final Style style) {
 
-		List<String> supportedMappings = Arrays.asList("ExternalOperationRequiredRole Node",
-				"ExternalOperationProvidedRole Node", "ExternalSourceRole Node", "ExternalSinkRole Node",
-				"ExternalInfrastructureRequiredRole Node", "ExternalInfrastructureProvidedRole Node");
+        final List<String> supportedMappings = Arrays.asList("ExternalOperationRequiredRole Node",
+                "ExternalOperationProvidedRole Node", "ExternalSourceRole Node", "ExternalSinkRole Node",
+                "ExternalInfrastructureRequiredRole Node", "ExternalInfrastructureProvidedRole Node");
 
-		return supportedMappings.contains(mapping.getName());
-	}
+        return supportedMappings.contains(mapping.getName());
+    }
 
 }
