@@ -14,7 +14,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_tHaQsP7OEeyzgp9bLHE07g">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.palladiosimulator.editors.sirius.assembly/description/assembly.odesign#//@ownedViewpoints[name='Assembly']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_tHl24P7OEeyzgp9bLHE07g" name="Assembly Diagram" repPath="#_tHd7EP7OEeyzgp9bLHE07g" changeId="17377e8a-61d3-4b0b-a5c0-0115ff464e08">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_tHl24P7OEeyzgp9bLHE07g" name="Assembly Diagram" repPath="#_tHd7EP7OEeyzgp9bLHE07g" changeId="8c99388a-1b76-4087-ab2f-5051c1650fb5">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.palladiosimulator.editors.sirius.assembly/description/assembly.odesign#//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']"/>
         <target xmi:type="system:System" href="MySystem.system#_oTckMPZDEeydK99Z75ZClw"/>
       </ownedRepresentationDescriptors>
@@ -101,7 +101,7 @@
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8KZcYgG7Ee2whLO-MOLsfw"/>
                 </children>
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_8KYOQQG7Ee2whLO-MOLsfw" fontName="Segoe UI" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8KYOQgG7Ee2whLO-MOLsfw" x="371" y="15" width="30" height="30"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8KYOQgG7Ee2whLO-MOLsfw" x="426" y="15" width="30" height="30"/>
               </children>
               <children xmi:type="notation:Node" xmi:id="_MNZl8AG8Ee2whLO-MOLsfw" type="3012" element="_MNQcAgG8Ee2whLO-MOLsfw">
                 <children xmi:type="notation:Node" xmi:id="_MNZl8wG8Ee2whLO-MOLsfw" type="5010">
@@ -112,10 +112,10 @@
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MNaNAgG8Ee2whLO-MOLsfw"/>
                 </children>
                 <styles xmi:type="notation:ShapeStyle" xmi:id="_MNZl8QG8Ee2whLO-MOLsfw" fontName="Segoe UI" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MNZl8gG8Ee2whLO-MOLsfw" x="255" y="-30" width="30" height="30"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MNZl8gG8Ee2whLO-MOLsfw" x="360" y="-30" width="30" height="30"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_tIM65f7OEeyzgp9bLHE07g" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tIM65v7OEeyzgp9bLHE07g" x="55" y="254" width="373"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tIM65v7OEeyzgp9bLHE07g" x="55" y="254" width="428"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_oms90AG8Ee2whLO-MOLsfw" type="3007" element="_ole10AG8Ee2whLO-MOLsfw">
               <children xmi:type="notation:Node" xmi:id="_omtk4AG8Ee2whLO-MOLsfw" type="5003">
