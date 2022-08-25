@@ -62,23 +62,21 @@ public class PixelOffsetDecorator implements AnchorProvider {
 
         @Override
         public Point getLocation(final Point reference) {
-            PrecisionPoint ref = new PrecisionPoint(reference);
-            final Point prevAnchorPoint = this.anchor.getLocation(ref);
-            PrecisionPoint anchorPoint = new PrecisionPoint(prevAnchorPoint);
+            final Point anchorPoint = this.anchor.getLocation(reference);
 
             this.getOwner()
                 .translateToRelative(anchorPoint);
             this.getOwner()
-                .translateToRelative(ref);
+                .translateToRelative(reference);
 
-            final double distance = anchorPoint.getDistance(ref);
+            final double distance = anchorPoint.getDistance(reference);
             anchorPoint
-                .translate((ref.getTranslated(anchorPoint.getNegated())).getScaled(1 / distance * PIXEL_OFFSET));
+                .translate((reference.getTranslated(anchorPoint.getNegated())).getScaled(1 / distance * PIXEL_OFFSET));
 
             this.getOwner()
                 .translateToAbsolute(anchorPoint);
             this.getOwner()
-                .translateToAbsolute(ref);
+                .translateToAbsolute(reference);
 
             return anchorPoint;
         }

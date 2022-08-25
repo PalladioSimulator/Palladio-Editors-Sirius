@@ -82,12 +82,10 @@ public class AnchorProviderTest extends SiriusDiagramTestCase {
 	}
 
 	/**
-	 * Data Handler for Points and Diagram Elements of a Connection.
-	 * <br>
+	 * Data Handler for Points and Diagram Elements of a Connection. <br>
 	 * <br>
 	 * 1) Use the constructor to create a connection edge. <br>
-	 * 2) Use the assertion methods for checking values of the Points.
-	 * <br>
+	 * 2) Use the assertion methods for checking values of the Points. <br>
 	 * <br>
 	 * 3) Use deleteEdge() for cleaning up the testmodel diagram for the next test.
 	 * 
@@ -129,8 +127,10 @@ public class AnchorProviderTest extends SiriusDiagramTestCase {
 		}
 
 		private void initAnchorPoints() {
-			Point referencePointForSource = srcNodeEP.getSourceConnectionAnchor(cursor).getLocation(new PrecisionPoint(0, 0));
-			Point referencePointForTarget = targetNodeEP.getTargetConnectionAnchor(cursor).getLocation(new PrecisionPoint(0, 0));
+			Point referencePointForSource = srcNodeEP.getSourceConnectionAnchor(cursor)
+					.getLocation(new PrecisionPoint(0, 0));
+			Point referencePointForTarget = targetNodeEP.getTargetConnectionAnchor(cursor)
+					.getLocation(new PrecisionPoint(0, 0));
 			targetAnchorPoint = targetNodeEP.getTargetConnectionAnchor(cursor).getLocation(referencePointForSource);
 			srcAnchorPoint = srcNodeEP.getSourceConnectionAnchor(cursor).getLocation(referencePointForTarget);
 		}
@@ -170,7 +170,7 @@ public class AnchorProviderTest extends SiriusDiagramTestCase {
 			assertEquals("Target of " + nameOfEdgeCreationTool + ": The AnchorPoint differs from its desired location",
 					targetAnchorPoint, desiredLocation);
 		}
-		
+
 		public void assertTargetAnchorPointEqualsWithOffset(Point desiredLocation, double offset) {
 			assertTrue("Target of " + nameOfEdgeCreationTool + ": The AnchorPoint differs from its desired location",
 					Math.abs(offset - targetAnchorPoint.getDistance(desiredLocation)) <= EPSILON);
@@ -182,7 +182,8 @@ public class AnchorProviderTest extends SiriusDiagramTestCase {
 		}
 
 		public void assertSrcAnchorPointOnLine(Point a, Point b) {
-			assertTrue("Source of " + nameOfEdgeCreationTool + ": The AnchorPoint is not on the specified straight line",
+			assertTrue(
+					"Source of " + nameOfEdgeCreationTool + ": The AnchorPoint is not on the specified straight line",
 					isStraightLine(a, srcAnchorPoint, b));
 		}
 
@@ -193,9 +194,10 @@ public class AnchorProviderTest extends SiriusDiagramTestCase {
 		}
 
 		public void assertTargetAnchorPointOnCircleAround(Point desiredLocation, double radius) {
-			//System.out.println("radius - distance: " + (radius + PIXEL_OFFSET) + " - " + targetAnchorPoint.getDistance(desiredLocation));
+			System.out.println("radius - distance: " + (radius + PIXEL_OFFSET) + " - "
+					+ targetAnchorPoint.getDistance(desiredLocation));
 			assertTrue("Target of " + nameOfEdgeCreationTool + ": The AnchorPoint is not on the specified circle line",
-					Math.abs(radius - targetAnchorPoint.getDistance(desiredLocation)) <= EPSILON);
+					Math.abs(radius - Math.round(targetAnchorPoint.getDistance(desiredLocation))) <= EPSILON);
 		}
 
 		public void deleteEdge() {
@@ -230,7 +232,8 @@ public class AnchorProviderTest extends SiriusDiagramTestCase {
 			Point unitVectorTowardsTarget2 = target2.getTranslated(src.getNegated()).getScaled(1 / distanceSrcTarget2);
 
 			final double distanceOfUnitVectors = unitVectorTowardsTarget1.getDistance(unitVectorTowardsTarget2);
-			//System.out.println(unitVectorTowardsTarget1 + ", " + unitVectorTowardsTarget2 + ", distance = " + distanceOfUnitVectors);
+//			System.out.println(unitVectorTowardsTarget1 + ", " + unitVectorTowardsTarget2 + ", distance = "
+//					+ distanceOfUnitVectors);
 			return distanceOfUnitVectors < EPSILON;
 		}
 	}
@@ -261,21 +264,57 @@ public class AnchorProviderTest extends SiriusDiagramTestCase {
 		// Edge deletion, cleaning for next test
 		cInit.deleteEdge();
 	}
-	
+
 	/**
 	 * Assembly Infrastructure Connector
 	 */
 	@Test
 	public void testAssemblyInfrastructureConnectorPointsAfterEdgeCreation() {
-		//TODO
+
+		// Init Connection
+		ConnectionInitializer cInit = new ConnectionInitializer("infrastructureRequiredRoleNode",
+				"infrastructureProvidedRoleNode", "AssemblyInfrastructureConnector");
+
+		// Calculate desired Values and compare Values
+
+		// 1st: infrastructureRequiredRoleNode --> Right Center and 1/3 * length left
+		Point srcDesiredPoint = cInit.getSrcNodeRect().getRight().translate(-10, 0);
+		getEditPart(cInit.getSrcNode()).getFigure().translateToAbsolute(srcDesiredPoint);
+		cInit.assertSrcAnchorPointEquals(srcDesiredPoint);
+
+		// 2nd: infrastructureProvidedRoleNode --> Bottom Center, 11 right and 8 up
+		Point targetDesiredPoint = cInit.getTargetNodeRect().getBottom().translate(11, -8);
+		getEditPart(cInit.getTargetNode()).getFigure().translateToAbsolute(targetDesiredPoint);
+		cInit.assertTargetAnchorPointEquals(targetDesiredPoint);
+
+		// Edge deletion, cleaning for next test
+		cInit.deleteEdge();
 	}
-	
+
 	/**
 	 * Assembly Event Connector
 	 */
 	@Test
 	public void testAssemblyEventConnectorPointsAfterEdgeCreation() {
-		//TODO
+
+		// Init Connection
+		ConnectionInitializer cInit = new ConnectionInitializer("sourceRoleNode", "sinkRoleNode",
+				"AssemblyEventConnector");
+
+		// Calculate desired Values and compare Values
+
+		// 1st: SourceRoleNode --> Bottom Center and 0.4 * length up
+		Point srcDesiredPoint = cInit.getSrcNodeRect().getBottom().translate(0, -12);
+		getEditPart(cInit.getSrcNode()).getFigure().translateToAbsolute(srcDesiredPoint);
+		cInit.assertSrcAnchorPointEquals(srcDesiredPoint);
+
+		// 2nd: SinkRoleNode --> Top Center and 0.15 * length down
+		Point targetDesiredPoint = cInit.getTargetNodeRect().getTop().translate(0, 4.5);
+		getEditPart(cInit.getTargetNode()).getFigure().translateToAbsolute(targetDesiredPoint);
+		cInit.assertTargetAnchorPointEqualsWithOffset(targetDesiredPoint, PIXEL_OFFSET);
+
+		// Edge deletion, cleaning for next test
+		cInit.deleteEdge();
 	}
 
 	/**
@@ -329,7 +368,8 @@ public class AnchorProviderTest extends SiriusDiagramTestCase {
 		getEditPart(cInit.getSrcNode()).getFigure().translateToAbsolute(srcDesiredCenterPoint);
 		cInit.assertConnectionAimsAt(srcDesiredCenterPoint);
 
-		// 2nd: If source is on the border, it is between corner points of the diamond shape
+		// 2nd: If source is on the border, it is between corner points of the diamond
+		// shape
 		Point leftOfDiamondShape = cInit.getSrcNodeRect().getLeft();
 		Point bottomOfDiamondShape = cInit.getSrcNodeRect().getBottom();
 		getEditPart(cInit.getSrcNode()).getFigure().translateToAbsolute(leftOfDiamondShape);
@@ -344,7 +384,7 @@ public class AnchorProviderTest extends SiriusDiagramTestCase {
 		// Edge deletion, cleaning for next test
 		cInit.deleteEdge();
 	}
-	
+
 	/**
 	 * Source Delegation Connector
 	 */
@@ -370,46 +410,137 @@ public class AnchorProviderTest extends SiriusDiagramTestCase {
 		// Edge deletion, cleaning for next test
 		cInit.deleteEdge();
 	}
-	
+
 	/**
 	 * Sink Delegation Connector
 	 */
 	@Test
 	public void testSinkDelegationConnectorPointsAfterEdgeCreation() {
-		//TODO
+
+		// Init Connection
+		ConnectionInitializer cInit = new ConnectionInitializer("externalSinkRoleNode", "sinkRoleNode",
+				"SinkDelegationConnector");
+
+		// Calculate desired Values and compare Values
+
+		// 1st: ExternalSourceRoleNode --> Left Center (because external role)
+		Point srcDesiredPoint = cInit.getSrcNodeRect().getLeft();
+		getEditPart(cInit.getSrcNode()).getFigure().translateToAbsolute(srcDesiredPoint);
+		cInit.assertSrcAnchorPointEquals(srcDesiredPoint);
+
+		// 2nd: SinkRoleNode --> Top Center and 0.15 * length down
+		Point targetDesiredPoint = cInit.getTargetNodeRect().getTop().translate(0, 4.5);
+		getEditPart(cInit.getTargetNode()).getFigure().translateToAbsolute(targetDesiredPoint);
+		cInit.assertTargetAnchorPointEqualsWithOffset(targetDesiredPoint, PIXEL_OFFSET);
+
+		// Edge deletion, cleaning for next test
+		cInit.deleteEdge();
 	}
-	
+
 	/**
 	 * Provided Delegation Connector
 	 */
 	@Test
 	public void testProvidedDelegationConnectorPointsAfterEdgeCreation() {
-		//TODO
+
+		// Init Connection
+		ConnectionInitializer cInit = new ConnectionInitializer("externalProvidedRoleNode", "operationProvidedRoleNode",
+				"ProvidedDelegationConnector");
+
+		// Calculate desired Values and compare Values
+
+		// 1st: externalProvidedRoleNode --> Right Center (because external role)
+		Point srcDesiredPoint = cInit.getSrcNodeRect().getRight();
+		getEditPart(cInit.getSrcNode()).getFigure().translateToAbsolute(srcDesiredPoint);
+		cInit.assertSrcAnchorPointEquals(srcDesiredPoint);
+
+		// 2nd: OperationProvidedRoleNode --> Bottom Center and 10 pixel up
+		Point targetDesiredPoint = cInit.getTargetNodeRect().getBottom().translate(0, -10);
+		getEditPart(cInit.getTargetNode()).getFigure().translateToAbsolute(targetDesiredPoint);
+		double radius = 7.0;
+		cInit.assertTargetAnchorPointOnCircleAround(targetDesiredPoint, radius + PIXEL_OFFSET);
+
+		// Edge deletion, cleaning for next test
+		cInit.deleteEdge();
 	}
-	
+
 	/**
 	 * Required Delegation Connector
 	 */
 	@Test
 	public void testRequiredDelegationConnectorPointsAfterEdgeCreation() {
-		//TODO
+
+		// Init Connection
+		ConnectionInitializer cInit = new ConnectionInitializer("operationRequiredRoleNode", "externalRequiredRoleNode",
+				"RequiredDelegationConnector");
+
+		// Calculate desired Values and compare Values
+
+		// 1st: OperationRequiredRoleNode --> Top Center and 0.25 * length down
+		Point srcDesiredPoint = cInit.getSrcNodeRect().getTop().translate(0, 7.5);
+		getEditPart(cInit.getSrcNode()).getFigure().translateToAbsolute(srcDesiredPoint);
+		cInit.assertSrcAnchorPointEquals(srcDesiredPoint);
+
+		// 2nd: externalRequiredRoleNode --> Right Center (because external role)
+		Point targetDesiredPoint = cInit.getTargetNodeRect().getRight();
+		getEditPart(cInit.getTargetNode()).getFigure().translateToAbsolute(targetDesiredPoint);
+		cInit.assertTargetAnchorPointEquals(targetDesiredPoint);
+		;
+
+		// Edge deletion, cleaning for next test
+		cInit.deleteEdge();
 	}
-	
+
 	/**
 	 * Provided Infrastructure Delegation Connector
 	 */
 	@Test
 	public void testProvidedInfrastructureDelegationConnectorPointsAfterEdgeCreation() {
-		//TODO
+
+		// Init Connection
+		ConnectionInitializer cInit = new ConnectionInitializer("externalInfrastructureProvidedRoleNode",
+				"infrastructureProvidedRoleNode", "ProvidedInfrastructureDelegationConnector");
+
+		// Calculate desired Values and compare Values
+
+		// 1st: infrastructureRequiredRoleNode --> Bottom Center (because external role)
+		Point srcDesiredPoint = cInit.getSrcNodeRect().getBottom();
+		getEditPart(cInit.getSrcNode()).getFigure().translateToAbsolute(srcDesiredPoint);
+		cInit.assertSrcAnchorPointEquals(srcDesiredPoint);
+
+		// 2nd: infrastructureProvidedRoleNode --> Top Center, 12 right and 8 down
+		Point targetDesiredPoint = cInit.getTargetNodeRect().getTop().translate(12, 8);
+		getEditPart(cInit.getTargetNode()).getFigure().translateToAbsolute(targetDesiredPoint);
+		cInit.assertTargetAnchorPointEquals(targetDesiredPoint);
+
+		// Edge deletion, cleaning for next test
+		cInit.deleteEdge();
 	}
-	
+
 	/**
 	 * Required Infrastructure Delegation Connector
 	 */
 	@Test
 	public void testRequiredInfrastructureDelegationConnectorPointsAfterEdgeCreation() {
-		//TODO
+
+		// Init Connection
+		ConnectionInitializer cInit = new ConnectionInitializer("infrastructureRequiredRoleNode",
+				"externalInfrastructureRequiredRoleNode", "RequiredInfrastructureDelegationConnector");
+
+		// Calculate desired Values and compare Values
+
+		// 1st: infrastructureRequiredRoleNode --> Right Center and 1/3 * length left
+		Point srcDesiredPoint = cInit.getSrcNodeRect().getRight().translate(-10, 0);
+		getEditPart(cInit.getSrcNode()).getFigure().translateToAbsolute(srcDesiredPoint);
+		cInit.assertSrcAnchorPointEquals(srcDesiredPoint);
+
+		// 2nd: externalInfrastructureRequiredRoleNode --> Top Center (because external role)
+		Point targetDesiredPoint = cInit.getTargetNodeRect().getTop();
+		getEditPart(cInit.getTargetNode()).getFigure().translateToAbsolute(targetDesiredPoint);
+		cInit.assertTargetAnchorPointEquals(targetDesiredPoint);
+
+		// Edge deletion, cleaning for next test
+		cInit.deleteEdge();
 	}
-	
-	
+
 }
