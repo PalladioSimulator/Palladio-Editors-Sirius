@@ -14,7 +14,7 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_tHaQsP7OEeyzgp9bLHE07g">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.palladiosimulator.editors.sirius.assembly/description/assembly.odesign#//@ownedViewpoints[name='Assembly']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_tHl24P7OEeyzgp9bLHE07g" name="Assembly Diagram" repPath="#_tHd7EP7OEeyzgp9bLHE07g" changeId="8c99388a-1b76-4087-ab2f-5051c1650fb5">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_tHl24P7OEeyzgp9bLHE07g" name="Assembly Diagram" repPath="#_tHd7EP7OEeyzgp9bLHE07g" changeId="c4649f80-3bd0-4fc9-a63b-8fc4902239ac">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.palladiosimulator.editors.sirius.assembly/description/assembly.odesign#//@ownedViewpoints[name='Assembly']/@ownedRepresentations[name='Assembly%20Diagram']"/>
         <target xmi:type="system:System" href="MySystem.system#_oTckMPZDEeydK99Z75ZClw"/>
       </ownedRepresentationDescriptors>
