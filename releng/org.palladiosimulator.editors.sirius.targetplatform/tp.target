@@ -280,5 +280,10 @@
 <unit id="tools.mdsd.library.emfeditutils.feature.feature.group" version="0.0.0"/>
 <repository location="https://updatesite.mdsd.tools/library-emfeditutils/releases/latest/"/>
 </location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.sirius.tests.junit.support" version="0.0.0"/>
+<unit id="org.eclipse.sirius.tests.junit" version="0.0.0"/>
+<repository location="https://download.eclipse.org/sirius/updates/releases/6.6.0/2020-09/"/>
+</location>
 </locations>
 </target>
