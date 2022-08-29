@@ -1,6 +1,6 @@
 package org.palladiosimulator.editors.sirius.custom.style.styleconfiguration.anchorprovider;
 
-import org.eclipse.draw2d.AnchorListener;
+import org.eclipse.draw2d.AbstractConnectionAnchor;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Point;
@@ -38,64 +38,44 @@ public class PixelOffsetDecorator implements AnchorProvider {
     @Override
     public ConnectionAnchor createDefaultAnchor(final AirDefaultSizeNodeFigure figure) {
         final ConnectionAnchor anchor = this.anchorProvider.createDefaultAnchor(figure);
-        return new AnchorDecorator(anchor);
+        return new AnchorDecorator(anchor, figure);
     }
 
     @Override
     public ConnectionAnchor createAnchor(final AirDefaultSizeNodeFigure figure, final PrecisionPoint p) {
         final ConnectionAnchor anchor = this.anchorProvider.createAnchor(figure, p);
-        return new AnchorDecorator(anchor);
+        return new AnchorDecorator(anchor, figure);
     }
 
-    private class AnchorDecorator implements ConnectionAnchor {
+    private class AnchorDecorator extends AbstractConnectionAnchor {
 
         private final ConnectionAnchor anchor;
 
-        public AnchorDecorator(final ConnectionAnchor anchor) {
+        public AnchorDecorator(final ConnectionAnchor anchor, final IFigure f) {
+            super(f);
             this.anchor = anchor;
         }
 
         @Override
-        public void addAnchorListener(final AnchorListener listener) {
-            this.anchor.addAnchorListener(listener);
-        }
-
-        @Override
         public Point getLocation(final Point reference) {
-            final Point anchorPoint = this.anchor.getLocation(reference);
+            final PrecisionPoint ref = new PrecisionPoint(reference);
+            final Point prevAnchorPoint = this.anchor.getLocation(ref);
+            final PrecisionPoint anchorPoint = new PrecisionPoint(prevAnchorPoint);
 
             this.getOwner()
                 .translateToRelative(anchorPoint);
             this.getOwner()
-                .translateToRelative(reference);
+                .translateToRelative(ref);
 
-            final double distance = anchorPoint.getDistance(reference);
-            anchorPoint
-                .translate((reference.getTranslated(anchorPoint.getNegated())).getScaled(1 / distance * PIXEL_OFFSET));
+            final double distance = anchorPoint.getDistance(ref);
+            anchorPoint.translate((ref.getTranslated(anchorPoint.getNegated())).getScaled(1 / distance * PIXEL_OFFSET));
 
             this.getOwner()
                 .translateToAbsolute(anchorPoint);
             this.getOwner()
-                .translateToAbsolute(reference);
+                .translateToAbsolute(ref);
 
             return anchorPoint;
         }
-
-        @Override
-        public IFigure getOwner() {
-            return this.anchor.getOwner();
-        }
-
-        @Override
-        public Point getReferencePoint() {
-            return this.anchor.getReferencePoint();
-        }
-
-        @Override
-        public void removeAnchorListener(final AnchorListener listener) {
-            this.anchor.removeAnchorListener(listener);
-        }
-
     }
-
 }

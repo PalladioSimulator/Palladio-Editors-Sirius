@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ASCII"?>
+<system:System xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.2" xmlns:system="http://palladiosimulator.org/PalladioComponentModel/System/5.2" id="_oTckMPZDEeydK99Z75ZClw" entityName="sys">
+  <assemblyContexts__ComposedStructure id="_UZyoAPu7Eey7C_gj_jwjCw" entityName="assemblyOfA">
+    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="MyRepository.repository#_Ljf8wPu7Eey7C_gj_jwjCw"/>
+  </assemblyContexts__ComposedStructure>
+  <assemblyContexts__ComposedStructure id="_VPjLUPu7Eey7C_gj_jwjCw" entityName="assemblyOfB">
+    <encapsulatedComponent__AssemblyContext xsi:type="repository:BasicComponent" href="MyRepository.repository#_M8dTwPu7Eey7C_gj_jwjCw"/>
+  </assemblyContexts__ComposedStructure>
+  <eventChannel__ComposedStructure id="_oOOzcAG8Ee2whLO-MOLsfw" entityName="eventChannel">
+    <eventGroup__EventChannel href="MyRepository.repository#_DPJ4kAG8Ee2whLO-MOLsfw"/>
+  </eventChannel__ComposedStructure>
+  <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_XIw8wAG7Ee2whLO-MOLsfw" entityName="externalProvidedRoleNode">
+    <providedInterface__OperationProvidedRole href="MyRepository.repository#_gFCYsP3gEeyKG5N7yQCbew"/>
+  </providedRoles_InterfaceProvidingEntity>
+  <providedRoles_InterfaceProvidingEntity xsi:type="repository:InfrastructureProvidedRole" id="_hi91UAG8Ee2whLO-MOLsfw" entityName="externalInfrastructureProvidedRoleNode">
+    <providedInterface__InfrastructureProvidedRole href="MyRepository.repository#_4QWBoAG7Ee2whLO-MOLsfw"/>
+  </providedRoles_InterfaceProvidingEntity>
+  <providedRoles_InterfaceProvidingEntity xsi:type="repository:SinkRole" id="_tXX3gAG8Ee2whLO-MOLsfw" entityName="externalSinkRoleNode">
+    <eventGroup__SinkRole href="MyRepository.repository#_DPJ4kAG8Ee2whLO-MOLsfw"/>
+  </providedRoles_InterfaceProvidingEntity>
+  <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_SC2L0AG7Ee2whLO-MOLsfw" entityName="externalRequiredRoleNode">
+    <requiredInterface__OperationRequiredRole href="MyRepository.repository#_gFCYsP3gEeyKG5N7yQCbew"/>
+  </requiredRoles_InterfaceRequiringEntity>
+  <requiredRoles_InterfaceRequiringEntity xsi:type="repository:InfrastructureRequiredRole" id="_luaiEAG8Ee2whLO-MOLsfw" entityName="externalInfrastructureRequiredRoleNode">
+    <requiredInterface__InfrastructureRequiredRole href="MyRepository.repository#_4QWBoAG7Ee2whLO-MOLsfw"/>
+  </requiredRoles_InterfaceRequiringEntity>
+  <requiredRoles_InterfaceRequiringEntity xsi:type="repository:SourceRole" id="_vsulUAG8Ee2whLO-MOLsfw" entityName="externalSourceRoleNode">
+    <eventGroup__SourceRole href="MyRepository.repository#_DPJ4kAG8Ee2whLO-MOLsfw"/>
+  </requiredRoles_InterfaceRequiringEntity>
+</system:System>
