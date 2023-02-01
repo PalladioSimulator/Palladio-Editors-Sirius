@@ -4,7 +4,7 @@ Bundle-Name: Palladio Component Model - Sirius Editor Tests
 Bundle-SymbolicName: org.palladiosimulator.editors.sirius.tests
 Bundle-Version: 5.1.0.qualifier
 Bundle-Vendor: palladiosimulator.org
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Require-Bundle: org.junit,
  org.eclipse.sirius.tests.junit.support;bundle-version="6.6.0",
  org.eclipse.sirius.diagram;bundle-version="6.6.0",

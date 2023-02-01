@@ -14,6 +14,6 @@ Require-Bundle: org.palladiosimulator.pcm;bundle-version="4.1.0",
  org.modelversioning.emfprofile.edit;bundle-version="1.0.0",
  org.palladiosimulator.editors.sirius.services;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Vendor: palladiosimulator.org
 Import-Package: org.eclipse.sirius.diagram.ui.internal.edit.parts

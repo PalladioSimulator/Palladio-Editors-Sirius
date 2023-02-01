@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.palladiosimulator.editors.sirius.services;singleton:=tr
 Bundle-Version: 5.1.0.qualifier
 Bundle-Activator: org.palladiosimulator.editors.sirius.services.Activator
 Bundle-Vendor: palladiosimulator.org
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime;bundle-version="3.12.0",

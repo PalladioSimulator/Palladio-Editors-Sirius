@@ -16,7 +16,7 @@ Require-Bundle: org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0",
 Bundle-Activator: org.palladiosimulator.editors.sirius.custom.style.ExtensionActivator
 Bundle-Vendor: palladiosimulator.org
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: org.palladiosimulator.editors.sirius.custom.style.rotatable,
  org.palladiosimulator.editors.sirius.custom.style.rotatable.editPart,
  org.palladiosimulator.editors.sirius.custom.style.rotatable.figure,

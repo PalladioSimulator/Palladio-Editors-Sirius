@@ -19,5 +19,5 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.12.0",
  org.palladiosimulator.editors.sirius.custom;bundle-version="1.0.0",
  org.palladiosimulator.editors.sirius.ui,
  de.uka.ipd.sdq.pcm.stochasticexpressions
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
