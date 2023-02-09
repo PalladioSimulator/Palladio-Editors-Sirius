@@ -40,8 +40,8 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
+import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusMarkerNavigationProvider;
@@ -281,7 +281,9 @@ public class SemanticElementsValidateAction extends Action {
         // Search diagram URI
         Object object = viewer.getFocusEditPart().getModel();
         String diagramDescriptorUri = getDRepresentationDescriptorURIFromDiagram(object);
-        SiriusMarkerNavigationProviderSpec.addValidationRuleMarker(nextStatus.getOriginRule(), target, elementId, diagramDescriptorUri, semanticURI, location, message, statusSeverity);
+        // Sirius tag v6.6.0
+        //SiriusMarkerNavigationProviderSpec.addValidationRuleMarker(nextStatus.getOriginRule(), target, elementId, diagramDescriptorUri, semanticURI, location, message, statusSeverity);
+        SiriusMarkerNavigationProviderSpec.createValidationRuleMarker(nextStatus.getOriginRule(), viewer, target, view, location, message, statusSeverity);
     }
 
     /**
