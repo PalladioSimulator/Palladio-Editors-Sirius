@@ -13,7 +13,6 @@
 
    <requires>
       <import plugin="org.eclipse.gmf.runtime.diagram.ui" version="1.8.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.edit.ui" version="2.10.2" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.architecturaltemplates" version="1.0.3" match="greaterOrEqual"/>
       <import plugin="org.palladiosimulator.mdsdprofiles.api" version="1.0.1" match="greaterOrEqual"/>
       <import plugin="org.modelversioning.emfprofile.registry" version="1.0.0" match="greaterOrEqual"/>
