@@ -18,7 +18,7 @@ public class OperationProvidedRoleStyleConfigurationProvider implements IStyleCo
 
     @Override
     public StyleConfiguration createStyleConfiguration(final DiagramElementMapping mapping, final Style style) {
-        return new ConnectorStyleConfiguration(new PixelOffsetDecorator(new OrientedHalfAlphaBasedAnchorProvider()));
+        return new ConnectorStyleConfiguration(new OrientedHalfAlphaBasedAnchorProvider());
     }
 
     @Override
