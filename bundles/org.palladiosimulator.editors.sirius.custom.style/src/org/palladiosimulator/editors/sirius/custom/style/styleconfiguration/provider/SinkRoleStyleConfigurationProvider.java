@@ -18,7 +18,7 @@ public class SinkRoleStyleConfigurationProvider implements IStyleConfigurationPr
 
     @Override
     public StyleConfiguration createStyleConfiguration(final DiagramElementMapping mapping, final Style style) {
-        return new ConnectorStyleConfiguration(new PixelOffsetDecorator(new OrientedFixpointAnchorProvider(0.15)));
+        return new ConnectorStyleConfiguration(new OrientedFixpointAnchorProvider(0.15));
     }
 
     @Override
