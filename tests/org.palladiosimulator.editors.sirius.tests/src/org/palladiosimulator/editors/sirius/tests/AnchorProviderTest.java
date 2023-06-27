@@ -47,7 +47,7 @@ public class AnchorProviderTest extends SiriusDiagramTestCase {
 
     // Constants for testing
     private static final double EPSILON = 0.01;
-    private final static int PIXEL_OFFSET = 2;
+    private final static int PIXEL_OFFSET = 0;
 
     // Elements of the runtime
     private DDiagram diagram;
