@@ -215,7 +215,7 @@
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly">
 <unit id="org.storydriven.storydiagrams.feature.feature.group" version="0.0.0"/>
-<repository location="https://updatesite.palladio-simulator.com/archive/storydiagraminterpreter/branches/testingDay5.2.0/"/>
+<repository location="https://updatesite.palladio-simulator.com/archive/storydiagraminterpreter/nightly/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release">
 <unit id="org.palladiosimulator.experimentanalysis.feature.feature.group" version="0.0.0"/>
