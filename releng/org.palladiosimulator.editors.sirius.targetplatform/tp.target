@@ -259,13 +259,9 @@
 <unit id="org.palladiosimulator.examples.package.feature.feature.group" version="0.0.0"/>
 <repository location="https://updatesite.palladio-simulator.com/palladio-example-models-package/branches/testingDay5.2.0/"/>
 </location>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release">
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
 <unit id="org.palladiosimulator.cost.feature.feature.group" version="0.0.0"/>
 <repository location="https://updatesite.palladio-simulator.com/palladio-addons-costefficiency/releases/latest/"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly">
-<unit id="org.palladiosimulator.cost.feature.feature.group" version="0.0.0"/>
-<repository location="https://updatesite.palladio-simulator.com/palladio-addons-costefficiency/branches/testingDay5.2.0/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="nightly">
 <unit id="com.google.auto.factory-annotations.feature.feature.group" version="0.0.0"/>
