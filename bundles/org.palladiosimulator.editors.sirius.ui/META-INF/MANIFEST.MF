@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Sirius editors UI
 Bundle-SymbolicName: org.palladiosimulator.editors.sirius.ui;singleton:=true
-Bundle-Version: 5.1.0.qualifier
+Bundle-Version: 5.2.0.qualifier
 Bundle-Activator: org.palladiosimulator.editors.sirius.ui.Activator
 Bundle-Vendor: palladiosimulator.org
 Require-Bundle: org.eclipse.ui,
