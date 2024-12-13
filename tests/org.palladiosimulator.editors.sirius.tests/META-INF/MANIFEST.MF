@@ -2,14 +2,14 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Palladio Component Model - Sirius Editor Tests
 Bundle-SymbolicName: org.palladiosimulator.editors.sirius.tests
-Bundle-Version: 5.2.0.qualifier
+Bundle-Version: 5.2.1.qualifier
 Bundle-Vendor: palladiosimulator.org
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Require-Bundle: org.junit,
  org.eclipse.sirius.tests.junit.support;bundle-version="6.6.0",
  org.eclipse.sirius.diagram;bundle-version="6.6.0",
- org.palladiosimulator.editors.sirius.assembly;bundle-version="5.2.0",
- org.palladiosimulator.editors.sirius.assembly.custom;bundle-version="5.2.0",
+ org.palladiosimulator.editors.sirius.assembly;bundle-version="5.2.1",
+ org.palladiosimulator.editors.sirius.assembly.custom;bundle-version="5.2.1",
  org.eclipse.sirius.tests.junit;bundle-version="6.6.0"
 Import-Package: org.eclipse.core.runtime;version="3.7.0",
  org.eclipse.sirius.diagram.ui.tools.internal.editor;version="3.2.0",

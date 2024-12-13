@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: PCM Sirius editors: commons
 Bundle-SymbolicName: org.palladiosimulator.editors.sirius.custom;singleton:=true
-Bundle-Version: 5.2.0.qualifier
+Bundle-Version: 5.2.1.qualifier
 Bundle-Activator: org.palladiosimulator.editors.sirius.custom.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime;bundle-version="3.12.0",
