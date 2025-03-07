@@ -206,8 +206,8 @@
 <repository location="https://updatesite.palladio-simulator.com/palladio-thirdparty-cloudscaleusageevolution/branches/no_ui-workflow_dlim"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
-<unit id="LIMBO_DLIM.feature.group" version="0.0.0"/>
-<repository location="https://updatesite.palladio-simulator.com/palladio-p2mirror-dlim/nightly/"/>
+<unit id="tools.descartes.dlim.feature.feature.group" version="0.0.0"/>^M
+<repository location="https://updatesite.palladio-simulator.com/palladio-thirdparty-limbo/nightly/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit" filter="release">
 <unit id="org.storydriven.storydiagrams.feature.feature.group" version="0.0.0"/>
