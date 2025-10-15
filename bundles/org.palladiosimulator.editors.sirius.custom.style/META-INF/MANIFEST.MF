@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-Name: ComposedProvidingRequiringEntity-design extensions
 Bundle-SymbolicName: org.palladiosimulator.editors.sirius.custom.style;singleton:=true
-Bundle-Version: 5.2.1.qualifier
+Bundle-Version: 5.2.2
 Require-Bundle: org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0",
  org.eclipse.sirius.diagram.ui,
  org.eclipse.emf.edit.ui;bundle-version="2.10.2",
