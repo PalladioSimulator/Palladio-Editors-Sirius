@@ -2,17 +2,17 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Resource Environment editor
 Bundle-SymbolicName: org.palladiosimulator.editors.sirius.resourceenvironment;singleton:=true
-Bundle-Version: 5.2.2
+Bundle-Version: 6.0.0.qualifier
 Bundle-Activator: org.palladiosimulator.editors.sirius.resourceenvironment.Activator
-Require-Bundle: org.palladiosimulator.pcm;bundle-version="4.1.0",
+Require-Bundle: org.palladiosimulator.pcm,
  org.eclipse.ui.ide;bundle-version="3.10.0",
  org.eclipse.sirius.diagram,
  org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0",
- org.palladiosimulator.editors.commons.dialogs;bundle-version="1.0.0",
- org.palladiosimulator.editors.sirius.custom;bundle-version="1.0.0",
- org.palladiosimulator.mdsdprofiles;bundle-version="1.0.0",
+ org.palladiosimulator.editors.commons.dialogs,
+ org.palladiosimulator.editors.sirius.custom,
+ org.palladiosimulator.mdsdprofiles,
  org.modelversioning.emfprofile.edit;bundle-version="1.0.0",
- org.palladiosimulator.editors.sirius.services;bundle-version="1.0.0"
+ org.palladiosimulator.editors.sirius.services
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Vendor: palladiosimulator.org

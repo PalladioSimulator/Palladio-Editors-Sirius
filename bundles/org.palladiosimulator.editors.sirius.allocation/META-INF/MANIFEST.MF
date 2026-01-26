@@ -2,15 +2,15 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Allocation editor
 Bundle-SymbolicName: org.palladiosimulator.editors.sirius.allocation;singleton:=true
-Bundle-Version: 5.2.2
+Bundle-Version: 6.0.0.qualifier
 Bundle-Activator: org.palladiosimulator.editors.sirius.allocation.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.transaction,
- org.palladiosimulator.pcm;bundle-version="4.1.0",
+ org.palladiosimulator.pcm,
  org.eclipse.sirius.ui;bundle-version="3.0.0",
  org.eclipse.ui.ide,
- org.palladiosimulator.editors.sirius.custom;bundle-version="1.0.0",
- org.palladiosimulator.editors.sirius.services;bundle-version="1.0.0"
+ org.palladiosimulator.editors.sirius.custom,
+ org.palladiosimulator.editors.sirius.services
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Vendor: palladiosimulator.org

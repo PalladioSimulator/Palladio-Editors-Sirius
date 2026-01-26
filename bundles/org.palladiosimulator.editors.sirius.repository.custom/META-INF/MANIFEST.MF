@@ -2,14 +2,14 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Repository Diagram Editor - Custom
 Bundle-SymbolicName: org.palladiosimulator.editors.sirius.repository.custom;singleton:=true
-Bundle-Version: 5.2.2
+Bundle-Version: 6.0.0.qualifier
 Bundle-Activator: org.palladiosimulator.editors.sirius.repository.custom.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime;bundle-version="3.12.0",
  org.eclipse.sirius,
- org.palladiosimulator.pcm;bundle-version="4.0.0",
+ org.palladiosimulator.pcm,
  org.eclipse.sirius.diagram,
- org.palladiosimulator.editors.commons.dialogs;bundle-version="1.0.0",
+ org.palladiosimulator.editors.commons.dialogs,
  org.palladiosimulator.editors.sirius.custom,
  de.uka.ipd.sdq.stoex.analyser,
  org.palladiosimulator.editors.sirius.ui,
@@ -22,7 +22,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.edit.ui;bundle-version="2.12.0",
  org.eclipse.swt,
  org.eclipse.emf.transaction,
- org.palladiosimulator.editors.commons.tabs;bundle-version="2.1.0",
+ org.palladiosimulator.editors.commons.tabs,
  org.palladiosimulator.pcm.edit,
  org.palladiosimulator.pcm.ui,
  org.eclipse.jface

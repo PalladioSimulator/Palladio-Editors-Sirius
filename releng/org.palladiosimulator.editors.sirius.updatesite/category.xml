@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-	<feature url="features/org.palladiosimulator.editors.sirius.feature_5.2.2.jar" id="org.palladiosimulator.editors.sirius.feature" version="5.2.2">
+	<feature url="features/org.palladiosimulator.editors.sirius.feature_6.0.0.qualifier.jar" id="org.palladiosimulator.editors.sirius.feature" version="6.0.0.qualifier">
 	   <category name="org.palladiosimulator.corefeatures.category"/>
 	</feature>
-	<feature url="features/org.palladiosimulator.editors.sirius.feature.source_5.2.2.jar" id="org.palladiosimulator.editors.sirius.feature.source" version="5.2.2">
+	<feature url="features/org.palladiosimulator.editors.sirius.feature.source_6.0.0.qualifier.jar" id="org.palladiosimulator.editors.sirius.feature.source" version="6.0.0.qualifier">
 	   <category name="org.palladiosimulator.corefeatures.source.category"/>
 	</feature>
 	<category-def name="org.palladiosimulator.corefeatures.category" label="This category contains all features which belong to a complete installation of the Palladio Bench Core Features">

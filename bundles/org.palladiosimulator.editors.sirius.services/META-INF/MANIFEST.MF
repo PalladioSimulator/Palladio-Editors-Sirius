@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: PCM Editors: Services
 Bundle-SymbolicName: org.palladiosimulator.editors.sirius.services;singleton:=true
-Bundle-Version: 5.2.2
+Bundle-Version: 6.0.0.qualifier
 Bundle-Activator: org.palladiosimulator.editors.sirius.services.Activator
 Bundle-Vendor: palladiosimulator.org
 Bundle-RequiredExecutionEnvironment: JavaSE-17
@@ -12,12 +12,12 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius,
  org.eclipse.emf.ecore,
  org.eclipse.sirius.diagram,
- de.uka.ipd.sdq.stoex;bundle-version="2.2.0",
+ de.uka.ipd.sdq.stoex,
  org.palladiosimulator.pcm,
  org.modelversioning.emfprofile.edit;bundle-version="1.0.0",
- org.palladiosimulator.architecturaltemplates.api;bundle-version="1.0.4",
- org.palladiosimulator.architecturaltemplates;bundle-version="1.0.3",
- org.palladiosimulator.architecturaltemplates.ui;bundle-version="1.0.1",
- org.palladiosimulator.mdsdprofiles.api;bundle-version="1.0.1",
- org.palladiosimulator.commons;bundle-version="1.0.1"
+ org.palladiosimulator.architecturaltemplates.api,
+ org.palladiosimulator.architecturaltemplates,
+ org.palladiosimulator.architecturaltemplates.ui,
+ org.palladiosimulator.mdsdprofiles.api,
+ org.palladiosimulator.commons
 Export-Package: org.palladiosimulator.editors.sirius.services
