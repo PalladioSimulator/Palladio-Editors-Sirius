@@ -8,6 +8,7 @@ jobs:
     with:
       use-display-output: true
       no-caching: true
+      runner-label: self-hosted
       deploy-updatesite: 'releng/org.palladiosimulator.editors.sirius.updatesite/target/repository'
     secrets:
       SERVER_SSH_KEY: ${{ secrets.DEPLOYMENT_SERVER_SSH_KEY }}
