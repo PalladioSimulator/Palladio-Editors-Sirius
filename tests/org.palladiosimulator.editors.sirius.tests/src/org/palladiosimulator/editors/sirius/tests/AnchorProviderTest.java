@@ -204,14 +204,22 @@ public class AnchorProviderTest extends SiriusDiagramTestCase {
         }
 
         private void compareAnchorWithEdgeEndPoints() {
-            assertEquals(
-                    "Source of " + this.nameOfEdgeCreationTool
-                            + ": The Edges Endpoint differs from the Anchor Point location",
-                    this.srcAnchorPoint, this.srcEdgeEndPoint);
-            assertEquals(
-                    "Target of " + this.nameOfEdgeCreationTool
-                            + ": The Edges Endpoint differs from the Anchor Point location",
-                    this.targetAnchorPoint, this.targetEdgeEndPoint);
+            this.assertEndPointMeetsAnchor("Source", this.srcAnchorPoint, this.srcEdgeEndPoint);
+            this.assertEndPointMeetsAnchor("Target", this.targetAnchorPoint, this.targetEdgeEndPoint);
+        }
+
+        /**
+         * The anchor is computed at sub-pixel precision while the edge is drawn on the pixel
+         * grid, so the two meet to within a pixel rather than exactly. Half a pixel per axis
+         * is the most rounding can contribute, which is a distance of about 0.71.
+         */
+        private void assertEndPointMeetsAnchor(final String end, final Point anchorPoint,
+                final Point edgeEndPoint) {
+            assertTrue(
+                    end + " of " + this.nameOfEdgeCreationTool
+                            + ": The Edges Endpoint differs from the Anchor Point location by more than a"
+                            + " pixel, anchor was " + anchorPoint + " and endpoint " + edgeEndPoint,
+                    anchorPoint.getDistance(edgeEndPoint) < 1.0);
         }
 
         public void assertSrcAnchorPointEquals(final Point desiredLocation) {
